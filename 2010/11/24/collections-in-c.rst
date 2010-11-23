@@ -182,7 +182,7 @@ Preprocessor Utilities
 ----------------------
 
 Now that we know the basics of the preprocessor we can also infer what
-probelms might exist.  Mainly the interesting operators for code
+problems might exist.  Mainly the interesting operators for code
 generation (``#`` and ``##``) can only operate on macro arguments.  This
 is not a problem for the former, but it will become somewhat of a
 limitation in case of the latter.  Thankfully this can be countered

@@ -21,12 +21,13 @@ div.container {
 
 div.header {
     float: left;
-    height: 25px;
-    margin-bottom: 42px;
 }
 
 div.navigation {
     float: right;
+}
+
+div.header, div.navigation {
     height: 25px;
     margin-bottom: 42px;
 }

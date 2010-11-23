@@ -19,8 +19,8 @@ that my OpenID provider remembers the authentication request for my
 application and will skip the screen the next time the application
 requested authentication until the browser closes. 
 
-Enter OpenID's (and OAuth's) security problem: the remember me for this
-computer button. 
+Enter OpenID's (and OAuth's) security problem: the “remember me for this
+computer button”.
 
 For as long as I have to do with websites and authentication systems the
 following three rules were widely followed by application developers: 
