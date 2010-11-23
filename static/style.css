@@ -75,6 +75,8 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
     color: #432165;
 }
 
+h1.title { width: 560px; }
+
 h1 { font-size: 48px; margin: 10px 0 25px 0; line-height: 52px; }
 h2 { font-size: 36px; margin: 10px 0 25px 0; line-height: 40px; }
 
