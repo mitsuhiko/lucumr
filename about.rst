@@ -32,3 +32,17 @@ means you can do with it whatever you want.  If you like my stuff, I would
 love to get feedback `via email <armin.ronacher@active-4.com>`_.
 If you want to send me something in exchange, have a look at
 my `amazon wishlist <https://www.amazon.com/wishlist/RJLE0GN6X6HO>`_.
+
+About this Website
+------------------
+
+The name of this website came when a friend of mine and me were joking
+about what makes a great web 2.0 website.  We came up with three things: it
+has to have round corners, fresh colors and a weirdly shortened name.  So
+the first version of this blog was green, named after a fresh fruit
+(lucuma) and with a destroyed, abbreviated name.  Not much is left from
+these days, but the name stuck.
+
+The website itself is written in restructured text and built with a small
+script.  Sourcecode can be `found on github
+<http://github.com/mitsuhiko/lucumr>`_.

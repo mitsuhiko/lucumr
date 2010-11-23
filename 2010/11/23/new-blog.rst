@@ -23,7 +23,7 @@ things.  And all that requires careful proof reading and because it takes
 time, there is no reason why I shouldn't be able to do that on my personal
 notebook and my favourite text editor.
 
-For random outburts I now have Twitter, and that fulfills it's role
+For random outbursts I now have Twitter, and that fulfills it's role
 perfectly.
 
 The other new thing on this website is, that it's no longer featuring user
