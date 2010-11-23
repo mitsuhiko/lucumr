@@ -5,16 +5,3 @@ canonical_url: http://lucumr.pocoo.org/
 modules:
   pygments:
     style: tango
-  tags:
-    cloud_url: /tags/
-    tag_url: /tags/<tag>/
-  blog:
-   use_pagination: true
-   per_page: 10
-   index_url: /
-   paged_index_url: /page/<page>/
-   archive_url: /archive/
-   feed_url: /feed.atom
-   year_archive_url: /<year>/
-   month_archive_url: /<year>/<month>/
-   pub_date_match: /<int:year>/<int:month>/<int:day>/
