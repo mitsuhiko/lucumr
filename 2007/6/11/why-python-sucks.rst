@@ -1,4 +1,5 @@
 public: yes
+tags: [python, rant]
 summary: |
   Read this with a grain of salt.
 

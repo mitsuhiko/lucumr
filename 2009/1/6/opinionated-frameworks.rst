@@ -1,4 +1,5 @@
 public: yes
+tags: [python, django, jinja]
 summary: |
   Status update on Jinja and django templates and why it's not a big
   deal that django has a limiting templating engine.

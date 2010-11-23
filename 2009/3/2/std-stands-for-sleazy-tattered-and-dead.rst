@@ -1,4 +1,5 @@
 public: yes
+tags: [python]
 summary: |
   My experiences with the Python standard library and why I'm not the
   biggest fan of it or at least the way it works currenctly.

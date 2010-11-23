@@ -1,4 +1,5 @@
 public: yes
+tags: [openid, security]
 summary: an alternative way to look at OpenID's security
 
 The Lazy User is OpenID's Security Issue
@@ -87,6 +88,6 @@ I might be completely wrong with what I just wrote above, but from my
 experience existing systems are not providing a way to force this
 approval screen on users or it's just not obviously documented so that
 nobody is using it. If there is a way, please let me know. Either way I
-will be vary careful to not leave my notebook unattended for a second
+will be very careful to not leave my notebook unattended for a second
 when a browser is still open.
 

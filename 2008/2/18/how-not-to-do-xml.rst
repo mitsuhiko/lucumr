@@ -1,4 +1,5 @@
 public: yes
+tags: [xml, rant]
 summary: |
   Experiences with XML in Wordpress (or what they call XML)
 
