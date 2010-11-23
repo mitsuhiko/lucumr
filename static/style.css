@@ -138,18 +138,20 @@ div.entry-overview div.summary p {
 }
 
 div.entry-overview div.detail {
-    margin-left: 90px;
+    margin-left: 120px;
 }
 
 div.entry-overview div.date {
     float: left;
+    width: 100px;
+    text-align: right;
     margin: 0;
     color: #888;
     font-style: italic;
 }
 
 div.entry-overview h1:after {
-    content: " — ";
+    content: " — ";
 }
 
 div.pagination {
