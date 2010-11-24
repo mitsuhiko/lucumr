@@ -82,7 +82,7 @@ look at some of the features of the C preprocssor.
 
 ``#error "message"``
     With this directive you can emit an error message that will abort the
-    execution.  You can combine it with preprocessor conditionals to
+    compilation.  You can combine it with preprocessor conditionals to
     notify the user about unsupported configurations, platforms etc.  In
     our case it can help us giving the user feedback about missing
     defines.
@@ -98,7 +98,7 @@ look at some of the features of the C preprocssor.
 
 ``#define MACRO value``
     Defines a new simple macro.  From that point onwards each occurrence
-    of `MACOR` will be replaced with `value`.  In fact, after `MACRO` more
+    of `MACRO` will be replaced with `value`.  In fact, after `MACRO` more
     than one C token of any form can be placed if necessary.  You can let
     a macro be replaced by a full function definition.
 
@@ -246,12 +246,12 @@ The header looks like this:
     /* list of pointers */
     #define _COLLECTION_TYPE void *
     #define _COLLECTION_NAME list
-    #define "_list.h"
+    #include "_list.h"
 
     /* list of floats */
     #define _COLLECTION_TYPE float
     #define _COLLECTION_NAME floatlist
-    #define "_list.h"
+    #include "_list.h"
 
     #endif
 
@@ -264,7 +264,7 @@ That header then declares the struct for the list and the methods we want
 to have.  For this to work we will need another header that is used both
 by this header as well as the implementation C file.  Let's call this
 header `_collection_pre.inc`.  Because we have a `pre` header we will also need
-a `post` header (`_collection_pre.inc`).  The purpose of the `pre` header is
+a `post` header (`_collection_post.inc`).  The purpose of the `pre` header is
 to declare some helper macros that return function names prefixed with the
 necessary name and the idea of the `post` header is to get rid of these
 macros again to allow the inclusion of this header another time (for the
@@ -344,12 +344,12 @@ with our header files:
     /* list of pointers */
     #define _COLLECTION_TYPE void *
     #define _COLLECTION_NAME list
-    #define "_list.inc"
+    #include "_list.inc"
 
     /* list of floats */
     #define _COLLECTION_TYPE float
     #define _COLLECTION_NAME floatlist
-    #define "_list.inc"
+    #include "_list.inc"
 
 `_list.inc`:
 
