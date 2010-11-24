@@ -48,7 +48,7 @@ code, tt        { background: #eee; }
 /* blog overview */
 div.entry-overview                  { margin: 25px 122px 25px 102px; }
 div.entry-overview h1,
-div.entry-overview div.summary
+div.entry-overview div.summary,
 div.entry-overview div.summary p    { display: inline; line-height: 25px; }
 div.entry-overview h1               { margin: 0; font-size: 20px; }
 div.entry-overview div.summary,
