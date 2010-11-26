@@ -1,7 +1,7 @@
 public: yes
 tags: [thoughts]
 summary: |
-  Numbers and computing — computing in numbers.
+  Visualizing numbers and thinking about dimensions in computing.
 
 Computing in Perspective
 ========================
