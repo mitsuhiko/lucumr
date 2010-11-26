@@ -45,6 +45,11 @@ pre             { line-height: 1.3; border: 1px solid #ddd; padding: 10px;
                   background: #fafafa; }
 code, tt        { background: #eee; }
 
+/* tables */
+table           { border: 1px solid #ddd; border-collapse: collapse;
+                  background: #fafafa; }
+td, th          { padding: 2px 12px; border: 1px solid #ddd; }
+
 /* blog overview */
 div.entry-overview                  { margin: 25px 122px 25px 102px; }
 div.entry-overview h1,
