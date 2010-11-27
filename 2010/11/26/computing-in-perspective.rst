@@ -100,9 +100,10 @@ constant, *O(n)* for linear or *O(n²)* for quadratic complexity.
 The idea is that if *n* becomes very, very large (indefinite) the
 complexity greatly varies.  If getting an item from a collection would be
 *O(1)* you would get back any item from the collection in the same time,
-no matter if it's the first or the last.  If the complexity was *O(n²)*
-and you would get the first item in 1 second, the 10th would take a minute
-and 40 seconds.
+no matter if it's the first or the last.  One could think of it that way:
+If the complexity was *O(n²)* and you would get the first item in 1
+second, the 10th would take a minute and 40 seconds.  That's not entirely
+correct, but not totally wrong either.
 
 Constant runtime is easy to understand, so is linear runtime.  But if I
 give you an *O(log n)* — what's closer: constant or linear runtime?
