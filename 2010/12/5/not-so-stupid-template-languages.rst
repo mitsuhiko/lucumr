@@ -8,10 +8,10 @@ Not So Stupid Template Languages
 ================================
 
 Daniel Greenfield recently criticized templating languages such as Mako,
-Genshi, Jinja2 or others for not being more than a stupid template
-language.  That of course might be valid criticism, but there seems to be
-some major misunderstanding out there about what Jinja2 compared to
-Django's templating system actually is.
+Genshi, Jinja2 or others for being more than a stupid template language.
+That of course might be valid criticism, but there seems to be some major
+misunderstanding out there about what Jinja2 compared to Django's
+templating system actually is.
 
 As said by Daniel:
 
