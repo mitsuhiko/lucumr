@@ -98,27 +98,27 @@ location of that query can be hard to pinpoint.  If you are passing
 arbitrary Python models into the template there will always be ways to
 trigger queries.
 
-Jinja2 allows you to easily prevent that from happening by using a
+Jinja2 allows you to easily prevent accidental queries by using a
 sandboxed environment and overriding the callback functions.  In fact,
-preventing queries from model attributes could probably be prevented from
-happening in less than 10 lines of code.  If one would argue that the
-sandbox adds inacceptable overhead I could generally agree for some kinds
+preventing queries from model attributes could probably be implemented in
+less than 10 lines of code.  If one would argue that the sandbox adds
+inacceptable overhead, I could generally agree.  At least for some kinds
 of applications.  At the same time however there is no reason why you
 shouldn't use such a sandbox during development and disable it for the
 production system.
 
-In general I have seen some really horrible and bad abuse of the Django
-template language that I would argue the bus factor is a much harder
-problem in the Django template world than anywhere else.  Undocumented
-custom template tags written by someone on the project doing some things
-in one way and other things in a different way, not behaving as intended
-but still in use are very, very common.  It becomes especially hairy if
-people start using custom template tags in internationalized applications
-where suddenly they can't use particular constructs in block translation
-blocks.  Then tags are extended to now also write into variables and not
-render anything and because the intended syntax clashes due to the custom
-parsing code with stuff that was already valid before inconsistent syntax
-rules become the norm.  A giant mess.
+I have seen some really horrible and bad abuse of the Django template
+language which leads me to the believe that the bus factor is a much
+harder problem in the Django template world than anywhere else.
+Undocumented custom template tags written by someone on the project doing
+some things in one way and other things in a different way, not behaving
+as intended but still in use are very, very common.  It becomes especially
+hairy if people start using custom template tags in internationalized
+applications where suddenly they can't use particular constructs in block
+translation blocks.  Then tags are extended to now also write into
+variables and not render anything.  Worse: because the intended syntax
+clashes due to the custom parsing code with stuff that was already valid
+before leads to inconsistent syntax rules.  A giant mess.
 
 I'm not arguing there that Django's template system would be bad, I think
 it's good enough for what it does.  I however disagree strongly with the
