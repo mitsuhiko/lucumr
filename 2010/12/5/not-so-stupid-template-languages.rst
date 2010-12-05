@@ -50,7 +50,7 @@ out what variables the included template depends on.  One might guess that
 user is used, but there are two other variables available for sure: first
 of all “users” is clearly available for the included template, however
 django also adds “forloop” implicitly into the context, so the template
-that was included could use that to.  Additionally however it might access
+that was included could use that too.  Additionally however it might access
 the current request, current user or tons of other variables.
 
 Jinja2 makes this an explicit thing: don't use includes, import macros and
