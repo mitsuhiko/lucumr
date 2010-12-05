@@ -7,7 +7,7 @@ summary: |
 Not So Stupid Template Languages
 ================================
 
-Daniel Greenfield recently criticized templating languages such as Mako,
+Daniel Greenfeld recently criticized templating languages such as Mako,
 Genshi, Jinja2 or others for being more than a stupid template language.
 That of course might be valid criticism, but there seems to be some major
 misunderstanding out there about what Jinja2 compared to Django's
@@ -30,7 +30,7 @@ In fact, the only reason Jinja2 calls its functions “macros” is that
 threshold of keyword lengths I was happy with.
 
 So what is a macro in Jinja2 and why does it exist in the first place?  A
-macro is basically nothing more than a template that is ment for
+macro is basically nothing more than a template that is meant for
 including, but with the additional information about what variables it
 wants.  It's the Python principle of “explicit is better than implicit”
 applied for templating languages.
