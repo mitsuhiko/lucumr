@@ -65,7 +65,7 @@ comes with three nice advantages:
     creating an object then.
 3.  Macros are functions and thus can be used in an expression context.
     This – among other things – makes it possible to expand / call macros
-    in the context of internationalized blocks and other things.
+    in the context of internationalized blocks.
 
 This example here makes this pretty obvious:
 
