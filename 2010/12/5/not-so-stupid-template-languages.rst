@@ -25,7 +25,7 @@ As said by Daniel:
 
 I suppose the macro part there is written especially with Jinja2 in mind
 there because I know very few templating systems calling things “macros”.
-In fact, the only reason Jinja2 calls it's functions “macros” is that
+In fact, the only reason Jinja2 calls its functions “macros” is that
 “enddef” sounded stupid as a keyword and “endfunction” was past the
 threshold of keyword lengths I was happy with.
 
