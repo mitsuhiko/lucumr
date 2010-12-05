@@ -46,7 +46,7 @@ Take the following Django template as example:
     </ul>
 
 From looking at that specific code it's completely impossible to figure
-out what templates the included template depends on.  One might guess that
+out what variables the included template depends on.  One might guess that
 user is used, but there are two other variables available for sure: first
 of all “users” is clearly available for the included template, however
 django also adds “forloop” implicitly into the context, so the template
