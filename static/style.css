@@ -64,6 +64,9 @@ div.entry-overview div.date         { float: left; width: 120px; color: #888;
                                       text-align: right; font-style: italic; }
 div.entry-overview h1:after         { content: " —"; }
 
+/* other alignment things */
+img.align-center        { margin: 15px auto; display: block; }
+
 /* pagination */
 div.pagination          { margin: 36px 0 0 0; text-align: center; }
 div.pagination strong   { font-weight: normal; font-style: italic; }
