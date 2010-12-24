@@ -9,11 +9,11 @@ Open Source and Games
 
 A few days ago the `Humble Indie Bundle 2 <http://www.humblebundle.com/>`_
 released.  It contains five independently developed games including the
-universally acclaimed “Braid” puzzle and “Machinarium” adventure game.  As
-with last year they upgraded the bundle after a certain amount of revenue
-was made.  This year they included last year's bundle in its entirety for
-all people that bought it before a certain time and for everyone that pays
-more than the average.
+universally acclaimed “Braid” puzzle and “Machinarium” adventure games.
+As with last year they upgraded the bundle after a certain amount of
+revenue was made.  This year they included last year's bundle in its
+entirety for all people that bought it before a certain time and for
+everyone that pays more than the average.
 
 Additionally yesterday they announced that “Revenge of the Titans” will
 become open source.  This is similar to last year where “Gish”, “Aquaria”,
