@@ -71,7 +71,7 @@ always always will you find code like this:
         with open(destination_file, 'wb') as f:
             copy_fd(file, f)
 
-The problem there is that you except `os.path.join` never to go a folder
+The problem there is that you expect `os.path.join` never to go a folder
 up.  While in fact, that's exactly what `os.path.join` is capable of
 doing:
 
