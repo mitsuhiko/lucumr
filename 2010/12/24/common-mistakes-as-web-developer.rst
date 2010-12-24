@@ -7,7 +7,7 @@ summary: |
 Common Mistakes as Python Web Developer
 =======================================
 
-A few weeks ago I had a hatred discussion with a bunch of Python and Open
+A few weeks ago I had a heated discussion with a bunch of Python and Open
 Source people at a local meet-up about the way Python's path joining works.
 I was always pretty sure that people are aware of how the path joining
 works and why it works that way.  However a bit of searching around on the
