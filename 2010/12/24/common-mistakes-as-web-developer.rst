@@ -125,7 +125,9 @@ If you actually do want to allow slashes in the filename there are a
 couple of things you have to consider.  On POSIX the whole system is
 incredible easy: if it starts with a trailing slash or the combination of
 ``../`` it will or might try to reference a file outside of the folder you
-want the file to be in.  That's easy to prevent::
+want the file to be in.  That's easy to prevent:
+
+.. sourcecode:: python
 
     import posixpath
 
@@ -145,7 +147,9 @@ letter.  Thankfully the path module provides ways to reliably check if the
 path is absolute.
 
 The following function checks if paths will not manage to escaped a
-folder on POSIX and Windows::
+folder on POSIX and Windows:
+
+.. sourcecode:: python
 
     import os
 
