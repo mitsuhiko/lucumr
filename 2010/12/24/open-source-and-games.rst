@@ -236,7 +236,7 @@ is no reason why it shouldn't drive traffic back to the original creators.
 
 And with that: Happy Christmas everybody and a big “Thank You” to the
 independent game community and all people behind the Humble Indie Bundle.
-Indie games are what brought be back to graphic programming because they
+Indie games are what brought me back to graphic programming because they
 show that even with a limited budged and simpler artstyle you can create
 great games.  And without realization that I wouldn't have learned a whole
 lot new things over the last few months.
