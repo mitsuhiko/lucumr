@@ -183,7 +183,7 @@ Mixing up Data with Markup
 
 This is a topic that always makes me cringe inside.  I know it's very
 common and many don't see the issue with it but it's the root of a whole
-bunch of problems and unmaintainable code.  Let's say you havev some data.
+bunch of problems and unmaintainable code.  Let's say you have some data.
 That data for all practical purposes will be a string of some arbitrary
 maximum length and that string will be of a certain format.  Let's say
 it's prosaic text and we want to preserve newlines but collapse all other
