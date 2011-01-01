@@ -4,8 +4,8 @@ summary: |
   Exploration into a human problem: the problem of simplifying complex
   matters.
 
-Things are not as easy as the seem
-==================================
+Things are not as easy as they seem
+===================================
 
 Every year around Christmas there one event that I am always looking
 forward to: the chaos communication congress in Germany which is
