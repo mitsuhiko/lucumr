@@ -7,7 +7,7 @@ summary: |
 Things are not as easy as they seem
 ===================================
 
-Every year around Christmas there one event that I am always looking
+Every year around Christmas there is one event that I am always looking
 forward to: the chaos communication congress in Germany which is
 broadcasted live over the internet.
 

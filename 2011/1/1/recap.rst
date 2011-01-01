@@ -14,9 +14,9 @@ year.  This is my list of Open Source or programming related activities of
 2010:
 
 January
-    -   Decided to learn game development.  This didn't went to well for a
-        while though.  I was kinda worn out of Python web development after
-        four years and wanted to do something new.
+    -   Decided to learn game development.  This didn't went go too well
+        for a while though.  I was kinda worn out of Python web development
+        after four years and wanted to do something new.
 
 April
     -   Made an April's fool joke web framework with a screencast that was
@@ -27,7 +27,7 @@ April
 
 May
     -   Attended DjangoCon in Berlin and gave my first English talk ever.
-        It didn't went as well as it could have been but I was nervious
+        It didn't go as well as it could have been but I was nervous
         as fuck, especially because I was the first talk after the
         keynote.
 
