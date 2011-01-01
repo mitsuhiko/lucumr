@@ -76,3 +76,6 @@ p.tags          { text-align: right; font-style: italic; }
 ul.tagcloud     { font-size: 16px; margin: 36px 0; padding: 0;
                   list-style: none; }
 ul.tagcloud li  { margin: 0; padding: 0 10px; display: inline; }
+
+/* inline math */
+span.mathinline img { margin-bottom: -3px; }
