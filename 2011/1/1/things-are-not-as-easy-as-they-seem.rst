@@ -266,7 +266,7 @@ there is often still time to improve on that.
 I love how the Python web community partially gets this right.  Pylons,
 TurboGears and BFG for instance merged into a new superproject called
 Pyramid which took some unpopular decisions to design an ultimately better
-system.  Not even did it base itself on one of the most controversial
+system.  Not only did it base itself on one of the most controversial
 components (Zope) but it also went into the direction of complete
 backwards incompatibility to clean up with the past.  And I applaud them
 for that courageous step.
