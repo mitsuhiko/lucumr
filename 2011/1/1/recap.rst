@@ -14,8 +14,8 @@ year.  This is my list of Open Source or programming related activities of
 2010:
 
 January
-    -   Decided to learn game development.  This didn't went go too well
-        for a while though.  I was kinda worn out of Python web development
+    -   Decided to learn game development.  This didn't go too well for a
+        while though.  I was kinda worn out of Python web development
         after four years and wanted to do something new.
 
 April
