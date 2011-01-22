@@ -30,7 +30,8 @@ div.footer                  { border-top: 1px dotted #ddd; padding-top: 9px;
 div.footer p                { margin: 0; }
 
 /* margins and stuff */
-p, div.line-block, ul, ol, pre  { margin: 25px 0 25px 0; }
+p, div.line-block, ul, ol, pre,
+    table                       { margin: 25px 0 25px 0; }
 dt                              { margin: 25px 0 16px 0; padding: 0; }
 dd                              { margin: 16px 0 25px 40px; padding: 0; }
 ul ol, ol ul, ul ul, ol ol      { margin: 10px 0; padding: 0 0 0 40px; }
