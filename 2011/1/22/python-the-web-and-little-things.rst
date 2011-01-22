@@ -1,4 +1,5 @@
 public: yes
+day-order: 1
 tags: [python, wsgi, thoughts]
 summary: |
   A bunch of things currently on my mind regarding web development with
