@@ -261,7 +261,7 @@ you do with cookies) you can of course use utf-8 if you like.  So how does
 this work if the header is limited to latin1?  For Python 3 (and only for
 Python 3) you will need to apply a little trick:
 
-.. sourcecode:: pycon
+.. sourcecode:: python
 
     return cookie_value.encode('utf-8').decode('latin1')
 
