@@ -99,6 +99,18 @@ Personally I am looking forward to this year's PyCon where there will be
 most likely a bunch of discussions about the future of Python.  Either way
 it will be bright.
 
+A pretty depressing quote on Python 3 `came from Mark Pilgrim
+<http://www.reddit.com/r/IAmA/comments/f545e/i_am_a_fourtime_published_author_i_write_free/c1dcgsm>_`:
+
+    Python 3 is a commercial disaster. In 2010Q3 I had negative sales of
+    DiP3 [Dive into Python 3]. More people returned it than bought it. I'm
+    considering retro-fitting the book's content to Python 2.7 and
+    re-releasing it as “Dive Into Python 2.” Seriously.
+
+At least this clearly shows that Python 3 is not going as good as it
+could, and that rethinking the roadmap might be a good idea.
+    
+
 Variety
 -------
 
