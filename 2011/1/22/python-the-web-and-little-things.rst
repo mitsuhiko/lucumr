@@ -85,7 +85,7 @@ users being interested in Python 3.  This I think has two reasons:
 Python 3 is clearly the better language, hands down.  The downside however
 is that porting existing applications is a giant step and nobody can see
 into the future.  The big advantage of Python 3 was supposed to be
-Unleaden Swallow but unfortunately the numbers are far from what everybody
+Unladen Swallow but unfortunately the numbers are far from what everybody
 was expecting.
 
 So let me reiterate my suggestion for Python 3 in web applications: don't
