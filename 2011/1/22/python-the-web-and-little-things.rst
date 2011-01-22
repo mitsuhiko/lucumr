@@ -22,45 +22,48 @@ world I would really love to share my thoughts about.
 Python 3 and the Web
 --------------------
 
-When I was complaining about Python 3 for web development (or WSGI in
-detail) at DjangoCon Europe a year ago I wanted to raise concern about the
-state of WSGI currently and that part of the problem was that very few
-people care about it.  Also I was very unhappy with the idea of
-introducing Unicode for parts that are clearly not intended to be Unicode.
-A lot of things have changed.  First of all I was wrong about Unicode on
-the WSGI layer.  While I still think that it would have been a wiser
-choice to stick to bytes there the environment just does not support this
-very well.  Python 3 does not provide any useful string operations for
-byte objects and there is also not really a plan to support it.
-Furthermore a lot of places in the standard library now accept Unicode
-where Unicode was not necessarily the best idea.  However at the same time
-there is also a lot of opportunity now to drive things forward.  The fact
-that urllib on Python 3 is unexpected means that we will probably see some
-actual working IRI libraries.
+When I was complaining about Python 3 for web development (or more exactly
+WSGI) at DjangoCon Europe a year ago, I wanted to raise concern about the
+state of WSGI and that part of the problem was that very few people cared
+about it.  Also I was very unhappy with the idea of introducing Unicode
+for parts that are clearly not intended to be Unicode.  A lot of things
+have changed.  First of all I was wrong about Unicode on the WSGI layer.
+While I still think that it would have been a wiser choice to stick to
+bytes there the environment just does not support this very well.  Python
+3 does not provide any useful string operations for byte objects and there
+is also not really a plan to support it.  Furthermore a lot of places in
+the standard library now accept Unicode where Unicode was not necessarily
+the best idea.  However at the same time there is also a lot of
+opportunity now to drive things forward.  The fact that urllib on Python 3
+is unexpected means that we will probably see some actual working IRI
+libraries.
 
 The problem there however is that a direct port of `Werkzeug
 <http://werkzeug.pocoo.org/>`_ to Python 3 is very unlikely.  To make a
 transition possible I would probably have to change some interfaces also
-for Python 2 to make a painful upgrade possibel.  This is a lot easier for
-higher level interfaces such as `Flask <http://flask.pocoo.org/>`_ which
-is based on Werkzeug.  That will probably work the moment Werkzeug itself
-works as there is barely anything in there that would not survive a run
-through 2to3.
+for Python 2.  Otherwise a painless upgrade seems to be pretty unlikely.
+This is a lot easier for higher level interfaces such as `Flask
+<http://flask.pocoo.org/>`_ which is based on Werkzeug.  That will
+probably work the moment Werkzeug itself works as there is barely anything
+in there that would not survive a run through 2to3.
 
 The other aspect however right now is that a port to Python 3 will take a
 lot of time which I am not yet willing to spend due to the low demand of
 users being interested in Python 3.  This I think has two reasons:
 
 1.  A switch to Python 3 is a lot of work and you don't win anything.
-    Python 3 performs considerably worse than Python 2 for certain tasks
-    and Python 2 already wasn't the fastest interpreter.  Secondly a lot
-    of stuff broke from Python 2 to Python 3 and due to the low number of
-    users a lot of these issues are yet to be noticed.  As with all
-    problems in the language and standard library itself just fixing them
-    is not a solution.  To also support “older” versions of Python 3
-    developers will always add workarounds to their code for problems also
-    in the standard library.  That's unfortunately pretty much a
-    chicken-egg problem.
+    Python 3 performs considerably worse than Python 2 (`Source
+    <http://shootout.alioth.debian.org/u32/which-programming-languages-are-fastest.php>`_)
+    for certain tasks and Python 2 already wasn't the fastest interpreter.
+    Part of that can probably be explained with Unicode requiring more
+    memory internally than bytestrings did (2 to 4 times as much for
+    strings).  Secondly a lot of stuff broke from Python 2 to Python 3 and
+    due to the low number of users a lot of these issues are yet to be
+    noticed.  As with all problems in the language and standard library
+    itself just fixing them is not a solution.  To also support “older”
+    versions of Python 3 developers will always add workarounds to their
+    code for problems also in the standard library.  That's unfortunately
+    pretty much a chicken-egg problem.
 2.  PyPy, stackless and alternative Python implementations don't have
     plans for Python 3 or no plans yet.  For a long time CPython was the
     only implementation everybody cared about.  However this seems to be
