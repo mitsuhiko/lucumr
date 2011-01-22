@@ -67,7 +67,8 @@ users being interested in Python 3.  This I think has two reasons:
 2.  PyPy, stackless and alternative Python implementations don't have
     plans for Python 3 or no plans yet.  For a long time CPython was the
     only implementation everybody cared about.  However this seems to be
-    changing.  To quote `Brett Cannon <http://sayspy.blogspot.com/>`_:
+    changing.  To `quote <https://www.google.com/buzz/bcannon/bZDN1jNZ3uC/Is-this-finally-going-to-push-CPython-into-the>`_
+    `Brett Cannon <http://sayspy.blogspot.com/>`_:
     
         Is this finally going to push CPython into the realm of being the
         reference implementation of Python with PyPy being the one
