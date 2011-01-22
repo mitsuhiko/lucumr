@@ -35,8 +35,8 @@ is also not really a plan to support it.  Furthermore a lot of places in
 the standard library now accept Unicode where Unicode was not necessarily
 the best idea.  However at the same time there is also a lot of
 opportunity now to drive things forward.  The fact that urllib on Python 3
-is unexpected means that we will probably see some actual working IRI
-libraries.
+is behaving unexpected with regard to Unicode and bytes means that we will
+probably see some actual working IRI libraries.
 
 The problem there however is that a direct port of `Werkzeug
 <http://werkzeug.pocoo.org/>`_ to Python 3 is very unlikely.  To make a
