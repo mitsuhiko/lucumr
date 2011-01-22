@@ -68,8 +68,8 @@ File IO changed greatly in Python 3.  Thankfully if you are designing new
 APIs for new projects you can save yourself a lot of hassle by deciding
 explicitly for unicode.
 
-If you are dealing with text data, use the `codecs
-<http://docs.python.org/library/codecs.html>`_ modules for opening the
+If you are dealing with text data, use the `codecs.open
+<http://docs.python.org/library/codecs.html>`_ function for opening the
 files.  Assume utf-8 encoding unless explicitly differently defined and
 operate on unicode strings only.  For binary IO make sure to open the file
 with ``'rb'`` instead of ``'r'`` and you are set.  That was required for
