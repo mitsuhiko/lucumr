@@ -51,6 +51,12 @@ table           { border: 1px solid #ddd; border-collapse: collapse;
                   background: #fafafa; }
 td, th          { padding: 2px 12px; border: 1px solid #ddd; }
 
+/* footnotes */
+table.footnote          { margin: 15px 0; background: transparent; border: none; }
+table.footnote td       { border: none; padding: 9px 0 0 0; font-size: 15px; }
+table.footnote td.label { padding-right: 10px; }
+table.footnote td p     { margin-top: 0; }
+
 /* blog overview */
 div.entry-overview                  { margin: 25px 122px 25px 102px; }
 div.entry-overview h1,
