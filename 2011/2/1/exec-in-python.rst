@@ -11,10 +11,10 @@ One of the perceived features of a dynamic programming language like
 Python is the ability to execute code from a string.  In fact many people
 are under the impression that this is the main difference between
 something like Python and C#.  That might have been true when the people
-compared Python to things like C it's not something that is there by
-language design.  For instance Mono implements the compiler as a service
-and you can compile C# code at runtime, just like Python compiles code at
-runtime.
+compared Python to things like C.  It's certainly not a necessarily a
+feature of the language itself.  For instance Mono implements the compiler
+as a service and you can compile C# code at runtime, just like Python
+compiles code at runtime.
 
 Wait what.  Python compiles?  That is correct.  CPython and PyPy (the
 implementations worth caring about currently) are in fact creating a code
@@ -56,7 +56,7 @@ does if you import a module (``import foo``):
         current Python interpreter's version, the timestamp of the
         bytecode file is older or equal to the source version (or the
         source does not exist) it will load that.
-    2.  If the bytecode is missing out outdated it will load the source
+    2.  If the bytecode is missing or outdated it will load the source
         file and compile that to bytecode.  For that it checks magic
         comments in the file header for encoding and tab settings and
         decodes according to those settings.  It will also check if a
