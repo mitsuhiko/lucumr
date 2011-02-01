@@ -125,6 +125,10 @@ use `exec` and you plan on executing that code more than once, make sure
 you compile it into bytecode first and then execute that bytecode only and
 only in a new dictionary as namespace.
 
+In Python 3 the ``exec ... in`` statement disappeared and instead you can
+use the new `exec` function which takes the globals and locals
+dictionaries as parameters.
+
 Performance Characteristics
 ---------------------------
 
