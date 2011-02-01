@@ -33,7 +33,11 @@ affect web2py at all and is just a general suggestion of how to deal with
 
 Disclaimer beforehand: the numbers for this post are taken from Python 2.7
 on OS X.  Do not ever trust benchmarks, take them only as a reference and
-test it for yourself on your target environment.
+test it for yourself on your target environment.  Also: “Yay, another post
+about the security implications of `eval`/`exec`.”  Wrong!  I am assuming
+that everybody already knows how to *properly* use these two, so I will
+not talk about security here.
+
 
 Behind the Scenes of Imports
 ----------------------------
