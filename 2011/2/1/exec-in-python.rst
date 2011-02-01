@@ -28,8 +28,8 @@ This post was inspired by a discussion on reddit about the use of the
 `execfile` function in the `web2py <http://web2py.com/>`_ web framework
 but also applies to other projects.  Some of this here might actually not
 affect web2py at all and is just a general suggestion of how to deal with
-`exec`.  There are some very good reasons of why you should be using
-`exec` when that's the right thing to do.
+`exec`.  There are some very good reasons for using `exec` when that's the
+right thing to do.
 
 Disclaimer beforehand: the numbers for this post are taken from Python 2.7
 on OS X.  Do not ever trust benchmarks, take them only as a reference and
@@ -58,16 +58,16 @@ does if you import a module (``import foo``):
 
     1.  If bytecode is available and the magic checksum matches the
         current Python interpreter's version, the timestamp of the
-        bytecode file is older or equal to the source version (or the
+        bytecode file is newer or equal to the source version (or the
         source does not exist) it will load that.
     2.  If the bytecode is missing or outdated it will load the source
         file and compile that to bytecode.  For that it checks magic
-        comments in the file header for encoding and tab settings and
-        decodes according to those settings.  It will also check if a
-        special tab-width comment exists to treat tabs as something else
-        than 8 characters if necessary.  Some import hooks will then
-        generate `.pyc` files or store the bytecode somewhere else
-        (`__pycache__`) depending on Python version and implementation.
+        comments in the file header for encoding settings and decodes
+        according to those settings.  It will also check if a special
+        tab-width comment exists to treat tabs as something else than 8
+        characters if necessary.  Some import hooks will then generate
+        `.pyc` files or store the bytecode somewhere else (`__pycache__`)
+        depending on Python version and implementation.
 
 3.  The Python interpreter creates a new module object (you can do that on
     your own by calling `imp.new_module` or creating an instance of
@@ -83,11 +83,11 @@ does if you import a module (``import foo``):
 
 Now first of all, none of the above steps ever passed a string to the
 `exec` keyword or function.  That's obviously true because that happens
-deep insight the Python interpreter unless you are using a Python written
-import hook.  But even if the Python interpreter was written in Python it
-would never pass a string to the exec function.  So what would you want to
-do if you want to get that string into bytecode yourself?  You would use
-the `compile` builtin:
+deep inside the Python interpreter unless you are using an import hook
+written in Python.  But even if the Python interpreter was written in
+Python it would never pass a string to the exec function.  So what would
+you want to do if you want to get that string into bytecode yourself?  You
+would use the `compile` builtin:
 
 .. sourcecode:: python
 
@@ -250,8 +250,8 @@ What is a fast local?  In a local scope Python keeps track of the names of
 variables it knows about.  Each of that variable is assigned a number
 (index).  That index is used in an array of Python objects instead of a
 dictionary.  It will only fall back to the dictionary if this is necessary
-(debugging purposes, `exec` statement used at a local scope.
-Interestingly in Python 3 you can no longer use the `exec` statement at a
+(debugging purposes, `exec` statement used at local scope).  Even though
+`exec` still exists in Python 3 (as a function) you no longer it at a
 local scope to override variables.  The Python compiler does not check if
 the `exec` builtin is used and will not unoptimize the scope because of
 that [#exec]_.
@@ -390,7 +390,7 @@ or for developers interested in *extending* (not circumventing) the Python
 import system.
 
 A python developer depends on imports doing what they are documented to do
-and that they namespace has a specific initial value (namely that it's
+and that the namespace has a specific initial value (namely that it's
 empty with the exception of a few internal variables such as `__name__`,
 `__loader__` etc.).  A Python developer depends on being able to import
 that module by a dotted name, on the fact that modules shut down in a
