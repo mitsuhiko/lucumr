@@ -423,7 +423,7 @@ runtime and language.
    with `exec`.  It's for the better however that this does not happen.
 
 .. [#pickle] if you however set `__module__` to `None` you will notice
-   that Python is magically still able to find your function is it
+   that Python is magically still able to find your function if it
    originated from a module registered in `sys.modules`.  How does that
    work?  It will actually walk through *all the modules* and look at *all
    the global variables* to find that function again.
