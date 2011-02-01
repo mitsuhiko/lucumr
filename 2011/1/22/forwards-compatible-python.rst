@@ -37,7 +37,7 @@ You should use the following things from `__future__`:
     review.  However because it will be the default in Python 3 (and the
     only mode) you really should be using it nowadays.
 
--   `absolute_imports`.  The most important one.  No longer will `from xml
+-   `absolute_import`.  The most important one.  No longer will `from xml
     import bar` import a module `foo.xml` from the `foo` package when you
     are inside it.  Instead you explicitly have to do `from .xml import
     bar` to get to what you want.  Less confusion and incredible helpful.
