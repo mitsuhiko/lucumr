@@ -211,7 +211,7 @@ that emulates that:
     code_local = compile('''
     def f():
         sum = 0
-        for x in xrange(50000):
+        for x in xrange(500000):
             sum += x
     ''', '<string>', 'exec')
 
@@ -234,18 +234,19 @@ that was declared.  Let's ask `timeit` how fast we are::
     10 loops, best of 3: 67.7 msec per loop
 
     $ python -mtimeit -s 'from execcompile import test_local as t' 't()'
-    100 loops, best of 3: 2.39 msec per loop
+    100 loops, best of 3: 23.3 msec per loop
    
-Again, a huge increase in performance.  Why is that?  That has to do with
-the fact that fast locals are faster than dictionaries (duh).  What is a
-fast local?  In a local scope Python keeps track of the names of variables
-it knows about.  Each of that variable is assigned a number (index).  That
-index is used in an array of Python objects instead of a dictionary.  It
-will only fall back to the dictionary if this is necessary (debugging
-purposes, `exec` statement used at a local scope.  Interestingly in Python
-3 you can no longer use the `exec` statement at a local scope to override
-variables.  The Python compiler does not check if the `exec` builtin is
-used and will not unoptimize the scope because of that [#exec]_.
+Again, an increase in performance [#timingfix]_.  Why is that?  That has
+to do with the fact that fast locals are faster than dictionaries (duh).
+What is a fast local?  In a local scope Python keeps track of the names of
+variables it knows about.  Each of that variable is assigned a number
+(index).  That index is used in an array of Python objects instead of a
+dictionary.  It will only fall back to the dictionary if this is necessary
+(debugging purposes, `exec` statement used at a local scope.
+Interestingly in Python 3 you can no longer use the `exec` statement at a
+local scope to override variables.  The Python compiler does not check if
+the `exec` builtin is used and will not unoptimize the scope because of
+that [#exec]_.
 
 All of the above knowledge is good to know if you plan on utilizing the
 Python interpreter to interpret your own language by generating Python
@@ -430,3 +431,8 @@ runtime and language.
 
    I have no idea who came up with that idea, but it's an incredible slow
    operation if a lot of modules are loaded.
+
+.. [#timingfix] I actually made a mistake in this benchmark.  As correctly
+   pointed out by `@thp4 <http://twitter.com/thp4>`_ the benchmark was
+   flawed because it was comparing different iterations.  This has since
+   been fixed.
