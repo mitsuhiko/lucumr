@@ -271,7 +271,7 @@ operating on JavaScript source:
 
 `Are Semicolons Necessary in Javascript?
 <http://aresemicolonsnecessaryinjavascript.com/>`_.  Despite popular
-believe the answer is “sometimes” and not “no”.  But to save yourself time
+belief the answer is “sometimes” and not “no”.  But to save yourself time
 and troubles, just place them all the time.  Not only will it save
 yourself some headaches, your code will also look more consistent.
 Because there will be situations where a semicolon becomes necessary to
