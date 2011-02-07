@@ -58,8 +58,8 @@ semicolons in the header of a `for` statement.
 What is a restricted production?  The following syntax rules::
 
     PostfixExpression ::=
-        LeftHandSideExpression [no LineTerminator here] ++
-        LeftHandSideExpression [no LineTerminator here] --
+        LeftHandSideExpression [no LineTerminator here] "++"
+        LeftHandSideExpression [no LineTerminator here] "--"
     ContinueStatement ::=   "continue"  [no LineTerminator here]  Identifieropt ;
     BreakStatement ::=      "break"     [no LineTerminator here]  Identifieropt ;
     ReturnStatement ::=     "return"    [no LineTerminator here]  Expressionopt ;
