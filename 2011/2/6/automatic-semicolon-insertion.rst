@@ -287,7 +287,7 @@ operating on JavaScript source:
        var x=function(){}var y=function(){}
 
 `Are Semicolons Necessary in Javascript?
-<http://aresemicolonsnecessaryinjavascript.com/>`_.  Despite popular
+<http://aresemicolonsnecessaryinjavascript.com/>`_  Despite popular
 belief the answer is “sometimes” and not “no”.  But to save yourself time
 and troubles, just place them all the time.  Not only will it save
 yourself some headaches, your code will also look more consistent.
