@@ -97,11 +97,14 @@ into code where semicolons are missing (7.9.2):
     (d + e).print()
 
         /* becomes this */
-        a = b + c;
-        (d + e).print();
+        a = b + c(d + e).print();
 
 Except for the return example this seems straight forward and if you are
-avoiding linebreaks after the return statement you should be fine.
+avoiding linebreaks after the return statement you should be fine.  The
+last example stays a function call because the assignment by itself is a
+valid sentence.  If however one would add a plus after `c`, the expression
+in parentheses would not be the argument for a function call [#update]_.
+
 Furthermore because automatic semicolon insertion is there and you can't
 get rid of it, no harm in not setting semicolons.  Right?  After all,
 worst case: you forgot one and JavaScript inserts one for you.  That
@@ -202,6 +205,20 @@ After that `namespace.exportedObject` will not be assigned at all and
 problem would not be a problem if one would have used a semicolon after
 the function expression in `counter.js`.
 
+That's also especially annoying when adding parentheses around an
+expression at the begin of a line.  That might cause the line above to
+suddenly become a function call:
+
+.. sourcecode:: javascript
+
+    /* this works */
+    var foo = 1 + 2
+    something.method(foo) + 42
+
+    /* this does not work, will try to call 2(...) */
+    var foo = 1 + 2
+    (something.method(foo) + 42).print()
+
 Consistency and Simplicity
 --------------------------
 
@@ -276,3 +293,9 @@ and troubles, just place them all the time.  Not only will it save
 yourself some headaches, your code will also look more consistent.
 Because there will be situations where a semicolon becomes necessary to
 resolve ambiguities.
+
+.. [#update] This example was incorrect earlier.  I since fixed it and
+   updated the section about function calls to also cover the mistake I
+   made.  This was pointed out via mail and Twitter by `Chris Leary
+   <http://twitter.com/cdleary>`_.  Another reason to explicitly set
+   semicolons :-)
