@@ -22,7 +22,7 @@ div.header                  { float: left; }
 div.navigation              { float: right; }
 div.header, div.navigation  { height: 25px; margin-bottom: 42px; }
 div.navigation ul           { margin: 0; padding: 0; list-style: none; }
-div.navigation ul li        { display: inline; margin: 0 3px; padding: 0; }
+div.navigation ul li        { display: inline; margin: 0 2px; padding: 0; }
 div.body                    { clear: both; }
 div.footer                  { border-top: 1px dotted #ddd; padding-top: 9px;
                               margin-top: 42px; font-size: 16px; color: #888;

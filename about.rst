@@ -31,7 +31,8 @@ All of the open source stuff I work on is BSD licensed which
 means you can do with it whatever you want.  If you like my stuff, I would
 love to get feedback `via email <armin.ronacher@active-4.com>`_.
 If you want to send me something in exchange, have a look at
-my `amazon wishlist <https://www.amazon.com/wishlist/RJLE0GN6X6HO>`_.
+my `amazon <https://www.amazon.com/wishlist/RJLE0GN6X6HO>`_ and
+`steam wishlist <http://steamcommunity.com/id/mitsuhiko/wishlist>`_.
 
 About this Website
 ------------------

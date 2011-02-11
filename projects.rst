@@ -5,7 +5,8 @@ Projects
 
 Over the last couple of years I worked on a number of open source
 projects.  Most of them were Python, a couple of others however were also
-C, PHP or other languages mixed in.
+C, PHP or other languages mixed in.  Talks I held have been moved `to a new
+place on this website </talks/>`_.
 
 Projects I've founded are marked with stars (‘*’), others are project I
 joined.  Projects where I helped out for a short period of time are marked
@@ -56,20 +57,3 @@ Commercial Projects
 -------------------
 
 -   `Plurk <http://www.plurk.com/>`_ — a microblogging platform. *2008-2009*
-
-Talks
------
-
--   `Good API Design <http://www.scribd.com/doc/39946553/Good-API-Design>`_
-    @ Pycon Ukraine 2010 (`recording <http://uapycon.blip.tv/file/4399505/>`_)
--   `Python Idioms <http://www.scribd.com/doc/39946630/Python-Idioms>`_
-    @ Pycon Poland 2010
--   `Flask Lighting Talk <http://www.scribd.com/doc/31933682/Flask>`_ @ djangocon.eu 2010
--   `WSGI on Python 3 <http://dev.pocoo.org/~mitsuhiko/djangocon-wsgi.pdf>`_
-    @ djangocon.eu 2010
--   `Python 3 <http://dev.pocoo.org/~mitsuhiko/python3-linuxtage.pdf>`_
-    @ Linuxtage 2010 Graz
--   `Solace <http://dev.pocoo.org/~mitsuhiko/solace-pdxpython.pdf>`_
-    @ PDX Python
--   `Django without Django <http://dev.pocoo.org/~mitsuhiko/django-without-django.pdf>`_
-    @ Djangocon 2009
