@@ -8,7 +8,8 @@ and recordings if available.
 
 -   `Opening the Flask <http://www.scribd.com/doc/50598278/Flask>`_
     @ Pycon Atlanta 2011
-    (`PDF <http://dev.pocoo.org/~mitsuhiko/flask-pycon-2011.pdf>`__)
+    (`recording <http://pycon.blip.tv/file/4878916/>`__,
+     `PDF <http://dev.pocoo.org/~mitsuhiko/flask-pycon-2011.pdf>`__)
 -   `Good API Design <http://www.scribd.com/doc/39946553/Good-API-Design>`_
     @ Pycon Ukraine 2010 (`recording <http://uapycon.blip.tv/file/4399505/>`__,
     `PDF <http://dev.pocoo.org/~mitsuhiko/API.pdf>`__)
