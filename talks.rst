@@ -6,6 +6,11 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `The State of Python and the Web
+    <http://www.scribd.com/doc/55966881/The-State-of-Python-and-the-Web>`_
+    @ PyGrunn 2011 (`summary
+    <http://reinout.vanrees.org/weblog/2011/05/20/pygrunn-state-of-webframeworks.html>`_,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/pyweb.pdf>`_)
 -   `Opening the Flask <http://www.scribd.com/doc/50598278/Flask>`_
     @ Pycon Atlanta 2011
     (`recording <http://pycon.blip.tv/file/4878916/>`__,
