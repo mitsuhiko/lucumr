@@ -9,12 +9,12 @@ and recordings if available.
 -   `The Impact of Django
     <http://www.scribd.com/doc/57352264/The-Impact-of-Django>`_ @
     djangocon.eu 2011
-    (`PDF <http://dev.pocoo.org/~mitsuhiko/impact.pdf>`_)
+    (`PDF <http://dev.pocoo.org/~mitsuhiko/impact.pdf>`__)
 -   `The State of Python and the Web
     <http://www.scribd.com/doc/55966881/The-State-of-Python-and-the-Web>`_
     @ PyGrunn 2011 (`summary
     <http://reinout.vanrees.org/weblog/2011/05/20/pygrunn-state-of-webframeworks.html>`_,
-    `PDF <http://dev.pocoo.org/~mitsuhiko/pyweb.pdf>`_)
+    `PDF <http://dev.pocoo.org/~mitsuhiko/pyweb.pdf>`__)
 -   `Opening the Flask <http://www.scribd.com/doc/50598278/Flask>`_
     @ Pycon Atlanta 2011
     (`recording <http://pycon.blip.tv/file/4878916/>`__,
