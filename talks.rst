@@ -6,6 +6,10 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `The Impact of Django
+    <http://www.scribd.com/doc/57352264/The-Impact-of-Django>`_ @
+    djangocon.eu 2011
+    (`PDF <http://dev.pocoo.org/~mitsuhiko/impact.pdf>`_)
 -   `The State of Python and the Web
     <http://www.scribd.com/doc/55966881/The-State-of-Python-and-the-Web>`_
     @ PyGrunn 2011 (`summary
