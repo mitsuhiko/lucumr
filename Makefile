@@ -10,4 +10,5 @@ serve:
 	run-rstblog serve
 
 upload:
-	scp -r _build/* pocoo.org:/var/www/lucumr.pocoo.org/new
+	rsync -a _build/ pocoo.org:/var/www/lucumr.pocoo.org/new/
+	@echo "Done..."
