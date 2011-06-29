@@ -13,7 +13,9 @@ and recordings if available.
 -   `The Impact of Django
     <http://www.scribd.com/doc/57352264/The-Impact-of-Django>`_ @
     djangocon.eu 2011
-    (`PDF <http://dev.pocoo.org/~mitsuhiko/impact.pdf>`__)
+    (`recording
+    <http://blip.tv/djangocon-europe-2011/wednesday-0930-armin-ronacher-5311189>`__,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/impact.pdf>`__)
 -   `The State of Python and the Web
     <http://www.scribd.com/doc/55966881/The-State-of-Python-and-the-Web>`_
     @ PyGrunn 2011 (`summary
