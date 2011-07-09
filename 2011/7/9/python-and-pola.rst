@@ -61,7 +61,7 @@ that.  If you look at Java in comparison what will we find?  A builtin
 array has a field called ``.length``.  A builtin string however is an
 actual object and has a method called ``.length()``.  A map or list in
 Java responds to ``.size()``.  All the XML APIs in Java will use
-``.getLength()`` instead, so will the reflection API for arrays and the
+``.getLenght()`` instead, so will the reflection API for arrays and the
 list goes on.
 
 How is it in Ruby?  In Ruby collection objects respond to ``.size``.  But
