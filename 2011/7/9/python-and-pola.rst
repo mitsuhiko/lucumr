@@ -229,7 +229,7 @@ iterable into an actual list first to convert it into a string.  Ruby
 people will now argue that Ruby solves this problem with mixing in
 modules, and they are certainly correct that this is an option.  But this
 is a concious design decision in the language which has many implications.
-Python encourages louse coupling by having these protocols where the
+Python encourages loose coupling by having these protocols where the
 actual implementations can be elsewhere.  One object is iterable, another
 part in the system knows how to make it into a string.
 
