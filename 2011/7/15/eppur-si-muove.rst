@@ -71,7 +71,7 @@ August 5th 1915 the clocks were wound back 24 minutes.  In neither case
 was DST active.
 
 Much fun can be had with timezones in general.  There was at least one
-country that at one point had a timezone that different per day because
+country that at one point had a timezone that differed per day because
 they synchronized 0:00 with the time of the sunrise.
 
 Where is the Sanity?
@@ -147,6 +147,10 @@ One gives the time in UTC, the other in local time.  However it will not
 tell you what local time is (because it does not have a timezone
 information object, at least before 3.3), and it does not give you way to
 know which one was UTC.
+
+If you convert from a UNIX timestamp into a datetime object you also have
+to be very careful to use the `datetime.datetime.utcfromtimestamp` method
+because the normal one will assume the timestamp is in local time.
 
 On top of that, the library provides a `time` object and a `date` object,
 both of which are close to being useless when timezones are involved.  The
