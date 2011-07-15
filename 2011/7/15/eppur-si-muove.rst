@@ -26,6 +26,11 @@ being forced to recant his belief that the Earth rotates around the Sun.
 Which unfortunately is the case and gives us these wonderful timezone
 problems.
 
+What does this article have to do with Galileo?  Not really much I am
+afraid because even if the world would be in the center of the universe
+you would still have timezones.  Consider the title a mistake on my part
+which I cannot correct now, can I :-)
+
 .. raw:: html
    
    </small>
