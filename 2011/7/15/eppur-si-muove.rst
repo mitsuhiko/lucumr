@@ -78,17 +78,17 @@ Where is the Sanity?
 --------------------
 
 The sanity right now is called UTC.  UTC is a timezone without daylight
-saving time and still a timezone without changes in the past.  However
-because our world is again this rotating geoid and something we don't
-really have under control the problem of leap seconds will at one point
-show up.  If UTC will then take leap seconds into account (which are
-irregular and with that problem for computing) or not (and each timezone
-will have sub-minute differences to UTC) is as far as I know, nothing that
-was decided for sure yet.
+saving time and still a timezone without configuration changes in the
+past.  However because our world is again this rotating geoid and
+something we don't really have under control, the problem of leap seconds
+will at one point show up.  If UTC will then take leap seconds into
+account (which are irregular and with that problem for computing) or not
+(and each timezone will have sub-minute differences to UTC) is, as far as
+I know, nothing that was decided for sure yet.
 
 However right now, UTC is the safest bet.  From UTC you can convert into
 any local time, however of course the reverse is not true due to what was
-show above.
+shown above.
 
 So here the rule of thumb which never shall be broken:
 
