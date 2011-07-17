@@ -60,7 +60,7 @@ that one hour of enabling/disabling each year we either get an hour twice
 or we skip an entire hour.  Results are log entries that appear out of
 order if you log with local time for instance.
 
-To quite the pytz documentation:
+To quote the pytz documentation:
 
     For example, 1:30am on 27th Oct 2002 happened twice in the US/Eastern
     timezone when the clocks where put back at the end of Daylight Savings
