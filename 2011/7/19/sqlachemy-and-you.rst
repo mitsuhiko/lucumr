@@ -19,7 +19,7 @@ SQLAlchemy and I got back a few interesting results.  First of all that
 question was obviously asked with the intent to attract answers from
 people that do prefer Django over SQLAlchemy or at least have some issues
 with SQLAlchemy that they don't seem to have with Django.  Without a doubt
-there is a large fanbase behind SQLAlchemy, mysql included.
+there is a large fanbase behind SQLAlchemy, myself included.
 
 SQLAlchemy in general just has a much larger featureset and it's the only
 ORM for Python which allows you to take full advantage of your database
