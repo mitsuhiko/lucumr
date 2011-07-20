@@ -401,6 +401,18 @@ In SQLAlchemy that operation is performed via the session:
 
 Again, remember to commit your session.
 
+Updating Entries
+````````````````
+
+How do you update an entry?  Just get the object, modify it and commit the
+session:
+
+.. sourcecode:: python
+
+    obj = MyModel.query.get(the_id)
+    obj.name = 'New Value'
+    session.commit()
+
 Primary Key Queries
 ```````````````````
 
