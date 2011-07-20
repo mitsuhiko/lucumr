@@ -40,7 +40,7 @@ you see.  In SQLAlchemy you have at the very bottom the engine which with
 abstracts away connection pools and basic API differences between
 different databases, on top of that you have the SQL abstraction language,
 sitting on top of that and the table definitions you have the basic ORM
-and on top of that you have the declarative ORM which looks very closely
+and on top of that you have the declarative ORM which looks very close
 to the Django ORM.  The other more striking difference however is that
 SQLAlchemy follows the “Unit of Work” pattern whereas Django's ORM follows
 something that is very close to the “Active Record” pattern.
@@ -53,7 +53,7 @@ the database with the new values of the attributes.  This is not at all
 how SQLAlchemy's ORM component works.  In SQLAlchemy you have an object
 called the “session”.  It basically encapsulates a transaction.  However
 it does more.  Each object is tracked by primary key in this session.  As
-such each object only exists once by primary key.  As such you can safe a
+such each object only exists once by primary key.  As such you can safely make a
 lot of queries and you never have things out of sync.  When you commit the
 session it will send all changes at once to the database in correct order,
 if you rollback the session nothing happens instead.
@@ -74,7 +74,7 @@ overwhelming.  Not only does the documentation guide you through the
 different levels of SQLAlchemy but also shows all the different ways you
 can configure SQLAlchemy and the ORM.
 
-Djang on the other hand does not have many different ways the configure
+Django on the other hand does not have many different ways the configure
 the ORM.  It comes preconfigured with the exception of some database
 related setting such as server name, port and a few other things.
 
@@ -482,7 +482,7 @@ you pass such an expression to ``filter()``:
 
     active_users_with_a_or_b = User.query.filter(
         (User.name.startswith('a') | User.name.startswith('b')) &
-        User.is_active == True
+        (User.is_active == True)
     ).all()
 
 To evaluate a query you have a few choices:
