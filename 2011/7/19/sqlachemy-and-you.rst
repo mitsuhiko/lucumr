@@ -51,7 +51,7 @@ to the database.  Then it constructs and object for you.  That object can
 be modified and if you call ``save()`` on it, it will update the record in
 the database with the new values of the attributes.  This is not at all
 how SQLAlchemy's ORM component works.  In SQLAlchemy you have an object
-callde the “session”.  It basically encapsulates a transaction.  However
+called the “session”.  It basically encapsulates a transaction.  However
 it does more.  Each object is tracked by primary key in this session.  As
 such each object only exists once by primary key.  As such you can safe a
 lot of queries and you never have things out of sync.  When you commit the
