@@ -164,20 +164,17 @@ perfectly valid WSGI code:
 
 .. sourcecode:: python
 
-    def fail_late():
-        yield ''
-        yield ''
-        raise Exception('Something went wrong late')
-
     def weird_app(environ, start_response):
         try:
             start_response('200 OK', [('Content-Type', 'text/plain')])
-            fail_late()
+            yield ''
+            yield ''
+            raise Exception('Something went wrong late')
         except Exception, e:
             start_response('500 INTERNAL SERVER ERROR',
                            [('Content-Type', 'text/plain')],
                            sys.exc_info())
-            return ['Application Failed']
+            yield 'Application Failed'
 
 This is the extreme example which you will not see in practice.  The
 server should attempt to change the headers if still not sent or recover
