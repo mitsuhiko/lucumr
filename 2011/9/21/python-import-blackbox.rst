@@ -136,7 +136,7 @@ Consider this `fail_module.py`:
     # this fails
     import missing_module
 
-If we however attept to access `fail_module` later it will be gone:
+If we however attempt to access `fail_module` later it will be gone:
 
 .. sourcecode:: pycon
 
