@@ -199,6 +199,7 @@ So how does the code look?
             while tb is not None:
                 if tb.tb_frame.f_globals.get('__name__') == module_name:
                     raise exc_type, exc_value, tb_root
+                tb = tb.tb_next
             return None
         return sys.modules[module_name]
 
