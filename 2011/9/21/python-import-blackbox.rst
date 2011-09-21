@@ -61,7 +61,7 @@ loading but there are a handful of problems with that:
     in various ways.  Just because an importer says it finds a module it
     does not mean it can properly import it.  For instance there are many
     finders that will tell you that `find_module` succeeded just to fail
-    later with an error on `import_module`.
+    later with an error on `load_module`.
 
 2.  The Python import machinery is complex and even with the new
     `importlib` module everything but easy to use.  To replicate the logic
