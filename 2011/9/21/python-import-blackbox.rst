@@ -54,8 +54,8 @@ The Problem
 
 The problem is that Python does not provide you with information if the
 module was not found or failed to import.  In theory you could build
-yourself something yourself with the `imp` module that splits up finding
-and loading but there are a handful of problems with that:
+yourself something with the `imp` module that splits up finding and
+loading but there are a handful of problems with that:
 
 1.  The Python import process is notoriously underspecified and exploited
     in various ways.  Just because an importer says it finds a module it
@@ -97,7 +97,7 @@ gives very awkward results:
 
 As you can see, the error message does not even include the whole import
 path at all times.  Sometimes the error message is something completely
-unrelated, somethings the whole error message is just the module name.
+unrelated, sometimes the whole error message is just the module name.
 Sometimes it's “No module named %s”, sometimes the module name is on
 quotes.  This is because various parts of the system can abort an import
 process and since this is customizable …
@@ -211,6 +211,12 @@ You can use it like this:
         json = import_module('json')
         if json is None:
             raise RuntimeError('Unable to find a json implementation')
+
+Generally the implementation is straightforward.  Try to import with
+`__import__`, if that fails get the current traceback and see if any of
+the frames originated in the module we tried to import.  If that is the
+case, we reraise the exception with the original traceback, otherwise just
+return `None` to mark a missing module.
 
 Since `None` has a special meaning in `sys.modules` which marks an import
 error we know that an imported module never is `None` and we can use this
