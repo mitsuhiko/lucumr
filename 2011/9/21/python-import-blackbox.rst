@@ -6,6 +6,12 @@ summary: |
 Dealing with the Python Import Blackbox
 =======================================
 
+*Turns out, this does not work reliably, in fact it will only work when
+packages are involved.  I originally wrote the core for Flask extensions
+and it appeared to work, but I never verified that it works without
+extensions being involved.  And in fact the module cleanup breaks it.
+Apparently Python **does** clean it up on module deallocation.*
+
 For a long time Python's import system was (although customizable) at the
 very core a black box.  You could hook into some parts of it but others
 were hidden from you.  On top of that the only signalling that the import
