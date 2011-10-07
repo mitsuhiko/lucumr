@@ -6,6 +6,9 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Cherry-Picking for Huge Success
+    <http://www.scribd.com/doc/67925053/Cherry-Picking>`_ @ PyCodeConf
+    2011 (`PDF <http://dev.pocoo.org/~mitsuhiko/CherryPicking.pdf>`__)
 -   `5 Years of Bad Ideas
     <http://www.scribd.com/doc/58306088>`_ @ europython 2011 (`recording
     <http://ep2011.europython.eu/conference/talks/5-years-of-bad-ideas>`_,
