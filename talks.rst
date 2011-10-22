@@ -6,6 +6,9 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Basket of Random Python Snippets
+    <http://www.scribd.com/doc/69841402>`_ @ Pycon Ukraine 2011
+    (`PDF <http://dev.pocoo.org/~mitsuhiko/PythonBasket.pdf>`__)
 -   `Cherry-Picking for Huge Success
     <http://www.scribd.com/doc/67925053/Cherry-Picking>`_ @ PyCodeConf
     2011 (`PDF <http://dev.pocoo.org/~mitsuhiko/CherryPicking.pdf>`__)
