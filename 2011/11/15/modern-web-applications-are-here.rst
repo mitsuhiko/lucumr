@@ -12,7 +12,7 @@ Warfare 3 versus Battlefield 3.  And being the kind of game they are they
 also try to keep their audience playing by introducing some additional
 level of engagement.  Both Call of Duty and Battlefield introduced their
 own online community websites and statistic platforms.  Call of Duty has
-Elite, Battlefield has Battelog.
+Elite, Battlefield has Battlelog.
 
 But just because these services are sitting in the same spot it does not
 mean they are in any way similar.  And that actually goes for more than
@@ -24,7 +24,7 @@ interesting to say the least.
 
 But what are they doing?  Notwithstanding some of their respective extra
 features both Battlelog and Elite are essentially a social network for
-shooter gamest that expose the statistics of your individual gameplay as
+shooter games that expose the statistics of your individual gameplay as
 well as the one of your friends to you.  Everything you do in the game is
 reflected on these websites and you can further interact with the game
 there by commenting on gameplay and chatting up with friends.
