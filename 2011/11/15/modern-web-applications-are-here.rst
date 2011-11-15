@@ -230,8 +230,8 @@ list of servers.  How does *that* work?  Here's how:
     to close the game away and initiate some other game modes such as coop
     hosting.
 
-Thinking: Does it need the Plugin
----------------------------------
+Thinking: Does it need the Plugin?
+----------------------------------
 
 Now here was me thinking.  Would the plugin be necessary to accomplish all
 of the above things or could it be done in a different way?  Native
