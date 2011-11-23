@@ -6,6 +6,12 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Python Web Development
+    <http://speakerdeck.com/u/mitsuhiko/p/python-web-development>`_
+    @ TuGraz 2011 (`PDF
+    <http://pocoo.org/~mitsuhiko/PythonWebFlask.pdf>`__ |
+    `Code
+    <https://github.com/mitsuhiko/tugraz-flask-demo/>`__)
 -   `Basket of Random Python Snippets
     <http://speakerdeck.com/u/mitsuhiko/p/basket-of-random-python-snippets>`_
     @ Pycon Ukraine 2011 (`PDF
