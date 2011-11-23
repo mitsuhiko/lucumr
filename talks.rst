@@ -10,7 +10,7 @@ and recordings if available.
     <http://speakerdeck.com/u/mitsuhiko/p/python-web-development>`_
     @ TuGraz 2011 (`PDF
     <http://pocoo.org/~mitsuhiko/PythonWebFlask.pdf>`__,
-    `Code
+    `code
     <https://github.com/mitsuhiko/tugraz-flask-demo/>`__)
 -   `Basket of Random Python Snippets
     <http://speakerdeck.com/u/mitsuhiko/p/basket-of-random-python-snippets>`_
