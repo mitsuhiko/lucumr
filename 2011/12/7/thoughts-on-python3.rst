@@ -81,13 +81,15 @@ unicode was added too late and partially never.
 
 But it did so many things well.  Even if not executed flawlessly, the
 whole idea of having modules with their own namespace was great.  The
-multimethod based design of the language is still unmatched in many ways
-the greatness of that design is not appreciated enough even though we
-benefit from that design on a daily basis.  The language always did an
-amazing job at exposing the internals of the interpreter (tracebacks,
-stack frames, opcodes, code objects, the ast etc.) and in combination with
-the dynamic design it allows developers to quickly solve or debug problems
-in ways that are not working that well in other languages.
+multimethod (not the right word, but I don't know a better one.  Basically
+the ``foo(x)`` -> ``x.__foo__()`` concept)  based design of the language
+is still unmatched in many ways the greatness of that design is not
+appreciated enough even though we benefit from that design on a daily
+basis.  The language always did an amazing job at exposing the internals
+of the interpreter (tracebacks, stack frames, opcodes, code objects, the
+ast etc.) and in combination with the dynamic design it allows developers
+to quickly solve or debug problems in ways that are not working that well
+in other languages.
 
 The indentation based syntax of the language was often criticized but
 seeing how many languages now show up with exactly that as a feature
