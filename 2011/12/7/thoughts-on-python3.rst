@@ -243,7 +243,7 @@ my remote server the locale was set to the string “POSIX”.  What is
 “POSIX” you are asking?  I have no freaking idea.  But the end result of
 that was that Python was about as clueless as me and decided to go with
 “ANSI_X3.4_1968”.  This also marked the day that I learned that ASCII goes
-by many names.  Turns out that's indeed just another name for ANSI.  And
+by many names.  Turns out that's indeed just another name for ASCII.  And
 lo and behold my remote Python interpreter did not show the entries
 properly from a folder which internationalized filenames.  Why did they
 exist there in the first place?  Because I dumped Wikipedia articles in
