@@ -6,7 +6,7 @@ summary: |
 Thoughts on Python 3
 ====================
 
-I spend the last couple of days thinking about Python 3's current state a
+I spent the last couple of days thinking about Python 3's current state a
 lot.  While it might not appear to be the case, I do love Python as a
 language and especially the direction it's heading in.  Python has been not
 only part of my life for the last couple of five years, it has been the
@@ -47,7 +47,7 @@ Why do we use Python?
 
 Why do we use Python?  I think this is a very valid question which we
 don't ask ourselves often enough.  I don't use Python because it's a
-language without faults.  This year's PyCodeConf I spend a lot of time
+language without faults.  This year's PyCodeConf I spent a lot of time
 discussing stuff with Nick Coghlan at the last day's party.  We were drunk
 but as a result of that the discussion was very honest to say the least.
 We both pretty much agreed on the fact that the Python language is with
@@ -347,7 +347,7 @@ But just because something is possible and passes the tests does not mean
 it's well executed.  I am a person with faults and I make tons of
 mistakes.  But what I do is taking pride in trying to work out APIs that I
 love using.  I sometimes catch myself rewriting the same code over and
-over again to make it more user friendly.  With Flask I spend an
+over again to make it more user friendly.  With Flask I spent an
 incredible amount of time fine tuning certain core features to a degree
 where some would talk about obsession.
 
