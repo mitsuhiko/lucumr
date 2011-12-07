@@ -83,7 +83,7 @@ But it did so many things well.  Even if not executed flawlessly, the
 whole idea of having modules with their own namespace was great.  The
 multimethod (not the right word, but I don't know a better one.  Basically
 the ``foo(x)`` -> ``x.__foo__()`` concept)  based design of the language
-is still unmatched in many ways the greatness of that design is not
+is still unmatched in many ways and the greatness of that design is not
 appreciated enough even though we benefit from that design on a daily
 basis.  The language always did an amazing job at exposing the internals
 of the interpreter (tracebacks, stack frames, opcodes, code objects, the
