@@ -23,7 +23,7 @@ express that nearly as often enough.
 
 Quite the contrary actually.  I love Python, I love discussing ways and
 implementations but I am not committing the project despite my commit bit.
-I am a pain in the ass at language summits if I am attending then and can
+I am a pain in the ass at language summits if I am attending them and can
 see why my opinion would be unpopular.  “Always complaining, not doing
 anything”.  There is just so much stuff I would love to see Python go but
 at the end of the day, I'm a user of Python more than a developer.
