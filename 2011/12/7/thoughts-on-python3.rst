@@ -174,7 +174,7 @@ The Thing with Unicode
 Obviously the big change in Python 3 is how Unicode is being handled.
 While it appears that forcing Unicode on everybody is great, it's also a
 very unrealistic view of the world.  It's unrealistic because in the real
-world we do not only real with bytes and unicode, we also deal with
+world we do not only deal with bytes and unicode, we also deal with
 strings of a known encoding.  What's worse is that Python 3 in many ways
 started to become the Fisher Prize of programming languages.  Some
 features were removed because the core team was afraid that people would
