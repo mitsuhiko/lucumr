@@ -448,7 +448,7 @@ Technologies are evolving fast and it would break my heart to see that
 Python ruins itself by just ignoring possible dark clouds in the sky.
 
 Python is not “too big to fail”.  Python can become unpopular very
-quickly.  Pascal and Delphi became niece languages even though they were
+quickly.  Pascal and Delphi became niche languages even though they were
 amazing even after the introduction of the .NET framework and C#.  They
 were ruined by mismanagement more than anything else.  People still
 develop in Pascal, but how many are starting new projects in it?  Delphi
