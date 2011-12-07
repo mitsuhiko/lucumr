@@ -246,7 +246,7 @@ that was that Python was about as clueless as me and decided to go with
 by many names.  Turns out that's indeed just another name for ASCII.  And
 lo and behold my remote Python interpreter did not show the entries
 properly from a folder which internationalized filenames.  Why did they
-exist there in the first place?  Because I dumped wikipedia articles in
+exist there in the first place?  Because I dumped Wikipedia articles in
 there with their original names.  And when I was running that I was using
 Python 3.1 which was silently hiding files instead of giving exceptions or
 hacking around it.
@@ -448,7 +448,7 @@ Technologies are evolving fast and it would break my heart to see that
 Python ruins itself by just ignoring possible dark clouds in the sky.
 
 Python is not “too big to fail”.  Python can become unpopular very
-quickly.  Pascal and Delphi became niece languages even though they were
+quickly.  Pascal and Delphi became niche languages even though they were
 amazing even after the introduction of the .NET framework and C#.  They
 were ruined by mismanagement more than anything else.  People still
 develop in Pascal, but how many are starting new projects in it?  Delphi
