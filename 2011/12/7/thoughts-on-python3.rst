@@ -74,7 +74,7 @@ And here is why I think we use Python: because the language evolved ever
 so slightly over the years and had the right ideas.  Early Python was
 horrible, there was no concept of iterators, there was not even a way to
 iterate over dictionaries without creating a intermediate list of all the
-keys.  At one point exceptions where strings, the string methods were not
+keys.  At one point exceptions were strings, the string methods were not
 methods but functions in a string module.  The syntax for catching down
 exceptions haunts us to the latest iteration of the Python 2 language and
 unicode was added too late and partially never.
