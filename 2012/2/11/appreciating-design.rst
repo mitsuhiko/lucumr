@@ -140,7 +140,7 @@ excellence to computer gamers would not have been hard either because they
 take pride in “knowing more” about computers and game then their console
 playing friends.
 
-Make them Appreciate it
+Make them appreciate it
 -----------------------
 
 I guess to a large degree the idea of “the best design is the one you
