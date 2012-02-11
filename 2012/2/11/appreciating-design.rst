@@ -107,7 +107,7 @@ start telling me about the cool details, he wants me to actually try it
 and ultimately he wants me to get this car.
 
 Apple seems to be doing very much the same.  Many Apple computer users
-are as loyal to their product as buyers of cars.  They will point how how
+are as loyal to their product as buyers of cars.  They will point how
 cool the case design is, how nicely the lid closes, how cute the machine
 looks when the sleep light is “breathing” or how few problems they have
 with it.  I know many flaws in my Macs but that does not stop me from
