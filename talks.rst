@@ -6,6 +6,10 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Code Generation in Python — Dismantling Jinja
+    <http://speakerdeck.com/u/mitsuhiko/p/code-generation-in-python-dismantling-jinja>`__
+    @ PyCon 2012 (`recording <https://www.youtube.com/watch?v=jXlR0Icvvh8>`__,
+    `PDF <http://pocoo.org/~mitsuhiko/codegenjinja.pdf>`__)
 -   `Python Web Development
     <http://speakerdeck.com/u/mitsuhiko/p/python-web-development>`_
     @ TuGraz 2011 (`PDF

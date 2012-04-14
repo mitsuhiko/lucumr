@@ -8,10 +8,10 @@ development, graphics, realtime rendering and tons of other stuff.  I am
 one of the founding members of the `Pocoo Team <http://pocoo.org>`_ and
 lead developer on a couple of popular Python projects.
 
-I'm currently living in `Graz <http://en.wikipedia.org/wiki/Graz>`_ and
-still at the Graz University of Technology.  Besides being a
-student I do `open source </projects/>`_ development and like `giving
-talks </projects/#talks>`_ at various conferences.
+I'm currently living in London and working for `Fireteam Ltd.
+<http://fireteam.net>`_.  Aside from that I do `open source </projects/>`_
+development and like `giving talks </projects/#talks>`_ at various
+conferences.
 
 If you want to contact me, you can reach me via one of the following
 communication channels:

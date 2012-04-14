@@ -32,6 +32,9 @@ Open Source Libraries
 -   `Flask <http://flask.pocoo.org/>`_ — a microframework for Python based
     on good intentions.  *2010-* *
 
+For a longer list, have a look at my `github profile
+<http://github.com/mitsuhiko>`_.
+
 *small contribtions and libraries are not listed*
 
 Open Source Applications
@@ -57,3 +60,4 @@ Commercial Projects
 -------------------
 
 -   `Plurk <http://www.plurk.com/>`_ — a microblogging platform. *2008-2009*
+-   `Fireteam <http://fireteam.net/>`_ — services for games. *2012-*
