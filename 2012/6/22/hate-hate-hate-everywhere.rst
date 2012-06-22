@@ -155,7 +155,7 @@ Introducing the other Eggs
 Setuptools was really good with giving the same term to different things,
 a practice it copied from distutils.  Not only do we have Python packages
 (the things with `__init__.py` files in it) and PyPI packages (what you
-download from PyPI) but with setuptools there are also now to kinds of
+download from PyPI) but with setuptools there are also now two kinds of
 eggs.  In the original design of setuptools there was no difference
 between an egg folder and an egg archive, but over the years and with the
 introduction of pip that changed.
