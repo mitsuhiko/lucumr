@@ -18,7 +18,7 @@ approach to problem-solving: do the best you can do by writing a piece of
 software scratches the itch without involving a committee or require
 language changes.  That also somewhat explains the second often cited
 problem of setuptools: that it's a monkeypatch on distutils.
-missed the good parts of it.*
+missed the good parts of it.
 
 Setuptools Recap
 ----------------
