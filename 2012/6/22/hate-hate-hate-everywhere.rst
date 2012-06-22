@@ -19,6 +19,16 @@ software scratches the itch without involving a committee or require
 language changes.  That also somewhat explains the second often cited
 problem of setuptools: that it's a monkeypatch on distutils.
 
+**Update**: I rarely do updates on my articles but I want to make one
+thing very clear: the point of this is not to complain about any of the
+established tools for package management in Python.  For a long I did not
+care about binary distributions because I never had the use case, so I did
+not even notice that pip did not provide them.  Then suddenly the use case
+came up and I realized that pip removed functionality from plain
+setuptools and it's very hard (impossible for myself) to bring it back.
+It's more of an observation how easy it is to miss use cases when
+replacing tools with something else.
+
 Setuptools Recap
 ----------------
 
@@ -298,7 +308,7 @@ pyc files even if we're using binary eggs.
 
 The sad aspect is just that we have three competing distribution systems:
 setuptools with easy_install, distribute with pip as well as the new
-distutils2 efforts and not one covers all usecases.  And I am starting to
+distutils2 efforts and not one covers all use cases.  And I am starting to
 get the impression that setuptools, despite the fact that it's the oldest
 still has the best design of all.  It ignored theoretical problems and
 solved practical problems you encounter if you deploy closed source code.
@@ -310,7 +320,7 @@ What I learned of that personally is not so much anything about packaging
 Python code but to not make any attempts to replace existing
 infrastructure without understanding all the reasons that lead to its
 existence.  Also since that happened in the past I think it's a good idea
-to write down a list of design decisions and usecases and why they exist
+to write down a list of design decisions and use cases and why they exist
 when I make another open source project in the future.  A lot of what went
 into setuptools can only be understood after a long time of using it
 because the design is not documented enough.
