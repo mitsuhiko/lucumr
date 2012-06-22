@@ -209,7 +209,7 @@ care how it ends up on the filesystem.  Fair enough, but there is a huge
 difference between eggs and tarballs (or source zipfiles for that matter).
 
 The difference is that eggs (and I'm talking about actual eggs here, the
-zipefiles) were usually distributed in binary form (and I recognize that
+zipfiles) were usually distributed in binary form (and I recognize that
 there used to be an issue with ucs2/ucs4 Python builds if you want to be
 picky.  But that does not invalidate the concept!).
 
