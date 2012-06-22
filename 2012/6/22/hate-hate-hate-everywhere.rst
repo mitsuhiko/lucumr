@@ -331,4 +331,5 @@ design decisions have been finalized.  This seems to have worked good
 enough for virtualenv which has recently become part of the standard
 library for Python 3.
 
-*TL;DR: setuptools got so much hate that tools tried to replace it*
+*TL;DR: setuptools wrongly got so much hate that tools tried to replace
+it which did not help much.*
