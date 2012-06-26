@@ -4,8 +4,8 @@ summary: |
   The hidden disconnects of ZeroMQ can be dangerous if you don't write
   your application to work around them.
 
-Disconnects are Good for You
-============================
+ZeroMQ: Disconnects are Good for You
+====================================
 
 ZeroMQ is a cool technology.  It's advertised as “better sockets” and I
 can get behind that idea for the most part.  Unfortunately the high
