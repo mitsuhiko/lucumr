@@ -6,6 +6,9 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Advanced Flask Patterns <https://speakerdeck.com/u/mitsuhiko/p/advanced-flask-patterns>`__
+    @ EuroPython 2012 (`PDF <http://pocoo.org/~mitsuhiko/FlaskPatterns.pdf>`__,
+    `PDF with notes <http://pocoo.org/~mitsuhiko/FlaskPatterns_notes.pdf>`__)
 -   `I am doing HTTP wrong — a fresh look at HTTP
     <https://speakerdeck.com/u/mitsuhiko/p/i-am-doing-http-wrong>`__
     @ PyGrunn 2012 (`PDF <http://pocoo.org/~mitsuhiko/HTTP.pdf>`__)
