@@ -45,7 +45,7 @@ h1 + p.date                     { margin-top: -25px; }
 /* code formatting.  no monospace because of webkit (bug?) */
 pre, code, tt   { font-family: 'Ubuntu Mono', 'Consolas', 'Deja Vu Sans Mono',
                   'Bitstream Vera Sans Mono', 'Monaco', 'Courier New';
-                  font-size: 0.82em; }
+                  font-size: 0.9em; }
 pre             { line-height: 1.3; background: none; padding: 0; }
 code, tt        { background: #eee; }
 
