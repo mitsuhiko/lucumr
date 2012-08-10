@@ -37,9 +37,16 @@ are roughly implemented like this:
     class basestring(object):
         ...
         def encode(self, encoding, errors='strict'):
-            return codecs.lookup(encoding).encode(self, errors)[0]
+            rv = codecs.lookup(encoding).encode(self, errors)[0]
+            if not isinstance(rv, basestring):
+                raise TypeError('encoder did not return a string/unicode object')
+            return rv
+
         def decode(self, encoding, errors='strict'):
-            return codecs.lookup(encoding).decode(self, errors)[0]
+            rv = codecs.lookup(encoding).decode(self, errors)[0]
+            if not isinstance(rv, basestring):
+                raise TypeError('encoder did not return a string/unicode object')
+            return rv
 
     class str(basestring):
         ...
