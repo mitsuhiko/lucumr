@@ -68,7 +68,7 @@ this:
     UnicodeDecodeError: 'ascii' codec can't decode byte 0xe2 in position 0: ordinal not in range(128)
     
 What's happening here?  The call did not make any sense.  The utf-8 codec
-encodes from unicode to bytes, not from bytes to bytes like in the given
+encodes from Unicode to bytes, not from bytes to bytes like in the given
 example.  Now that might let you believe the correct solution is just to
 get rid of the `encode` function on strings.  However there are
 legitimate cases for string to string encodings:
@@ -90,7 +90,7 @@ the next step that function takes that bytestring object and asks the
 interpreter state what it should do with that.  The interpreter has a
 special setting which defines the default encoding.  In Python 2.x this
 historically has been set to ascii.  Now the function will ask the ascii
-module to decode the string to unicode.  Because the string did not fit
+codec to decode the string to Unicode.  Because the string did not fit
 into ASCII range it will error out with that horrible error message.
 
 Not only is that error message misleading, it also does not show up at all
@@ -101,7 +101,7 @@ if the string does indeed fit into ascii:
     >>> 'foo'.encode('utf-8')
     'foo'
     
-There it does foo (bytes) -> ascii decode -> foo (unicode) -> utf-8 encode
+There it does foo (bytes) -> ascii decode -> foo (Unicode) -> utf-8 encode
 -> foo (bytes).
 
 Now let me blow your mind: this was actually envisioned when the module
@@ -114,6 +114,7 @@ interpreter and disable that behavior:
     >>> reload(sys)
     <module 'sys' (built-in)>
     >>> sys.setdefaultencoding('undefined')
+
     >>> '\xe2\x98\x83'.encode('utf-8')
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
@@ -131,5 +132,5 @@ implicit ASCII codec we would have solved so much confusion early on and
 everything would have been more explicit.  When going to Python 3 all we
 would have had to do was to add a `b` prefix for bytestrings and made the
 `u` implied.  And we would not now end up with inferior codec support in
-Python 3 because the byte to byte and unicode to unicode codecs were
+Python 3 because the byte to byte and Unicode to Unicode codecs were
 removed.
