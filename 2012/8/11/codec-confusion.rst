@@ -37,9 +37,9 @@ are roughly implemented like this:
     class basestring(object):
         ...
         def encode(self, encoding, errors='strict'):
-            return codecs.lookup(encoding).encode(self, errors)
+            return codecs.lookup(encoding).encode(self, errors)[0]
         def decode(self, encoding, errors='strict'):
-            return codecs.lookup(encoding).decode(self, errors)
+            return codecs.lookup(encoding).decode(self, errors)[0]
 
     class str(basestring):
         ...
