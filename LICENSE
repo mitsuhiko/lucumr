@@ -1,0 +1,50 @@
+This repository is *not* open source.  In the past I
+just did not put a license file here and that would
+have been sufficient to get the meaning across but
+apparently some people have a different understanding
+of how licensing works.
+
+Notice that the website says that content is licensed
+under the Creative Commons attribution-noncommercial-
+sharealike License.  This does not apply for the
+repository however and only applies to the text on the
+website that is generated from the source files in this
+repository.
+
+FAQ part:
+
+Why is it on github then?
+  So that people can see how rstblog is being used, for
+  learning purposes, because you can use the git history
+  to track changes being made, so that you can help me
+  fix typos by sending pull requests etc.
+
+Why is only the text on the website creative commons
+licensed and not the source files?
+  Because it expresses the intend I have for it.  You are
+  allowed to republish the content under the terms of the
+  license.
+
+How can you do pull requests if the sources are not
+open source?
+  Because I am the copyright holder and from a legal point
+  of view I grant you the right to correct a mistake in my
+  work which then becomes part of the result.  Furthermore
+  I only accept pull requests for minor modifications that
+  for which you cannot claim copyright anyways which makes
+  it possible for me to accept your changes without you
+  having to surrender your rights.
+
+Aren't you taking this too far?
+  What protects open source developers is copyright and
+  licenses.  When it comes to licenses I take this very
+  serious indeed.  Independent of me taking this stuff
+  very serious it does however not mean that I will
+  become an asshole when it comes to enforcing this.  I
+  will send you an unhappy mail or complain about this
+  through twitter or somehow else but I am a person of
+  reason.  If you think you want some part of the website
+  licensed for your personal use there are ways to do
+  that if you are nice.
+
+TL;DR: NOT OPEN SOURCE
