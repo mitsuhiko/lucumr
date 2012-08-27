@@ -1,4 +1,5 @@
 public: yes
+day-order: 1
 tags: [python, thoughts]
 summary: |
   A quick update on the lack of updates from my side.
@@ -11,7 +12,7 @@ last six months you will have noticed that I became less active.  Why is
 that?  There is no big conspiracy ongoing and I also don't plan on keeping
 it this way, but there are two reasons for this.  The first one is that I
 am now working for a computer game middleware company and we're using my
-tools in production here.  The chance in scenery caused me to use my own
+tools in production here.  The change in scenery caused me to use my own
 stuff in a completely new environment and the amount of stuff I'm learning
 on a daily basis is quite insane.
 
