@@ -6,6 +6,8 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Happiness Through Ignorance <https://speakerdeck.com/u/mitsuhiko/p/happiness-through-ignorance>`__
+    @ PyCon JP 2012 (`PDF <http://pocoo.org/~mitsuhiko/happiness.pdf>`__)
 -   `Advanced Flask Patterns <https://speakerdeck.com/u/mitsuhiko/p/advanced-flask-patterns>`__
     @ EuroPython 2012 (`PDF <http://pocoo.org/~mitsuhiko/FlaskPatterns.pdf>`__,
     `PDF with notes <http://pocoo.org/~mitsuhiko/FlaskPatterns_notes.pdf>`__)
