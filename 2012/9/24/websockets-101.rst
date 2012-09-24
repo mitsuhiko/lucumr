@@ -2,7 +2,7 @@ public: yes
 tags: [python, websocket]
 summary: |
   Quick introduction into the final specification of websockets
-  (:rfc:`2455`).
+  (:rfc:`6455`).
 
 Websockets 101
 ==============
@@ -27,7 +27,7 @@ browser.  Websockets suffer a lot under the restrictions and
 implementation details that were forced upon the protocol to make it work
 with existing HTTP infrastructure.
 
-Websockets in the current iteration as specified by :rfc:`2455` do a bunch
+Websockets in the current iteration as specified by :rfc:`6455` do a bunch
 of things differently to what a raw TCP connections does.  The name
 websocket gives the impression that it's a traditional socket.  In
 practice it combines the parts of UDP and TCP:  it's message based like
