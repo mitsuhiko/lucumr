@@ -7,7 +7,7 @@ summary: |
 Websockets 101
 ==============
 
-Out of curiosity I taught the `Fireteam <https://fireteam.net/>`_ presence
+Out of curiosity I taught the `Fireteam <http://fireteam.net/>`_ presence
 server websockets as a protocol in addition to the proprietary protocol it
 speaks out of the box.  I don't really have a usecase for websocket per-se
 with the server, but I thought it might make it more useful for
