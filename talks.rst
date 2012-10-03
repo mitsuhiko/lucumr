@@ -21,7 +21,9 @@ and recordings if available.
     `PDF <http://pocoo.org/~mitsuhiko/codegenjinja.pdf>`__)
 -   `Python Web Development
     <http://speakerdeck.com/u/mitsuhiko/p/python-web-development>`_
-    @ TuGraz 2011 (`PDF
+    @ TuGraz 2011 (`recording
+    <http://curry.tugraz.at/portal/1/watch/22.aspx>`__,
+    `PDF
     <http://pocoo.org/~mitsuhiko/PythonWebFlask.pdf>`__,
     `code
     <https://github.com/mitsuhiko/tugraz-flask-demo/>`__)
