@@ -6,6 +6,8 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Things you didn't know about Python <https://speakerdeck.com/u/mitsuhiko/p/didntknow>`__
+    @ PyCon ZA 2012 (`PDF <http://pocoo.org/~mitsuhiko/didntknow.pdf>`__)
 -   `Happiness Through Ignorance <https://speakerdeck.com/u/mitsuhiko/p/happiness-through-ignorance>`__
     @ PyCon JP 2012 (`recording <http://www.youtube.com/watch?feature=player_detailpage&v=EDlFk1hc8kc#t=739s>`__,
     `PDF <http://pocoo.org/~mitsuhiko/happiness.pdf>`__)
