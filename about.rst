@@ -10,7 +10,7 @@ lead developer on a couple of popular Python projects.
 
 I'm currently living in London and working for `Fireteam Ltd.
 <http://fireteam.net>`_.  Aside from that I do `open source </projects/>`_
-development and like `giving talks </projects/#talks>`_ at various
+development and like `giving talks </talks>`_ at various
 conferences.
 
 If you want to contact me, you can reach me via one of the following

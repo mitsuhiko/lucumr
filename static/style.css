@@ -1,15 +1,15 @@
 /* fonts */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic);
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,300);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic);
 
 /* general style */
-body    { font: 17px/25px 'Open Sans', sans-serif;
+body    { font: 17px/25px 'Merriweather', serif;
           margin: 0; padding: 0; font-weight: 300; }
 a       { color: black; font-weight: 400; }
 a:hover { color: #CC0033; }
 
 /* headlines */
-h1, h2, h3, h4, h5, h6      { font-family: 'Open Sans', sans-serif;
+h1, h2, h3, h4, h5, h6      { font-family: 'Merriweather', serif;
                               font-weight: 300; color: #222; }
 h1 a, h2 a, h3 a, h4 a,
 h5 a, h6 a                  { text-decoration: none; }
