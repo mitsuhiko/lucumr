@@ -32,8 +32,8 @@ as far as the game is concerned.  In fact there is more to learn from
 discussions outside the game than behavior that people show in the game
 itself (if it even loads).
 
-Scaling Ideas
--------------
+Scaling Problems
+----------------
 
 So for the unlikely case that someone reads this blog who is not a
 programmer at heart, here is why Curiosity is an interesting technical
