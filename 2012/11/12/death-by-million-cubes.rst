@@ -220,7 +220,7 @@ The Disappointment
 The idea of “tap the cube until it's gone” is easy if only one player does
 it.  If you have more than one it starts getting ridiculously complex and
 I find it amazing that they did not realize the problem with their
-execution before it went life.  I think the most interesting part about
+execution before it went live.  I think the most interesting part about
 all of this is how little players will appreciate the complexity in the
 design because “it's just a large cube”.
 
