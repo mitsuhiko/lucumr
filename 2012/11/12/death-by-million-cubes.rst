@@ -51,9 +51,9 @@ layer which leaves us with 8001^3 - 7999^3 (383.904.008) individual cubes
 on the outermost layer.  That's three hundred eighty-four million two
 individual cubelets.  The good news is that the cube gets smaller as we're
 going in.  In fact the number of cubelets per layer is growing
-exponentially from the core outwards which also means that the time it
+quadratically from the core outwards which also means that the time it
 takes to chip away layer after layer from the outside to the inside is
-exponential.  The more we're chipping to the core of the cube the faster
+quadratically.  The more we're chipping to the core of the cube the faster
 it will get — quickly.  Why is that interesting?  It's interesting because
 it means as the cube gets smaller there will be higher contention as the
 same player count now operates on a much smaller surface.
@@ -244,3 +244,6 @@ cube where everybody taps on is interesting but the laws of nature make
 this very hard to implement unless all tappers sit on zero latency network
 and even then it would be hard to give the last tapper a satisfying
 experience.
+
+*Update 15/11/2012*: corrected the incorrect mention of exponential growth
+when this is in fact quadratic.
