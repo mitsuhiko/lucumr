@@ -6,6 +6,8 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Rust from Python and Ruby <https://speakerdeck.com/mitsuhiko/rust-from-python-and-ruby>`__
+    @ RuPy Brno 2012 (`PDF <http://pocoo.org/~mitsuhiko/Rust.pdf>`__)
 -   Understanding Player Motivation: Applying Herzberg's Two-Factor
     Theory to Games-as-a-Service @ GDC Online 2012
 -   `Things you didn't know about Python <https://speakerdeck.com/u/mitsuhiko/p/didntknow>`__
