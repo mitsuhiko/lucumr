@@ -163,10 +163,10 @@ demolishing than sitting on your data and not being able to get the
 information out quickly that you know is there.
 
 Unfortunately a neat little idea I had was essentially killed by it being
-too complicated to do because it became too complicated for the datastore
-after the fact.  So for at least myself my personal conclusion is that I
-will never be able to predict all the things upfront so while I have the
-chance I will opt for a more flexible data store and right now that means
-I will use a SQL database.
+too complicated to do because it became too complex for the datastore
+without changing the layout.  So for at least myself my personal
+conclusion is that I will never be able to predict all the things upfront
+so while I have the chance I will opt for a more flexible data store and
+right now that means I will use a SQL database.
 
 And I still like you MongoDB.
