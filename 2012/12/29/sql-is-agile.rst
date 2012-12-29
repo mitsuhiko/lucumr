@@ -84,13 +84,13 @@ not know that I love them so much until I suddenly did not have them.
 Everything became messy and the first thing I added to our codebase was a
 type system to express schemas.
 
-One thing that's of note here is that the Parse web service is deriving
-schemas from the data you're inserting to ensure sanity.  If you created a
-document with a `foo` key that is an integer all future inserts for that
-key also have to be of type integer.  That's another approach but it fails
-because JSON (what they are storing) has null types so for long you have
-no documents or `null` values in your document Parse does not yet know
-your type.
+One thing that's worth of note here is that the Parse web service is
+deriving schemas from the data you're inserting to ensure sanity.  If you
+created a document with a `foo` key that is an integer all future inserts
+for that key also have to be of type integer.  That's another approach but
+it fails because JSON (what they are storing) has null types so for long
+you have no documents or `null` values in your document Parse does not yet
+know your type.
 
 Do you know what you want?
 --------------------------
