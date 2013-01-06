@@ -132,5 +132,5 @@ with applications that don't use the system's CA trust store.  In that
 case you will need to recompile your application so that it trusts the
 Charles CA.
 
-.. image:: ../charles.png
+.. image:: ../../../../static/charles.png
    :width: 100%
