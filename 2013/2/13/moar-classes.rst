@@ -146,7 +146,7 @@ looking at you simplejson, a library that even with the best intentions in
 mind is impossible to teach stream processing)
 
 Unfortunately the Python community has decided that it's better to hide
-this beautiful layered architecture away behind a preservative that
+this beautiful layered architecture away behind a protection that
 prevents you from tapping and customizing the individual layers.
 
 C is good for you
