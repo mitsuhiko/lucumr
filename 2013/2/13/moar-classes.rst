@@ -25,7 +25,7 @@ end-user API:
 
 .. sourcecode:: java
 
-    static String readFirstLine(String filename) {
+    static String readFirstLine(String path) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
             try {
