@@ -79,18 +79,19 @@ Have you ever written a parser in C by hand?  C is pretty low level and as
 such parsing can get a little bit tedious at times.  The way I approach
 that generally is by layering these things.  The first piece of
 functionality I am generally writing in such cases is a little abstraction
-around reading a single byte from some source of bytes.  While I'm at it,
-I'm also adding support for peeking one byte into the future.  What I end
-up in that situation is basically two functions: read byte and peek byte.
-Alternatively read byte and push byte, whatever feels more natural.
+around reading a single character from some source of bytes.  While I'm at
+it, I'm also adding support for peeking one character into the future.
+What I end up in that situation is basically two functions: read character
+and peek character.  Alternatively read character and push character,
+whatever feels more natural.
 
 The next layer is one that combines multiple characters into larger tokens
 (like identifiers, number literals, strings etc.).  At that level I would
-create a thing that keeps a reference to the reader that produces bytes
-and probably some internal buffer that builds up my current token.  For
-instance while I have not yet reached the end of the string I would feed
-my characters into a buffer until I found the end of the string, then I
-let my function return.
+create a thing that keeps a reference to the reader that produces
+characters and probably some internal buffer that builds up my current
+token.  For instance while I have not yet reached the end of the string I
+would feed my characters into a buffer until I found the end of the
+string, then I let my function return.
 
 The next level above that would be to combine multiple tokens into a tree
 of nodes.  For instance the tokens ``[`` ``"bar"`` ``,`` ``42`` and ``]``
