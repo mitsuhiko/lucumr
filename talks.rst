@@ -6,6 +6,10 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Advanced Flask Patterns <https://speakerdeck.com/mitsuhiko/advanced-flask-patterns-1>`__
+    @ PyCon Russia 2013 (`PDF <http://dev.pocoo.org/~mitsuhiko/AdvFlaskPatterns.pdf>`__)
+-   Schemas and Queues — a Rediscovered Approach for Web APIs @ DevCon
+    Tel Aviv February 2013
 -   `Rust from Python and Ruby <https://speakerdeck.com/mitsuhiko/rust-from-python-and-ruby>`__
     @ RuPy Brno 2012 (`PDF <http://pocoo.org/~mitsuhiko/Rust.pdf>`__)
 -   Understanding Player Motivation: Applying Herzberg's Two-Factor
