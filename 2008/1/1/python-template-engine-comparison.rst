@@ -18,7 +18,7 @@ Genshi is the formal successor of kid, Mako somewhat replaced Mygthy and
 Jinja was inspired by the django templates. All three of them are
 framework agnostic, use unicode internally and have a cool API you can
 use in WSGI applications without scratching your head. But what inspired
-those template engines and which template engine to chose for which
+those template engines and which template engine to choose for which
 situation?
 
 I often used PHP in the past to do simple header/footer inclusion. But
@@ -48,7 +48,7 @@ engine that does not use a C extension.
 Then there is Jinja which is also a text based template engine like
 Mako. However the focus is on a completely different level. When Mako is
 like PHP, Jinja is like Smarty (even though Mako is a million times
-better than PHP as template engine). When I stated working with Python
+better than PHP as template engine). When I started working with Python
 as programming language for web applications I stumbled about django. I
 looked at the template engine and thought: WTF is that? The syntax
 seemed odd and the restrictions ridiculous. Later on I loved the syntax
@@ -57,14 +57,14 @@ seemed odd and the restrictions ridiculous. Later on I loved the syntax
 that syntax or a similar one too) but some of the restrictions seem
 still ridiculous. When I looked at all those Django templates I created
 over the time I noticed that I often moved calculations into template
-tags that could be function calls, that I did other calculations in in
+tags that could be function calls, that I did other calculations in
 the view functions that did not belong there and even more important:
 that you could replace 95% of the custom template tags with function
 calls or function calls with an enclosed template block if the template
 engine had proper expressions. This lead to the development of what is
 now known as Jinja. The syntax, the fact that it's sandboxed and the
-designed friendliness is still very similar to Django, but unlike Django
-python like expressions are possible in Jinja.
+designed friendliness is still very similar to Django, but unlike Django,
+Python like expressions are possible in Jinja.
 
 I'm using Jinja wherever I think web designers want to work on later on.
 For example as template engine for TextPress or other applications that
