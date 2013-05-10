@@ -9,7 +9,8 @@ and recordings if available.
 -   `A Year with MongoDB <https://speakerdeck.com/mitsuhiko/a-year-of-mongodb>`__
     @ PyGrunn 2013 (`PDF <http://pocoo.org/~mitsuhiko/mongodb.pdf>`__)
 -   `Advanced Flask Patterns <https://speakerdeck.com/mitsuhiko/advanced-flask-patterns-1>`__
-    @ PyCon Russia 2013 (`PDF <http://dev.pocoo.org/~mitsuhiko/AdvFlaskPatterns.pdf>`__)
+    @ PyCon Russia 2013 (`recording <https://www.youtube.com/watch?v=6CeXt62Dt2A>`__,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/AdvFlaskPatterns.pdf>`__)
 -   Schemas and Queues — a Rediscovered Approach for Web APIs @ DevCon
     Tel Aviv February 2013
 -   `Rust from Python and Ruby <https://speakerdeck.com/mitsuhiko/rust-from-python-and-ruby>`__
