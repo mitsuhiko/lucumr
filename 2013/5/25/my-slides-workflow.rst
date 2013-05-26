@@ -45,10 +45,10 @@ Colors
 
 This is the part where I waste most of the time.  I have yet to find
 something that makes my life easier there but in many ways finding colors
-is trial and error for me.  For many presentations I just surrendered at
-one point and picked black/white + one or two colors.  When I do
-presentations with strong background colors however this might take me
-multiple hours to feel happy with the end result.
+is try and error for me.  For many presentations I just surrendered at one
+point and picked black/white + one or two colors.  When I do presentations
+with strong background colors however this might take me multiple hours to
+feel happy with the end result.
 
 I generally use `Colourlovers <http://www.colourlovers.com/palettes>`_ for
 a basic inspiration for colors that work together.  The initial color I
@@ -86,11 +86,10 @@ font.  If there are random notes on there I also decide on if I want a
 separate font for that.  Sometimes I do slides which have chapter
 markings, then I pick one for that as well.
 
-In some rare cases I go crazy with fonts and build slides out of different
-fonts and put huge words in.  If there is code on the slides I also pick a
-monospace font.  If there are random notes on there I also decide on if I
-want a separate font for that.  Sometimes I do slides which have chapter
-markings, then I pick one for that as well.
+If there is code on the slides I also pick a monospace font.  If there are
+random notes on there I also decide on if I want a separate font for that.
+Sometimes I do slides which have chapter markings, then I pick one for
+that as well.
 
 In some rare cases I go crazy with fonts and build chapter slides with
 different fonts.  In those cases it's hard to give a general
