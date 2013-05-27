@@ -12,7 +12,7 @@ design, how my workflow looks like and what applications and tools I use
 to get them done.  I'm very glad to hear that people seem to like my
 slides and I'm more than happy to share how I do that stuff.
 
-I think the most disappointing answer is probably: trail and error, a lot
+I think the most disappointing answer is probably: trial and error, a lot
 of time and practice.  There is no silver bullet in this blog post that
 which will instantly create a nice slide.  The reason for this is that I
 generally do things by hand and stay away from templates.
