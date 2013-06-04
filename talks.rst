@@ -6,6 +6,9 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Why SQLAlchemy is Awesome <https://speakerdeck.com/mitsuhiko/why-sqlalchemy-is-awesome>`__
+    @ Pyramid Meetup London June 2013 (`PDF
+    <http://pocoo.org/~mitsuhiko/SQLAwesomy.pdf>`__)
 -   `A Year with MongoDB <https://speakerdeck.com/mitsuhiko/a-year-of-mongodb>`__
     @ PyGrunn 2013 (`PDF <http://pocoo.org/~mitsuhiko/mongodb.pdf>`__)
 -   `Advanced Flask Patterns <https://speakerdeck.com/mitsuhiko/advanced-flask-patterns-1>`__
