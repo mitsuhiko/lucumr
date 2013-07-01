@@ -6,6 +6,10 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Thinking Outside the Box
+<https://speakerdeck.com/mitsuhiko/thinking-outside-the-box>`__
+    @ EuroPython 2013 (`PDF
+    <http://pocoo.org/~mitsuhiko/OutsideTheBox.pdf>`__)
 -   `Why SQLAlchemy is Awesome <https://speakerdeck.com/mitsuhiko/why-sqlalchemy-is-awesome>`__
     @ Pyramid Meetup London June 2013 (`PDF
     <http://pocoo.org/~mitsuhiko/SQLAwesomy.pdf>`__)
