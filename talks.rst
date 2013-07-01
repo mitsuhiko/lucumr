@@ -9,6 +9,8 @@ and recordings if available.
 -   `Thinking Outside the Box <https://speakerdeck.com/mitsuhiko/thinking-outside-the-box>`__
     @ EuroPython 2013 (`PDF
     <http://pocoo.org/~mitsuhiko/OutsideTheBox.pdf>`__)
+-   `What Web Developers can Learn from Game Developers <https://speakerdeck.com/mitsuhiko/what-web-developers-can-learn-from-game-developers>`__
+    @ DJUGL June 2013 (`PDF <http://dev.pocoo.org/~mitsuhiko/GameDevWeb.pdf>`__)
 -   `Why SQLAlchemy is Awesome <https://speakerdeck.com/mitsuhiko/why-sqlalchemy-is-awesome>`__
     @ Pyramid Meetup London June 2013 (`PDF
     <http://pocoo.org/~mitsuhiko/SQLAwesomy.pdf>`__)
