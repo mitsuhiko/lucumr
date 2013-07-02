@@ -391,7 +391,7 @@ the case which makes it much harder to implement with APIs that do both.
 Werkzeug and Flask use the following helpers to provide (or work with)
 APIs that deal with both strings and bytes:
 
-.. sourececode:: python
+.. sourcecode:: python
 
     def normalize_string_tuple(tup):
         """Ensures that all types in the tuple are either strings
