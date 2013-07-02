@@ -515,14 +515,15 @@ been this:
 
 1.  take the approach of Python 2.x and allow mixing of bytes and unicode
     strings.
-2.  Make byte strings have an encoding attribute that defaults to
+2.  Make ``'foo'`` mean unicode strings and ``b'foo'`` mean byte strings.
+3.  Make byte strings have an encoding attribute that defaults to
     ``ASCII``
-3.  Add a method to replace the encoding information (eg:
-    ``'foo'.replace_encoding_hint('latin1')``
-4.  When comparing strings and bytes use the encoding hint instead of the
+4.  Add a method to replace the encoding information (eg:
+    ``b'foo'.replace_encoding_hint('latin1')``
+5.  When comparing strings and bytes use the encoding hint instead of the
     ASCII default (or more correct system default encoding which for
     better or worse was always ASCII).
-5.  Have a separate ``bytes`` type that works exactly like strings
+6.  Have a separate ``bytes`` type that works exactly like strings
     that is not hashable and cannot carry encoding information and
     generally just barks when trying to convert it to strings.  That way
     you can tag true binary data which can be useful sometimes (for
