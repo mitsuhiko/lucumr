@@ -185,7 +185,7 @@ is UTF-8.  So do the world a favor and open text files like this:
 
 .. sourcecode:: python
 
-    with open(filename, 'rb', encoding='utf-8') as f:
+    with open(filename, 'r', encoding='utf-8') as f:
         ...
 
 Different Types of Unicode Strings
