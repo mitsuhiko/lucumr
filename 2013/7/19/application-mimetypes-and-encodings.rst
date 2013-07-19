@@ -71,7 +71,7 @@ browsers don't really follow HTTP much when it comes to text submission
 for legacy reasons.  Browsers will usually not tell the server of which
 encoding their data is.  That's usually also not necessary, because the
 encoding the browser should use is defined by the server (it's either
-defaulting to utf-8 or is defined in the accept-charset parameger of the
+defaulting to utf-8 or is defined in the accept-charset parameter of the
 form).  Since the server already knows that, the web application will just
 know in which encoding it comes in.
 
