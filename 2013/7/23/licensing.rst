@@ -24,7 +24,7 @@ ever addressed and you can see today that this has left a big impact on
 how the GPL is seen today.
 
 The whole topic got a lot of relevance for me again recently due to
-Github.  Github is one of the pillars of Open Source development these
+GitHub.  GitHub is one of the pillars of Open Source development these
 days and yet it's also a place where there is more improperly than
 properly licensed software.  Their attempt to change that has been a
 simple license selector and I believe that is a terrible idea, especially
@@ -263,11 +263,11 @@ The New Licensing
 -----------------
 
 As I mentioned before the reason I got interested with licenses again was
-Github.  Or more to the point, a presentation by Aaron Williamson
+GitHub.  Or more to the point, a presentation by Aaron Williamson
 [#githublicenses]_ from the Software Freedom Law Center in combination
-with Github's latest changes of adding a license selector.
+with GitHub's latest changes of adding a license selector.
 
-Aaron Williamson's unscientific study of scraping 28% of the oldest Github
+Aaron Williamson's unscientific study of scraping 28% of the oldest GitHub
 repositories yielded the disappointing statistic that only ~15% of all
 repositories had license files, and ~25% of those have the license only
 mentioned in the Readme file.  Out of those licensed repositories the vast
@@ -278,7 +278,7 @@ This general trend with throwing random code into the internet without
 license declarations is questionable and asks some questions.  However I
 think it shows more that people think licensing is unimportant and only
 needs a bit of attention more than that people are unaware of the
-existence of licenses.  As such I see Github's newly added license
+existence of licenses.  As such I see GitHub's newly added license
 choosing helper dialog problematic.  When you make a new repository it
 gives you a dialog to pick a license without any explanation of what the
 licenses mean.  It even bolds some licenses for you.  The ones that it
@@ -345,7 +345,7 @@ then the whole software would change license to AGPLv3 as well.
    <https://lwn.net/Articles/455013/>`_
 .. [#fslosing] `7 Reasons Why Free Software Is Losing Influence
    <http://www.datamation.com/open-source/7-reasons-why-free-software-is-losing-influence.html>`_
-.. [#githublicenses] `Licensing of Software on Github: A Quantitative
+.. [#githublicenses] `Licensing of Software on GitHub: A Quantitative
    Analysis by Aaron Williamson
    <http://www.softwarefreedom.org/resources/2013/lcs-slides-aaronw/>`_
 .. [#bdbapgl] `Berkeley DB 6.0 license change to AGPLv3
@@ -433,7 +433,7 @@ Real Help with Licensing
 ------------------------
 
 Will this general approach cause problems?  Probably.  The current state
-of licensing and license ignoring on Github is probably a good indication
+of licensing and license ignoring on GitHub is probably a good indication
 that there will be problems.  But I think we should start to seriously
 consider simplifying our software licensing environment as we otherwise
 will have no ideas what will happen in a few years from now.
@@ -452,7 +452,7 @@ by information that an actual lawyer checked together with members of the
 community to come to some conclusions about what it means for the
 ecosystem.
 
-Right now I believe, the license choosing wizard of Github is a shitty
+Right now I believe, the license choosing wizard of GitHub is a shitty
 “solution” to the problem of people not adding licenses to their code.
 And it's probably not just a bad solution, it's one that might actually be
 hurtful if people are not aware of what the effects of the respective
