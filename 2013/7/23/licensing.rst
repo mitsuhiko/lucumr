@@ -323,7 +323,7 @@ The whole ordeal is particularly interesting as some not so nice parties
 have started doing license trolling through GPL licenses.  The most recent
 case is Oracle that relicensed Berkeley DB from BSD to APGLv3 which
 started a lengthy discussion on debian-legal [#bdbapgl]_.  Primarily
-because due to that packages becoming AGPLv3 it implicitly changes the
+because due to that package becoming AGPLv3 it implicitly changes the
 effective license for 106 other packages to AGPLv3 as well.  Considering
 the license change happens on a Debian installation and not in the
 original source software this showcases how complicated licenses can
