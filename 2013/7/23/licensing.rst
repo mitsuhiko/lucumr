@@ -438,8 +438,8 @@ that there will be problems.  But I think we should start to seriously
 consider simplifying our software licensing environment as we otherwise
 will have no ideas what will happen in a few years from now.
 
-I think at that point it would be interesting to think about how to make
-the explain people in the clearest possible way way the implications of
+I think at that point it would be interesting to think about how to
+explain people in the clearest possible way way the implications of
 software licenses are and how they can reach their goal.  And that would
 include some flow graphs that point out the problems with cross license
 compatibility, what the lack of a contributor statement could mean, what
