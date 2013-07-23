@@ -57,7 +57,8 @@ table           { border: 1px solid #ddd; border-collapse: collapse;
 td, th          { padding: 2px 12px; border: 1px solid #ddd; }
 
 /* footnotes */
-table.footnote          { margin: 15px 0; background: transparent; border: none; }
+table.footnote          { margin: 25px 0; background: transparent; border: none; }
+table.footnote + table.footnote { margin-top: -35px; }
 table.footnote td       { border: none; padding: 9px 0 0 0; font-size: 15px; }
 table.footnote td.label { padding-right: 10px; }
 table.footnote td p     { margin: 0; }
