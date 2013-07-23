@@ -302,7 +302,7 @@ to consider.
 And that GPL incompatibilities are still an issue that actively effects
 people is something many appear to forget.
 
-For instance once would think that the incompatibility of the GPLv2 with
+For instance one would think that the incompatibility of the GPLv2 with
 the Apache Software License 2.0 should be a thing of the past now that
 everything upgrades to GPLv3, but it turns out that enough people are
 either stuck with GPLv2 only or do not agree with the GPLv3 that some
