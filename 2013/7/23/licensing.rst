@@ -58,7 +58,7 @@ advantage of their open contributions.
 In 2007 the whole topic of GPL compatibility became a whole lot more
 complicated as a new version of the GPL was written.  Due to how the GPL
 licenses work different versions of the GPL are incompatible with each
-other.  That's not terrible surprising but it's important to note, because
+other.  That's not terribly surprising but it's important to note, because
 it has quite profound implications given how people license code under the
 GPL and how the ecosystem was supposed to work.
 
