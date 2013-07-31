@@ -275,7 +275,7 @@ majority are either MIT/BSD or Apache 2 licensed.  Only about third of all
 projects where under a Copyleft license.
 
 This general trend with throwing random code into the internet without
-license declarations is questionable and asks some questions.  However I
+license declarations is debatable and asks some questions.  However I
 think it shows more that people think licensing is unimportant and only
 needs a bit of attention more than that people are unaware of the
 existence of licenses.  As such I see GitHub's newly added license
@@ -370,12 +370,12 @@ for others to commercialize the software.
 This is especially bad in the GPLv3 which picks specific usecases that
 were relevant at the time the license was written.  The license might now
 be absolutely useless for new devices that will come up in a few years.
-At that point it might be absolutely impossible to relicense the software
-because some contributors might disagree or are no longer available.  This
-has been a problem for many years already.  MariaDB had to rewrite
-libmysql because it as GPL licensed.  Xapian is trying for years to get
-GPL code out of the codebase as the original copyright holders are no
-longer interested in the project or unavailable.
+At that point it might be impossible to relicense the software because
+some contributors might disagree or are no longer available.  This has
+been a problem for many years already.  MariaDB had to rewrite libmysql
+because it was GPL licensed.  Xapian is trying for years to get GPL code
+out of the codebase as the original copyright holders are no longer
+interested in the project or unavailable.
 
 What if it will become illegal to sell consumer devices without signature
 checks for all software running on it.  What if certification will be
@@ -447,9 +447,9 @@ happens if copyright holders die or become unavailable and similar things.
 
 I am pretty sure some clever UX designer could make that into an engaging
 experience that gives people a licensing 101 in 10 minutes that includes
-all important details in an engaging way.  But it would have to be backed
-by information that an actual lawyer checked together with members of the
-community to come to some conclusions about what it means for the
+all important details in an interesting way.  But it would have to be
+backed by information that an actual lawyer checked together with members
+of the community to come to some conclusions about what it means for the
 ecosystem.
 
 Right now I believe, the license choosing wizard of GitHub is a shitty
