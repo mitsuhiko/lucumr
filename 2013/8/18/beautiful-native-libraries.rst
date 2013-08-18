@@ -225,6 +225,10 @@ dealing with a project that forces the alignment to be different for the
 whole project and that will obviously also affect the structs in your
 header file.  The fewer structs the better :-)
 
+Something that should go without saying: do not make macros part of your
+API.  A macro is not a symbol and users of languages not based on C will
+hate you for having macros there.
+
 Exporting a C API
 -----------------
 
