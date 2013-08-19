@@ -67,11 +67,12 @@ possible to write libraries in it.
 
 Right now however, C++ is most likely the language you want to use.  Why
 not C?  The reason for this is that Microsoft's C compiler is notoriously
-bad and you would otherwise be stuck with C89.  Obviously you could just
-use a different compiler on Windows but that causes a whole bunch of
-problems for the users of your library if they want to compile it
-themselves.  Requiring a tool chain that is not native to the operating
-system is an easy way to alienate your developer audience.
+bad at receiving language updates and you would otherwise be stuck with
+C89.  Obviously you could just use a different compiler on Windows but
+that causes a whole bunch of problems for the users of your library if
+they want to compile it themselves.  Requiring a tool chain that is not
+native to the operating system is an easy way to alienate your developer
+audience.
 
 I would however generally recommend to a very C like subset of C++: don't
 use exceptions, don't use RTTI, don't build crazy constructors.  The rest
