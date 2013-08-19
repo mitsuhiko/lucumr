@@ -305,7 +305,7 @@ And this is how the shim layer would look like in the implementation:
 
     const char *yl_task_get_result_string(const yl_task_t *task)
     {
-        return AS_TYPE(yourlibrary::Task, task)->result_string();
+        return AS_CTYPE(yourlibrary::Task, task)->result_string();
     }
 
 Notice how the constructor and destructor is fully wrapped.  Now there is
