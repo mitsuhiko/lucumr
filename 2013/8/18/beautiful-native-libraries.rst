@@ -272,7 +272,7 @@ braces):
     YL_API void yl_task_free(yl_task_t *task);
     YL_API int yl_task_is_pending(const yl_task_t *task);
     YL_API void yl_task_tick(yl_task_t *task);
-    YL_API const char *yl_task_get_result_string(yl_task_t *task);
+    YL_API const char *yl_task_get_result_string(const yl_task_t *task);
 
 And this is how the shim layer would look like in the implementation:
 
@@ -303,7 +303,7 @@ And this is how the shim layer would look like in the implementation:
         AS_TYPE(yourlibrary::Task, task)->tick();
     }
 
-    const char *yl_task_get_result_string(yl_task_t *task)
+    const char *yl_task_get_result_string(const yl_task_t *task)
     {
         return AS_TYPE(yourlibrary::Task, task)->result_string();
     }
