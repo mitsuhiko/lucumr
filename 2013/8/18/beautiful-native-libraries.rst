@@ -247,7 +247,7 @@ call into your internal functions.  Picture a class like this:
             ~Task();
 
             bool is_pending() const;
-            void tick() const;
+            void tick();
             const char *result_string() const;
         };
     }
