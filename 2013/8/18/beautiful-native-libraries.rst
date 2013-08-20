@@ -27,7 +27,7 @@ statically and dynamically linked library are essentially the same thing
 where the only difference is how you link against it, there is much more
 to it.
 
-With a statically linked library you have much better control over your
+With a dynamically linked library you have much better control over your
 symbols.  Dynamically linked libraries also work much better between
 different programming languages.  Nothing stops you from writing a library
 in C++ and then using it in Python.  In fact, that's exactly how I
