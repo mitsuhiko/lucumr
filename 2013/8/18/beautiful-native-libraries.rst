@@ -583,8 +583,8 @@ if it can free up some resources that are not needed (like caches) instead
 of letting the caller know there is a memory failure.  This works even
 with the limited design that the C++ standard gives with allocators.
 
-Bulding
--------
+Building
+--------
 
 Now that you have written the code, how do you build your library without
 making your users unhappy?  If you're like me you come from a Unix
