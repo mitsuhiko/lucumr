@@ -5,8 +5,12 @@ Projects
 
 Over the last couple of years I worked on a number of open source
 projects.  Most of them were Python, a couple of others however were also
-C, PHP or other languages mixed in.  Talks I held have been moved `to a new
-place on this website </talks/>`_.
+C, C++, JavaScript, PHP or other languages mixed in.  Talks I held have
+been moved `to a new place on this website </talks/>`_.
+
+This list is widely incomplete, lots of small things can be found on my
+`github <https://github.com/mitsuhiko/>`_ profile and some things are lost
+in the depths of the internet.
 
 Projects I've founded are marked with stars (‘*’), others are project I
 joined.  Projects where I helped out for a short period of time are marked
@@ -24,18 +28,19 @@ Open Source Libraries
     implementation of the PHP serialization for Python. *2007*
 -   `Sphinx <http://sphinx.pocoo.org/>`_ — a Python documentation tool.  *2007-*
 -   `Werkzeug <http://werkzeug.pocoo.org/>`_ — WSGI utility library for Python.  *2007-* *
--   `Babel <http://babel.edgewall.org/>`_ — collection of tools for
+-   `Babel <http://babel.pocoo.org/>`_ — collection of tools for
     internationalizing Python applications.  *2008-* *
 -   `CleverCSS <http://pypi.python.org/pypi/CleverCSS>`_ — CSS toolkit for Python, *2009-* *
 -   `GHRML <http://pypi.python.org/pypi/GHRML>`_ — HAML inspired template
     engine based on Genshi for Python.  *2009* *
+-   `MarkupSafe <https://pypi.python.org/pypi/MarkupSafe>`_ — a tainted
+    HTML string for Python.  *2010-* *
+-   `Logbook <http://logbook.pocoo.org/>`_ — a logging library for Python.
+    *2010-2012*
 -   `Flask <http://flask.pocoo.org/>`_ — a microframework for Python based
     on good intentions.  *2010-* *
-
-For a longer list, have a look at my `github profile
-<http://github.com/mitsuhiko>`_.
-
-*small contribtions and libraries are not listed*
+-   `itsdangerous <http://pythonhosted.org/itsdangerous>`_ — a
+    cryptographic signing library.  *2012-* *
 
 Open Source Applications
 ------------------------
@@ -43,13 +48,16 @@ Open Source Applications
 -   `Zine <http://zine.pocoo.org/>`_ — a blog software written in Python. *2007-* *
 -   `MoinMoin <http://moinmo.in>`_ — wiki engine written in Python. *2008* †
 -   `Plurk Solace <http://opensource.plurk.com/solace/>`_ — a multilingual support application. *2009-*
+-   `Timesched <http://timesched.pocoo.org/>`_ — a world time scheduler. *2013* *
+-   `Fireteam Curlish <http://packages.python.org/curlish/>`_ — curl OAuth wrapper. *2012-*
 
 Websites
 --------
 
--   `ubuntuusers.de <http://www.ubuntuusers.de/>`_ — many parts of the current running software. *2004-*
+-   `ubuntuusers.de <http://www.ubuntuusers.de/>`_ — many parts of the current running software. *2004-2007*
 -   `Pocoo <http://dev.pocoo.org/>`_ — the project websites with some exceptions. *2005-*
 -   `Architekten Ronacher <http://architekten-ronacher.at/>`_ — design and backend. *2009*
+-   `Der-Weber <http://www.der-weber.at/>`_ — design and backend. *2012*
 
 Projects for Competitions
 -------------------------
@@ -60,4 +68,15 @@ Commercial Projects
 -------------------
 
 -   `Plurk <http://www.plurk.com/>`_ — a microblogging platform. *2008-2009*
--   `Fireteam <http://fireteam.net/>`_ — services for games. *2012-*
+-   `Fireteam <http://fireteam.net/>`_ — online services for games. *2012-*
+
+Computer Games
+--------------
+
+-   `Batman Arkahm Origins
+    <http://en.wikipedia.org/wiki/Batman:_Arkham_Origins>`_ — parts of online
+    services code and backend. *2012-2013*
+-   `RAD Soldiers <http://www.warchest.com/games/radsoldiers>`_ — game
+    backend. *2012-*
+-   `Extraction <http://extraction.nexon.net/>`_ — online services and
+    game backend. *2012-*
