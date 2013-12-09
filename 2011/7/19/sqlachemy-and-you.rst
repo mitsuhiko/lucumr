@@ -424,7 +424,7 @@ Query by primary key in Django:
 
 .. sourcecode:: python
 
-    obj = MyModel.query.filter(pk=the_id).get()
+    obj = MyModel.objects.get(pk=the_id)
 
 And in SQLAlchemy:
 
