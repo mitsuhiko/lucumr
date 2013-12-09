@@ -308,7 +308,7 @@ everything upgrades to GPLv3, but it turns out that enough people are
 either stuck with GPLv2 only or do not agree with the GPLv3 that some
 Apache Software licensed projects are required to migrate.  For instance
 Twitter's Bootstrap is currently `migrating from ASL2.0 to MIT
-<https://github.com/twitter/bootstrap/issues/2054>`_ precisely because
+<https://github.com/twbs/bootstrap/issues/2054>`_ precisely because
 some people still need GPLv2 compatibility.  Among those projects that
 were affected were Drupal, WordPress, Joomla, the MoinMoin Wiki and
 others.  And even that case shows that people don't care that much about
