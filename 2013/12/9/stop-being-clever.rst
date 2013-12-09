@@ -57,10 +57,10 @@ Backstory
 ---------
 
 So the UI was slow — obviously it should be my fault of sending so many
-records in.  The interestingly though was that my performance degraded
-upon usage of the typeahead widget.  In very peculiar ways even.  To give
-you an idea of how crazy it, this was my reproduction case which I started
-out with:
+records in.  Interestingly though was that my performance degraded upon
+usage of the typeahead widget.  In very peculiar ways even.  To give you
+an idea of how crazy it, this was my reproduction case which I started out
+with:
 
 1.  Search for San Francisco by typing "san".  Takes ~200ms.
 2.  Search for San Francisco by typing "fran".  Takes ~200ms.
