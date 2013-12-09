@@ -326,7 +326,7 @@ feels so much like a thing that is held together by duct tape on top of
 some layer of grease and paste.
 
 Angular for instance uses this system of watching models and DOM for
-changes to automatically synchronize them.  Except it's so damn slow it
+changes to automatically synchronize them.  Except it's so damn slow at
 it, that people write weird workarounds to attempt to stop handlers from
 firing.  This fuzzy logic quickly gets ridiculously confusing.
 
