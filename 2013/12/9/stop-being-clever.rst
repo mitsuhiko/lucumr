@@ -7,7 +7,7 @@ summary: |
 Stop Being Cute and Clever
 ==========================
 
-The last few days I spend a bit of my spare time on making a `world time
+The last few days I spent a bit of my spare time on making a `world time
 scheduler <http://timesched.pocoo.org/>`_.  Some of you might recognize
 the concept from another website.  The idea was quite simple: build a
 clone of worldtime buddy and explore working with third party AngularJS
@@ -21,7 +21,7 @@ quick at voicing my unhappiness (I'm so sorry for my Twitter followers).
 I'm using JavaScript quite regularly on my own, but I very rarely need to
 deal with other people's code.  Normally I pretty much stick to jQuery,
 underscore and maybe AngularJS and I stay focused on the browser or
-command line utilities.  This time around though I went all-in and used
+command line utilities.  This time around though, I went all-in and used
 various libraries.
 
 For this project I obviously used jQuery which is impossible to avoid (and
@@ -29,7 +29,7 @@ why would you) but also AngularJS with a bunch of UI components
 (angular-ui and some bindings to jQuery UI).  For timezone handling I used
 moment.js with moment-timezone.
 
-Let me preface this in that I really don't want to critizise anyone's
+Let me preface this in that I really don't want to criticise anyone's
 individual code here.  More than that, if someone would look at my own
 JavaScript code it would not be any better.  If anything it's worse,
 because I did not spend much time on it and I'm not very experienced with
@@ -37,7 +37,7 @@ JavaScript.
 
 However I do see a worrying trend of absolutely appalling code quality
 in JavaScript libraries (at least the selection of the ones I was using)
-and I started to do some thinking in why that is.
+and I started to do some thinking on why that is.
 
 There are so many problems I have with JavaScript libraries and all of
 them are pretty much a result of how the language works and that nobody
@@ -49,7 +49,7 @@ was that my naive approach of sending 3MB of city names into the
 typeahead.js autocomplete library resulted in a really sluggish UI.  Now
 obviously a clever person would not send that much into an autocomplete
 field.  A better plan would be to filter the data on the server first, but
-it turns out that not the loading was slow, but the filtering of the data.
+it turns out that it wasn't the loading that was slow, but the filtering of the data.
 That made no sense to me, because even if the system did a linear search
 through 26.000 cities it should not have been this slow.
 
@@ -57,7 +57,7 @@ Backstory
 ---------
 
 So the UI was slow — obviously it should be my fault of sending so many
-records in.  Interestingly though my performance degraded upon usage of
+records.  Interestingly though my performance degraded upon usage of
 the typeahead widget.  In very peculiar ways even.  To give you an idea of
 how crazy it, this was my reproduction case which I started out with:
 
@@ -69,7 +69,7 @@ how crazy it, this was my reproduction case which I started out with:
 What's going on there?  How does the search corrupt by finding more than
 one item once?
 
-The first thing I did was using Firefox'es new profiler to see where all
+The first thing I did was using Firefox' new profiler to see where all
 the time is wasted.  Quite quickly I found a whole bunch of stuff in
 typeahead that was just overly weird.
 
@@ -103,7 +103,7 @@ slowly running JavaScript code.
 
 The first pain point is people being cute and clever with JavaScript.  And
 that makes me reviewing code and hunting for bugs ridiculously paranoid.
-Even if you know the idioms applied you will still not be sure if they
+Even if you know the idioms applied you will still not be sure if the
 side effects are intentional or if someone made a mistake.
 
 To give you an example of such a weird idom, I want to show you some code
@@ -135,7 +135,7 @@ look nicer:
 
 This is just one function, but it's one that stuck with me for a wide
 range of reasons.  What the function does is converting a datum object
-into an item.  What's a datum?  Where here it starts.  It seems like the
+into an item.  What's a datum?  Well here it starts.  It seems like the
 library author at one point re-decided his approach.  It must have started
 out with accepting a string and then wrapping it in an object that has a
 value attribute (which is the string) and a token array which are the
@@ -198,7 +198,7 @@ languages manages to implement map in a way that ``["1", "2",
 
 Reasoning about JavaScript code is hard.
 
-This however is not the extend of it.  The abuse of language and operators
+This however is not the extent of it.  The abuse of language and operators
 is widespread.  A bit further down this amazing piece of code can be
 found:
 
@@ -228,7 +228,7 @@ integer.
 Obviously the writer of this code knew about hash tables having an
 ``O(1)`` complexity, otherwise why would that person put that string into
 the hashmap.  Yet a few lines of code later it does a linear search first
-before placing the item in the list.  When throwing 100.000 tokens at this
+before placing the item in the list.  When throwing 100,000 tokens at this
 code, it gets really slow, trust me.
 
 Also I would like to point out this loop:
@@ -317,7 +317,7 @@ was the way forward, but this monkeypatching business is just not my
 style.
 
 The dynamic nature of everything makes code evolve very, very quickly into
-some unmanageable mess where nobody quite knows any more what something
+an unmanageable mess where nobody quite knows any more what something
 does any more.
 
 It's not just the lack of classes and types though.  The whole environment
@@ -360,7 +360,7 @@ with the simple things where the library renames directives.  If you make
 a directive called `fooBar` you will use it as `foo-bar` in the DOM.  Why?
 I suppose consistency with the ``style`` DOM API which did something
 similar in the past.  This makes looking for code really confusing because
-you might not quite know how the directive is exactly called.  It also
+you might not quite know what the directive is called exactly.  It also
 completely abolishes the idea of namespaces.  If you have two directives
 with the same name in two different angular applications they will clash.
 
@@ -368,7 +368,7 @@ It does make the code more concise but also super confusing.  It also
 subverts the rules of the language in parts.  Dependency injection in
 angular happens by default through converting the JavaScript function back
 into a string (which yields the code) and then to use a regular expression
-to parse the function arguments.  If you come new to Angular that makes no
+to parse the function arguments.  If you are new to Angular that makes no
 sense at all and even now I find the whole idea of doing it like this just
 inherently wrong.  For a start, it subverts what JavaScript people have
 been doing for quite a while and that is treating local variables as
@@ -383,7 +383,7 @@ What are Layers?
 
 One of the biggest oddities coming from a Python environment to client
 side JavaScript is the apparent entire lack of abstractions.  As an
-example for this Angular provides a way to access the current URL's query
+example of this, Angular provides a way to access the current URL's query
 parameters as dictionary.  What however it does not provide is a way to
 parse arbitrary query strings.  Why?  Because the internal parsing
 function is hidden away behind layers of closures and someone did not
@@ -402,7 +402,7 @@ suggesting as HTML escape function:
         return el.innerHTML;
     }
 
-And it's not just parsing HTML that people do this way.  Obverse how to
+And it's not just parsing HTML that people do this way.  Observe how to
 use the DOM for link parsing:
 
 .. sourcecode:: javascript
@@ -468,7 +468,7 @@ and more.
 
 Over the last few years you could see similar things happening in the
 Python community.  A few years ago meta classes were the hot new thing and
-now that people write bigger and bigger applications some sanity returned.
+now that people write bigger and bigger applications some sanity has returned.
 When Django came out the developers had to defend the use of functions
 instead of classes.  Now nobody talks much about that any more.
 
