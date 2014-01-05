@@ -284,7 +284,7 @@ protocols you often need to deal with formatting numbers out into byte
 strings.
 
 Python's own version control system is still not on Python 3 because for
-years now because the Python team does not want to `bring back string
+years now because the Python team does not `bring back string
 formatting for bytes <http://bugs.python.org/issue3982>`_.
 
 This is getting ridiculous now though, because it turned out that the
