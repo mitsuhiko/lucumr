@@ -312,8 +312,8 @@ though, just the return value is vastly different now:
                      path=b'/', params=b'', query=b'', fragment=b'')
 
 Looks similar?  Not at all, because they are made of different types.  One
-is a tuple of strings, the other is more like an array of integers.  I
-have `written about this before
+is a tuple of strings, the other is more like a tuple of arrays of
+integers.  I have `written about this before
 <../../../../2013/7/2/the-updated-guide-to-unicode/>`_ already and it
 still pains me.  It makes writing code for Python incredibly frustrating
 now or hugely inefficient because you need to go through multiple encode
