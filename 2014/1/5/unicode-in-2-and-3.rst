@@ -383,5 +383,6 @@ I won't do that now but I do wish Python 3 core developers would become a
 bit more humble.  For 97% of us, Python 2 is our beloved world for years
 to come and telling us constantly about how amazing Python 3 is not just
 painful, it's also wrong in light of the many regressions.  With people
-starting to discuss Python 2.8, a Stackless Python 2.8 coming up and these
-bad usage numbers, I don't know what failure is, if not that.
+starting to discuss Python 2.8, Stackless Python preparing a new release
+with new features and these bad usage numbers, I don't know what failure
+is, if not that.
