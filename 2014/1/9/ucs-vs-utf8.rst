@@ -31,7 +31,7 @@ links that might be of interest:
 
 However there are some basics that are important to know even today to get
 an understanding of why things work in certain ways.  When Unicode and ISO
-10646 where not the same thing yet, they had different ideas of how things
+10646 were not the same thing yet, they had different ideas of how things
 should work.  This can still be seen today in the encoding names.  UCS2
 and UCS4 are 2 and 4 byte encodings for the Universal Character Set (UCS).
 The UTF formats came later and until today they stand both for Unicode
