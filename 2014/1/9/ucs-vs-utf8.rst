@@ -73,8 +73,8 @@ can be ignored and accidentally a wrong character.
 
 In order to achieve that they came up with the concept of surrogate pairs
 to encode characters if they don't fit into ~16 bit.  Essentially UTF-16
-now is defined as an encoding that is either 2 or 4 bytes long but never
-more than one.  The way this works is that 65.536 characters fit
+is now defined as an encoding that is either 2 or 4 bytes long but never
+more than that.  The way this works is that 65.536 characters fit
 into just one unit.  If a character is outside of that range it gets split
 up into two units of 16 bits each and the data is mangled in a way that
 makes them uniquely distinct.  If you would look at one of the two
