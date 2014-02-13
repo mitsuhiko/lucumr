@@ -208,8 +208,8 @@ Cross, Chris McDonough, Ned Batchelder (who unintentionally told me a very
 important lesson in life), Guido van Rossum, Chad Whitacre, Mike Bayer,
 Eric Florenzano, Michael Foord, Idan Gazit, Jannis Leidl, Steve Holden,
 Michael Trier, Lynn Root, Tyler Šiprová, Hynek Schlawack, Daniel and
-Audrey Roy Greenfeld, Kenneth Reitz, Glyph Lefkowitz, Amir Salihefendic
-and probably a few others that temporarily escaped my memory.
+Audrey Roy Greenfeld, Kenneth Reitz, Glyph Lefkowitz, Amir Salihefendic,
+Holger Krekel and probably a few others that temporarily escaped my memory.
 
 Community vs. Technology
 ------------------------
