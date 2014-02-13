@@ -193,8 +193,8 @@ of view, it was loads of fun.
 In general I can't enumerate the amazing interactions I had with Python
 people at various conferences.  I got to get to the Ukraine, Poland,
 Japan, the United States, Italy, the Czech Republic, the United Kingdom,
-and South Africa, the Netherlands and Israel just for Python conferences
-or for Python people.
+and South Africa, the Netherlands, Israel and Russia just for Python
+conferences or for Python people.
 
 I celebrated my last three birthdays at a (not so tiny any more) Python
 conference in Groningen with lots of awesome Python people.
