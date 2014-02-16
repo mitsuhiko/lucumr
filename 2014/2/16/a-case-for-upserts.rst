@@ -223,7 +223,7 @@ under the assumption he sends the same number to the server.
 The server can then look if the nonce was already stored in the database
 and then not carry out the payment a second time.
 
-The unfortunate through is that network failure is very, very common and
+The unfortunate truth is that network failure is very, very common and
 can really happen for every single HTTP request.  The reason people mostly
 bring it up with payments is because it's the part where you can lose the
 most amount distrust in customers.  If you charge someone twice for a
