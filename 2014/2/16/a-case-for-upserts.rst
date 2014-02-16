@@ -18,9 +18,9 @@ actually deeply unreliable or badly planned.
 What's an Upsert
 ----------------
 
-Upsets probably got a bad reputation because they were popularized by
+Upserts probably got a bad reputation because they were popularized by
 MySQL which is often regarded as a bad SQL database.  However MySQL also
-became popular as a driving force behind web applications so some of it's
+became popular as a driving force behind web applications so some of its
 design decisions work really well in a web environment.
 
 In MySQL there are two types of upserts: replaces (which can be emulated
