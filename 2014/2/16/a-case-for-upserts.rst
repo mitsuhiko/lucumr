@@ -214,7 +214,7 @@ barfed when sending the data back to the client.
 
 The only way to make such an operation idempotent is to provide extra
 information with the initial request to be able to detect a duplicate
-attempt.  The very obvious once is a "nonce".  When the client shows the
+attempt.  The very obvious one is a "nonce".  When the client shows the
 payment page it rolls a large random number.  With the purchase the user
 submits this number and the server will permanently store it.  Even if the
 response to the client fails, the client can safely retry the transmission
