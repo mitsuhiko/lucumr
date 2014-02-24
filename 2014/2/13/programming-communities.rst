@@ -54,7 +54,7 @@ literally modified PHP scripts through uploading files with FTP.  Later I
 would modify those files by SSHing into the server and changing them with
 vim up there.  I learned about SQL injections and proper software
 development by making all the mistakes there.  A lot of that knowledge I
-owe to Matthias Urlichs who provided us wit servers there.  I was very
+owe to Matthias Urlichs who provided us with servers there.  I was very
 lucky with timing there.  When I started out with playing around on
 ubuntuusers there very only a few hundred people on there and me breaking
 the forums was not a big deal.  Initially we were on a web hoster with our
