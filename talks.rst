@@ -6,6 +6,8 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+-   `Modern and Different PostgreSQL <https://speakerdeck.com/mitsuhiko/modern-and-different-postgresql>`__
+    @ DUMP 2014 (`PDF <http://dev.pocoo.org/~mitsuhiko/postgres.pdf>`__)
 -   `Thinking Outside the Box <https://speakerdeck.com/mitsuhiko/thinking-outside-the-box>`__
     @ EuroPython 2013 (`PDF
     <http://pocoo.org/~mitsuhiko/OutsideTheBox.pdf>`__)
