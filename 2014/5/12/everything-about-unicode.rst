@@ -35,10 +35,10 @@ What we want to do
 ------------------
 
 In Python 3 we're doing Unicode right as developers.  Apparently.  I
-suppose what that is supposed to mean is that all text data is Unicode and
-all non text data is bytes.  In this wonderful world of everything being
-black and white, the "Hello World" example is pretty straightforward.  So
-let's write some helpful shell utilties.
+suppose what means is that all text data is Unicode and all non text data
+is bytes.  In this wonderful world of everything being black and white,
+the "Hello World" example is pretty straightforward.  So let's write some
+helpful shell utilties.
 
 Let's say we want to implement a simple ``cat``  In other terms, these are
 the applications we want to write in Python 2 terms:
