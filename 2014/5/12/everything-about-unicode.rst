@@ -11,7 +11,7 @@ Readers of this blog on my twitter feed know me as a person that likes to
 rant about Unicode in Python 3 a lot.  This time will be no different.
 I'm going to tell you more about how painful "doing Unicode right" is and
 why.  "Can you not just shut up Armin?".  I spent two weeks fighting with
-Python 3 again and I need to vent my frustrating somewhere.  On top of
+Python 3 again and I need to vent my frustration somewhere.  On top of
 that there is still useful information in those rants because it teaches
 you how to deal with Python 3.  Just don't read it if you get annoyed by
 me easily.
@@ -220,6 +220,7 @@ compatible ``cat`` for Python 3:
 .. sourcecode:: python3
 
     import sys
+    import shutil
 
     def _is_binary_reader(stream, default=False):
         try:
@@ -274,7 +275,7 @@ compatible ``cat`` for Python 3:
 
     binary_stdout = get_binary_stdout()
     for filename in sys.argv[1:]:
-        if filename == '-':
+        if filename != '-':
             try:
                 f = open(filename, 'rb')
             except IOError as err:
