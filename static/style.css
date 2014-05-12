@@ -94,3 +94,12 @@ ul.tagcloud li  { margin: 0; padding: 0 10px; display: inline; }
 
 /* latex math */
 span.math img   { margin-bottom: -7px; }
+
+/* ads */
+div.adspace {
+    text-align: center;
+}
+
+div.adspace iframe {
+    margin: 25px auto 25px auto;
+}
