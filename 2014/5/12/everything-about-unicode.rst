@@ -342,7 +342,7 @@ Unicode handling in 2.x or 3.x.  But in that case you also want to support
 a ``--charset`` parameter on your script explicitly so the work is pretty
 much the same on 2.x and 3.x anyways.  Just that it's worse because for
 that to work on 3.x you need to construct the binary stdout first which is
-unnecessary on 3.x.
+unnecessary on 2.x.
 
 But You're Wrong Armin
 ----------------------
