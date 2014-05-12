@@ -309,7 +309,7 @@ To understand the live of a filename parameter to the shell, this is btw
 now what happens on Python 3 worst case:
 
 1.  the shell passes the filename as bytes to the script
-2.  the bytes are being decoded from the expenced encoding by Python
+2.  the bytes are being decoded from the expected encoding by Python
     before they ever hit your code.  Because this is a lossy process,
     Python 3 applies an special error handler that encodes encoding errors
     as surrogates into the string.
