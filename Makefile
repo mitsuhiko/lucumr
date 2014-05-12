@@ -10,5 +10,5 @@ serve:
 	run-rstblog serve
 
 upload:
-	rsync -a _build/ pocoo.org:/var/www/lucumr.pocoo.org/new/
+	rsync -a _build/ flow.srv.pocoo.org:/srv/websites/lucumr.pocoo.org/static/
 	@echo "Done..."

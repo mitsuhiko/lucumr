@@ -431,7 +431,7 @@ group of developers rediscovered years of prior experience in very painful
 ways.  There was a group mentality where one person copied the next
 person's code and did not think much about how it works.  I remember
 how plugin systems were just crazy talk and the common way for
-extensibility for PHP applications where `mod files
+extensibility for PHP applications were `mod files
 <https://www.phpbb.com/kb/article/how-to-install-mods/>`_.  Some misguided
 fool started that way and all the sudden everybody did it.  I'm pretty
 sure that's exactly how we ended up with register globals everywhere,

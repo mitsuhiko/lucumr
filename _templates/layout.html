@@ -4,8 +4,6 @@
     <meta charset=utf-8>
   {% block htmlhead %}
     <title>{% block title %}Home{% endblock %} | Armin Ronacher's Thoughts and Writings</title>
-    <link rel="openid.server" href="http://www.myopenid.com/server">
-    <link rel="openid.delegate" href="http://mitsuhiko.myopenid.com/">
     <link rel="stylesheet" href="/static/style.css" type="text/css">
     <link href="/feed.atom" rel="alternate" title="Recent Blog Posts" type="application/atom+xml">
     {%- for link in links %}
@@ -30,7 +28,18 @@
         </ul>
       </div>
       <div class=body>
-      {% block body %}{% endblock %}
+        {% block body %}{% endblock %}
+
+        <div class=adspace>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-6757320953560275"
+               data-ad-slot="8324866143"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </div>
       <div class=footer>
         <p>&copy; Copyright {{ format_date(format='YYYY') }} by Armin Ronacher.
@@ -52,7 +61,7 @@
       _gaq.push(['_trackPageview']);
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
