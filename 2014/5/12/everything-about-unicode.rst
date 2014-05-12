@@ -392,5 +392,5 @@ Windows route and enforce Unicode in many places, but really, I doubt it.
 
 The much more likely thing to happen is that people stick to Python 2 or
 build broken stuff on Python 3.  Or they go with Go.  Which uses an even
-simple model than Python 2: everything is a byte string.  The assumed
+simpler model than Python 2: everything is a byte string.  The assumed
 encoding is UTF-8.  End of the story.
