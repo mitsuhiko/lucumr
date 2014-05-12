@@ -7,12 +7,12 @@ summary: |
 Everything you did not want to know about Unicode in Python 3
 =============================================================
 
-Readers of this blog on my twitter feed know me as a person that likes to
+Readers of this blog or my twitter feed know me as a person that likes to
 rant about Unicode in Python 3 a lot.  This time will be no different.
 I'm going to tell you more about how painful "doing Unicode right" is and
-why.  "Can you not just shut up Armin?".  I spent two weeks fighting with
-Python 3 again and I need to vent my frustrating somewhere.  On top of
-that there is still useful information in those rants because it teaches
+why.  "Can you not just shut up Armin?"  I spent two weeks fighting with
+Python 3 again and I need to vent my frustration somewhere.  On top of
+that there is still useful information in these rants because it teaches
 you how to deal with Python 3.  Just don't read it if you get annoyed by
 me easily.
 
@@ -20,11 +20,11 @@ There is one thing different about this rant this time.  It won't be
 related to WSGI or HTTP or any of that other stuff at all.  Usually I'm
 told that I should stop complaining about the Python 3 Unicode system
 because I wrote code nobody else writes (HTTP libraries and things of that
-sort) I decided to write something else this time: a command line
+sort). I decided to write something else this time: a command line
 application.  And not just the app, I wrote a handy little library called
 `click <http://click.pocoo.org/>`_ to make this easier.
 
-Note that I'm doing what about every newby Python programmer does: writing
+Note that I'm doing what about every newbie Python programmer does: writing
 a command line application.  The "Hello World" of Python programs.  But
 unlike the newcomer to Python I wanted to make sure the application is as
 stable and Unicode supporting as possible for both Python 2 and Python 3
@@ -40,8 +40,8 @@ all non text data is bytes.  In this wonderful world of everything being
 black and white, the "Hello World" example is pretty straightforward.  So
 let's write some helpful shell utilties.
 
-Let's say we want to implement a simple ``cat``  In other terms, these are
-the applications we want to write in Python 2 terms:
+Let's say we want to implement a simple ``cat``  In other words, this is
+the application we want to write in Python 2 terms:
 
 .. sourcecode:: python
 
@@ -59,8 +59,8 @@ the applications we want to write in Python 2 terms:
         with f:
             shutil.copyfileobj(f, sys.stdout)
 
-Obviously neither commands are particularly great as they do not handle
-any command line options or anything but at least they roughly work.  So
+Obviously this is not particularly great as it does not handle
+any command line options or anything but at least it roughly works.  So
 that's what we start out with.
 
 Unicode in Unix
@@ -74,15 +74,15 @@ where the problem is coming from, but if you start thinking about it more,
 you will realize that this is an unfixable problem.
 
 UNIX is bytes, has been defined that way and will always be that way.  To
-understand why you need to see the different contexts in which data is
+understand why, you need to see the different contexts data is
 being passed through:
 
 *   the terminal
 *   command line arguments
-*   the operating system io layer
+*   the operating system I/O layer
 *   the filesystem driver
 
-That btw, is not the only thing this data might be going through but let's
+These, btw, are not the only things this data might be going through but let's
 go with this for the moment.  In how many of the situations do we know an
 encoding?  The answer is: in none of them.  The closest we have to
 understanding an encoding is that the terminal exports locale information.
@@ -98,11 +98,11 @@ should be classified and what case conversion rules should be applied.
 
 This is important because of the ``C`` locale.  The ``C`` locale is the
 only locale that POSIX actually specifies and it says: encoding is ASCII
-and all responses from command line tools in regards to languages are like
-they are defined in the POSIX spec.
+and all responses from command line tools in regards to languages are as
+defined in the POSIX spec.
 
 In the above case of our ``cat`` tool there is no other way
-to treat this data as if it was bytes.  The reason for this is, that there
+to treat this data than as if it was bytes.  The reason for this is that there
 is no indication on the shell what the data is.  For instance if you
 invoke ``cat hello.txt`` the terminal will pass ``hello.txt`` encoded in
 the encoding of the terminal to your application.
@@ -133,7 +133,7 @@ and not the right encoding it will now not decode properly.  But fear not,
 nothing is crashing, because your terminal will just ignore the things it
 cannot deal with.  It's clever like this.
 
-How does it look like for GUIs?  They have two versions of each.  When a
+What does it look like for GUIs?  They have two versions of each.  When a
 GUI like Nautilus lists all files it makes a symbol for each file.  It
 associates the internal bytes of that filename with the icon for double
 clicking and secondly it attempts to make a filename it can show for
@@ -144,14 +144,14 @@ still open the file.  Success!
 
 Unicode on UNIX is only madness if you force it on everything.  But that's
 not how Unicode on UNIX works.  UNIX does not have a distinction between
-unicode and byte APIs.  They are one and the same which makes them easy to
+Unicode and byte APIs.  They are one and the same which makes them easy to
 deal with.
 
 The C Locale
 ------------
 
 Nowhere does this show up as much as with the ``C`` locale.  The ``C``
-locale is the escape hatch of the POSIX specification to enforce everybody
+locale is the escape hatch of the POSIX specification to force everybody
 to behave the same.  A POSIX compliant operating system needs to support
 setting ``LC_CTYPE`` to ``C`` and to force everything to be ASCII.
 
@@ -161,12 +161,12 @@ your init system, subprocesses with an empty environment etc.  The ``C``
 locale restores a sane ``ASCII`` land on environments where you otherwise
 could not trust anything.
 
-But the word ASCII implies that this is an 7bit encoding.  This is not a
-problem because your operating system is dealin in bytes!  Any 8 bit byte
+But the word ASCII implies that this is an 7-bit encoding.  This is not a
+problem because your operating system is dealing in bytes!  Any 8 bit byte
 based content can pass through just fine, but you are following the
 contract with the operating system that any character processing will be
-limited to the first 7 bit.  Also any message your tool generates out of
-it's own translations will be ASCII and the language will be English.
+limited to the first 7 bits.  Also any message your tool generates out of
+its own translations will be ASCII and the language will be English.
 
 Note that the POSIX spec does not say your application should die in
 flames.
@@ -203,13 +203,13 @@ But then if you Google around you will find so much more.  Just check how
 many people failed to install their pip packages because the changelog had
 umlauts in it.  Or because their home folder has an accent in it.  Or
 because their SSH session negotates ASCII, or because they are connecting
-from Putty.  The list goes on and one.
+from Putty.  The list goes on and on.
 
 Python 3 Cat
 ------------
 
 Now let's start fixing cat for Python 3.  How do we do this?  Well first
-of all we now established that we need to deal with bytes because someone
+of all we've now established that we need to deal with bytes because someone
 might echo something which is not in the encoding the shell says.  So at
 the very least the file contents need to be bytes.  But then we also need
 to open the standard output to support bytes which it does not do by
@@ -242,7 +242,7 @@ compatible ``cat`` for Python 3:
     def get_binary_stdin():
         # sys.stdin might or might not be binary in some extra cases.  By
         # default it's obviously non binary which is the core of the
-        # problem but the docs recomend changing it to binary for such
+        # problem but the docs recommend changing it to binary for such
         # cases so we need to deal with it.  Also someone might put
         # StringIO there for testing.
         is_binary = _is_binary_reader(sys.stdin, False)
@@ -295,8 +295,8 @@ not done in this example is to forcefully flush the text stdout before
 fetching the binary one.  In this example it's not necessary because print
 calls here go to stderr instead of stdout, but if you would want to print
 to stdout instead, you would have to flush.  Why?  Because stdout is a
-buffer on top of another buffer and if you don't flush it forefully you
-might get output in wrong order.
+buffer on top of another buffer and if you don't flush it forcefully you
+might get output in the wrong order.
 
 And it's not just me.  For instance see `twisted's compat module
 <https://github.com/twisted/twisted/blob/log-booyah-6750-4/twisted/python/compat.py>`_
@@ -305,15 +305,15 @@ for the same mess in slightly different color.
 Dancing The Encoding Dance
 --------------------------
 
-To understand the live of a filename parameter to the shell, this is btw
-now what happens on Python 3 worst case:
+To understand the life of a filename parameter to the shell, this is btw
+now what happens in Python 3's worst case:
 
 1.  the shell passes the filename as bytes to the script
 2.  the bytes are being decoded from the expected encoding by Python
     before they ever hit your code.  Because this is a lossy process,
-    Python 3 applies an special error handler that encodes encoding errors
+    Python 3 applies a special error handler that encodes encoding errors
     as surrogates into the string.
-3.  the python code then encounters a file not existing error and needs to
+3.  the Python code then encounters a file not existing error and needs to
     format an error message.  Because we write to a text stream we cannot
     write surrogates out as they are not valid unicode.  Instead we now
 4.  encode the unicode string with the surrogates to utf-8 and tell it to
@@ -329,10 +329,10 @@ Here is what happens on Python 2:
 1.  the shell passes the filename as bytes to the script.
 2.  the shell decodes our string for displaying purposes.
 
-And because no string handling happens anywhere there the Python 2 version
+And because no string handling happens anywhere the Python 2 version
 is just as correct if not more correct because the shell then can do a
 better job at showing the filename (for instance it could highlight the
-encoding errors if it woudl want.  In case of Python 3 we need to handle
+encoding errors if it would want.  In case of Python 3 we need to handle
 the encoding internally so that's no longer possible to detect for the
 shell).
 
@@ -350,7 +350,7 @@ But You're Wrong Armin
 Clearly I'm wrong.  I have been told so far that:
 
 *   I only feel it's painful because I don't think like a beginner and
-    the new Unicode systems is so much easier for beginners.
+    the new Unicode system is so much easier for beginners.
 *   I don't consider Windows users and how much more correct this new text
     model is for Windows users.
 *   The problem is not Python, the problem is the POSIX specification.
@@ -364,7 +364,7 @@ Clearly I'm wrong.  I have been told so far that:
     so you should pass explicit encodings).  Then there would be no
     problems.
 *   That I work with "boundary code" so obviously that's harder on Python
-    3 now (duh)
+    3 now (duh).
 *   That I should spend my time fixing Python 3 instead of complaining on
     Twitter and my blog.
 *   You're making problems where there are none.  Just let everybody fix
@@ -379,7 +379,7 @@ The same problem appears in simple Hello World style scenarios.  Maybe I
 should give up trying to achieve a high quality of Unicode support in my
 libraries and just live with broken stuff.
 
-I can bring up counter arguments for each of the point above, but
+I can bring up counter arguments for each of the points above, but
 ultimately it does not matter.  If Python 3 was the only Python language I
 would use, I would eat up all the problems and roll with it.  But it's
 not.  There is a perfectly other language available called Python 2, it
@@ -391,5 +391,5 @@ Windows route and enforce Unicode in many places, but really, I doubt it.
 
 The much more likely thing to happen is that people stick to Python 2 or
 build broken stuff on Python 3.  Or they go with Go.  Which uses an even
-simple model than Python 2: everything is a byte string.  The assumed
+simpler model than Python 2: everything is a byte string.  The assumed
 encoding is UTF-8.  End of the story.
