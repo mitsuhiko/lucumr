@@ -351,7 +351,7 @@ But You're Wrong Armin
 Clearly I'm wrong.  I have been told so far that:
 
 *   I only feel it's painful because I don't think like a beginner and
-    the new Unicode systems is so much easier for beginners.
+    the new Unicode system is so much easier for beginners.
 *   I don't consider Windows users and how much more correct this new text
     model is for Windows users.
 *   The problem is not Python, the problem is the POSIX specification.
@@ -359,14 +359,14 @@ Clearly I'm wrong.  I have been told so far that:
     because they are stuck in the past.
 *   The problem is SSH because it passes incorrect encodings.  This is a
     problem that needs to be fixed in SSH.
-*   That the real problem with lots of unicode errors in Python 3 is that
+*   The real problem with lots of unicode errors in Python 3 is that
     people just don't pass explicit encodings and instead assume that
     Python 3 does the right thing to figure it out (which it really can't
     so you should pass explicit encodings).  Then there would be no
     problems.
-*   That I work with "boundary code" so obviously that's harder on Python
-    3 now (duh)
-*   That I should spend my time fixing Python 3 instead of complaining on
+*   I work with "boundary code" so obviously that's harder on Python
+    3 now (duh).
+*   I should spend my time fixing Python 3 instead of complaining on
     Twitter and my blog.
 *   You're making problems where there are none.  Just let everybody fix
     their environment and encodings everywhere and everything is fine.
