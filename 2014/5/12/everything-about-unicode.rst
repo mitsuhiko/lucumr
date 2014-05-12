@@ -22,7 +22,7 @@ told that I should stop complaining about the Python 3 Unicode system
 because I wrote code nobody else writes (HTTP libraries and things of that
 sort) I decided to write something else this time: a command line
 application.  And not just the app, I wrote a handy little library called
-`clic <http://click.pocoo.org/>`_ to make this easier.
+`click <http://click.pocoo.org/>`_ to make this easier.
 
 Note that I'm doing what about every newby Python programmer does: writing
 a command line application.  The "Hello World" of Python programs.  But
