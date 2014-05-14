@@ -9,9 +9,10 @@ and recordings if available.
 -   `SSL, CAs and keeping your stuff safe <https://speakerdeck.com/mitsuhiko/ssl-cas-and-keeping-your-stuff-safe>`__
     @ PyGrunn 2014 (`PDF <http://dev.pocoo.org/~mitsuhiko/SSL.pdf>`__)
 -   `Modern and Different PostgreSQL <https://speakerdeck.com/mitsuhiko/modern-and-different-postgresql>`__
-    @ DUMP 2014 (`PDF <http://dev.pocoo.org/~mitsuhiko/postgres.pdf>`__)
+    @ DUMP 2014 (`recording <http://youtu.be/NYNB1wGqbiI>`__, `PDF <http://dev.pocoo.org/~mitsuhiko/postgres.pdf>`__)
 -   `Thinking Outside the Box <https://speakerdeck.com/mitsuhiko/thinking-outside-the-box>`__
-    @ EuroPython 2013 (`PDF
+    @ EuroPython 2013 (`recording
+    <https://www.youtube.com/watch?v=5pZVqBFtuLk>`__, `PDF
     <http://pocoo.org/~mitsuhiko/OutsideTheBox.pdf>`__)
 -   `What Web Developers can Learn from Game Developers <https://speakerdeck.com/mitsuhiko/what-web-developers-can-learn-from-game-developers>`__
     @ DJUGL June 2013 (`PDF <http://dev.pocoo.org/~mitsuhiko/GameDevWeb.pdf>`__)
@@ -19,18 +20,26 @@ and recordings if available.
     @ Pyramid Meetup London June 2013 (`PDF
     <http://pocoo.org/~mitsuhiko/SQLAwesomy.pdf>`__)
 -   `A Year with MongoDB <https://speakerdeck.com/mitsuhiko/a-year-of-mongodb>`__
-    @ PyGrunn 2013 (`PDF <http://pocoo.org/~mitsuhiko/mongodb.pdf>`__)
+    @ PyGrunn 2013 (`recording <https://www.youtube.com/watch?v=0hUc4XyGpWg>`__,
+    `PDF <http://pocoo.org/~mitsuhiko/mongodb.pdf>`__)
 -   `Advanced Flask Patterns <https://speakerdeck.com/mitsuhiko/advanced-flask-patterns-1>`__
     @ PyCon Russia 2013 (`recording <https://www.youtube.com/watch?v=6CeXt62Dt2A>`__,
     `PDF <http://dev.pocoo.org/~mitsuhiko/AdvFlaskPatterns.pdf>`__)
 -   Schemas and Queues — a Rediscovered Approach for Web APIs @ DevCon
     Tel Aviv February 2013
+    (`recording <https://www.youtube.com/watch?v=p8GBr3K1zvc>`__)
 -   `Rust from Python and Ruby <https://speakerdeck.com/mitsuhiko/rust-from-python-and-ruby>`__
-    @ RuPy Brno 2012 (`PDF <http://pocoo.org/~mitsuhiko/Rust.pdf>`__)
+    @ RuPy Brno 2012 (`recording
+    <https://www.youtube.com/watch?v=OquyEi2CkbQ>`__, `PDF
+    <http://pocoo.org/~mitsuhiko/Rust.pdf>`__)
 -   Understanding Player Motivation: Applying Herzberg's Two-Factor
     Theory to Games-as-a-Service @ GDC Online 2012
+    (`vault link
+    <http://www.gdcvault.com/play/1016674/Understanding-Player-Motivation-Applying-Herzberg>`__)
 -   `Things you didn't know about Python <https://speakerdeck.com/u/mitsuhiko/p/didntknow>`__
-    @ PyCon ZA 2012 (`PDF <http://pocoo.org/~mitsuhiko/didntknow.pdf>`__)
+    @ PyCon ZA 2012 (`recording
+    <https://www.youtube.com/watch?v=L96qiaKWk1E>`__,
+    `PDF <http://pocoo.org/~mitsuhiko/didntknow.pdf>`__)
 -   `Happiness Through Ignorance <https://speakerdeck.com/u/mitsuhiko/p/happiness-through-ignorance>`__
     @ PyCon JP 2012 (`recording <http://www.youtube.com/watch?feature=player_detailpage&v=EDlFk1hc8kc#t=739s>`__,
     `PDF <http://pocoo.org/~mitsuhiko/happiness.pdf>`__)
