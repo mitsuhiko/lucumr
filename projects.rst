@@ -41,6 +41,8 @@ Open Source Libraries
     on good intentions.  *2010-* *
 -   `itsdangerous <http://pythonhosted.org/itsdangerous>`_ — a
     cryptographic signing library.  *2012-* *
+-   `click <http://click.pocoo.org/>`_ — a
+    command line interface utility library.  *2014-* *
 
 Open Source Applications
 ------------------------
