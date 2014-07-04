@@ -36,6 +36,12 @@ If you want to support me financially consider `gittip
 small tips to me.  If you want to send a token of appreciation I have a
 `steam wishlist <http://steamcommunity.com/id/mitsuhiko/wishlist>`_.
 
+My work has recently been funded by the Shuttleworth Foundation.
+
+.. image:: ../static/shuttleworth-funded.jpg
+   :width: 300
+   :align: center
+
 About this Website
 ------------------
 
