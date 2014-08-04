@@ -43,6 +43,7 @@ Open Source Libraries
     cryptographic signing library.  *2012-* *
 -   `click <http://click.pocoo.org/>`_ — a
     command line interface utility library.  *2014-* *
+-   `PluginBase <http://pluginbase.pocoo.org/>`_ — a plugin system for Python. *2014-* *
 
 Open Source Applications
 ------------------------
