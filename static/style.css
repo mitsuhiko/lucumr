@@ -1,48 +1,48 @@
 /* fonts */
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic);
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,300italic,400italic);
-@import url(https://fonts.googleapis.com/css?family=Amatic+SC:400,700);
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic,300,300italic&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=IM+Fell+English:400italic&subset=latin,latin-ext);
 
 /* general style */
-body    { font: 17px/25px 'Roboto', sans-serif;
-          margin: 0; padding: 0; font-weight: 300; }
+body    { font: 17px/25px 'Merriweather', serif;
+          margin: 0; padding: 0; font-weight: 300; color: black; }
 a       { color: black; font-weight: 400; }
-a:hover { color: #CC0033; }
+a:hover { color: #14A5E3; }
 
 /* headlines */
-h1, h2, h3, h4, h5, h6      { font-family: 'Amatic SC', serif;
-                              font-weight: 400; color: #222; }
+h1, h2, h3, h4, h5, h6      { font-family: 'IM Fell English', serif;
+                              font-weight: 400; font-style: italic; color: #0C4761; }
 h1 a, h2 a, h3 a, h4 a,
 h5 a, h6 a                  { text-decoration: none; }
 h1 a:hover, h2 a:hover,
 h3 a:hover, h4 a:hover      { text-decoration: underline; }
-h1.title                    { width: 560px; }
 h1, h2                      { margin: 10px 0 25px 0; }
+h2                          { margin: 25px 0 15px 0; }
 h1                          { font-size: 48px; line-height: 54px; }
 h2                          { font-size: 38px; line-height: 42px; }
 h3                          { font-size: 32px; line-height: 34px; }
 
 /* layout elements */
-div.container               { width: 740px; margin: 48px auto; padding: 0; }
+div.container               { max-width: 900px; margin: 48px auto; padding: 0 40px; }
 div.header                  { float: left; }
 div.navigation              { float: right; }
 div.header, div.navigation  { height: 25px; margin-bottom: 42px; }
 div.navigation ul           { margin: 0; padding: 0; list-style: none; }
 div.navigation ul li        { display: inline; margin: 0 2px; padding: 0; }
 div.body                    { clear: both; }
-div.footer                  { border-top: 1px solid #555; padding-top: 9px;
-                              margin-top: 42px; font-size: 16px;
-                              text-align: center; color: #555; }
+div.footer                  { margin-top: 55px; font-size: 16px;
+                              text-align: right; color: #76A4B8; }
 div.footer p                { margin: 0; }
+div.footer a                { color: #76A4B8; }
 
 /* margins and stuff */
 p, div.line-block, ul, ol, pre,
-    table                       { margin: 25px 0 25px 0; }
+    table                       { margin: 15px 0 15px 0; }
 dt                              { margin: 25px 0 16px 0; padding: 0; }
 dd                              { margin: 16px 0 25px 40px; padding: 0; }
 ul ol, ol ul, ul ul, ol ol      { margin: 10px 0; padding: 0 0 0 40px; }
 li                              { padding: 0; }
-h1 + p.date                     { margin-top: -25px; }
+h1 + p.date                     { margin-top: -25px; font-style: italic; }
 
 /* code formatting.  no monospace because of webkit (bug?) */
 pre, code, tt   { font-family: 'Ubuntu Mono', 'Consolas', 'Deja Vu Sans Mono',
@@ -70,14 +70,16 @@ div.entry-overview h1,
 div.entry-overview div.summary,
 div.entry-overview div.summary p    { display: inline; line-height: 25px; }
 div.entry-overview h1               { margin: 0; font-size: 17px; font-weight: 700;
-                                      font-family: 'Roboto', sans-serif; }
-div.entry-overview h1:after         { content: " —"; }
+                                      font-family: 'Merriweather', serif; }
+div.entry-overview h1:after         { content: " —"; color: black; }
+div.entry-overview h1 a             { color: #0C4761; }
 div.entry-overview div.summary,
 div.entry-overview div.date,
 div.entry-overview div.summary p    { margin: 0; padding: 0; }
 div.entry-overview div.detail       { margin-left: 140px; }
-div.entry-overview div.date         { float: left; width: 120px; color: #CC0033;
-                                      text-align: right; font-size: 14px; }
+div.entry-overview div.date         { float: left; width: 120px; color: #1080B0;
+                                      text-align: right; font-style: italic;
+                                      font-size: 14px; }
 
 /* other alignment things */
 img.align-center        { margin: 15px auto; display: block; }

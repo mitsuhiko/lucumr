@@ -41,7 +41,7 @@ Open Source Libraries
     on good intentions.  *2010-* *
 -   `itsdangerous <http://pythonhosted.org/itsdangerous>`_ — a
     cryptographic signing library.  *2012-* *
--   `click <http://click.pocoo.org/>`_ — a
+-   `Click <http://click.pocoo.org/>`_ — a
     command line interface utility library.  *2014-* *
 
 Open Source Applications
@@ -52,6 +52,26 @@ Open Source Applications
 -   `Plurk Solace <http://opensource.plurk.com/solace/>`_ — a multilingual support application. *2009-*
 -   `Timesched <http://timesched.pocoo.org/>`_ — a world time scheduler. *2013* *
 -   `Fireteam Curlish <http://packages.python.org/curlish/>`_ — curl OAuth wrapper. *2012-*
+-   `python-modernize <https://github.com/python-modernize/python-modernize>`_ — Python 2 to 3 porting tool. *2012-*
+-   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — Python script installer. *2014-*
+
+Commercial Projects
+-------------------
+
+-   `Plurk <http://www.plurk.com/>`_ — a microblogging platform. *2008-2009*
+-   `Fireline <http://fireteam.net/fireline/>`_ — online services platform for games. *2012-*
+-   `Togethera <http://togethera.com/>`_ — private family sharing application (as advisor). *2014-*
+
+Computer Games
+--------------
+
+-   `Batman Arkahm Origins
+    <http://en.wikipedia.org/wiki/Batman:_Arkham_Origins>`_ — parts of online
+    services code and backend. *2012-2013*
+-   `RAD Soldiers <http://www.warchest.com/games/radsoldiers>`_ — game
+    backend. *2012-*
+-   `Dirty Bomb <http://dirtybomb.nexon.net/>`_ — online services and game
+    backend. *2012-*
 
 Websites
 --------
@@ -65,20 +85,3 @@ Projects for Competitions
 -------------------------
 
 -   `“Be a Bee” <http://www.aec.at/prix_history_en.php?year=2003>`_ — for u19, Ars Electronica 2003. 2nd Place. *2003*
-
-Commercial Projects
--------------------
-
--   `Plurk <http://www.plurk.com/>`_ — a microblogging platform. *2008-2009*
--   `Fireteam <http://fireteam.net/>`_ — online services for games. *2012-*
-
-Computer Games
---------------
-
--   `Batman Arkahm Origins
-    <http://en.wikipedia.org/wiki/Batman:_Arkham_Origins>`_ — parts of online
-    services code and backend. *2012-2013*
--   `RAD Soldiers <http://www.warchest.com/games/radsoldiers>`_ — game
-    backend. *2012-*
--   `Extraction <http://extraction.nexon.net/>`_ — online services and
-    game backend. *2012-*
