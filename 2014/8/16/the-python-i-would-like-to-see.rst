@@ -22,6 +22,27 @@ I want to take you on a journey that starts with a small oddity in the
 interpreter (slots) and ends up with the biggest mistake in the language
 design.  If the reception is good there will be more posts like this.
 
+In general though these posts will be an exploration about design
+decisions in the interpreter and what consequences they have on both the
+interpreter and the resulting language.  I believe this is more
+interesting from a general language design point of view than as a
+recommendation about how to go forward with Python.
+
+Language vs Implementation
+--------------------------
+
+I added this particular paragraph after I wrote the initial version of
+this article because I think it has been largely missed that Python as a
+language and CPython as the interpreter are not nearly as separate as
+developers might believe.  There is a language specification but in many
+cases it just codifies what the interpreter does or is even lacking.
+
+In this particular case this obscure implementation detail of the
+interpreter changed or influenced the language design and also forced
+other Python implementations to adopt.  For instance PyPy does not know
+anything about slots (I presume) but it still has to operate as if slots
+were part of the interpreter.
+
 
 Slots
 -----
