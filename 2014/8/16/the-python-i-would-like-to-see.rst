@@ -70,7 +70,7 @@ but it actually makes no sense for other types.
 
 To demonstrate this, consider this completely pointless type (``x.py``):
 
-.. sourcecode:: pycon
+.. sourcecode:: python
 
     class A(object):
         def __add__(self, other):
