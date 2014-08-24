@@ -19,7 +19,7 @@ exist and they interact in different ways with each other, but for the
 most part you really only notice their existence when you fail and an
 exception tells you that a type does not behave like you think it does.
 
-Python was very proud of it's approach to typing.  I remember reading the
+Python was very proud of its approach to typing.  I remember reading the
 language FAQ many years ago and it had a section about how cool duck
 typing is.  To be fair: in practical terms duck typing is a good solution.
 Because there is basically no type system that fights against you, you are
@@ -253,8 +253,8 @@ actually contain that type:
     AttributeError: 'module' object has no attribute 'SRE_Pattern'
 
 Alright, fair enough, would not be the first time that a type lied about
-it's location and it's an internal type anyways.  So moving on.  We know
-the type of the pattern, it's an ``_sre.SRE_Pattern`` type.  As such it's
+its location and it's an internal type anyways.  So moving on.  We know
+the type of the pattern, it's an ``_sre.SRE_Pattern`` type.  As such
 a subclass of ``object``:
 
 .. sourcecode:: pycon
