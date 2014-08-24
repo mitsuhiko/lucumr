@@ -44,6 +44,9 @@ Open Source Libraries
 -   `Click <http://click.pocoo.org/>`_ — a
     command line interface utility library.  *2014-* *
 -   `PluginBase <http://pluginbase.pocoo.org/>`_ — a plugin system for Python. *2014-* *
+-   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — a wrapper around pip
+    for script installation. *2014-* *
+-   `unp <https://github.com/mitsuhiko/unp>`_ — an unpacking shell script. *2014-* *
 
 Open Source Applications
 ------------------------
