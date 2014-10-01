@@ -41,7 +41,7 @@ Rust for me fits where *I* use Python, C and C++ but it fills that spot in
 very different categories.  Python I use as language for writing small
 tools as well as large scale server software.  Python there works well for
 me primarily because the ecosystem is large and when it breaks it's a
-super straightforward thing to debug.  It also keeps stays running and can
+super straightforward thing to debug.  It also keeps running and can
 report if things go wrong.
 
 However one interesting thing about Python is that unlike many other
