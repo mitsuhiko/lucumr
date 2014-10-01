@@ -34,7 +34,7 @@ guaranteed that someone else picks a different one.  The worst part there
 is that you can get into really holy wars about what you should be doing.
 I have a huge hatred towards both the STL and boost and that has existed
 even before I worked in the games industry.  However every time the topic
-comes up there is at last someone who tells me I'm wrong and don't
+comes up there is at least someone who tells me I'm wrong and don't
 understand the language.
 
 Rust for me fits where *I* use Python, C and C++ but it fills that spot in
