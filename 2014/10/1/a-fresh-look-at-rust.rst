@@ -46,7 +46,7 @@ report if things go wrong.
 
 However one interesting thing about Python is that unlike many other
 dynamic languages, Python feels very predictable.  For me this is largely
-because I am a lot less dependent on the garbage collector that in many
+because I am a lot less dependent on the garbage collector than in many
 other languages.  The reason for this is that Python for me means CPython
 and CPython means refcounting.  I'm the guy who will go through your
 Python codebase and break up cycles by introducing weak references.  Who
