@@ -145,8 +145,8 @@ only could you call into C libraries easily: it also found and linked them
 for you.  There is so much more though and it's hidden everywhere.  There
 is a macro (``include_str!``) that will read a file next to your source at
 compile time into a string into your binary (How cool is that!?).  Not
-can you bake in contents of files, you can also pull environment variables
-into your binaries for instance.
+only can you bake in contents of files, you can also pull environment
+variables into your binaries for instance.
 
 
 Designing APIs
@@ -172,7 +172,7 @@ rust driver for instance, you can write code like this:
 
 .. sourcecode:: rust
 
-    extern create redis;
+    extern crate redis;
 
     fn main() {
         let client = redis::Client::open("redis://127.0.0.1/").unwrap();
