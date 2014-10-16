@@ -205,5 +205,7 @@ exceptions that are not officially part of the contract (socket
 exceptions, SSL errors etc.).
 
 Especially in Python 3 where exceptions generally get chained if rethrown
-correctly there really is no reason for hiding internal exceptions behind
-one or two public exceptions of the library.
+correctly there really is no reason for not catching down and rethrowing
+internal exceptions through one exception type of the library.  Having to
+only deal with a `RequestFailed` exception is much more convenient and
+future proof.
