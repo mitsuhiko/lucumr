@@ -120,7 +120,7 @@ introduces the concept of error interoperability.
 
 Think of it like this: the contract your library has with the outside
 world is that your library exposes a certain behavior and some behavior is
-an implementation detail.  While it's failure obvious that your database
+an implementation detail.  While it's fairly obvious that your database
 library will eventually do IO to talk to the database, it does not mean
 that it will always do.  This has always been a problem with checked
 exceptions in Java because some of the interfaces do not make sense in all
