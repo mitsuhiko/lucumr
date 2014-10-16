@@ -29,7 +29,7 @@ to if there is nobody who can pick up on your problem or if the problem is
 just of a nature that does not permit any error handling.
 
 At present a result is as good as it gets.  A type ``Result<T, E>`` has
-two possible states in which it can be: ``OK(T)`` or ``Err(E)``.  So it
+two possible states in which it can be: ``Ok(T)`` or ``Err(E)``.  So it
 either succeeded with an object of value ``T`` or it failed with an object
 of value ``E``.
 
@@ -51,11 +51,11 @@ With the `try!` macro expanded it looks a bit like this:
 
     fn load_document() -> Result<Document, DatabaseError> {
         let db = match open_database() {
-            Some(x) => x,
+            Ok(x) => x,
             Err(err) => { return Err(err); }
         };
         match db.load("document_1") {
-            Some(x) => x,
+            Ok(x) => x,
             Err(err) => { return Err(err); }
         }
     }
