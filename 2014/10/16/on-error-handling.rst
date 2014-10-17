@@ -51,11 +51,11 @@ With the `try!` macro expanded it looks a bit like this:
 
     fn load_document() -> Result<Document, DatabaseError> {
         let db = match open_database() {
-            Some(x) => x,
+            Ok(x) => x,
             Err(err) => { return Err(err); }
         };
         match db.load("document_1") {
-            Some(x) => x,
+            Ok(x) => x,
             Err(err) => { return Err(err); }
         }
     }
