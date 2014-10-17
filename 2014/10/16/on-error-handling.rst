@@ -95,8 +95,8 @@ handling is very involved.
 In some other languages like C the errors typically are an in-band signal
 that indicates that something went wrong and an some state elsewhere that
 you can query to figure out what happened.  This is by far the worst
-because it requires that something holds state for you but it's reasonable
-flexible.
+because it requires that something holds state for you but it's
+reasonably flexible.
 
 The Python interpreter for instance has a thread local variable that
 contains the "interpreter state" which holds a reference to the last
