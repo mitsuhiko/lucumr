@@ -5,3 +5,6 @@ canonical_url: http://lucumr.pocoo.org/
 modules:
   pygments:
     style: tango
+feed:
+  name: Armin Ronacher's Thoughts and Writings
+  subtitle: Armin Ronacher's personal blog about programming, games and random thoughts that come to his mind.
