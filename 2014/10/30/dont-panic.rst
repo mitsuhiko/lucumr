@@ -69,7 +69,7 @@ One of my favorite examples is that the `rustc` compiler's pretty printing
 will cause an internal compiler error when piped into `less` and less is
 closed with the `q` key because the pipe is shutting down::
 
-    $ rustc a-long-exapmle.rs --pretty=expanded|less
+    $ rustc a-long-example.rs --pretty=expanded|less
     error: internal compiler error: unexpected failure
     note: the compiler hit an unexpected failure path. this is a bug.
     note: we would appreciate a bug report: http://doc.rust-lang.org/complement-bugreport.html
