@@ -39,10 +39,10 @@ The second way to indicate failure is a panic.  Unlike value carriers
 which are passed through the stack explicitly in the form of return
 values, panics fly through the stack until they arrive at the frame of the
 task in which case they will terminate it.  Panics are for all intents and
-purposes task failures.  The way the work is by unwinding the stack slice,
-invoking cleanup code at each level and finally terminate the task.
-Panics are intended for situations where the runtime runs out of choices
-about how to deal with this failure.
+purposes task failures.  The way this works is by unwinding the stack
+slice by slice, invoking cleanup code at each level and finally terminate
+the task.  Panics are intended for situations where the runtime runs out
+of choices about how to deal with this failure.
 
 Why the Panic?
 --------------
@@ -57,13 +57,13 @@ fact, your rust Hello World example can panic if invoked the wrong way::
     $ ./hello 1< /dev/null
     task '<main>' panicked at 'failed printing to stdout: Bad file descriptor'
 
-The "task panicked" message a task responding to a panic.  It immediately
-stops doing what it does and prints an error message to stderr.  It's a
-very prevalent problem unfortunately with the APIs currently as people do
-not want to deal with explicit error handling through value carriers and
-as such use the APIs that just fail the task (like `println`).  That all
-the tutorials in Rust also go down this road because it's easier to read
-is not exactly helping.
+The "task panicked" message is a task responding to a panic.  It
+immediately stops doing what it does and prints an error message to
+stderr.  It's a very prevalent problem unfortunately with the APIs
+currently as people do not want to deal with explicit error handling
+through value carriers and as such use the APIs that just fail the task
+(like `println`).  That all the tutorials in Rust also go down this road
+because it's easier to read is not exactly helping.
 
 One of my favorite examples is that the `rustc` compiler's pretty printing
 will cause an internal compiler error when piped into `less` and less is
