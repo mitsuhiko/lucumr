@@ -184,7 +184,8 @@ merging the fix/patch and for maintaining it in the future.
 This keeps the gamification out and makes the process very transparent for
 everybody.  Right now my problem with bountysource is that I am afraid it
 would bring up the topic of money too much and complicate things (why did
-you not merge my fix bug did it yourself?  Where is my money?) etc.
+you not merge my fix / patch.  Why did you do it yourself?  Where is my
+money?) etc.
 
 But whatever you do, do not make Bitcoin your feature, solve an actual
 problem.  And solve it in a way that I can declare my taxes and sleep well
