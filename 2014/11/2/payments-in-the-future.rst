@@ -55,7 +55,7 @@ system and many other things.  These payments cover all kinds of things
 that are related to human beings.  For instance if a woman gets pregnant
 and stops working, those payments come of a pool of money that was
 allocated through these measures.  Each child in Austria gets support
-payments from the state and so forth.  There is a lot of things that are
+payments from the state and so forth.  There are a lot of things that are
 paid out of the pool of things you do not see normally.  From the amount
 that you get in the end, you also pay taxes.  Those taxes are used for
 highways, kindergartens, schools, universities and lots of other things.
