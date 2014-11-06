@@ -144,7 +144,7 @@ error useful.  It looks like this:
 
         fn cause(&self) -> Option<&error::Error> {
             match *self {
-                IoError(ref err) => Some(&*err as &error::Error),
+                IoError(ref err) => Some(err as &error::Error),
                 _ => None,
             }
         }
