@@ -137,7 +137,7 @@ error useful.  It looks like this:
 
         fn detail(&self) -> Option<String> {
             match self {
-                &BadStatusCode(code) => format!("status code was {}", code),
+                &BadStatusCode(code) => Some(format!("status code was {}", code)),
                 _ => None,
             }
         }
@@ -145,7 +145,7 @@ error useful.  It looks like this:
         fn cause(&self) -> Option<&error::Error> {
             match self {
                 &IoError(ref err) => Some(&*err as &error::Error),
-                _ => {},
+                _ => None,
             }
         }
     }
