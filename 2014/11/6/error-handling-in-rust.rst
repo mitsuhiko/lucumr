@@ -295,11 +295,11 @@ can happen very regularly:
 
     impl error::Error for LibError {
         fn description(&self) -> &str {
-            match self {
-                &EntryMissing => "entry is missing",
-                &BadFileFormat => "a bad file format encountered",
-                &CouldNotOpenFile => "unable to open file",
-                &InternalError => "an internal error occurred",
+            match *self {
+                EntryMissing => "entry is missing",
+                BadFileFormat => "a bad file format encountered",
+                CouldNotOpenFile => "unable to open file",
+                InternalError => "an internal error occurred",
             }
         }
     }
@@ -337,16 +337,16 @@ entirely.  This allows you to keep the original cause around:
 
     impl error::Error for LibError {
         fn description(&self) -> &str {
-            match self {
-                &EntryMissing => "entry is missing",
-                &BadFileFormat => "a bad file format encountered",
-                &IoError(_) => "an I/O error occurred",
+            match *self {
+                EntryMissing => "entry is missing",
+                BadFileFormat => "a bad file format encountered",
+                IoError(_) => "an I/O error occurred",
             }
         }
 
         fn cause(&self) -> Option<&error::Error> {
-            match self {
-                &IoError(ref err) => Some(&*err as &error::Error),
+            match *self {
+                IoError(ref err) => Some(&*err as &error::Error),
                 _ => {},
             }
         }
@@ -383,16 +383,16 @@ where available:
 
     impl error::Error for LibError {
         fn description(&self) -> &str {
-            match self {
-                &EntryMissing { .. } => "entry is missing",
-                &BadFileFormat => "a bad file format encountered",
-                &IoError(_) => "an I/O error occurred",
+            match *self {
+                EntryMissing { .. } => "entry is missing",
+                BadFileFormat => "a bad file format encountered",
+                IoError(_) => "an I/O error occurred",
             }
         }
 
         fn detail(&self) -> Option<String> {
-            match self {
-                &EntryMissing { name: n } => Some(format!("Name of entry: {}", n)),
+            match *self {
+                EntryMissing { name: n } => Some(format!("Name of entry: {}", n)),
                 _ => {}
             }
         }
@@ -441,10 +441,10 @@ be infrequent but carry a lot of information when they happen:
 
     impl error::Error for LibError {
         fn description(&self) -> &str {
-            match self.kind {
-                &EntryMissing => "entry is missing",
-                &BadFileFormat => "a bad file format encountered",
-                &IoError(_) => "an I/O error occurred",
+            match *self.kind {
+                EntryMissing => "entry is missing",
+                BadFileFormat => "a bad file format encountered",
+                IoError(_) => "an I/O error occurred",
             }
         }
 
