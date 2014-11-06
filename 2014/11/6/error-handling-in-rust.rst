@@ -4,8 +4,8 @@ summary: |
   Overview of how to handle errors in the current version of the Rust
   programming language.
 
-Error Handling in Rust
-======================
+Improved Error Handling in Rust
+===============================
 
 Rust just got a huge update: it landed multidispatch and the `FromError
 trait
