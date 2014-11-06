@@ -129,22 +129,22 @@ error useful.  It looks like this:
 
     impl error::Error for LibError {
         fn description(&self) -> &str {
-            match self {
-                &BadStatusCode => "bad status code",
-                &IoError(err) => "encountered an I/O error",
+            match *self {
+                BadStatusCode => "bad status code",
+                IoError(err) => "encountered an I/O error",
             }
         }
 
         fn detail(&self) -> Option<String> {
-            match self {
-                &BadStatusCode(code) => Some(format!("status code was {}", code)),
+            match *self {
+                BadStatusCode(code) => Some(format!("status code was {}", code)),
                 _ => None,
             }
         }
 
         fn cause(&self) -> Option<&error::Error> {
-            match self {
-                &IoError(ref err) => Some(&*err as &error::Error),
+            match *self {
+                IoError(ref err) => Some(&*err as &error::Error),
                 _ => None,
             }
         }
