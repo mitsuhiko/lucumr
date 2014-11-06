@@ -347,7 +347,7 @@ entirely.  This allows you to keep the original cause around:
         fn cause(&self) -> Option<&error::Error> {
             match *self {
                 IoError(ref err) => Some(&*err as &error::Error),
-                _ => {},
+                _ => None,
             }
         }
     }
