@@ -453,7 +453,7 @@ be infrequent but carry a lot of information when they happen:
         }
 
         fn cause(&self) -> Option<&error::Error> {
-            self.cause.map(|x| &x as &error::Error)
+            self.cause.as_ref()
         }
     }
 
