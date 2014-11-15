@@ -9,6 +9,9 @@ and recordings if available.
 2014
 ----
 
+-   `Let's Talk About Templates
+    <https://speakerdeck.com/mitsuhiko/lets-talk-about-templates>`__ @ Django
+    under the Hood 2014 (`PDF <http://dev.pocoo.org/~mitsuhiko/Templates.pdf>`__)
 -   `Writing Secure APIs <https://speakerdeck.com/mitsuhiko/writing-secure-apis>`__ @ PyCon Russia 2014 (`PDF <http://dev.pocoo.org/~mitsuhiko/SecureAPIs.pdf>`__)
 -   `SSL, CAs and keeping your stuff safe <https://speakerdeck.com/mitsuhiko/ssl-cas-and-keeping-your-stuff-safe>`__
     @ PyGrunn 2014 (`PDF <http://dev.pocoo.org/~mitsuhiko/SSL.pdf>`__)
