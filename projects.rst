@@ -47,6 +47,8 @@ Open Source Libraries
 -   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — a wrapper around pip
     for script installation. *2014-* *
 -   `unp <https://github.com/mitsuhiko/unp>`_ — an unpacking shell script. *2014-* *
+-   `redis-rs <https://github.com/mitsuhiko/redis-rs>`_ — a redis driver
+    for Rust. *2014-* *
 
 Open Source Applications
 ------------------------
@@ -76,6 +78,9 @@ Computer Games
     backend. *2012-*
 -   `Dirty Bomb <http://dirtybomb.nexon.net/>`_ — online services and game
     backend. *2012-*
+-   `Halo: The Master Chief Collection
+    <http://en.wikipedia.org/wiki/Halo:_The_Master_Chief_Collection>`_ —
+    online services consulting. *2014-*
 
 Websites
 --------
