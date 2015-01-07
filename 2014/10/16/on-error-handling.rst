@@ -29,7 +29,7 @@ to if there is nobody who can pick up on your problem or if the problem is
 just of a nature that does not permit any error handling.
 
 At present a result is as good as it gets.  A type ``Result<T, E>`` has
-two possible states in which it can be: ``OK(T)`` or ``Err(E)``.  So it
+two possible states in which it can be: ``Ok(T)`` or ``Err(E)``.  So it
 either succeeded with an object of value ``T`` or it failed with an object
 of value ``E``.
 
