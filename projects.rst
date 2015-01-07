@@ -71,7 +71,7 @@ Commercial Projects
 Computer Games
 --------------
 
--   `Batman Arkahm Origins
+-   `Batman Arkham Origins
     <http://en.wikipedia.org/wiki/Batman:_Arkham_Origins>`_ — parts of online
     services code and backend. *2012-2013*
 -   `RAD Soldiers <http://www.warchest.com/games/radsoldiers>`_ — game
