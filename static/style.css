@@ -1,29 +1,27 @@
 /* fonts */
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic);
-@import url(http://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic,300,300italic&subset=latin,latin-ext);
-@import url(http://fonts.googleapis.com/css?family=IM+Fell+English:400italic&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic|Merriweather:400,700,400italic,700italic,300,300italic|Jim+Nightshade);
 
 /* general style */
 body    { font: 17px/25px 'Merriweather', serif;
-          margin: 0; padding: 0; font-weight: 300; color: black; }
-a       { color: black; font-weight: 400; }
-a:hover { color: #14A5E3; }
+          margin: 0; padding: 0; font-weight: 400; color: black; }
+a       { color: #834d24; font-weight: 400; }
+a:hover { color: #ce702c; }
 
 /* headlines */
-h1, h2, h3, h4, h5, h6      { font-family: 'IM Fell English', serif;
-                              font-weight: 400; font-style: italic; color: #0C4761; }
+h1, h2, h3, h4, h5, h6      { font-family: 'Jim Nightshade', serif;
+                              font-weight: 400; color: #ce702c; }
 h1 a, h2 a, h3 a, h4 a,
 h5 a, h6 a                  { text-decoration: none; }
 h1 a:hover, h2 a:hover,
 h3 a:hover, h4 a:hover      { text-decoration: underline; }
-h1, h2                      { margin: 10px 0 25px 0; }
-h2                          { margin: 25px 0 15px 0; }
-h1                          { font-size: 48px; line-height: 54px; }
-h2                          { font-size: 38px; line-height: 42px; }
-h3                          { font-size: 32px; line-height: 34px; }
+h1                          { margin: 15px 0 25px 0; }
+h2                          { margin: 25px 0 10px 0; }
+h1                          { font-size: 52px; line-height: 56px; }
+h2                          { font-size: 42px; line-height: 44px; }
+h3                          { font-size: 36px; line-height: 38px; }
 
 /* layout elements */
-div.container               { max-width: 900px; margin: 48px auto; padding: 0 40px; }
+div.container               { max-width: 880px; margin: 48px auto; padding: 0 40px; }
 div.header                  { float: left; }
 div.navigation              { float: right; }
 div.header, div.navigation  { height: 25px; margin-bottom: 42px; }
@@ -31,9 +29,9 @@ div.navigation ul           { margin: 0; padding: 0; list-style: none; }
 div.navigation ul li        { display: inline; margin: 0 2px; padding: 0; }
 div.body                    { clear: both; }
 div.footer                  { margin-top: 55px; font-size: 16px;
-                              text-align: right; color: #76A4B8; }
+                              text-align: right; color: #795d48; }
 div.footer p                { margin: 0; }
-div.footer a                { color: #76A4B8; }
+div.footer a                { color: #795d48; }
 
 /* margins and stuff */
 p, div.line-block, ul, ol, pre,
@@ -72,12 +70,12 @@ div.entry-overview div.summary p    { display: inline; line-height: 25px; }
 div.entry-overview h1               { margin: 0; font-size: 17px; font-weight: 700;
                                       font-family: 'Merriweather', serif; }
 div.entry-overview h1:after         { content: " —"; color: black; }
-div.entry-overview h1 a             { color: #0C4761; }
+div.entry-overview h1 a             { color: #ce702c; }
 div.entry-overview div.summary,
 div.entry-overview div.date,
 div.entry-overview div.summary p    { margin: 0; padding: 0; }
 div.entry-overview div.detail       { margin-left: 140px; }
-div.entry-overview div.date         { float: left; width: 120px; color: #1080B0;
+div.entry-overview div.date         { float: left; width: 120px; color: #67635f;
                                       text-align: right; font-style: italic;
                                       font-size: 14px; }
 
