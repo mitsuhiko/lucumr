@@ -20,7 +20,7 @@ Git's Horrible UI
 -----------------
 
 I suppose anyone who comes from any version control system to git will be
-quickly surprised by it's utter lack of consistency in the UI.  Steve Losh
+quickly surprised by its utter lack of consistency in the UI.  Steve Losh
 famously made fun of this in his `git koans
 <http://stevelosh.com/blog/2013/04/git-koans/>`_.
 
@@ -68,14 +68,14 @@ still … `rough I would say
 <https://raw.githubusercontent.com/git/git/c7c4bbe63193f580abd2460e96dd7e65f2d4904c/Documentation/tutorial.txt>`_.
 
 Git didn't start as a version control system, it started as a concept that
-other tools could build a version control system on top.  And this set a
-very different tone for how it developed than many other systems.
+other tools could use to build a version control system on top.  And this
+set a very different tone for how it developed than many other systems.
 
 Surely git changed over the last 10 years and some concepts were changed,
 but in the grant scheme of things it has not changed much.  There is a
 certain beauty in being able to create a repository in git from 2005, doing
 another commit with git from 2015, doing another commit with git from 2005
-and looking at the resulting log with a git from 2015.
+and looking at the resulting log with git from 2015.
 
 The core concept of git has not changed.
 
