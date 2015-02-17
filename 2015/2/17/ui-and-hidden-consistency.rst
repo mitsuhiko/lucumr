@@ -63,7 +63,7 @@ dance:
 
     echo "Commit message" | git-commit-tree $(git-write-tree) > .git/HEAD
 
-Only later a alias for commit was added, and even then the tutorial was
+Only later an alias for commit was added, and even then the tutorial was
 still … `rough I would say
 <https://raw.githubusercontent.com/git/git/c7c4bbe63193f580abd2460e96dd7e65f2d4904c/Documentation/tutorial.txt>`_.
 
@@ -128,7 +128,7 @@ memories of me making mistakes in other version control systems where it
 was either impossible or required the assistance of a developer of such
 system to get out of my misery.
 
-Neither did it broke because I misused it nor did it broke out of its own
+Neither did it break because I misused it nor did it broke out of its own
 volition.  I can't say the same thing about any other version control
 system I used.  I successfully broke many subversion checkouts (even
 destroyed the database on the server), screwed up perforce workspaces and
