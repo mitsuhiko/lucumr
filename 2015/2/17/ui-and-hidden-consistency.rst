@@ -10,7 +10,7 @@ Why I Don't Hate Git: Hidden Consistency
 Git for me is an interesting topic.  I used it initially when git had no
 UI and `cogito <http://git.or.cz/cogito/>`_ was still a thing.  I can't
 say I enjoyed using it much.  At the time I did all my development tasks
-with SVN and the world as good.  A little while later I played around with
+with SVN and the world was good.  A little while later I played around with
 mercurial and instantly fell in love.  I held onto mercurial for a long
 time and defended it vigorously.  Only in 2008 did I finally start to use
 git and it took me multiple attempts until I was convinced that I should
