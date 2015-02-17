@@ -135,7 +135,7 @@ destroyed the database on the server), screwed up perforce workspaces and
 entire mercurial repositories.
 
 The worst that ever happened to me using git is that my Flask repositories
-for all entirety will contain some bad file permissions on old tree
+for all eternity will contain some bad file permissions on old tree
 records due to a temporary github bug.
 
 More of This
