@@ -72,7 +72,7 @@ other tools could use to build a version control system on top.  And this
 set a very different tone for how it developed than many other systems.
 
 Surely git changed over the last 10 years and some concepts were changed,
-but in the grant scheme of things it has not changed much.  There is a
+but in the grand scheme of things it has not changed much.  There is a
 certain beauty in being able to create a repository in git from 2005, doing
 another commit with git from 2015, doing another commit with git from 2005
 and looking at the resulting log with git from 2015.
