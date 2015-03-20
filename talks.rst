@@ -6,6 +6,13 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+2015
+----
+
+-   `10 Years of Python Libraries
+    <https://speakerdeck.com/mitsuhiko/10-years-of-python-libraries>`__
+    @ PiterPy 2015 (`PDF <http://mitsuhiko.pocoo.org/OpenSource.pdf>`__)
+
 2014
 ----
 
