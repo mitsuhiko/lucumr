@@ -23,7 +23,7 @@ Open Source Libraries
 -   `Jinja <http://jinja.pocoo.org/>`_ — template engine for Python.  *2006-*
 -   `Ruty <http://ruty.rubyforge.org/>`_ — a port of Django templates to Ruby.  *2007*
 -   `Twig <http://www.twig-project.org/>`_ — a Django-inspired template
-    engine for PHP (basic implementation, now part of Symphony)
+    engine for PHP (2007; initial implementation)
 -   `phpserialize <http://pypi.python.org/pypi/phpserialize>`_ —
     implementation of the PHP serialization for Python. *2007*
 -   `Sphinx <http://sphinx.pocoo.org/>`_ — a Python documentation tool.  *2007-*
