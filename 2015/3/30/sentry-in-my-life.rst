@@ -38,7 +38,7 @@ I've known David Cramer for many years now (the original creator of
 Sentry).  There was a lot of talk about us working together in the past,
 but things never quite worked out.  Now that he and his co-founder Chris
 Jennings decided to scale up the Sentry operations and do this full-time I
-decided to join them in their endevours.
+decided to join them in their endeavours.
 
 Initially we're going to focus on making Sentry the best that it can be,
 but you can probably expect some cool Open Source technology coming from
