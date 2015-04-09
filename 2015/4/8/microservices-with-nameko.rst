@@ -9,7 +9,7 @@ Nameko for Microservices
 
 In December some of the tech guys at `onefinestay
 <http://www.onefinestay.com/>`_ invited me over to London to do some
-general improvements on their their `nameko
+general improvements on their `nameko
 <http://nameko.readthedocs.org/en/latest/>`_ library.  This collaboration
 came together because nameko was pretty similar to how I generally like to
 build certain infrastructure and I had some experience with very similar
