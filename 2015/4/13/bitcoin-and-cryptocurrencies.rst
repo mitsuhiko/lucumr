@@ -8,21 +8,20 @@ Bitcoin is Not a Good Consumer Product
 ======================================
 
 Writing critical essays about Bitcoin is probably not a very good idea,
-judging by past feedback on tweets.  However I the topic is burning on my
+judging by past feedback on tweets.  However the topic is burning on my
 heart and I really want to share my thoughts about it once and for all
-because I get more and more the feeling I live in crazy land.  I think
-Bitcoin brings out the worst in people and I want to debate about why that
-might be.
+since I'm getting more and more the feeling I live in crazy land.  Bitcoin
+brings out the worst in people.
 
 I really do not believe that Bitcoin (or any other cryptocurrency for that
 matter) is a viable consumer product.  Not now and not in 50 years.  More
-than that I feel like we're all wasting a lot of time and money trying to
+than that it feels like we're all wasting a lot of time and money trying to
 figure out what to do with Bitcoin.
 
-This is really not a very technical post because I don't think there is
-much that should be said about Bitcoin.  While it might be a revolution in
-thinking, it's slow and wasteful and completely incapable of handling
-transactions on the volume of our banking system by itself.
+This is really not a very technical post because there is not much that
+should be said about Bitcoin on a technical level.  While it might be a
+revolution in thinking, it's slow and wasteful and completely incapable of
+handling transactions on the volume of our banking system by itself.
 
 If Bitcoin wins as technology then because the actual use of the
 technology works for large money transmitters (banks, credit card
@@ -34,19 +33,17 @@ Bitcoin the What Exactly?
 
 Bitcoin is many things at once, and that makes it hard to write about it.
 It's an economic system, a currency, a distributed ledger and a community
-and some bizarre investment vehicle with ponzi incentives.  In this essay
-I'm going to look at the different areas and explain why I'm have such a
-strong disagreement with them.
+and some bizarre investment vehicle with ponzi incentives.
 
 The Need for Change
 -------------------
 
-First of all I want to point out that I definitely see the need for change
-in the financial system and I have very little doubt that change is not
-coming.  The way current transactions clear is pretty ridiculous given how
-far we have advanced with technology in other areas.  If Bitcoin was just
-that, I would embrace it in a heartbeat.  Unfortunately Bitcoin is 10%
-technology and `90% politics
+I do want to point out that I definitely see the need for change in the
+financial system and I have very little doubt that change is not coming.
+The way current transactions clear is pretty ridiculous given how far we
+have advanced with technology in other areas.  If Bitcoin was just that, I
+would embrace it in a heartbeat.  Unfortunately Bitcoin is 10% technology
+and `90% politics
 <http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2589890>`_.
 
 I absolutely do not agree with the idea that in the process of improving
@@ -275,17 +272,17 @@ new transactions.  Lastly the `Online Banking Experience
 <https://mygeorge.at/>`_ is beautifully designed and just fun to use.
 
 Sure, not all banks are the same, but I have never been so happy to send
-people money.  It's fun, and it's magical when I compare that to a few
-years ago.  It also shows you how ridiculously fast the credit card
-network is.  I bought a ticket via my Mastercard for the train to the
-airport once, but the machine was out of paper after charging my card.  It
-managed to print the receipt but not the ticket.  Before the machine even
-managed to start printing the first thing I already received a text that
-my card was charged.  Before the error occurred on the device, I got a
-refund confirmation on my phone.  The whole operation took less than 5
-seconds but the Mastercard network already processed two transactions and
-did that through systems interconnected to my bank.  Say what you want,
-but banks modernize.
+people money.  It's fun, and it's magical and when compared to a few years
+ago it's just very impressive to see how times change.  It also shows you
+how ridiculously fast the credit card network is.  I bought a ticket via
+my Mastercard for the train to the airport once, but the machine was out
+of paper after charging my card.  It managed to print the receipt but not
+the ticket.  Before the machine even managed to start printing the first
+thing I already received a text that my card was charged.  Before the
+error occurred on the device, I got a refund confirmation on my phone.
+The whole operation took less than 5 seconds but the Mastercard network
+already processed two transactions and did that through systems
+interconnected to my bank.  Say what you want, but banks modernize.
 
 Not that most non technical people care about this stuff anyways.  But
 they care about being able to pay conveniently and to send money around
