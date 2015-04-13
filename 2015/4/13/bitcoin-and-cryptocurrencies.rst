@@ -61,7 +61,7 @@ The Technical Bits
 ------------------
 
 Bitcoin is hailed as the bit technological innovation.  It has been
-compared with the invention of the internet.  At it's core it's a very
+compared with the invention of the internet.  At its core it's a very
 simple system but hidden behind a lot of finance-theory mumbojumbo that
 makes things appear more complex than they are.
 
