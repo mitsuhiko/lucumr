@@ -379,14 +379,12 @@ On the one hand there are already established systems like `Transferwise
 <http://transferwise.com/>`_ for making international payments cheaper
 already now, there is `Western Union <http://www.westernunion.com/>`_
 which despite all the bad reputation it has, is a life saver for many
-people out there.
+people out there.  One should not discredit old financial institutions
+that innovate.  There are many banks who are doing great work in revamping
+their offerings.
 
 On the other hand there are really interesting newcomers such as `Ripple
 <https://ripple.com/>`_ and `Stellar <https://www.stellar.org/>`_ which
 try to build decentralized payment systems that do not come with their own
 world-view but try to integrate into our modern banking world.  I think
 they deserve much more attention than they currently get.
-
-Lastly one should not discredit old financial institutions that innovate.
-There are many banks who are doing great work in revamping their
-offerings.
