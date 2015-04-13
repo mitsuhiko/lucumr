@@ -16,6 +16,7 @@ h1 a:hover, h2 a:hover,
 h3 a:hover, h4 a:hover      { text-decoration: underline; }
 h1                          { margin: 15px 0 25px 0; }
 h2                          { margin: 25px 0 10px 0; }
+h3                          { margin: 35px 0 10px 0; }
 h1                          { font-size: 52px; line-height: 56px; }
 h2                          { font-size: 42px; line-height: 44px; }
 h3                          { font-size: 36px; line-height: 38px; }
