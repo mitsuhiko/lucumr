@@ -28,13 +28,6 @@ technology works for large money transmitters (banks, credit card
 companies) and not a typical end user.  I do however believe that for
 those applications other systems are more appropriate than Bitcoin.
 
-Bitcoin the What Exactly?
--------------------------
-
-Bitcoin is many things at once, and that makes it hard to write about it.
-It's an economic system, a currency, a distributed ledger and a community
-and some bizarre investment vehicle with ponzi incentives.
-
 The Need for Change
 -------------------
 
@@ -56,6 +49,13 @@ technical bits of Bitcoin, you might want to monitor those projects
 instead.
 
 But enough about that, let's look at Bitcoin and friends.
+
+Bitcoin the What Exactly?
+-------------------------
+
+Bitcoin is many things at once, and that makes it hard to write about it.
+It's an economic system, a currency, a distributed ledger and a community
+and some bizarre investment vehicle with ponzi incentives.
 
 The Technical Bits
 ------------------
