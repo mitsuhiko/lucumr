@@ -183,7 +183,7 @@ Bitcoin for Criminals
 This is without a doubt, the most promising area for Bitcoin: the criminal
 element.  There is not a day where a Bitcoin exchange gets hacked, or
 someone uses Bitcoin as a way to extort money out of people.  Not exactly
-surprising because Bitcoin's biggest “strength” is it's inability to link
+surprising because Bitcoin's biggest “strength” is its inability to link
 Bitcoin transactions to individuals and the irreversibility of them.
 
 However independently of if Bitcoin was created as a ponzi scheme or not,
