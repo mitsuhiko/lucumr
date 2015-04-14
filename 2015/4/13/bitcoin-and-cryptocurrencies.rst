@@ -238,7 +238,7 @@ Bitcoin for the Deceased
 ````````````````````````
 
 While dead people are clearly not a customer base for Bitcoin, dead people
-are a fact of live.  People die, and usually in the worst possible moment.
+are a fact of life.  People die, and usually in the worst possible moment.
 One thing that many dead people have are assets and a significant number
 of dead people also have next of kins that would like to inherit
 something.  When one of my childhood friends unexpectedly passed away I
