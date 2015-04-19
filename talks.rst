@@ -11,7 +11,8 @@ and recordings if available.
 
 -   `10 Years of Python Libraries
     <https://speakerdeck.com/mitsuhiko/10-years-of-python-libraries>`__
-    @ PiterPy 2015 (`PDF <http://dev.pocoo.org/~mitsuhiko/OpenSource.pdf>`__)
+    @ PiterPy 2015 (`recording <https://www.youtube.com/watch?v=GJM_QT3GJd0>`__,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/OpenSource.pdf>`__)
 
 2014
 ----
