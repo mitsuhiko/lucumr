@@ -39,10 +39,20 @@ ticket.  It however leaves out a perfectly reasonable affordance which is
 the idea of riding the train without paying for it.  Now obviously one
 could argue that the whole point of the gate is to prevent this from
 happening but there are plenty of situations in which it would be entirely
-legitimate to ride the train without a ticket: emergencies.
+legitimate to ride the train without a ticket.  A good example for that
+are emergencies.  You cannot really talk to a ticket gate and make your
+point, it's a soul-less thing.
 
-When you take a very strong stance on an issue it's important to not just
-consider the world in which everything goes by plan.
+This is less of an issue for public transportation but it would become a
+bigger one for cars but cars do not (yet?) enforce laws themselves.  There
+are plenty of people that are not legally allowed to drive a car under
+normal circumstances but should not be prevented from driving a car in
+emergency situations.
+
+I'm not going to discuss whether digital enforcement is a good thing or
+not, more that when you take such a strong stance on an issue it's
+important to not just consider the situations in which everything goes by
+design.
 
 Which leads me to the concept of encrypting everything.  There is the idea
 that “there is no such thing as insensitive web traffic” and that the
@@ -55,23 +65,27 @@ actors including governments and system administrators.
 Traditionally many institutions and professions and their customers had
 legitimate reasons for why they want encryption.  That includes banks and
 lawyers for instance.  But not everybody is entitled to privacy in all
-situations.  For instance convicted criminals are not but many lawful
-professions need to be heavily surveyed for security.  That privacy and
-safety stand in a big conflict was recently quite dramatically
+situations.  For instance convicted criminals are not.  Likewise many
+lawful professions need to be heavily surveyed for security.  That privacy
+and safety stand in a big conflict was recently quite dramatically
 demonstrated when a pilot hid his psychological problems from his employer
 and intentionally caused a plane to crash.
+
+However encryption is like a ticket gate in the sense, that there is no
+way around it.  For nobody (if it works).  This has a lot consequences I
+think we did not yet discuss as a society.
 
 The Cost of Encryption
 ----------------------
 
-Encryption is (when implemented properly) a very binary enforcement: there
+When implemented properly, encryption is a very binary enforcement: there
 is no way around it.  It's something that we as developers like very much
 because it just “makes sense” to us.  But it does not come for free.
 
 First of all encryption cannot stand on it's own, it needs the concept of
 trust.  The most common form of encryption these days is SSL where the
 user does not really have much of a choice in defining trust.  The trust
-there is acquired by giving someone at a specific (private!) instituation
+there is acquired by giving someone at a specific (private!) institution
 money and a copy of a passport.  This system does not scale, and the
 number of SSL hosts is exploding.  Now that everybody and their dog uses
 SSL on their blogs the total stress put on this system is even larger than
@@ -83,22 +97,23 @@ meaningless and puts more and more emphasis on who and for whom things are
 signed.
 
 There is another cost and that's the actual cost in CPU cycles.  SSL is
-bloody expensive.  First of all there are still services which do not
-support SNI, so SSL is a big factor in exhausting the IPv4 address space
-faster than we would otherwise need.  As an alternative you can fall back
-to many subject alternative names on your certificate.  This is being
-executed to ludicrous degrees due to our instance on the use of SSL.  The
-frontend that does SSL offloading for firebase.com for instance currently
-lists more than 580 subject alternative names.  Not only does that mean
-that you are downloading a really big certificate, but also that the SSL
-encryption is a bit of a lie for you as a user.  The certificate in front
-of “firebase” is also good for “tappinass”.  Sure enough, neither firebase
-nor that other website are holding the private keys to the cert, so they
-cannot impersonate each other, but their CDN provider can.  Don't get me
-wrong, there is nothing wrong with that because they chose to outsource
-this to their CDN, but from a user's perspective this sort of SSL
-deployment does not actually guarantee that the communication is secure
-from their side until they hit the intended server.
+bloody expensive compared to not doing it.  First of all there are still
+services which do not support SNI, so SSL is a big factor in exhausting
+the IPv4 address space faster than we would otherwise need.  As an
+alternative you can fall back to many subject alternative names on your
+certificate.  This is being executed to ludicrous degrees due to our
+instance on the use of SSL.  The frontend that does SSL offloading for
+firebase.com for instance currently lists more than 580 subject
+alternative names.  Not only does that mean that you are downloading a
+really big certificate, but also that the SSL encryption is a bit of a lie
+for you as a user.  The certificate in front of “firebase” is also good
+for “tappinass”.  Sure enough, neither firebase nor that other website are
+holding the private keys to the cert, so they cannot impersonate each
+other, but their CDN provider can.  Don't get me wrong, there is nothing
+wrong with that because they chose to outsource this to their CDN, but
+from a user's perspective this sort of SSL deployment does not actually
+guarantee that the communication is secure from their side until they hit
+the intended server.
 
 SSL scales really badly *intentionally*.  Until fairly recently there was
 no real way to scale SSL without handing over your private keys to a your
@@ -106,21 +121,25 @@ frontend SSL machines.  (Cloudflare outline their `Keyless SSL method
 here <https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/>`_).
 The cost of deploying SSL should not be underestimated, and forcing SSL on
 people out of principle should consider that.  Not everything needs
-encryption.
+encryption.  Especially in cases of big emergencies, being able to access
+information is crucial.  The first thing Germanwings did after their
+horrific crash when their website was down was to replace it with a static
+HTML page (unencrypted) with a phone number you could call if you were
+affected.
 
 Government Interception
 -----------------------
 
-The biggest cost of encryption however is lawful interception.  This is
-not the place to discuss if governments should have the ability to
-intercept your internet traffic or not but in many cases they have that
-right.  So given a government that is allowed to rule a website illegal
-there are two ways to get the website offline.  One involves going to the
-hosting provider of that website and tell them to shut it down.  This can
-be very tricky because the website is typically hosted in another country.
-The second method is to go to the local ISP and tell them to disable
-access to it.  The rather is the better option in the sense that it only
-affects the citizens of that country and it isolates the problem.
+A big cost of encryption however is lawful interception.  This is not the
+place to discuss if governments should have the ability to intercept your
+internet traffic or not but in many cases they have that right.  So given
+a government that is allowed to rule a website illegal there are two ways
+to get the website offline.  One involves going to the hosting provider of
+that website and tell them to shut it down.  This can be very tricky
+because the website is typically hosted in another country.  The second
+method is to go to the local ISP and tell them to disable access to it.
+The rather is the better option in the sense that it only affects the
+citizens of that country and it isolates the problem.
 
 Unfortunately, SSL prevents this.  Unfortunately because it means that if
 a website hosts partially illegal shared content, then the whole website
