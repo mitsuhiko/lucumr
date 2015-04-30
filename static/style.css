@@ -23,8 +23,8 @@ h1                          { font-size: 52px; line-height: 56px; }
 h2                          { font-size: 42px; line-height: 44px; }
 h3                          { font-size: 36px; line-height: 38px; }
 
-h1 span.small { color: black; font-size: 32px; display: block; margin-left: 25px;
-                margin-top: -15px; }
+h1 em                       { color: black; font-size: 32px; display: block;
+                              margin-left: 25px; margin-top: -15px; }
 
 /* layout elements */
 div.container               { max-width: 880px; margin: 48px auto; padding: 0 40px; }
