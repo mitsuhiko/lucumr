@@ -82,7 +82,7 @@ When implemented properly, encryption is a very binary enforcement: there
 is no way around it.  It's something that we as developers like very much
 because it just “makes sense” to us.  But it does not come for free.
 
-First of all encryption cannot stand on it's own, it needs the concept of
+First of all encryption cannot stand on its own, it needs the concept of
 trust.  The most common form of encryption these days is SSL where the
 user does not really have much of a choice in defining trust.  The trust
 there is acquired by giving someone at a specific (private!) institution
