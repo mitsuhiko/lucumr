@@ -395,10 +395,10 @@ Unicode
 
 My favorite topic: Unicode :)  This is where Rust and Python differ quite
 a bit.  Python (both 2 and 3) have a very similar Unicode model which is
-to map Unicode data against arrays of characters where a character.  In
-Rust however Unicode strings are always stored as UTF-8.  I have covered
-this in the past about why this is a much better solution than what Python
-or C# are doing (see also `UCS vs UTF-8 as Internal String Encoding
+to map Unicode data against arrays of characters.  In Rust however Unicode
+strings are always stored as UTF-8.  I have covered this in the past about
+why this is a much better solution than what Python or C# are doing (see
+also `UCS vs UTF-8 as Internal String Encoding
 </2014/1/9/ucs-vs-utf8/>`_).  What's however very interesting about Rust
 is how it deals with the ugly reality of our encoding world.
 
