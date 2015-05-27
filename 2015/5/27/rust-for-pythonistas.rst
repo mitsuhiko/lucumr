@@ -214,7 +214,7 @@ work”.  Obviously you can still generate memory leaks but most problems
 will be resolved for you automatically at runtime.
 
 In Rust however there is no garbage collector, yet the memory management
-still works automatically.  This is enabled by a concept know as ownership
+still works automatically.  This is enabled by a concept known as ownership
 tracking.  All things you can create are owned by another thing.  If you
 want to compare this to Python you could imagine that all objects in
 Python are owned by the interpreter.  In Rust ownership is much more
