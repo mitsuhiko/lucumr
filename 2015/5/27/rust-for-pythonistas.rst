@@ -214,7 +214,7 @@ work”.  Obviously you can still generate memory leaks but most problems
 will be resolved for you automatically at runtime.
 
 In Rust however there is no garbage collector, yet the memory management
-still works automatically.  This is enabled by a concept know as ownership
+still works automatically.  This is enabled by a concept known as ownership
 tracking.  All things you can create are owned by another thing.  If you
 want to compare this to Python you could imagine that all objects in
 Python are owned by the interpreter.  In Rust ownership is much more
@@ -319,7 +319,7 @@ the Rust equivalent:
             print "fib({}) = {}".format(i, rv)
 
 So what we do here is spawn 20 threads and make them compute in a very
-terrible manner increasing factorial numbers.  Then we join the threads
+terrible manner increasing Fibonacci numbers.  Then we join the threads
 and print the sorted results.  One thing you immediately notice here is
 that there is no intrinsic relationship between the mutex (the lock) and
 the results array.
