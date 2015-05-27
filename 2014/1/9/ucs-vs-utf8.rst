@@ -69,7 +69,7 @@ presented with potentially misleading characters.  For instance if a
 character did not fit into a single 16 bit unit and needed a second one,
 it was necessary that everything continues working.  If the first one was
 lost in transmission the second one is actually an invalid character that
-can be ignored and accidentally a wrong character.
+can be ignored and not accidentally taken for a wrong character.
 
 In order to achieve that they came up with the concept of surrogate pairs
 to encode characters if they don't fit into ~16 bit.  Essentially UTF-16
