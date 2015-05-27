@@ -318,7 +318,7 @@ the Rust equivalent:
         for i, rv in sorted(results.items()):
             print "fib({}) = {}".format(i, rv)
 
-So what we do here is spawn 20 threads and make them compute in a very
+So what we do here is spawn 35 threads and make them compute in a very
 terrible manner increasing Fibonacci numbers.  Then we join the threads
 and print the sorted results.  One thing you immediately notice here is
 that there is no intrinsic relationship between the mutex (the lock) and
@@ -360,7 +360,7 @@ An Arc reference counts what it encloses.  In this case the mutex.  This
 means that we can make sure the mutex gets deleted only after the last
 thread finished running.  Neat.
 
-So here is how the code works: we count to 20 like in Python, and for each
+So here is how the code works: we count to 35 like in Python, and for each
 of those numbers we run a local function.  Unlike in Python we can use a
 closure here.  Then we make a copy of the Arc into the local thread.  This
 means that each thread sees it's own version of the Arc (internally this
