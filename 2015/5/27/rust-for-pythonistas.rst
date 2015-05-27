@@ -351,14 +351,14 @@ Here is the Rust example:
         }
     }
 
-The big differences to the Python version here is that we use a binary
-tree map instead of a hash table and we put that into an Arc'ed mutex.
-What's that?  First of all we use a binary tree because it sorts
-automatically which is what we want here.  Then we put it into a mutex so
-that we can at runtime lock it.  Relationship established.  Lastly we put
-it into an Arc.  An Arc reference counts what it encloses.  In this case
-the mutex.  This means that we can make sure the mutex gets deleted only
-after the last thread finished running.  Neat.
+The big differences to the Python version here is that we use a B-tree map
+instead of a hash table and we put that into an Arc'ed mutex.  What's
+that?  First of all we use a B-tree because it sorts automatically which
+is what we want here.  Then we put it into a mutex so that we can at
+runtime lock it.  Relationship established.  Lastly we put it into an Arc.
+An Arc reference counts what it encloses.  In this case the mutex.  This
+means that we can make sure the mutex gets deleted only after the last
+thread finished running.  Neat.
 
 So here is how the code works: we count to 20 like in Python, and for each
 of those numbers we run a local function.  Unlike in Python we can use a
@@ -378,8 +378,8 @@ threads, join them and then print the results.
 
 Two things of note here: there are very few visible types.  Sure, there is
 the `Arc` and the Fibonacci function takes unsigned 64bit integers, but
-other than that, no types are visible.  We can also use the binary tree
-map here instead of a hashtable because Rust provides us with such a type.
+other than that, no types are visible.  We can also use the B-tree map
+here instead of a hashtable because Rust provides us with such a type.
 
 Iteration works exactly the same as in Python.  The only difference there
 is that in Rust in this case we need to acquire the mutex because the
