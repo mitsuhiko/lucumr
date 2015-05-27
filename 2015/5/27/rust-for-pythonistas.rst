@@ -318,7 +318,7 @@ the Rust equivalent:
         for i, rv in sorted(results.items()):
             print "fib({}) = {}".format(i, rv)
 
-So what we do here is spawn 20 threads and make them compute in a very
+So what we do here is spawn 35 threads and make them compute in a very
 terrible manner increasing Fibonacci numbers.  Then we join the threads
 and print the sorted results.  One thing you immediately notice here is
 that there is no intrinsic relationship between the mutex (the lock) and
