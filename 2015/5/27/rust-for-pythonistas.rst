@@ -481,7 +481,7 @@ Rust as a Python Replacement?
 
 I don't think there is a direct relationship between Python and Rust.
 Python shines in scientific computing for instance and I don't think that
-this is something that can Rust tackle in the nearest future just because
+this is something that Rust can tackle in the nearest future just because
 of how much work that would be.  Likewise there really is no point in
 writing shell scripts in Rust when you can do that in Python.  That being
 said, I think like many Python programmers started to pick up Go, even
