@@ -8,10 +8,12 @@ development, graphics, realtime rendering and tons of other stuff.  I am
 one of the founding members of the `Pocoo Team <http://pocoo.org>`_ and
 lead developer on a couple of popular Python projects.
 
-I'm currently located in Austria and London and contracting for `Fireteam
-Ltd.  <http://fireteam.net>`_.  I'm available for interesting contract
-work.  Aside from that I do `open source </projects/>`_ development and
-like `giving talks </talks>`_ at various conferences.
+I'm currently located in Austria and London and working as a partner for
+`Sentry <http://www.getsentry.com/>`_ and as an advisor for `Fireteam Ltd.
+<http://fireteam.net>`_.  I'm available for on-site teaching,
+presentations and certain types of short term contract work.  Aside from
+that I do `open source </projects/>`_ development and like `giving talks
+</talks>`_ at various conferences.
 
 If you want to contact me, you can reach me via one of the following
 communication channels:
