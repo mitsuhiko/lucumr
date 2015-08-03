@@ -230,6 +230,38 @@ Something that should go without saying: do not make macros part of your
 API.  A macro is not a symbol and users of languages not based on C will
 hate you for having macros there.
 
+One more note on the ABI stability: it's a very good idea to include
+the version of the library both in the header as well as compiled into
+the binary.  That way you can easily verify that the header matches the
+binary which can save you lots of headaches.
+
+Something like this in the header:
+
+.. sourcecode:: cpp
+
+    #define YL_VERSION_MAJOR 1
+    #define YL_VERSION_MINOR 0
+    #define YL_VERSION ((YL_VERSION_MAJOR << 16) | YL_VERISON_MINOR)
+
+    int yl_get_version(void);
+    int yl_is_compatible_dll(void);
+
+And this in the implementation file:
+
+.. sourcecode:: cpp
+
+    int yl_get_version(void)
+    {
+        return YL_VERSION;
+    }
+
+    int yl_is_compatible_dll(void)
+    {
+        int major = yl_get_version() >> 16;
+        return major == YL_VERSION_MAJOR;
+    }
+
+
 Exporting a C API
 -----------------
 
