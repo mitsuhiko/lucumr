@@ -243,21 +243,21 @@ Something like this in the header:
     #define YL_VERSION_MINOR 0
     #define YL_VERSION ((YL_VERSION_MAJOR << 16) | YL_VERSION_MINOR)
 
-    int yl_get_version(void);
+    unsigned int yl_get_version(void);
     int yl_is_compatible_dll(void);
 
 And this in the implementation file:
 
 .. sourcecode:: cpp
 
-    int yl_get_version(void)
+    unsigned int yl_get_version(void)
     {
         return YL_VERSION;
     }
 
     int yl_is_compatible_dll(void)
     {
-        int major = yl_get_version() >> 16;
+        unsigned int major = yl_get_version() >> 16;
         return major == YL_VERSION_MAJOR;
     }
 
