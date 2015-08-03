@@ -241,7 +241,7 @@ Something like this in the header:
 
     #define YL_VERSION_MAJOR 1
     #define YL_VERSION_MINOR 0
-    #define YL_VERSION ((YL_VERSION_MAJOR << 16) | YL_VERISON_MINOR)
+    #define YL_VERSION ((YL_VERSION_MAJOR << 16) | YL_VERSION_MINOR)
 
     int yl_get_version(void);
     int yl_is_compatible_dll(void);
