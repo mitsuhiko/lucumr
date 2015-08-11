@@ -81,15 +81,15 @@ Passports
     they are not directly linked to citizenship.  More about this later.
 
     A passport gets you across a border and in many cases can act as an
-    universally accepted way to proof something about yourself.  For most
+    universally accepted way to prove something about yourself.  For most
     states in the world the passports follow a generally accepted format
-    which makes them very convenient and they are on of the few documents
+    which makes them very convenient and they are one of the few documents
     you never need to translate.  Because of this, they will become your
     best friend when you are not at home though they are by no means the
     only document you need to reside in another country.
 
-Relationship Citizenship and Passport
--------------------------------------
+Relationship Between Citizenship and Passport
+---------------------------------------------
 
 Most people would assume that having a passport of one country makes you a
 citizen thereof.  That however is not at all correct.  There are different
@@ -110,18 +110,18 @@ where citizenship and nationality becomes unclear.  A person born in
 American Samoa will for all intents and purposes be seen as a US citizen
 as their passport will indicate that they have US nationality.
 
-On the other hand there are many stateless people living in Estona and
+On the other hand there are many stateless people living in Estonia and
 Lativa who are officially stateless.  The reason for this is that they are
 Russian speaking and are either not entitled to Estonian or Latvian
 citizenship or have no interest in applying for one.  They are issued a
-special passport for stateless people which however some some special
-powers an Estonian passport does not have: they can travel to Russia visa
-free.
+special passport for stateless people which grants some special
+powers an Estonian passport does not have: they can travel to Russia
+visa-free.
 
 How Do I Migrate?
 -----------------
 
-This for many is the million dollar question.  How can I immigrate in a
+This for many is the million dollar question.  How can I immigrate to a
 foreign country?  Generally this question heavily depends on your own
 citizenship and the laws of the country you want to become a resident of.
 
@@ -140,12 +140,12 @@ Freedom of Movement
     population of the world, and there is good chance you as a reader are
     not in that group.
 
-Mary a Citizen
+Marry a Citizen
     Marriage is still the best way to get a permit of residence and it's
     becoming an even better by the day because the requirements are so
-    stict nowadays.  However marriage does not immediately give you
+    stict nowadays.  However, marriage does not immediately give you
     residence and most people will probably have noticed that.  As an
-    example in order for me and my wife (who is not Austrian) to legally
+    example, in order for me and my wife (who is not Austrian) to legally
     live together with our child in Austria we need to have household
     income of 17.500 EUR per year after taxes.  That does not sound like a
     lot, but for many people it's not the easiest thing to show,
@@ -164,7 +164,7 @@ Be Exceptional
     The only other way to immigrate is typically to be exceptional.  In
     most countries this is either by being rich enough to invest into the
     country and get residence or citizenship in the process or by being
-    extraordinary intelligent or in demand.  This works well for engineers
+    extraordinarily intelligent or in-demand.  This works well for engineers
     because engineers are in demand in almost all places.  However that is
     no guarantee yet, as in most countries visas and permits are
     restricted by numbers and there is a certain amount of luck
@@ -181,7 +181,7 @@ Become a Citizen
 Claim Asylum
     In certain situations you might be getting away with claiming asylum.
     Pretty sure the chances that you are a reader of this blog and you
-    quality for this route are very dim.  Asylum is restricted to people
+    qualify for this route are very dim.  Asylum is restricted to people
     who come from situations where their life is in danger.
 
 Legal Immigration is Hard
@@ -192,17 +192,17 @@ income (which just requires you to have money), there is a lot of time and
 effort required.  All the documents you need (birth certificate, proof of
 being in good legal standing, citizen certificate, proof of registration
 in the original country, prior academic records, drivers license, etc.)
-need to be apostiled or otherwise made work for international usage and
-translated.  In some country many of those documents can only be retrieved
+need to be apostilled or otherwise made to work for international usage and
+translated.  In some countries many of those documents can only be retrieved
 in a single place and then you need to go through notaries to get them
-attested.  All steps need to be done in one exact order as each border
-crossing needs to be planned and there is time involved in the paperwork.
+attested.  All steps need to be done in one exact order as each
+border-crossing needs to be planned and there is time involved in the paperwork.
 
 On top of that you often need to pass language exams so there is some
 learning to do.  In Austria for instance you have to leave the country if
 you cannot show German on an A2 level and you cannot even apply without
 A1.  There are some exceptions to the rule (for instance this does not
-apply to asylum seekers or people immigrating via freedom of movement) but
+apply to asylum-seekers or people immigrating via freedom of movement) but
 for the most part everybody has to go through.
 
 Finally:  Where do you pay taxes?  In most countries you pay taxes in the
@@ -219,7 +219,7 @@ Many people I met over the years just never legally immigrated somewhere.
 That however does not mean that they are illegally in the country.  It can
 also mean that they just never immigrated to begin with and just hop from
 country to country.  They are there as submarines either by pretending to
-be tourists and regularly changing the place of living.
+be tourists or regularly changing the place of living.
 
 This is a bit different from the traditional method of not crossing the
 border much which many migrant workers do.  This however can turn terrible
