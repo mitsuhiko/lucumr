@@ -49,7 +49,7 @@ Open Source Libraries
 -   `unp <https://github.com/mitsuhiko/unp>`_ — an unpacking shell script. *2014-* *
 -   `redis-rs <https://github.com/mitsuhiko/redis-rs>`_ — a redis driver
     for Rust. *2014-* *
--   `rb <https://rb.rtfd.org/>`_ — a redis clustering library for Python. *2015-* *
+-   `rb <http://rb.rtfd.org/>`_ — a redis clustering library for Python. *2015-* *
 
 Open Source Applications
 ------------------------
