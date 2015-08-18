@@ -49,6 +49,7 @@ Open Source Libraries
 -   `unp <https://github.com/mitsuhiko/unp>`_ — an unpacking shell script. *2014-* *
 -   `redis-rs <https://github.com/mitsuhiko/redis-rs>`_ — a redis driver
     for Rust. *2014-* *
+-   `rb <https://rb.rtfd.org/>`_ — a redis clustering library for Python. *2015-* *
 
 Open Source Applications
 ------------------------
@@ -60,6 +61,7 @@ Open Source Applications
 -   `Fireteam Curlish <http://packages.python.org/curlish/>`_ — curl OAuth wrapper. *2012-*
 -   `python-modernize <https://github.com/python-modernize/python-modernize>`_ — Python 2 to 3 porting tool. *2012-*
 -   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — Python script installer. *2014-*
+-   `Lektor <https://github.com/mitsuhiko/lektor>`_ — a static file CMS. *2015-* *
 
 Commercial Projects
 -------------------
