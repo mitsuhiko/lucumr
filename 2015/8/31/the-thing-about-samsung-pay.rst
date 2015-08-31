@@ -259,3 +259,7 @@ themselves against it.
 Will the magstripe finally die?  Seems like magstripe found a second
 coming in the US thanks to tokenization, MSD NFC and maybe even Samsung
 Pay but most likely only as a transitional technology for EMV.
+
+I'm actually quite interested in if there are means of detecting a relayed
+magstripe track for a merchant.  If someone knows, please let me know and
+I will amend the article to reflect that.
