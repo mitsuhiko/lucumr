@@ -140,7 +140,7 @@ Freedom of Movement
     population of the world, and there is good chance you as a reader are
     not in that group.
 
-Mary a Citizen
+Marry a Citizen
     Marriage is still the best way to get a permit of residence and it's
     becoming an even better by the day because the requirements are so
     stict nowadays.  However marriage does not immediately give you
