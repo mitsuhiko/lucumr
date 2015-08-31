@@ -1,5 +1,5 @@
 public: yes
-tags: [thoughts, personal, politics]
+tags: [thoughts, payments, security]
 summary: |
   Some interesting notes about how the MST feature of Samsung Pay (and
   credit card transactions in general).
