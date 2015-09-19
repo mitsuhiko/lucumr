@@ -4,7 +4,7 @@ summary: |
   Some interesting notes about how the MST feature of Samsung Pay (and
   credit card transactions in general).
 
-Samsung Pay's MTS Transactions and Merchant's Ability to Detect “Cloned” Magstripe Tracks
+Samsung Pay's MST Transactions and Merchant's Ability to Detect “Cloned” Magstripe Tracks
 =========================================================================================
 
 I have a weird obsession with payment systems.  They fascinate me.  I find
