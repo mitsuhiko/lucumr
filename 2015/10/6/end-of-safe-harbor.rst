@@ -45,7 +45,7 @@ What Changed?
 -------------
 
 Maximillian Schrems, an Austrian citizen, has started an investigation
-into Facebook and it's data deletion policies a while ago and been
+into Facebook and its data deletion policies a while ago and been
 engaging with the Irish authorities on that matter ever since.  The Irish
 rejected the complaint because they referred to the Safe Harbor act.  What
 changed now is that the European Court of Justice ruled the following:
