@@ -69,6 +69,7 @@ Commercial Projects
 -   `Plurk <http://www.plurk.com/>`_ — a microblogging platform. *2008-2009*
 -   `Fireline <http://fireteam.net/fireline/>`_ — online services platform for games. *2012-*
 -   `Togethera <http://togethera.com/>`_ — private family sharing application (as advisor). *2014-*
+-   `Sentry <http://www.getsentry.com/>`_ — error tracking platform. *2015-*
 
 Computer Games
 --------------
@@ -82,6 +83,9 @@ Computer Games
     backend. *2012-*
 -   `Halo: The Master Chief Collection
     <http://en.wikipedia.org/wiki/Halo:_The_Master_Chief_Collection>`_ —
+    online services consulting. *2014-*
+-   `Gears of War Ultimate Edition
+    <https://en.wikipedia.org/wiki/Gears_of_War_(video_game)#Ultimate_Edition>`_ —
     online services consulting. *2014-*
 
 Websites
