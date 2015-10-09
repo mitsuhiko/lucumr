@@ -265,7 +265,7 @@ ownership away from yourself.
 This is a big change in how you think about programs but you will get used
 to it.
 
-Runtime Borrows and Mutible Owners
+Runtime Borrows and Mutable Owners
 ----------------------------------
 
 So far pretty much all this ownership tracking was verified at compile
