@@ -27,7 +27,7 @@ Old But Proven
 
 The regex module in Python is really old by now and one of the constants
 in the standard library.  Ignoring Python 3 it has not really evolved
-since it's inception other than gaining basic unicode support at one point.
+since its inception other than gaining basic unicode support at one point.
 Till this date it has a broken member enumeration (Have a look at what
 ``dir()`` returns on a regex pattern object).
 
@@ -36,7 +36,7 @@ change between Python versions and is very reliable.  Not once did I have
 to adjust something because the regex module changed.  Given how many
 regular expressions I'm writing in Python this is good news.
 
-One of the interesting quirks about it's design is that it's parser and
+One of the interesting quirks about its design is that its parser and
 compiler is written in Python but the matcher is written in C.  This means
 we can pass the internal structures of the parser into the compiler to
 bypass the regex parsing entirely if we would feel like it.  Not that this
@@ -155,7 +155,7 @@ this a slightly higher level interface.
 
 The scanner as it exists in the ``re`` module is not very useful
 unfortunately for making the 'not matching' part faster, but looking at
-it's sourcecode reveals how it's implemented: on top of the SRE
+its sourcecode reveals how it's implemented: on top of the SRE
 primitives.
 
 The way it works is it accepts a list of regular expression and callback
