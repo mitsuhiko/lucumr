@@ -17,7 +17,7 @@ the few dynamic languages which does not have language integrated regular
 expression support.  However while it lacks syntax and interpreter support
 for it, it makes up for it with one of the better designed core systems
 from a pure API point of view.  At the same time it's very bizarre.  For
-isntance the parser is written in pure Python which has some bizarre
+instance the parser is written in pure Python which has some bizarre
 consequences if you ever try to trace Python while importing.  You will
 discover that 90% of your time is probably spent in on of re's support
 module.
@@ -51,8 +51,8 @@ Iterative Matching
 
 The best feature of the regex system in Python is without a doubt that
 it's making a clear distinction between matching and searching.  Something
-that not many other regular expresion engines do.  In particular when you
-perform a match you can provide an index to offset the maching but the
+that not many other regular expression engines do.  In particular when you
+perform a match you can provide an index to offset the matching but the
 matching itself will be anchored to that position.
 
 In particular this means you can do something like this:
@@ -66,7 +66,7 @@ In particular this means you can do something like this:
     >>> pattern.match(string, 3)
     <_sre.SRE_Match object at 0x103c9a510>
 
-This is immensly useful for building lexers because you can continue to
+This is immensely useful for building lexers because you can continue to
 use the special ``^`` symbol to indicate the beginning of a line of entire
 string.  We just need to increase the index to match further.  It also
 means we do not have to slice up the string ourselves which saves a ton of
@@ -132,7 +132,7 @@ we only get the matched text, so if groups are involved we would have to
 extend this code a bit.
 
 So is there a better method to do this?  What if we could indicate to the
-regular expression engine that we want it to scan for any of a a few
+regular expression engine that we want it to scan for any of a few
 regular expressions?
 
 This is where it gets interesting.  Fundamentally this is what we do when
