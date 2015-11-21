@@ -150,7 +150,7 @@ has been a completely undocumented feature in the regular expression
 engine: the scanner.  The scanner is a property of the underlying SRE
 pattern object where the engine keeps matching after it found a match for
 the next one.  There even exists an ``re.Scanner`` class (also
-undocumented) which is built in top fo the SRE pattern scanner which gives
+undocumented) which is built on top of the SRE pattern scanner which gives
 this a slightly higher level interface.
 
 The scanner as it exists in the ``re`` module is not very useful
