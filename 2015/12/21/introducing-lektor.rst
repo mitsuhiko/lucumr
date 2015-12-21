@@ -11,11 +11,11 @@ The longer I'm programming and creating software, the more I notice that I
 build a lot of stuff that requires maintenance even though it should not.
 In particular a topic that just keeps annoying me is how quickly
 technology moves forward and how much effort it is to maintain older code
-that still exist but now stands on ancient foundations.
+that still exists but now stands on ancient foundations.
 
 This is not a new discovery mind you.  This blog you're reading started
-out as a Django application many, many years ago, made a transition to
-WordPress because I could not be bothered with updating Django and then
+out as a Django application many, many years ago; made a transition to
+WordPress because I could not be bothered with updating Django; and then
 turned into two different static site generators because I did not want to
 bother with making database updates and rather wanted to track my content
 in a git repository.
@@ -28,8 +28,8 @@ Middleman, Harp, Expose, …
 
 As you can see the list of tools available is endless.  Unfortunately
 though these tools are all aimed at programmers and it's very hard to use
-them as a someone without programming experience.  Worse though: many of
-those are clones of each other just written in different programming
+them as someone without programming experience.  Worse though: many of
+them are clones of each other just written in different programming
 languages with very similar designs.  There is very little innovation in
 that space and that's a bit unfortunate because I like the flexibility I
 get from frameworks like Flask at times.
@@ -88,7 +88,7 @@ Lektor is a Framework
 
 But what makes Lektor so much fun to work with is that Lektor is (while
 very opinionated) very, very flexible.  It takes a lot of inspiration from
-ORMs like Django's.  Instead there being a "blog component" you can model
+ORMs like Django's.  Instead of there being a "blog component" you can model
 your own blog posts and render them with the templates you want to use.
 There is not a single built-in template that you have to use.  The only
 thing it gives you is a quickstart that sets up the folders and copies
@@ -155,7 +155,7 @@ org and the project does not use any resources only I have access to
 case people want to help out, there is no single point of failure!
 
 I hope I can spend some time over Christmas to do the same to my other
-projects to alter the bus factor of those.
+projects and alter the bus factor of them.
 
 There is far too much in Lektor to be able to cover it in a single blog
 post so I will probably write a bit more about some of the really cool
