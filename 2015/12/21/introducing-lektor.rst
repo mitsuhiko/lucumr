@@ -101,6 +101,7 @@ As an example, here is how a blog index template looks like:
     {% extends "blog_layout.html" %}
     {% from "macros/pagination.html" import render_pagination %}
     {% block title %}My Blog{% endblock %}
+    {% block body %}
       <h1>My Blog</h1>
     
       <ul class="blog-index">
