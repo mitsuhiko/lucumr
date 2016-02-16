@@ -118,7 +118,7 @@ As an example, here is how a blog index template looks like:
       {% endif %}
     {% endblock %}
 
-The system understands what the blog is, that it has child record, that
+The system understands what the blog is, that it has child records, that
 those records are paginated, it can provide pagination etc.  However there
 is nothing in there that makes it a blog in itself.  It just has a very
 flexible ORM inspired component that gives access to the structured files
