@@ -176,7 +176,7 @@ overarching issue much better than I could ever do.
 Future of Micro-Dependencies
 ----------------------------
 
-To be perfectly honestly.  I'm legitimately scared about node's integrity
+To be perfectly honest:  I'm legitimately scared about node's integrity
 of the ecosystem and this worry does not go away.  Among other things I'm
 using keybase and keybase uses unpinned node libraries left and right.
 keybase has 225 node dependencies from a quick look.  Among those many
