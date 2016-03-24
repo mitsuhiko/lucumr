@@ -183,6 +183,10 @@ keybase has 225 node dependencies from a quick look.  Among those many
 partially pinned one-liner libraries for which it would be easily enough
 to roll out backdoor update if one gets hold of credentials.
 
+*Update: it has been pointed out that keybase shrinkwrapped in the node
+client and that the new client is written in Go. `Source
+<https://twitter.com/maxtaco/status/713037656255557632>`_*
+
 If micro-dependencies want to have a future then something must change in
 npm.  Maybe they would have to get a specific tag so that the system can
 automatically run automated analysis to spot unexpected updates.  Probably
