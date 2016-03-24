@@ -23,6 +23,10 @@ strings.  It has more to do with how the ecosystem evolving around npm has
 created the most dangerous and irresponsible environment which in many
 ways leaves me scared.
 
+My opinion query quickly went from “`Oh that's funny
+<https://twitter.com/mitsuhiko/status/712429716356124673>`_” to
+“`This concerns me <https://twitter.com/mitsuhiko/status/712430645671280640>`_”.
+
 Dependency Explosion
 --------------------
 
