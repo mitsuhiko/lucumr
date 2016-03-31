@@ -61,7 +61,7 @@ Open Source Applications
 -   `Fireteam Curlish <http://packages.python.org/curlish/>`_ — curl OAuth wrapper. *2012-*
 -   `python-modernize <https://github.com/python-modernize/python-modernize>`_ — Python 2 to 3 porting tool. *2012-*
 -   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — Python script installer. *2014-*
--   `Lektor <https://github.com/mitsuhiko/lektor>`_ — a static file CMS. *2015-* *
+-   `Lektor <https://www.getlektor.com/>`_ — a static file CMS. *2015-* *
 
 Commercial Projects
 -------------------
