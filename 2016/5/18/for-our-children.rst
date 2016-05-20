@@ -69,9 +69,10 @@ symptoms and problems that help the populists to raise to power:
   harm our exports by devaluing their own currencies.
 
   But despite the fact it's so very hard to compare countries because they
-  are so fundamentally differently structured people will still do it in
-  conversations.  Switzerland is heralded as the great example of
-  continental Europe in Austria but 
+  are so fundamentally differently structured - yet people will still do
+  it in conversations.  Switzerland is heralded as the great example of
+  continental Europe in Austria but it's so specific out of history that
+  it's incredible hard to copy or imitate.
 
 * **Not being able consider the other side**. I am shocked sometimes what
   people here in Austria think the US are like.  The idea that both
