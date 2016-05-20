@@ -126,6 +126,7 @@ own opinion that not a single meter of compromise can be achieved.
 Newspapers paint scary pictures of the different outcomes of the election,
 how the country will be torn, how one candidate would mean European
 sanctions and how the other candidate would mean the end of a functioning
+society.
 
 A Path Forward
 --------------
