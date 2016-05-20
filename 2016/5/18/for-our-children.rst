@@ -7,7 +7,7 @@ summary: |
 A Europe For Our Children
 =========================
 
-Most of the readers of this blog are not Europe, let alone from Austria,
+Most of the readers of this blog are not from Europe, let alone Austria,
 the country I was born in.  As such I'm not sure how many will actually
 care about Austrian politics here, especially if it's a lengthy post.  But
 I would still like if you read it because I think the topic is important
