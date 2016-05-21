@@ -27,7 +27,7 @@ However as great as the country has developed after the wars and as
 profitable the creation of the Eurozone was, there was an end to this
 positive trend and it came with the financial crisis of 2007/2008
 (although with a bit of a delay).  The economy did recover, but it did not
-do it to the extend people wanted.  At the same time necessary reforms
+do it to the extent people wanted.  At the same time necessary reforms
 were not implemented (or not implemented in the right ways) and as a
 result the country has suffered major blows in the last few years.  From a
 personal point of view I cannot stress enough how disappointed I am that
@@ -80,7 +80,7 @@ symptoms and problems that help the populists to raise to power:
   for instance does not seem to exist here.
 
 * **Fear of change**. I think this is a typical Austrian problem but to
-  smaller extend it probably exists elsewhere too. Everything new is
+  smaller extent it probably exists elsewhere too. Everything new is
   torpedoed until it cannot be avoided any more because every single other
   country already did it before. That applies to smoking bans as much as
   to embracing of credit cards, online services, acceptance of
