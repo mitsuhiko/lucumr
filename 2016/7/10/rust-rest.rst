@@ -311,3 +311,6 @@ My key takeaways from doing this in Rust so far have been:
     magnificent which makes installing the rust curl library
     straightforward.  It even takes care of compiling curl itself on
     Windows.
+
+If you want to see the code, the entire git repository of the client can
+be found online: `getsentry/sentry-cli <http://github.com/getsentry/sentry-cli>`_.
