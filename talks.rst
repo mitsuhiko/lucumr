@@ -6,6 +6,23 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+2016
+----
+
+-   `Happiness in Open Source
+    <https://speakerdeck.com/mitsuhiko/happiness-in-open-source>`__
+    @ PyCon Sweden 2016 (`recording <https://www.youtube.com/watch?v=lQz0oFQgAf4>`__,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/Happiness.pdf>`__)
+-   `Iterate and Ship
+    <https://speakerdeck.com/mitsuhiko/iterate-and-ship>`__
+    @ PyCon Sweden 2016 (`recording <https://www.youtube.com/watch?v=ICEbze5xy4s>`__,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/PragArch.pdf>`__)
+-   `… how Python was shaped by leaky internals
+    <https://speakerdeck.com/mitsuhiko/dot-dot-dot-how-python-was-shaped-by-leaky-internals>`__
+    @ PyCon Russia 2016 (`recording
+    <https://www.youtube.com/watch?v=qCGofLIzX6g>`__,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/leakypython.pdf>`__)
+
 2015
 ----
 
