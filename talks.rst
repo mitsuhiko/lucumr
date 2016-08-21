@@ -9,6 +9,12 @@ and recordings if available.
 2016
 ----
 
+-   `Flask for Fun and Profit
+    <https://speakerdeck.com/mitsuhiko/flask-for-fun-and-profit>`__
+    @ PyBay 2016 (`PDF <http://dev.pocoo.org/~mitsuhiko/flaskfun.pdf>`__)
+-   `Letters from the Battlefield
+    <https://speakerdeck.com/mitsuhiko/letters-from-the-battlefield>`__
+    @ PyCon APAC 2016 (`PDF <http://dev.pocoo.org/~mitsuhiko/battleletters.pdf>`__)
 -   `Happiness in Open Source
     <https://speakerdeck.com/mitsuhiko/happiness-in-open-source>`__
     @ PyCon Sweden 2016 (`recording <https://www.youtube.com/watch?v=lQz0oFQgAf4>`__,
