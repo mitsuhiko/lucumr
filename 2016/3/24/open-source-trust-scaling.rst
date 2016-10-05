@@ -112,7 +112,7 @@ technical problem but a trust and scaling problem.
 
 I want to give you a practical example of what I mean with this.  Say you
 build a program based on the Flask framework.  You pull in a total of 4-5
-dependencies for Flask alone which are all signed off my me.  The attack
+dependencies for Flask alone which are all signed off by me.  The attack
 vector to get untrusted code into Flask is:
 
 *   get a backdoor into a pull request and get it merged
