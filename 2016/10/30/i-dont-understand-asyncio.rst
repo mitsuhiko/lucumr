@@ -50,7 +50,9 @@ In addition the language gained a few special methods that are new:
 
 * ``__aenter__`` and ``__aexit__`` for asynchronous `with` blocks
 * ``__aiter__`` and ``__anext__`` for asynchronous iterators (async loops
-  and async comprehensions)
+  and async comprehensions).  For extra fun that protocol already changed
+  once.  In 3.5 it returns an awaitable (a coroutine) in Python 3.6 it
+  will return a newfangled async generator.
 * ``__await__`` for custom awaitables
 
 That's quite a bit to know and the documentation covers those parts.
@@ -359,6 +361,24 @@ people seem to use when they write asyncio code:
   have to reimplement the utility helper that it provides since that
   helper completely tears down the loop when it's done.  This is also not
   the first library I saw do this :(
+* Working with subprocesses is non obvious.  You need to have an event
+  loop running in the main thread which I suppose is listening in on
+  signal events and then dispatches it to other event loops.  This
+  requires that the loop is notified via
+  ``asyncio.get_child_watcher().attach_loop(...)``.
+* Writing code that supports both async and sync is somewhat of a lost
+  cause.  It also gets dangerous quickly when you start being clever and
+  try to support ``with`` and ``async with`` on the same object for
+  instance.
+* If you want to give a coroutine a better name to figure out why it was
+  not being awaited, setting ``__name__`` doesn't help.  You need to set
+  ``__qualname__`` instead which is what the error message printer uses.
+* Sometimes internal type conversations can screw you over.  In particular
+  the ``asyncio.wait()`` function will make sure all things passed are
+  futures which means that if you pass coroutines instead you will have a
+  hard time finding out if your coroutine finished or is pending since the
+  input objects no longer match the output objects.  In that case the only
+  real sane thing to do is to ensure that everything is a future upfront.
 
 Context Data
 ------------
