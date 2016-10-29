@@ -417,3 +417,14 @@ since more than 15 years now I believe.
 
 I don't know if the ecosystem is still young enough that logical call
 contexts can be added but now might still be the time.
+
+Personal Thoughts
+-----------------
+
+Man that thing is complex and it keeps getting more complex.  I do not
+have the mental capacity to casually work with asyncio.  It requires
+constantly updating the knowledge with all language changes and it has
+tremendously complicated the language.  It's impressive that an ecosystem
+is evolving around it but I can't help but get the impression that it will
+take quite a few more years for it to become a particularly enjoyable and
+stable development experience.
