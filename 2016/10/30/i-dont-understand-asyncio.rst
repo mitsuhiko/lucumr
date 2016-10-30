@@ -428,3 +428,21 @@ tremendously complicated the language.  It's impressive that an ecosystem
 is evolving around it but I can't help but get the impression that it will
 take quite a few more years for it to become a particularly enjoyable and
 stable development experience.
+
+What landed in 3.5 (the actual new coroutine objects) is great.  In
+particular with the changes that will come up there is a sensible base
+that I wish would have been in earlier versions.  The entire mess with
+overloading generators to be coroutines was a mistake in my mind.  With
+regards to what's in asyncio I'm not sure of anything.  It's an incredibly
+complex thing and super messy internally.  It's hard to comprehend how it
+works in all details.  When you can pass a generator, when it has to be a
+real coroutine, what futures are, what tasks are, how the loop works and
+that did not even come to the actual IO part.
+
+The worst part is that asyncio is not even particularly fast.  David
+Beazley's live demo hacked up asyncio replacement is twice as fast as it.
+There is an enormous amount of complexity that's hard to understand and
+reason about and then it fails on it's main promise.  I'm not sure what to
+think about it but I know at least that I don't understand asyncio enough
+to feel confident about giving people advice about how to structure code
+for it.
