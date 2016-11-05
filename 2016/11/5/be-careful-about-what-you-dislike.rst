@@ -108,5 +108,5 @@ minds.  In particular in the technological context technology moves so
 fast that very likely something you read once might no longer be up to
 date as little as six months later.
 
-So I suppose my proposal to readers is to not fall into the trap to assume
-that the environment around oneself keeps on changing.
+So I suppose my proposal to readers is not to fall into that trap and to
+assume that the environment around oneself keeps on changing.
