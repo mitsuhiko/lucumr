@@ -9,6 +9,9 @@ and recordings if available.
 2016
 ----
 
+-   `Shipping Sentry
+    <https://speakerdeck.com/mitsuhiko/shipping-sentry>`__
+    @ DevConTLV (`PDF <http://dev.pocoo.org/~mitsuhiko/ShippingSentry.pdf>`__)
 -   `Flask for Fun and Profit
     <https://speakerdeck.com/mitsuhiko/flask-for-fun-and-profit>`__
     @ PyBay 2016 (`PDF <http://dev.pocoo.org/~mitsuhiko/flaskfun.pdf>`__)
