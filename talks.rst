@@ -14,7 +14,8 @@ and recordings if available.
     @ DevConTLV (`PDF <http://dev.pocoo.org/~mitsuhiko/ShippingSentry.pdf>`__)
 -   `Flask for Fun and Profit
     <https://speakerdeck.com/mitsuhiko/flask-for-fun-and-profit>`__
-    @ PyBay 2016 (`PDF <http://dev.pocoo.org/~mitsuhiko/flaskfun.pdf>`__)
+    @ PyBay 2016 (`recording
+    <https://www.youtube.com/watch?v=1ByQhAM5c1I>`__, `PDF <http://dev.pocoo.org/~mitsuhiko/flaskfun.pdf>`__)
 -   `Letters from the Battlefield
     <https://speakerdeck.com/mitsuhiko/letters-from-the-battlefield>`__
     @ PyCon APAC 2016 (`PDF <http://dev.pocoo.org/~mitsuhiko/battleletters.pdf>`__)
