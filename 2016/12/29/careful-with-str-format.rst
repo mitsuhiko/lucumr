@@ -135,6 +135,8 @@ behavior.
         def __len__(self):
             return len(self._kwargs)
 
+    # This is a necessary API but it's undocumented and moved around
+    # between Python releases
     try:
         from _string import formatter_field_name_split
     except ImportError:
