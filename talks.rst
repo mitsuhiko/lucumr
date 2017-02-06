@@ -6,6 +6,13 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+2017
+----
+
+-   `Binary Python — introducing native code
+    <https://speakerdeck.com/mitsuhiko/binary-python>`__
+    @ PyCon Belarus (`PDF <http://dev.pocoo.org/~mitsuhiko/binarypython.pdf>`__)
+
 2016
 ----
 
