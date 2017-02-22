@@ -11,7 +11,8 @@ and recordings if available.
 
 -   `Binary Python — introducing native code
     <https://speakerdeck.com/mitsuhiko/binary-python>`__
-    @ PyCon Belarus (`PDF <http://dev.pocoo.org/~mitsuhiko/binarypython.pdf>`__)
+    @ PyCon Belarus (`recording <https://www.youtube.com/watch?v=yhiHmBE9fNU>`__,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/binarypython.pdf>`__)
 
 2016
 ----
