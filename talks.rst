@@ -22,6 +22,10 @@ These are talks I will be giving but have not done so yet:
     <https://speakerdeck.com/mitsuhiko/a-practical-road-to-saas-in-python>`__
     @ QCon London (`PDF
     <http://dev.pocoo.org/~mitsuhiko/practicalsaas.pdf>`__)
+-   `Rust for serious Developers
+    <https://speakerdeck.com/mitsuhiko/rust-for-serious-developers>`__
+    @ TopConf Linz (`PDF
+    <http://dev.pocoo.org/~mitsuhiko/seriousrust.pdf>`__)
 -   `Binary Python — introducing native code
     <https://speakerdeck.com/mitsuhiko/binary-python>`__
     @ PyCon Belarus (`recording <https://www.youtube.com/watch?v=yhiHmBE9fNU>`__,
