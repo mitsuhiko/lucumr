@@ -6,9 +6,22 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+Upcoming
+--------
+
+These are talks I will be giving but have not done so yet:
+
+-   WeAreDevelopers — Vienna, Austria, May 11 - 12 2017
+-   EuroPython 2017 — Rimini, Italy, July 9 - 16 2017
+
+
 2017
 ----
 
+-   `A Practical Road to SaaS' in Python
+    <https://speakerdeck.com/mitsuhiko/a-practical-road-to-saas-in-python>`__
+    @ QCon London (`PDF
+    <http://dev.pocoo.org/~mitsuhiko/practicalsaas.pdf>`__)
 -   `Binary Python — introducing native code
     <https://speakerdeck.com/mitsuhiko/binary-python>`__
     @ PyCon Belarus (`recording <https://www.youtube.com/watch?v=yhiHmBE9fNU>`__,
