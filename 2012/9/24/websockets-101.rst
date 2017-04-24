@@ -392,7 +392,7 @@ individual parts explained:
     | ``0x02``: this frame includes binary data.
     | ``0x08``: this frame terminates the connection.
     | ``0x09``: this frame is a ping.
-    | ``0x10``: this frame is a pong.
+    | ``0x0a``: this frame is a pong.
 
     (As you can see, there are enough values unused, they are reserved for
     future usage).
