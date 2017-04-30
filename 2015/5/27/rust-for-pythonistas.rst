@@ -368,7 +368,7 @@ will increment the refcount and decrement automatically when the thread
 dies).  Then we spawn the thread with a local function.  The ``move``
 tells us to move the closure into the thread.  Then we run the Fibonacci
 function in each thread.  When we lock our Arc we get back a result we can
-`unwrap` and the insert into.  Ignore the `unwrap` for a moment, that's
+`unwrap` and then insert into.  Ignore the `unwrap` for a moment, that's
 just how you convert explicit results into panics.  However the point is
 that you can only ever get the result map when you unlock the mutex.  You
 cannot accidentally forget to lock!
