@@ -53,7 +53,7 @@ few places where it shows up:
     applications that are translated into multiple languages will use
     new-style Python string formatting and not everybody will vet all the
     strings that come in.
-*   user exposed configuration.  One some systems users might be permitted
+*   user exposed configuration.  On some systems users might be permitted
     to configure some behavior and that might be exposed as format
     strings.  In particular I have seen it where users can configure
     notification mails, log message formats or other basic templates in web
