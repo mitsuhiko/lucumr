@@ -12,7 +12,7 @@ Upcoming
 These are talks I will be giving but have not done so yet:
 
 -   WeAreDevelopers — Vienna, Austria, May 11 - 12 2017
--   PyCon CZ — Prague, Czhchia, June 8 - 10 2017
+-   PyCon CZ — Prague, Czechia, June 8 - 10 2017
 -   PolyConf 2017 — Paris, France, July 7 - 9, 2017
 -   EuroPython 2017 — Rimini, Italy, July 9 - 16 2017
 
