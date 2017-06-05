@@ -62,9 +62,8 @@ not only has a ridiculous name for a consumer product, but also one that
 is everything but user friendly.  If you do a Google auto complete search
 for “Why is Gimp” it completes to “slow [on mac]”, “bad”, “complicated”
 and “unintuitive”.  In many ways I think the answer is probably a
-reflection of the developer community community being lacking focus in
-some key areas.  There is no reason that Open Source software has to be
-user unfriendly.
+reflection of the developer community lacking focus in some key areas.
+There is no reason that Open Source software has to be user unfriendly.
 
 In particular some of the infamous Open Source communities like the
 Linux are (almost?) proud of their harsh culture.  Often documentation
@@ -77,7 +76,7 @@ not come naturally.
 
 So when someone cancels a conference because the speaker lineup after a
 blind selection was 100% male it just shows how bad the imbalance in the
-developer community is.  It's not not unfair to try to artificially bring
+developer community is.  It's not unfair to try to artificially bring
 balance a conference because the fact that the community is this
-imbalanced to that extend is a problem that needs fixing and will not
-fix itself naturally.
+imbalanced to that extend is a problem that needs fixing and will not fix
+itself naturally.
