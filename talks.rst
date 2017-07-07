@@ -11,15 +11,24 @@ Upcoming
 
 These are talks I will be giving but have not done so yet:
 
--   WeAreDevelopers — Vienna, Austria, May 11 - 12 2017
--   PyCon CZ — Prague, Czechia, June 8 - 10 2017
--   PolyConf 2017 — Paris, France, July 7 - 9, 2017
 -   EuroPython 2017 — Rimini, Italy, July 9 - 16 2017
 
 
 2017
 ----
 
+-   `Rust at Sentry
+    <https://speakerdeck.com/mitsuhiko/rust-at-sentry>`__
+    @ PolyConf 2017 (`PDF
+    <http://dev.pocoo.org/~mitsuhiko/RustAtSentry.pdf>`__)
+-   `My Python is Rusting
+    <https://speakerdeck.com/mitsuhiko/my-python-is-rusting>`__
+    @ PyCon CZ (`PDF
+    <http://dev.pocoo.org/~mitsuhiko/PragArch.pdf>`__)
+-   `Pragmatic SaaS Architecture
+    <https://speakerdeck.com/mitsuhiko/pragmantic-saas-architecture>`__
+    @ WeAreDevelopers (`PDF
+    <http://dev.pocoo.org/~mitsuhiko/PragArch.pdf>`__)
 -   `A Practical Road to SaaS' in Python
     <https://speakerdeck.com/mitsuhiko/a-practical-road-to-saas-in-python>`__
     @ QCon London (`PDF
