@@ -6,17 +6,13 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
-Upcoming
---------
-
-These are talks I will be giving but have not done so yet:
-
--   EuroPython 2017 — Rimini, Italy, July 9 - 16 2017
-
-
 2017
 ----
 
+-   `A Python for Future Generations
+    <https://speakerdeck.com/mitsuhiko/a-python-for-future-generations>`__
+    @ EuroPython 2017 (`PDF
+    <http://dev.pocoo.org/~mitsuhiko/FuturePython.pdf>`__)
 -   `Rust at Sentry
     <https://speakerdeck.com/mitsuhiko/rust-at-sentry>`__
     @ PolyConf 2017 (`PDF
