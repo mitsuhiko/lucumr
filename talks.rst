@@ -11,8 +11,9 @@ and recordings if available.
 
 -   `A Python for Future Generations
     <https://speakerdeck.com/mitsuhiko/a-python-for-future-generations>`__
-    @ EuroPython 2017 (`PDF
-    <http://dev.pocoo.org/~mitsuhiko/FuturePython.pdf>`__)
+    @ EuroPython 2017 (`recording
+    <https://www.youtube.com/watch?v=xkcNoqHgNs8&feature=youtu.be&t=2890>`__,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/FuturePython.pdf>`__)
 -   `Rust at Sentry
     <https://speakerdeck.com/mitsuhiko/rust-at-sentry>`__
     @ PolyConf 2017 (`recording
