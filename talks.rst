@@ -29,7 +29,8 @@ and recordings if available.
     <http://dev.pocoo.org/~mitsuhiko/PragArch.pdf>`__)
 -   `A Practical Road to SaaS' in Python
     <https://speakerdeck.com/mitsuhiko/a-practical-road-to-saas-in-python>`__
-    @ QCon London (`PDF
+    @ QCon London (`recording
+    <https://www.infoq.com/presentations/saas-python>`__, `PDF
     <http://dev.pocoo.org/~mitsuhiko/practicalsaas.pdf>`__)
 -   `Rust for serious Developers
     <https://speakerdeck.com/mitsuhiko/rust-for-serious-developers>`__
