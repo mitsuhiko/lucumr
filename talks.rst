@@ -15,7 +15,8 @@ and recordings if available.
     <http://dev.pocoo.org/~mitsuhiko/FuturePython.pdf>`__)
 -   `Rust at Sentry
     <https://speakerdeck.com/mitsuhiko/rust-at-sentry>`__
-    @ PolyConf 2017 (`PDF
+    @ PolyConf 2017 (`recording
+    <https://www.youtube.com/watch?v=2Xu6EdEBa5E>`__, `PDF
     <http://dev.pocoo.org/~mitsuhiko/RustAtSentry.pdf>`__)
 -   `My Python is Rusting
     <https://speakerdeck.com/mitsuhiko/my-python-is-rusting>`__
