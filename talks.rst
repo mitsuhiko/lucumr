@@ -24,7 +24,8 @@ and recordings if available.
     <http://dev.pocoo.org/~mitsuhiko/PragArch.pdf>`__)
 -   `Pragmatic SaaS Architecture
     <https://speakerdeck.com/mitsuhiko/pragmantic-saas-architecture>`__
-    @ WeAreDevelopers (`PDF
+    @ WeAreDevelopers (`recording
+    <https://www.youtube.com/watch?v=W1fkGyIcePA>`__, `PDF
     <http://dev.pocoo.org/~mitsuhiko/PragArch.pdf>`__)
 -   `A Practical Road to SaaS' in Python
     <https://speakerdeck.com/mitsuhiko/a-practical-road-to-saas-in-python>`__
