@@ -10,18 +10,18 @@ You can't Rust that
 The last year has been fun because I could build a lot for really nice
 stuff for `Sentry <https://sentry.io/>`_ in Rust and for the first time
 the development experience was without bigger roadblocks.  While we have
-been using Rust before, this year the things we built felt different since
-the ecosystem is so much more stable and we ran less against language or
-tooling issues.
+been using Rust before it now feels different because the ecosystem is so
+much more stable and we ran less against language or tooling issues.
 
 However talking to people new to Rust (and even brainstorming APIs with
 coworkers) it's hard to get rid of the feeling that Rust can be a mind
 bending adventure and that the best way to have a stress free experience
-is knowing upfront what you cannot do.  Knowing that certain things just
-cannot be done helps putting your mind back back on the right track.
+is knowing upfront what you cannot (or should not attempt to) do.  Knowing
+that certain things just cannot be done helps putting your mind back back
+on the right track.
 
-So here are three things not to do in Rust and what to do instead which I
-think should be better known.
+So here are things not to do in Rust and what to do instead which I think
+should be better known.
 
 Things Move
 -----------
