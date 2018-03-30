@@ -8,7 +8,7 @@ You can't Rust that
 ===================
 
 The last year has been fun because I could build a lot for really nice
-stuff for `sentry <https://sentry.io/>`_ in Rust and for the first time
+stuff for `Sentry <https://sentry.io/>`_ in Rust and for the first time
 the development experience was without bigger roadblocks.  While we have
 been using Rust before, this year the things we built felt different since
 the ecosystem is so much more stable and we ran less against language or
