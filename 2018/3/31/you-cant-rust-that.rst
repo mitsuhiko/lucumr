@@ -32,7 +32,7 @@ whatever its applied to and while the language might put some restrictions
 on you when doing so is a good idea, there is generally nothing stopping
 you from taking an address of a value and then using it.
 
-In Rust this is just generally not possible.  First of all the moment you
+In Rust this is just usually not useful.  First of all the moment you
 take a reference in Rust the borrow checker looms over your code and
 prevents you from doing anything stupid.  More importantly however is that
 even if it's safe to take a reference it's not nearly as useful as you
