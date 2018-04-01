@@ -370,7 +370,8 @@ to the current thread.  Callers to `current()` will get that `Arc` back
 and can then again do whatever they want.
 
 Likewise you can again switch `Arc` for `Rc` and `RwLock` for `RefCell` if
-you do not need this to work with threads.
+you do not need this to work with threads.  If you are just working with
+thread locals you can also combine `RefCell` with `Arc`.
 
 *To recap: instead of using interior mutability where an object changes
 its internal state, consider using a pattern where you promote new state
