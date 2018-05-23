@@ -29,19 +29,6 @@
       </div>
       <div class=body>
         {% block body %}{% endblock %}
-
-        <!--
-        <div class=adspace>
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:728px;height:90px"
-               data-ad-client="ca-pub-6757320953560275"
-               data-ad-slot="8324866143"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-        -->
       </div>
       <div class=footer>
         <p>&copy; Copyright {{ format_date(format='YYYY') }} by Armin Ronacher.
@@ -60,15 +47,15 @@
           (or <a href="http://www.devtacular.com/utilities/atomtorss/?url=http%3a%2f%2flucumr.pocoo.org%2ffeed.atom">RSS</a>)
       </div>
     </div>
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20909083-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20909083-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-20909083-1', {
+        'anonymize_ip': true,
+        'cookie_expires': 0,
+      });
     </script>
   </body>
 </html>
