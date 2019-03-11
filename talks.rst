@@ -6,6 +6,14 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+2018
+----
+
+-   `A Future Python <https://speakerdeck.com/mitsuhiko/a-future-python>`__
+    @ PyCon India 2018 (`recording
+    <https://speakerdeck.com/mitsuhiko/a-future-python>`__,
+    `PDF <http://dev.pocoo.org/~mitsuhiko/afuturepython.pdf>`__)
+
 2017
 ----
 
