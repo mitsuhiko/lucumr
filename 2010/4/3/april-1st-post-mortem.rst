@@ -99,7 +99,7 @@ which shows nothing about how the framework works. This was inspired by
 every other microframework website out there. It claims RESTfulnes and
 super scaling capabilities, kick-ass performance and describes the
 developer of the project (the fictional Eirik Lahavre) as god of Python
-code and coming from an professional company. 
+code and coming from a professional company. 
 
 The Details
 ~~~~~~~~~~~
