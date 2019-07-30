@@ -59,7 +59,7 @@ contributing to the same cause.  Those libraries in turn are sitting on
 top of very powerful binary reading and manipulation libraries which are a
 good thing not to be reinvented all over the place.
 
-A quite heated discussion on Twitter emerged the last few days about the
+A quite heated discussion [2]_ on Twitter emerged the last few days about the
 danger and cost of dependencies among some Rust developers.  One of the
 arguments that was brought up in support of dependencies was that software
 for non English speakers is mostly so terrible because people chose to
@@ -69,6 +69,9 @@ some problems are just too large not to be put into a common dependency.
 
 So clearly dependencies are something we do not want to get rid of.  But
 we also need to live with the downsides they bring.
+
+.. [2] The thread on twitter with various different view points on this
+   issue can be found here: https://twitter.com/pcwalton/status/1155881388106821632
 
 The Goal: Auditing
 ------------------
