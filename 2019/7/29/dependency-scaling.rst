@@ -42,7 +42,7 @@ update` the release is clean.  There is no realistic way for me to audit
 this at all.
 
 .. [1] One thing of note here is that rand is a bit special in that some
-   older rand versions will depend on newer ones so taht they use the same
+   older rand versions will depend on newer ones so that they use the same
    internals.  This is a trick that is also used by the libc library in
    Rust.  For the purpose of the number of dependencies this optimization
    however does not help much.
