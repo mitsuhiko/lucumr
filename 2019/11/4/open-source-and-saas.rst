@@ -75,13 +75,13 @@ with it — like not compete — it becomes something else.
 
 `The license of choice is the BSL
 <https://blog.sentry.io/2019/11/06/relicensing-sentry>`__.  We looked at
-many things and the one we can to is the idea of putting a form of natural
-delay into our releases and the BSL does that.  We make sure that if time
-passes all we have, becomes Open Source again but until that point it's
-almost Open Source but with strings attached.  This means for as long as
-we innovate there is some natural disadvantage for someone competing with
-the core product while still ensuring that our product stays around and
-healthy in the Open Source space.
+many opens and the idea of putting a form of natural delay into our
+releases looked the most appealing.  The BSL does that.  We make sure that
+if time passes all we have, becomes Open Source again but until that point
+it's almost Open Source but with strings attached.  This means for as long
+as we innovate there is some natural disadvantage for someone competing
+with the core product while still ensuring that our product stays around
+and healthy in the Open Source space.
 
 If enough time passes everything becomes available again under the Apache
 2 license.
