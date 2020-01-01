@@ -14,8 +14,8 @@ really simple: to await an operation that can take some time to finish.
 It makes it so simple, that it creates innumerable new ways to blow ones
 foot off.  The one that I want to discuss is the one where you don't
 realize you're blowing your foot off until the system starts overloading
-and that's the topic of back pressure management.  Another term for this
-is flow control.
+and that's the topic of back pressure management.  A related term in
+protocol design is flow control.
 
 What's Back Pressure
 --------------------
@@ -35,28 +35,30 @@ we have a system composed of different components into a pipeline and that
 pipeline has to accept a certain number of incoming messages.
 
 You could imagine this like you would model luggage delivery at airports.
-Luggage arrives, gets sorted, loaded into aircrafts and finally unloaded.
-At any point an individual piece of luggage is thrown together with other
-luggage into containers for transportation.  When a container is full it
-will need to be picked up.  When no containers are left that's a natural
-example of back pressure.  Now the person that would want to throw luggage
-into a container can't because there is no container.  A decision has to
-be made now.  One option is to wait: that's often referred to as queueing
-or buffering.  The other option is to throw away some luggage until a
-container arrives — this is called dropping.  That sounds bad, but we will
-get into why this is sometimes important later.  However there is another
-thing that plays into here.  Imagine the person tasked with putting
-luggage into a container does not receive a container for an extended
-period of time (say a week).  Eventually if they did not end up throwing
-luggage away now they will have an awful lot of luggage standing around.
-Eventually the amount of luggage they will have to sort through will be so
-enormous that they run out of physical space to store the luggage.  At
-that point they are better off telling the airport not to accept any more
-incoming luggage until their container issue is resolved.  This is often
-referred as controlling the producer.
+Luggage arrives, gets sorted, loaded into the aircraft and finally
+unloaded.  At any point an individual piece of luggage is thrown together
+with other luggage into containers for transportation.  When a container
+is full it will need to be picked up.  When no containers are left that's
+a natural example of back pressure.  Now the person that would want to
+throw luggage into a container can't because there is no container.  A
+decision has to be made now.  One option is to wait: that's often referred
+to as queueing or buffering.  The other option is to throw away some
+luggage until a container arrives — this is called dropping.  That sounds
+bad, but we will get into why this is sometimes important later.  However
+there is another thing that plays into here.  Imagine the person tasked
+with putting luggage into a container does not receive a container for an
+extended period of time (say a week).  Eventually if they did not end up
+throwing luggage away now they will have an awful lot of luggage standing
+around.  Eventually the amount of luggage they will have to sort through
+will be so enormous that they run out of physical space to store the
+luggage.  At that point they are better off telling the airport not to
+accept any more incoming luggage until their container issue is resolved.
+This is commonly referred to as `flow control
+<https://en.wikipedia.org/wiki/Flow_control_(data)>`__ and a crucial
+aspect of networking.
 
 All these processing pipelines are normally scaled for a certain amount of
-messages (or in this case luggage) per time period.  If the number exeeds
+messages (or in this case luggage) per time period.  If the number exceeds
 this — or worst of all — if the pipeline stalls terrible things can
 happen.  An example of this in the real world was the London Heathrow
 Terminal 5 opening where 42,000 bags failed to be routed correctly over 10
@@ -67,10 +69,11 @@ carry-on only.
 Back Pressure is Important
 --------------------------
 
-What we learn from the LHR disaster is that being able to communicate back
-pressure is crucial.  In real life as well as in computing time is always
-finite.  EVentually someone gives up waiting on something.  In particular
-even if internally something would wait forever, externally it wouldn't.
+What we learn from the Heathrow disaster is that being able to communicate
+back pressure is crucial.  In real life as well as in computing time is
+always finite.  Eventually someone gives up waiting on something.  In
+particular even if internally something would wait forever, externally it
+wouldn't.
 
 A real time example for this: if your bag is supposed to be going via
 London Heathrow to your destination in Paris, but you will only be there
@@ -134,7 +137,7 @@ block?  In the threading case we could just block here which would be
 ideal because it means we're applying some back pressure.  However because
 there are not threads here we can't do that.  So we're left with buffering
 here or dropping data.  Because dropping data would be pretty terrible,
-Python instead choses to buffer.  Now what happens if someone sends a lot
+Python instead chooses to buffer.  Now what happens if someone sends a lot
 of data in but does not read?  Well in that case the buffer will grow and
 grow and grow.  This API deficiency is why the Python documentation says
 not to use `write` at all on it's own but to follow up with `drain`:
@@ -149,12 +152,18 @@ buffer to flush out, but just enough to prevent things to run out of
 control.  So why is `write` not doing an implicit `drain`?  Well it's a
 massive API oversight and I'm not exactly sure how it happened.
 
+An important part that is very important here is that most sockets are
+based on TCP and TCP has built-in flow control.  A writer will only write
+so fast as the reader is willing to accept (give or take some buffering
+involved).  This is hidden from you entirely as a developer because not
+even the BSD socket libraries expose this implicit flow control handling.
+
 So did we fix our back pressure issue here?  Well let's see how this whole
 thing would look like in a threading world.  In a threading world our code
 most likely would have had a fixed number of threads running and the
 accept loop would have waited for a thread to become available to take
 over the request.  In our async example however we now have an unbounded
-number of connnections we're willing to handle.  This similarly means
+number of connections we're willing to handle.  This similarly means
 we're willing to accept a very high number of connections even if it means
 that the system would potentially overload.  In this very simple example
 this is probably less of an issue but imagine what would happen if we were
@@ -183,8 +192,8 @@ beginning.  If we're out of tokens we would start waiting for the
 semaphore to release a token.
 
 But hold on.  Now we're back to queueing!  We're just queueing a bit
-earlier.  If we were to severly overload the system now we would queue all
-the way at the beginning.  So now everybody would wait for the maxmimum
+earlier.  If we were to severely overload the system now we would queue all
+the way at the beginning.  So now everybody would wait for the maximum
 amount of time they are willing to wait and then give up.  Worse: the
 server might still process these requests for a while until it realizes
 the client has disappeared and is no longer interested in the response.
@@ -222,9 +231,9 @@ until the server will finally run out of memory and crash.
 
 The reason for this is that we have no communication channel for back
 pressure.  So how would we go about fixing this?  One option is to add a
-layer of indirection.  Now here unfortunately `asyncio`'s sempahore is no
+layer of indirection.  Now here unfortunately `asyncio`'s semaphore is no
 use because it only lets us wait.  But let's imagine we could ask the
-sempahore how many tokens are left, then we could do something like this:
+semaphore how many tokens are left, then we could do something like this:
 
 .. sourcecode:: python3
 
@@ -246,7 +255,7 @@ sempahore how many tokens are left, then we could do something like this:
 
 Now we have changed the system somewhat.  We now have a
 `RequestHandlerService` which has a bit more information.  In particular
-it has the concept of readyness.  The service can be asked if it's ready.
+it has the concept of readiness.  The service can be asked if it's ready.
 That operation is inherently non blocking and a best estimate.  It has to
 be, because we're inherently racy here.
 
@@ -267,7 +276,7 @@ Into this:
         response = await request_handler.handle(request)
 
 There are multiple ways to skin the cat, but the idea is the same.  Before
-we're actually going to commit outself to doing something we have a way to
+we're actually going to commit ourself to doing something we have a way to
 figure out how likely it is that we're going to succeed and if we're
 overloaded we're going to communicate this upwards.
 
@@ -285,6 +294,54 @@ exposes the internal counter on the semaphore and a `CapacityLimiter`
 which is a semaphore optimized for the purpose of capacity limiting which
 protects against some common pitfalls.
 
+Streams and Protocols
+---------------------
+
+Now the example above solves us RPC style situations.  For every call we
+can be informed well ahead of time if the system is overloaded.  A lot of
+these protocols have pretty straightforward ways to communicate that the
+server is at load.  In HTTP for instance you can emit a 503 which can also
+carry a `retry-after` header that tells the client when it's a good idea
+to retry.  This retry adds a natural point to re-evaluate if what you want
+to retry with it still the same request or if something changed.  For
+instance if you can't retry in 15 seconds, maybe it's better to surface
+this inability to the user instead of showing an endless loading icon.
+
+However request/response style protocols are not the only ones.  A lot of
+protocols have persistent connections open and let you stream a lot of
+data through.  Traditionally a lot of these protocols were based on TCP
+which as was mentioned earlier has built-in flow control.  This flow
+control is however not really exposed through socket libraries which is
+why high level protocols typically need to add their own flow control to
+it.  In HTTP 2 for instance a custom flow control protocol exists because
+HTTP 2 multiplexes multiple independent streams over a single TCP
+connection.
+
+Coming from a TCP background where flow control is managed silently behind
+the scenes can set a developer down a dangerous path where one just reads
+bytes from a socket and assumes this is all there is to know.  However the
+TCP API is misleading because flow control is — from an API perspective
+— completely hidden from the user.  When you design your own streaming
+based protocol you will need to absolutely make sure that there is a
+bidirectional communication channel and that the sender is not just
+sending, but also reading to see if they are allowed to continue.
+
+With streams concerns are typically different.  A lot of streams are just
+streams of bytes or data frames and you can't just drop packets in
+between.  Worse: it's often not easy for a sender to check if they should
+slow down.  In HTTP2 you need to interleave reads and writes constantly on
+the user level.  You absolutely must handle flow control there.  The
+server will send you (while you are writing) `WINDOW_UPDATE` frames when
+you're allowed to continue writing.
+
+This means that streaming code becomes a lot more complex because you need
+to write yourself a framework first that can act on incoming flow control
+information.  The `hyper-h2 <https://github.com/python-hyper/hyper-h2>`__
+Python library for instance has a surprisingly complex `file upload server
+example with flow control
+<https://python-hyper.org/projects/h2/en/stable/curio-example.html>`__
+based on curio and that example is not even complete.
+
 New Footguns
 ------------
 
@@ -300,18 +357,21 @@ think a good thing, because it lowers the barrier to actually writing
 larger systems.  The downside is that it also means many more developers
 who previously had little experience with distributed system now have many
 of the problems of a distributed system even if they only write a single
-program.
+program.  HTTP2 is a protocol that is complex enough due to the
+multiplexing nature that the only reasonable way to implement it is based
+on async/await as an example.
 
 And it's not just async await code that is suffering from these issues.
-`Dask <https://dask.org/>`__ for instance is a parallellism library for
+`Dask <https://dask.org/>`__ for instance is a parallelism library for
 Python used by data science programmers and despite not using async/await
 there are bug reports of the system running out of memory due to the lack
 `of back pressure <https://github.com/dask/distributed/issues/2602>`__.
+But these issues are rather fundamental.
 
-The lack of backpressure however is a type of footgun that has the size of
+The lack of back pressure however is a type of footgun that has the size of
 a bazooka.  If you realize too late that you built a monster it will be
 almost impossible to fix without major changes to the code base because
-ouy might have forgotten to make some functions async that should have
+you might have forgotten to make some functions async that should have
 been.  And a different programming environment does not help here.  The
 same issues people have in all programming environments including the
 latest additions like go and Rust.  It's not uncommon to find open issues
@@ -320,4 +380,19 @@ projects that are open for a lengthy period of time because it turns out
 that it's really hard to add after the fact.  For instance go has an open
 issue from 2014 `about adding a semaphore to all filesystem IO
 <https://github.com/golang/go/issues/7903>`__ because it can overload the
-host.
+host.  aiohttp has `an issue dating back to 2016
+<https://github.com/aio-libs/aiohttp/issues/1368>`__ about clients being
+able to break the server due to insufficient back pressure.  There are
+many, many more examples.
+
+If you look at the Python hyper-h2 docs there are a shocking amount of
+examples that say something along the lines of “does not handle flow
+control”, “It does not obey HTTP/2 flow control, which is a flaw, but it
+is otherwise functional” etc.  I believe the fact flow control is very
+complex once it shows up in the surface and it's easy to just pretend it's
+not an issue, is why we're in this mess in the first place.  Flow control
+also adds a significant overhead and doesn't look good in benchmarks.
+
+So for you developers of async libraries here is a new year's resolution
+for you: give back pressure and flow control the importance they deserve
+in documentation and API.
