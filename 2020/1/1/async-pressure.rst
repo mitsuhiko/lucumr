@@ -28,7 +28,7 @@ back pressure is I just want to give a very short definition and
 explanation for it: back pressure is resistance that opposes the flow of
 data through a system.  Back pressure sounds quite negative — who does not
 imagine a bathtub overflowing due to a clogged pipe — but it's here to
-safe your day.
+save your day.
 
 The setup we're dealing with here is more or less the same in all cases:
 we have a system composed of different components into a pipeline and that
@@ -115,7 +115,7 @@ handful of situations where we accidentally forgot about back pressure:
 
     run(server())
 
-If you are now to the concept of async/await just imagine that at any
+If you are new to the concept of async/await just imagine that at any
 point where await is called, the function suspends until the expression
 resolves.  Here the `start_server` function that is provided by Python's
 `asyncio` system runs a hidden `accept` loop.  It listens on a socket and
