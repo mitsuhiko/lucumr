@@ -75,7 +75,7 @@ always finite.  Eventually someone gives up waiting on something.  In
 particular even if internally something would wait forever, externally it
 wouldn't.
 
-A real time example for this: if your bag is supposed to be going via
+A real life example for this: if your bag is supposed to be going via
 London Heathrow to your destination in Paris, but you will only be there
 for 7 days, then it is completely pointless for your luggage to arrive
 there with a 10 day delay.  In fact you want your luggage to be re-routed
