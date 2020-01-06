@@ -99,7 +99,7 @@ we should all be more careful dispelling misinformation in conversations
 even if the general mood supports your opinion.  As an example while
 emotionally I like hearing stories about how JavaScript's packaging causes
 pain to developers since I experienced it first hand, I know from a
-rational point of view that the ecosystem is improving a tremendous
+rational point of view that the ecosystem is improving at tremendous
 speeds.  Yes I have been burned by npm but it's not like this is not
 tremendously improving.
 
