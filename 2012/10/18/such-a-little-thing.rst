@@ -326,7 +326,7 @@ In accordance with Rust's memory model there are different “blocks”
 (called closures) as well.  Here is also where Rust diverges from Ruby.
 In Ruby a block is a syntactical suffix to a method invocation, in Rust a
 closure is a syntactical construct that can stand on itself.  Closures can
-either be store on the stack (perfect for things like iteration) or be
+either be stored on the stack (perfect for things like iteration) or be
 tracked by the garbage collector or unique in which case only one variable
 at the time can own the memory.
 
