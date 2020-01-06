@@ -6,6 +6,18 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+2019
+----
+
+-   `We gave a Mouse an NDK: Non Android Developers' Experience with NDK
+    <https://speakerdeck.com/mitsuhiko/we-gave-a-mouse-an-ndk>`__
+    @ Droidcon 2019 (`recording
+    <https://www.droidcon.com/media-detail?video=380844400>`__, `PDF
+    <http://dev.pocoo.org/~mitsuhiko/droidcon-ndk.pdf>`__)
+-   `Debug is the new Release
+    <https://speakerdeck.com/mitsuhiko/debug-is-the-new-release/>`__
+    @ PyCon China 2019 (`PDF <http://dev.pocoo.org/~mitsuhiko/DebugRelease.pdf>`__)
+
 2018
 ----
 
