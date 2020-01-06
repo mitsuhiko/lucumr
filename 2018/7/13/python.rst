@@ -13,7 +13,7 @@ impact on my life.  It's my home, it gave me many of my friendships and
 acquaintances.  It gave me my work, supplied me with many invaluable
 experiences and it even made me meet my now wife.
 
-As most readers of this blog might know at this blog might know I have a
+As most readers of this blog might know, I have a
 ambivalent relationship with the language as of a few years ago.  I
 learned a lot through Python and one of the things I learned is also
 which mistakes one can make in language and interpreter design.  Since I
