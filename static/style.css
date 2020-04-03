@@ -1,17 +1,17 @@
 @charset "utf-8";
 
 /* fonts */
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic|Merriweather:400,700,400italic,700italic,300,300italic|Crimson+Text:400,400italic,600italic,600&subset=latin,latin-ext);
+ @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* general style */
 body    { font: 17px/25px 'Merriweather', serif;
           margin: 0; padding: 0; font-weight: 400; color: black; }
-a       { color: #398ad5; font-weight: 400; }
+a       { color: #8F4B5D; font-weight: 400; }
 a:hover { color: #2771b5; }
 
 /* headlines */
-h1, h2, h3, h4, h5, h6      { font-family: 'Crimson Text', serif;
-                              font-weight: 400; color: #2771b5; font-style: italic }
+h1, h2, h3, h4, h5, h6      { font-family: 'Questrial', sans-serif;
+                              font-weight: 400; color: #3D3F4F }
 h1 a, h2 a, h3 a, h4 a,
 h5 a, h6 a                  { text-decoration: none; }
 h1 a:hover, h2 a:hover,
@@ -74,10 +74,10 @@ div.entry-overview                  { margin: 25px 122px 25px 102px; }
 div.entry-overview h1,
 div.entry-overview div.summary,
 div.entry-overview div.summary p    { display: inline; line-height: 25px; }
-div.entry-overview h1               { margin: 0; font-size: 17px; font-weight: 700;
+div.entry-overview h1               { margin: 0; font-size: 17px;
                                       font-family: 'Merriweather', serif; }
 div.entry-overview h1:after         { content: " —"; color: black; }
-div.entry-overview h1 a             { color: #2771b5; }
+div.entry-overview h1 a             { color: #8F4B5D; }
 div.entry-overview div.summary,
 div.entry-overview div.date,
 div.entry-overview div.summary p    { margin: 0; padding: 0; }
