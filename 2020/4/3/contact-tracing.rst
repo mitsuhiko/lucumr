@@ -111,7 +111,7 @@ hammer home a point that people are very good at misjudging data privacy.
 
 Almost every person I know uses Google maps on their phone with location
 history enabled.  With that, they also participate in a large data
-collection project where there location is constantly being transmitted to
+collection project where their location is constantly being transmitted to
 Google.  They use this information to judge how fluid traffic is on the
 road, how many people are at stores, how busy public transit is etc.  All
 that data is highly valuable and people love to use this data.  I know I
