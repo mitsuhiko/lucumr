@@ -10,6 +10,10 @@
     <link rel="{{ link.rel }}" href="{{ link.href }}"{%
       if link.media %} media="{{ link.media }}"{% endif %} type="{{ link.type }}">
     {%- endfor %}
+    <meta property="title" content="{{ self.title() }}">
+    <meta property="og:title" content="{{ self.title() }}">
+    <meta name="twitter:site" content="@mitsuhiko">
+    <meta name="twitter:title" content="{{ self.title() }}" />
   {% endblock %}
   </head>
   <body>
