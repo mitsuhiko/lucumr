@@ -10,7 +10,7 @@ I don't know how I thought the world would look like 10 years ago, but a
 pandemic that prevents us from going outside was not what I was picturing.
 It's about three weeks now that I and my family are spending at home in
 Austria instead of going to work or having the kids at daycare, two of
-those are under mandatory social distancing because of SARS-CoV-2.
+those weeks were under mandatory social distancing because of SARS-CoV-2.
 
 And as cute as `social distancing <https://en.wikipedia.org/wiki/Social_distancing>`__
 and “flattening the curve” sounds at first, the consequences to our daily
