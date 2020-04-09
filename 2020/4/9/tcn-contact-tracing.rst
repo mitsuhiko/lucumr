@@ -7,7 +7,7 @@ Temporary Contact Number based Contact Tracing
 ==============================================
 
 I have already talked here before about `privacy preserving contact
-tracing <../../3/contact-tracing/>`__ to fight covid-19 but I figured I
+tracing <../../3/contact-tracing/>`__ to fight Covid-19 but I figured I
 give an update to this.  I have spent the last week now investigating
 different approaches to this and my view has changed quite a bit.
 
@@ -58,16 +58,14 @@ payload.  That's not enough to make fancy public key cryptography work
 which would be necessary for centralized approaches to play to their
 advantages.  This is also why systems that currently follow the
 centralized approach will typically exchange a short ID and the extra
-payload is then actually exchanged through the cloud.  This makes a system
-that could be somewhat decentralized much more centralized.  For instance
-at present the `application of the Austrian Red Cross
-<https://participate.roteskreuz.at/stopp-corona/>`__ will do the correct
-crypto between phones but needs to exchange the encrypted payload via
-`P2Pkit's <http://p2pkit.io/>`__ cloud infrastructure.
+payload is then actually exchanged through the cloud or `GATT
+<https://en.wikipedia.org/wiki/Bluetooth_Low_Energy#GATT_operations>`__.
+The former makes a system that could be somewhat decentralized much more
+centralized.
 
 TCN based protocols instead will exchange just random identifiers instead.
 Most TCN based protocols currently suggest between 16 and 26 bytes of
-effectively random data.  No cloud necessary *at this point*.
+effectively random data which is easier to work with.
 
 Another complexity is that at present iOS devices in background cannot
 discover each other.  This limitation might be solvable by Apple and it
@@ -143,15 +141,20 @@ PEPP-PT and Local Governments
 -----------------------------
 
 So this leads us to `PEPP-PT <https://www.pepp-pt.org/>`__.  It would
-appear that PEPP-PT is going to pick DP-3T as the reference protocol and
+appear that PEPP-PT is evaluating DP-3T as the reference protocol and
 they are going to open source the code with the idea to support local
-authorities in implementing their own version.
+authorities in implementing their own version.  Officially they have not
+decided between centralized or TCN approaches yet, but there seems to be a
+high chance it will be the latter.  The concept is also very simple.
+Simple enough that if you want to explain this system to others, there is
+also a nice little `comic strip available
+<https://ncase.me/contact-tracing/>`__ that explains it.
 
 If your local government is planning on implementing a covid tracing app
-it might be worth directing them at the PEPP-PT project or Co-Epi.  The
-latter already has an implementation of many of the same ideas in their
-GitHub repository.
-
-If you want to explain this system to others, there is also a nice little
-`comic strip available <https://ncase.me/contact-tracing/>`__ that
-explains it.
+it might be worth directing them towards `Co-Epi
+<https://github.com/Co-Epi>`__.  It already has an implementation
+of many of the same ideas in their GitHub repository.  If they do want a
+centralized approach the Singaporean government Open Sourced their
+application under GPL3 under the name `BlueTrace
+<https://bluetrace.io/>`__.  It avoids largely unnecessary cloud
+infrastructure from what I can tell.
