@@ -47,7 +47,7 @@ Reality on the Ground
 What makes application based contact tracing very interesting is that they
 take advantage of working on top of a widely deployed piece of hardware:
 smart phones.  Specifically smartphones which support Bluetooth low
-energy (BLE).  If you hold an Airpod case close to your iPhone you will
+energy (BLE).  If you hold an AirPods case close to your iPhone you will
 notice that something happens on your screen.  BLE is what enables that.
 
 The downside of this is that BLE comes with some restrictions.  The two
