@@ -147,3 +147,5 @@ sends the necessary commands to the desk via bluetooth.  I also show the
 status of the desk in my shell prompt which will alert me gently if I have
 been sitting actively for more than 30 minutes.  This timer resets either
 when I take a break for 2 minutes or when I move the desk to standing.
+`This is what it looks like <https://twitter.com/mitsuhiko/status/1264548621606965248>`__
+when the desk is moving up and down controlled by the shell.
