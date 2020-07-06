@@ -77,11 +77,11 @@ kill it (`Obscure Ethernet for $200 please
 
 To quote that particular blog post:
 
-> nodes sending PAUSE message to the special multicast address
-> ``01:80:C2:00:00:01`` are instructing the switch to not send them any more
-> frames.  My switch seems to honor this, but also forwards the frames to the
-> other nodes on the network, in effect telling THEM to pause in sending
-> frames, which would explain the observed behavior.
+    nodes sending PAUSE message to the special multicast address
+    ``01:80:C2:00:00:01`` are instructing the switch to not send them any more
+    frames.  My switch seems to honor this, but also forwards the frames to the
+    other nodes on the network, in effect telling THEM to pause in sending
+    frames, which would explain the observed behavior.
 
 So that to me makes a lot more sense than loops or broadcast storms,
 especially since I can't really observe this.  Generally if you punch some
