@@ -360,7 +360,7 @@ An Arc reference counts what it encloses.  In this case the mutex.  This
 means that we can make sure the mutex gets deleted only after the last
 thread finished running.  Neat.
 
-So here is how the code works: we count to 20 like in Python, and for each
+So here is how the code works: we count to 35 like in Python, and for each
 of those numbers we run a local function.  Unlike in Python we can use a
 closure here.  Then we make a copy of the Arc into the local thread.  This
 means that each thread sees it's own version of the Arc (internally this
