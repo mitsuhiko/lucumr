@@ -141,10 +141,10 @@ Making Money
 Ultimately the goal of software development for many is to make money.
 Many people decide to utilize the GPL license for that by dual-licensing
 the code under the GPL and a proprietary license where the latter is
-only available to costumers. As a single developer it's arguable harder
+only available to customers. As a single developer it's arguable harder
 to sell code that is licensed under the BSD license. There the business
 model is probably more selling non-open-source extensions to paying
-costumers. If you open source all your code under the BSD you have to be
+customers. If you open source all your code under the BSD you have to be
 really good so that you can make money out of it. 
 
 Many developers don't really care about that, have their fun developing
