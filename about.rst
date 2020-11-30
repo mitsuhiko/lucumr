@@ -57,6 +57,6 @@ Imprint
 Imprint and contact information:
 
 | Armin Ronacher
-| Khünburg, 86; 9620 Hermagor; Austria
+| Handelskai 132a/1/46; 1020 Vienna; Austria
 | VAT number / UID: AT U68598289
 | Contact e-mail: armin.ronacher@active-4.com
