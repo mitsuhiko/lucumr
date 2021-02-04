@@ -35,7 +35,7 @@ presented online really starts to give my profession an awful reputation.
 Some of you might think that it's great you are all angel investors and
 serial entrepreneurs who work on dodgy immigration arrangements from
 different places in the world, who networks on the latest and greatest
-social apps, shares your lifestyle in their podcast armed with that fancy
+social apps, share their lifestyle in their podcast armed with that fancy
 latte and craft beer and who are making a brand out of themselves.
 
 I just have one ask: when you do that, be humble and reflect on your
