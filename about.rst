@@ -11,8 +11,8 @@ lead developer on a couple of popular Python projects.
 I'm currently located in Austria and working as a partner for `Sentry
 <http://www.getsentry.com/>`_ and as an advisor for `Fireteam Ltd.
 <http://fireteam.net>`_.  I'm available for on-site teaching,
-presentations and certain types of short term contract work.  Aside from
-that I do `open source </projects/>`_ development and like `giving talks
+presentations and certain types of short-term contract work.  Aside from
+that I do `open-source </projects/>`_ development and like `giving talks
 </talks>`_ at various conferences.
 
 If you want to contact me, you can reach me via one of the following
@@ -29,7 +29,7 @@ My usual nickname is `mitsuhiko`.
 Like my Work?
 -------------
 
-All of the open source stuff I work on is BSD licensed which
+All of the open-source stuff I work on is BSD licensed which
 means you can do with it whatever you want.
 
 I'm currently not accepting donations but if you have some truly
