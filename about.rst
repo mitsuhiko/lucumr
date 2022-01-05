@@ -8,21 +8,22 @@ development, graphics, realtime rendering and tons of other stuff.  I am
 one of the founding members of the `Pocoo Team <http://pocoo.org>`_ and
 lead developer on a couple of popular Python projects.
 
-I'm currently located in Austria and working as a partner for `Sentry
-<http://www.getsentry.com/>`_ and as an advisor for `Fireteam Ltd.
-<http://fireteam.net>`_.  I'm available for on-site teaching,
-presentations and certain types of short term contract work.  Aside from
-that I do `open source </projects/>`_ development and like `giving talks
-</talks>`_ at various conferences.
+I'm currently located in Austria and working as a Director of Engineering
+for `Sentry <http://www.getsentry.com/>`_.  Aside from that I do `open
+source </projects/>`_ development and like `giving talks </talks>`_ at
+various conferences and create Open Source software.  If you want to
+support my work consider sponsoring me on GitHub.
+
+.. raw:: html
+
+    <iframe src="https://github.com/sponsors/mitsuhiko/button" title="Sponsor mitsuhiko" height="35" width="116" style="border: 0;"></iframe>
 
 If you want to contact me, you can reach me via one of the following
 communication channels:
 
 -   via `email <armin.ronacher@active-4.com>`_
--   send me a message on `github <http://github.com/mitsuhiko>`_ or
-    `bitbucket <http://bitbucket.org/mitsuhiko>`_
+-   find me on `github <http://github.com/mitsuhiko>`_
 -   reach out to me on `twitter <http://twitter.com/mitsuhiko>`_
--   or go to the ``#pocoo`` irc channel on freenode
 
 My usual nickname is `mitsuhiko`.
 
@@ -32,10 +33,8 @@ Like my Work?
 All of the open source stuff I work on is BSD licensed which
 means you can do with it whatever you want.
 
-I'm currently not accepting donations but if you have some truly
-interesting problems in your company that you think I might be interested
-in solving, fire me a mail at `armin@ronacher.eu <armin@ronacher.eu>`_
-and maybe we can work together.
+I'm currently not available for consulting or contract work,
+but you can support my work via GitHub sponsors.
 
 About this Website
 ------------------
