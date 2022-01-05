@@ -70,8 +70,8 @@ Open Source Applications
 -   `python-modernize <https://github.com/python-modernize/python-modernize>`_ — Python 2 to 3 porting tool. *2012-*
 -   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — Python script installer. *2014-*
 -   `Lektor <https://www.getlektor.com/>`_ — a static file CMS. *2015-* *
--   `when <https://github.com/mitsuhiko/when>`_ — a time zone conversion tool. *2021-* *
 -   `cargo-insta <https://github.com/mitsuhiko/insta/>`_ — a utility for reviewing insta snapshots. *2019-* *
+-   `when <https://github.com/mitsuhiko/when>`_ — a time zone conversion tool. *2021-* *
 
 Commercial Projects
 -------------------
