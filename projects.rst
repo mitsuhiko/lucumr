@@ -50,6 +50,14 @@ Open Source Libraries
 -   `redis-rs <https://github.com/mitsuhiko/redis-rs>`_ — a redis driver
     for Rust. *2014-* *
 -   `rb <http://rb.rtfd.org/>`_ — a redis clustering library for Python. *2015-* *
+-   `indicatif <https://github.com/mitsuhiko/indicatif/>`_ — a progress bar
+    library for Rust. *2017-* *
+-   `console <https://github.com/mitsuhiko/console/>`_ — a console
+    utility library for Rust. *2017-* *
+-   `insta <https://insta.rs/>`_ — a snapshot testing library for Rust. *2019-* *
+-   `similar <https://insta.rs/similar/>`_ — a diffling library for Rust. *2020-* *
+-   `minijinja <https://github.com/mitsuhiko/minijinja/>`_ — a minimal dependency
+    implementation of Jinja2 for Rust. *2021-* *
 
 Open Source Applications
 ------------------------
@@ -62,6 +70,8 @@ Open Source Applications
 -   `python-modernize <https://github.com/python-modernize/python-modernize>`_ — Python 2 to 3 porting tool. *2012-*
 -   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — Python script installer. *2014-*
 -   `Lektor <https://www.getlektor.com/>`_ — a static file CMS. *2015-* *
+-   `when <https://github.com/mitsuhiko/when>`_ — a time zone conversion tool. *2021-* *
+-   `cargo-insta <https://github.com/mitsuhiko/insta/>`_ — a utility for reviewing insta snapshots. *2019-* *
 
 Commercial Projects
 -------------------
