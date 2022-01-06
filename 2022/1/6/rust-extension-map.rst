@@ -42,8 +42,8 @@ So we basically want something like the following API wise:
     let app = App::new();
 
     // place in extension map
-    app.extensions().insert(MyConfig { ... });
-    app.extensions().insert(MyDatabase { ... });
+    app.extensions().insert(Config { ... });
+    app.extensions().insert(Database { ... });
 
     // retrieve from extension map
     let config = app.extensions().get::<Config>();
