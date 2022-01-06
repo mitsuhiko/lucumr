@@ -200,11 +200,11 @@ instead which provides the necessary functionality:
     }
 
     impl Extensions {
-        pub fn insert<T: 'static>(&self, value: T) {
+        pub fn insert<T: Send + Sync + 'static>(&self, value: T) {
             self.map.write().insert(TypeId::of::<T>(), Box::new(value));
         }
 
-        pub fn get<T: Default + 'static>(&self) -> MappedRwLockReadGuard<'_, T> {
+        pub fn get<T: Send + Sync + Default + 'static>(&self) -> MappedRwLockReadGuard<'_, T> {
             self.ensure::<T>();
             RwLockReadGuard::map(self.map.read(), |m| {
                 m.get(&TypeId::of::<T>())
@@ -213,7 +213,7 @@ instead which provides the necessary functionality:
             })
         }
 
-        pub fn get_mut<T: Default + 'static>(&self) -> MappedRwLockWriteGuard<'_, T> {
+        pub fn get_mut<T: Send + Sync + Default + 'static>(&self) -> MappedRwLockWriteGuard<'_, T> {
             self.ensure::<T>();
             RwLockWriteGuard::map(self.map.write(), |m| {
                 m.get_mut(&TypeId::of::<T>())
@@ -222,7 +222,7 @@ instead which provides the necessary functionality:
             })
         }
 
-        fn ensure<T: Default + 'static>(&self) {
+        fn ensure<T: Default + Send + Sync + 'static>(&self) {
             if self.map.read().get(&TypeId::of::<T>()).is_none() {
                 self.insert(T::default());
             }
