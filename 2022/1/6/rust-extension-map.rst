@@ -3,8 +3,8 @@ tags: [rust]
 summary: |
   A useful pattern for making common types extensible.
 
-Extension Maps in Rust
-======================
+Rust Any Part 1: Extension Maps in Rust
+=======================================
 
 Sometimes in Rust you want to design APIs that provide a little bit of
 flexibility for the user.  A common approach for this is to introduce a
@@ -54,7 +54,6 @@ it later.  For now let's look at the most simplest of these options: an
 ones.  If an extension does not exist yet, instead of panicking we will
 automatically upsert it (eg: the type needs to implement `Default`):
 
-
 .. sourcecode:: rust
 
     use std::collections::HashMap;
@@ -70,8 +69,7 @@ automatically upsert it (eg: the type needs to implement `Default`):
             self.map.insert(TypeId::of::<T>(), Box::new(value));
         }
 
-        pub fn get<T: Default + 'static>(&self) -> &T {
-            self.ensure::<T>();
+        pub fn get<T: 'static>(&self) -> &T {
             self.map.get(&TypeId::of::<T>())
                 .and_then(|b| b.downcast_ref())
                 .unwrap()
@@ -84,15 +82,17 @@ automatically upsert it (eg: the type needs to implement `Default`):
                 .unwrap()
         }
     
-        fn ensure<T: Default + 'static>(&self) {
+        fn ensure<T: Default + 'static>(&mut self) {
             if self.map.get(&TypeId::of::<T>()).is_none() {
                 self.insert(T::default());
             }
         }
     }
 
-So this is pretty straightforward to use now but leaves one issue behind:
-the borrow checker will make your life quite hard.  The above map is quite
+So this is pretty straightforward to use now but leaves two issues behind:
+first only `get_mut` upserts.  If one were to call `get` without upserting
+the value first we get a panic instead.  This leads us to issue two: the
+borrow checker will make your life quite hard.  The above map is quite
 useful for the typical setup where you have an object like an application,
 you configure it once, and from then on the extension map is frozen as
 there are too many shared references to it flying around that nobody will
@@ -117,7 +117,10 @@ for instance.  It has a ``State`` object which is created once per
 template initialization, is not `Send` or `Sync` and holds state the
 engine needs for the evaluation.  What if you want to make it possible for
 a user to put their own state on it?  In that case one can adapt the type
-from above by using `RefCell` internally:
+from above by using `RefCell` internally.
+
+While we're at it we can fix the issue get `get` does not upsert but
+panic.
 
 .. sourcecode:: rust
 
@@ -228,5 +231,11 @@ instead which provides the necessary functionality:
             }
         }
     }
+
+Note that this extension map does not implement `Debug`.  A simple
+changing of the trait bounds unfortunately does not yield the result we
+want.  To fix this we need something else.  We need `the as-any pattern in
+Part 2
+</2022/1/7/as-any-hack/>`__.
 
 Happy extending!
