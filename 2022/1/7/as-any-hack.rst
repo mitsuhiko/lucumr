@@ -4,7 +4,7 @@ summary: |
   A creative workaround to the inability of implementing additional traits
   to `Any`.
 
-Rust Any Part 2: As-Any Hack
+Rust Any Part 2/: As-Any Hack
 ============================
 
 `Yesterday I wrote </2022/1/6/rust-extension-map/>`__ about how to use the
@@ -56,7 +56,7 @@ Something like this:
 
     impl<T: Any + Debug + 'static> DebugAny for T {}
 
-Rhis will in fact compile and you will be able to construct such a box,
+This will in fact compile and you will be able to construct such a box,
 but what will not work is downcasting:
 
 .. sourcecode:: rust
