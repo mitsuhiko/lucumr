@@ -4,7 +4,7 @@ summary: |
   A creative workaround to the inability of implementing additional traits
   to `Any`.
 
-Rust Any Part 2/: As-Any Hack
+Rust Any Part 2: As-Any Hack
 ============================
 
 `Yesterday I wrote </2022/1/6/rust-extension-map/>`__ about how to use the
