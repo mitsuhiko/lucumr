@@ -87,7 +87,9 @@ div.entry-overview div.date         { float: left; width: 120px; color: #7b8894;
                                       font-size: 14px; }
 
 /* other alignment things */
-img.align-center        { margin: 15px auto; display: block; }
+img.align-center                    { margin: 15px auto; display: block; }
+.figure.align-center                { text-align: center; }
+.figure p.caption                   { font-size: 14px; margin-top: 0; }
 
 /* pagination */
 div.pagination          { margin: 36px 0 0 0; text-align: center; }
