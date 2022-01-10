@@ -50,8 +50,8 @@ Let's contrast this for a second with the situation on npm.  One of the
 most dependent on libraries is in fact `colors
 <https://www.npmjs.com/package/colors>`__.  The library is effectively
 emitting ANSI codes for colorization.  A useful feature for sure, but not
-world shattering.  I would go out on a lib and say that this type of
-functionality very often is implemented directly instead of dependent on.
+world shattering.  I would go out on a limb and say that this type of
+functionality very often is implemented directly instead of depended on.
 For instance when I wrote `click <https://click.palletsprojects.com/>`__ I
 purposefully decided to implement ANSI coloring right in my own library
 without depending on something.  My hunch is that it wouldn't take long to
