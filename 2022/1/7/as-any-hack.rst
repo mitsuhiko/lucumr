@@ -50,7 +50,7 @@ Something like this:
 .. sourcecode:: rust
 
     #[derive(Debug)]
-    struct AnyBox(Box<dyn Any + Debug>);
+    struct AnyBox(Box<dyn DebugAny>);
 
     trait DebugAny: Any + Debug {}
 
