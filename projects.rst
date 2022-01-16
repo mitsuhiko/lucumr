@@ -57,7 +57,7 @@ Rust:
 
 -   `redis-rs <https://github.com/mitsuhiko/redis-rs>`_ — a redis driver
     for Rust. *2014-* *
--   `rust-sha1 <https://github.com/mitsuhiko/rust-sha1/>`_ — a SHA1
+-   `sha1_smol <https://github.com/mitsuhiko/sha1-smol/>`_ — a SHA1
     implementation for Rust. *2014-* *
 -   `indicatif <https://github.com/mitsuhiko/indicatif/>`_ — a progress bar
     library for Rust. *2017-* *
