@@ -19,13 +19,11 @@ with a dagger (‘†’).
 Open Source Libraries
 ---------------------
 
+Python:
+
 -   `Pygments <http://pygments.pocoo.org/>`_ — syntax highlighter written in Python.  *2005-*
 -   `Jinja <http://jinja.pocoo.org/>`_ — template engine for Python.  *2006-*
 -   `Ruty <http://ruty.rubyforge.org/>`_ — a port of Django templates to Ruby.  *2007*
--   `Twig <http://www.twig-project.org/>`_ — a Django-inspired template
-    engine for PHP (2007; initial implementation)
--   `phpserialize <http://pypi.python.org/pypi/phpserialize>`_ —
-    implementation of the PHP serialization for Python. *2007*
 -   `Sphinx <http://sphinx.pocoo.org/>`_ — a Python documentation tool.  *2007-*
 -   `Werkzeug <http://werkzeug.pocoo.org/>`_ — WSGI utility library for Python.  *2007-* *
 -   `Babel <http://babel.pocoo.org/>`_ — collection of tools for
@@ -46,18 +44,40 @@ Open Source Libraries
 -   `PluginBase <http://pluginbase.pocoo.org/>`_ — a plugin system for Python. *2014-* *
 -   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — a wrapper around pip
     for script installation. *2014-* *
--   `unp <https://github.com/mitsuhiko/unp>`_ — an unpacking shell script. *2014-* *
+-   `rb <http://rb.rtfd.org/>`_ — a redis clustering library for Python. *2015-* *
+
+PHP:
+
+-   `phpserialize <http://pypi.python.org/pypi/phpserialize>`_ —
+    implementation of the PHP serialization for Python. *2007*
+-   `Twig <http://www.twig-project.org/>`_ — a Django-inspired template
+    engine for PHP (2007; initial implementation)
+
+Rust:
+
 -   `redis-rs <https://github.com/mitsuhiko/redis-rs>`_ — a redis driver
     for Rust. *2014-* *
--   `rb <http://rb.rtfd.org/>`_ — a redis clustering library for Python. *2015-* *
+-   `rust-sha1 <https://github.com/mitsuhiko/rust-sha1/>`_ — a SHA1
+    implementation for Rust. *2014-* *
 -   `indicatif <https://github.com/mitsuhiko/indicatif/>`_ — a progress bar
     library for Rust. *2017-* *
 -   `console <https://github.com/mitsuhiko/console/>`_ — a console
     utility library for Rust. *2017-* *
+-   `fragile <https://github.com/mitsuhiko/fragile/>`_ — a library to make it
+    possible to safely send non send types to other threads. *2018-* *
+-   `serde_plain <https://github.com/mitsuhiko/serde-plain>`_ — a library to
+    serialize to plain strings. *2018-* *
+-   `listenfd <https://github.com/mitsuhiko/listenfd>`_ — a library
+    that helps working with passed file descriptors (systemd etc.).
+    *2018-* *
 -   `insta <https://insta.rs/>`_ — a snapshot testing library for Rust. *2019-* *
 -   `similar <https://insta.rs/similar/>`_ — a diffling library for Rust. *2020-* *
 -   `minijinja <https://github.com/mitsuhiko/minijinja/>`_ — a minimal dependency
     implementation of Jinja2 for Rust. *2021-* *
+
+Others:
+
+-   `unp <https://github.com/mitsuhiko/unp>`_ — an unpacking shell script. *2014-* *
 
 Open Source Applications
 ------------------------
@@ -70,6 +90,9 @@ Open Source Applications
 -   `python-modernize <https://github.com/python-modernize/python-modernize>`_ — Python 2 to 3 porting tool. *2012-*
 -   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — Python script installer. *2014-*
 -   `Lektor <https://www.getlektor.com/>`_ — a static file CMS. *2015-* *
+-   `systemfd <https://github.com/mitsuhiko/systemfd>`_ — small executable
+    that emulates socket passing to support seamless reloading.
+    *2018-* *
 -   `cargo-insta <https://github.com/mitsuhiko/insta/>`_ — a utility for reviewing insta snapshots. *2019-* *
 -   `when <https://github.com/mitsuhiko/when>`_ — a time zone conversion tool. *2021-* *
 
