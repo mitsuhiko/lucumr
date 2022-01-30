@@ -85,7 +85,8 @@ that of course you don't need it here.  However this code is also using a
 suboptimal function: `std::mem::zeroed`.  If you run this on a recent Rust
 compiler you will get this result::
 
-    thread 'main' panicked at 'attempted to zero-initialize type `Role`, which is invalid', src/main.rs:11:30
+    thread 'main' panicked at 'attempted to zero-initialize type `Role`,
+      which is invalid', src/main.rs:11:30
 
 On older Rust compilers this code will run but it was never really
 correct.  So how do we solve this?  The compiler already tells us that we
