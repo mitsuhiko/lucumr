@@ -149,7 +149,7 @@ particular our `&'static str` reference is definitely not valid all
 zeroed out.
 
 A mutable reference must also never point to an invalid object, so doing
-``let role = &mut uninit.as_mut_ptr()`` if that object is not fully
+``let role = &mut *uninit.as_mut_ptr()`` if that object is not fully
 initialized is also wrong.
 
 So let's just accept that `MaybeUninit` is necessary and we need to deal
