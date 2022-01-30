@@ -158,8 +158,8 @@ too bad.  Unfortunately we're still using it wrong.  Remember how I
 mentioned that creating “safe things” that don't uphold the guarantees of
 that safe thing is not allowed, even in unsafe code?  We're in fact having
 exactly this happen in our code.  For instance ``(*role).name`` creates a
-`&mut str` behind the scenes which is illegal, even if we can't observe
-it because the memory where it points to is not initialized.
+`&mut &'static str` behind the scenes which is illegal, even if we can't
+observe it because the memory where it points to is not initialized.
 
 So now we have two new problems: we know that `&mut X` is not allowed, but
 `*mut X` is.  How do we get this?  Ironically until Rust 1.51 it was
