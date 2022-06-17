@@ -6,6 +6,18 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+2022
+----
+
+-   `The Snowball Effect of Open Source
+    <https://speakerdeck.com/mitsuhiko/the-snowball-effect-of-open-source>`__
+    @ WeAreDevelopers World Congress Berlin (`recording
+    <https://www.youtube.com/watch?v=AqqMOQN75pw>`__, `PDF <http://mitsuhiko.pocoo.org/wearedevs-opensource.pdf>`__)
+-   `Mobile Games are Living Organisms Too <https://speakerdeck.com/mitsuhiko/mobile-games-are-living-organisms-too>`__
+    @ GDC 2022 (`PDF
+    <http://mitsuhiko.pocoo.org/GDC-mobile-organisms.pdf>`__)
+
+
 2019
 ----
 
