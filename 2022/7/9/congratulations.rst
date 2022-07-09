@@ -42,6 +42,10 @@ onto the developer who already puts their own labor and time into it.  From
 the index' point of view there is a benefit to not enforce rules on everybody
 as some of these rules might make the use of the index burdensome, but putting
 the burden only on critical packages does not hurt the adoption just as much.
+As mentioned earlier I would not make the case that 2FA is not burdensome,
+it's a sensible thing.  But clearly the index considers it burdensome
+enough to not enforce it for everybody.  More importantly though is what
+could come next.
 
 There is a hypothetical future where the rules tighten.  One could imagine that
 an index would like to enforce cryptographic signing of newly released packages.
