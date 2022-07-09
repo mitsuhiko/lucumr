@@ -21,10 +21,10 @@ Open Source Libraries
 
 Python:
 
--   `Pygments <http://pygments.pocoo.org/>`_ — syntax highlighter written in Python.  *2005-*
--   `Jinja <http://jinja.pocoo.org/>`_ — template engine for Python.  *2006-*
--   `Ruty <http://ruty.rubyforge.org/>`_ — a port of Django templates to Ruby.  *2007*
--   `Sphinx <http://sphinx.pocoo.org/>`_ — a Python documentation tool.  *2007-*
+-   `Pygments <http://pygments.org/>`_ — syntax highlighter written in Python.  *2005-*
+-   `Jinja <https://jinja.palletsprojects.com/>`_ — template engine for Python.  *2006-*
+-   `Ruty <https://rubygems.org/gems/ruty>`_ — a port of Django templates to Ruby.  *2007*
+-   `Sphinx <https://www.sphinx-doc.org/>`_ — a Python documentation tool.  *2007-*
 -   `Werkzeug <http://werkzeug.pocoo.org/>`_ — WSGI utility library for Python.  *2007-* *
 -   `Babel <http://babel.pocoo.org/>`_ — collection of tools for
     internationalizing Python applications.  *2008-* *
@@ -33,13 +33,13 @@ Python:
     engine based on Genshi for Python.  *2009* *
 -   `MarkupSafe <https://pypi.python.org/pypi/MarkupSafe>`_ — a tainted
     HTML string for Python.  *2010-* *
--   `Logbook <http://logbook.pocoo.org/>`_ — a logging library for Python.
+-   `Logbook <https://logbook.readthedocs.io/>`_ — a logging library for Python.
     *2010-2012*
--   `Flask <http://flask.pocoo.org/>`_ — a microframework for Python based
+-   `Flask <https://flask.palletsprojects.com/>`_ — a microframework for Python based
     on good intentions.  *2010-* *
 -   `itsdangerous <http://pythonhosted.org/itsdangerous>`_ — a
     cryptographic signing library.  *2012-* *
--   `Click <http://click.pocoo.org/>`_ — a
+-   `Click <https://click.palletsprojects.com/>`_ — a
     command line interface utility library.  *2014-* *
 -   `PluginBase <http://pluginbase.pocoo.org/>`_ — a plugin system for Python. *2014-* *
 -   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — a wrapper around pip
@@ -82,7 +82,7 @@ Others:
 Open Source Applications
 ------------------------
 
--   `Zine <http://zine.pocoo.org/>`_ — a blog software written in Python. *2007-* *
+-   ``Zine`` — a blog software written in Python. *2007-* *
 -   `MoinMoin <http://moinmo.in>`_ — wiki engine written in Python. *2008* †
 -   `Plurk Solace <http://opensource.plurk.com/solace/>`_ — a multilingual support application. *2009-*
 -   `Timesched <http://timesched.pocoo.org/>`_ — a world time scheduler. *2013* *
