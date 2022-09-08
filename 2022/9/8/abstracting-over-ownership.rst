@@ -1,4 +1,4 @@
-public: yes
+public: no
 summary: diving into some restrictions of the Rust type system and why GATs are not helping.
 
 You can't Do That: Abstracting over Ownership in Rust with Type Inference (and GATs Don't Help)
