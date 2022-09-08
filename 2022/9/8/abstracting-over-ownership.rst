@@ -4,6 +4,13 @@ summary: diving into some restrictions of the Rust type system and why GATs are 
 You can't Do That: Abstracting over Ownership in Rust with Type Inference (and GATs Don't Help)
 ===============================================================================================
 
+**Retraction: This post should be disregarded for now as in an attempt to reduce
+the problem I made a mistake and in fact, reduced it to something that is in
+fact (trivially) solvable.  I will follow up with an replacement post that
+hopefully is more accurate.**
+
+-----
+
 A few years ago `I wrote about <https://lucumr.pocoo.org/2018/3/31/you-cant-rust-that/>`__
 how to get better at Rust by knowing when what you want to do is impossible.  Sadly in
 many ways I don't learn from my own mistakes and I keep running into a
