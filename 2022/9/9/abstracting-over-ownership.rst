@@ -265,36 +265,185 @@ It won't compile::
 Here we are hitting a roadblock and it seems really puzzling.  Rust basically tells us that
 our trait is only implemented for a specific lifetime yet it has to be valid for all lifetimes.
 
-The Problem
------------
+Part 3: Hacking Together A Solution
+-----------------------------------
 
 The problem appears to stem from the fact that when higher-ranked trait bounds are involved
-things that normally work, stops working.  There is in fact no way to express this with Rust
-today from what I can tell.  But it's quite tricky to understand why it doesn't work and in
-particular it can be hard to understand before you go down the rabbit hole, why it doesn't.
+things that normally work, stop working.  There appears to be no way sensible way to express
+this with Rust today from what I can tell.  But it's quite tricky to understand why it
+doesn't work and in particular it can be hard to understand before you go down the rabbit
+hole, why it doesn't.
 
-The answer for these cases comes from the interaction of many obscure features that as a
-Rust programmer are not supposed to leak up to you.  And this is part of the problem where
-this is sitting right now.  It's possible to implement this ``ArgCallback`` in stable Rust,
-but it involves tremendous around of hackery with GATs and a lot of generated code that I
-do not want to consider going down this path.  If you however want to see, how this could
-work, I point you to `to a gist by @quitedot <https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=4d271eea5b208ad4dc817f23eea90b2d>`__
-which proposes a way to do this for a ``gtk-rs`` developer who
-`ran against the same problem <https://users.rust-lang.org/t/problems-matching-up-lifetimes-between-various-traits-and-closure-parameters/71994>`__.
+The root of the issue stems from the first introduction of ``for<'a>`` to ``TryConvertValue<'a>``:
+
+.. sourcecode:: rust
+
+    T: for<'a> TryConvertValue<'a>,
+
+This really says that it's defined for all ``T`` for which ``TryConvertValue<'a>`` holds
+for all lifetimes.  Rust calls this `universally quantified
+<https://rustc-dev-guide.rust-lang.org/appendix/background.html#quantified>`__.  It also means
+that while Rust monomorphizes the function (that means it creates one instance per typed passed)
+it does not monomorphize based on lifetimes.  This means the function has the same body no matter
+if a static or any other lifetime is passed in.  Unfortunately the above bound cannot be satisfied
+for non ``'static`` lifetimes.  This means you would need to be able express something like
+``for<'a> impl<'a> TryConvertValue<'a> for &'a str`` which is not valid Rust.
+
+This does however not mean that the problem is entirely unsolvable, but it means if the
+``TryConvertValue`` trait should be used with higher-ranked trait bounds, it needs to be
+wrapped by another layer of indication.
+
+We can introduce an argument representation trait which can help us:
+
+.. sourcecode:: rust
+
+    trait ArgRepr<'a> {
+        type Arg: 'a + TryConvertValue<'a>;
+    }
+
+Here we use an associated type (not quite a GAT, but similar idea).  With this we no longer have
+the relationship of type implementing the trait to the output value.  We can also implement this
+trait now for all ``'static`` args where ``<T as ArgRepr<'_'>>::Arg == T``:
+
+.. sourcecode:: rust
+
+    impl<T: 'static + for<'any> TryConvertValue<'any>> ArgRepr<'_> for T {
+        type Arg = T;
+    }
+
+But what do we do with the non static types like ``&str``?  Well we need a dummy proxy type.  So
+for instance we can create a ``StrRef`` which is implemented for all string references:
+
+.. sourcecode:: rust
+
+    struct StrRef;
+
+    impl<'a> ArgRepr<'a> for StrRef {
+        type Arg = &'a str;
+    }
+
+Now you can already imagine where this is going: if we start using our ``ArgRepr`` trait, type
+inference will be entirely broken since nothing connects the output type to the input type and
+you are very right.  But we can do a similar trick and at least get the static lifetimes to work.
+Our ``CallbackTrait`` however becomes a minor monstrosity:
+
+.. sourcecode:: rust
+
+    trait CallbackTrait<A: ?Sized + for<'a> ArgRepr<'a>>: Send + Sync + 'static {
+        fn invoke(&self, arg: <A as ArgRepr<'_>>::Arg) -> Value;
+    }
+
+The bound on ``A`` gives us GAT like behavior since there a ``for<'a>`` is supported on stable
+Rust.  We can also as mentioned implement this for all statics:
+
+.. sourcecode:: rust
+
+    impl<Func, Arg> CallbackTrait<Arg> for Func
+    where
+        Arg: 'static + for<'a> ArgRepr<'a, Arg = Arg>,
+        Func: Fn(Arg) -> Value + Send + Sync + 'static,
+    {
+        fn invoke(&self, arg: Arg) -> Value {
+            (self)(arg)
+        }
+    }
+
+The ``ArgCallback`` also has to change now to use ``ArgRepr``.  Our handy
+``convert`` function from before we won't be able to use any more since the bounds
+are wrong, but we can directly reach through to the underlying ``TryConvertValue``
+trait:
+
+.. sourcecode:: rust
+
+    struct ArgCallback(Box<dyn Fn(&Value) -> Value + Sync + Send + 'static>);
+
+    impl ArgCallback {
+        pub fn new<F, A>(f: F) -> ArgCallback
+        where
+            F: CallbackTrait<A>,
+            A: ?Sized + 'static + for<'a> ArgRepr<'a>,
+        {
+            ArgCallback(Box::new(move |arg| -> Value {
+                f.invoke(TryConvertValue::try_convert_value(arg).unwrap())
+            }))
+        }
+
+        pub fn invoke(&self, arg: &Value) -> Value {
+            (self.0)(arg)
+        }
+    }
+
+With this, we can use our ``square`` function from above again, but trying to use ``to_upper``
+will result in this familiar error message::
+
+    error: implementation of `TryConvertValue` is not general enough
+    --> src/main.rs:96:20
+    |
+    96 |     let to_upper = ArgCallback::new(|a: &str| Value::String(a.to_uppercase()));
+    |                    ^^^^^^^^^^^^^^^^ implementation of `TryConvertValue` is not general enough
+    |
+    = note: `TryConvertValue<'0>` would have to be implemented for the type `&str`, for any lifetime `'0`...
+    = note: ...but `TryConvertValue<'1>` is actually implemented for the type `&'1 str`, for some specific lifetime `'1`
+
+This time around it's however a bit of a lie.  I'm actually not sure why it claims that there is an
+implementation for a lifetime of ``&str``.  However, by adding an implementation for ``StrRef`` our
+``to_upper`` function will magically start to compile:
+
+.. sourcecode:: rust
+
+    impl<Func> CallbackTrait<StrRef> for Func
+    where
+        Func: Fn(&str) -> Value + Send + Sync + 'static,
+    {
+        fn invoke(&self, arg: &str) -> Value {
+            (self)(arg)
+        }
+    }
+
+Here no more ``for<'a>`` shows up to confuse the compiler (and quite frankly the author of this post).
+
+Now all is well?  Well not really.  This really only works because in our toy example here we had a
+callback taking a single argument.  For when you want to support multiple arguments and many different
+borrowed types, you quickly run into the ridiculous situation that you need to build out the underlying
+``CallbackTrait`` for all combinations which results in a `combinational
+explosion <https://en.wikipedia.org/wiki/Combinatorial_explosion>`__.
+
+So I would not recommend it and I am not going to try to do something like this myself.
+
+Why and What Now?
+-----------------
+
+So what did we learn?  We learned that HRTBs, GATs and all this fancy pantsy stuff is
+incredible complex and a very leaky abstraction.  Interaction of obscure features leaks
+up to Rust programmers that don't want to be bothered with these internals.  Rust is normally
+quite capable of hiding the complexities of type theory, but it's completely failing here.
+
+And this is part of the problem where this is sitting right now.  It's possible
+to implement this ``ArgCallback`` in stable Rust, but it involves tremendous
+around of hackery with a lot of generated code that I do not want to consider going
+down this path.
 
 But it's not just third party libraries that are noticing limitations in expressiveness
 involving lifetimes and hacks are creeping in.  The standard library is also starting to
 notice that where now `thread::scope also involves some advanced black magic
 <https://github.com/rust-lang/rust/issues/93203#issuecomment-1041879025>`__.  When googling
-for the error messages or related error messages from the compiler, you also quickly discover
-that people keep running into this with futures and async/await.  Because of the level of
-hidden transformations the compiler is generating, behind the scenes it can cause code to
+for the error messages or related error messages from the compiler, you run into many
+confusde users that run into similar error messages via futures and async/await.  The
+hidden transformations the compiler is generating, behind the scenes can cause code to
 be generated that exhibits the problem just that it's even harder to spot.
 
+In fact, you can get this confusing error message by just using ``Derive`` wrong:
+
+.. sourcecode:: rust
+
+    #[derive(Debug)]
+    struct A(fn(&u32));
+
 I originally wanted to try to explain this problem in a way that makes it possible to
-understand what is going on, but after multiple attempts I failed doing so.  Instead
-I would like to point you towards some discussions involving this problem if you are
-curious about the nitty-gritty bits:
+understand what is going on, but after multiple attempts I failed doing so.  In fact
+I left so confused that I'm not even sure if my attempt of explaining it here is even
+correct.  Instead I would like to point you towards some discussions involving
+this problem if you are curious about the nitty-gritty bits:
 
 - Rust issue about `HRTBs "implementation is not general enough", but is
   <https://github.com/rust-lang/rust/issues/70263>`__ is an issue in the Rust bug tracker
@@ -315,10 +464,15 @@ curious about the nitty-gritty bits:
   explanation of `Early and Late Bound Variables <https://rustc-dev-guide.rust-lang.org/early-late-bound.html>`__
   in the Rust compiler.  It explains a bit how rust substitues generics.
 
+- A `forum thread where @quinedot explains <https://users.rust-lang.org/t/problems-matching-up-lifetimes-between-various-traits-and-closure-parameters/71994/7>`__
+  how to implement signal callbacks for ``gtk-rs`` that have exactly the same issue as
+  outlined in this blog post.
+
 Where does this leave us?  Unclear.  If you go down the rabbit hole of reading about all the
 issues surrounding GATs and HKTBs you get a strong sense that it's better to avoid creating
 APIs that invole abstracting over ownership and borrowing when possible.  You will run into
-walls and the workarounds might be ugly and hard to understand.
+walls and the workarounds might be ugly and hard to understand.  So I guess a new thing I can
+recommend not to try to do: **do not abstact over borrows and ownership if functions are involved**.
 
 ----
 
@@ -326,7 +480,7 @@ walls and the workarounds might be ugly and hard to understand.
 
     <small>
 
-Another note here: in an attempt to reduce the problem to a blog post, I yesterday made a
+Another note here: in an attempt to reduce the problem to a blog post, I earlier made a
 pretty terrible attempt of doing so.  I have since declared teaching bancryptcy on this issue
 and instead leave you with a very basic post that explains my own pain and suffering and
 does not attempt to explain too much about what is happening.  I also made the mistake to
@@ -334,6 +488,10 @@ reduce the problem in an incorrect way which ultimately reduced it so much, that
 trivially solvable as pointed out by `dtolay on reddit
 <https://www.reddit.com/r/rust/comments/x8ztwt/you_cant_do_that_abstracting_over_ownership_in/inld2pt/>`__
 which is why I unpublished the first version of this post.
+
+A big thank you goes to quinedot on rust-lang users who `helped me understand the problem
+better <https://users.rust-lang.org/t/problems-matching-up-lifetimes-between-various-traits-and-closure-parameters/71994/7>`__
+and provided solutions.
 
 .. raw:: html
 
