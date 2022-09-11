@@ -117,4 +117,5 @@ span.strike     { text-decoration: line-through; }
     h1 { font-size: 42px; line-height: 44px; }
     h2 { font-size: 36px; line-height: 38px; }
     h3 { font-size: 28px; line-height: 30px; }
+    div.entry-overview { margin: 25px 10px 25px 0; }
 }
