@@ -406,7 +406,8 @@ If you compile it with an older Rust compiler you are presented with this obscur
         |            --- required by a bound in this
     ...
     101 |         Func: Callback<Args> + for<'a> Callback<<Args as CallbackArgs<'a>>::Output>,
-        |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `BoxedCallback::new`
+        |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        |                                required by this bound in `BoxedCallback::new`
 
 Why that is I cannot tell.  I was unable at least to find something in the changelog that would obviously
 point to some changes here.

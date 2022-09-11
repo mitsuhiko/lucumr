@@ -53,7 +53,8 @@ blockquote                      { font-style: italic; }
 pre, code, tt   { font-family: 'Ubuntu Mono', 'Consolas', 'Deja Vu Sans Mono',
                   'Bitstream Vera Sans Mono', 'Monaco', 'Courier New';
                   font-size: 0.9em; }
-pre             { line-height: 1.45; background: none; padding: 0; }
+pre             { line-height: 1.45; background: none; padding: 0; width: 100%;
+                  overflow-x: auto; }
 code, tt        { background: #eee; }
 
 /* tables */
@@ -86,6 +87,11 @@ div.entry-overview div.date         { float: left; width: 120px; color: #7b8894;
                                       text-align: right; font-style: italic;
                                       font-size: 14px; }
 
+@media only screen and (max-width: 900px) {
+    div.entry-overview { margin: 25px 10px 25px 0; }
+    div.entry-overview div.detail { margin-left: 130px; }
+}
+
 /* other alignment things */
 img.align-center                    { margin: 15px auto; display: block; }
 .figure.align-center                { text-align: center; }
@@ -108,14 +114,12 @@ span.math img   { margin-bottom: -7px; }
 span.strike     { text-decoration: line-through; }
 
 /* mobile */
-
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 800px) {
     div.body { padding: 0; margin: 0; }
     div.container { padding: 12px; margin: 0; }
     div.header { height: auto; margin: 0; }
-    pre { overflow-x: auto; }
+    div.navigation { margin-bottom: 20px; }
     h1 { font-size: 42px; line-height: 44px; }
     h2 { font-size: 36px; line-height: 38px; }
     h3 { font-size: 28px; line-height: 30px; }
-    div.entry-overview { margin: 25px 10px 25px 0; }
 }
