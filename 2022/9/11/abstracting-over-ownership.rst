@@ -1,8 +1,8 @@
-public: no
-summary: diving into some restrictions of the Rust type system.
+public: yes
+summary: In which I'm diving into some restrictions of the Rust type system involving closures.
 
-You can't Do That: Abstracting over Ownership in Rust with Higher-Rank Type Bounds
-==================================================================================
+You Can't Do That: Abstracting over Ownership in Rust with Higher-Rank Type Bounds. Or Can You?
+===============================================================================================
 
 A few years ago `I wrote about <https://lucumr.pocoo.org/2018/3/31/you-cant-rust-that/>`__
 how to get better at Rust by knowing when what you want to do is impossible.  Sadly in
@@ -11,27 +11,32 @@ particular issue over and over again: Rust's restrictions about being able to
 abstract over the borrow status / ownership of a values in some hard to discover
 situations involving higher-kinded type bounds.
 
-The problem I'm talking about relates to abstracting over borrows and owned values
-when combined with functions or something that uses higher-kinded trait bounds.
+A few days ago I wrote a (now unpublished) article about how you can't express
+a certain problem I keep manuvering myself with Rust's lifetimes.  However that
+post set in motion a chain of events that lead to a solution that actually works.
+Yet at the same time even though I thought it was impossible I don't think the
+solution is obvious, I could have found it myself and it does not even work
+reliably.  But more about that later.
+
+Let's set the stage first: The problem I'm talking about relates to abstracting
+over borrows and owned values when combined with functions or something that
+uses higher-kinded trait bounds.  In other words: one wants to create an API
+where it's possible to either borrow or clone out of some input value.  Think
+of a generic function that can produce both a ``String`` and a ``&str``.
 
 If you are toying around with this sort of stuff, the compiler messages you might
 run into look like this::
 
     implementation of `X` is not general enough
-
     = note: `X<'0>` would have to be implemented for the type `&str`, for any lifetime `'0`...
     = note: ...but `X<'1>` is actually implemented for the type `&'1 str`, for some specific lifetime `'1`
 
 With the recent talk about stabilization of `GATs
 <https://rust-lang.github.io/rfcs/1598-generic_associated_types.html>`__ I tried
-diving into one of my issues again and discovered that the problem is as hard as it used to be.
-Let me make this less abstract and let's see what this is about, why it matters,
-and why GATs won't help this particular problem that I'm having even though it
-sounds like it should.
-
-The problem is quite abstract and hard to understand, but it comes up typically when
-trying to use an already functioning abstraction and layer another abstraction on top
-involving callback functions.
+diving into one of my issues again and discovered that the problem is really
+hard and full of dead ends.  Let me make this less abstract and let's see what
+this is about, why it matters, and why GATs won't (necessarily) help this
+particular problem that I'm having even though it sounds like it should.
 
 Setup: The Basic Abstraction
 ----------------------------
@@ -145,7 +150,7 @@ implement this for our types.  For this example let's implement this for
     impl TryConvertValue<'a> for String {
         fn try_convert_value(value: &'a Value) -> Option<String> {
             match value {
-                Value::Str(s) => Some(s.clone())
+                Value::String(s) => Some(s.clone())
                 Value::Number(n) => Some(n.to_string()),
             }
         }
@@ -269,8 +274,7 @@ Part 3: Hacking Together A Solution
 -----------------------------------
 
 The problem appears to stem from the fact that when higher-ranked trait bounds are involved
-things that normally work, stop working.  There appears to be no way sensible way to express
-this with Rust today from what I can tell.  But it's quite tricky to understand why it
+things that used to work, stop working.  It's quite tricky to understand why it
 doesn't work and in particular it can be hard to understand before you go down the rabbit
 hole, why it doesn't.
 
@@ -289,82 +293,61 @@ if a static or any other lifetime is passed in.  Unfortunately the above bound c
 for non ``'static`` lifetimes.  This means you would need to be able express something like
 ``for<'a> impl<'a> TryConvertValue<'a> for &'a str`` which is not valid Rust.
 
-This does however not mean that the problem is entirely unsolvable, but it means if the
-``TryConvertValue`` trait should be used with higher-ranked trait bounds, it needs to be
-wrapped by another layer of indication.
+We can however work around this somewhat.  The trick here which was generously shared with me
+by David Tolnay involves a small modification to `TryConvertValue<'value>`:
 
-We can introduce an argument representation trait which can help us:
+.. sourcecode:: rust 
 
-.. sourcecode:: rust
-
-    trait ArgRepr<'a> {
-        type Arg: 'a + TryConvertValue<'a>;
+    trait TryConvertValue<'a> {
+        type Output;
+        fn try_convert_value(value: &'a Value) -> Option<Self::Output>;
     }
 
 Here we use an associated type (not quite a GAT, but similar idea).  With this we no longer have
-the relationship of type implementing the trait to the output value.  We can also implement this
-trait now for all ``'static`` args where ``<T as ArgRepr<'_'>>::Arg == T``:
+the relationship of type implementing the trait to the output value.  The implementation for
+``i64`` still looks very familiar:
 
-.. sourcecode:: rust
+.. sourcecode:: rust 
 
-    impl<T: 'static + for<'any> TryConvertValue<'any>> ArgRepr<'_> for T {
-        type Arg = T;
-    }
-
-But what do we do with the non static types like ``&str``?  Well we need a dummy proxy type.  So
-for instance we can create a ``StrRef`` which is implemented for all string references:
-
-.. sourcecode:: rust
-
-    struct StrRef;
-
-    impl<'a> ArgRepr<'a> for StrRef {
-        type Arg = &'a str;
-    }
-
-Now you can already imagine where this is going: if we start using our ``ArgRepr`` trait, type
-inference will be entirely broken since nothing connects the output type to the input type and
-you are very right.  But we can do a similar trick and at least get the static lifetimes to work.
-Our ``CallbackTrait`` however becomes a minor monstrosity:
-
-.. sourcecode:: rust
-
-    trait CallbackTrait<A: ?Sized + for<'a> ArgRepr<'a>>: Send + Sync + 'static {
-        fn invoke(&self, arg: <A as ArgRepr<'_>>::Arg) -> Value;
-    }
-
-The bound on ``A`` gives us GAT like behavior since there a ``for<'a>`` is supported on stable
-Rust.  We can also as mentioned implement this for all statics:
-
-.. sourcecode:: rust
-
-    impl<Func, Arg> CallbackTrait<Arg> for Func
-    where
-        Arg: 'static + for<'a> ArgRepr<'a, Arg = Arg>,
-        Func: Fn(Arg) -> Value + Send + Sync + 'static,
-    {
-        fn invoke(&self, arg: Arg) -> Value {
-            (self)(arg)
+    impl<'a> TryConvertValue<'a> for i64 {
+        type Output = i64;
+        fn try_convert_value(value: &'a Value) -> Option<i64> {
+            match value {
+                Value::String(_) => None,
+                Value::Number(number) => Some(*number),
+            }
         }
     }
 
-The ``ArgCallback`` also has to change now to use ``ArgRepr``.  Our handy
-``convert`` function from before we won't be able to use any more since the bounds
-are wrong, but we can directly reach through to the underlying ``TryConvertValue``
-trait:
+The implementation for ``&str`` however changes now.  The lifetime of the trait is now only
+used in the return value, not in the type it's implemented for.  Note how there are two different
+lifetimes being used:
+
+.. sourcecode:: rust 
+
+    impl<'a> TryConvertValue<'a> for &str {
+        type Output = &'a str;
+        fn try_convert_value(value: &'a Value) -> Option<&'a str> {
+            match value {
+                Value::String(string) => Some(string),
+                Value::Number(_) => None,
+            }
+        }
+    }
+
+However this is only half the trick.  The second change is with how the ``ArgCallback`` is
+declearing it's bounds:
 
 .. sourcecode:: rust
 
-    struct ArgCallback(Box<dyn Fn(&Value) -> Value + Sync + Send + 'static>);
-
     impl ArgCallback {
-        pub fn new<F, A>(f: F) -> ArgCallback
+        pub fn new<Func, Arg>(f: Func) -> Self
         where
-            F: CallbackTrait<A>,
-            A: ?Sized + 'static + for<'a> ArgRepr<'a>,
+            Arg: for<'a> TryConvertValue<'a>,
+            Func: CallbackTrait<Arg> + for<'a> Callback<<Arg as TryConvertValue<'a>>::Output>,
         {
-            ArgCallback(Box::new(move |arg| -> Value {
-                f.invoke(TryConvertValue::try_convert_value(arg).unwrap())
+            ArgCallback(Box::new(move |arg| {
+                f.invoke(Arg::try_convert_value(arg).unwrap())
             }))
         }
 
@@ -373,64 +356,104 @@ trait:
         }
     }
 
-With this, we can use our ``square`` function from above again, but trying to use ``to_upper``
-will result in this familiar error message::
+Note how the ``Func`` bound is now much more involved.  We now express it be a ``CallbackTrait<Arg>``
+which itself doesn't define a lifetime and we constrain it with a HRTB for the ``TryConvertValue<'a>``
+behind the trait.  This shockingly enough works.
 
-    error: implementation of `TryConvertValue` is not general enough
-    --> src/main.rs:96:20
-    |
-    96 |     let to_upper = ArgCallback::new(|a: &str| Value::String(a.to_uppercase()));
-    |                    ^^^^^^^^^^^^^^^^ implementation of `TryConvertValue` is not general enough
-    |
-    = note: `TryConvertValue<'0>` would have to be implemented for the type `&str`, for any lifetime `'0`...
-    = note: ...but `TryConvertValue<'1>` is actually implemented for the type `&'1 str`, for some specific lifetime `'1`
-
-This time around it's however a bit of a lie.  I'm actually not sure why it claims that there is an
-implementation for a lifetime of ``&str``.  However, by adding an implementation for ``StrRef`` our
-``to_upper`` function will magically start to compile:
+This also has the benefit that this can now be extended to functions with multiple arguments.  We
+can create a trait called ``FunctionArgs<'a>`` and implement it for tuples of different arities
+which then dispatch to ``TryConvertValue<'a>`` for each argument:
 
 .. sourcecode:: rust
 
-    impl<Func> CallbackTrait<StrRef> for Func
+    trait CallbackArgs<'a> {
+        type Output;
+        fn convert(values: &'a [Value]) -> Option<Self::Output>;
+    }
+
+    // example implementation for a function with two args
+    impl<'a, A, B> CallbackArgs<'a> for (A, B)
     where
-        Func: Fn(&str) -> Value + Send + Sync + 'static,
+        A: TryConvertValue<'a>,
+        B: TryConvertValue<'a>,
     {
-        fn invoke(&self, arg: &str) -> Value {
-            (self)(arg)
+        type Output = (A::Output, B::Output);
+
+        fn convert(values: &'a [Value]) -> Option<Self::Output> {
+            Some((
+                A::try_convert_value(&values[0])?,
+                B::try_convert_value(&values[1])?,
+            ))
         }
     }
 
-Here no more ``for<'a>`` shows up to confuse the compiler (and quite frankly the author of this post).
+For some reason unknown to me that requires at least a Rust compiler version of 1.61.0 or higher
+as older Rusts refuse to compile the version involving tuples.
+If you compile it with an older Rust compiler you are presented with this obscure error::
 
-Now all is well?  Well not really.  This really only works because in our toy example here we had a
-callback taking a single argument.  For when you want to support multiple arguments and many different
-borrowed types, you quickly run into the ridiculous situation that you need to build out the underlying
-``CallbackTrait`` for all combinations which results in a `combinational
-explosion <https://en.wikipedia.org/wiki/Combinatorial_explosion>`__.
+    error[E0277]: the trait bound `for<'a> [closure@src/main.rs:122:37: 122:91]:
+      Callback<<(&str, i64) as CallbackArgs<'a>>::Output>` is not satisfied
+    --> src/main.rs:122:18
+        |
+    122 |     let append = BoxedCallback::new(|s: &str, n: i64| Value::String(format!("{}{}", s, n)));
+        |                  ^^^^^^^^^^^^^^^^^^ the trait `for<'a> Callback<<(&str, i64) as
+        |        CallbackArgs<'a>>::Output>` is not implemented for `[closure@src/main.rs:122:37: 122:91]`
+        |
+    note: required by a bound in `BoxedCallback::new`
+    --> src/main.rs:101:32
+        |
+    98  |     pub fn new<Func, Args>(f: Func) -> Self
+        |            --- required by a bound in this
+    ...
+    101 |         Func: Callback<Args> + for<'a> Callback<<Args as CallbackArgs<'a>>::Output>,
+        |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `BoxedCallback::new`
 
-So I would not recommend it and I am not going to try to do something like this myself.
+Why that is I cannot tell.  I was unable at least to find something in the changelog that would obviously
+point to some changes here.
+
+You can `play with the complete example on play.rust-lang.org
+<https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=c6996d652a14b9ce3d180e95c2888b61>`__.
 
 Why and What Now?
 -----------------
 
-So what did we learn?  We learned that HRTBs, GATs and all this fancy pantsy stuff is
-incredible complex and a very leaky abstraction.  Interaction of obscure features leaks
-up to Rust programmers that don't want to be bothered with these internals.  Rust is normally
-quite capable of hiding the complexities of type theory, but it's completely failing here.
+So what did we learn?  I at least learned that HRTBs, GATs and all this fancy pantsy stuff is
+incredible complex and a very leaky abstraction.  I had plenty of versions involving GATs for
+this problem that lead some somewhere which ended up nowhere.  Ultimately the solution turned
+out to not require modern language features such as GATs.  Yet at the same time putting more
+abstractions on it made the type checker not happy on older Rust versions without a clear indication
+of why.
 
-And this is part of the problem where this is sitting right now.  It's possible
-to implement this ``ArgCallback`` in stable Rust, but it involves tremendous
-around of hackery with a lot of generated code that I do not want to consider going
-down this path.
+These interaction of obscure features leak up to Rust programmers that don't want to be bothered
+with these internals.  Rust is normally quite capable of hiding the complexities of type theory,
+but it's completely failing here.
+
+For me the interesting story here is that when I went out to originally write this post, I did
+not think this was solvable.  I tried a plenty of times.  I was generally aware I could build a
+solution that requires excessive amounts of generated code `based on the solution by @quinedotfrom the forums
+<https://users.rust-lang.org/t/problems-matching-up-lifetimes-between-various-traits-and-closure-parameters/71994/7>`__
+for a similar issue in gtk-rs.  However even with that, it turned out quite complex and tedious
+and inapplicable for my problem.
+
+I also gave this problem to quite a few other Rust programmers and the general sentiment was
+that it cannot be solved today.  It wasn't until I wrote about my earlier attempts of solving
+this that David Tolnay reached out and came up with a clever solution.
+
+The final solution feels a bit like a hack and weirdly enough it doesn't quite work with older
+Rust compilers when held the wrong way.  A lot of this advanced level of hackery runs into all
+kinds of weird edge cases and it's never quite clear if what ends up compiling was actually
+intended to do so, and if what doesn't compile really shouldn't compile.  As an example some
+of the intended changes to the compiler involving this kinds of stuff is on hold, because the
+`change would break wasm-bindgen <https://github.com/rust-lang/rust/issues/56105>`__.
 
 But it's not just third party libraries that are noticing limitations in expressiveness
 involving lifetimes and hacks are creeping in.  The standard library is also starting to
-notice that where now `thread::scope also involves some advanced black magic
-<https://github.com/rust-lang/rust/issues/93203#issuecomment-1041879025>`__.  When googling
-for the error messages or related error messages from the compiler, you run into many
-confusde users that run into similar error messages via futures and async/await.  The
-hidden transformations the compiler is generating, behind the scenes can cause code to
-be generated that exhibits the problem just that it's even harder to spot.
+notice that.  The new `thread::scope also involves some advanced black magic
+<https://github.com/rust-lang/rust/issues/93203#issuecomment-1041879025>`__.  And when you
+end up googling for the error messages or related error messages from the compiler, you run
+into many confused users that encountered similar error messages via normal looking futures
+and async/await.  The hidden transformations the compiler is generating, behind the scenes
+can cause code to be generated that exhibits the problem just that it's even harder to spot.
 
 In fact, you can get this confusing error message by just using ``Derive`` wrong:
 
@@ -466,13 +489,19 @@ this problem if you are curious about the nitty-gritty bits:
 
 - A `forum thread where @quinedot explains <https://users.rust-lang.org/t/problems-matching-up-lifetimes-between-various-traits-and-closure-parameters/71994/7>`__
   how to implement signal callbacks for ``gtk-rs`` that have exactly the same issue as
-  outlined in this blog post.
+  outlined in this blog post.  This together with another post I have since lost to my
+  browser history provided some path with a GAT like solution that however ultimately
+  ended up not being a realistic choice for me.
 
 Where does this leave us?  Unclear.  If you go down the rabbit hole of reading about all the
 issues surrounding GATs and HKTBs you get a strong sense that it's better to avoid creating
 APIs that invole abstracting over ownership and borrowing when possible.  You will run into
 walls and the workarounds might be ugly and hard to understand.  So I guess a new thing I can
-recommend not to try to do: **do not abstact over borrows and ownership if functions are involved**.
+recommend not to try to do: **do not abstact over borrows and ownership if functions are involved**
+(unless you really know what you are doing).
+
+If you want to to around with it, you can find a full implementation of this
+post's code `on play.rust-lang.org <https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=c6996d652a14b9ce3d180e95c2888b61>`__.
 
 ----
 
@@ -489,9 +518,9 @@ trivially solvable as pointed out by `dtolay on reddit
 <https://www.reddit.com/r/rust/comments/x8ztwt/you_cant_do_that_abstracting_over_ownership_in/inld2pt/>`__
 which is why I unpublished the first version of this post.
 
-A big thank you goes to quinedot on rust-lang users who `helped me understand the problem
+Also a big thank you goes to quinedot on rust-lang users who `helped me understand the problem
 better <https://users.rust-lang.org/t/problems-matching-up-lifetimes-between-various-traits-and-closure-parameters/71994/7>`__
-and provided solutions.
+and provided solutions that helped me move further.
 
 .. raw:: html
 
