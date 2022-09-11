@@ -107,11 +107,15 @@ span.math img   { margin-bottom: -7px; }
 /* strikethrough */
 span.strike     { text-decoration: line-through; }
 
-/* ads */
-div.adspace {
-    text-align: center;
-}
+/* mobile */
 
-div.adspace iframe {
-    margin: 25px auto 25px auto;
+@media only screen and (max-width: 920px) {
+    div.body { padding: 0; margin: 0; }
+    div.container { padding: 12px; margin: 0; }
+    div.header { height: auto; margin: 0; }
+    pre { overflow-x: auto; }
+    h1 { font-size: 42px; line-height: 44px; }
+    h2 { font-size: 36px; line-height: 38px; }
+    h3 { font-size: 28px; line-height: 30px; }
 }
+  
