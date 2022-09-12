@@ -344,7 +344,8 @@ declearing it's bounds:
         pub fn new<Func, Arg>(f: Func) -> Self
         where
             Arg: for<'a> TryConvertValue<'a>,
-            Func: CallbackTrait<Arg> + for<'a> Callback<<Arg as TryConvertValue<'a>>::Output>,
+            Func: CallbackTrait<Arg>
+                + for<'a> CallbackTrait<<Arg as TryConvertValue<'a>>::Output>,
         {
             ArgCallback(Box::new(move |arg| {
                 f.invoke(Arg::try_convert_value(arg).unwrap())
