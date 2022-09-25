@@ -147,7 +147,7 @@ implement this for our types.  For this example let's implement this for
 
 .. sourcecode:: rust
 
-    impl TryConvertValue<'a> for String {
+    impl<'a> TryConvertValue<'a> for String {
         fn try_convert_value(value: &'a Value) -> Option<String> {
             match value {
                 Value::String(s) => Some(s.clone())
