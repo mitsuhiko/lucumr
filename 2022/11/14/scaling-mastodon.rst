@@ -18,8 +18,8 @@ Mastodon a bit better.
 The short version of this is that I believe that Mastodon — more
 specifically federation and decentralization won't work out.
 
-Claim: Decentralization is a Questionable Goal
-----------------------------------------------
+My Claim: Decentralization is a Questionable Goal
+-------------------------------------------------
 
 In the last few years a lot of centralized services did not develop like
 people wanted which I believe resulted in the pendulum prominently swinging
