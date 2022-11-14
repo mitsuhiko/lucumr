@@ -260,8 +260,9 @@ Mastodon is Old
 Mastodon is getting some traction today, but Mastodon is around for a long
 time.  And with that, may of the problems it had over the years are
 still unresolved.  For instance you might read about `Wil Wheaton's
-failure to use Mastodon </2020/1/1/async-pressure/>`__ due to his
-popularity and `another server operator's take on the issue
+failure to use Mastodon
+<https://wilwheaton.net/2018/08/the-world-is-a-terrible-place-right-now-and-thats-largely-because-it-is-what-we-make-it/>`__
+due to his popularity and `another server operator's take on the issue
 <https://nolanlawson.com/2018/08/31/mastodon-and-the-challenges-of-abuse-in-a-federated-system/>`__.
 You might be interested to learn that the `oldest open Mastodon issue
 <https://github.com/mastodon/mastodon/issues/34>`__ is six years old and
