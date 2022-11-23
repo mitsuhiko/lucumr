@@ -10,7 +10,8 @@ various references to it by using the ampersand (`&`) operator on it.  In
 the most trivial case `&T` gives you just that: a reference to `T`.  There
 are however cases where you can get something else.  For instance `String`
 implements ``Deref<Target=&str>`` which lets you also get a `&str` from
-it.
+it and that system also can be extended to work with mutable references as
+well.
 
 This dereferencing system also lets one work *through* another type.  For
 instance mutexes in Rust are pretty convenient as a result:
@@ -25,7 +26,7 @@ instance mutexes in Rust are pretty convenient as a result:
     // this "derefs" the guard into &mut u32
     *guard += 42;
 
-There are however cases where this beautiful system does not work: in
+There are however cases where this neat system does not work: in
 particular you probably ran into this limitation with thread locals.  You
 would expect a thread local to work this way:
 
@@ -54,15 +55,15 @@ implement `Deref`.  Instead you have to do this:
 
 And it annoys me a lot.  It's annoying not only with thread locals but
 also many other situations where you really would like to be able to deref
-but it's not possible.  But why is that?  And is there a better way.
+but it's not possible.  But why is that?  And is there a better way?
 
-Leakage
--------
+The Leakage Problem
+-------------------
 
 I maintain a crate called `fragile
 <https://github.com/mitsuhiko/fragile>`__.  The purpose of this crate is
-allow you to do something that Rust doesn't want you to do: to `Send` a
-non send-able type safely to other threads.  That sounds like a terrible
+allow you to do something that Rust doesn't want you to do: to send a
+non `Send`-able type safely to other threads.  That sounds like a terrible
 idea, but there are legitimate reasons for doing this and there are
 benefits to it.
 
@@ -100,7 +101,7 @@ For `Fragile` you can do this:
 
 This works, because the value is implicitly constrained by the lifetime of
 the encapsulating object.  However for `Sticky` an issue arises and it has
-to do with intentional leakage.  Rust permits any object to life for as
+to do with intentional leakage.  Rust permits any object to live for as
 long as the process does by explicit leakage with the ``Box::leak`` API.
 In that case you get a `'static` lifetime.  This means that if `Sticky`
 had the same API as `Fragile` you can create a crash in no time:
@@ -111,8 +112,10 @@ had the same API as `Fragile` you can create a crash in no time:
     std::thread::spawn(move || {
         // this creates a sticky
         let sticky = Box::new(Sticky::new(Box::new(true)));
+
         // leaks it
         let static_sticky = Box::leak(sticky);
+
         // and sets the now &'static lifetime to the contained value back
         tx.send(static_sticky.get()).unwrap();
     })
@@ -120,7 +123,7 @@ had the same API as `Fragile` you can create a crash in no time:
     .unwrap();
 
     // debug printing will crash, because the thread shut down and the
-    // reference points to invalid memory
+    // reference points to invalid memory in the former thread's TLS
     dbg!(rx.recv().unwrap());
 
 This *obviously* is a problem and embarassingly that `was missed entirely
@@ -138,9 +141,11 @@ The reason `with()` gets around this is that it can control the scope of
 the invoked function which means that it can reduce the lifetime of the
 borrowed reference to the duration of the stack frame.  This works, but
 it's incredibly inconvenient.  Here an `example from MiniJinja
-<https://github.com/mitsuhiko/minijinja/blob/202fc880df5d90bcbb3f8276a48bfa408ebc78c3/minijinja/src/key/mod.rs#L228>`__ about how annoying this API really can be:
+<https://github.com/mitsuhiko/minijinja/blob/202fc880df5d90bcbb3f8276a48bfa408ebc78c3/minijinja/src/key/mod.rs#L228>`__
+about how annoying this API really can be:
 
 .. sourcecode:: rust
+
     pub(crate) fn with<R, F: FnOnce() -> R>(f: F) -> R {
         STRING_KEY_CACHE.with(|cache| {
             STRING_KEY_CACHE_DEPTH.with(|depth| {
@@ -150,9 +155,10 @@ it's incredibly inconvenient.  Here an `example from MiniJinja
         })
     }
 
-This is quite nonsensical.  I need two nested functions to access two
-thread locals.  Incidently I also create a similar API frustration to my
-caller because internally I need to do work that needs cleaning up.
+This is quite a lot of rightward drift.  I need two nested functions to
+access two thread locals.  Incidently I also create a similar API
+frustration to my caller because internally I need to do work that needs
+cleaning up.
 
 Surely there must be a better way?  And I believe there is.  We should be
 able to let the user "prove" that their lifetime is not `'static`.  For
@@ -163,9 +169,9 @@ entangle the lifetimes accordingly.
 Introducing Stack Tokens
 ------------------------
 
-The solution in `fragile` uses stack tokens to accomplish this.  A stack
-token is a value that cannot be safely constructed, it can only be created
-through a macro on the stack which immediately takes a reference:
+The solution in `fragile` uses stack tokens to accomplish this.  A
+`StackToken` is a value that cannot be safely constructed, it can only be
+created through a macro on the stack which immediately takes a reference:
 
 .. sourcecode:: rust
 
@@ -223,6 +229,7 @@ And a hypothetical thread local API supporting stack tokens would change
 the example from above to this:
 
 .. sourcecode:: rust
+
     pub(crate) fn with<R, F: FnOnce() -> R>(f: F) -> R {
         stack_token!(scope);
         let cache = STRING_KEY_CACHE.get(scope);
