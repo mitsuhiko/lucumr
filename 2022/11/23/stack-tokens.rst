@@ -263,4 +263,6 @@ point when nested scopes are involved.
 However even without syntax support maybe it would be conceivable to have
 a standardized way to restrict lifetimes without having to use closures by
 having something like an explicit `StackToken` as part of the standard
-library.
+library.  Then also the build-in thread locals could provide access
+through such an API.  `Here is what this could look like
+<https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=8a7eb4f3576e5c5a440aacb976c4f305>`__.
