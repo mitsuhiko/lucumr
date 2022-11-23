@@ -216,8 +216,8 @@ it became (by a small percentage of users) used to host illegal content.
 In some cases links to very, very illegal content.  Even today I still
 receive emails from users who beg me to take down pastes of that software
 from other domains, because people use it to host doxxed content.  I
-really hard a hard few weeks when I first discovered what my software
-ended up being used for.
+really a hard time for a few weeks when I first discovered what my
+software ended up being used for.
 
 But at least you could make the argument that a pastebin is “just” hosting
 content.  I think running a Mastodon server is worse and being hosted by
