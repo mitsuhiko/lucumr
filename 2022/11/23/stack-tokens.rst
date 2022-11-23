@@ -103,12 +103,17 @@ This works, because the value is implicitly constrained by the lifetime of
 the encapsulating object.  However for `Sticky` an issue arises and it has
 to do with intentional leakage.  Rust permits any object to live for as
 long as the process does by explicit leakage with the ``Box::leak`` API.
-In that case you get a `'static` lifetime.  This means that if `Sticky`
-had the same API as `Fragile` you can create a crash in no time:
+In that case you get a `'static` lifetime.  Because `Sticky` does not
+directly own the data it points to, this means that through that API you
+can make the lifetime of the `Sticky` outlast the backing data which is in
+the thread.  This means that if `Sticky` had the same API as `Fragile` you
+could create a crash in no time:
 
 .. sourcecode:: rust
 
+    // establish a channel to send data from the thread back
     let (tx, rx) = std::sync::mpsc::channel();
+
     std::thread::spawn(move || {
         // this creates a sticky
         let sticky = Box::new(Sticky::new(Box::new(true)));
@@ -137,10 +142,9 @@ lifetime and then the thread comes in and cleans up.
 Lifetime Reduction
 ------------------
 
-The reason `with()` gets around this is that it can control the scope of
-the invoked function which means that it can reduce the lifetime of the
-borrowed reference to the duration of the stack frame.  This works, but
-it's incredibly inconvenient.  Here an `example from MiniJinja
+The reason `with()` gets around this is that it can guarantee that a
+reference that it passes to the closure, cannot escape it.  This works,
+but it's incredibly inconvenient.  Here an `example from MiniJinja
 <https://github.com/mitsuhiko/minijinja/blob/202fc880df5d90bcbb3f8276a48bfa408ebc78c3/minijinja/src/key/mod.rs#L228>`__
 about how annoying this API really can be:
 
@@ -169,9 +173,10 @@ entangle the lifetimes accordingly.
 Introducing Stack Tokens
 ------------------------
 
-The solution in `fragile` uses stack tokens to accomplish this.  A
-`StackToken` is a value that cannot be safely constructed, it can only be
-created through a macro on the stack which immediately takes a reference:
+The solution in `fragile` uses zero sized token objects on the stack to
+accomplish this.  A `StackToken` is a value that cannot be safely
+constructed, it can only be created through a macro on the stack which
+immediately takes a reference:
 
 .. sourcecode:: rust
 
@@ -196,9 +201,10 @@ created through a macro on the stack which immediately takes a reference:
         };
     }
 
-The stack token itself is zero sized.  It also isn't `Send` and `Sync` but
-that shouldn't matter that much.  What matters is that it cannot be safely
-constructed.  The way to get one is the `stack_token!` macro:
+The stack token itself is zero sized so it occupies no space.  It also
+isn't `Send` and `Sync` but that shouldn't matter that much.  What matters
+is that it cannot be safely constructed.  The way to get one is the
+`stack_token!` macro:
 
 .. sourcecode:: rust
 
@@ -215,7 +221,7 @@ safe borrowing APIs like this:
 
     pub fn get<'stack>(&'stack self, _proof: &'stack StackToken) -> &'stack T;
 
-With this trick the lifetime is constrained an we are allowed to give out
+With this trick the lifetime is constrained and we are allowed to give out
 references to the thread local which is exactly what `Sticky` does.  So
 you can use it like this:
 
@@ -251,8 +257,10 @@ automatically for us:
     pub fn get(&'caller self) -> &'caller T;
 
 In that case we wouldn't need to create this token at all.  However there
-are probably some questions with that, in particular to which scope this
-should point when nested scopes are involved.  However even without syntax
-support maybe it would be conceivable to have a standardized way to
-restrict lifetimes without having to use closures by having something like
-an explicit `StackToken` as part of the standard library.
+are some questions with that, in particular to which scope this should
+point when nested scopes are involved.
+
+However even without syntax support maybe it would be conceivable to have
+a standardized way to restrict lifetimes without having to use closures by
+having something like an explicit `StackToken` as part of the standard
+library.
