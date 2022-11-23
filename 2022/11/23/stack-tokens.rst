@@ -265,4 +265,4 @@ a standardized way to restrict lifetimes without having to use closures by
 having something like an explicit `StackToken` as part of the standard
 library.  Then also the build-in thread locals could provide access
 through such an API.  `Here is what this could look like
-<https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=8a7eb4f3576e5c5a440aacb976c4f305>`__.
+<https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=3aed707c4f8d8b985cc0766d3409d672>`__.
