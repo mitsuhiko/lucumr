@@ -2,7 +2,7 @@ public: yes
 summary: A proposal for lifetime restrictions in Rust with stack tokens.
 
 A Better Way to Borrow in Rust: Stack Tokens
---------------------------------------------
+============================================
 
 As a Rust programmer you are probably quite familiar with how references
 work in Rust.  If you have a value of type `T` you can generally get
