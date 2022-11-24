@@ -51,7 +51,7 @@ blockquote                      { font-style: italic; }
 
 /* code formatting.  no monospace because of webkit (bug?) */
 pre, code, tt   { font-family: 'Ubuntu Mono', 'Consolas', 'Deja Vu Sans Mono',
-                  'Bitstream Vera Sans Mono', 'Monaco', 'Courier New';
+                  'Bitstream Vera Sans Mono', 'Monaco', 'Courier New', monospace;
                   font-size: 0.9em; }
 pre             { line-height: 1.45; background: none; padding: 0; width: 100%;
                   overflow-x: auto; }
