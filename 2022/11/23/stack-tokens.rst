@@ -202,9 +202,9 @@ immediately takes a reference:
     }
 
 The stack token itself is zero sized so it occupies no space.  It also
-isn't `Send` and `Sync` but that shouldn't matter that much.  What matters
-is that it cannot be safely constructed.  The way to get one is the
-`stack_token!` macro:
+is `!Send` and `!Sync`.  That it's `!Sync` is important.  There are
+two things that matter: one is that this type cannot be safely constructed.
+The only way to get one is the `stack_token!` macro:
 
 .. sourcecode:: rust
 
@@ -213,9 +213,10 @@ is that it cannot be safely constructed.  The way to get one is the
 This will create basically a ``let &scope = StackToken { ... }`` on the
 stack safely.  From that point onwards any function that receives a
 `&StackToken` can be assured that this has a lifetime that is never static
-and constrained to a stack frame.  Since threads won't randomly shut down
-and clean up the stack while code still references it, this lets us create
-safe borrowing APIs like this:
+and constrained to a stack frame.  The token expresses basically that the
+thread lifes for at least as long as the lifetime of that borrow.  Since threads
+won't randomly shut down and clean up the stack while code still references it,
+this lets us create safe borrowing APIs like this:
 
 .. sourcecode:: rust
 
@@ -266,3 +267,38 @@ having something like an explicit `StackToken` as part of the standard
 library.  Then also the build-in thread locals could provide access
 through such an API.  `Here is what this could look like
 <https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=3aed707c4f8d8b985cc0766d3409d672>`__.
+
+Soundness
+---------
+
+So here is an important question: is this sound?  The answer is “unclear”
+as it makes a statement about relationships of stacks to threads that's
+not entirely explored.  To quote Ralf Jung on a reddit thread about this topic:
+
+    So this is yet another case where Rust will have to decide -- either Stack
+    Tokens are sound, or `mk_static` is sound, but not both.
+
+What is `mk_static`?  `mk_static` is a hypothetical function that lets you
+make any reference static for as long as you're guaranteed not to return:
+
+.. sourcecode:: rust
+
+    pub fn mk_static<T: 'static>(t: &T, f: impl FnOnce(&'static T)) {
+        struct DropBomb;
+        impl Drop for DropBomb {
+            fn drop(&mut self) {
+                std::process::abort();
+            }
+        }
+
+        let _bomb = DropBomb;
+        f(unsafe { std::mem::transmute(t)});
+    }
+
+If such an API was sound then it would render the guarantees that stack tokens
+want invalid.  So today neither of those things are clear, but one of them
+would have to be declared invalid for the other to work.
+
+On a personal level I find the possibilities that stack tokens provide to be
+more valuable than `mk_static` but there are probably reasons to decide either
+way.
