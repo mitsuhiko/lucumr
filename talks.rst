@@ -6,6 +6,14 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+2023
+----
+
+-   `Rust API Design Learnings
+    <https://speakerdeck.com/mitsuhiko/rust-api-design-learnings>`__
+    @ FOSDEM (`recording <https://www.youtube.com/watch?v=vMBMAH-SoXU>`__,
+    `PDF <http://mitsuhiko.pocoo.org/RustAPI.pdf>`__)
+
 2022
 ----
 
