@@ -47,7 +47,7 @@ you don't know what you have been missing until after you made a decision.
 I did not know I want to be a father until we decided to become parents.
 But the moment we made that decision, everything changed.  Now that this
 is part of me it's part of my personality going forward.  The act of being
-a parent does not make be a better or worse person, but it makes my life
+a parent does not make me a better or worse person, but it makes my life
 just be fundamentally different than before.  These significant changes to
 how we live our lives, are sudden and deep.  We are not ballistic objects
 flying along a single trajectory representing our success and life
