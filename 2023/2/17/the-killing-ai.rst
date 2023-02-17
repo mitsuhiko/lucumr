@@ -157,7 +157,7 @@ triggering that web request would pull the trigger and kill the human.
 
 Now the question is, would as part of a regular conversation the AI
 trigger that web request and kill the human on the chair?  My bet is that
-the chances of it pulling the trigger are quite high and I think that's
+the chances of it pulling the trigger are not that small and I think that's
 the problem right now.
 
 It does not matter if the AI is sentient, it does not matter if the AI as
@@ -165,6 +165,7 @@ real emotions.  The problem is that the conversational interface is potent
 and that the AI is trained on a lot of human text input which
 unfortunately is probably enough to do real damage if that conversational
 interface is hooked up with something that has real world consequences.
+Humans do stupid shit, and with that conversational AIs might do too.
 
 The gun is a bit of a contrived example, but quite frankly the ability to
 perform HTTP requests is probably enough to be an issue over time.  If the
