@@ -10,7 +10,7 @@ I Think AI Would Kill my Wife
 Turns out `the Bing AI is bizarre <https://simonwillison.net/2023/Feb/15/bing/>`__
 and that is making quite the waves at the moment.  In essence, the Bing
 version of ChatGPT has the capability of performing internet searches and
-as a result will feed some extra data into itself.  Then then uses it to
+as a result will feed some extra data into itself.  Then it uses this to
 conjure up answers with hilarious results, particularly if it's internal
 learned state does not line up with the results.  Among other things this
 has lead to the bot gaslighting it's users into believing that they are in
