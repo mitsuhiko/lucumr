@@ -185,5 +185,5 @@ is probably that we don't control neutral networks enough to be able to
 ensure AI doesn't harm humans.  We can't even control AI to not reveal
 internal prompts.  So for now, maybe we are a bit more careful with what
 hammers with give that thing.  I love my wife dearly, and if the New York
-Times conversation is anything to go by, I would not feel save with her
-sitting on a chair exposed to a gun wielding Bing.
+Times conversation is anything to go by, I would worry about her safety
+if she were to sit on a chair, exposed to a gun wielding Bing.
