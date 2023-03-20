@@ -20,7 +20,7 @@ and by my own standards and enough people that I interacted with I was
 successful.
 
 But this monochromatic experience eventually becomes a lot more complex
-because you're forced to make choices in live.  When I went to conferences
+because you're forced to make choices in life.  When I went to conferences
 or interacted with other people online it was impossible not to compare
 myself in one way or another.  My expectations and ambitions were steered
 by the lives of others around me.  As much as I wanted to not compare
