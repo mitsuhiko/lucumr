@@ -43,7 +43,7 @@ and recordings if available.
 
 -   `A Future Python <https://speakerdeck.com/mitsuhiko/a-future-python>`__
     @ PyCon India 2018 (`recording
-    <https://speakerdeck.com/mitsuhiko/a-future-python>`__,
+    <https://www.youtube.com/watch?v=-4fzFKihmJw>`__,
     `PDF <http://dev.pocoo.org/~mitsuhiko/afuturepython.pdf>`__)
 
 2017
