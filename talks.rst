@@ -17,6 +17,10 @@ and recordings if available.
 2022
 ----
 
+-   `Overcoming Variable Payloads to Optimize for Performance
+    <https://speakerdeck.com/mitsuhiko/overcoming-variable-payloads-to-optimize-for-performance>`__
+    (`PDF <http://mitsuhiko.pocoo.org/p99payload.pdf>`__,
+    `recording <https://www.youtube.com/watch?v=-jpK9beWNGk>`__)
 -   `The Snowball Effect of Open Source
     <https://speakerdeck.com/mitsuhiko/the-snowball-effect-of-open-source>`__
     @ WeAreDevelopers World Congress Berlin (`recording
