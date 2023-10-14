@@ -9,7 +9,7 @@ and recordings if available.
 2023
 ----
 
--   `Rust at Sentry <http://mitsuhiko.pocoo.org/RustAtSentry.pdf>`__ @
+-   `Rust at Sentry <https://speakerdeck.com/mitsuhiko/rust-at-sentry-1>`__ @
     EuroRust 2023 (`PDF <http://mitsuhiko.pocoo.org/RustAtSentry.pdf>`__)
 -   `Rust API Design Learnings
     <https://speakerdeck.com/mitsuhiko/rust-api-design-learnings>`__
