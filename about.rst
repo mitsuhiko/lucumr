@@ -5,7 +5,7 @@ About Me
 
 My name is Armin Ronacher and I'm a passionate developer interested in web
 development, graphics, realtime rendering and tons of other stuff.  I am
-one of the founding members of the `Pocoo Team <http://pocoo.org>`_ and
+one of the founding members of the `Pocoo Team <https://www.pocoo.org>`_ and
 lead developer on a couple of popular Python projects.
 
 I'm currently located in Austria and working as a Director of Engineering
