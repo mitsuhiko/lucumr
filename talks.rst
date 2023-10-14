@@ -9,6 +9,8 @@ and recordings if available.
 2023
 ----
 
+-   `Rust at Sentry <http://mitsuhiko.pocoo.org/RustAtSentry.pdf>`__ @
+    EuroRust 2023 (`PDF <http://mitsuhiko.pocoo.org/RustAtSentry.pdf>`__)
 -   `Rust API Design Learnings
     <https://speakerdeck.com/mitsuhiko/rust-api-design-learnings>`__
     @ FOSDEM (`recording <https://www.youtube.com/watch?v=vMBMAH-SoXU>`__,
