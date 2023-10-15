@@ -25,14 +25,14 @@ tweet in response to the `keynote fiasco
 Those reflections let me come to the conclusion for myself that
 the following three things would be good for us as a Rust community:
 
-- Rust conferences need more purposiveness
+- Rust conferences need more purposefulness
 - Online discourse is toxic and we need to meet in person
 - The Rust Project needs an All-Hands
 
 Let me elaborate.
 
-Rust Conferences and Purposiveness
-----------------------------------
+Rust Conferences and Purposefulness
+-----------------------------------
 
 I have several critiques of Python, but I must admit that the Python
 community has excelled in certain areas over the years, and one of those
@@ -149,9 +149,9 @@ folks that did the most for the Rust project are not going at all.  This
 is not good.
 
 The combination of the “graduation” of Rust out of Mozilla, the pandemic
-and just a lot of churn in the Rust project has left a void.  I with that
-a goal of the Rust foundation would to help finance regular get-togethers
-of the core Rust project and maybe former influential members, key players
+and just a lot of churn in the Rust project has left a void.  I wish that
+a goal of the Rust Foundation would be to help finance regular get-togethers
+of the core Rust project (and maybe former influential members), key players
 in the community.  The best solutions for problems are found when a group
 of people meet in person with a goal and desire to hash things out.
 
