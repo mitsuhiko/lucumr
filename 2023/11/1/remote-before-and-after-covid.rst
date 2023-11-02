@@ -165,8 +165,8 @@ it's not the catered breakfast or office event that fixes this, it's
 the getting together with intention, the fostering meaningful
 interactions.  Our hackweeks, for instance, have spurred incredible
 collaboration far more than any catered breakfast ever did.  A focused
-six-week sprint with a clear but ambitious goal has not only enhances
-engagement but also naturally encourages in-person meetings. I've found
+six-week sprint with a clear but ambitious goal not only enhances
+engagement but also naturally encourages in-person meetings.  I've found
 that our off-site meetings, which ironically felt like on-site for many,
 with a clear objective, have rejuvenated team morale more than any other
 initiative.
