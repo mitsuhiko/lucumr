@@ -35,8 +35,8 @@ us, even if we don't live there.
 
 It's not the city I want to live in, in many ways it's running the kind of
 social experiment with outcomes I'm not attracted to, but without doubt
-that experiment has an impact far beyond it's borders.  I'm in many ways a
-beneficiary of it's existence.
+that experiment has an impact far beyond its borders.  I'm in many ways a
+beneficiary of its existence.
 
 Solitude
 --------
@@ -82,7 +82,7 @@ eventually hired more folks around me.
 
 Today there is an engineering office for Sentry in Vienna where I live.
 It's not a huge office, but I'm very proud of the accomplishments of the
-people working there.  Vienna isn't a city known for it's developer
+people working there.  Vienna isn't a city known for its developer
 community, in fact it's probably not known for that much to begin with.
 So in many ways having an office here was a gamble.  In a similar way to
 how I tried to find reasons for why my remote situation at Sentry works, I
