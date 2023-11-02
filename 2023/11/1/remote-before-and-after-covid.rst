@@ -1,9 +1,9 @@
 public: yes
 tags: [thoughts, lessons]
-summary: What I learned about remote work after covid.
+summary: What I learned about remote work after Covid and why it's so hard.
 
-Post Covid Remote Work
-======================
+Post Covid Remote Work Doesn't Work As Well
+===========================================
 
 *This year I decided that I want to share my most important learnings about
 engineering, teams and quite frankly personal mental health.  My hope is that
