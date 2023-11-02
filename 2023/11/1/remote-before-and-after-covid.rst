@@ -1,4 +1,4 @@
-public: no
+public: yes
 tags: [thoughts, lessons]
 summary: What I learned about remote work after covid.
 
@@ -71,13 +71,14 @@ how to make the situation beneficial for everyone involved.
 Making Remote Work
 ------------------
 
-In early Sentry days I felt a lot of pressure to make me working remote
-work.  And I loved that.  It forced me to work towards finding the advantages
-in that situation.  Initially this primarily meant better time zone coverage,
-but it also meant that I took customer calls in the early Sentry days to
-connect with European prospects.  I managed to compensate for my remoteness
-in other ways.  I also intentionally shifted my days to be closer to my US
-colleagues and eventually hired more folks around me.
+In early Sentry days I felt a lot of pressure on myself to make my remote
+work situation successful.  And I loved that.  It forced me to work
+towards finding the advantages in that situation.  Initially this
+primarily meant better time zone coverage, but it also meant that I took
+customer calls in the early Sentry days to connect with European
+prospects.  I managed to compensate for my remoteness in other ways.  I
+also intentionally shifted my days to be closer to my US colleagues and
+eventually hired more folks around me.
 
 Today there is an engineering office for Sentry in Vienna where I live.
 It's not a huge office, but I'm very proud of the accomplishments of the
@@ -126,7 +127,7 @@ they worked during Covid.  In some cases that was unavoidable.  When you
 have your partner and your kids at home 24/7, you might need a change in
 place.  But even after things normalized, the offices were much more
 reclusive than before.  The dynamics completely changed.  There were fewer
-people in the office and and collaboration between teams from different
+people in the office and collaboration between teams from different
 offices decreased.
 
 This year, I engaged in numerous conversations with various individuals
@@ -175,3 +176,26 @@ a pre-Covid mindset and present a compelling case for it.  The most
 desirable companies are likely the ones that uphold rigorous standards for
 remote work going forward.  Ensure you have a valid and convincing
 rationale for your remote work request.
+
+Scale and Encounters by Chance
+------------------------------
+
+If you are a small company, remote is almost natural.  You have
+established trust, everybody knows everyone and it doesn't matter that
+much how you work.  The office banter might as well be the one slack
+channel.  But that just doesn't scale.  That tightly coupled model stops
+scaling really, really quick.  Today there is not one slack channel that
+has everybody at Sentry in.  And it's not just that.
+
+There is a lot a physical space gives you at scale: you see people's
+happiness and frustrations.  You see their motivation or lack thereof.
+Working in a larger office is a shared experience.  Everybody feeds off
+each other.  We turn from individuals into a shared body.  Sometimes good
+things happen, sometimes bad things happen.  Sometimes people run into
+each other not just for work reasons but also because they undergo some
+other shared concern.  We live in times of war and a climate crisis, and
+many of us have friends and families who are affected.  You might not
+want to necessarily have these conversations at the work place, but you
+will see the despair in your fellow coworkers when you grab a coffee.  You
+can reach out, you can talk, you can support.  The best emoji game will
+not replace that kind of encounter.
