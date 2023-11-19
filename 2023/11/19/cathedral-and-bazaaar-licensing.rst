@@ -6,7 +6,7 @@ FSL: A License For the Bazaar, Not the Cathedral
 ================================================
 
 Sentry relicensed under a new license, called the `Functional Source
-License (FSL) <https://fsl.software/>`__.  Like the BSUL it replaces,
+License (FSL) <https://fsl.software/>`__.  Like the BUSL it replaces,
 It's not an Open Source license by the OSI definition, but it comes with
 an irrevocable grant: after two years it turns into an Apache 2.0 licensed
 artifact (or MIT for the alternative form).  It's the response to a lot of
