@@ -1,5 +1,5 @@
 public: yes
-tags: [opensource, thoughts]
+tags: [opensource, thoughts, licensing]
 summary: |
   My thoughts on monetizing open source SaaS businesses from my experience
   at Sentry.
