@@ -6,16 +6,19 @@ FSL: A License For the Bazaar, Not the Cathedral
 ================================================
 
 Sentry relicensed under a new license, called the `Functional Source
-License (FSL) <https://fsl.software/>`__.  It's not an Open Source license
-by the OSI definition, but it comes with an irrevocable grant: after
-two years it turns into an Apache 2.0 licensed artifact (or MIT for the
-alternative form).  It's the response to a lot of feedback we have
-received about our previous use of the `BUSL
+License (FSL) <https://fsl.software/>`__.  Like the BSUL it replaces,
+It's not an Open Source license by the OSI definition, but it comes with
+an irrevocable grant: after two years it turns into an Apache 2.0 licensed
+artifact (or MIT for the alternative form).  It's the response to a lot of
+feedback we have received about our previous use of the `BUSL
 <https://spdx.org/licenses/BUSL-1.1.html>`__.  You can read all about
 the switch to FSL
 in the `Announcement Blog Post
 <https://blog.sentry.io/introducing-the-functional-source-license-freedom-without-free-riding/>`__.  (You can also find my original thoughts on `the use
 of the BUSL here </2019/11/4/open-source-and-saas/>`__.)
+
+I believe this license to be closer to Open Source than what we had
+before.
 
 When I started Open Source development, there was a very famous essay
 by Eric S. Raymond called “The Cathedral and the Bazaar”.  It describes
