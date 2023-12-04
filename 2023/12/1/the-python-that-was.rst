@@ -50,7 +50,7 @@ There was the world of XPath, there was the world of DTDs, there was the
 world of SOAP and WSDL.  There was the world where the inherent complexity
 of the system was so great, that you absolutely required an IDE, code
 generation and compile time tooling.  In contrast there was my world.  My
-world ad me sitting with Vim, CVS and SVN and a basic Linux box and I was
+world had me sitting with Vim, CVS and SVN and a basic Linux box and I was
 able to build things that I was incredibly proud of.  I eventually swapped
 PHP for Python because it had better trade offs for me.  But I will never
 not recognize what PHP gave me: I learned from it that not everything has
