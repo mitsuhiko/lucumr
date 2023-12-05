@@ -69,7 +69,7 @@ code that I wrote, and the code that ran end to end.
 Yes, there was no static type checking and intellisense was basically non
 existing.  Companies like Microsoft did not even think that Python was a
 language yet.  But screw it, we were productive!  Not only that, we build
-large software projects.  We knew were the tradeoffs were.  We had runtime
+large software projects.  We knew where the tradeoffs were.  We had runtime
 errors flying left and right in production because bad types were passed,
 but we also had the tools to work with it!  I distinctly remember how
 blown away a colleague from the .NET world was when I showed him some of
