@@ -120,7 +120,7 @@ I see how incredibly strong many feel about the BUSL and now the FSL.  In
 the mind of many folks, this license is a betrayal of the Open Source
 spirit.  I understand the historic context and efforts that went into
 making Open Source and Free Software what it is today.  We're all standing
-of the shoulders of the giants that created those licenses and defended
+on the shoulders of the giants that created those licenses and defended
 them in courts.  But take this parting thought: we regarded the Cathedral
 development model as both Free Software and Open Source.  In that model in
 between releases only selected people had access and control to the
