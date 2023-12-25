@@ -20,14 +20,15 @@ something else.
 This Christmas I `received a 3D printer
 <https://twitter.com/mitsuhiko/status/1738930820998369593>`__ and I love
 it for two reasons.  Firstly, it was an unexpected gift from my wonderful
-wife, who chose it.  She picked really well balancing my love for both
-Open Source and user friendly technology.  She organized a brand new
-`Bambu Lab A1 <https://bambulab.com/en/a1>`__ 3D printer.  It has been a
-few years since I toyed around with 3D printing and it was mostly in the
-context of other people assembling printers.  That's because even though I
-love toying around with software, I cannot say the same for hardware.
-This printer, however, is remarkably easy to set up and use, significantly
-boosting my enjoyment in this hobby.
+wife, who chose it.  She organized me a brand new `Bambu Lab A1
+<https://bambulab.com/en/a1>`__ 3D printer.  It has been a few years since
+I toyed around with 3D printing and it was mostly in the context of other
+people assembling printers.  That's because even though I love toying
+around with software, I cannot say the same for hardware.  This printer,
+however, is remarkably easy to set up and use, significantly boosting my
+enjoyment in this hobby.  For this purchase she had to balance my love for
+Open Source with user friendly technology and I think given the good
+experience, she chose well.
 
 The printer comes with a brief guide for the initial setup.  In about 15
 minutes of removing some screws and mounting some components we were off
