@@ -84,7 +84,8 @@ I was able tell that Prusa is reconsidering their Open Source approach and
 that with a few days as a member of this community because people are
 `complaining
 <https://www.reddit.com/r/prusa3d/comments/10g6fgv/prusa_giving_up_on_its_open_source_roots/>`__
-(The MK4 firmware is not Open Source).  Prusa is not hiding that they are
+(the MK4 design is no longer Open Source and the firmware no longer
+developed in the open [2]_).  Prusa is not hiding that they are
 reconsidering their ways thanks to a blog post by their founder about how
 they are `reconsidering their Open Source ways
 <https://blog.prusa3d.com/the-state-of-open-source-in-3d-printing-in-2023_76659/>`__:
@@ -169,3 +170,7 @@ pay their employees and continue innovating.
    government, I care the least about China.  The US and my own one can
    cause a lot more problems to me.  If I were to never be able to go to
    China again, very little in my life would change.
+
+.. [2] An earlier version of this blog post stated that the Firmware is no
+   longer Open Source.  That is actually incorrect and what is no longer
+   open is the controller design.
