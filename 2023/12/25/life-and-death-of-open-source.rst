@@ -84,8 +84,8 @@ I was able tell that Prusa is reconsidering their Open Source approach and
 that with a few days as a member of this community because people are
 `complaining
 <https://www.reddit.com/r/prusa3d/comments/10g6fgv/prusa_giving_up_on_its_open_source_roots/>`__
-(the MK4 design is no longer Open Source and the firmware no longer
-developed in the open [2]_).  Prusa is not hiding that they are
+(the MK4 design is no longer Open Source and the firmware apparently no
+longer developed in the open [2]_).  Prusa is not hiding that they are
 reconsidering their ways thanks to a blog post by their founder about how
 they are `reconsidering their Open Source ways
 <https://blog.prusa3d.com/the-state-of-open-source-in-3d-printing-in-2023_76659/>`__:
