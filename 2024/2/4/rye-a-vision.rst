@@ -34,7 +34,7 @@ itself.  It wraps established tools:
 * **Managing Virtualenvs**: it uses the well established `virtualenv
   <https://virtualenv.pypa.io/en/latest/>`__ library under the hood.
 * **Building Wheels**: it delegates that work largely to `build <https://pypi.org/project/build/>`__.
-* **Publishing**: it's publish command uses `twine
+* **Publishing**: its publish command uses `twine
   <https://pypi.org/project/twine/>`__ to accomplish this task.
 * **Locking and Dependency Installation:** is today implemented by
   using `unearth <https://pypi.org/project/unearth/>`__ and
