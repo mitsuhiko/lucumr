@@ -148,8 +148,8 @@ it's still a very attractive destination for immigrants, yet it throws
 away so much potential.  It got dealt an amazing hand but it's just to
 afraid of playing it.
 
-Clearly Austria will not become a libertarian wonderland and it should it.
-There is no appetite for large scale deregulation and that is absolutely
-okay.  But there is a version of this country that stays true to its
-actual values and can achieve better outcomes.  Maybe one day we will see
-a political landscape that is just a bit more courageous.
+Clearly Austria will not become a libertarian wonderland and it should not
+be.  There is no appetite for large scale deregulation and that is
+absolutely okay.  But there is a version of this country that stays true
+to its actual values and can achieve better outcomes.  Maybe one day we
+will see a political landscape that is just a bit more courageous.
