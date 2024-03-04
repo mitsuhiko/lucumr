@@ -25,7 +25,7 @@ In the last few years a lot of centralized services did not develop like
 people wanted which I believe resulted in the pendulum prominently swinging
 towards decentralization.
 
-Decentralization promotes an utopian view of the world that I belief fails
+Decentralization promotes an utopian view of the world that I believe fails
 to address actual real problems in practice.  Yet on that decentralization
 wave a lot of projects are riding from crypto-currencies [1]_, defi or things
 such as Mastodon.  All of these things have one thing in common: distrust.
@@ -143,7 +143,7 @@ So really before we talk about centralization and decentralization, I
 think we actually need to understand what we want to accomplish.  And
 really I think this is where we likely already disagree tremendously.
 Mastodon encourages not just decentralization, but federation.  You can
-pick your own mastodon server but you can also communicate with people on
+pick your own Mastodon server but you can also communicate with people on
 other instances.  I will make the point that **this is the root of the
 issue here**.
 
@@ -175,7 +175,7 @@ agreement on if larger or smaller instance are going to make the problem
 of moderation better or worse.
 
 Yet there is the belief that you can somehow create a coherent experience
-into a “whatever”.  Whatever it is actually.  My first mastodon instance
+into a “whatever”.  Whatever it is actually.  My first Mastodon instance
 was `de-federated by accident from my current instance
 <https://github.com/hachyderm/hack/issues/4>`__.  I moved to that instance
 though because many other hackers in the Open Source space did, and unlike
@@ -194,7 +194,7 @@ something of an issue.
 Unpaid Labour and Opsec
 -----------------------
 
-We clearly won't come to an agreement across all of mastodon about what
+We clearly won't come to an agreement across all of Mastodon about what
 acceptable behavior is, and there is no central entity controlling it.  It
 will always be a messy process.  I guess this is something that Mastodon
 will have to learn living with, even though I can't imagine what that
@@ -208,7 +208,7 @@ already know how messy this is even for centralized services.  But at
 least those enterprises were large enough to pay lawyers and figures this
 out in courts.
 
-For large mastodon instances this might turn into a problem, and for small
+For large Mastodon instances this might turn into a problem, and for small
 instances the legal risk of hosting the wrong thing might be completely
 overwhelming.  I used to host a pastebin for a few years.  It was Open
 Source and with that others also hosted it.  I had to shut it down after
@@ -257,7 +257,7 @@ users.
 Mastodon is Old
 ---------------
 
-Mastodon is getting some traction today, but Mastodon is around for a long
+Mastodon is getting some traction today, but Mastodon has been around for a long
 time.  And with that, may of the problems it had over the years are
 still unresolved.  For instance you might read about `Wil Wheaton's
 failure to use Mastodon
