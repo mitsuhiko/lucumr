@@ -59,7 +59,7 @@ point (lower than some of the competition).  They also added built-in
 cloud service stuff and with a really good quality.  But it's a space
 dominated by Open Source hardware and software.  And they don't really do
 that.  Bambu seems to add new people into the 3D printing community who
-don't don't care (or not as much) about Open Source.  Yet Bambu heavily
+don't care (or not as much) about Open Source.  Yet Bambu heavily
 relied on Open Source software to put them on the map.
 
 If you open their Bambu Studio, you can see that it's built on top of 
