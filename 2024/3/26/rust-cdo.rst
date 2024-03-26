@@ -66,3 +66,17 @@ It's now an amalgamation of insta code and yaml-rust.  And by doing so, I
 successfully upgraded this junk tech debt to a perfect AAA.
 
 Who won?  I think nobody really.
+
+
+.. raw:: html
+
+   <small>
+
+As for the title: a `CDO <https://en.wikipedia.org/wiki/Collateralized_debt_obligation>`_
+is a financial instrument that became pretty infamous during the financial
+crisis of 2007.  An entertaining explanation of that can be found in
+“`The Big Short <https://en.wikipedia.org/wiki/The_Big_Short_(film)>`__”.
+
+.. raw:: html
+
+   </small>
