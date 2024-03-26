@@ -62,7 +62,7 @@ that you did that, and you just keep maintaining your library like you did
 before, the world keeps spinning on.
 
 So as of today: I collateralized `yaml-rust` by vendoring it in `insta`.
-It's now an amalgation of insta code and yaml-rust.  And by doing so, I
+It's now an amalgamation of insta code and yaml-rust.  And by doing so, I
 successfully upgraded this junk tech debt to a perfect AAA.
 
 Who won?  I think nobody really.
