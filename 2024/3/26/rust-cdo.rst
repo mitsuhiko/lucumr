@@ -41,7 +41,7 @@ users demand action to deal with your debt.
 So what can you do?  One option is to move to alternatives (unload the
 debt).  In this particular case for whatever reason all the alternatives
 to `learned-rust-this-way` are not looking very appealing either.  One is
-a fork of that thing which also only has a single maintained, but all the
+a fork of that thing which also only has a single maintainer, but all the
 sudden pulls in 3 more dependencies, one of which already have a "B-"
 rating.  Another option in the ecosystem just decided `to default
 <https://github.com/dtolnay/serde-yaml/commit/3ba8462f7d3b603d832e0daeb6cfc7168a673d7a>`__
