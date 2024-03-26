@@ -51,7 +51,7 @@ Remember you never touched `learned-rust-this-way` actively.  It worked
 for you in the unmaintained way of the last four years.  If you now fork
 that library (and name it `learned-rust-this-way-and-its-okay`) you are
 now subject to the same demands.  Forking that library is putting cash on
-the pile of debt.  Except if you don't act up on the bug reports there,
+the pile of debt.  Except if you don't act on the bug reports there,
 you will eventually be called out like `learned-rust-this-way` was.  So
 while that might buy you time, it does not really solve the issue.
 
