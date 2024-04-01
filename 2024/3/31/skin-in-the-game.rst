@@ -119,7 +119,7 @@ restrictions, on the other hand if that ever gets found out you probably
 are going to have some unfriendly talks with someone else's legal team.
 While in practice none of my code is important enough that I think
 something like this will happen, I can absolutely see this happen to large
-Open Source projects where a rouge employee contributes on their
+Open Source projects where a rogue employee contributes on their
 employer's time or otherwise proprietary code.
 
 I have a heard the sentiment a few times now that one should vet the
