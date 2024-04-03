@@ -168,7 +168,7 @@ liability in a way.  I take responsibility of someone else's commit with
 the moment I press the merge button.  While many of those contributions
 are benign no matter what, you do start to trust repeated contributors
 after a while.  A well established identity on the internet creates a form
-of inner piece, a handing over a project more and more to a person you
+of inner peace, a handing over a project more and more to a person you
 don't know less so.  Yet it can happen absolutely gradually.  Maybe
 verified identities an illusion, but sometimes these illusions is all
 that's needed to feel more relaxed.
