@@ -123,3 +123,6 @@ span.strike     { text-decoration: line-through; }
     h2 { font-size: 36px; line-height: 38px; }
     h3 { font-size: 28px; line-height: 30px; }
 }
+
+/* pygments fixes */
+.w { text-decoration: none; }
