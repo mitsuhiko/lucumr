@@ -325,6 +325,7 @@ definition of the fat pointer:
 .. sourcecode:: rust
 
     use std::sync::Arc;
+    use std::mem::ManuallyDrop;
     use std::any::{type_name, TypeId};
 
     pub struct DynObject {
@@ -373,24 +374,19 @@ And this is the implementation of the vtable and the type:
                 let vtable = &VTable {
                     // example trampoline that is generated for each method
                     repr: |ptr| unsafe {
-                        // before we reconstruct the Arc<T>, first ensure
-                        // we have incremented the refcount for panic
-                        // safety.  If `repr()` panics, we will decref the
-                        // arc on unwind.
-                        Arc::<T>::increment_strong_count(ptr as *const T);
-                        // now take ownership of the ptr
-                        let arc = Arc::<T>::from_raw(ptr as *const T);
+                        // now take ownership of the ptr and put it in a
+                        // ManuallyDrop so we don't have to manipulate the
+                        // reference count.
+                        let arc = ManuallyDrop::new(Arc::<T>::from_raw(ptr as *const T));
                         // and invoke the original method via the arc
                         <T as Object>::repr(&arc)
                     },
                     get_value: |ptr, key| unsafe {
-                        Arc::<T>::increment_strong_count(ptr as *const T);
-                        let arc = Arc::<T>::from_raw(ptr as *const T);
+                        let arc = ManuallyDrop::new(Arc::<T>::from_raw(ptr as *const T));
                         <T as Object>::get_value(&arc, key)
                     },
                     enumerate: |ptr| unsafe {
-                        Arc::<T>::increment_strong_count(ptr as *const T);
-                        let arc = Arc::<T>::from_raw(ptr as *const T);
+                        let arc = ManuallyDrop::new(Arc::<T>::from_raw(ptr as *const T));
                         <T as Object>::enumerate(&arc)
                     },
                     // these are pretty trivial, they are modelled after
@@ -537,8 +533,8 @@ The macro is surprisingly only a bit awful:
                         let vtable = &VTable {
                             $(
                                 $f: |ptr, $($p),*| unsafe {
-                                    std::sync::Arc::<T>::increment_strong_count(ptr as *const T);
-                                    let arc = std::sync::Arc::<T>::from_raw(ptr as *const T);
+                                    let arc = std::mem::ManuallyDrop::new(
+                                        std::sync::Arc::<T>::from_raw(ptr as *const T));
                                     <T as $t>::$f(&arc, $($p),*)
                                 },
                             )*
