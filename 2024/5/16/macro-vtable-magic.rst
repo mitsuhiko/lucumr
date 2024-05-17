@@ -667,3 +667,7 @@ powerful system to make something like this work compared to the
 ridiculous macro abuse necessary in Rust.
 
 Anyways.  Maybe this is useful to you.
+
+Postscript: You can actually make an `Arc<Self>` object safe.  If you are
+okay with the implication that this requires, you can avoid most of what
+this blog post talks about.
