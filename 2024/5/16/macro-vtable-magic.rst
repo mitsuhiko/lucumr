@@ -353,8 +353,10 @@ And this is the implementation of the vtable and the type:
             __type_id: fn() -> TypeId,
             // method to return the type name of the internal type
             __type_name: fn() -> &'static str,
-            // method used to drop the refcount by one
-            __drop: fn(*const ()),
+            // method used to increment the refcount by one
+            __incref: fn(*const ()),
+            // method used to decrement the refcount by one
+            __decref: fn(*const ()),
         }
 
         /// Utility function to return a reference to the real vtable.
@@ -393,9 +395,14 @@ And this is the implementation of the vtable and the type:
                     // rust's `Any` type.
                     __type_id: || TypeId::of::<T>(),
                     __type_name: || type_name::<T>(),
+                    // on clone we need to increment the refcount.  Due to
+                    // potential alignment issues we need to go via the vtable too.
+                    __incref: |ptr| unsafe {
+                        std::sync::Arc::<T>::increment_strong_count(ptr as *const T);
+                    },
                     // on drop take ownership of the pointer (decrements
                     // refcount by one)
-                    __drop: |ptr| unsafe {
+                    __decref: |ptr| unsafe {
                         Arc::from_raw(ptr as *const T);
                     },
                 };
@@ -430,12 +437,10 @@ Memory management:
 
 .. sourcecode:: rust
 
-    /// Clone just increments the strong refcount of the Arc.
+    /// Clone increments the refcount via a method in the vtable.
     impl Clone for DynObject {
         fn clone(&self) -> Self {
-            unsafe {
-                Arc::increment_strong_count(self.ptr);
-            }
+            (vt(self).__incref)(self.ptr);
             Self { ptr: self.ptr, vtable: self.vtable }
         }
     }
@@ -443,7 +448,7 @@ Memory management:
     /// Drop decrements the refcount via a method in the vtable.
     impl Drop for DynObject {
         fn drop(&mut self) {
-            (vt(self).__drop)(self.ptr);
+            (vt(self).__decref)(self.ptr);
         }
     }
 
@@ -520,7 +525,8 @@ The macro is surprisingly only a bit awful:
                     $($($f_impl: fn(*const (), $($p_impl: $t_impl),*) $(-> $r_impl)?,)*)*
                     __type_id: fn() -> std::any::TypeId,
                     __type_name: fn() -> &'static str,
-                    __drop: fn(*const ()),
+                    __incref: fn(*const ()),
+                    __decref: fn(*const ()),
                 }
 
                 fn vt(e: &$erased_t) -> &VTable {
@@ -540,7 +546,10 @@ The macro is surprisingly only a bit awful:
                             )*
                             __type_id: || std::any::TypeId::of::<T>(),
                             __type_name: || std::any::type_name::<T>(),
-                            __drop: |ptr| unsafe {
+                            __incref: |ptr| unsafe {
+                                std::sync::Arc::<T>::increment_strong_count(ptr as *const T);
+                            },
+                            __decref: |ptr| unsafe {
                                 std::sync::Arc::from_raw(ptr as *const T);
                             },
                         };
@@ -581,10 +590,7 @@ The macro is surprisingly only a bit awful:
 
                 impl Clone for $erased_t {
                     fn clone(&self) -> Self {
-                        unsafe {
-                            std::sync::Arc::increment_strong_count(self.ptr);
-                        }
-
+                        (vt(self).__incref)(self.ptr);
                         Self {
                             ptr: self.ptr,
                             vtable: self.vtable,
@@ -594,7 +600,7 @@ The macro is surprisingly only a bit awful:
 
                 impl Drop for $erased_t {
                     fn drop(&mut self) {
-                        (vt(self).__drop)(self.ptr);
+                        (vt(self).__decref)(self.ptr);
                     }
                 }
             };
