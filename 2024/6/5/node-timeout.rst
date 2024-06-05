@@ -271,7 +271,7 @@ ones exist.
 
 .. [1] Under normal circumstances these memory leaks would not be
    permanent leaks.  They would resolve themselves when you finally drop a
-   reference to that token.  However due to a node bug it is currently be
-   possible for these leaks not to be unrecoverable.
+   reference to that token.  However due to a node bug it is currently
+   possible for these leaks to be unrecoverable.
 
 .. [2] How we found *that bug* might be worth a story for another day.
