@@ -126,3 +126,11 @@ span.strike     { text-decoration: line-through; }
 
 /* pygments fixes */
 .w { text-decoration: none; }
+
+/* expandables */
+details {
+    background: #eee;
+    padding: 5px 15px;
+}
+details summary { cursor: pointer; }
+details summary:hover { text-decoration: underline; color: #2771b5; }
