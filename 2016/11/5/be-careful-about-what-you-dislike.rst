@@ -14,7 +14,7 @@ often involve arguments that have long become outdated or are no longer
 strictly relevant to the conversation.
 
 What I mean by that is that given a controversial topic, a valid argument
-for one side of the other is being repeated by a crowd of people that once
+for one side or the other is being repeated by a crowd of people that once
 heard it, even after that argument stops being valid.  This happens because
 often the general situation changed and the argument references a reality
 that no longer exists in the same form.  Instead of reevaluating the
