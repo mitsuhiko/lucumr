@@ -54,18 +54,22 @@
        url('fonts/merriweather-v30-latin-700italic.svg#Merriweather') format('svg'); /* Legacy iOS */
 }
 
-/* questrial-regular - latin */
+/* lora-500 - cyrillic_cyrillic-ext_latin_latin-ext_math_symbols */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Questrial';
+  font-family: 'Lora';
   font-style: normal;
-  font-weight: 400;
-  src: url('fonts/questrial-v18-latin-regular.eot'); /* IE9 Compat Modes */
-  src: url('fonts/questrial-v18-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/questrial-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('fonts/questrial-v18-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('fonts/questrial-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('fonts/questrial-v18-latin-regular.svg#Questrial') format('svg'); /* Legacy iOS */
+  font-weight: 500;
+  src: url('fonts/lora-v35-cyrillic_cyrillic-ext_latin_latin-ext_math_symbols-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* lora-500italic - cyrillic_cyrillic-ext_latin_latin-ext_math_symbols */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 500;
+  src: url('fonts/lora-v35-cyrillic_cyrillic-ext_latin_latin-ext_math_symbols-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* ubuntu-mono-regular - latin */

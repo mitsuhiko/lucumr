@@ -3,15 +3,25 @@
 /* fonts */
 @import url(fonts.css);
 
+:root {
+    --primary-color: #115ca1;
+    --secondary-color: #cd0e0e;
+    --header-color: #1b3156;
+    --faded-color: #7b8894;
+    --code-background-color: #eee;
+    --table-background-color: #fafafa;
+    --table-border-color: #ddd;
+}
+
 /* general style */
 body    { font: 17px/25px 'Merriweather', serif;
           margin: 0; padding: 0; font-weight: 400; color: black; }
-a       { color: #8F4B5D; font-weight: 400; }
-a:hover { color: #2771b5; }
+a       { color: var(--primary-color); font-weight: 400; }
+a:hover { color: var(--secondary-color); }
 
 /* headlines */
-h1, h2, h3, h4, h5, h6      { font-family: 'Questrial', sans-serif;
-                              font-weight: 400; color: #3D3F4F }
+h1, h2, h3, h4, h5, h6      { font-family: 'Lora', sans-serif;
+                              font-weight: 500; color: var(--header-color) }
 h1 a, h2 a, h3 a, h4 a,
 h5 a, h6 a                  { text-decoration: none; }
 h1 a:hover, h2 a:hover,
@@ -27,17 +37,17 @@ h1 em                       { color: black; font-size: 32px; display: block;
                               margin-left: 25px; margin-top: -15px; }
 
 /* layout elements */
-div.container               { max-width: 880px; margin: 48px auto; padding: 0 40px; }
+div.container               { max-width: 860px; margin: 48px auto; padding: 0 40px; }
 div.header                  { float: left; }
 div.navigation              { float: right; }
 div.header, div.navigation  { height: 25px; margin-bottom: 42px; }
 div.navigation ul           { margin: 0; padding: 0; list-style: none; }
 div.navigation ul li        { display: inline; margin: 0 2px; padding: 0; }
-div.body                    { clear: both; margin: 0 30px; line-height: 1.6; }
+div.body                    { clear: both; margin: 0 30px; line-height: 1.7; }
 div.footer                  { margin-top: 55px; font-size: 16px;
-                              text-align: right; color: #7b8894; }
+                              text-align: right; color: var(--faded-color); }
 div.footer p                { margin: 0; }
-div.footer a                { color: #7b8894; }
+div.footer a                { color: var(--faded-color); }
 
 /* margins and stuff */
 p, div.line-block, ul, ol, pre,
@@ -53,13 +63,13 @@ blockquote                      { font-style: italic; }
 pre, code, tt   { font-family: 'Ubuntu Mono', 'Consolas', 'Deja Vu Sans Mono',
                   'Bitstream Vera Sans Mono', 'Monaco', 'Courier New', monospace;
                   font-size: 0.9em; }
-pre             { line-height: 1.45; background: none; padding: 0; width: 100%;
+pre             { line-height: 1.5; background: none; padding: 0; width: 100%;
                   overflow-x: auto; }
-code, tt        { background: #eee; }
+code, tt        { background: var(--code-background-colof); }
 
 /* tables */
-table           { border: 1px solid #ddd; border-collapse: collapse;
-                  background: #fafafa; }
+table           { border: 1px solid var(--table-border-color); border-collapse: collapse;
+                  background: var(--table-background-color); }
 td, th          { padding: 2px 12px; border: 1px solid #ddd; }
 
 /* footnotes */
@@ -78,12 +88,11 @@ div.entry-overview div.summary p    { display: inline; line-height: 25px; }
 div.entry-overview h1               { margin: 0; font-size: 17px;
                                       font-family: 'Merriweather', serif; }
 div.entry-overview h1:after         { content: " —"; color: black; }
-div.entry-overview h1 a             { color: #8F4B5D; }
 div.entry-overview div.summary,
 div.entry-overview div.date,
 div.entry-overview div.summary p    { margin: 0; padding: 0; }
 div.entry-overview div.detail       { margin-left: 140px; }
-div.entry-overview div.date         { float: left; width: 120px; color: #7b8894;
+div.entry-overview div.date         { float: left; width: 120px; color: var(--faded-color);
                                       text-align: right; font-style: italic;
                                       font-size: 14px; }
 
@@ -133,4 +142,4 @@ details {
     padding: 5px 15px;
 }
 details summary { cursor: pointer; }
-details summary:hover { text-decoration: underline; color: #2771b5; }
+details summary:hover { text-decoration: underline; color: var(--secondary-color); }
