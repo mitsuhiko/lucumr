@@ -57,7 +57,7 @@ Plausible exists.  It's also Open Source, it's also an analytics tool, but
 rather than being like a “CGI script” in spirit, it's a pretty heavy thing.
 You gotta run docker containers, run a rather beefy ClickHouse
 installation, I believe it needs Kafka etc.  Running Plausible yourself is
-definitely not neatly as easy as setting up Counterscale.  You do however,
+definitely not nearly as easy as setting up Counterscale.  You do however,
 have the benefit of not relying on Cloudflare.
 
 Level up the Protocols
@@ -87,7 +87,7 @@ dedication and marketing.  I have not *yet* seen that, but I'm somewhat
 confident that we might see it.
 
 We probably want these protocols and systems built on top of it because it
-makes a lot of things easier.  Sometimes of the cost of doing something
+makes a lot of things easier.  Sometimes if the cost of doing something
 drops low enough, it enables a whole new range of things to exist.
 
 Many times when you start building abstractions over these things, you
@@ -109,9 +109,9 @@ worker queue is a great idea, batch writing a lot of data into a system is
 a great idea, kafka like  topics are a great idea, caches are a great idea,
 so are SQL databases, column stores and much more.
 
-Laravel Forge does a tiny bit of that I feel.  Forge goes a bit in to that
+Laravel Forge does a tiny bit of that I feel.  Forge goes a bit into that
 direction in the sense that it says quite clearly that some components are
-useful: databases, caches, SSL, crons etc.  However it's ambition stops at
+useful: databases, caches, SSL, crons etc.  However its ambition stops at
 the boundary of the Laravel ecosystem which is understandable.
 
 Yet maybe over time we can see more of a “SaaS in a box” kind of
