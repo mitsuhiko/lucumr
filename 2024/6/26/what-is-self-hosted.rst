@@ -75,7 +75,7 @@ The reason it's so easy and appealing to build something like Counterscale
 directly against Cloudflare or similar services is that they give you
 higher level abstractions than you would find otherwise.  You don't have
 to think about scaling workers, you don't have to think about scaling
-databases.  The downside of course is that it locks you against that platform.
+databases.  The downside of course is that it locks you into that platform.
 
 But what would be necessary to have your “own Cloudflare” thing you can
 run once and then run all your cool mini CGI like scripts above?  We miss
