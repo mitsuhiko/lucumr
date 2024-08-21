@@ -21,8 +21,8 @@ now also can manage Python installations for you so it's getting much
 closer.
 
 If you are using Rye today, consider this blog post as a reminder that you
-should probably starting having a closer look at `uv` and give feedback to
-the Astral folks.
+should probably starting having a closer look at `uv` and `give feedback to
+the Astral folks <https://github.com/astral-sh/rye/discussions/1342>`__.
 
 I gave a talk just recently in Prague at EuroPython about my current view
 of the Python packaging, the lessons I learned when creating Rye and one
