@@ -6,6 +6,12 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+2024
+----
+
+-   `The Catch in Rye <https://speakerdeck.com/mitsuhiko/the-catch-in-rye-seeding-change-and-lessons-learned>`__
+    @ EuroPython 2024 (`PDF <http://mitsuhiko.pocoo.org/Rye.pdf>`__)
+
 2023
 ----
 

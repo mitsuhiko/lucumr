@@ -8,6 +8,7 @@
     --secondary-color: #cd0e0e;
     --header-color: #1b3156;
     --faded-color: #7b8894;
+    --border-color: #adbac7;
     --code-background-color: #eee;
     --table-background-color: #fafafa;
     --table-border-color: #ddd;
@@ -121,6 +122,9 @@ span.math img   { margin-bottom: -7px; }
 
 /* strikethrough */
 span.strike     { text-decoration: line-through; }
+
+/* lines */
+hr { border: none; border-bottom: 1px solid var(--border-color); height: 10px; margin: 10px auto 25px auto; width: 90%; box-shadow: 0 7px 7px -4px var(--border-color); }
 
 /* mobile */
 @media only screen and (max-width: 800px) {
