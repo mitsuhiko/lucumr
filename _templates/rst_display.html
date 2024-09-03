@@ -3,9 +3,9 @@
 {% block htmlhead %}
   {{ super() }}
   <meta name="description" content="{{ ctx.render_summary()|striptags }}">
+  <meta name="twitter:description" content="{{ ctx.render_summary()|striptags }}">
   <meta property="og:description" content="{{ ctx.render_summary()|striptags }}">
   <meta property="og:type" content="article">
-  <meta name="twitter:description" content="{{ ctx.render_summary()|striptags }}">
 {% endblock %}
 {% block body %}
   {{ rst.html_title }}
