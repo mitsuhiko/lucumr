@@ -1,6 +1,6 @@
 public: yes
 tags: [thoughts]
-summary: A poem on humans.
+summary: A thought on human progress.
 
 Progress
 ========
