@@ -3,14 +3,14 @@
 {% block htmlhead %}
   {{ super() }}
   <meta name="description" content="{{ ctx.render_summary()|striptags }}">
-  <meta name="og:description" content="{{ ctx.render_summary()|striptags }}">
+  <meta property="og:description" content="{{ ctx.render_summary()|striptags }}">
+  <meta property="og:type" content="article">
   <meta name="twitter:description" content="{{ ctx.render_summary()|striptags }}">
-  <meta name="twitter:card" content="summary">
 {% endblock %}
 {% block body %}
   {{ rst.html_title }}
   {% if ctx.pub_date %}
-  <p class=date>written on {{ format_date(ctx.pub_date, format='full') }}
+  <p class=date>written on {{ format_date(ctx.pub_date, format='full') }}</p>
   {% endif %}
 
   {{ rst.fragment }}

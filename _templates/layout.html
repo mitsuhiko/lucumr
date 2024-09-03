@@ -11,10 +11,16 @@
       if link.media %} media="{{ link.media }}"{% endif %} type="{{ link.type }}">
     {%- endfor %}
     <link rel="stylesheet" href="/static/new-style.css" type="text/css">
-    <meta property="title" content="{{ self.title() }}">
+    <meta name="title" content="{{ self.title() }}">
     <meta property="og:title" content="{{ self.title() }}">
+    <meta property="og:site_name" content="Armin Ronacher's Thoughts and Writings">
     <meta name="twitter:site" content="@mitsuhiko">
+    <meta name="twitter:url" content="https://lucumr.pocoo.org{{ slug }}">
+    <meta property="og:url" content="https://lucumr.pocoo.org{{ slug }}">
     <meta name="twitter:title" content="{{ self.title() }}">
+    <meta name="twitter:domain" content="https://lucumr.pocoo.org/">
+    <meta name="twitter:card" content="summary_image_large">
+    <meta name="twitter:creator" content="@mitsuhiko">
     <link rel="me" href="https://hachyderm.io/@mitsuhiko">
   {% endblock %}
   </head>
