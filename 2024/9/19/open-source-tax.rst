@@ -86,7 +86,7 @@ guidance on what’s appropriate to contribute.
 The current model we propose with our upcoming `Open Source Pledge
 <https://osspledge.com/about/>`__ is to suggest like a tip what you
 should give in relation to your developer work force.  Take the average
-number of full time employees you have over a year, multiply this by 2000.
+number of full time engineers you have over a year, multiply this by 2000.
 That is the amount in US dollars you should give to your Open Source
 dependencies.
 
