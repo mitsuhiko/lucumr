@@ -157,10 +157,10 @@ with a CLA” is absolutely not the same as “community driven AGPL project
 without the CLA”.
 
 The title claims that FSL balances Open Source better than AGPL, and it's
-fair to question how a license that isn't fully Open Source can achieve
-that.   The key lies in understanding that Fair Source is built on the
-concept of *delayed* Open Source.  Yes, there's a waiting period, but it’s
-a relatively short one: just two years.  Count to two and the code
+fair to question how a license that isn't Open Source can achieve that.
+The key lies in understanding that Fair Source is built on the concept of
+*delayed* Open Source.  Yes, there's a waiting period, but it’s a
+relatively short one: just two years.  Count to two and the code
 transitions to full, unshackled openness.  And that transition to Open
 Source is a promise that can't be taken from you.
 
