@@ -92,7 +92,7 @@ are great examples of successful open source stewardship, they are also
 outliers.  Many others don't survive or grow to that level.
 
 And yet even some of those lighthouse projects can become fallen stars and
-face callenges.  WordPress by all accounts is a massive success.
+face challenges.  WordPress by all accounts is a massive success.
 WordPress is in the top 1% of open source projects in terms of impact,
 success, and financial return for its creator.  Yet despite that — and it
 finding an actual business model to commercialize it — it's creator
