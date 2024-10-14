@@ -95,7 +95,7 @@ And yet even some of those lighthouse projects can become fallen stars and
 face challenges.  WordPress by all accounts is a massive success.
 WordPress is in the top 1% of open source projects in terms of impact,
 success, and financial return for its creator.  Yet despite that — and it
-finding an actual business model to commercialize it — it's creator
+finding an actual business model to commercialize it — its creator
 suffers from the same fate as many small Open Source libraries: a feeling
 of being wronged.
 
