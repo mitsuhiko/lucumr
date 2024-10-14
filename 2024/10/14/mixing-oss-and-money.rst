@@ -69,7 +69,7 @@ determination to push a project to a level where it can sustain itself.
 
 Rails pushed through this barrier.  I never did with any of my projects
 and I'm at peace with that.  I got to learn a lot through my Open Source
-work, I achieved a certain level of nobility that I benefit from.  I built
+work, I achieved a certain level of notoriety that I benefit from.  I built
 a meaningful career by leveraging my work and I even met my wonderful wife
 that way.  All are consequences of my Open Source contributions.  There
 were clear and indisputable benefits to it and by all accounts I'm a happy
