@@ -1,4 +1,5 @@
 public: yes
+tags: [thoughts]
 summary: Thoughts on funding maintainers through the pledge, WordPress'
   struggles and just money and Open Source in general.
 
