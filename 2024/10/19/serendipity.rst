@@ -1,6 +1,6 @@
 public: yes
 tags: [poem]
-summary: A love letter.
+summary: A poem to my wife.
 
 Serendipity
 ===========
@@ -36,3 +36,5 @@ Serendipity
 | For every moment, side by side.
 | Through joy, sorrow, pain, persistence,
 | You bring meaning to my existence.
+
+*Dedicated to my loving wife.*
