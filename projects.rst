@@ -45,6 +45,7 @@ Python:
 -   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — a wrapper around pip
     for script installation. *2014-* *
 -   `rb <http://rb.rtfd.org/>`_ — a redis clustering library for Python. *2015-* *
+-   `Rye <https://github.com/astral-sh/rye>`_ — an experimental package manager for Python. *2023-* *
 
 PHP:
 
