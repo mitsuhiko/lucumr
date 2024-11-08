@@ -44,8 +44,8 @@ that align with them.  Trump's rhetoric and plans are counter to
 everything I stand for and the remind me a lot of that film.  At the same
 time, he's not literal Hitler, and reducing him to that level destroys a
 lot of the discourse around him.  It's even harder for me with Musk.  His
-morals are completely off, he seems to a person I would not want to be a
-friend with, yet he's successful and he's pushing humanity forward.
+morals are completely off, he seems to a person I would not want to be
+friends with, yet he's successful and he's pushing humanity forward.
 
 It's challenging to reconcile my strong opposition to their (and other's)
 rhetoric and policies with the need to maintain a nuanced view of them.
