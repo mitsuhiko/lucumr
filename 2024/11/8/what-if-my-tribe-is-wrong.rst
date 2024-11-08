@@ -14,7 +14,7 @@ to be sceptical to a project or initiative, but you can still encourage
 the other person and wish them well.
 
 I think not wishing others well is a coping mechanism of sorts.  For sure
-it was for me.  As you become more successful in live, it becomes easier
+it was for me.  As you become more successful in life, it becomes easier
 to be supportive, because you have established yourself in one way or
 another and you feel more secure about yourself.
 
