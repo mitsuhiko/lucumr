@@ -80,5 +80,5 @@ against him.
 
 In the end where does that leave me?  Listening, understanding, and
 standing firm in my values.  But `not kissing the ring
-<https://daringfireball.net/2024/11/i_wonder_>`__.  And probably coping by
+<https://daringfireball.net/2024/11/i_wonder>`__.  And probably coping by
 writing more.
