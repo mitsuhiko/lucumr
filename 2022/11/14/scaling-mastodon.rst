@@ -25,7 +25,7 @@ In the last few years a lot of centralized services did not develop like
 people wanted which I believe resulted in the pendulum prominently swinging
 towards decentralization.
 
-Decentralization promotes an utopian view of the world that I belief fails
+Decentralization promotes an utopian view of the world that I believe fails
 to address actual real problems in practice.  Yet on that decentralization
 wave a lot of projects are riding from crypto-currencies [1]_, defi or things
 such as Mastodon.  All of these things have one thing in common: distrust.
