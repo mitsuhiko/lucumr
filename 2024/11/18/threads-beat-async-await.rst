@@ -685,7 +685,7 @@ future blog post about some things I found to work better than others.
 
 .. [1] Sentry works with large debug information files such as PDB or
    DWARF.  These files can be gigabytes in size and we memory map
-   terrabytes of preprocessed files into memory during processing.  Memory
+   terabytes of preprocessed files into memory during processing.  Memory
    mapped files can block is hardly a surprise, but what we learned in the
    process is that thanks to containerization and memory limits, you can easily 
    navigate yourself into a situation where you spend much more time on
