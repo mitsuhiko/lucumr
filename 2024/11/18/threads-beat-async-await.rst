@@ -24,7 +24,7 @@ these who highly influential pieces:
   <https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/>`__
   post, which makes a very strong case that having two types of functions,
   which are only compatible in one direction, causes problems.
-* Rob Pressler's `Please stop polluting our imperative languages with pure
+* Ron Pressler's `Please stop polluting our imperative languages with pure
   concepts <https://www.youtube.com/watch?v=449j7oKQVkc>`__ which I think
   is probably the single most important talk on that topic.
 * Nathaniel J. Smith's `Notes on structured concurrency, or: Go statement
