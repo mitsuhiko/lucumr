@@ -463,7 +463,7 @@ One interesting consequence of the Python coroutine model is that at
 least on the coroutine model it can transcend OS level threads.  I could
 make a coroutine on one thread, ship it off to another, and continue it
 there.  In practice, that does not work because once hooked up with the IO
-system, it cannot travel to another event loop on anther thread any more.
+system, it cannot travel to another event loop on another thread any more.
 But you can already see that fundamentally it does something quite
 different to JavaScript.  It can travel between threads at least in
 theory; there are threads; there is syntax to yield.  A coroutine in
