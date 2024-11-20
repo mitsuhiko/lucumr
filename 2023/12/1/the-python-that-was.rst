@@ -41,8 +41,8 @@ Later editing web sites straight from vim on the production server.
 Was it terrible and terrifying?  Absolutely.  But damn it was productive.
 I learned a lot from that.  They taught me valuable lessons about trade-offs.
 It was not just me that learned that, an entire generation of developers in
-those languages learned that our biggest weakness (it not being typed, and
-i wasn't compiled) was also our biggest strength.  It required a bit of
+those languages learned that our biggest weaknesses (not typed, and
+not compiled) were also our biggest strengths.  It required a bit of
 restraint and it required a slightly different way of programming, but it
 was incredibly productive.
 
