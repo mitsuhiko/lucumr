@@ -13,8 +13,8 @@ different Python packaging tools are having slightly different ideas in
 mind of what a lockfile is supposed to look like or even be used for.
 
 In those discussions however also a small other aspect re-emerged: Python
- has a metadata problem.  Python's metadata system is too complex and
- suffers from what I would call “lack of constraints”.
+has a metadata problem.  Python's metadata system is too complex and
+suffers from what I would call “lack of constraints”.
 
 JavaScript: Example of Useful Constraints
 -----------------------------------------
