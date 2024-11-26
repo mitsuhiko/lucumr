@@ -13,8 +13,8 @@ different Python packaging tools are having slightly different ideas in
 mind of what a lockfile is supposed to look like or even be used for.
 
 In those discussions however also a small other aspect re-emerged: Python
-just has a metadata problem.  Python's metadata system is too complex and
-suffers from what I would call “lack of constraints”.
+ has a metadata problem.  Python's metadata system is too complex and
+ suffers from what I would call “lack of constraints”.
 
 JavaScript: Example of Useful Constraints
 -----------------------------------------
@@ -225,16 +225,16 @@ you notice it if you need to read the manual for the first time when you
 need to reconfigure your cache-key or force a package to constantly
 reinstall, you notice it if you need to re-install your local dependencies
 over and over for them not to break.  There are many ways you notice it.
-But you don't notice it as a roadblock, just as a tiny, tiny tax.  Except
-that is a tax we all pay and it makes the user experience significantly
-worse compared to what it could be.
+You don't notice it as a roadblock, just as a tiny, tiny tax.  Except that
+is a tax we all pay and it makes the user experience significantly worse
+compared to what it could be.
 
 The deeper lesson here is that if you give developers too much
-flexibility, they will inevitably push the boundaries.  Because Python's
-packaging ecosystem lacked constraints from the start, imposing them now
-has become a daunting challenge.  Meanwhile, other ecosystems, like
-JavaScript's, took a more structured approach early on, avoiding many of
-these pitfalls entirely.
+flexibility, they will inevitably push the boundaries and that can have
+significant downsides as we can see.  Because Python's packaging ecosystem
+lacked constraints from the start, imposing them now has become a daunting
+challenge.  Meanwhile, other ecosystems, like JavaScript's, took a more
+structured approach early on, avoiding many of these pitfalls entirely.
 
 .. [1] You can see how this works in action for `sentry-cli` for instance.
    The `@sentry/cli` package declares all its platform specific
