@@ -189,7 +189,7 @@ easily missed.
 
   Having support for dynamic metadata also means that developers continue
   to maintain elaborate and confusing systems.  For instance there is a
-  plugin for hatch that dynamically creates a readme, requiring even
+  plugin for hatch that dynamically creates a readme [4]_, requiring even
   arbitrary Python code to run to display documentation.  There are
   plugins to automatically change versions to incorporate git version
   hashes.  As a result to figure out what version you actually have
@@ -251,3 +251,16 @@ structured approach early on, avoiding many of these pitfalls entirely.
 
 .. [3] A common error in the past was to receive a ``pkg_resources.DistributionNotFound``
    exception when trying to run a script in local development
+
+.. [4] I got some `flak on Bluesky <https://bsky.app/profile/hynek.me/post/3lbvwswpfwc2y>`__
+   for throwing readme generators under the bus.  While they do not
+   present the same problem when it comes to metadata like dependencies
+   and versions do, they do still increase the complexity.  In an ideal
+   world what you find in site-packages represents what you have in your
+   version control and there is a `README.md` file right there.  That's
+   what you have in JavaScript, Rust and plenty of other ecosystems.  What
+   we have however is a build step (either dynamic or copying) taking that
+   readme file, and placing it in a RFC 5322 header encoded file in a dist
+   info.  So instead of "command clicking" on a dependency and finding the
+   readme, we need special tools or arcane knowledge if we want to read
+   the readme files locally.
