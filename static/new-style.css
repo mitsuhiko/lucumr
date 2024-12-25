@@ -4,21 +4,79 @@
 @import url(fonts.css);
 
 :root {
+    --background-color: #ffffff;
+    --text-color: #000000;
     --primary-color: #115ca1;
     --secondary-color: #cd0e0e;
     --header-color: #1b3156;
     --faded-color: #7b8894;
     --border-color: #adbac7;
     --code-background-color: #eee;
+    --code-block-background-color: #fff;
+    --code-block-text-color: #000;
     --table-background-color: #fafafa;
     --table-border-color: #ddd;
+    --pre-shadow: none;
+    color-scheme: var(--color-scheme, light);
+
+    &:not([data-initial-load="true"]) {
+        transition-duration: 300ms;
+        transition-property: background-color, color, border-color, box-shadow;
+    }
+
+    @media screen and (prefers-reduced-motion: reduce), (update: slow) {
+        transition-duration: none;
+    }
+
+    /* explicit dark theme via javascript */
+    &[data-theme="dark"] {
+        --color-scheme: dark;
+        --background-color: #1b3156;
+        --text-color: #dce7f3;
+        --primary-color: #66b3ff;
+        --secondary-color: #ff6666;
+        --header-color: #96afda;
+        --faded-color: #aec3d6;
+        --border-color: #050606;
+        --code-background-color: #2a3f64;
+        --code-block-background-color: #c6d4e2;
+        --table-background-color: #243552;
+        --table-border-color: #384c6b;
+        --pre-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    }
+
+    /* default media query. sadly requires duplication */
+    @media (prefers-color-scheme: dark) {
+        &[data-theme="system"] {
+            --color-scheme: dark;
+            --background-color: #1b3156;
+            --text-color: #dce7f3;
+            --primary-color: #66b3ff;
+            --secondary-color: #ff6666;
+            --header-color: #96afda;
+            --faded-color: #aec3d6;
+            --border-color: #050606;
+            --code-background-color: #2a3f64;
+            --code-block-background-color: #c6d4e2;
+            --table-background-color: #243552;
+            --table-border-color: #384c6b;
+            --pre-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        }
+    }
 }
 
 /* general style */
+html    { background: var(--background-color); }
 body    { font: 17px/25px 'Merriweather', serif;
-          margin: 0; padding: 0; font-weight: 400; color: black; }
+          margin: 0; padding: 0; font-weight: 400; color: var(--text-color); }
 a       { color: var(--primary-color); font-weight: 400; }
 a:hover { color: var(--secondary-color); }
+
+/* theme selector */
+p.theme-selector input[type="radio"] { display: none; }
+p.theme-selector label { cursor: pointer; margin: 0; text-decoration: none; }
+p.theme-selector label + label:before { content: "|"; }
+p.theme-selector input[type="radio"]:checked + span { text-decoration: underline; }
 
 /* headlines */
 h1, h2, h3, h4, h5, h6      { font-family: 'Lora', sans-serif;
@@ -64,9 +122,10 @@ blockquote                      { font-style: italic; }
 pre, code, tt   { font-family: 'Ubuntu Mono', 'Consolas', 'Deja Vu Sans Mono',
                   'Bitstream Vera Sans Mono', 'Monaco', 'Courier New', monospace;
                   font-size: 0.9em; }
-pre             { line-height: 1.5; background: none; padding: 0; width: 100%;
-                  overflow-x: auto; }
-code, tt        { background: var(--code-background-colof); }
+pre             { line-height: 1.5; background: var(--code-block-background-color);
+                  color: var(--code-block-text-color); padding: 8px 30px; width: 100%; overflow-x: auto;
+                  margin: -8px -30px -8px -30px; border-radius: 2px; box-shadow: var(--pre-shadow); }
+code, tt        { background: var(--code-background-color); }
 
 /* tables */
 table           { border: 1px solid var(--table-border-color); border-collapse: collapse;
@@ -88,7 +147,7 @@ div.entry-overview div.summary,
 div.entry-overview div.summary p    { display: inline; line-height: 25px; }
 div.entry-overview h1               { margin: 0; font-size: 17px;
                                       font-family: 'Merriweather', serif; }
-div.entry-overview h1:after         { content: " —"; color: black; }
+div.entry-overview h1:after         { content: " —"; color: var(--text-color); }
 div.entry-overview div.summary,
 div.entry-overview div.date,
 div.entry-overview div.summary p    { margin: 0; padding: 0; }

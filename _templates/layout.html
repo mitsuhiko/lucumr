@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en" data-theme="system">
   <head>
     <meta charset=utf-8>
   {% block htmlhead %}
@@ -25,6 +25,23 @@
   {% endblock %}
   </head>
   <body>
+    <script>
+      let $THEME = null;
+
+      function selectTheme(theme) {
+        const node = document.documentElement;
+        if (theme === "system") {
+          localStorage.removeItem("theme");
+        } else {
+          localStorage.setItem("theme", theme);
+        }
+        node.setAttribute("data-theme", theme);
+        $THEME = theme;
+      }
+
+      selectTheme(localStorage.getItem("theme") || "system");
+      document.documentElement.setAttribute("data-initial-load", "true");
+    </script>
     <div class=container>
       <div class=header>
         <a href="/about/">Armin Ronacher</a>'s Thoughts and Writings
@@ -49,8 +66,8 @@
           attribution-noncommercial-sharealike License.
         <p>
           Contact me via <a href="mailto:armin.ronacher@active-4.com">mail</a>,
-          <a href="https://www.threads.net/@the_mitsuhiko">threads</a>,
-          <a href="http://twitter.com/mitsuhiko">twitter</a>, or
+          <a href="https://bsky.app/profile/mitsuhiko.at">bluesky</a>,
+          <a href="http://twitter.com/mitsuhiko">twitter/x</a>, or
           <a href="http://github.com/mitsuhiko">github</a>.
         <p>
           You can <a href="https://github.com/sponsors/mitsuhiko/">sponsor me on github</a>.
@@ -58,7 +75,27 @@
           More info: <a href="/about#imprint">imprint</a>.
           Subscribe <a href="/feed.atom" rel="alternate" title="Armin Ronacher's
             Thoughts and Writings">to Atom feed</a>
+        <p class="theme-selector" hidden>
+          Color scheme:
+          <label><input type="radio" name="theme" value="system"> <span>system preferrence</span></label>
+          <label><input type="radio" name="theme" value="light"> <span>light</span></label>
+          <label><input type="radio" name="theme" value="dark"> <span>dark</span></label>
+          <script>
+            document.querySelector('.theme-selector').removeAttribute('hidden');
+            document.querySelectorAll('input[name="theme"]').forEach(input => {
+              input.checked = input.value === $THEME;
+              input.addEventListener('change', (e) => {
+                selectTheme(e.target.value);
+              });
+            });
+          </script>
+        </p>
       </div>
     </div>
+    <script>
+      window.setTimeout(() => {
+        document.documentElement.removeAttribute("data-initial-load");
+      }, 0);
+    </script>
   </body>
 </html>

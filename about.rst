@@ -16,7 +16,7 @@ support my work consider sponsoring me on GitHub.
 
 .. raw:: html
 
-    <iframe src="https://github.com/sponsors/mitsuhiko/button" title="Sponsor mitsuhiko" height="35" width="116" style="border: 0;"></iframe>
+    <iframe src="https://github.com/sponsors/mitsuhiko/button" title="Sponsor mitsuhiko" height="35" width="116" style="border: 0; border-radius: 6px" allowtransparency="true"></iframe>
 
 If you want to contact me, you can reach me via one of the following
 communication channels:
