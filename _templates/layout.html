@@ -10,7 +10,10 @@
     <link rel="{{ link.rel }}" href="{{ link.href }}"{%
       if link.media %} media="{{ link.media }}"{% endif %} type="{{ link.type }}">
     {%- endfor %}
-    <link rel="stylesheet" href="/static/new-style.css" type="text/css">
+    <link rel="apple-touch-icon" sizes="300x300" href="/static/avatar-small.jpg">
+    <link rel="icon" type="image/png" sizes="300x300" href="/static/avatar-small.jpg">
+    <meta name="twitter:image" content="/static/avatar-small.jpg">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
     <meta name="title" content="{{ self.title() }}">
     <meta property="og:title" content="{{ self.title() }}">
     <meta property="og:site_name" content="Armin Ronacher's Thoughts and Writings">
@@ -67,25 +70,25 @@
         <p>
           Contact me via <a href="mailto:armin.ronacher@active-4.com">mail</a>,
           <a href="https://bsky.app/profile/mitsuhiko.at">bluesky</a>,
-          <a href="http://twitter.com/mitsuhiko">twitter/x</a>, or
+          <a href="http://x.com/mitsuhiko">x</a>, or
           <a href="http://github.com/mitsuhiko">github</a>.
         <p>
           You can <a href="https://github.com/sponsors/mitsuhiko/">sponsor me on github</a>.
         <p>
           More info: <a href="/about#imprint">imprint</a>.
           Subscribe <a href="/feed.atom" rel="alternate" title="Armin Ronacher's
-            Thoughts and Writings">to Atom feed</a>
+            Thoughts and Writings">to the atom feed</a>.
         <p class="theme-selector" hidden>
           Color scheme:
-          <label><input type="radio" name="theme" value="system"> <span>system preferrence</span></label>
-          <label><input type="radio" name="theme" value="light"> <span>light</span></label>
-          <label><input type="radio" name="theme" value="dark"> <span>dark</span></label>
+          <label><input type="radio" name="theme" value="system"> <span>auto</span></label>,
+          <label><input type="radio" name="theme" value="light"> <span>light</span></label>,
+          <label><input type="radio" name="theme" value="dark"> <span>dark</span></label>.
           <script>
             document.querySelector('.theme-selector').removeAttribute('hidden');
             document.querySelectorAll('input[name="theme"]').forEach(input => {
               input.checked = input.value === $THEME;
-              input.addEventListener('change', (e) => {
-                selectTheme(e.target.value);
+              input.addEventListener('change', () => {
+                selectTheme(input.value);
               });
             });
           </script>

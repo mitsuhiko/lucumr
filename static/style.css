@@ -3,66 +3,35 @@
 /* fonts */
 @import url(fonts.css);
 
+/* colors */
 :root {
-    --background-color: #ffffff;
-    --text-color: #000000;
-    --primary-color: #115ca1;
-    --secondary-color: #cd0e0e;
-    --header-color: #1b3156;
-    --faded-color: #7b8894;
-    --border-color: #adbac7;
-    --code-background-color: #eee;
-    --code-block-background-color: #fff;
-    --code-block-text-color: #000;
-    --table-background-color: #fafafa;
-    --table-border-color: #ddd;
-    --pre-shadow: none;
-    color-scheme: var(--color-scheme, light);
+  --background-color: light-dark(#ffffff, #1b3156);
+  --text-color: light-dark(#000000, #dce7f3);
+  --primary-color: light-dark(#115ca1, #66b3ff);
+  --secondary-color: light-dark(#cd0e0e, #ff6666);
+  --header-color: light-dark(#1b3156, #96afda);
+  --faded-color: light-dark(#7b8894, #aec3d6);
+  --border-color: light-dark(#adbac7, #819bb4);
+  --code-background-color: light-dark(#eee, #2a3f64);
+  --code-block-background-color: #fff;
+  --code-block-text-color: #000;
+  --table-background-color: light-dark(#fafafa, #243552);
+  --table-border-color: light-dark(#ddd, #384c6b);
+  --pre-shadow: light-dark(rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.2));
+  --hr-shadow: light-dark(var(--border-color), #0b1a33);
+  color-scheme: light dark;
 
-    &:not([data-initial-load="true"]) {
-        transition-duration: 300ms;
-        transition-property: background-color, color, border-color, box-shadow;
-    }
+  &:not([data-initial-load="true"]) {
+    transition-duration: 300ms;
+    transition-property: background-color, color, border-color, box-shadow;
+  }
 
-    @media screen and (prefers-reduced-motion: reduce), (update: slow) {
-        transition-duration: none;
-    }
+  @media screen and (prefers-reduced-motion: reduce), (update: slow) {
+    transition-duration: none;
+  }
 
-    /* explicit dark theme via javascript */
-    &[data-theme="dark"] {
-        --color-scheme: dark;
-        --background-color: #1b3156;
-        --text-color: #dce7f3;
-        --primary-color: #66b3ff;
-        --secondary-color: #ff6666;
-        --header-color: #96afda;
-        --faded-color: #aec3d6;
-        --border-color: #050606;
-        --code-background-color: #2a3f64;
-        --code-block-background-color: #c6d4e2;
-        --table-background-color: #243552;
-        --table-border-color: #384c6b;
-        --pre-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-    }
-
-    /* default media query. sadly requires duplication */
-    @media (prefers-color-scheme: dark) {
-        &[data-theme="system"] {
-            --color-scheme: dark;
-            --background-color: #1b3156;
-            --text-color: #dce7f3;
-            --primary-color: #66b3ff;
-            --secondary-color: #ff6666;
-            --header-color: #96afda;
-            --faded-color: #aec3d6;
-            --border-color: #050606;
-            --code-background-color: #2a3f64;
-            --code-block-background-color: #c6d4e2;
-            --table-background-color: #243552;
-            --table-border-color: #384c6b;
-            --pre-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-        }
-    }
+  &[data-theme="dark"]  { color-scheme: dark; }
+  &[data-theme="light"] { color-scheme: light; }
 }
 
 /* general style */
@@ -73,10 +42,12 @@ a       { color: var(--primary-color); font-weight: 400; }
 a:hover { color: var(--secondary-color); }
 
 /* theme selector */
-p.theme-selector input[type="radio"] { display: none; }
-p.theme-selector label { cursor: pointer; margin: 0; text-decoration: none; }
-p.theme-selector label + label:before { content: "|"; }
-p.theme-selector input[type="radio"]:checked + span { text-decoration: underline; }
+p.theme-selector {
+  input                { display: none; }
+  label                { cursor: pointer; margin: 0; text-decoration: none; }
+  label:hover          { text-decoration: underline; }
+  input:checked + span { text-decoration: underline; }
+}
 
 /* headlines */
 h1, h2, h3, h4, h5, h6      { font-family: 'Lora', sans-serif;
@@ -98,6 +69,12 @@ h1 em                       { color: black; font-size: 32px; display: block;
 /* layout elements */
 div.container               { max-width: 860px; margin: 48px auto; padding: 0 40px; }
 div.header                  { float: left; }
+div.header a:before         { content: ""; background: url(/static/avatar-tiny.jpg) no-repeat;
+                              background-size: 32px; width: 32px; height: 32px;
+                              display: block; float: left; margin-right: 12px;
+                              margin-top: -4px; border: 1px solid var(--primary-color); border-radius: 50%;
+                              box-shadow: 0 0 7px var(--hr-shadow); }
+div.header a:hover:before   { border-color: var(--secondary-color); }
 div.navigation              { float: right; }
 div.header, div.navigation  { height: 25px; margin-bottom: 42px; }
 div.navigation ul           { margin: 0; padding: 0; list-style: none; }
@@ -124,7 +101,7 @@ pre, code, tt   { font-family: 'Ubuntu Mono', 'Consolas', 'Deja Vu Sans Mono',
                   font-size: 0.9em; }
 pre             { line-height: 1.5; background: var(--code-block-background-color);
                   color: var(--code-block-text-color); padding: 8px 30px; width: 100%; overflow-x: auto;
-                  margin: -8px -30px -8px -30px; border-radius: 2px; box-shadow: var(--pre-shadow); }
+                  margin: -8px -30px -8px -30px; border-radius: 2px; box-shadow: 0 0 3px var(--pre-shadow); }
 code, tt        { background: var(--code-background-color); }
 
 /* tables */
@@ -183,7 +160,9 @@ span.math img   { margin-bottom: -7px; }
 span.strike     { text-decoration: line-through; }
 
 /* lines */
-hr { border: none; border-bottom: 1px solid var(--border-color); height: 10px; margin: 10px auto 25px auto; width: 90%; box-shadow: 0 7px 7px -4px var(--border-color); }
+hr { border: none; border-bottom: 1px solid var(--border-color); height: 10px;
+     margin: 10px auto 25px auto; width: 90%;
+     box-shadow: 0 7px 7px -4px var(--hr-shadow); }
 
 /* mobile */
 @media only screen and (max-width: 800px) {

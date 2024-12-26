@@ -9,8 +9,13 @@ and recordings if available.
 2024
 ----
 
+-   `The Complexity Genie <https://speakerdeck.com/mitsuhiko/the-complexity-genie>`__ @ Vendure (`recording
+    <https://www.youtube.com/watch?v=B63n4WeN-Pc>`__, `PDF
+    <http://mitsuhiko.pocoo.org/ComplexityKills.pdf>`__)
 -   `The Catch in Rye <https://speakerdeck.com/mitsuhiko/the-catch-in-rye-seeding-change-and-lessons-learned>`__
-    @ EuroPython 2024 (`PDF <http://mitsuhiko.pocoo.org/Rye.pdf>`__)
+    @ EuroPython 2024 (`recording
+    <https://www.youtube.com/watch?v=skTKaHVIL1c>`__,
+    `PDF <http://mitsuhiko.pocoo.org/Rye.pdf>`__)
 
 2023
 ----
