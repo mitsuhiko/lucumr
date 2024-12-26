@@ -3,12 +3,17 @@ public: yes
 About Me
 ========
 
+.. image:: /static/avatar-large.jpg
+   :width: 150px
+   :align: right
+   :alt: Pictue of me
+
 My name is Armin Ronacher and I'm a passionate developer interested in web
 development, graphics, realtime rendering and tons of other stuff.  I am
 one of the founding members of the `Pocoo Team <http://pocoo.org>`_ and
 lead developer on a couple of popular Python projects.
 
-I'm currently located in Austria and working as a Director of Engineering
+I'm currently located in Austria and working as VP of Platform
 for `Sentry <http://www.getsentry.com/>`_.  Aside from that I do `open
 source </projects/>`_ development and like `giving talks </talks>`_ at
 various conferences and create Open Source software.  If you want to
@@ -22,8 +27,9 @@ If you want to contact me, you can reach me via one of the following
 communication channels:
 
 -   via `email <armin.ronacher@active-4.com>`_
--   find me on `github <http://github.com/mitsuhiko>`_
--   reach out to me on `twitter <http://twitter.com/mitsuhiko>`_
+-   find me on `GitHub <https://github.com/mitsuhiko>`_
+-   reach out to me on `X <https://x.com/mitsuhiko>`_ or `Bluesky
+    <https://bsky.app/profile/mitsuhiko.at>`__.
 
 My usual nickname is `mitsuhiko`.
 

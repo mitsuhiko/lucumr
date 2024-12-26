@@ -140,6 +140,7 @@ div.entry-overview div.date         { float: left; width: 120px; color: var(--fa
 
 /* other alignment things */
 img.align-center                    { margin: 15px auto; display: block; }
+img.align-right                     { margin: 5px 0 5px 15px; display: block; float: right; }
 .figure.align-center                { text-align: center; }
 .figure p.caption                   { font-size: 14px; margin-top: 0; }
 
