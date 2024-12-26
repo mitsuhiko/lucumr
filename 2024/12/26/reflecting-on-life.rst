@@ -67,7 +67,7 @@ catch however, and that is that your payout should not just be your
 happiness in the moment, but it should be long lasting.
 
 The best way to completely destroy your long term satisfaction is if the
-effort you are putting into something, is not reciprocated or the nature
+effort you are putting into something is not reciprocated or the nature
 of the work feels meaningless.  It's an obvious privilege to recommend
 that one shall not work for exploitative employers but you owe yourself to
 get this right.  With time you build trust in yourself, and the best way
@@ -100,8 +100,8 @@ free to look to others for inspiration, but `do not to compare
 </2023/2/9/everybody-is-complex/>`__ what they have versus what you don't.
 Nothing good will come from that.  Everyone's journey is unique, shaped by
 the opportunities they encounter and the paths they decide to follow.
-Value grows not with the breath of options explored but with the depth of
-commitment to the path you've choosen.
+Value grows not with the breadth of options explored but with the depth of
+commitment to the path you've chosen.
 
 Just as mastering a skill pays dividends, so does committing on your
 personal or professional journey.  Even if the world around you shifts —
