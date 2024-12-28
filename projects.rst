@@ -3,134 +3,171 @@ public: yes
 Projects
 ========
 
-Over the last couple of years I worked on a number of open source
-projects.  Most of them were Python, a couple of others however were also
-C, C++, JavaScript, PHP or other languages mixed in.  Talks I held have
-been moved `to a new place on this website </talks/>`_.
+Over the last couple of years I created and contributed to a number of
+Open Source projects.  Most of them were Python and Rust, a couple of
+others however were also C, C++, JavaScript, PHP or other languages mixed
+in.
 
 This list is widely incomplete, lots of small things can be found on my
-`github <https://github.com/mitsuhiko/>`_ profile and some things are lost
+`GitHub <https://github.com/mitsuhiko/>`_ profile and some things are lost
 in the depths of the internet.
 
-Projects I've founded are marked with stars (‘*’), others are project I
-joined.  Projects where I helped out for a short period of time are marked
-with a dagger (‘†’).
+Commercial Projects and Initiatives
+-----------------------------------
 
-Open Source Libraries
----------------------
+Some of the more meaningful commercial projects and initiatives I worked on:
 
-Python:
+-   `Plurk <http://www.plurk.com/>`_ — the first commercial project I
+    worked on.  A microblogging platform similar to Twitter with a unieuq
+    timelime.
 
--   `Pygments <http://pygments.org/>`_ — syntax highlighter written in Python.  *2005-*
--   `Jinja <https://jinja.palletsprojects.com/>`_ — template engine for Python.  *2006-*
--   `Ruty <https://rubygems.org/gems/ruty>`_ — a port of Django templates to Ruby.  *2007*
--   `Sphinx <https://www.sphinx-doc.org/>`_ — a Python documentation tool.  *2007-*
--   `Werkzeug <http://werkzeug.pocoo.org/>`_ — WSGI utility library for Python.  *2007-* *
--   `Babel <http://babel.pocoo.org/>`_ — collection of tools for
-    internationalizing Python applications.  *2008-* *
--   `CleverCSS <http://pypi.python.org/pypi/CleverCSS>`_ — CSS toolkit for Python, *2009-* *
--   `GHRML <http://pypi.python.org/pypi/GHRML>`_ — HAML inspired template
-    engine based on Genshi for Python.  *2009* *
--   `MarkupSafe <https://pypi.python.org/pypi/MarkupSafe>`_ — a tainted
-    HTML string for Python.  *2010-* *
--   `Logbook <https://logbook.readthedocs.io/>`_ — a logging library for Python.
-    *2010-2012*
--   `Flask <https://flask.palletsprojects.com/>`_ — a microframework for Python based
-    on good intentions.  *2010-* *
--   `itsdangerous <http://pythonhosted.org/itsdangerous>`_ — a
-    cryptographic signing library.  *2012-* *
+-   `Fireline <http://fireteam.net/fireline/>`_ — online services platform for games.
+    Built by a subsidary of Splash Damage to support internal and external
+    games.
+
+-   `Sentry <http://www.getsentry.com/>`_ — error tracking and performance
+    monitoring platform.  Initially Open Source, now `Fair Source
+    <https://fair.io/>`__.  There since we raised money, built out an
+    office in Austria and lead SDKs and ingestion services for a many
+    years.
+
+-   `Functional Software License <https://fsl.software/>`__ — I was part
+    of drafting and promoting Sentry's `DOSP
+    <https://opensource.org/delayed-open-source-publication>`__ springing
+    license.  An innovative license that comes with a two year exclusivity
+    period for the original creator which turns into Apache2/MIT
+    afterwards.
+
+-   `Fair Source <https://fair.io/>`__ — the branding term we have
+    promoted for FSL style licenses with minimal restrictions that undergo
+    DOSP.
+
+Open Source Projects
+--------------------
+
+This is a selection of some of my more popular Open Source libraries and
+projects.  They either became popular on their own, or gave birth to other
+Open Source projects later:
+
+-   `Flask <https://flask.palletsprojects.com/>`_ — a microframework for
+    Python based on good intentions.  At the time it became one of the
+    most popular Python frameworks and has been adopted by many companies
+    for internal APIs and microservices.
+
+-   `Pygments <http://pygments.org/>`_ — syntax highlighter written in
+    Python.  I created this project together with Georg Brandl in 2005.
+    For a while it became a very popular syntax highlighting powering many
+    web sites, including GitHub.
+
+-   `Jinja <https://jinja.palletsprojects.com/>`_ — template engine for
+    Python.  Originally built as an improved version of Django templates
+    for non Django frameworks.  It became popular through Flask and other
+    web frameworks and also found home as a template language for
+    infrastructure scripting (salt and ansible) as well as LLM prompting.
+
+-   `Sphinx <https://www.sphinx-doc.org/>`_ — a Python documentation tool.
+    Like Pygments this was built together with Georg Brandl, oringally as
+    a replacement for the old LaTeX based documentation for Python itself.
+    It later became popular as a solution to write books and
+    documentations for many projects.
+
+-   `Werkzeug <http://werkzeug.pocoo.org/>`_ — WSGI utility library for Python.
+    This was originally built to promote the use of WSGI for Python and to
+    build applications on top.  Later this became the based of Flask.
+
 -   `Click <https://click.palletsprojects.com/>`_ — a
-    command line interface utility library.  *2014-* *
--   `PluginBase <http://pluginbase.pocoo.org/>`_ — a plugin system for Python. *2014-* *
--   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — a wrapper around pip
-    for script installation. *2014-* *
--   `rb <http://rb.rtfd.org/>`_ — a redis clustering library for Python. *2015-* *
--   `Rye <https://github.com/astral-sh/rye>`_ — an experimental package manager for Python. *2023-* *
+    command line interface utility library.  I built this to make it
+    easier to build command line applications and it has become a very
+    popular choice in the Python ecosystem.
 
-PHP:
+-   `Rye <https://github.com/astral-sh/rye>`_ — an experimental package
+    manager for Python.  Built for my own use to see what packaging in
+    Python could look like it attracted a lot of interest.  The project
+    has been donated to astral who are building `uv` as a better,
+    spiritual successor.
 
--   `phpserialize <http://pypi.python.org/pypi/phpserialize>`_ —
-    implementation of the PHP serialization for Python. *2007*
 -   `Twig <http://www.twig-project.org/>`_ — a Django-inspired template
-    engine for PHP (2007; initial implementation)
+    engine for PHP.  Originally created for a blogging system called
+    Chyrp, it took a life on its own when it was taken over by the
+    Symfony project.
 
-Rust:
+-   `Babel <http://babel.pocoo.org/>`_ — collection of tools for
+    internationalizing Python applications.  Originally built by Edgewall
+    software for trac, I maintained it for a while.
+
+-   `Logbook <https://logbook.readthedocs.io/>`_ — a logging library for Python.
+
+-   `itsdangerous <http://pythonhosted.org/itsdangerous>`_ — a
+    cryptographic signing library used by Flask and many other libraries.
 
 -   `redis-rs <https://github.com/mitsuhiko/redis-rs>`_ — a redis driver
-    for Rust. *2014-* *
--   `sha1_smol <https://github.com/mitsuhiko/sha1-smol/>`_ — a SHA1
-    implementation for Rust. *2014-* *
--   `indicatif <https://github.com/mitsuhiko/indicatif/>`_ — a progress bar
-    library for Rust. *2017-* *
--   `console <https://github.com/mitsuhiko/console/>`_ — a console
-    utility library for Rust. *2017-* *
--   `fragile <https://github.com/mitsuhiko/fragile/>`_ — a library to make it
-    possible to safely send non send types to other threads. *2018-* *
--   `serde_plain <https://github.com/mitsuhiko/serde-plain>`_ — a library to
-    serialize to plain strings. *2018-* *
--   `listenfd <https://github.com/mitsuhiko/listenfd>`_ — a library
-    that helps working with passed file descriptors (systemd etc.).
-    *2018-* *
--   `insta <https://insta.rs/>`_ — a snapshot testing library for Rust. *2019-* *
--   `similar <https://insta.rs/similar/>`_ — a diffling library for Rust. *2020-* *
+    for Rust.  Originally built to learn Rust, it has become the most
+    popular redis driver.
+
+-   `insta <https://insta.rs/>`_ — a snapshot testing library for Rust.
+    Originally built for use at Sentry it has been adopted quite widely
+    for an improved snapshot testing experience.
+
+-   `similar <https://insta.rs/similar/>`_ — a diffling library for Rust.
+    Originally used for insta, has been independently become widely used.
+
 -   `minijinja <https://github.com/mitsuhiko/minijinja/>`_ — a minimal dependency
-    implementation of Jinja2 for Rust. *2021-* *
-
-Others:
-
--   `unp <https://github.com/mitsuhiko/unp>`_ — an unpacking shell script. *2014-* *
+    implementation of Jinja2 for Rust.  Built for my own use for an
+    unreleased project, it has also been adopted by a number of projects
+    and companies for LLM prompting.
 
 Open Source Applications
 ------------------------
 
--   ``Zine`` — a blog software written in Python. *2007-* *
--   `MoinMoin <http://moinmo.in>`_ — wiki engine written in Python. *2008* †
--   `Plurk Solace <http://opensource.plurk.com/solace/>`_ — a multilingual support application. *2009-*
--   `Timesched <http://timesched.pocoo.org/>`_ — a world time scheduler. *2013* *
--   `Fireteam Curlish <http://packages.python.org/curlish/>`_ — curl OAuth wrapper. *2012-*
--   `python-modernize <https://github.com/python-modernize/python-modernize>`_ — Python 2 to 3 porting tool. *2012-*
--   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — Python script installer. *2014-*
--   `Lektor <https://www.getlektor.com/>`_ — a static file CMS. *2015-* *
--   `systemfd <https://github.com/mitsuhiko/systemfd>`_ — small executable
-    that emulates socket passing to support seamless reloading.
-    *2018-* *
--   `cargo-insta <https://github.com/mitsuhiko/insta/>`_ — a utility for reviewing insta snapshots. *2019-* *
--   `when <https://github.com/mitsuhiko/when>`_ — a time zone conversion tool. *2021-* *
+-   `Zine
+    <https://web.archive.org/web/20101207045141/http://zine.pocoo.org/>`__ — a
+    blog software written in Python.  This has been lost in the archive of the
+    internet, but at the time I was very proud of it.  It was a blogging
+    platform similar to WordPress for Python. (`archive <https://github.com/mitsuhiko/zine>`__)
 
-Commercial Projects
--------------------
+-   `Plurk Solace <http://opensource.plurk.com/solace/>`_ — a multilingual
+    support application.  Was not used much but it was my first Open
+    Source project I was paid for. (`archive <https://github.com/mitsuhiko/solace>`__)
 
--   `Plurk <http://www.plurk.com/>`_ — a microblogging platform. *2008-2009*
--   `Fireline <http://fireteam.net/fireline/>`_ — online services platform for games. *2012-*
--   `Togethera <http://togethera.com/>`_ — private family sharing application (as advisor). *2014-*
--   `Sentry <http://www.getsentry.com/>`_ — error tracking platform. *2015-*
+-   `python-modernize
+    <https://github.com/python-modernize/python-modernize>`_ — Python 2 to 3
+    porting tool.  I build this to demonstrate that you can build code
+    bases that were compatible to both 2.x and 3.x.  It later gave life to
+    `modernize <https://python-modernize.readthedocs.io/en/latest/>`__.
+
+-   `pipsi <https://github.com/mitsuhiko/pipsi>`_ — a wrapper around pip
+    for script installation that later inspired pipx and things like ``uv
+    run``.
+
+-   `Lektor <https://www.getlektor.com/>`_ — a static file content
+    management system written in Python.
 
 Computer Games
 --------------
 
+In a prior life I was credited for my work on some computer games:
+
 -   `Batman Arkham Origins
     <http://en.wikipedia.org/wiki/Batman:_Arkham_Origins>`_ — parts of online
-    services code and backend. *2012-2013*
+    services code and backend.
+
 -   `RAD Soldiers <http://www.warchest.com/games/radsoldiers>`_ — game
-    backend. *2012-*
+    backend.
+
 -   `Dirty Bomb <http://dirtybomb.nexon.net/>`_ — online services and game
-    backend. *2012-*
+    backend.
+
 -   `Halo: The Master Chief Collection
     <http://en.wikipedia.org/wiki/Halo:_The_Master_Chief_Collection>`_ —
-    online services consulting. *2014-*
+    online services consulting.
+
 -   `Gears of War Ultimate Edition
     <https://en.wikipedia.org/wiki/Gears_of_War_(video_game)#Ultimate_Edition>`_ —
-    online services consulting. *2014-*
-
-Websites
---------
-
--   `ubuntuusers.de <http://www.ubuntuusers.de/>`_ — many parts of the current running software. *2004-2007*
--   `Pocoo <http://dev.pocoo.org/>`_ — the project websites with some exceptions. *2005-*
--   `Architekten Ronacher <http://architekten-ronacher.at/>`_ — design and backend. *2009*
--   `Der-Weber <http://www.der-weber.at/>`_ — design and backend. *2012*
+    online services consulting.
 
 Projects for Competitions
 -------------------------
 
--   `“Be a Bee” <http://www.aec.at/prix_history_en.php?year=2003>`_ — for u19, Ars Electronica 2003. 2nd Place. *2003*
+-   `“Be a Bee” <http://www.aec.at/prix_history_en.php?year=2003>`_ — for
+    u19, Ars Electronica 2003. 2nd Place.  In some ways what got me more
+    excited about programming and creating things.

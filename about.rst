@@ -6,18 +6,22 @@ About Me
 .. image:: /static/avatar-large.jpg
    :width: 150px
    :align: right
-   :alt: Pictue of me
+   :alt: Picture of me
 
-My name is Armin Ronacher and I'm a passionate developer interested in web
-development, graphics, realtime rendering and tons of other stuff.  I am
-one of the founding members of the `Pocoo Team <http://pocoo.org>`_ and
-lead developer on a couple of popular Python projects.
+Hi, my name is Armin Ronacher!  I'm deeply passionate about building
+teams, creating products, and contributing to the Open Source community.
+As a dedicated software developer, I've had the privilege of creating a
+number of very popular Open Source projects, including Flask, Jinja2, and
+many `other widely used things </projects/>`__.
 
-I'm currently located in Austria and working as VP of Platform
-for `Sentry <http://www.getsentry.com/>`_.  Aside from that I do `open
-source </projects/>`_ development and like `giving talks </talks>`_ at
-various conferences and create Open Source software.  If you want to
-support my work consider sponsoring me on GitHub.
+Over the past decade, I've been building Sentry, building out one of our
+regional offices, working on event ingestion, SDKs and leading the teams
+for our internal developer platform.  I also love sharing knowledge and
+experiences, which is why I give `talks at conferences and events
+</talks/>`__ and write about engineering and life on this blog.
+
+If my work has been valuable to you, I’d greatly appreciate your support
+through GitHub sponsors.
 
 .. raw:: html
 
@@ -36,11 +40,11 @@ My usual nickname is `mitsuhiko`.
 Like my Work?
 -------------
 
-All of the open source stuff I work on is BSD licensed which
-means you can do with it whatever you want.
+All of the open source stuff I work on is liberally licensed which means
+you can do with it whatever you want.
 
-I'm currently not available for consulting or contract work,
-but you can support my work via GitHub sponsors.
+I'm currently not available for consulting or contract work, but you can
+support my work via GitHub sponsors.
 
 About this Website
 ------------------
