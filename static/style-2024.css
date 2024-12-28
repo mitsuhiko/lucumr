@@ -1,8 +1,5 @@
 @charset "utf-8";
 
-/* fonts */
-@import url(fonts.css);
-
 /* colors */
 :root {
   --background-color: light-dark(#ffffff, #1b3156);
