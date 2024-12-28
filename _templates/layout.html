@@ -6,6 +6,7 @@
     <title>{% block title %}Home{% endblock %} | Armin Ronacher's Thoughts and Writings</title>
     <link href="/feed.atom" rel="alternate" title="Armin Ronacher's Thoughts and Writings" type="application/atom+xml">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preload" href="/static/avatar-tiny.jpg" as="image" type="image/jpeg">
     {%- for link in links %}
     <link rel="{{ link.rel }}" href="{{ link.href }}"{%
       if link.media %} media="{{ link.media }}"{% endif %} type="{{ link.type }}">
