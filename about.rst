@@ -5,6 +5,7 @@ About Me
 
 .. image:: /static/avatar-large.jpg
    :width: 150px
+   :height: 150px
    :align: right
    :alt: Picture of me
 
