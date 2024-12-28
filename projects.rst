@@ -42,6 +42,10 @@ Some of the more meaningful commercial projects and initiatives I worked on:
     promoted for FSL style licenses with minimal restrictions that undergo
     DOSP.
 
+-   `Open Source Pledge <https://opensourcepledge.com/>`__ — an initiative
+    born at Sentry to encourage companies to pledge to their Open Source
+    dependencies.
+
 Open Source Projects
 --------------------
 
