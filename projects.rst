@@ -12,8 +12,8 @@ This list is widely incomplete, lots of small things can be found on my
 `GitHub <https://github.com/mitsuhiko/>`_ profile and some things are lost
 in the depths of the internet.
 
-Commercial Projects and Initiatives
------------------------------------
+Commercial Endeavors
+--------------------
 
 Some of the more meaningful commercial projects and initiatives I worked on:
 
@@ -46,8 +46,8 @@ Some of the more meaningful commercial projects and initiatives I worked on:
     born at Sentry to encourage companies to pledge to their Open Source
     dependencies.
 
-Open Source Projects
---------------------
+Open Source Libraries
+---------------------
 
 This is a selection of some of my more popular Open Source libraries and
 projects.  They either became popular on their own, or gave birth to other
