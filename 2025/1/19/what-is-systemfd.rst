@@ -2,7 +2,7 @@ public: yes
 tags: [rust, web]
 summary: A re-introduction to socket activation with listenfd/systemfd.
 
-Automatic Server Reloading in Rust on change: What is listenfd/systemfd?
+Automatic Server Reloading in Rust on Change: What is listenfd/systemfd?
 ========================================================================
 
 When I developed `Werkzeug <https://werkzeug.palletsprojects.com/>`__ (and
