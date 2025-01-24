@@ -42,7 +42,7 @@ blowing up compile times even more.
 
 But “big supply chain” will tell you that you must do it this way.  Don't
 you dare to copy paste that function into your library.  Or don't you date
-to use "unsafe" yourself.  You're not qualified enough to write unsafe
+to use “unsafe” yourself.  You're not qualified enough to write unsafe
 code, let the platform abstraction architects do that.  Otherwise someone
 `will slap you <https://github.com/geiger-rs/cargo-geiger>`__.  There are
 entire companies who are making a living of supplying you with the tools
