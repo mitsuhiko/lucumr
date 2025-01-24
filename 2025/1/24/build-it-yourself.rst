@@ -78,11 +78,11 @@ actually dealing with constant upgrading of dependencies.  The code is just
 a few lines and you also get the benefit of no longer need to compile
 thousands of lines of other people's code for a single function.
 
-But let's face it: corporate code review culture which also has infected
+But let's face it: corporate code review culture has also has infected
 Open Source software.  Companies are more likely to reward engineers than
 scold them for pulling in that new “shiny library” that solves the problem
 they never actually had.  That creates problems, so dependabot and friends
-was born.  Today I just dread getting dependabot pull requests but on
+were born.  Today I just dread getting dependabot pull requests but on
 projects but I have to accept it.  I'm part of an ecosystem with my stuff
 and that ecosystem is all about churn, churn, churn.  In companies you can
 also keep entire internal engineering teams busy with vendoring
