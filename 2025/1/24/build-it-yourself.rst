@@ -33,7 +33,7 @@ compiling thousands of other functions just to figure out if your terminal
 is 80x25 or 120x40.  That crate had 26 releases.  My own version of that
 that I have stuck away in a project from 10 years ago still works without
 a single update.  Because shocker: nothing about figuring out terminal
-sizes has changed.
+sizes has changed.  [1]_
 
 So why does `terminal-size` have so many updates if it's so stable?
 Because it's build on top of platform abstraction libraries that
@@ -131,3 +131,8 @@ And it has a PR to eventually `get rid of the last dependency
 <https://github.com/mitsuhiko/minijinja/pull/539>`__.  And sometime this
 year I will make it my goal to go ahead proudly and trim down all that fat
 in my projects.
+
+.. [1] Disclaimer: you will need one dependency for UNIX: `libc`.  That's
+   because Rust does not expose the platform's libc constants to you, and
+   they are not standarized.  That however is such a common and
+   lightweight dependency that you won't be able to avoid it anyways.
