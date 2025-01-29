@@ -8,46 +8,47 @@ How I AI With A Promptly Hired Model Intern
 After Musk's acquisition of Twitter, many people I respect and follow
 moved to Bluesky.  I `created an account there
 <https://bsky.app/profile/mitsuhiko.at>`__ and made an honest attempt of
-making it my primary platform.  Sadly I found Bluesky to be surprisingly
+making it my primary platform.  Sadly, I found Bluesky to be surprisingly
 hostile towards AI content.  There is an almost religious resistance to AI
 on there, at least in whatever corner of the platform I ended up in.
 
 Despite these challenges, some individuals on both Twitter and Bluesky
-have shown genuine curiosity about my AI usage.  Here, I want to share how
-I use Large Language Models and why I find them so helpful.
+have shown genuine curiosity about my AI usage.  In this post, I want to
+share how I use Large Language Models and why I find them so helpful.
 
-Here is an important disclaimer: I am by no means an expert in AI; I'm
-mostly an enthusiastic user.  Absolutely nothing here is novel!  What I do
-here is pretty boring which to some degree is the point.  I won't be
-covering underlying technology or my programmatic experience.  This is
-strictly about how I use AI as a “techy consumer”.
+Before moving on, I want to include an an important disclaimer: I am by no
+means an expert in AI; I'm mostly an enthusiastic user.  Absolutely
+nothing here is novel!  What I do here is pretty boring which to some
+degree is the point.  I won't be covering underlying technology or my
+programmatic experience.  This is strictly about how I use AI as a “techy
+consumer”.
 
-Why AI?
--------
-
-In short: AI makes me significantly more productive.  I recently read
-`Aaron Francis <https://x.com/aarondfrancis/>`__'s Tweet about how he gets
-a week worth of productivity out of a day now thanks to AI.  I'm not
-anywhere close to that, but I use AI a lot now.  It has become
-indispensable for me for both content writing as well as programming.
-
-A common misconception is that AI is still at the level it was when
-ChatGPT first launched.  Many people tried it early, saw its limitations,
-and never returned.  However, AI is evolving rapidly. If you haven't kept
-up, you risk drawing inaccurate conclusions based on outdated impressions.
-In some sense I think people who never used AI yet, are in a better
-position to judge than the folks who tried it two years ago and never
-returned.
-
-As you are going to read through this article you will probably figure out
+In addition, as you read through this article you will probably figure out
 rather quickly that the way I use AI — despite being used in part for
 content creation — does not really impact intellectual property much.
 That said, I'm curious and open to discussions about how we should be
 dealing with this problem.  Particularly on Bluesky a lot of the
 negativity towards AI is related to watering down of copyrights and human
 creation.  I don't know the answers to these things, but I think we need
-to have a productive dialog here rather than wishing for the technology
-away.
+to have a productive dialog here rather than wishing for the technology to
+go away.
+
+Why AI?
+-------
+
+In short: AI makes me significantly more productive.  I recently read
+`Aaron Francis <https://x.com/aarondfrancis/>`__'s Tweet about how he gets
+a week's worth of productivity out of a day now thanks to AI.  I'm not
+anywhere close to that, but I use AI a lot now.  It has become
+indispensable for me for both content writing as well as programming.
+
+Moreover, a common misconception is that AI is still at the level it was
+when ChatGPT first launched.  Many people tried it early, saw its
+limitations, and never returned.  However, AI is evolving rapidly. If you
+haven't kept up, you risk drawing inaccurate conclusions based on outdated
+impressions.  In some sense I believe people who never tried to use AI
+yet, are in a better position to judge than the folks who used it two
+years ago and never returned.
 
 My AI Toolkit
 -------------
@@ -57,14 +58,15 @@ curiosity and to a smaller degree because each tool excels at something
 slightly different.  Here are the ones I use most often:
 
 * `Open WebUI <https://openwebui.com/>`__.  In short this is a Python web
-  app that offers a chat interface web application similar to ChatGTP.
-  Unlike ChatGTP however it lets you talk to different models.  First and
-  foremost I used this to talk to local models hosted by Ollama, but also
-  other remote services like OpenAI, Anthropic and Deepseek.
+  app that offers a chat interface similar to ChatGTP.
+  Unlike ChatGTP, however, it lets you talk to different models.  First and
+  foremost, I use this to talk to local models hosted by Ollama, but
+  secondarily I also use it to interface with other remote services like
+  OpenAI, Anthropic and DeepSeek.
 
 * `Simon's llm <https://github.com/simonw/llm>`__.  This is a command line
   tool with plenty of plugins that lets you prompt different models.  Think
-  of it as a command line version of Open WebUI.  It's particularly useful
+  of it as a command-line version of Open WebUI.  It's particularly useful
   for quick scripting and basic automation.
 
 * `Ollama <https://ollama.com/>`__.  This allows me to run models locally
@@ -72,27 +74,27 @@ slightly different.  Here are the ones I use most often:
   potent machine for basic inference despite it being three years old.
   I'll explain later why I use local models.
 
-* `Cursor <https://www.cursor.com/>`__.  A fork of Visual Studio Code with AI
-  based auto completion and code generation built-in.  It's my go-to for
-  programming with AI assistance at the moment.
+* `Cursor <https://www.cursor.com/>`__.  It is a fork of Visual Studio
+  Code with AI-based auto completion and code generation built-in.  It's
+  my go-to for programming with AI assistance at the moment.
 
 * `ChatGPT <https://chatgpt.com/>`__.  Like probably most AI users, I use
   ChatGPT, particularly on my phone.  I pay for the Plus subscription
-  because I use it enough to get a lot of value out of that.  A
-  significant use of this for me is in fact the voice mode, more on that
-  later.
+  because I use it enough to get a lot of value out of it.  One
+  significant use of this for me is in fact the voice mode (more on that
+  later).
 
-You can get most of the benefits of this from just paying for a single AI
-tool.  I think as one expands their use, as one gets better at prompting
-it, the desire naturally grows to use more tooling.  As for which models
-to use day to day (and services) I don't have a particular strong strategy
-and preferences change quickly.  For instance since Deepseek's R1 came up,
-I'm exploring it quite a bit for programming because of how good a job it
-does and as of writing that's just a few days old.
+It's probably worth mentioning that you can get most of the benefits of this from just paying for a single AI
+tool.  I think as one expands their use, as especially as one gets better at writing prompts,
+the desire naturally grows to use more tooling.  As for which models
+(and services) to use day to day I don't have a particular strong strategy
+and preferences change quickly.  For instance after DeepSeek's R1 release,
+I started exploring it quite a bit for programming — and it's doing a
+phenomenal job at it —  and as of writing that's just a few days old.
 
 If you want to run models locally, Apple Silicon machines currently offer
 some of the best “bang for your buck” in terms of performance, power
-usage and money.  With `tailscale <https://tailscale.com/>`__, I can even
+usage, and money.  With `tailscale <https://tailscale.com/>`__, I can even
 access my MacBook's Open WebUI interface from my phone, as long as it is
 powered on.
 
@@ -115,15 +117,15 @@ Afterwards you can launch `open-webui` and use the llm tool::
     llm -m deepseek-coder '# write timsort in python'
 
 * By default, Open WebUI only connects to OpenAI or Ollama. If you want to
-  add the hosted Anthropic or Deepseek models, you need to create a custom
+  add the hosted Anthropic or DeepSeek models, you need to create a custom
   function in the “Functions” section of Open WebUI's admin panel.
 
 * Import the functions and configure your API keys, and you’re ready to go.
 
 Functions you can import to the WebUI:
 
-* `anthropic_manifold_pipeline.py <https://openwebui.com/f/justinrahb/anthropic>`__
-* `Deepseek <https://openwebui.com/f/xgawatt/DeepseekAPI>`__
+* `Anthropic <https://openwebui.com/f/justinrahb/anthropic>`__
+* `DeepSeek <https://openwebui.com/f/xgawatt/DeepseekAPI>`__
 
 .. raw:: html
 
@@ -132,25 +134,26 @@ Functions you can import to the WebUI:
 AI Affordances
 --------------
 
-A frequent concern I hear is “you cannot trust LLMs” as they tend to
-hallucinate.  I hear this in particular when I explain that I use this as
-a replacement for Google a lot!  I approach this the same way I would when
-seeking advice from another human.  People can and are routinely wrong,
-and you learn to cross-check selectively.
+One frequent concern I hear is “you cannot trust LLMs” as they tend to
+hallucinate.  I get this in particular when I explain that I frequently
+use this as a replacement for Google!  However, I approach the risk of
+hallucination the same way I would when seeking advice from another human:
+people can and are routinely wrong, and you learn to cross-check
+selectively.
 
-I treat AI as a collaborator or a pretty good intern.  You remain
-responsible for the final outcome.  The intern also happens to get better
-month by month as models improve.  And a bit like a human that digital
-intern has morals and wants to be argued with.  Except some of those AI
-interns `don't want to talk about China
+I treat AI as I would a collaborator or a pretty good intern.  You remain
+responsible for the final outcome.  In this case the intern also happens
+to get better month by month as models improve.  And a bit like a human,
+that digital intern has morals and wants to be argued with.  Except, of
+course, that some of those AI interns `don't want to talk about China
 <https://www.reddit.com/r/LocalLLaMA/comments/187oidh/deepseek_coder_7b_33b_thinks_its_trained_by_openai/>`__,
-others get a stroke `if you talk about certain people
+while others get a stroke `if you talk about certain people
 <https://www.reddit.com/r/ChatGPT/comments/1h3rz4l/david_mayer_is_not_the_only_one_jonathan_zittrain/>`__.
-But regardless of how good they get, in the end, it's your fault and your
-fault alone if you do the wrong thing.  You can't blame the AI and you
-need to spot check.
+But regardless of how good they get, in the end, it's my fault and my
+fault alone if I do the wrong thing.  I won't blame the AI and I need to
+spot check.
 
-However the logical conclusion of this is not that it's wrong all the time
+However, the logical conclusion of this is not that it's wrong all the time
 and you need to check everything, or that you cannot trust it at all.
 It's similar to how you engage in a technical discussion with others about
 a problem.  I have seen more than one situation where the conventional
@@ -160,15 +163,15 @@ out that we had it wrong.
 Another major advantage is that AI tools are relatively open.  You can run
 models locally and integrate them with scripts.  Even the famous OpenAI
 which is not at all open is much more open than a Google search is.  For
-instance, you can create a simple script for grammar checking right from
+instance, you can create a simple script for grammar-checking right from
 your command line.
 
-You *can* integrate it locally and nobody stops you.  Many, many years ago
-I had a tool on my computer that allowed me to issue web searches and
-extract text from results.  That has stopped working such a long time ago
-that I almost forgot about it.  It has stopped working because there is
-basically no competition in search, and Google does not want you to use it
-like that.
+In other words, you *can* integrate it locally and nobody stops you.  By
+contrast, many, many years ago I had a tool on my computer that allowed me
+to issue web searches and extract text from results.  That has stopped
+working such a long time ago that I almost forgot about it.  It has
+stopped working because there is basically no competition in search, and
+Google does not want me to use it like that.
 
 For instance, you can create a simple script for grammar checking right
 from your command line:
@@ -201,11 +204,11 @@ I don't let AI write my articles.  As a non-native Speaker, mistakes and
 linguistic quirks are part of me.  That said, I do rely on AI tools for
 helping me write.
 
-Usually after I have made my first pass through a page I ask an LLM to
+Often, after I have made my first pass through a page, I ask an LLM to
 read through it and give me comments.  I have a Apple Note with various
 prompts I can use or I just come up with what I need in the moment.  The
 process is not particularly scripted out.  I basically talk to the LLM to
-figure out what it thinks of the text etc.
+figure out what it thinks of the text, etc.
 
 Here are some of the things I use AI for when writing:
 
@@ -217,16 +220,17 @@ Here are some of the things I use AI for when writing:
     did not read well and that I did not publish.  Models like o1 are very
     helpful in identifying things that don't need to be said.
 
-*   **Writing Notes and finding key points:** I ask the AI to read through
-    a draft “like a Computer Science 101 student” and take notes. This
-    helps me see if what it absorbed matches what I intended to convey.
+*   **Writing Notes and finding key points:** Here, I ask the AI to read
+    through a draft “like a Computer Science 101 student” and take notes.
+    This helps me see if what it absorbed matches what I intended to
+    convey.
 
 *   **Roast my Article:**  I have a few prompts that asks the AI to
     “roast” or criticize my article, as if commenting on Reddit, Twitter,
     or Hacker News.  Even though these critiques seem shallow, they can
-    sting, but they often highlight weaknesses in my argument or clarity.
-    Even if they don't necessarily impact the writing, they prime me for
-    some of the feedback.
+    sting, and they often highlight weaknesses in my argument or lack of
+    clarity.  Even if they don't necessarily impact the writing, they
+    prime me for some of the feedback I inevitably receive.
 
 *   **Identifying jargon:** If I worry there's too much jargon, I use AI to
     resolve acronyms and point out technical terms I've used without
@@ -244,22 +248,22 @@ categories.
     I also sometimes just throw a long bug report or issue at the thing to
     try to reason through it.
 
-*   **Fuzzy parsing:** sometimes you have an output, but you don't
+*   **Fuzzy parsing:** Sometimes you have an output, but you don't
     have the input.  As an example I have a little side project to write a
-    command line tool help generator and AI is really good at taking the
+    command line tool help generator, and AI is really good at taking the
     output, “parsing“ it and creating a structure as input.  That is a
-    good first step to then generate out the code that should again match
+    good first step to then generate out the code that should match again
     that output.
 
 *   **Code generation:** lastly it just programs really well.  It can do
     single code snippets, it can generate complex stuff.  Particularly for
     prototyping it's amazing.
 
-Now it's not great at all languages.  I find it exceptionally well at
-Python, somewhat okay at JavaScript and horrible at Rust.  However
-particularly if you wanna solve an algorithmic problem you can often
-iterate in Python until you have what you want, then ask it to translate
-it to Rust.  That's from my experience at least a decent way to get going
+Now it's not great at all languages.  I find it performs exceptionally
+well at Python, somewhat okay at JavaScript and horrible at Rust.
+However, particularly if I wanna solve an algorithmic problem, I can often
+iterate in Python until I have what I want, then ask it to translate it to
+Rust.  That's from my experience at least a decent way to get going
 quickly on some harder problems.
 
 Talking to Her
@@ -289,20 +293,22 @@ Here a motivating example from voice mode:
 It's also fun and educational for my kids.  They ask a lot of questions,
 and ChatGPT can tailor its explanations to their age level.  If the
 explanation is still too advanced, I can immediately ask it to simplify
-further or also go the other way.  Now again, there is always a risk that
-it gets it wrong, but if you teach them the idea that we need to validate
-it, if we're not sure, you're off to a pretty good start.  It's very
-enjoyable because it keeps the conversation going and has state.  Answered
-in large metric numbers?  Can always ask it to scale to elephants or
-soccer fields.
+further.  If it was too dumbed down, I can make it go the other way.  Now
+again, there is always a risk that it gets it wrong, but that is okay.
+Part of all of this is to convey to the children the idea that we need to
+validate it and that being critical is important.
+
+What makes ChatGTP so enjoyable here is that it's able to keep the
+conversation going — it has state.  Answered in large metric numbers?  Can
+always ask it to scale to elephants or soccer fields.
 
 ChatGPT is also incredibly helpful when having to work with multiple
-languages.  Recent example: my kids have Greek friends and we tried to
-understand the difference between some Greek words that came up.  I have
-no idea how to write it, Google translate does not understand my attempts
-of pronouncing it either.  However ChatGPT does.  If I ask it in voice
-mode what “pa-me-spee-tee” in Greek means it knows what I tried to mumble
-and replies in a helpful manner.
+languages.  For a recent example, my kids have Greek friends and we tried
+to understand the difference between some Greek words that came up.  I
+have no idea how to write it, Google translate does not understand my
+attempts of pronouncing them either.  However, ChatGPT does.  If I ask it
+in voice mode what “pa-me-spee-tee” in Greek means it knows what I tried
+to mumble and replies in a helpful manner.
 
 Lastly the use on the go.  Sometimes I'm just not in a position where I
 can actually write it down on a keyboard, but if I basically talk to
@@ -321,14 +327,15 @@ English is such a refreshing experience.
 No Slop
 -------
 
-I mentioned earlier that I don't let LLM write my texts.  I also don't use
-AI to make illustrations though I have in the past.  The reason is that
-there is a certain style that goes with this, which is just incredibly
-off-putting.  This noticeably AI generated, and typically quite
-low-quality content, is called “AI slop” and I personally respond really
-badly to it.  When someone throws me a pull request, an email or a text
-message that is obviously AI generated without disclosing this, I
-immediately have a very low opinion on them.
+I mentioned earlier that I don't let LLMs write my texts.  I also don't
+use AI to make illustrations, though I have in the past.  The reason is
+that there is a certain style that goes along with these illustrations,
+which is just incredibly off-putting.  They are noticeably AI-generated,
+and typically quite low-quality.  People have taken to calling these
+images “AI slop” and I personally respond really badly to it.  When
+someone throws me a pull request, an email or a text message that is
+obviously AI-generated without disclosing this, I immediately have a very
+low opinion of them.
 
 Slop like hallucinations are a problem, but they are only a problem if you
 don't use your brain.  Even the worst slop can be the foundation of
@@ -342,8 +349,8 @@ Final Thoughts
 --------------
 
 AI tools, at their best, feel less like disruptive and dark magic and more
-like a natural extension of the creative process.  At least if you see it
-as a curious collaborator.  My approach isn't about outsourcing thinking,
+like a natural extension of the creative process as long as you see them
+as curious collaborators.  My approach isn't about outsourcing thinking,
 but augmenting it: using LLMs to accelerate grunt work, untangle mental
 knots, and prototype ideas faster.  Skepticism is healthy, but dismissing
 AI outright risks missing its potential as a multiplier for those willing
