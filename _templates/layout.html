@@ -47,6 +47,23 @@
 
       selectTheme(localStorage.getItem("theme") || "system");
       document.documentElement.setAttribute("data-initial-load", "true");
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const dateEl = document.querySelector("p.date");
+        if (dateEl) {
+          const pubDate = new Date(dateEl.dataset.date);
+          const now = new Date();
+          const yearDiff = now.getFullYear() - pubDate.getFullYear();
+
+          if (yearDiff >= 1) {
+            const warning = document.createElement("span");
+            warning.className = "date-warning";
+            warning.textContent = `this article is ${yearDiff} year${yearDiff != 1 ? 's' : ''} old.`;
+            dateEl.appendChild(document.createTextNode(" — "));
+            dateEl.appendChild(warning);
+          }
+        }
+      });
     </script>
     <div class=container>
       <div class=header>

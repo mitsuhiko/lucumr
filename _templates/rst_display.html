@@ -10,7 +10,7 @@
 {% block body %}
   {{ rst.html_title }}
   {% if ctx.pub_date %}
-  <p class=date>written on {{ format_date(ctx.pub_date, format='full') }}</p>
+  <p class=date data-date="{{ ctx.pub_date.isoformat() }}">written on {{ format_date(ctx.pub_date, format='full') }}</p>
   {% endif %}
 
   {{ rst.fragment }}

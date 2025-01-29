@@ -10,12 +10,13 @@
   --faded-color: light-dark(#7b8894, #aec3d6);
   --border-color: light-dark(#adbac7, #819bb4);
   --code-background-color: light-dark(#eee, #2a3f64);
-  --code-block-background-color: #fff;
+  --code-block-background-color: #fafafa;
   --code-block-text-color: #000;
   --table-background-color: light-dark(#fafafa, #243552);
   --table-border-color: light-dark(#ddd, #384c6b);
-  --pre-shadow: light-dark(rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.2));
+  --pre-shadow: light-dark(rgba(200, 200, 200, 0.4), rgba(0, 0, 0, 0.3));
   --hr-shadow: light-dark(var(--border-color), #0b1a33);
+  --date-warning-text-color: light-dark(#a07f10, #ee761a);
   color-scheme: light dark;
 
   &:not([data-initial-load="true"]) {
@@ -178,8 +179,16 @@ hr { border: none; border-bottom: 1px solid var(--border-color); height: 10px;
 
 /* expandables */
 details {
-    background: #eee;
+    background: var(--code-background-color);
     padding: 5px 15px;
+    border-radius: 2px;
 }
 details summary { cursor: pointer; }
 details summary:hover { text-decoration: underline; color: var(--secondary-color); }
+details[open] summary { text-decoration: underline; }
+
+/* date warning */
+span.date-warning {
+  color: var(--date-warning-text-color);
+  font-style: italic;
+}
