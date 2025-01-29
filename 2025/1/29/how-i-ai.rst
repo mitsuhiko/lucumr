@@ -25,7 +25,7 @@ strictly about how I use AI as a “techy consumer”.
 Why AI?
 -------
 
-In short: AI makes me a significantly more productive.  I recently read
+In short: AI makes me significantly more productive.  I recently read
 `Aaron Francis <https://x.com/aarondfrancis/>`__'s Tweet about how he gets
 a week worth of productivity out of a day now thanks to AI.  I'm not
 anywhere close to that, but I use AI a lot now.  It has become
@@ -56,9 +56,9 @@ I work with a variety of AI tools, mostly because of professional
 curiosity and to a smaller degree because each tool excels at something
 slightly different.  Here are the ones I use most often:
 
-* `Open WebUI <https://openwebui.com/>`__.  In short this is a Python
-  that offers a chat interface web application similar to ChatGTP.  Unlike
-  ChatGTP however it lets you talk to different models.  First and
+* `Open WebUI <https://openwebui.com/>`__.  In short this is a Python web
+  app that offers a chat interface web application similar to ChatGTP.
+  Unlike ChatGTP however it lets you talk to different models.  First and
   foremost I used this to talk to local models hosted by Ollama, but also
   other remote services like OpenAI, Anthropic and Deepseek.
 
@@ -76,18 +76,18 @@ slightly different.  Here are the ones I use most often:
   based auto completion and code generation built-in.  It's my go-to for
   programming with AI assistance at the moment.
 
-* `ChatGPT <https://chatgpt.com/>`__.  Like probably most people, I use
+* `ChatGPT <https://chatgpt.com/>`__.  Like probably most AI users, I use
   ChatGPT, particularly on my phone.  I pay for the Plus subscription
   because I use it enough to get a lot of value out of that.  A
   significant use of this for me is in fact the voice mode, more on that
   later.
 
-You can get most of the benefits of this from just paying for a single AI tool.
-I think as one expands the use, as one gets better at prompting it, the desire
-naturally grows to use more tooling.  As for which models to use day to
-day (and services) I don't have a particular strong strategy and
-preferences change quickly.  For instance since Deepseek's R1 came up, I'm
-exploring it quite a bit for programming because of how good a job it
+You can get most of the benefits of this from just paying for a single AI
+tool.  I think as one expands their use, as one gets better at prompting
+it, the desire naturally grows to use more tooling.  As for which models
+to use day to day (and services) I don't have a particular strong strategy
+and preferences change quickly.  For instance since Deepseek's R1 came up,
+I'm exploring it quite a bit for programming because of how good a job it
 does and as of writing that's just a few days old.
 
 If you want to run models locally, Apple Silicon machines currently offer
@@ -141,10 +141,10 @@ and you learn to cross-check selectively.
 I treat AI as a collaborator or a pretty good intern.  You remain
 responsible for the final outcome.  The intern also happens to get better
 month by month as models improve.  And a bit like a human that digital
-intern has morals and wants to be argued with.  Some interns `don't want
-to talk about China
+intern has morals and wants to be argued with.  Except some of those AI
+interns `don't want to talk about China
 <https://www.reddit.com/r/LocalLLaMA/comments/187oidh/deepseek_coder_7b_33b_thinks_its_trained_by_openai/>`__,
-other interns get a stroke `if you talk about certain people
+others get a stroke `if you talk about certain people
 <https://www.reddit.com/r/ChatGPT/comments/1h3rz4l/david_mayer_is_not_the_only_one_jonathan_zittrain/>`__.
 But regardless of how good they get, in the end, it's your fault and your
 fault alone if you do the wrong thing.  You can't blame the AI and you
