@@ -115,8 +115,8 @@ Afterwards you can launch `open-webui` and use the llm tool::
     llm -m deepseek-coder '# write timsort in python'
 
 * By default, Open WebUI only connects to OpenAI or Ollama. If you want to
-  add Anthropic or Deepseek, you need to create a custom function in the
-  “Functions” section of Open WebUI's admin panel.
+  add the hosted Anthropic or Deepseek models, you need to create a custom
+  function in the “Functions” section of Open WebUI's admin panel.
 
 * Import the functions and configure your API keys, and you’re ready to go.
 
