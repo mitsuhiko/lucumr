@@ -53,9 +53,10 @@
         if (dateEl) {
           const pubDate = new Date(dateEl.dataset.date);
           const now = new Date();
-          const yearDiff = now.getFullYear() - pubDate.getFullYear();
+          const dayDiff = Math.floor((now.getTime() - pubDate.getTime()) / (1000 * 60 * 60 * 24));
+          const yearDiff = Math.floor(dayDiff / 365);
 
-          if (yearDiff >= 1) {
+          if (dayDiff >= 365) {
             const warning = document.createElement("span");
             warning.className = "date-warning";
             warning.textContent = `this article is ${yearDiff} year${yearDiff != 1 ? 's' : ''} old.`;
