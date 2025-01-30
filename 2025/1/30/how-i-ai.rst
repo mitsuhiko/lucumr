@@ -58,8 +58,8 @@ curiosity and to a smaller degree because each tool excels at something
 slightly different.  Here are the ones I use most often:
 
 * `Open WebUI <https://openwebui.com/>`__.  In short this is a Python web
-  app that offers a chat interface similar to ChatGTP.
-  Unlike ChatGTP, however, it lets you talk to different models.  First and
+  app that offers a chat interface similar to ChatGPT.
+  Unlike ChatGPT, however, it lets you talk to different models.  First and
   foremost, I use this to talk to local models hosted by Ollama, but
   secondarily I also use it to interface with other remote services like
   OpenAI, Anthropic and DeepSeek.
@@ -298,7 +298,7 @@ again, there is always a risk that it gets it wrong, but that is okay.
 Part of all of this is to convey to the children the idea that we need to
 validate it and that being critical is important.
 
-What makes ChatGTP so enjoyable here is that it's able to keep the
+What makes ChatGPT so enjoyable here is that it's able to keep the
 conversation going — it has state.  Answered in large metric numbers?  Can
 always ask it to scale to elephants or soccer fields.
 
