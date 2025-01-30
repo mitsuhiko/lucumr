@@ -141,7 +141,7 @@ hallucination the same way I would when seeking advice from another human:
 people can and are routinely wrong, and you learn to cross-check
 selectively.
 
-I treat AI as I would a collaborator or a pretty good intern.  You remain
+I treat AI as I would a collaborator or a pretty good intern but I remain
 responsible for the final outcome.  In this case the intern also happens
 to get better month by month as models improve.  And a bit like a human,
 that digital intern has morals and wants to be argued with.  Except, of
