@@ -2,8 +2,8 @@ public: yes
 tags: [thoughts, rust]
 summary: More musing on dependencies.
 
-How Many Lines Do You Need for Rand?
-====================================
+Fat Rand: How Many Lines Do You Need To Generate A Random Number?
+=================================================================
 
 I recently wrote `about dependencies in Rust
 </2025/1/24/build-it-yourself/>`__.  The feedback, both within and outside
