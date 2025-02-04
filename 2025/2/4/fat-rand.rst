@@ -219,7 +219,7 @@ this.
     or most of the rust-crypto ecosystem) might replace ``ppv-lite86``:
     `PR #934 <https://github.com/rust-random/rand/issues/934>`__.
 
-*   If you use Rust 1.71 or later, ``windows-target`` becomes mostly a
+*   if you use Rust 1.71 or later, ``windows-target`` becomes mostly a
     no-op if you compile with ``--cfg=windows_raw_dylib``.
 
 ----
