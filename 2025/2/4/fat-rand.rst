@@ -174,7 +174,7 @@ particularly the part that waits for the derives to finish.
 * which depends on ``ppv-lite86``,
 * which depends on ``zerocopy`` (with the derive feature),
 * which depends on ``zerocopy-derive``
-* which pulls compiler plugins crate.
+* which pulls compiler plugins crates.
 
 Only after all the code generation finished, the rest will make meaningful
 progress.  In total a release build produces 36MB of compiler artifacts.
