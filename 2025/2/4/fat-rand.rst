@@ -83,12 +83,12 @@ Platform Dependencies
 
 First there is the question of getting access to the system RNG.  On Linux
 and Mac it uses ``libc``, for Windows it uses the pretty heavy Microsoft
-crates (``windows-targets`` and ``windows-sys``).  The irony is that the
-Rust standard library already implements a way to get a good seed from the
-system, but it does not expose it.  Well, not really at least.  There is a
-crate called ``fastrand`` which does not have any dependencies which seeds
-itself by funneling out seeds from the stdlib via the hasher system.  That
-looks a bit like this:
+crates (``windows-targets``).  The irony is that the Rust standard library
+already implements a way to get a good seed from the system, but it does
+not expose it.  Well, not really at least.  There is a crate called
+``fastrand`` which does not have any dependencies which seeds itself by
+funneling out seeds from the stdlib via the hasher system.  That looks a
+bit like this:
 
 .. sourcecode:: rust
 
@@ -140,7 +140,10 @@ need?  A single function:
     extern "system" fn ProcessPrng(pbdata: *mut u8, cbdata: usize) -> i32
 
 For that single function (and the information which DLL it needs link
-into), we are compiling and downloading megabytes of ``windows-sys``.
+into), we are compiling and downloading megabytes of ``windows-targets``.
+Longer term `this might not be necessary
+<https://rust-lang.github.io/rfcs/2627-raw-dylib-kind.html>`__, but today
+it is.
 
 On Unix, it's harder to avoid ``libc`` because it tries multiple APIs.
 These are mostly single-function APIs, but some non-portable constants
@@ -202,3 +205,8 @@ cautious about dependencies and make it more of a goal to be auditable, we
 would all benefit.
 
 Or maybe this is just how Rust works now.  That would make me quite sad.
+
+----
+
+*Edit: This post originally incorrectly said that getrandom depends on
+windows-sys.  That is incorrect, it only depends on windows-targets.*
