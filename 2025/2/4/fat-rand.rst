@@ -208,5 +208,21 @@ Or maybe this is just how Rust works now.  That would make me quite sad.
 
 ----
 
+*Update:* it looks like there is some appetite in ``rand`` to improve on
+this.
+
+*   ``zerocopy`` might be removed in the core library: `issue #1574
+    <https://github.com/rust-random/rand/issues/1574>`__ and `PR #1575
+    <https://github.com/rust-random/rand/pull/1575>`__.
+
+*   a stripped down version of ``chacha20`` (which does not require ``zerocopy``
+    or most of the rust-crypto ecosystem) might replace ``ppv-lite86``:
+    `PR #934 <https://github.com/rust-random/rand/issues/934>`__.
+
+*   If you use Rust 1.71 or later, ``windows-target`` becomes mostly a
+    no-op if you compile with ``--cfg=windows_raw_dylib``.
+
+----
+
 *Edit: This post originally incorrectly said that getrandom depends on
 windows-sys.  That is incorrect, it only depends on windows-targets.*
