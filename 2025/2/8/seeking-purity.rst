@@ -150,8 +150,11 @@ altogether.  It will be hard, it will be impure.  Maybe the solution will
 not even involve Rust at all — who knows.
 
 We also have to accept that not everyone is ready for change at the same
-pace.  Forcing adoption when people aren't prepared only causes the
-pendulum to swing back hard.  It's always tempting to find someone in
-authority to declare “the one true way,” but that doesn't eliminate the
-inevitable complexities.  They are part of the process.  The painful,
-incremental work is here to stay.
+pace. Forcing adoption when people aren't prepared only causes the
+pendulum to swing back hard.  It's tempting to look for a single authority
+to declare “the one true way,” but that won't smooth out the inevitable
+complications.  Indeed, those messy, incremental challenges are part of how
+real progress happens.  In the long run, these hard-won refinements tend
+to produce solutions that benefit all sides—if we’re patient enough to let
+them take root.  The painful and messy transition is here to stay, and
+that's exactly why, in the end, it works.
