@@ -8,7 +8,8 @@ Ugly Code and Dumb Things
 
 This week I had a conversation with one of our engineers about “shitty
 code” which lead me to sharing with him one of my more unusual
-inspirations: `Flamework <https://github.com/exflickr/flamework/>`__.
+inspirations: `Flamework <https://github.com/exflickr/flamework/>`__, a
+pseudo framework created at Flickr.
 
 Two Passions, Two Approaches
 ----------------------------
@@ -18,8 +19,9 @@ beautiful, elegant code — making Open Source libraries and APIs that focus
 on clear design and reusability.  The other passion is building quick,
 pragmatic solutions for real users (who may not even be developers).  The
 latter usually in a setting of building a product, where the product is
-not the code.  Here, speed and iteration matter more than code beauty or
-reusability, because success hinges on shipping something people want.
+not the code.  Here, speed and iteration matter more than beautiful code
+or reusability, because success hinges on shipping something people want.
+
 Flamework is in service of the latter, and in crass violation of the
 former.
 
@@ -35,12 +37,12 @@ Back then, me and a friend tried to replace it by writing my own bulletin
 board software, `Pocoo
 <https://web.archive.org/web/20070502223619/http://flying.circus.pocoo.org/>`__.
 Working in isolation, without users, led me down a path of
-over-engineering.  While we learned a lot and ended up creating libraries
-like the creation of many useful Open Source libraries like Jinja and
-Pygments, Pocoo never became a solid product.  Later, my collaborators and
-I `rebuilt ubuntuusers <https://github.com/inyokaproject/inyoka/>`__,
-without the goal of making it into a reusable product.  That rewrite
-shipped successfully and it lives to this very day.
+over-engineering.  While we learned a lot and ended up creating popular
+Open Source libraries (like Jinja, Werkzeug and Pygments), Pocoo never
+became a solid product.  Later, my collaborators and I `rebuilt
+ubuntuusers <https://github.com/inyokaproject/inyoka/>`__, without the
+goal of making it into a reusable product.  That rewrite shipped
+successfully and it lives to this very day.
 
 But it took me years to fully realize what was happening here: reusability
 is not that important when you’re building an application, but it’s
@@ -99,8 +101,8 @@ large commercial project that got traction that I ever worked on (`Plurk
 <https://en.wikipedia.org/wiki/Plurk>`__) was also pretty pragmatic and
 messy inside.  My former colleague Ben Vinegar also `recently shared
 <https://benv.ca/blog/posts/the-hardest-problem>`__ a story of early,
-messy FreshBooks code.  Same story at `Sentry
-<https://sentry.io/welcome>`__.  We moved fast, we made a mess.
+messy FreshBooks code and how he came to terms with it.  Same story at
+`Sentry <https://sentry.io/welcome>`__.  We moved fast, we made a mess.
 
 None of this is surprising in retrospective.  Perfect code doesn't
 guarantee success if you haven't solved a real problem for real people.
@@ -114,18 +116,17 @@ A Rorschach Test
 ----------------
 
 I have shown Flamework's code to multiple engineers over the years and it
-usually creates such a visceral response.  It blind sights — particularly
-less senior — engineers by seemingly disregarding all rules of good
-software engineering.
+usually creates such a visceral response.  It blind sights one by
+seemingly disregarding all rules of good software engineering.
 
-Flamework serves as a fascinating Rorschach test for engineers.  Are you
-`looking at it <https://github.com/exflickr/flamework>`__ with admiration
-for the focus on critical issues: scale, the built-in observability and
-debugging tools.  Or are you judging it and its creators for manually
-constructing SQL queries, using global variables, not using classes and
-looking like messy PHP4 code?  Is it a pragmatic tool, intentionally
-designed to iterate quickly at scale, or is it a naive mess of unskilled
-PHP developers?
+That makes Flamework serve as a fascinating Rorschach test for engineers.
+Are you `looking at it <https://github.com/exflickr/flamework>`__ with
+admiration for the focus on some critical issues like scale, the built-in
+observability and debugging tools.  Or are you judging it, and its
+creators, for manually constructing SQL queries, using global variables,
+not using classes and looking like messy PHP4 code?  Is it a pragmatic
+tool, intentionally designed to iterate quickly at scale, or is it a naive
+mess made by unskilled developers?
 
 Would I use Flamework?  Hello no.  But I appreciate the priorities behind
 it.  If these ugly choices help you move faster, attract users and
@@ -153,9 +154,9 @@ more robust foundations.  The principles behind Flamework are also
 reflected in `Sentry's development philosophy
 <https://develop.sentry.dev/getting-started/philosophy/>`__.  One more
 poignant one being “Embrace the Duct Tape”.  Yet as Sentry matured, much
-of our duct tape didn't stand the test of time, and was applied at moments
-when the real solution would have been a solid foundation poured with
-concrete.
+of our duct tape didn't stand the test of time, and was re-applied at
+moments when the real solution would have been a solid foundation poured
+with concrete.
 
 That's because successful projects eventually grow up.  What let you
 iterate fast in the beginning might eventually turn into an unmaintainable
