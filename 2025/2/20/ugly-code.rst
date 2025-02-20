@@ -60,8 +60,9 @@ forgoing joins and foreign keys, supporting database replication setups,
 denormalizing data to the extreme.  This is also were I first learned
 about the possibility of putting all session data into cookies via
 signing.  It was a memorable talk for me because it showed me that there
-are shortcomings.  Django had beautiful APIs but at the time solved for
-little of that Cal needed.  The talk really stuck with me.
+are shortcomings.  Django (which I used for ubuntuusers) had beautiful
+APIs but at the time solved for little of that Cal needed.  The talk
+really stuck with me.
 
 At the time of the talk, Flamework did not really exist.  It was more of
 an idea and principles of engineering at Flickr.
