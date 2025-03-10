@@ -140,7 +140,7 @@ to Covid as collateral damage.
 
 One of the changes with Covid remote is that people work from home that
 previously were in the office.  This even includes myself.  This in
-practice easily ends up as a net negative unless you compensate in in some
+practice easily ends up as a net negative unless you compensate in some
 other way.  We miss out on non-verbal communication, spontaneous hallway
 chats that can lead to resolution of current issues, and the casual office
 banter.
