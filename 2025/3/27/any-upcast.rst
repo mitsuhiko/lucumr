@@ -7,8 +7,8 @@ Rust Any Part 3: Finally we have Upcasts
 
 Three years ago I shared the `As-Any Hack </2022/1/7/as-any-hack/>`__ on
 this blog.  That hack is a way on stable rust to get upcasting to
-supertraits working in Rust.  super traits.  To refresh your memory, the
-goal was to make something like this work:
+supertraits working in Rust.  To refresh your memory, the goal was to make
+something like this work:
 
 .. sourcecode:: rust
 
