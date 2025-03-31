@@ -57,3 +57,55 @@ finally be retired.  At least once your MSRV moves up.
 
 Thank you so much to everyone who `worked on this
 <https://github.com/rust-lang/rust/issues/65991>`__ to make it work!
+
+----
+
+For completeness' sake here is the extension map from the original
+block post cleaned up so that it does not need the as-any hack:
+
+.. sourcecode:: rust
+
+    use std::any::{Any, TypeId};
+    use std::cell::{Ref, RefCell, RefMut};
+    use std::collections::HashMap;
+    use std::fmt::Debug;
+
+    trait DebugAny: Any + Debug {}
+    impl<T: Any + Debug + 'static> DebugAny for T {}
+
+    #[derive(Default, Debug)]
+    pub struct Extensions {
+        map: RefCell<HashMap<TypeId, Box<dyn DebugAny>>>,
+    }
+
+    impl Extensions {
+        pub fn insert<T: Debug + 'static>(&self, value: T) {
+            self.map
+                .borrow_mut()
+                .insert(TypeId::of::<T>(), Box::new(value));
+        }
+
+        pub fn get<T: Default + Debug + 'static>(&self) -> Ref<'_, T> {
+            self.ensure::<T>();
+            Ref::map(self.map.borrow(), |m| {
+                m.get(&TypeId::of::<T>())
+                    .and_then(|b| (&**b as &dyn Any).downcast_ref())
+                    .unwrap()
+            })
+        }
+
+        pub fn get_mut<T: Default + Debug + 'static>(&self) -> RefMut<'_, T> {
+            self.ensure::<T>();
+            RefMut::map(self.map.borrow_mut(), |m| {
+                m.get_mut(&TypeId::of::<T>())
+                    .and_then(|b| ((&mut **b) as &mut dyn Any).downcast_mut())
+                    .unwrap()
+            })
+        }
+
+        fn ensure<T: Default + Debug + 'static>(&self) {
+            if self.map.borrow().get(&TypeId::of::<T>()).is_none() {
+                self.insert(T::default());
+            }
+        }
+    }
