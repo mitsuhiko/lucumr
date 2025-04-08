@@ -6,6 +6,13 @@ Talks
 A non-complete list of talks I gave starting with 2009 and links to slides
 and recordings if available.
 
+2025
+----
+
+-   `Do Dumb Things <https://speakerdeck.com/mitsuhiko/do-dumb-things>`__
+    @ PyCon Austria (`PDF
+    <http://mitsuhiko.pocoo.org/DoDumbThings.pdf>`__)
+
 2024
 ----
 
