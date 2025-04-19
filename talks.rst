@@ -10,7 +10,7 @@ and recordings if available.
 ----
 
 -   `Do Dumb Things <https://speakerdeck.com/mitsuhiko/do-dumb-things>`__
-    @ PyCon Austria (`PDF
+    @ PyCon Austria (`recording <https://www.youtube.com/watch?v=ej5RsTtVvQE>`__, `PDF
     <http://mitsuhiko.pocoo.org/DoDumbThings.pdf>`__)
 
 2024
