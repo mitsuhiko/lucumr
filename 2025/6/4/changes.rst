@@ -35,10 +35,10 @@ who deeply values the craft of engineering, to accept the messiness of
 what agents are doing took a while to digest.  It took me a while to even
 warm up to tool usage by AI in the first place — just two years ago I was
 convinced `AI might kill my wife </2023/2/17/the-killing-ai/>`__.  In
-those two years however we can incredibly far.  We have reached the point
-where even if we stopped here (and there is no indication we will) AI is
-already a new substrate for a lot of new innovation, ideas and creations
-and I'm here for it.  It has moved beyond being a curious tool.
+those two years however we've come incredibly far.  We have reached the
+point where even if we stopped here (and there is no indication we will)
+AI is already a new substrate for a lot of new innovation, ideas and
+creations and I'm here for it.  It has moved beyond being a curious tool.
 
 Never before have I seen a technology surface in every day life so
 quickly, so widely.  Smartphones adoption felt slow in comparison.  Today
