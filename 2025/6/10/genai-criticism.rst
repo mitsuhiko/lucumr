@@ -37,9 +37,9 @@ usefulness.  That is in a stark contrast to Glyph's experience.
 
 He writes:
 
-| My experiences of genAI are all extremely bad, but that is barely even
-| anecdata. Their experiences are neutral-to-positive. Little scientific
-| data exists. How to resolve this?
+    My experiences of genAI are all extremely bad, but that is barely even
+    anecdata. Their experiences are neutral-to-positive. Little scientific
+    data exists. How to resolve this?
 
 I can't judge Glyph's experiences, and I don't want to speculate about why
 they differ from mine.  I've certainly had my own frustrations with AI tools.
@@ -55,10 +55,10 @@ this looks like.
 Glyph also argues that adoption is being forced by management and that
 people would not voluntarily use it:
 
-| Despite this plethora of negative experiences, executives are
-| aggressively mandating the use of AI6. It looks like without such
-| mandates, most people will not bother to use such tools, so the executives
-| will need muscular policies to enforce its use.7
+    Despite this plethora of negative experiences, executives are
+    aggressively mandating the use of AI6. It looks like without such
+    mandates, most people will not bother to use such tools, so the executives
+    will need muscular policies to enforce its use.7
 
 This doesn't match what I've seen. In my experience, people are adopting
 AI on their own, often before their companies are even aware.
@@ -137,10 +137,10 @@ I addressed this in my previous article, but I believe LLMs have
 significant potential to improve learning.  Glyph disagrees, partly because
 of concerns about cheating and that it will make it worse:
 
-| LLMs are making academic cheating incredibly rampant. […] For learning,
-| genAI is a forklift at the gym. […] But it was within those
-| inefficiencies and the inconveniences of the academic experience that real
-| learning *was*, against all odds, still happening in schools.
+    LLMs are making academic cheating incredibly rampant. […] For learning,
+    genAI is a forklift at the gym. […] But it was within those
+    inefficiencies and the inconveniences of the academic experience that real
+    learning *was*, against all odds, still happening in schools.
 
 I disagree strongly here.  This is where I have the most first-hand
 experience, considering time spent with AI.  Since the early days of
