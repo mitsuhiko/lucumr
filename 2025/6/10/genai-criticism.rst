@@ -93,7 +93,7 @@ receiving review comments either.
 
 Now I admit that I do a lot more code review than I do programming at the
 moment, but I also find it quite enjoyable.  On the one hand because the
-novelly of an machine programming hasn't worn off yet, on the other hand
+novelty of an machine programming hasn't worn off yet, on the other hand
 because it's a very patient recipient of feedback and change requests.
 You just tell it stuff, you don't spend too much time to think about how
 the other person is going to respond, if it's a good idea to nitpick a
