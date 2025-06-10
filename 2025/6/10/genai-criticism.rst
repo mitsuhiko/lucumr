@@ -6,7 +6,7 @@ GenAI Criticism and Moral Quandaries
 ====================================
 
 I've received quite a bit of feedback on the last thing I wrote `about AI
-</6/4/changes/>`__, particularly around the idea that I'm too quick to
+</2025/6/4/changes/>`__, particularly around the idea that I'm too quick to
 brush aside criticism.  Given that Glyph — who I respect a lot — `wrote a
 lengthy piece
 <https://blog.glyph.im/2025/06/i-think-im-done-thinking-about-genai-for-now.html>`__
