@@ -34,6 +34,9 @@ One caveat: I expect this blog post to age very poorly.  The pace of
 innovation here is insane; what was true a month ago barely holds true
 today.  That's why I'm sticking to concepts I believe have staying power.
 
+If you want to a small session of me working on an Open Source library
+with it, I have `a recording you can watch <https://www.youtube.com/watch?v=sQYXZCUvpIc>`__.
+
 The Basics
 ----------
 
