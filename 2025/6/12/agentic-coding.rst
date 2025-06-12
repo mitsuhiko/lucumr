@@ -100,7 +100,7 @@ backend projects.  Several factors strongly favor Go:
   JavaScript's fast-moving ecosystem for instance.
 
 For comparison, Python — my initial choice — often poses significant
-challenges.  Agents struggle with Python's magic (e.g., Pytest’s fixture
+challenges.  Agents struggle with Python's magic (eg: Pytest’s fixture
 injection) or complex runtime challenges (eg: wrong event loop when
 working with async), frequently producing incorrect code that even the
 agentic loop has challenges resolving.  Python also has practical
