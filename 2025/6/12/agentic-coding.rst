@@ -6,8 +6,9 @@ Agentic Coding Recommendations
 ==============================
 
 There is currently an explosion of people sharing their experiences with
-agentic coding.  After my last two posts on the topic, I received quite a
-few questions about my own practices.  So, here goes nothing.
+agentic coding.  After my last `two </2025/6/4/changes/>`__ `posts
+</2025/6/10/genai-criticism/>`__ on the topic, I received quite a few
+questions about my own practices.  So, here goes nothing.
 
 Preface
 -------
