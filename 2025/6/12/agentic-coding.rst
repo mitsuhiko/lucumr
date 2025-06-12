@@ -250,7 +250,7 @@ Write Simple Code
 -----------------
 
 Simple code significantly outperforms complex code in agentic contexts.  I
-just recently wrote about `ugly coce
+just recently wrote about `ugly code
 <https://lucumr.pocoo.org/2025/2/20/ugly-code/>`__ and I think in the
 context of agents this is worth re-reading.  Have the agent do “the
 dumbest possible thing that will work”.
