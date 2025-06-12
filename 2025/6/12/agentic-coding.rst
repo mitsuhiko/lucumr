@@ -90,7 +90,7 @@ backend projects.  Several factors strongly favor Go:
   simplicity benefits agentic coding.
 
 * **Structural interfaces:** interfaces in Go are structural.  If a type
-  has the methods an interface expects then it conforms.  This is
+  has the methods an interface expects, then it conforms.  This is
   incredibly easy for LLMs to “understand”.  There is very little surprise
   for the agent.
 
