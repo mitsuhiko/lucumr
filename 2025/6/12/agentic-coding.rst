@@ -197,7 +197,7 @@ significantly boost productivity of the agent.  So how can we help it?
 With the right instructions it must be possible for the AI to create a new
 tool, by following existing conventions very quickly.  This is necessary
 because you want the AI to write some new code, and run it.  There is a
-buig difference in the quality and speed of the flow, if that tool takes
+big difference in the quality and speed of the flow, if that tool takes
 3ms to run vs it compiles for 5 seconds and then needs another minute to
 boot and connect to database and kafka broker and 100 lines of nonsensical
 log output.
