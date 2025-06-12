@@ -203,7 +203,7 @@ big difference in the quality and speed of the flow, if that tool takes
 boot and connect to database and kafka broker and 100 lines of nonsensical
 log output.
 
-If your stuff is indeed slow, then consider vibe-coding a demon that you
+If your stuff is indeed slow, then consider vibe-coding a daemon that you
 can dynamically load stuff into.  As an example Sentry takes too long to
 reload code and it takes too long to restart.  To trial some agentic
 coding there my workaround was a module that watches a file system
