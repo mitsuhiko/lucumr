@@ -217,7 +217,7 @@ token usage and inference speed, avoiding unnecessary costs and rate
 limits.  If you cannot find the balance, provide some easy to turn knobs
 for the AI to control.
 
-In an idea setup you get useful log output as a natural byproduct of the
+In an ideal setup you get useful log output as a natural byproduct of the
 agent writing code.  Getting observability from the first shot of code
 generation beats writing code, failing to run it and only then going back
 to a debug loop where debug information is added.
