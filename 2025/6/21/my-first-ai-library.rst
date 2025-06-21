@@ -66,8 +66,10 @@ I'm doing and it definitely unblocked me.  In total it worked for about
 something else.  I kept prompting it for a little while to make some
 progress as I ran into issues using it.
 
-If you want to look at what it looks like: `mitushiko/sloppy-xml-py
-<https://github.com/mitsuhiko/sloppy-xml-py>`__.
+If you want to look at what it looks like:
+
+* `mitsuhiko/sloppy-xml-py on GitHub <https://github.com/mitsuhiko/sloppy-xml-py>`__.
+* `sloppy-xml on PyPI <https://pypi.org/project/sloppy-xml/>`__.
 
 To be clear: this isn't an endorsement of using models for serious Open
 Source libraries.  This was an experiment to see how far I could get with
