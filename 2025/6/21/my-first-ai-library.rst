@@ -84,5 +84,5 @@ today than what's necessarily advisable.
 
 **Postscriptum:** Yes, I did slap an Apache 2 license on it.  Is that even
 valid when there's barely a human in the loop?  A fascinating question but
-not one I'm not eager to figure out myself.  It is however certainly
+not one I'm eager to figure out myself.  It is however certainly
 something we'll all have to confront sooner or later.
