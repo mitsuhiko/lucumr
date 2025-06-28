@@ -18,7 +18,7 @@
 from __future__ import absolute_import
 import jinja2
 
-@jinja2.contextfunction
+@jinja2.pass_context
 def get_disqus(context):
     var_shortname=context['builder'].config.root_get('modules.disqus.shortname', 'YOUR-DISQUS-SHORTNAME')
 

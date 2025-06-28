@@ -11,7 +11,7 @@
 from __future__ import absolute_import
 from math import ceil
 
-from jinja2 import Markup
+from markupsafe import Markup
 import six
 from six.moves import range
 

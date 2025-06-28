@@ -10,11 +10,12 @@
 """
 from __future__ import absolute_import
 from math import log
+from datetime import timezone
 from six.moves.urllib.parse import urljoin
 
-from jinja2 import contextfunction
+from jinja2 import pass_context
 
-from werkzeug.contrib.atom import AtomFeed
+from feedgen.feed import FeedGenerator
 
 from rstblog.signals import after_file_published, \
      before_build_finished
@@ -29,7 +30,7 @@ class Tag(object):
         self.size = 100 + log(count or 1) * 20
 
 
-@contextfunction
+@pass_context
 def get_tags(context, limit=50):
     tags = get_tag_summary(context['builder'])
     if limit:
@@ -77,19 +78,41 @@ def write_tagcloud_page(builder):
 def write_tag_feed(builder, tag):
     blog_author = builder.config.root_get('author')
     url = builder.config.root_get('canonical_url') or 'http://localhost/'
-    name = builder.config.get('feed.name') or u'Recent Blog Posts'
-    subtitle = builder.config.get('feed.subtitle') or u'Recent blog posts'
-    feed = AtomFeed(name,
-                    subtitle=subtitle,
-                    feed_url=urljoin(url, builder.link_to('blog_feed')),
-                    url=url)
+    name = f"{builder.config.get('feed.name', u'Recent Blog Posts')} - {tag.name}"
+    subtitle = f"Recent blog posts tagged with '{tag.name}'"
+    
+    # Create feed generator
+    fg = FeedGenerator()
+    fg.id(urljoin(url, builder.link_to('tagfeed', tag=tag.name)))
+    fg.title(name)
+    fg.link(href=url, rel='alternate')
+    fg.link(href=urljoin(url, builder.link_to('tagfeed', tag=tag.name)), rel='self')
+    fg.description(subtitle)
+    fg.language('en')
+    
+    if blog_author:
+        fg.author(name=blog_author)
+    
+    # Add entries
     for entry in get_tagged_entries(builder, tag)[:10]:
-        feed.add(entry.title, six.text_type(entry.render_contents()),
-                 content_type='html', author=blog_author,
-                 url=urljoin(url, entry.slug),
-                 updated=entry.pub_date)
+        fe = fg.add_entry()
+        fe.id(urljoin(url, entry.slug))
+        fe.title(entry.title or 'Untitled')
+        fe.link(href=urljoin(url, entry.slug))
+        fe.description(six.text_type(entry.render_contents()))
+        if entry.pub_date:
+            # Ensure timezone awareness (assume UTC if naive)
+            pub_date = entry.pub_date
+            if pub_date.tzinfo is None:
+                pub_date = pub_date.replace(tzinfo=timezone.utc)
+            fe.published(pub_date)
+            fe.updated(pub_date)
+        if blog_author:
+            fe.author(name=blog_author)
+    
+    # Write atom feed
     with builder.open_link_file('tagfeed', tag=tag.name) as f:
-        f.write(feed.to_string().encode('utf-8') + b'\n')
+        f.write(fg.atom_str(pretty=True))
 
 
 def write_tag_page(builder, tag):

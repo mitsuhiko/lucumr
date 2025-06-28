@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rstblog"
+version = "1.0.0"
+description = "A simple static blog software based on restructured text and Jinja2"
+authors = [
+    {name = "Armin Ronacher", email = "armin.ronacher@active-4.com"},
+]
+license = {text = "BSD-3-Clause"}
+readme = {file = "README", content-type = "text/plain"}
+requires-python = ">=3.8"
+dependencies = [
+    "PyYAML",
+    "Babel",
+    "blinker",
+    "docutils",
+    "Jinja2>=3.0",
+    "Werkzeug>=2.0",
+    "six",
+    "Pygments",
+    "feedgen",
+]
+
+[project.scripts]
+run-rstblog = "rstblog.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["rstblog"]

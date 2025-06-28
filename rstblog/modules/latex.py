@@ -16,7 +16,7 @@ import shutil
 from hashlib import sha1
 from os import path, getcwd, chdir
 from subprocess import Popen, PIPE
-from werkzeug import escape
+from markupsafe import escape
 
 from docutils import nodes, utils
 from docutils.parsers.rst import Directive, directives, roles

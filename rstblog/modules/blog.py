@@ -11,13 +11,14 @@
 from __future__ import with_statement
 
 from __future__ import absolute_import
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 from six.moves.urllib.parse import urljoin
 
-from jinja2 import contextfunction
+from jinja2 import pass_context
 
-from werkzeug.routing import Rule, Map, NotFound
-from werkzeug.contrib.atom import AtomFeed
+from werkzeug.routing import Rule, Map
+from werkzeug.exceptions import NotFound
+from feedgen.feed import FeedGenerator
 
 from rstblog.signals import after_file_published, \
      before_build_finished
@@ -102,7 +103,7 @@ def get_archive_summary(builder):
     return [YearArchive(builder, year, months) for year, months in years]
 
 
-@contextfunction
+@pass_context
 def get_recent_blog_entries(context, limit=10):
     return get_all_entries(context['builder'])[:limit]
 
@@ -152,17 +153,39 @@ def write_feed(builder):
     url = builder.config.root_get('canonical_url') or 'http://localhost/'
     name = builder.config.get('feed.name') or u'Recent Blog Posts'
     subtitle = builder.config.get('feed.subtitle') or u'Recent blog posts'
-    feed = AtomFeed(name,
-                    subtitle=subtitle,
-                    feed_url=urljoin(url, builder.link_to('blog_feed')),
-                    url=url)
+    
+    # Create feed generator
+    fg = FeedGenerator()
+    fg.id(url)
+    fg.title(name)
+    fg.link(href=url, rel='alternate')
+    fg.link(href=urljoin(url, builder.link_to('blog_feed')), rel='self')
+    fg.description(subtitle)
+    fg.language('en')
+    
+    if blog_author:
+        fg.author(name=blog_author)
+    
+    # Add entries
     for entry in get_all_entries(builder)[:10]:
-        feed.add(entry.title, six.text_type(entry.render_contents()),
-                 content_type='html', author=blog_author,
-                 url=urljoin(url, entry.slug),
-                 updated=entry.pub_date)
+        fe = fg.add_entry()
+        fe.id(urljoin(url, entry.slug))
+        fe.title(entry.title or 'Untitled')
+        fe.link(href=urljoin(url, entry.slug))
+        fe.description(six.text_type(entry.render_contents()))
+        if entry.pub_date:
+            # Ensure timezone awareness (assume UTC if naive)
+            pub_date = entry.pub_date
+            if pub_date.tzinfo is None:
+                pub_date = pub_date.replace(tzinfo=timezone.utc)
+            fe.published(pub_date)
+            fe.updated(pub_date)
+        if blog_author:
+            fe.author(name=blog_author)
+    
+    # Write atom feed
     with builder.open_link_file('blog_feed') as f:
-        f.write(feed.to_string().encode('utf-8') + b'\n')
+        f.write(fg.atom_str(pretty=True))
 
 
 def write_blog_files(builder):

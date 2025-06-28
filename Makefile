@@ -4,7 +4,7 @@ clean:
 	rm -rf blog/_build
 
 build:
-	cd blog && ../.venv/bin/run-rstblog build
+	cd blog && uv run run-rstblog build
 
 serve:
-	cd blog && ../.venv/bin/run-rstblog serve
+	cd blog && uv run run-rstblog serve
