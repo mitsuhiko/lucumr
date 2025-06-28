@@ -127,17 +127,28 @@ class BlogPost:
 
     def _extract_date_from_path(self):
         """Extract publication date from file path."""
-        # Pattern: YYYY/MM/DD/filename.rst
-        match = re.search(r"(\d{4})/(\d{1,2})/(\d{1,2})/", self.source_path)
+        # New pattern: posts/YEAR/MONTH-DAY-SLUG.rst
+        match = re.search(r"posts/(\d{4})/(\d{2})-(\d{2})-", self.source_path)
         if match:
             year, month, day = match.groups()
             self.pub_date = datetime(int(year), int(month), int(day))
+        else:
+            # Legacy pattern: YYYY/MM/DD/filename.rst (for backward compatibility)
+            match = re.search(r"(\d{4})/(\d{1,2})/(\d{1,2})/", self.source_path)
+            if match:
+                year, month, day = match.groups()
+                self.pub_date = datetime(int(year), int(month), int(day))
 
     @property
     def slug(self):
         """URL slug for this post."""
         if self.pub_date:
             basename = os.path.splitext(os.path.basename(self.source_path))[0]
+            # For new format, extract slug from MONTH-DAY-SLUG pattern
+            if "posts/" in self.source_path:
+                match = re.search(r"\d{2}-\d{2}-(.+)$", basename)
+                if match:
+                    basename = match.group(1)
             return f"/{self.pub_date.year}/{self.pub_date.month:02d}/{self.pub_date.day:02d}/{basename}/"
         else:
             # Non-blog pages
