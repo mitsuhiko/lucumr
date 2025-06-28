@@ -31,7 +31,7 @@ make format
 ## Technology Stack
 
 - **Content**: reStructuredText markup
-- **Generator**: Custom rstblog static site generator
+- **Generator**: Custom generator static site generator
 - **Templates**: Jinja2
 - **Styling**: Modern CSS with custom properties
 - **Syntax Highlighting**: Pygments

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is Armin Ronacher's personal blog (lucumr.pocoo.org) built with rstblog, a custom static site generator that processes reStructuredText content. The blog spans 18+ years of content (2007-2025) and demonstrates modern web standards with dark/light mode support.
+This is Armin Ronacher's personal blog (lucumr.pocoo.org) built with generator, a custom static site generator that processes reStructuredText content. The blog spans 18+ years of content (2007-2025) and demonstrates modern web standards with dark/light mode support.
 
 ## Important Transition Information
 
@@ -32,7 +32,7 @@ make clean    # Remove build artifacts
 - **Blog posts**: Organized as `blog/YYYY/MM/DD/post-name.rst` in reStructuredText format
 - **Static assets**: `blog/static/` contains CSS, fonts, images, and avatars
 - **Templates**: `blog/_templates/` contains Jinja2 HTML templates
-- **Configuration**: `blog/config.yml` defines rstblog modules and site metadata
+- **Configuration**: `blog/config.yml` defines generator modules and site metadata
 
 ### Post Format
 Blog posts are written in reStructuredText with frontmatter:
@@ -49,7 +49,7 @@ Content in reStructuredText format...
 ```
 
 ### Build System
-- **rstblog**: Custom static site generator that processes RST content
+- **generator**: Custom static site generator that processes RST content
 - **Jinja2**: Template engine for HTML generation
 - **Pygments**: Syntax highlighting with "tango" style
 - **Output**: Static files generated to `blog/_build/` (gitignored)

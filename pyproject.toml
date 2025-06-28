@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "rstblog"
+name = "generator"
 version = "1.0.0"
 description = "A simple static blog software based on restructured text and Jinja2"
 authors = [
@@ -19,8 +19,8 @@ dependencies = [
 ]
 
 [project.scripts]
-build-blog = "rstblog.commands:main_build"
-serve-blog = "rstblog.commands:main_serve"
+build-blog = "generator.commands:main_build"
+serve-blog = "generator.commands:main_serve"
 
 [tool.hatch.build.targets.wheel]
-packages = ["rstblog"]
+packages = ["generator"]

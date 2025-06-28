@@ -14,7 +14,7 @@ repository.
 FAQ part:
 
 Why is it on github then?
-  So that people can see how rstblog is being used, for
+  So that people can see how generator is being used, for
   learning purposes, because you can use the git history
   to track changes being made, so that you can help me
   fix typos by sending pull requests etc.

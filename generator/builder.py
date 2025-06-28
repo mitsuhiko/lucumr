@@ -22,7 +22,7 @@ from pygments.styles import get_style_by_name
 from jinja2 import Environment, FileSystemLoader
 from markupsafe import Markup
 
-from rstblog.pagination import Pagination
+from generator.pagination import Pagination
 
 # Configuration - all hardcoded values in one place
 CONFIG = {

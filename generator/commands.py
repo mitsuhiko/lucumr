@@ -1,6 +1,6 @@
 import sys
 import os
-from rstblog.builder import Builder
+from generator.builder import Builder
 
 
 def main_build():
