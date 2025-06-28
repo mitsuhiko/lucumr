@@ -3,7 +3,6 @@
 Simplified RST blog builder - no unnecessary abstractions.
 """
 
-import os
 import re
 import shutil
 import json
@@ -190,7 +189,7 @@ class BlogPost:
     def slug(self):
         """URL slug for this post."""
         if self.pub_date:
-            basename = os.path.splitext(os.path.basename(self.source_path))[0]
+            basename = Path(self.source_path).stem
             # For new format, extract slug from MONTH-DAY-SLUG pattern
             if "posts/" in self.source_path:
                 match = re.search(r"\d{2}-\d{2}-(.+)$", basename)
@@ -199,7 +198,7 @@ class BlogPost:
             return f"/{self.pub_date.year}/{self.pub_date.month:02d}/{self.pub_date.day:02d}/{basename}/"
         else:
             # Non-blog pages
-            rel_path = os.path.splitext(self.source_path)[0]
+            rel_path = Path(self.source_path).with_suffix("").as_posix()
             return f"/{rel_path}/"
 
     @property
@@ -207,8 +206,8 @@ class BlogPost:
         """Output file path."""
         slug = self.slug.strip("/")
         if not slug:
-            return os.path.join(CONFIG["output_folder"], "index.html")
-        return os.path.join(CONFIG["output_folder"], slug, "index.html")
+            return str(Path(CONFIG["output_folder"]) / "index.html")
+        return str(Path(CONFIG["output_folder"]) / slug / "index.html")
 
     def render_rst(self):
         """Render RST content to HTML."""
@@ -356,7 +355,7 @@ class Builder:
     """Simplified blog builder without unnecessary abstractions."""
 
     def __init__(self, project_folder):
-        self.project_folder = os.path.abspath(project_folder)
+        self.project_folder = Path(project_folder).resolve()
         self.posts = []
         self.pages = []
         self.tags = defaultdict(list)
@@ -365,9 +364,9 @@ class Builder:
         self.content_cache = ContentCache(project_folder)
 
         # Setup Jinja2
-        template_path = os.path.join(self.project_folder, CONFIG["template_path"])
+        template_path = self.project_folder / CONFIG["template_path"]
         self.jinja_env = Environment(
-            loader=FileSystemLoader([template_path]), autoescape=True
+            loader=FileSystemLoader([str(template_path)]), autoescape=True
         )
         self.jinja_env.globals.update(
             link_to=self._link_to,
@@ -463,7 +462,7 @@ class Builder:
 
     def _should_ignore(self, path):
         """Check if path should be ignored."""
-        basename = os.path.basename(path)
+        basename = Path(path).name
         for pattern in CONFIG["ignore_patterns"]:
             if fnmatch(basename, pattern):
                 return True
@@ -480,40 +479,34 @@ class Builder:
         self.tags = defaultdict(list)
 
         # Rebuild from cache and parse new/modified files
-        for root, dirs, files in os.walk(self.project_folder):
-            # Filter directories
-            dirs[:] = [d for d in dirs if not self._should_ignore(d)]
-
-            for filename in files:
-                if self._should_ignore(filename) or not (
-                    filename.endswith(".rst") or filename.endswith(".md")
-                ):
-                    continue
-
-                filepath = os.path.join(root, filename)
-                rel_path = os.path.relpath(filepath, self.project_folder)
-                existing_files.add(rel_path)
+        for filepath in self.project_folder.rglob("*"):
+            if (
+                filepath.is_file()
+                and not self._should_ignore(filepath.name)
+                and (filepath.suffix in (".rst", ".md"))
+            ):
+                rel_path = filepath.relative_to(self.project_folder)
+                existing_files.add(str(rel_path))
 
                 try:
                     # Read file content
-                    with open(filepath, "r", encoding="utf-8") as f:
-                        content = f.read()
+                    content = filepath.read_text(encoding="utf-8")
 
                     # Check if we can use cached metadata
                     cached_metadata = self.content_cache.get_cached_metadata(
-                        rel_path, content
+                        str(rel_path), content
                     )
 
                     if cached_metadata:
                         # Use cached metadata but re-parse content
                         post = BlogPost.from_metadata(
-                            rel_path, cached_metadata, self, content
+                            str(rel_path), cached_metadata, self, content
                         )
                     else:
                         # Parse file and cache the metadata
-                        post = BlogPost(rel_path, content, self)
+                        post = BlogPost(str(rel_path), content, self)
                         self.content_cache.cache_metadata(
-                            rel_path, content, post.to_metadata()
+                            str(rel_path), content, post.to_metadata()
                         )
 
                     # Add to collections if public
@@ -529,20 +522,17 @@ class Builder:
                 except Exception as e:
                     print(f"Error processing {rel_path}: {e}")
 
-        # Clean up cache for deleted files
         deleted_files = self.content_cache.cleanup_deleted_files(existing_files)
         if deleted_files:
             print(f"Removed {len(deleted_files)} deleted files from cache")
 
-        # Sort posts by date
         self.posts.sort(key=lambda x: x.pub_date, reverse=True)
 
-        # Save cache
         self.content_cache.save()
 
     def build_post(self, post):
         """Build a single post/page."""
-        os.makedirs(os.path.dirname(post.output_path), exist_ok=True)
+        Path(post.output_path).parent.mkdir(parents=True, exist_ok=True)
 
         content_data = post.render_content()
         context = {"content": content_data, "ctx": post, "slug": post.slug}
@@ -554,8 +544,7 @@ class Builder:
         )
         html = self.jinja_env.get_template(template_name).render(context)
 
-        with open(post.output_path, "w", encoding="utf-8") as f:
-            f.write(html)
+        Path(post.output_path).write_text(html, encoding="utf-8")
 
     def build_index_pages(self):
         """Build blog index with pagination."""
@@ -573,21 +562,20 @@ class Builder:
             html = self.jinja_env.get_template("blog/index.html").render(context)
 
             if page_num == 1:
-                output_path = os.path.join(
-                    self.project_folder, CONFIG["output_folder"], "index.html"
+                output_path = (
+                    self.project_folder / CONFIG["output_folder"] / "index.html"
                 )
             else:
-                output_path = os.path.join(
-                    self.project_folder,
-                    CONFIG["output_folder"],
-                    "page",
-                    str(page_num),
-                    "index.html",
+                output_path = (
+                    self.project_folder
+                    / CONFIG["output_folder"]
+                    / "page"
+                    / str(page_num)
+                    / "index.html"
                 )
 
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
-            with open(output_path, "w", encoding="utf-8") as f:
-                f.write(html)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(html, encoding="utf-8")
 
     def build_archive_pages(self):
         """Build archive pages."""
@@ -599,7 +587,6 @@ class Builder:
                 month = f"{post.pub_date.month:02d}"
                 by_year[year][month].append(post)
 
-        # Build main archive page
         years_data = []
         for year in sorted(by_year.keys(), reverse=True):
             months_data = []
@@ -628,57 +615,52 @@ class Builder:
             )
 
         # Main archive
-        output_path = os.path.join(
-            self.project_folder, CONFIG["output_folder"], "archive", "index.html"
+        output_path = (
+            self.project_folder / CONFIG["output_folder"] / "archive" / "index.html"
         )
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
         html = self.jinja_env.get_template("blog/archive.html").render(
             {"archive": years_data}
         )
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(html)
+        output_path.write_text(html, encoding="utf-8")
 
         # Year archives
         for year_data in years_data:
-            output_path = os.path.join(
-                self.project_folder,
-                CONFIG["output_folder"],
-                str(year_data["year"]),
-                "index.html",
+            output_path = (
+                self.project_folder
+                / CONFIG["output_folder"]
+                / str(year_data["year"])
+                / "index.html"
             )
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
             html = self.jinja_env.get_template("blog/year_archive.html").render(
                 {"entry": year_data}
             )
-            with open(output_path, "w", encoding="utf-8") as f:
-                f.write(html)
+            output_path.write_text(html, encoding="utf-8")
 
             # Month archives
             for month_data in year_data["months"]:
-                output_path = os.path.join(
-                    self.project_folder,
-                    CONFIG["output_folder"],
-                    str(year_data["year"]),
-                    month_data["month"],
-                    "index.html",
+                output_path = (
+                    self.project_folder
+                    / CONFIG["output_folder"]
+                    / str(year_data["year"])
+                    / month_data["month"]
+                    / "index.html"
                 )
-                os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                output_path.parent.mkdir(parents=True, exist_ok=True)
                 html = self.jinja_env.get_template("blog/month_archive.html").render(
                     {"entry": month_data}
                 )
-                with open(output_path, "w", encoding="utf-8") as f:
-                    f.write(html)
+                output_path.write_text(html, encoding="utf-8")
 
     def build_tag_pages(self):
         """Build tag pages and tag cloud."""
-        # Tag cloud
-        output_path = os.path.join(
-            self.project_folder, CONFIG["output_folder"], "tags", "index.html"
+        output_path = (
+            self.project_folder / CONFIG["output_folder"] / "tags" / "index.html"
         )
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
         html = self.jinja_env.get_template("tagcloud.html").render()
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(html)
+        output_path.write_text(html, encoding="utf-8")
 
         # Individual tag pages
         for tag_name, tag_posts in self.tags.items():
@@ -686,19 +668,18 @@ class Builder:
             tag_data = {"name": tag_name, "count": len(tag_posts)}
 
             # Tag page
-            output_path = os.path.join(
-                self.project_folder,
-                CONFIG["output_folder"],
-                "tags",
-                tag_name,
-                "index.html",
+            output_path = (
+                self.project_folder
+                / CONFIG["output_folder"]
+                / "tags"
+                / tag_name
+                / "index.html"
             )
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
             html = self.jinja_env.get_template("tag.html").render(
                 {"tag": tag_data, "entries": tag_posts}
             )
-            with open(output_path, "w", encoding="utf-8") as f:
-                f.write(html)
+            output_path.write_text(html, encoding="utf-8")
 
             # Tag feed
             self._build_tag_feed(tag_name, tag_posts)
@@ -715,11 +696,8 @@ class Builder:
             posts=recent_posts,
         )
 
-        output_path = os.path.join(
-            self.project_folder, CONFIG["output_folder"], "feed.atom"
-        )
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(feed_xml)
+        output_path = self.project_folder / CONFIG["output_folder"] / "feed.atom"
+        output_path.write_text(feed_xml, encoding="utf-8")
 
     def _build_tag_feed(self, tag_name, tag_posts):
         """Build feed for a specific tag."""
@@ -734,12 +712,15 @@ class Builder:
             posts=recent_posts,
         )
 
-        output_path = os.path.join(
-            self.project_folder, CONFIG["output_folder"], "tags", tag_name, "feed.atom"
+        output_path = (
+            self.project_folder
+            / CONFIG["output_folder"]
+            / "tags"
+            / tag_name
+            / "feed.atom"
         )
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(feed_xml)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(feed_xml, encoding="utf-8")
 
     def _generate_atom_feed(self, title, feed_url, site_url, subtitle, posts):
         """Generate Atom feed XML."""
@@ -785,53 +766,52 @@ class Builder:
 
     def copy_static_files(self):
         """Copy static files to output directory."""
-        static_src = os.path.join(self.project_folder, CONFIG["static_folder"])
-        static_dst = os.path.join(
-            self.project_folder, CONFIG["output_folder"], CONFIG["static_folder"]
+        static_src = self.project_folder / CONFIG["static_folder"]
+        static_dst = (
+            self.project_folder / CONFIG["output_folder"] / CONFIG["static_folder"]
         )
 
-        if not os.path.exists(static_src):
+        if not static_src.exists():
             return
 
-        os.makedirs(static_dst, exist_ok=True)
-        for root, dirs, files in os.walk(static_src):
-            for file in files:
-                src_file = os.path.join(root, file)
-                rel_path = os.path.relpath(src_file, static_src)
-                dst_file = os.path.join(static_dst, rel_path)
-
-                # Create destination directory if needed
-                os.makedirs(os.path.dirname(dst_file), exist_ok=True)
+        static_dst.mkdir(parents=True, exist_ok=True)
+        for src_file in static_src.rglob("*"):
+            if src_file.is_file():
+                rel_path = src_file.relative_to(static_src)
+                dst_file = static_dst / rel_path
+                dst_file.parent.mkdir(parents=True, exist_ok=True)
 
                 # Copy if destination doesn't exist or source is newer
-                if not os.path.exists(dst_file) or os.path.getmtime(
-                    src_file
-                ) > os.path.getmtime(dst_file):
+                if (
+                    not dst_file.exists()
+                    or src_file.stat().st_mtime > dst_file.stat().st_mtime
+                ):
                     shutil.copy2(src_file, dst_file)
                     print(f"Updated {rel_path}")
 
     def write_pygments_css(self):
         """Write Pygments stylesheet."""
-        css_path = os.path.join(
-            self.project_folder,
-            CONFIG["output_folder"],
-            CONFIG["static_folder"],
-            "_pygments.css",
+        css_path = (
+            self.project_folder
+            / CONFIG["output_folder"]
+            / CONFIG["static_folder"]
+            / "_pygments.css"
         )
-        os.makedirs(os.path.dirname(css_path), exist_ok=True)
-        with open(css_path, "w") as f:
-            f.write(html_formatter.get_style_defs())
+        css_path.parent.mkdir(parents=True, exist_ok=True)
+        css_path.write_text(html_formatter.get_style_defs())
 
     def build(self):
         """Build the site."""
         self.scan_content()
 
-        # Build individual posts and pages
         content_changed = False
         for post in self.posts + self.pages:
-            if not os.path.exists(post.output_path) or os.path.getmtime(
-                post.source_path
-            ) > os.path.getmtime(post.output_path):
+            output_path = Path(post.output_path)
+            source_path = Path(post.source_path)
+            if (
+                not output_path.exists()
+                or source_path.stat().st_mtime > output_path.stat().st_mtime
+            ):
                 self.build_post(post)
                 print(f"Rebuilt {post.source_path}")
                 content_changed = True
@@ -849,18 +829,16 @@ class Builder:
             print("Building feeds...")
             self.build_feeds()
 
-        # Copy static files
         self.copy_static_files()
 
-        # Write Pygments CSS
         self.write_pygments_css()
 
     def serve(self, host="0.0.0.0", port=5000):
         """Simple development server."""
-        output_dir = os.path.join(self.project_folder, CONFIG["output_folder"])
+        output_dir = self.project_folder / CONFIG["output_folder"]
 
         # Build if needed
-        if not os.path.exists(output_dir):
+        if not output_dir.exists():
             print("Building before serving...")
             self.build()
 
@@ -881,5 +859,5 @@ class Builder:
         # Serve from output directory
         print(f"Serving on http://{host}:{port}/")
         HTTPServer(
-            (host, port), lambda *args: Handler(*args, directory=output_dir)
+            (host, port), lambda *args: Handler(*args, directory=str(output_dir))
         ).serve_forever()
