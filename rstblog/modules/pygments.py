@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-    rstblog.modules.pygments
-    ~~~~~~~~~~~~~~~~~~~~~~~~
+rstblog.modules.pygments
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Adds support for pygments.
+Adds support for pygments.
 
-    :copyright: (c) 2010 by Armin Ronacher.
-    :license: BSD, see LICENSE for more details.
+:copyright: (c) 2010 by Armin Ronacher.
+:license: BSD, see LICENSE for more details.
 """
+
 from __future__ import absolute_import
-from rstblog.signals import before_file_processed, \
-     before_build_finished
+from rstblog.signals import before_file_processed, before_build_finished
 
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
@@ -40,25 +40,25 @@ class CodeBlock(Directive):
                 lexer = get_lexer_by_name(name)
         except ValueError:
             lexer = TextLexer()
-        code = u'\n'.join(self.content)
+        code = "\n".join(self.content)
         formatted = highlight(code, lexer, html_formatter)
-        return [nodes.raw('', formatted, format='html')]
+        return [nodes.raw("", formatted, format="html")]
 
 
 def inject_stylesheet(context, **kwargs):
-    context.add_stylesheet('_pygments.css')
+    context.add_stylesheet("_pygments.css")
 
 
 def write_stylesheet(builder, **kwargs):
-    with builder.open_static_file('_pygments.css', 'w') as f:
+    with builder.open_static_file("_pygments.css", "w") as f:
         f.write(html_formatter.get_style_defs())
 
 
 def setup(builder):
     global html_formatter
-    style = get_style_by_name(builder.config.root_get('modules.pygments.style'))
+    style = get_style_by_name(builder.config.root_get("modules.pygments.style"))
     html_formatter = HtmlFormatter(style=style)
-    directives.register_directive('code-block', CodeBlock)
-    directives.register_directive('sourcecode', CodeBlock)
+    directives.register_directive("code-block", CodeBlock)
+    directives.register_directive("sourcecode", CodeBlock)
     before_file_processed.connect(inject_stylesheet)
     before_build_finished.connect(write_stylesheet)

@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-    rstblog.builder
-    ~~~~~~~~~~~~~~~
+rstblog.builder
+~~~~~~~~~~~~~~~
 
-    The building components.
+The building components.
 
-    :copyright: (c) 2010 by Armin Ronacher.
-    :license: BSD, see LICENSE for more details.
+:copyright: (c) 2010 by Armin Ronacher.
+:license: BSD, see LICENSE for more details.
 """
+
 from __future__ import absolute_import
 from __future__ import print_function
 import re

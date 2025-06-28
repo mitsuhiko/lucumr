@@ -1,3 +1,5 @@
+.PHONY: all clean build serve format lint
+
 all: build upload
 
 clean:
@@ -8,3 +10,9 @@ build:
 
 serve:
 	cd blog && uv run run-rstblog serve
+
+format:
+	uv run ruff format
+
+lint:
+	uv run ruff check

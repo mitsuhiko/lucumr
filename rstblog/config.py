@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-    rstblog.config
-    ~~~~~~~~~~~~~~
+rstblog.config
+~~~~~~~~~~~~~~
 
-    Holds the configuration and can read it from another file.
+Holds the configuration and can read it from another file.
 
-    :copyright: (c) 2010 by Armin Ronacher.
-    :license: BSD, see LICENSE for more details.
+:copyright: (c) 2010 by Armin Ronacher.
+:license: BSD, see LICENSE for more details.
 """
+
 from __future__ import absolute_import
 import yaml
 import six
@@ -37,7 +38,7 @@ class Config(object):
 
     def list_entries(self, key):
         rv = {}
-        prefix = key + '.'
+        prefix = key + "."
         for layer in self.stack:
             for key, value in six.iteritems(layer):
                 if key.startswith(prefix):
@@ -57,7 +58,7 @@ class Config(object):
                     elif isinstance(result, dict):
                         result.update(rv)
                     else:
-                        raise ValueError('expected list or dict')
+                        raise ValueError("expected list or dict")
         return result
 
     def root_get(self, key, default=None):
@@ -70,13 +71,15 @@ class Config(object):
         layer = {}
         rv = Config()
         rv.stack = self.stack + [layer]
+
         def _walk(d, prefix):
             for key, value in six.iteritems(d):
                 if isinstance(value, dict):
-                    _walk(value, prefix + key + '.')
+                    _walk(value, prefix + key + ".")
                 else:
                     layer[prefix + key] = value
-        _walk(d, '')
+
+        _walk(d, "")
         return rv
 
     def add_from_file(self, fd):
@@ -87,7 +90,7 @@ class Config(object):
         if not d:
             return
         if not isinstance(d, dict):
-            raise ValueError('Configuration has to contain a dict')
+            raise ValueError("Configuration has to contain a dict")
         return self.add_from_dict(d)
 
     def pop(self):

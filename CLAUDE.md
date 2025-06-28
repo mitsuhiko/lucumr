@@ -21,6 +21,10 @@ make build    # Generate static site to blog/_build/
 make clean    # Remove build artifacts
 ```
 
+## Development Workflow Reminders
+
+- Remember to run `make format` after all changes
+
 ## Architecture
 
 ### Content Structure
