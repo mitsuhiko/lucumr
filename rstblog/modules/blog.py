@@ -9,9 +9,7 @@ The blog component.
 :license: BSD, see LICENSE for more details.
 """
 
-from __future__ import with_statement
 
-from __future__ import absolute_import
 from datetime import datetime, date, timezone
 from urllib.parse import urljoin
 

@@ -9,8 +9,6 @@ The building components.
 :license: BSD, see LICENSE for more details.
 """
 
-from __future__ import absolute_import
-from __future__ import print_function
 import re
 import os
 import posixpath

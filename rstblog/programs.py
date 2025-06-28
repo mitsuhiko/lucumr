@@ -9,8 +9,6 @@ Builtin build programs.
 :license: BSD, see LICENSE for more details.
 """
 
-from __future__ import with_statement
-from __future__ import absolute_import
 import os
 import yaml
 import shutil

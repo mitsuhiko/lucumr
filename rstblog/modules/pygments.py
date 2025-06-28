@@ -9,7 +9,6 @@ Adds support for pygments.
 :license: BSD, see LICENSE for more details.
 """
 
-from __future__ import absolute_import
 from rstblog.signals import before_file_processed, before_build_finished
 
 from docutils import nodes

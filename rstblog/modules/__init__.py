@@ -9,8 +9,6 @@ The module interface.
 :license: BSD, see LICENSE for more details.
 """
 
-from __future__ import absolute_import
-
 
 def add_module_path(folder):
     """Adds a new search path to the list of search paths."""

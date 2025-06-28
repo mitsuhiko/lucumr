@@ -9,7 +9,6 @@ Implements tagging.
 :license: BSD, see LICENSE for more details.
 """
 
-from __future__ import absolute_import
 from math import log
 from datetime import timezone
 from urllib.parse import urljoin

@@ -9,7 +9,6 @@ Blinker signals for the modules and other hooks.
 :license: BSD, see LICENSE for more details.
 """
 
-from __future__ import absolute_import
 from blinker import Namespace
 
 

@@ -9,9 +9,6 @@ The command line interface
 :license: BSD, see LICENSE for more details.
 """
 
-from __future__ import with_statement
-from __future__ import absolute_import
-from __future__ import print_function
 import sys
 import os
 from rstblog.config import Config
