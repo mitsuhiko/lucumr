@@ -15,7 +15,7 @@ import re
 import os
 import posixpath
 from fnmatch import fnmatch
-from six.moves.urllib.parse import urlparse
+from urllib.parse import urlparse
 
 from docutils.core import publish_parts
 
@@ -37,7 +37,6 @@ from rstblog.signals import (
 )
 from rstblog.modules import find_module
 from rstblog.programs import RSTProgram, CopyProgram
-import six
 
 
 OUTPUT_FOLDER = "_build"
@@ -302,7 +301,7 @@ class Builder(object):
 
     def guess_program(self, config, filename):
         mapping = config.list_entries("programs") or self.default_programs
-        for pattern, program_name in six.iteritems(mapping):
+        for pattern, program_name in mapping.items():
             if fnmatch(filename, pattern):
                 return program_name
         return "copy"

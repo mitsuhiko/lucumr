@@ -13,10 +13,11 @@ from __future__ import absolute_import
 from __future__ import print_function
 import os
 import sys
-import six.moves.urllib.request, six.moves.urllib.parse, six.moves.urllib.error
+import urllib.request
+import urllib.parse
+import urllib.error
 import posixpath
-from six.moves.BaseHTTPServer import HTTPServer
-from six.moves.SimpleHTTPServer import SimpleHTTPRequestHandler
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 
 class SimpleRequestHandler(SimpleHTTPRequestHandler):
@@ -28,7 +29,7 @@ class SimpleRequestHandler(SimpleHTTPRequestHandler):
 
     def translate_path(self, path):
         path = path.split("?", 1)[0].split("#", 1)[0]
-        path = posixpath.normpath(six.moves.urllib.parse.unquote(path))
+        path = posixpath.normpath(urllib.parse.unquote(path))
         words = path.split("/")
         words = [_f for _f in words if _f]
         path = self.server.builder.default_output_folder

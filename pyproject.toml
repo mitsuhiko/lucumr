@@ -19,7 +19,6 @@ dependencies = [
     "docutils",
     "Jinja2>=3.0",
     "Werkzeug>=2.0",
-    "six",
     "Pygments",
     "feedgen",
 ]

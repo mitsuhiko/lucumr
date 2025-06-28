@@ -13,8 +13,6 @@ from __future__ import absolute_import
 from math import ceil
 
 from markupsafe import Markup
-import six
-from six.moves import range
 
 
 class Pagination(object):
@@ -92,4 +90,4 @@ class Pagination(object):
         return self.builder.render_template("_pagination.html", {"pagination": self})
 
     def __html__(self):
-        return Markup(six.text_type(self))
+        return Markup(str(self))

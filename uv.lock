@@ -407,7 +407,6 @@ dependencies = [
     { name = "jinja2" },
     { name = "pygments" },
     { name = "pyyaml" },
-    { name = "six" },
     { name = "werkzeug", version = "3.0.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
     { name = "werkzeug", version = "3.1.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
 ]
@@ -421,7 +420,6 @@ requires-dist = [
     { name = "jinja2", specifier = ">=3.0" },
     { name = "pygments" },
     { name = "pyyaml" },
-    { name = "six" },
     { name = "werkzeug", specifier = ">=2.0" },
 ]
 

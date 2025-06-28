@@ -13,7 +13,7 @@ from __future__ import with_statement
 
 from __future__ import absolute_import
 from datetime import datetime, date, timezone
-from six.moves.urllib.parse import urljoin
+from urllib.parse import urljoin
 
 from jinja2 import pass_context
 
@@ -23,7 +23,6 @@ from feedgen.feed import FeedGenerator
 
 from rstblog.signals import after_file_published, before_build_finished
 from rstblog.utils import Pagination
-import six
 
 
 class MonthArchive(object):
@@ -50,7 +49,7 @@ class YearArchive(object):
         self.year = year
         self.months = [
             MonthArchive(builder, year, month, entries)
-            for month, entries in six.iteritems(months)
+            for month, entries in months.items()
         ]
         self.months.sort(key=lambda x: -int(x.month))
         self.count = sum(len(x.entries) for x in self.months)
@@ -88,7 +87,7 @@ def get_all_entries(builder):
     storage = builder.get_storage("blog")
     years = list(storage.items())
     for year, months in years:
-        for month, contexts in six.iteritems(months):
+        for month, contexts in months.items():
             result.extend(contexts)
     result.sort(key=lambda x: (x.pub_date, x.config.get("day-order", 0)), reverse=True)
     return result
@@ -168,7 +167,7 @@ def write_feed(builder):
         fe.id(urljoin(url, entry.slug))
         fe.title(entry.title or "Untitled")
         fe.link(href=urljoin(url, entry.slug))
-        fe.description(six.text_type(entry.render_contents()))
+        fe.description(str(entry.render_contents()))
         if entry.pub_date:
             # Ensure timezone awareness (assume UTC if naive)
             pub_date = entry.pub_date

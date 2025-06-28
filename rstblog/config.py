@@ -11,7 +11,6 @@ Holds the configuration and can read it from another file.
 
 from __future__ import absolute_import
 import yaml
-import six
 
 
 missing = object()
@@ -40,7 +39,7 @@ class Config(object):
         rv = {}
         prefix = key + "."
         for layer in self.stack:
-            for key, value in six.iteritems(layer):
+            for key, value in layer.items():
                 if key.startswith(prefix):
                     rv[key] = value
         return rv
@@ -73,7 +72,7 @@ class Config(object):
         rv.stack = self.stack + [layer]
 
         def _walk(d, prefix):
-            for key, value in six.iteritems(d):
+            for key, value in d.items():
                 if isinstance(value, dict):
                     _walk(value, prefix + key + ".")
                 else:

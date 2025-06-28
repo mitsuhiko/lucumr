@@ -12,14 +12,13 @@ Implements tagging.
 from __future__ import absolute_import
 from math import log
 from datetime import timezone
-from six.moves.urllib.parse import urljoin
+from urllib.parse import urljoin
 
 from jinja2 import pass_context
 
 from feedgen.feed import FeedGenerator
 
 from rstblog.signals import after_file_published, before_build_finished
-import six
 
 
 class Tag(object):
@@ -43,7 +42,7 @@ def get_tag_summary(builder):
     storage = builder.get_storage("tags")
     by_tag = storage.get("by_tag", {})
     result = []
-    for tag, tagged in six.iteritems(by_tag):
+    for tag, tagged in by_tag.items():
         result.append(Tag(tag, len(tagged)))
     result.sort(key=lambda x: x.count)
     return result
@@ -98,7 +97,7 @@ def write_tag_feed(builder, tag):
         fe.id(urljoin(url, entry.slug))
         fe.title(entry.title or "Untitled")
         fe.link(href=urljoin(url, entry.slug))
-        fe.description(six.text_type(entry.render_contents()))
+        fe.description(str(entry.render_contents()))
         if entry.pub_date:
             # Ensure timezone awareness (assume UTC if naive)
             pub_date = entry.pub_date
