@@ -1,14 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-rstblog.builder
-~~~~~~~~~~~~~~~
-
-The building components.
-
-:copyright: (c) 2010 by Armin Ronacher.
-:license: BSD, see LICENSE for more details.
-"""
-
 import re
 import os
 import posixpath

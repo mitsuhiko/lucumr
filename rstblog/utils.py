@@ -1,14 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-rstblog.utils
-~~~~~~~~~~~~~
-
-Various utilities.
-
-:copyright: (c) 2010 by Armin Ronacher.
-:license: BSD, see LICENSE for more details.
-"""
-
 from math import ceil
 
 from markupsafe import Markup

@@ -1,14 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-rstblog.server
-~~~~~~~~~~~~~~
-
-Development server that rebuilds automatically
-
-:copyright: (c) 2010 by Armin Ronacher.
-:license: BSD, see LICENSE for more details.
-"""
-
 import os
 import sys
 import urllib.request
