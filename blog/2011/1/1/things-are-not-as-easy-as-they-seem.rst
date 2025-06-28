@@ -4,6 +4,9 @@ summary: |
   Exploration into a human problem: the problem of simplifying complex
   matters.
 
+.. role:: raw-html(raw)
+   :format: html
+
 Things are not as easy as they seem
 ===================================
 
@@ -69,26 +72,44 @@ Why is that the case?  That's a surprisingly simple proof.  Remember how
 numbers are represented in a system of a specific base.  In senary a
 number is of the following form:
 
-.. math::
+.. raw:: html
 
-    x = a_{0} \cdot 6^{0} + a_{1} \cdot 6^{1} + a_{2} \cdot 6^{2} + ...
-    + a_{n} \cdot 6^{n}
+    <math>
+      <mi>x</mi> <mo>=</mo> 
+      <msub><mi>a</mi><mn>0</mn></msub> <mo>⋅</mo> <msup><mn>6</mn><mn>0</mn></msup> <mo>+</mo>
+      <msub><mi>a</mi><mn>1</mn></msub> <mo>⋅</mo> <msup><mn>6</mn><mn>1</mn></msup> <mo>+</mo>
+      <msub><mi>a</mi><mn>2</mn></msub> <mo>⋅</mo> <msup><mn>6</mn><mn>2</mn></msup> <mo>+</mo>
+      <mo>⋯</mo> <mo>+</mo>
+      <msub><mi>a</mi><mi>n</mi></msub> <mo>⋅</mo> <msup><mn>6</mn><mi>n</mi></msup>
+    </math>
 
 With that it is easy to factorize this expression:
 
-.. math::
+.. raw:: html
 
-    x = a_{0} + 6 \cdot (a_{1} + a_{2} \cdot 6 + a_{3} \cdot 6^{2} + ...)
+    <math>
+      <mi>x</mi> <mo>=</mo> 
+      <msub><mi>a</mi><mn>0</mn></msub> <mo>+</mo> <mn>6</mn> <mo>⋅</mo>
+      <mo>(</mo>
+      <msub><mi>a</mi><mn>1</mn></msub> <mo>+</mo> 
+      <msub><mi>a</mi><mn>2</mn></msub> <mo>⋅</mo> <mn>6</mn> <mo>+</mo>
+      <msub><mi>a</mi><mn>3</mn></msub> <mo>⋅</mo> <msup><mn>6</mn><mn>2</mn></msup> <mo>+</mo>
+      <mo>⋯</mo>
+      <mo>)</mo>
+    </math>
 
 And because what we have in the parentheses there will always be a
 natural number we can simplify it to this (*k* is an integer):
 
-.. math::
+.. raw:: html
 
-    x = a_{0} + 6k
+    <math>
+      <mi>x</mi> <mo>=</mo> 
+      <msub><mi>a</mi><mn>0</mn></msub> <mo>+</mo> <mn>6</mn><mi>k</mi>
+    </math>
 
-And because of that if :math:`a_{0}` is divisible by 2 or 3, then
-:math:`a_{0} + 6k` is divisble by 2 or 3 (because 6 is).  Now obviously
+And because of that if :raw-html:`<math><msub><mi>a</mi><mn>0</mn></msub></math>` is divisible by 2 or 3, then
+:raw-html:`<math><msub><mi>a</mi><mn>0</mn></msub> <mo>+</mo> <mn>6</mn><mi>k</mi></math>` is divisble by 2 or 3 (because 6 is).  Now obviously
 that does not work for 2 and 3 and if you want to plot them on a ring of
 24 numbers and then another ring of another 24 rings and so on.
 
