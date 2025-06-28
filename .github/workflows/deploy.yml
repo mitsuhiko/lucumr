@@ -34,8 +34,7 @@ jobs:
         run: uv sync
 
       - name: Build blog
-        run: uv run build-blog
-        working-directory: ./blog
+        run: make build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
