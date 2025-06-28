@@ -21,6 +21,9 @@ from pygments.formatters import HtmlFormatter
 from pygments.styles import get_style_by_name
 from jinja2 import Environment, FileSystemLoader
 from markupsafe import Markup
+import marko
+from marko.ext.gfm import GFM
+from marko.html_renderer import HTMLRenderer
 
 from generator.pagination import Pagination
 
@@ -38,8 +41,33 @@ CONFIG = {
     "pygments_style": "tango",
 }
 
-# Global Pygments formatter
+# Global Pygments formatter and Markdown parser
 html_formatter = None
+markdown_parser = None
+
+
+class PygmentsRenderer(HTMLRenderer):
+    """Custom Marko renderer that uses Pygments for syntax highlighting."""
+
+    def render_fenced_code(self, element):
+        """Render fenced code blocks with Pygments highlighting."""
+        code = element.children[0].children if element.children else ""
+        if isinstance(code, str):
+            language = getattr(element, "lang", None) or ""
+
+            try:
+                if language == "phpinline":
+                    lexer = PhpLexer(startinline=True)
+                elif language:
+                    lexer = get_lexer_by_name(language)
+                else:
+                    lexer = TextLexer()
+            except ValueError:
+                lexer = TextLexer()
+
+            highlighted = highlight(code, lexer, html_formatter)
+            return highlighted
+        return super().render_fenced_code(element)
 
 
 class CodeBlock(Directive):
@@ -75,6 +103,9 @@ class BlogPost:
         self.pub_date = None
         self.tags = []
         self.public = True
+
+        # Determine file type
+        self.file_type = "markdown" if source_path.endswith(".md") else "rst"
 
         # Parse content
         self._parse_content(content)
@@ -116,14 +147,20 @@ class BlogPost:
         if "title" in frontmatter:
             self.title = frontmatter["title"]
 
-        # Parse RST content for title if not in frontmatter
-        rst_content = "\n".join(lines[content_start:])
+        # Parse content for title if not in frontmatter
+        self.content = "\n".join(lines[content_start:])
         if "title" not in frontmatter:
-            rst_parts = publish_parts(rst_content, writer_name="html4css1")
-            if rst_parts["title"]:
-                self.title = Markup(rst_parts["title"]).striptags()
-
-        self.rst_content = rst_content
+            if self.file_type == "rst":
+                rst_parts = publish_parts(self.content, writer_name="html4css1")
+                if rst_parts["title"]:
+                    self.title = Markup(rst_parts["title"]).striptags()
+            elif self.file_type == "markdown":
+                # Extract title from first heading in Markdown
+                for line in self.content.split("\n"):
+                    line = line.strip()
+                    if line.startswith("# "):
+                        self.title = line[2:].strip()
+                        break
 
     def _extract_date_from_path(self):
         """Extract publication date from file path."""
@@ -169,7 +206,7 @@ class BlogPost:
             "initial_header_level": 2,
         }
         parts = publish_parts(
-            self.rst_content, writer_name="html4css1", settings_overrides=settings
+            self.content, writer_name="html4css1", settings_overrides=settings
         )
         return {
             "title": Markup(parts["title"]).striptags()
@@ -179,12 +216,29 @@ class BlogPost:
             "fragment": Markup(parts["fragment"]),
         }
 
+    def render_markdown(self):
+        """Render Markdown content to HTML."""
+        html_content = markdown_parser(self.content)
+        return {
+            "title": self.title,
+            "html_title": Markup(f"<h1>{self.title}</h1>") if self.title else "",
+            "fragment": Markup(html_content),
+        }
+
+    def render_content(self):
+        """Render content based on file type."""
+        if self.file_type == "markdown":
+            return self.render_markdown()
+        else:
+            return self.render_rst()
+
     def render_summary(self):
         """Render summary as HTML."""
         if not self.summary:
             return ""
-        parts = publish_parts(self.summary, writer_name="html4css1")
-        return Markup(parts["fragment"])
+        # Always render summary as Markdown for consistency
+        html_content = markdown_parser(self.summary)
+        return Markup(html_content)
 
 
 class Builder:
@@ -215,6 +269,10 @@ class Builder:
         html_formatter = HtmlFormatter(style=style)
         directives.register_directive("code-block", CodeBlock)
         directives.register_directive("sourcecode", CodeBlock)
+
+        # Setup Markdown parser with GitHub flavor and Pygments renderer
+        global markdown_parser
+        markdown_parser = marko.Markdown(extensions=[GFM], renderer=PygmentsRenderer)
 
     def _link_to(self, endpoint, **kwargs):
         """Simple URL building."""
@@ -308,7 +366,9 @@ class Builder:
             dirs[:] = [d for d in dirs if not self._should_ignore(d)]
 
             for filename in files:
-                if self._should_ignore(filename) or not filename.endswith(".rst"):
+                if self._should_ignore(filename) or not (
+                    filename.endswith(".rst") or filename.endswith(".md")
+                ):
                     continue
 
                 filepath = os.path.join(root, filename)
@@ -340,10 +400,15 @@ class Builder:
         """Build a single post/page."""
         os.makedirs(os.path.dirname(post.output_path), exist_ok=True)
 
-        rst_data = post.render_rst()
-        context = {"rst": rst_data, "ctx": post, "slug": post.slug}
+        content_data = post.render_content()
+        context = {"content": content_data, "ctx": post, "slug": post.slug}
 
-        html = self.jinja_env.get_template("rst_display.html").render(context)
+        template_name = (
+            "markdown_display.html"
+            if post.file_type == "markdown"
+            else "rst_display.html"
+        )
+        html = self.jinja_env.get_template(template_name).render(context)
 
         with open(post.output_path, "w", encoding="utf-8") as f:
             f.write(html)
@@ -543,7 +608,7 @@ class Builder:
 
             post_url = site_url.rstrip("/") + post.slug
             pub_date = post.pub_date.replace(tzinfo=timezone.utc).isoformat()
-            content = str(post.render_rst()["fragment"])
+            content = str(post.render_content()["fragment"])
 
             entry_xml = f'''  <entry>
     <id>{post_url}</id>
@@ -684,7 +749,9 @@ class Builder:
         for root, dirs, files in os.walk(self.project_folder):
             dirs[:] = [d for d in dirs if not self._should_ignore(d)]
             for filename in files:
-                if filename.endswith(".rst") and not self._should_ignore(filename):
+                if (
+                    filename.endswith(".rst") or filename.endswith(".md")
+                ) and not self._should_ignore(filename):
                     filepath = os.path.join(root, filename)
                     if os.path.getmtime(filepath) > build_time:
                         return True

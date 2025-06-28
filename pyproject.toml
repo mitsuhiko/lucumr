@@ -16,6 +16,7 @@ dependencies = [
     "docutils",
     "Jinja2>=3.0",
     "Pygments",
+    "marko",
 ]
 
 [project.scripts]
