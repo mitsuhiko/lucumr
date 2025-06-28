@@ -3,6 +3,7 @@
 Simplified RST blog builder - no unnecessary abstractions.
 """
 
+import os
 import re
 import shutil
 import json
@@ -11,7 +12,6 @@ from datetime import datetime, timezone
 from collections import defaultdict
 from fnmatch import fnmatch
 from math import log, ceil
-from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
 from docutils.core import publish_parts
@@ -299,7 +299,7 @@ class ContentCache:
     """Simplified content cache with reduced complexity."""
 
     def __init__(self, project_folder):
-        self.project_folder = Path(project_folder)
+        self.project_folder = project_folder
         self.cache_file = (
             self.project_folder / ".generator_cache" / "content_cache.json"
         )
@@ -354,8 +354,11 @@ class ContentCache:
 class Builder:
     """Simplified blog builder without unnecessary abstractions."""
 
-    def __init__(self, project_folder):
-        self.project_folder = Path(project_folder).resolve()
+    def __init__(self, project_folder=None):
+        if project_folder is None:
+            project_folder = os.getcwd()
+        project_folder = Path(project_folder).resolve()
+        self.project_folder = project_folder
         self.posts = []
         self.pages = []
         self.tags = defaultdict(list)
@@ -830,7 +833,6 @@ class Builder:
             self.build_feeds()
 
         self.copy_static_files()
-
         self.write_pygments_css()
 
     def serve(self, host="0.0.0.0", port=5000):
