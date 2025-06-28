@@ -1,5 +1,6 @@
 import re
 import os
+import sys
 import posixpath
 from fnmatch import fnmatch
 from urllib.parse import urlparse
@@ -13,6 +14,7 @@ from babel import Locale, dates
 
 from werkzeug.routing import Map, Rule
 from urllib.parse import unquote as url_unquote
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 # Inline functionality - no more signals or modules
 from datetime import datetime, date, timezone
@@ -656,13 +658,36 @@ class Builder(object):
         self._before_build_finished()
 
     def debug_serve(self, host="0.0.0.0", port=5000):
-        from rstblog.server import Server
+        # Ensure build directory exists by building first
+        if (
+            not os.path.exists(self.default_output_folder)
+            or self.anything_needs_build()
+        ):
+            print("Building before serving...", file=sys.stderr)
+            self.run()
 
-        print("Serving on http://%s:%d/" % (host, port))
+        builder = self
+
+        class Handler(SimpleHTTPRequestHandler):
+            def do_GET(self):
+                if builder.anything_needs_build():
+                    print("Detected change, building", file=sys.stderr)
+                    builder.run()
+                super().do_GET()
+
+            def log_message(self, format, *args):
+                pass  # Disable logging
+
+        # Change to build directory and serve
+        original_cwd = os.getcwd()
         try:
-            Server(host, port, self).serve_forever()
+            os.chdir(self.default_output_folder)
+            print("Serving on http://%s:%d/" % (host, port))
+            HTTPServer((host, port), Handler).serve_forever()
         except KeyboardInterrupt:
             pass
+        finally:
+            os.chdir(original_cwd)
 
     def _before_build_finished(self):
         """Inline functionality for before_build_finished signal"""
