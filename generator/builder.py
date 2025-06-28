@@ -13,6 +13,7 @@ from collections import defaultdict
 from fnmatch import fnmatch
 from math import log, ceil
 from http.server import HTTPServer, SimpleHTTPRequestHandler
+from pathlib import Path
 
 from docutils.core import publish_parts
 from docutils import nodes
@@ -274,8 +275,8 @@ class BlogPost:
         }
 
     @classmethod
-    def from_metadata(cls, source_path, metadata, builder):
-        """Create BlogPost from cached metadata."""
+    def from_metadata(cls, source_path, metadata, builder, content):
+        """Create BlogPost from cached metadata, re-parsing content."""
         post = cls.__new__(cls)
         post.source_path = source_path
         post.builder = builder
@@ -289,55 +290,37 @@ class BlogPost:
         post.tags = metadata["tags"]
         post.public = metadata["public"]
         post.file_type = metadata["file_type"]
-        post.content = metadata["content"]
+
+        # Re-parse content to extract body (skip header)
+        post._parse_content(content)
         return post
 
 
 class ContentCache:
-    """Manages caching of parsed content metadata to avoid re-parsing unchanged files."""
+    """Simplified content cache with reduced complexity."""
 
     def __init__(self, project_folder):
-        self.project_folder = project_folder
-        self.cache_dir = os.path.join(project_folder, ".generator_cache")
-        self.cache_file = os.path.join(self.cache_dir, "content_cache.json")
-
-        # Ensure cache directory exists
-        os.makedirs(self.cache_dir, exist_ok=True)
-
-        # Load existing cache
+        self.project_folder = Path(project_folder)
+        self.cache_file = (
+            self.project_folder / ".generator_cache" / "content_cache.json"
+        )
+        self.cache_file.parent.mkdir(exist_ok=True)
         self.cache = self._load_cache()
 
     def _load_cache(self):
         """Load cache from disk."""
         try:
-            if os.path.exists(self.cache_file):
-                with open(self.cache_file, "r", encoding="utf-8") as f:
-                    return json.load(f)
-        except (json.JSONDecodeError, IOError):
-            pass
-        return {}
-
-    def _save_cache(self):
-        """Save cache to disk."""
-        try:
-            with open(self.cache_file, "w", encoding="utf-8") as f:
-                json.dump(self.cache, f, indent=2, default=str)
-        except IOError as e:
-            print(f"Warning: Could not save cache: {e}")
-
-    def _get_content_hash(self, content):
-        """Get SHA-256 hash of content."""
-        return hashlib.sha256(content.encode("utf-8")).hexdigest()
-
-    def should_parse_file(self, filepath, content):
-        """Check if file needs to be parsed based on content hash."""
-        content_hash = self._get_content_hash(content)
-        cached_entry = self.cache.get(filepath, {})
-        return cached_entry.get("content_hash") != content_hash
+            return (
+                json.loads(self.cache_file.read_text())
+                if self.cache_file.exists()
+                else {}
+            )
+        except (json.JSONDecodeError, OSError):
+            return {}
 
     def get_cached_metadata(self, filepath, content):
-        """Get cached metadata if content hasn't changed."""
-        content_hash = self._get_content_hash(content)
+        """Get cached metadata if content unchanged, None if needs parsing."""
+        content_hash = hashlib.sha256(content.encode()).hexdigest()
         cached_entry = self.cache.get(filepath, {})
 
         if cached_entry.get("content_hash") == content_hash:
@@ -345,32 +328,28 @@ class ContentCache:
         return None
 
     def cache_metadata(self, filepath, content, metadata):
-        """Cache parsed metadata for a file."""
-        content_hash = self._get_content_hash(content)
-
+        """Cache parsed metadata without storing content."""
+        content_hash = hashlib.sha256(content.encode()).hexdigest()
+        # Don't store content in cache - we'll re-parse it when loading
+        clean_metadata = {k: v for k, v in metadata.items() if k != "content"}
         self.cache[filepath] = {
             "content_hash": content_hash,
-            "metadata": metadata,
-            "cached_at": datetime.now().isoformat(),
+            "metadata": clean_metadata,
         }
-
-    def remove_file(self, filepath):
-        """Remove file from cache (when deleted)."""
-        self.cache.pop(filepath, None)
 
     def cleanup_deleted_files(self, existing_files):
         """Remove cache entries for files that no longer exist."""
-        cached_files = set(self.cache.keys())
-        deleted_files = cached_files - existing_files
-
-        for filepath in deleted_files:
-            self.remove_file(filepath)
-
-        return deleted_files
+        deleted = set(self.cache.keys()) - existing_files
+        for filepath in deleted:
+            self.cache.pop(filepath, None)
+        return deleted
 
     def save(self):
         """Save cache to disk."""
-        self._save_cache()
+        try:
+            self.cache_file.write_text(json.dumps(self.cache, indent=2, default=str))
+        except OSError as e:
+            print(f"Warning: Could not save cache: {e}")
 
 
 class Builder:
@@ -526,8 +505,10 @@ class Builder:
                     )
 
                     if cached_metadata:
-                        # Use cached metadata to create BlogPost
-                        post = BlogPost.from_metadata(rel_path, cached_metadata, self)
+                        # Use cached metadata but re-parse content
+                        post = BlogPost.from_metadata(
+                            rel_path, cached_metadata, self, content
+                        )
                     else:
                         # Parse file and cache the metadata
                         post = BlogPost(rel_path, content, self)
