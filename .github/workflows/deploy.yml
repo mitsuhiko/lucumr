@@ -2,9 +2,9 @@ name: Build and Deploy Blog
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -45,7 +45,7 @@ jobs:
           path: ./blog/_build
 
   deploy:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
