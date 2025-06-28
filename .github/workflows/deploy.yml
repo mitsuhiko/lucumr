@@ -47,6 +47,9 @@ jobs:
       - name: Copy 404 page for GitHub Pages
         run: cp blog/_build/404/index.html blog/_build/404.html
 
+      - name: Copy CNAME file
+        run: cp blog/CNAME blog/_build/CNAME
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
