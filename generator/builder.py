@@ -44,15 +44,10 @@ CONFIG = {
         "README",
         "*.conf",
     ),
-    "template_path": "../templates",
     "static_folder": "static",
     "output_folder": "_build",
     "pygments_style": "tango",
 }
-
-# Global Pygments formatter and Markdown parser
-html_formatter = None
-markdown_parser = None
 
 
 class PygmentsRenderer(HTMLRenderer):
@@ -99,6 +94,16 @@ class CodeBlock(Directive):
         code = "\n".join(self.content)
         formatted = highlight(code, lexer, html_formatter)
         return [nodes.raw("", formatted, format="html")]
+
+
+# Initialize global Pygments formatter and Markdown parser
+directives.register_directive("code-block", CodeBlock)
+directives.register_directive("sourcecode", CodeBlock)
+
+style = get_style_by_name(CONFIG["pygments_style"])
+html_formatter = HtmlFormatter(style=style)
+
+markdown_parser = marko.Markdown(extensions=[GFM], renderer=PygmentsRenderer)
 
 
 class BlogPost:
@@ -366,8 +371,8 @@ class Builder:
         # Initialize content cache
         self.content_cache = ContentCache(project_folder)
 
-        # Setup Jinja2
-        template_path = self.project_folder / CONFIG["template_path"]
+        # Setup Jinja2 with hardcoded template path
+        template_path = Path(__file__).parent / "templates"
         self.jinja_env = Environment(
             loader=FileSystemLoader([str(template_path)]), autoescape=True
         )
@@ -378,17 +383,6 @@ class Builder:
             get_recent_blog_entries=self._get_recent_posts,
             get_tags=self._get_tags,
         )
-
-        # Setup Pygments
-        global html_formatter
-        style = get_style_by_name(CONFIG["pygments_style"])
-        html_formatter = HtmlFormatter(style=style)
-        directives.register_directive("code-block", CodeBlock)
-        directives.register_directive("sourcecode", CodeBlock)
-
-        # Setup Markdown parser with GitHub flavor and Pygments renderer
-        global markdown_parser
-        markdown_parser = marko.Markdown(extensions=[GFM], renderer=PygmentsRenderer)
 
     def _link_to(self, endpoint, **kwargs):
         """Simple URL building."""
@@ -834,32 +828,3 @@ class Builder:
 
         self.copy_static_files()
         self.write_pygments_css()
-
-    def serve(self, host="0.0.0.0", port=5000):
-        """Simple development server."""
-        output_dir = self.project_folder / CONFIG["output_folder"]
-
-        # Build if needed
-        if not output_dir.exists():
-            print("Building before serving...")
-            self.build()
-
-        builder = self
-
-        class Handler(SimpleHTTPRequestHandler):
-            def do_GET(self):
-                builder.build()
-                try:
-                    super().do_GET()
-                except (BrokenPipeError, ConnectionResetError):
-                    # Client disconnected, ignore silently
-                    pass
-
-            def log_message(self, format, *args):
-                pass  # Disable logging
-
-        # Serve from output directory
-        print(f"Serving on http://{host}:{port}/")
-        HTTPServer(
-            (host, port), lambda *args: Handler(*args, directory=str(output_dir))
-        ).serve_forever()
