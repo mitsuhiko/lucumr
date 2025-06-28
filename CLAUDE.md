@@ -28,11 +28,10 @@ make clean    # Remove build artifacts
 ## Architecture
 
 ### Content Structure
-- **Main content**: `blog/` directory contains all posts and site configuration
+- **Main content**: `blog/` directory contains all posts
 - **Blog posts**: Organized as `blog/YYYY/MM/DD/post-name.rst` in reStructuredText format
 - **Static assets**: `blog/static/` contains CSS, fonts, images, and avatars
-- **Templates**: `blog/_templates/` contains Jinja2 HTML templates
-- **Configuration**: `blog/config.yml` defines generator modules and site metadata
+- **Templates**: `templates` contains Jinja2 HTML templates
 
 ### Post Format
 Blog posts are written in reStructuredText with frontmatter:
