@@ -6,6 +6,8 @@ Simplified RST blog builder - no unnecessary abstractions.
 import os
 import re
 import shutil
+import json
+import hashlib
 from datetime import datetime, timezone
 from collections import defaultdict
 from fnmatch import fnmatch
@@ -34,7 +36,14 @@ CONFIG = {
     "author": "Armin Ronacher",
     "subtitle": "Armin Ronacher's personal blog about programming, games and random thoughts that come to his mind.",
     "posts_per_page": 10,
-    "ignore_patterns": (".*", "_*", "config.yml", "Makefile", "README", "*.conf"),
+    "ignore_patterns": (
+        ".*",
+        "_*",
+        "config.yml",
+        "Makefile",
+        "README",
+        "*.conf",
+    ),
     "template_path": "../templates",
     "static_folder": "static",
     "output_folder": "_build",
@@ -252,6 +261,117 @@ class BlogPost:
         html_content = markdown_parser(self.summary)
         return Markup(html_content)
 
+    def to_metadata(self):
+        """Extract metadata for caching (without complex objects)."""
+        return {
+            "title": self.title,
+            "summary": self.summary,
+            "pub_date": self.pub_date.isoformat() if self.pub_date else None,
+            "tags": self.tags,
+            "public": self.public,
+            "file_type": self.file_type,
+            "content": self.content,
+        }
+
+    @classmethod
+    def from_metadata(cls, source_path, metadata, builder):
+        """Create BlogPost from cached metadata."""
+        post = cls.__new__(cls)
+        post.source_path = source_path
+        post.builder = builder
+        post.title = metadata["title"]
+        post.summary = metadata["summary"]
+        post.pub_date = (
+            datetime.fromisoformat(metadata["pub_date"])
+            if metadata["pub_date"]
+            else None
+        )
+        post.tags = metadata["tags"]
+        post.public = metadata["public"]
+        post.file_type = metadata["file_type"]
+        post.content = metadata["content"]
+        return post
+
+
+class ContentCache:
+    """Manages caching of parsed content metadata to avoid re-parsing unchanged files."""
+
+    def __init__(self, project_folder):
+        self.project_folder = project_folder
+        self.cache_dir = os.path.join(project_folder, ".generator_cache")
+        self.cache_file = os.path.join(self.cache_dir, "content_cache.json")
+
+        # Ensure cache directory exists
+        os.makedirs(self.cache_dir, exist_ok=True)
+
+        # Load existing cache
+        self.cache = self._load_cache()
+
+    def _load_cache(self):
+        """Load cache from disk."""
+        try:
+            if os.path.exists(self.cache_file):
+                with open(self.cache_file, "r", encoding="utf-8") as f:
+                    return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            pass
+        return {}
+
+    def _save_cache(self):
+        """Save cache to disk."""
+        try:
+            with open(self.cache_file, "w", encoding="utf-8") as f:
+                json.dump(self.cache, f, indent=2, default=str)
+        except IOError as e:
+            print(f"Warning: Could not save cache: {e}")
+
+    def _get_content_hash(self, content):
+        """Get SHA-256 hash of content."""
+        return hashlib.sha256(content.encode("utf-8")).hexdigest()
+
+    def should_parse_file(self, filepath, content):
+        """Check if file needs to be parsed based on content hash."""
+        content_hash = self._get_content_hash(content)
+        cached_entry = self.cache.get(filepath, {})
+        return cached_entry.get("content_hash") != content_hash
+
+    def get_cached_metadata(self, filepath, content):
+        """Get cached metadata if content hasn't changed."""
+        content_hash = self._get_content_hash(content)
+        cached_entry = self.cache.get(filepath, {})
+
+        if cached_entry.get("content_hash") == content_hash:
+            return cached_entry.get("metadata")
+        return None
+
+    def cache_metadata(self, filepath, content, metadata):
+        """Cache parsed metadata for a file."""
+        content_hash = self._get_content_hash(content)
+
+        self.cache[filepath] = {
+            "content_hash": content_hash,
+            "metadata": metadata,
+            "cached_at": datetime.now().isoformat(),
+        }
+
+    def remove_file(self, filepath):
+        """Remove file from cache (when deleted)."""
+        self.cache.pop(filepath, None)
+
+    def cleanup_deleted_files(self, existing_files):
+        """Remove cache entries for files that no longer exist."""
+        cached_files = set(self.cache.keys())
+        deleted_files = cached_files - existing_files
+
+        for filepath in deleted_files:
+            self.remove_file(filepath)
+
+        return deleted_files
+
+    def save(self):
+        """Save cache to disk."""
+        self._save_cache()
+
 
 class Builder:
     """Simplified blog builder without unnecessary abstractions."""
@@ -261,6 +381,9 @@ class Builder:
         self.posts = []
         self.pages = []
         self.tags = defaultdict(list)
+
+        # Initialize content cache
+        self.content_cache = ContentCache(project_folder)
 
         # Setup Jinja2
         template_path = os.path.join(self.project_folder, CONFIG["template_path"])
@@ -368,11 +491,16 @@ class Builder:
         return False
 
     def scan_content(self):
-        """Scan for content files."""
+        """Scan for content files with caching for unchanged files."""
+        # Track existing files for deletion detection
+        existing_files = set()
+
+        # Reset collections
         self.posts = []
         self.pages = []
         self.tags = defaultdict(list)
 
+        # Rebuild from cache and parse new/modified files
         for root, dirs, files in os.walk(self.project_folder):
             # Filter directories
             dirs[:] = [d for d in dirs if not self._should_ignore(d)]
@@ -385,14 +513,29 @@ class Builder:
 
                 filepath = os.path.join(root, filename)
                 rel_path = os.path.relpath(filepath, self.project_folder)
+                existing_files.add(rel_path)
 
-                # Read and parse file
                 try:
+                    # Read file content
                     with open(filepath, "r", encoding="utf-8") as f:
                         content = f.read()
 
-                    post = BlogPost(rel_path, content, self)
+                    # Check if we can use cached metadata
+                    cached_metadata = self.content_cache.get_cached_metadata(
+                        rel_path, content
+                    )
 
+                    if cached_metadata:
+                        # Use cached metadata to create BlogPost
+                        post = BlogPost.from_metadata(rel_path, cached_metadata, self)
+                    else:
+                        # Parse file and cache the metadata
+                        post = BlogPost(rel_path, content, self)
+                        self.content_cache.cache_metadata(
+                            rel_path, content, post.to_metadata()
+                        )
+
+                    # Add to collections if public
                     if post.public:
                         if post.pub_date:
                             self.posts.append(post)
@@ -405,8 +548,16 @@ class Builder:
                 except Exception as e:
                     print(f"Error processing {rel_path}: {e}")
 
+        # Clean up cache for deleted files
+        deleted_files = self.content_cache.cleanup_deleted_files(existing_files)
+        if deleted_files:
+            print(f"Removed {len(deleted_files)} deleted files from cache")
+
         # Sort posts by date
         self.posts.sort(key=lambda x: x.pub_date, reverse=True)
+
+        # Save cache
+        self.content_cache.save()
 
     def build_post(self, post):
         """Build a single post/page."""
