@@ -176,7 +176,7 @@ class BlogPost:
         return Markup(parts["fragment"])
 
 
-class SimpleBlogBuilder:
+class Builder:
     """Simplified blog builder without unnecessary abstractions."""
 
     def __init__(self, project_folder):
@@ -678,7 +678,3 @@ class SimpleBlogBuilder:
                     if os.path.getmtime(filepath) > build_time:
                         return True
         return False
-
-
-# Keep original class name for compatibility
-Builder = SimpleBlogBuilder
