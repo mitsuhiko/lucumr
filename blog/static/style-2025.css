@@ -90,6 +90,8 @@ dt                              { margin: 25px 0 16px 0; padding: 0; }
 dd                              { margin: 16px 0 25px 40px; padding: 0; }
 ul ol, ol ul, ul ul, ol ol      { margin: 10px 0; padding: 0 0 0 40px; }
 li                              { padding: 0; }
+li p                            { margin: 0; padding: 0; }
+li p + p                        { margin-top: 15px; }
 h1 + p.date                     { margin-top: -25px; font-style: italic; }
 blockquote                      { font-style: italic; }
 

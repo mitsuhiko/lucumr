@@ -1,6 +1,0 @@
-public: yes
-
-Page Not Found
-==============
-
-The requested page does not exist :-(

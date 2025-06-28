@@ -30,7 +30,7 @@ from generator.pagination import Pagination
 # Configuration - all hardcoded values in one place
 CONFIG = {
     "site_title": "Armin Ronacher's Thoughts and Writings",
-    "site_url": "http://lucumr.pocoo.org/",
+    "site_url": "https://lucumr.pocoo.org/",
     "author": "Armin Ronacher",
     "subtitle": "Armin Ronacher's personal blog about programming, games and random thoughts that come to his mind.",
     "posts_per_page": 10,
@@ -218,7 +218,19 @@ class BlogPost:
 
     def render_markdown(self):
         """Render Markdown content to HTML."""
-        html_content = markdown_parser(self.content)
+        # Remove the first heading from content since we render it separately
+        content_lines = self.content.split("\n")
+        filtered_lines = []
+        found_first_heading = False
+
+        for line in content_lines:
+            if line.strip().startswith("# ") and not found_first_heading:
+                found_first_heading = True
+                continue
+            filtered_lines.append(line)
+
+        filtered_content = "\n".join(filtered_lines)
+        html_content = markdown_parser(filtered_content)
         return {
             "title": self.title,
             "html_title": Markup(f"<h1>{self.title}</h1>") if self.title else "",
@@ -646,10 +658,25 @@ class Builder:
             self.project_folder, CONFIG["output_folder"], CONFIG["static_folder"]
         )
 
-        if os.path.exists(static_src):
-            if os.path.exists(static_dst):
-                shutil.rmtree(static_dst)
-            shutil.copytree(static_src, static_dst)
+        if not os.path.exists(static_src):
+            return
+
+        os.makedirs(static_dst, exist_ok=True)
+        for root, dirs, files in os.walk(static_src):
+            for file in files:
+                src_file = os.path.join(root, file)
+                rel_path = os.path.relpath(src_file, static_src)
+                dst_file = os.path.join(static_dst, rel_path)
+
+                # Create destination directory if needed
+                os.makedirs(os.path.dirname(dst_file), exist_ok=True)
+
+                # Copy if destination doesn't exist or source is newer
+                if not os.path.exists(dst_file) or os.path.getmtime(
+                    src_file
+                ) > os.path.getmtime(dst_file):
+                    shutil.copy2(src_file, dst_file)
+                    print(f"Updated {rel_path}")
 
     def write_pygments_css(self):
         """Write Pygments stylesheet."""
@@ -664,46 +691,37 @@ class Builder:
             f.write(html_formatter.get_style_defs())
 
     def build(self):
-        """Build the entire site."""
-        print("Scanning content...")
+        """Build the site."""
         self.scan_content()
 
-        output_dir = os.path.join(self.project_folder, CONFIG["output_folder"])
-        if os.path.exists(output_dir):
-            shutil.rmtree(output_dir)
-        os.makedirs(output_dir)
-
-        print(f"Building {len(self.posts)} posts and {len(self.pages)} pages...")
-
         # Build individual posts and pages
+        content_changed = False
         for post in self.posts + self.pages:
-            self.build_post(post)
-            print(f"Built {post.source_path}")
+            if not os.path.exists(post.output_path) or os.path.getmtime(
+                post.source_path
+            ) > os.path.getmtime(post.output_path):
+                self.build_post(post)
+                print(f"Rebuilt {post.source_path}")
+                content_changed = True
 
-        # Build index pages
-        print("Building index pages...")
-        self.build_index_pages()
+        if content_changed:
+            print("Building index pages...")
+            self.build_index_pages()
 
-        # Build archive pages
-        print("Building archive pages...")
-        self.build_archive_pages()
+            print("Building archive pages...")
+            self.build_archive_pages()
 
-        # Build tag pages
-        print("Building tag pages...")
-        self.build_tag_pages()
+            print("Building tag pages...")
+            self.build_tag_pages()
 
-        # Build feeds
-        print("Building feeds...")
-        self.build_feeds()
+            print("Building feeds...")
+            self.build_feeds()
 
         # Copy static files
-        print("Copying static files...")
         self.copy_static_files()
 
         # Write Pygments CSS
         self.write_pygments_css()
-
-        print("Build complete!")
 
     def serve(self, host="0.0.0.0", port=5000):
         """Simple development server."""
@@ -718,41 +736,18 @@ class Builder:
 
         class Handler(SimpleHTTPRequestHandler):
             def do_GET(self):
-                # Simple change detection - rebuild if any .rst file is newer
-                if builder._needs_rebuild():
-                    print("Detected changes, rebuilding...")
-                    builder.build()
-                super().do_GET()
+                builder.build()
+                try:
+                    super().do_GET()
+                except (BrokenPipeError, ConnectionResetError):
+                    # Client disconnected, ignore silently
+                    pass
 
             def log_message(self, format, *args):
                 pass  # Disable logging
 
         # Serve from output directory
-        original_cwd = os.getcwd()
-        try:
-            os.chdir(output_dir)
-            print(f"Serving on http://{host}:{port}/")
-            HTTPServer((host, port), Handler).serve_forever()
-        except KeyboardInterrupt:
-            pass
-        finally:
-            os.chdir(original_cwd)
-
-    def _needs_rebuild(self):
-        """Simple check if any RST files have changed."""
-        output_dir = os.path.join(self.project_folder, CONFIG["output_folder"])
-        if not os.path.exists(output_dir):
-            return True
-
-        build_time = os.path.getmtime(output_dir)
-
-        for root, dirs, files in os.walk(self.project_folder):
-            dirs[:] = [d for d in dirs if not self._should_ignore(d)]
-            for filename in files:
-                if (
-                    filename.endswith(".rst") or filename.endswith(".md")
-                ) and not self._should_ignore(filename):
-                    filepath = os.path.join(root, filename)
-                    if os.path.getmtime(filepath) > build_time:
-                        return True
-        return False
+        print(f"Serving on http://{host}:{port}/")
+        HTTPServer(
+            (host, port), lambda *args: Handler(*args, directory=output_dir)
+        ).serve_forever()
