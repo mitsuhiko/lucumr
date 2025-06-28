@@ -15,7 +15,6 @@ requires-python = ">=3.8"
 dependencies = [
     "PyYAML",
     "Babel",
-    "blinker",
     "docutils",
     "Jinja2>=3.0",
     "Werkzeug>=2.0",

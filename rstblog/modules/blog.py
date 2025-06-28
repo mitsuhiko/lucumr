@@ -9,7 +9,6 @@ The blog component.
 :license: BSD, see LICENSE for more details.
 """
 
-
 from datetime import datetime, date, timezone
 from urllib.parse import urljoin
 
