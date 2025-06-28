@@ -70,10 +70,8 @@ class BackgroundBuilder:
 
     def stop(self):
         """Stop the file watcher."""
-        print("Stopping file watcher...")
         self.stop_event.set()
         self.observer.stop()
         self.observer.join()
         if self.build_thread:
             self.build_thread.join(timeout=5)
-        print("File watcher stopped")

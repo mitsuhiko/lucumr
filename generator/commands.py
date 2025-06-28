@@ -12,7 +12,7 @@ def main_build():
 
 def main_serve():
     """Entry point for serve-blog command with background file watching."""
-    host = "0.0.0.0"
+    host = "127.0.0.1"  # Try localhost instead of 0.0.0.0
     port = 5000
 
     # Create background builder with file watcher
