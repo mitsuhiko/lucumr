@@ -1,14 +1,14 @@
 all: build upload
 
 clean:
-	rm -rf _build
+	rm -rf blog/_build
 
 build:
-	run-rstblog build
+	cd blog && ../.venv/bin/run-rstblog build
 
 serve:
-	run-rstblog serve
+	cd blog && ../.venv/bin/run-rstblog serve
 
 upload:
-	rsync -a _build/ flow.srv.pocoo.org:/srv/websites/lucumr.pocoo.org/static/
+	rsync -a blog/_build/ flow.srv.pocoo.org:/srv/websites/lucumr.pocoo.org/static/
 	@echo "Done..."
