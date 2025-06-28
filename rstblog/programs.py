@@ -67,7 +67,9 @@ class TemplatedProgram(Program):
         return {}
 
     def run(self):
-        template_name = self.context.config.get("template") or self.default_template
+        # Get template from frontmatter or use default
+        frontmatter = self.context._extract_frontmatter()
+        template_name = frontmatter.get("template", self.default_template)
         context = self.get_template_context()
         rv = self.context.render_template(template_name, context)
         with self.context.open_destination_file() as f:
@@ -90,6 +92,7 @@ class RSTProgram(TemplatedProgram):
                 headers.append(line)
             title = self.parse_text_title(f)
 
+        # Parse frontmatter without config system
         cfg = yaml.safe_load(StringIO("\n".join(headers)))
         if cfg:
             if not isinstance(cfg, dict):
@@ -97,15 +100,18 @@ class RSTProgram(TemplatedProgram):
                     'expected dict config in file "%s", got: %.40r'
                     % (self.context.source_filename, cfg)
                 )
-            self.context.config = self.context.config.add_from_dict(cfg)
+
+            # Handle destination filename override
             self.context.destination_filename = cfg.get(
                 "destination_filename", self.context.destination_filename
             )
 
+            # Handle title override
             title_override = cfg.get("title")
             if title_override is not None:
                 title = title_override
 
+            # Handle pub_date override
             pub_date_override = cfg.get("pub_date")
             if pub_date_override is not None:
                 if not isinstance(pub_date_override, datetime):
@@ -116,6 +122,7 @@ class RSTProgram(TemplatedProgram):
                     )
                 self.context.pub_date = pub_date_override
 
+            # Handle summary override
             summary_override = cfg.get("summary")
             if summary_override is not None:
                 self.context.summary = summary_override

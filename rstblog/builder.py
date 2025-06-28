@@ -64,17 +64,15 @@ html_formatter = None
 class Context(object):
     """Per rendering information"""
 
-    def __init__(self, builder, config, source_filename, prepare=False):
+    def __init__(self, builder, source_filename, prepare=False):
         self.builder = builder
-        self.config = config
         self.title = "Untitled"
         self.summary = None
         self.pub_date = None
         self.source_filename = source_filename
         self.links = []
-        self.program_name = self.config.get("program")
-        if self.program_name is None:
-            self.program_name = self.builder.guess_program(config, source_filename)
+        # No config - always guess program from filename
+        self.program_name = self.builder.guess_program(source_filename)
         self.program = self.builder.programs[self.program_name](self)
         self.destination_filename = os.path.join(
             self.builder.prefix_path.lstrip("/"), self.program.get_desired_filename()
@@ -93,7 +91,8 @@ class Context(object):
 
     @property
     def public(self):
-        return self.config.get("public", True)
+        # Extract public flag from frontmatter
+        return self._extract_public_from_file()
 
     @property
     def slug(self):
@@ -123,7 +122,7 @@ class Context(object):
     def full_destination_filename(self):
         return os.path.join(
             self.builder.project_folder,
-            self.config.get("output_folder") or OUTPUT_FOLDER,
+            OUTPUT_FOLDER,  # Hardcoded output folder
             self.destination_filename,
         )
 
@@ -148,7 +147,6 @@ class Context(object):
             "program_name": self.program_name,
             "links": self.links,
             "ctx": self,
-            "config": self.config,
             "slug": "/" + self.slug.lstrip("/"),
         }
 
@@ -160,7 +158,7 @@ class Context(object):
 
     def render_rst(self, contents):
         settings = {
-            "initial_header_level": self.config.get("rst_header_level", 2),
+            "initial_header_level": 2,  # Hardcoded header level
             "rstblog_context": self,
         }
         parts = publish_parts(
@@ -193,18 +191,10 @@ class Context(object):
         )
 
     def run(self):
-        # Inline: before_file_processed functionality
-        self._before_file_processed()
         if self.needs_build:
             self.build()
 
-    def _before_file_processed(self):
-        """Inline functionality for before_file_processed signal"""
-        pass  # Currently no functionality needed here
-
     def build(self):
-        # Inline: before_file_built functionality
-        self._before_file_built()
         self.program.run()
 
     def _after_file_prepared(self):
@@ -219,20 +209,13 @@ class Context(object):
         # Tags: remember tags
         self._remember_tags()
 
-    def _before_file_built(self):
-        """Inline functionality for before_file_built signal"""
-        pass  # Currently no functionality needed here
-
     def _process_blog_entry(self):
         """Process blog entry (from blog module)"""
         if self.pub_date is None:
-            pattern = self.config.get(
-                "modules.blog.pub_date_match", "/<int:year>/<int:month>/<int:day>/"
-            )
-            if pattern is not None:
-                rv = test_pattern(self.slug, pattern)
-                if rv is not None:
-                    self.pub_date = datetime(*rv)
+            # Hardcoded pattern since config doesn't override it
+            rv = test_pattern(self.slug, "/<int:year>/<int:month>/<int:day>/")
+            if rv is not None:
+                self.pub_date = datetime(*rv)
 
         if self.pub_date is not None:
             self.builder.get_storage("blog").setdefault(
@@ -241,7 +224,8 @@ class Context(object):
 
     def _remember_tags(self):
         """Remember tags for this context (from tags module)"""
-        tags = self.config.merged_get("tags") or []
+        # Extract tags from frontmatter in RST files
+        tags = self._extract_tags_from_file()
         storage = self.builder.get_storage("tags")
         by_file = storage.setdefault("by_file", {})
         by_file[self.source_filename] = tags
@@ -249,6 +233,53 @@ class Context(object):
         for tag in tags:
             by_tag.setdefault(tag, []).append(self)
         self.tags = frozenset(tags)
+
+    def _extract_frontmatter(self):
+        """Extract frontmatter from RST file"""
+        if hasattr(self, "_cached_frontmatter"):
+            return self._cached_frontmatter
+
+        try:
+            with open(self.full_source_filename, "r", encoding="utf-8") as f:
+                content = f.read()
+
+            # Simple frontmatter parser
+            lines = content.split("\n")
+            frontmatter = {}
+            for line in lines:
+                if line.strip() == "":
+                    break  # End of frontmatter
+                if ":" in line:
+                    key, value = line.split(":", 1)
+                    key = key.strip()
+                    value = value.strip()
+
+                    if key == "tags" and value.startswith("[") and value.endswith("]"):
+                        # Parse tags: [tag1, tag2, tag3]
+                        tags_str = value[1:-1]  # Remove brackets
+                        tags = [tag.strip() for tag in tags_str.split(",")]
+                        tags = [tag.strip("'\"") for tag in tags]  # Remove quotes
+                        frontmatter[key] = tags
+                    elif key == "public":
+                        frontmatter[key] = value.lower() == "yes"
+                    else:
+                        frontmatter[key] = value
+
+            self._cached_frontmatter = frontmatter
+            return frontmatter
+        except Exception:
+            self._cached_frontmatter = {}
+            return {}
+
+    def _extract_tags_from_file(self):
+        """Extract tags from RST file frontmatter"""
+        frontmatter = self._extract_frontmatter()
+        return frontmatter.get("tags", [])
+
+    def _extract_public_from_file(self):
+        """Extract public flag from RST file frontmatter"""
+        frontmatter = self._extract_frontmatter()
+        return frontmatter.get("public", True)  # Default to public
 
 
 # === INLINED BLOG FUNCTIONALITY ===
@@ -285,9 +316,11 @@ class YearArchive(object):
 
 
 def test_pattern(path, pattern):
+    """Extract year/month/day from path using the hardcoded blog pattern"""
     from werkzeug.routing import Rule, Map
     from werkzeug.exceptions import NotFound
 
+    # Since pattern is always "/<int:year>/<int:month>/<int:day>/", simplify
     pattern = "/" + pattern.strip("/") + "/<path:extra>"
     adapter = Map([Rule(pattern)]).bind("dummy.invalid")
     try:
@@ -412,13 +445,7 @@ def render_math(context, math):
             "tight",
             "-z9",
             "-D",
-            str(
-                int(
-                    context.builder.config.root_get("modules.latex.font_size", 16)
-                    * 72.27
-                    / 10
-                )
-            ),
+            str(int(16 * 72.27 / 10)),  # Hardcoded font_size=16
             "-bg",
             "Transparent",
             "--depth",
@@ -500,28 +527,27 @@ class Builder(object):
     default_template_path = "../templates"
     default_static_folder = "static"
 
-    def __init__(self, project_folder, config):
+    def __init__(self, project_folder):
         self.project_folder = os.path.abspath(project_folder)
-        self.config = config
         self.programs = builtin_programs.copy()
         self.modules = []
         self.storage = {}
         self.url_map = Map()
-        parsed = urlparse(self.config.root_get("canonical_url"))
+        # Hardcoded canonical URL
+        parsed = urlparse("http://lucumr.pocoo.org/")
         self.prefix_path = parsed.path
         self.url_adapter = self.url_map.bind(
             "dummy.invalid", script_name=self.prefix_path
         )
         self.register_url("page", "/<path:slug>")
 
-        template_path = os.path.join(
-            self.project_folder,
-            self.config.root_get("template_path") or self.default_template_path,
-        )
-        self.locale = Locale(self.config.root_get("locale") or "en")
+        # Hardcoded template path
+        template_path = os.path.join(self.project_folder, self.default_template_path)
+        # Hardcoded locale
+        self.locale = Locale("en")
         self.jinja_env = Environment(
             loader=FileSystemLoader([template_path]),
-            autoescape=self.config.root_get("template_autoescape", True),
+            autoescape=True,  # Hardcoded autoescape
         )
         self.jinja_env.globals.update(
             link_to=self.link_to,
@@ -530,9 +556,8 @@ class Builder(object):
             format_time=self.format_time,
         )
 
-        self.static_folder = (
-            self.config.root_get("static_folder") or self.default_static_folder
-        )
+        # Hardcoded static folder
+        self.static_folder = self.default_static_folder
 
         # Inline setup - no more module loading
         self._setup_inline_functionality()
@@ -542,9 +567,7 @@ class Builder(object):
         global html_formatter
 
         # Setup Pygments
-        style = get_style_by_name(
-            self.config.root_get("modules.pygments.style", "tango")
-        )
+        style = get_style_by_name("tango")  # Hardcoded from config
         html_formatter = HtmlFormatter(style=style)
         directives.register_directive("code-block", CodeBlock)
         directives.register_directive("sourcecode", CodeBlock)
@@ -553,49 +576,18 @@ class Builder(object):
         directives.register_directive("math", MathDirective)
         roles.register_local_role("math", math_role)
 
-        # Setup Blog URLs
-        self.register_url(
-            "blog_index",
-            config_key="modules.blog.index_url",
-            config_default="/",
-            defaults={"page": 1},
-        )
-        self.register_url(
-            "blog_index",
-            config_key="modules.blog.paged_index_url",
-            config_default="/page/<page>/",
-        )
-        self.register_url(
-            "blog_archive",
-            config_key="modules.blog.archive_url",
-            config_default="/archive/",
-        )
-        self.register_url(
-            "blog_archive",
-            config_key="modules.blog.year_archive_url",
-            config_default="/<year>/",
-        )
-        self.register_url(
-            "blog_archive",
-            config_key="modules.blog.month_archive_url",
-            config_default="/<year>/<month>/",
-        )
-        self.register_url(
-            "blog_feed", config_key="modules.blog.feed_url", config_default="/feed.atom"
-        )
+        # Setup Blog URLs (hardcoded since no custom config)
+        self.register_url("blog_index", "/", defaults={"page": 1})
+        self.register_url("blog_index", "/page/<page>/")
+        self.register_url("blog_archive", "/archive/")
+        self.register_url("blog_archive", "/<year>/")
+        self.register_url("blog_archive", "/<year>/<month>/")
+        self.register_url("blog_feed", "/feed.atom")
 
-        # Setup Tags URLs
-        self.register_url(
-            "tag", config_key="modules.tags.tag_url", config_default="/tags/<tag>/"
-        )
-        self.register_url(
-            "tagfeed",
-            config_key="modules.tags.tag_feed_url",
-            config_default="/tags/<tag>/feed.atom",
-        )
-        self.register_url(
-            "tagcloud", config_key="modules.tags.cloud_url", config_default="/tags/"
-        )
+        # Setup Tags URLs (hardcoded since no custom config)
+        self.register_url("tag", "/tags/<tag>/")
+        self.register_url("tagfeed", "/tags/<tag>/feed.atom")
+        self.register_url("tagcloud", "/tags/")
 
         # Setup Jinja globals
         self.jinja_env.globals.update(
@@ -605,9 +597,7 @@ class Builder(object):
 
     @property
     def default_output_folder(self):
-        return os.path.join(
-            self.project_folder, self.config.root_get("output_folder") or OUTPUT_FOLDER
-        )
+        return os.path.join(self.project_folder, OUTPUT_FOLDER)
 
     def link_to(self, _key, **values):
         return self.url_adapter.build(_key, values)
@@ -625,11 +615,8 @@ class Builder(object):
             os.makedirs(folder)
         return open(filename, mode)
 
-    def register_url(
-        self, key, rule=None, config_key=None, config_default=None, **extra
-    ):
-        if config_key is not None:
-            rule = self.config.root_get(config_key, config_default)
+    def register_url(self, key, rule, **extra):
+        """Register a URL rule - no config support"""
         self.url_map.add(Rule(rule, endpoint=key, **extra))
 
     def get_full_static_filename(self, filename):
@@ -648,10 +635,9 @@ class Builder(object):
     def get_storage(self, module):
         return self.storage.setdefault(module, {})
 
-    def filter_files(self, files, config):
-        patterns = config.merged_get("ignore_files")
-        if patterns is None:
-            patterns = self.default_ignores
+    def filter_files(self, files):
+        """Filter files using hardcoded ignore patterns"""
+        patterns = self.default_ignores  # Hardcoded ignore patterns
 
         result = []
         for filename in files:
@@ -662,8 +648,9 @@ class Builder(object):
                 result.append(filename)
         return result
 
-    def guess_program(self, config, filename):
-        mapping = config.list_entries("programs") or self.default_programs
+    def guess_program(self, filename):
+        """Guess program based on filename - hardcoded mapping"""
+        mapping = self.default_programs  # {"*.rst": "rst"}
         for pattern, program_name in mapping.items():
             if fnmatch(filename, pattern):
                 return program_name
@@ -673,15 +660,8 @@ class Builder(object):
         if context is None:
             context = {}
         context["builder"] = self
-        context.setdefault("config", self.config)
         tmpl = self.jinja_env.get_template(template_name)
-        # Inline: before_template_rendered functionality
-        self._before_template_rendered(tmpl, context)
         return tmpl.render(context)
-
-    def _before_template_rendered(self, tmpl, context):
-        """Inline functionality for before_template_rendered signal"""
-        pass  # Currently no functionality needed here
 
     def format_datetime(self, datetime=None, format="medium"):
         return dates.format_datetime(datetime, format, locale=self.locale)
@@ -693,22 +673,15 @@ class Builder(object):
         return dates.format_date(date, format, locale=self.locale)
 
     def iter_contexts(self, prepare=True):
-        last_config = self.config
         cutoff = len(self.project_folder) + 1
         for dirpath, dirnames, filenames in os.walk(self.project_folder):
-            local_config = last_config
-            local_config_filename = os.path.join(dirpath, "config.yml")
-            if os.path.isfile(local_config_filename):
-                with open(local_config_filename) as f:
-                    local_config = last_config.add_from_file(f)
-
-            dirnames[:] = self.filter_files(dirnames, local_config)
-            filenames = self.filter_files(filenames, local_config)
+            # No config - use hardcoded filtering
+            dirnames[:] = self.filter_files(dirnames)
+            filenames = self.filter_files(filenames)
 
             for filename in filenames:
                 yield Context(
                     self,
-                    local_config,
                     os.path.join(dirpath[cutoff:], filename),
                     prepare,
                 )
@@ -766,7 +739,8 @@ class Builder(object):
             for month, contexts in months.items():
                 result.extend(contexts)
         result.sort(
-            key=lambda x: (x.pub_date, x.config.get("day-order", 0)), reverse=True
+            key=lambda x: (x.pub_date, 0),
+            reverse=True,  # No day-order config
         )
         return result
 
@@ -782,8 +756,9 @@ class Builder(object):
         return self._get_all_entries()[:limit]
 
     def _write_index_page(self):
-        use_pagination = self.config.root_get("modules.blog.use_pagination", True)
-        per_page = self.config.root_get("modules.blog.per_page", 10)
+        # Hardcoded defaults since config doesn't override them
+        use_pagination = True
+        per_page = 10
         entries = self._get_all_entries()
         pagination = Pagination(self, entries, 1, per_page, "blog_index")
         while 1:
@@ -817,10 +792,11 @@ class Builder(object):
                     f.write(rv.encode("utf-8") + b"\n")
 
     def _write_feed(self):
-        blog_author = self.config.root_get("author")
-        url = self.config.root_get("canonical_url") or "http://localhost/"
-        name = self.config.get("feed.name") or "Recent Blog Posts"
-        subtitle = self.config.get("feed.subtitle") or "Recent blog posts"
+        # Hardcoded values
+        blog_author = "Armin Ronacher"
+        url = "http://lucumr.pocoo.org/"
+        name = "Armin Ronacher's Thoughts and Writings"
+        subtitle = "Armin Ronacher's personal blog about programming, games and random thoughts that come to his mind."
 
         fg = FeedGenerator()
         fg.id(url)
@@ -889,9 +865,10 @@ class Builder(object):
             f.write(rv.encode("utf-8") + b"\n")
 
     def _write_tag_feed(self, tag):
-        blog_author = self.config.root_get("author")
-        url = self.config.root_get("canonical_url") or "http://localhost/"
-        name = f"{self.config.get('feed.name', 'Recent Blog Posts')} - {tag.name}"
+        # Hardcoded values
+        blog_author = "Armin Ronacher"
+        url = "http://lucumr.pocoo.org/"
+        name = f"Armin Ronacher's Thoughts and Writings - {tag.name}"
         subtitle = f"Recent blog posts tagged with '{tag.name}'"
 
         fg = FeedGenerator()
