@@ -44,6 +44,9 @@ jobs:
       - name: Build blog
         run: make build
 
+      - name: Copy 404 page for GitHub Pages
+        run: cp blog/_build/404/index.html blog/_build/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
