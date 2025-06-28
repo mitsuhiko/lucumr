@@ -39,7 +39,6 @@ from rstblog.programs import RSTProgram, CopyProgram
 
 OUTPUT_FOLDER = "_build"
 builtin_programs = {"rst": RSTProgram, "copy": CopyProgram}
-builtin_templates = os.path.join(os.path.dirname(__file__), "templates")
 url_parts_re = re.compile(r"\$(\w+|{[^}]+})")
 
 
@@ -219,7 +218,7 @@ class Builder(object):
         )
         self.locale = Locale(self.config.root_get("locale") or "en")
         self.jinja_env = Environment(
-            loader=FileSystemLoader([template_path, builtin_templates]),
+            loader=FileSystemLoader([template_path]),
             autoescape=self.config.root_get("template_autoescape", True),
         )
         self.jinja_env.globals.update(
