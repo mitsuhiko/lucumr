@@ -36,6 +36,6 @@ def main():
     builder = get_builder(folder)
 
     if action == "build":
-        builder.run()
+        builder.build()
     else:
-        builder.debug_serve()
+        builder.serve()

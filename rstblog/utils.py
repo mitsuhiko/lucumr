@@ -75,7 +75,9 @@ class Pagination(object):
                 last = num
 
     def __str__(self):
-        return self.builder.render_template("_pagination.html", {"pagination": self})
+        return self.builder.jinja_env.get_template("_pagination.html").render(
+            {"pagination": self}
+        )
 
     def __html__(self):
         return Markup(str(self))
