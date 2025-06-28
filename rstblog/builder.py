@@ -530,7 +530,6 @@ class Builder(object):
     def __init__(self, project_folder):
         self.project_folder = os.path.abspath(project_folder)
         self.programs = builtin_programs.copy()
-        self.modules = []
         self.storage = {}
         self.url_map = Map()
         # Hardcoded canonical URL
