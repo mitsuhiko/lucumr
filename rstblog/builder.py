@@ -39,11 +39,13 @@ from markupsafe import escape
 from docutils import utils
 
 from rstblog.utils import Pagination
-from rstblog.programs import RSTProgram, CopyProgram
+import yaml
+import shutil
+from datetime import datetime
+from io import StringIO
 
 
 OUTPUT_FOLDER = "_build"
-builtin_programs = {"rst": RSTProgram, "copy": CopyProgram}
 url_parts_re = re.compile(r"\$(\w+|{[^}]+})")
 
 # Global variables for inlined functionality
@@ -62,17 +64,116 @@ class Context(object):
         self.links = []
         # No config - always guess program from filename
         self.program_name = self.builder.guess_program(source_filename)
-        self.program = self.builder.programs[self.program_name](self)
+        # Inline program logic
+        self._fragment_cache = None  # For RST files
         self.destination_filename = os.path.join(
-            self.builder.prefix_path.lstrip("/"), self.program.get_desired_filename()
+            self.builder.prefix_path.lstrip("/"), self._get_desired_filename()
         )
         if prepare:
-            self.program.prepare()
+            self._prepare()
             # Inline: after_file_prepared functionality
             self._after_file_prepared()
             if self.public:
                 # Inline: after_file_published functionality
                 self._after_file_published()
+
+    def _get_desired_filename(self):
+        """Inline get_desired_filename logic from programs"""
+        if self.program_name == "copy":
+            # CopyProgram logic
+            return self.source_filename
+        else:
+            # RSTProgram logic (default)
+            folder, basename = os.path.split(self.source_filename)
+            simple_name = os.path.splitext(basename)[0]
+            if simple_name == "index":
+                suffix = "index.html"
+            else:
+                suffix = os.path.join(simple_name, "index.html")
+            return os.path.join(folder, suffix)
+
+    def _prepare(self):
+        """Inline prepare logic from programs"""
+        if self.program_name == "copy":
+            # CopyProgram has no prepare logic
+            pass
+        else:
+            # RSTProgram prepare logic
+            headers = ["---"]
+            with self.open_source_file() as f:
+                for line in f:
+                    line = line.rstrip().decode("utf-8")
+                    if not line:
+                        break
+                    headers.append(line)
+                title = self._parse_text_title(f)
+
+            # Parse frontmatter without config system
+            cfg = yaml.safe_load(StringIO("\n".join(headers)))
+            if cfg:
+                if not isinstance(cfg, dict):
+                    raise ValueError(
+                        'expected dict config in file "%s", got: %.40r'
+                        % (self.source_filename, cfg)
+                    )
+
+                # Handle destination filename override
+                self.destination_filename = cfg.get(
+                    "destination_filename", self.destination_filename
+                )
+
+                # Handle title override
+                title_override = cfg.get("title")
+                if title_override is not None:
+                    title = title_override
+
+                # Handle pub_date override
+                pub_date_override = cfg.get("pub_date")
+                if pub_date_override is not None:
+                    if not isinstance(pub_date_override, datetime):
+                        pub_date_override = datetime(
+                            pub_date_override.year,
+                            pub_date_override.month,
+                            pub_date_override.day,
+                        )
+                    self.pub_date = pub_date_override
+
+                # Handle summary override
+                summary_override = cfg.get("summary")
+                if summary_override is not None:
+                    self.summary = summary_override
+
+            if title is not None:
+                self.title = title
+
+    def _parse_text_title(self, f):
+        """Parse title from RST content"""
+        buffer = []
+        for line in f:
+            line = line.rstrip()
+            if not line:
+                break
+            buffer.append(line)
+        return self.render_rst(b"\n".join(buffer).decode("utf-8")).get("title")
+
+    def _get_fragments(self):
+        """Get RST fragments with caching"""
+        if self._fragment_cache is not None:
+            return self._fragment_cache
+        with self.open_source_file() as f:
+            while f.readline().strip():
+                pass
+            rv = self.render_rst(f.read().decode("utf-8"))
+        self._fragment_cache = rv
+        return rv
+
+    def _get_template_context(self):
+        """Get template context for rendering"""
+        ctx = {}
+        if self.program_name != "copy":
+            # RSTProgram template context logic
+            ctx["rst"] = self._get_fragments()
+        return ctx
 
     @property
     def is_new(self):
@@ -160,7 +261,13 @@ class Context(object):
         }
 
     def render_contents(self):
-        return self.program.render_contents()
+        """Inline render_contents logic from programs"""
+        if self.program_name == "copy":
+            # CopyProgram has no render_contents (returns empty string)
+            return ""
+        else:
+            # RSTProgram render_contents logic
+            return self._get_fragments()["fragment"]
 
     def render_summary(self):
         if not self.summary:
@@ -184,7 +291,21 @@ class Context(object):
             self.build()
 
     def build(self):
-        self.program.run()
+        """Inline program.run() logic"""
+        if self.program_name == "copy":
+            # CopyProgram run logic
+            self.make_destination_folder()
+            shutil.copy(self.full_source_filename, self.full_destination_filename)
+        else:
+            # TemplatedProgram/RSTProgram run logic
+            frontmatter = self._extract_frontmatter()
+            template_name = frontmatter.get(
+                "template", "rst_display.html"
+            )  # RSTProgram default
+            context = self._get_template_context()
+            rv = self.render_template(template_name, context)
+            with self.open_destination_file() as f:
+                f.write(rv.encode("utf-8") + b"\n")
 
     def _after_file_prepared(self):
         """Inline functionality for after_file_prepared signal"""
@@ -518,7 +639,6 @@ class Builder(object):
 
     def __init__(self, project_folder):
         self.project_folder = os.path.abspath(project_folder)
-        self.programs = builtin_programs.copy()
         self.storage = {}
         self.url_map = Map()
         # Hardcoded canonical URL
