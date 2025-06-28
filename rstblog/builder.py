@@ -195,7 +195,7 @@ class Builder(object):
         "*.conf",
     )
     default_programs = {"*.rst": "rst"}
-    default_template_path = "_templates"
+    default_template_path = "../templates"
     default_static_folder = "static"
 
     def __init__(self, project_folder, config):
