@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Simplified RST blog builder - no unnecessary abstractions.
-"""
-
 import os
 import re
 import shutil
@@ -14,96 +9,11 @@ from fnmatch import fnmatch
 from math import log, ceil
 from pathlib import Path
 
-from docutils.core import publish_parts
-from docutils import nodes
-from docutils.parsers.rst import Directive, directives
-from pygments import highlight
-from pygments.lexers import get_lexer_by_name, TextLexer, PhpLexer
-from pygments.formatters import HtmlFormatter
-from pygments.styles import get_style_by_name
 from jinja2 import Environment, FileSystemLoader
-from markupsafe import Markup
-import marko
-from marko.ext.gfm import GFM
-from marko.html_renderer import HTMLRenderer
 
 from generator.pagination import Pagination
-
-# Configuration - all hardcoded values in one place
-CONFIG = {
-    "site_title": "Armin Ronacher's Thoughts and Writings",
-    "site_url": "https://lucumr.pocoo.org/",
-    "author": "Armin Ronacher",
-    "subtitle": "Armin Ronacher's personal blog about programming, games and random thoughts that come to his mind.",
-    "posts_per_page": 10,
-    "ignore_patterns": (
-        ".*",
-        "_*",
-        "config.yml",
-        "Makefile",
-        "README",
-        "*.conf",
-    ),
-    "static_folder": "static",
-    "output_folder": "_build",
-    "pygments_style": "tango",
-}
-
-
-class PygmentsRenderer(HTMLRenderer):
-    """Custom Marko renderer that uses Pygments for syntax highlighting."""
-
-    def render_fenced_code(self, element):
-        """Render fenced code blocks with Pygments highlighting."""
-        code = element.children[0].children if element.children else ""
-        if isinstance(code, str):
-            language = getattr(element, "lang", None) or ""
-
-            try:
-                if language == "phpinline":
-                    lexer = PhpLexer(startinline=True)
-                elif language:
-                    lexer = get_lexer_by_name(language)
-                else:
-                    lexer = TextLexer()
-            except ValueError:
-                lexer = TextLexer()
-
-            highlighted = highlight(code, lexer, html_formatter)
-            return highlighted
-        return super().render_fenced_code(element)
-
-
-class CodeBlock(Directive):
-    """Pygments code highlighting directive."""
-
-    has_content = True
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = False
-
-    def run(self):
-        try:
-            name = self.arguments[0]
-            if name == "phpinline":
-                lexer = PhpLexer(startinline=True)
-            else:
-                lexer = get_lexer_by_name(name)
-        except ValueError:
-            lexer = TextLexer()
-        code = "\n".join(self.content)
-        formatted = highlight(code, lexer, html_formatter)
-        return [nodes.raw("", formatted, format="html")]
-
-
-# Initialize global Pygments formatter and Markdown parser
-directives.register_directive("code-block", CodeBlock)
-directives.register_directive("sourcecode", CodeBlock)
-
-style = get_style_by_name(CONFIG["pygments_style"])
-html_formatter = HtmlFormatter(style=style)
-
-markdown_parser = marko.Markdown(extensions=[GFM], renderer=PygmentsRenderer)
+from generator.config import CONFIG
+from generator import markup
 
 
 class BlogPost:
@@ -164,17 +74,11 @@ class BlogPost:
         # Parse content for title if not in frontmatter
         self.content = "\n".join(lines[content_start:])
         if "title" not in frontmatter:
-            if self.file_type == "rst":
-                rst_parts = publish_parts(self.content, writer_name="html4css1")
-                if rst_parts["title"]:
-                    self.title = Markup(rst_parts["title"]).striptags()
-            elif self.file_type == "markdown":
-                # Extract title from first heading in Markdown
-                for line in self.content.split("\n"):
-                    line = line.strip()
-                    if line.startswith("# "):
-                        self.title = line[2:].strip()
-                        break
+            extracted_title = markup.extract_title_from_content(
+                self.content, self.file_type
+            )
+            if extracted_title:
+                self.title = extracted_title
 
     def _extract_date_from_path(self):
         """Extract publication date from file path."""
@@ -216,55 +120,23 @@ class BlogPost:
 
     def render_rst(self):
         """Render RST content to HTML."""
-        settings = {
-            "initial_header_level": 2,
-        }
-        parts = publish_parts(
-            self.content, writer_name="html4css1", settings_overrides=settings
-        )
-        return {
-            "title": Markup(parts["title"]).striptags()
-            if parts["title"]
-            else self.title,
-            "html_title": Markup(parts["html_title"]) if parts["html_title"] else "",
-            "fragment": Markup(parts["fragment"]),
-        }
+        result = markup.render_rst(self.content)
+        # Use self.title as fallback if no title extracted
+        if not result["title"]:
+            result["title"] = self.title
+        return result
 
     def render_markdown(self):
         """Render Markdown content to HTML."""
-        # Remove the first heading from content since we render it separately
-        content_lines = self.content.split("\n")
-        filtered_lines = []
-        found_first_heading = False
-
-        for line in content_lines:
-            if line.strip().startswith("# ") and not found_first_heading:
-                found_first_heading = True
-                continue
-            filtered_lines.append(line)
-
-        filtered_content = "\n".join(filtered_lines)
-        html_content = markdown_parser(filtered_content)
-        return {
-            "title": self.title,
-            "html_title": Markup(f"<h1>{self.title}</h1>") if self.title else "",
-            "fragment": Markup(html_content),
-        }
+        return markup.render_markdown(self.content, self.title)
 
     def render_content(self):
         """Render content based on file type."""
-        if self.file_type == "markdown":
-            return self.render_markdown()
-        else:
-            return self.render_rst()
+        return markup.render_content(self.content, self.file_type, self.title)
 
     def render_summary(self):
         """Render summary as HTML."""
-        if not self.summary:
-            return ""
-        # Always render summary as Markdown for consistency
-        html_content = markdown_parser(self.summary)
-        return Markup(html_content)
+        return markup.render_summary(self.summary)
 
     def to_metadata(self):
         """Extract metadata for caching (without complex objects)."""
@@ -367,11 +239,7 @@ class Builder:
         self.posts = []
         self.pages = []
         self.tags = defaultdict(list)
-
-        # Initialize content cache
         self.content_cache = ContentCache(project_folder)
-
-        # Setup Jinja2 with hardcoded template path
         template_path = Path(__file__).parent / "templates"
         self.jinja_env = Environment(
             loader=FileSystemLoader([str(template_path)]), autoescape=True
@@ -795,7 +663,7 @@ class Builder:
             / "_pygments.css"
         )
         css_path.parent.mkdir(parents=True, exist_ok=True)
-        css_path.write_text(html_formatter.get_style_defs())
+        css_path.write_text(markup.get_pygments_css())
 
     def build(self):
         """Build the site."""

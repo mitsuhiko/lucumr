@@ -23,13 +23,11 @@ def main_serve():
             try:
                 super().do_GET()
             except (BrokenPipeError, ConnectionResetError):
-                # Client disconnected, ignore silently
                 pass
 
         def log_message(self, format, *args):
-            pass  # Disable logging
+            pass
 
-    # Serve from output directory
     print(f"Serving on http://{host}:{port}/")
     HTTPServer(
         (host, port), lambda *args: Handler(*args, directory=str(output_dir))
