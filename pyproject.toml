@@ -17,6 +17,7 @@ dependencies = [
     "Jinja2>=3.0",
     "Pygments",
     "marko",
+    "watchdog",
 ]
 
 [project.scripts]

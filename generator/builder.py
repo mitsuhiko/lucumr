@@ -325,12 +325,17 @@ class Builder:
         tags.sort(key=lambda x: x["name"].lower())
         return tags
 
-    def _should_ignore(self, path):
+    def should_ignore(self, path):
         """Check if path should be ignored."""
-        basename = Path(path).name
-        for pattern in CONFIG["ignore_patterns"]:
-            if fnmatch(basename, pattern):
-                return True
+        path_obj = Path(path)
+        try:
+            relative_path = path_obj.relative_to(self.project_folder)
+        except ValueError:
+            return True
+        for part in relative_path.parts:
+            for pattern in CONFIG["ignore_patterns"]:
+                if fnmatch(part, pattern):
+                    return True
         return False
 
     def scan_content(self):
@@ -347,7 +352,7 @@ class Builder:
         for filepath in self.project_folder.rglob("*"):
             if (
                 filepath.is_file()
-                and not self._should_ignore(filepath.name)
+                and not self.should_ignore(filepath.name)
                 and (filepath.suffix in (".rst", ".md"))
             ):
                 rel_path = filepath.relative_to(self.project_folder)
