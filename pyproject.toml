@@ -19,7 +19,8 @@ dependencies = [
 ]
 
 [project.scripts]
-run-rstblog = "rstblog.cli:main"
+build-blog = "rstblog.commands:main_build"
+serve-blog = "rstblog.commands:main_serve"
 
 [tool.hatch.build.targets.wheel]
 packages = ["rstblog"]
