@@ -248,7 +248,6 @@ class Builder:
         self.jinja_env.globals.update(
             link_to=self._link_to,
             format_date=self._format_date,
-            format_datetime=self._format_datetime,
             get_recent_blog_entries=self._get_recent_posts,
             get_tags=self._get_tags,
         )
@@ -293,18 +292,10 @@ class Builder:
             return ""
         if format == "YYYY":
             return str(date_obj.year)
-        elif format == "full":
-            return date_obj.strftime("%B %d, %Y")
-        elif format == "long":
+        elif format in ("full", "long"):
             return date_obj.strftime("%B %d, %Y")
         elif format == "medium":
             return date_obj.strftime("%b %d, %Y")
-        else:
-            return date_obj.strftime("%Y-%m-%d")
-
-    def _format_datetime(self, dt, format="medium"):
-        """Simple datetime formatting."""
-        return self._format_date(dt, format)
 
     def _get_recent_posts(self, limit=10):
         """Get recent blog posts."""
@@ -530,7 +521,6 @@ class Builder:
         feed_xml = self._generate_atom_feed(
             title=CONFIG["site_title"],
             feed_url=CONFIG["site_url"] + "feed.atom",
-            site_url=CONFIG["site_url"],
             subtitle=CONFIG["subtitle"],
             posts=recent_posts,
         )
@@ -546,7 +536,6 @@ class Builder:
         feed_xml = self._generate_atom_feed(
             title=f"{CONFIG['site_title']} - {tag_name}",
             feed_url=CONFIG["site_url"] + f"tags/{tag_name}/feed.atom",
-            site_url=CONFIG["site_url"],
             subtitle=f"Recent blog posts tagged with '{tag_name}'",
             posts=recent_posts,
         )
@@ -555,7 +544,7 @@ class Builder:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(feed_xml, encoding="utf-8")
 
-    def _generate_atom_feed(self, title, feed_url, site_url, subtitle, posts):
+    def _generate_atom_feed(self, title, feed_url, subtitle, posts):
         """Generate Atom feed XML."""
         now = datetime.now(timezone.utc).isoformat()
 
@@ -564,7 +553,7 @@ class Builder:
             if not post.pub_date:
                 continue
 
-            post_url = site_url.rstrip("/") + post.slug
+            post_url = CONFIG["site_url"].rstrip("/") + post.slug
             pub_date = post.pub_date.replace(tzinfo=timezone.utc).isoformat()
             content = str(post.render_content()["fragment"])
 
@@ -585,7 +574,7 @@ class Builder:
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>{feed_url}</id>
   <title>{title}</title>
-  <link href="{site_url}" />
+  <link href="{CONFIG["site_url"]}" />
   <link href="{feed_url}" rel="self" />
   <description>{subtitle}</description>
   <language>en</language>
