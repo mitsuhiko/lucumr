@@ -18,6 +18,7 @@ dependencies = [
     "Pygments",
     "marko",
     "watchdog",
+    "PyYAML",
 ]
 
 [project.scripts]

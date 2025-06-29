@@ -3,6 +3,7 @@ import re
 import shutil
 import json
 import hashlib
+import yaml
 from datetime import datetime, timezone
 from collections import defaultdict
 from fnmatch import fnmatch
@@ -68,22 +69,16 @@ class BlogPost:
 
         # Check for YAML frontmatter delimited by ---
         if lines and lines[0].strip() == "---":
+            yaml_lines = []
             for i, line in enumerate(lines[1:], 1):
                 if line.strip() == "---":
                     content_start = i + 1
                     break
-                if ":" in line:
-                    key, value = line.split(":", 1)
-                    key = key.strip()
-                    value = value.strip()
+                yaml_lines.append(line)
 
-                    if key == "tags" and value.startswith("[") and value.endswith("]"):
-                        # Parse tags: [tag1, tag2, tag3]
-                        tags_str = value[1:-1]
-                        tags = [tag.strip().strip("'\"") for tag in tags_str.split(",")]
-                        frontmatter[key] = [tag for tag in tags if tag]
-                    else:
-                        frontmatter[key] = value
+            if yaml_lines:
+                yaml_content = "\n".join(yaml_lines)
+                frontmatter = yaml.safe_load(yaml_content) or {}
 
         return frontmatter, content_start
 
@@ -92,24 +87,18 @@ class BlogPost:
         lines = content.split("\n")
         frontmatter = {}
         content_start = 0
+        yaml_lines = []
 
-        # Simple frontmatter parsing
+        # Collect frontmatter lines until first blank line
         for i, line in enumerate(lines):
             if not line.strip():
                 content_start = i + 1
                 break
-            if ":" in line:
-                key, value = line.split(":", 1)
-                key = key.strip()
-                value = value.strip()
+            yaml_lines.append(line)
 
-                if key == "tags" and value.startswith("[") and value.endswith("]"):
-                    # Parse tags: [tag1, tag2, tag3]
-                    tags_str = value[1:-1]
-                    tags = [tag.strip().strip("'\"") for tag in tags_str.split(",")]
-                    frontmatter[key] = [tag for tag in tags if tag]
-                else:
-                    frontmatter[key] = value
+        if yaml_lines:
+            yaml_content = "\n".join(yaml_lines)
+            frontmatter = yaml.safe_load(yaml_content) or {}
 
         return frontmatter, content_start
 
