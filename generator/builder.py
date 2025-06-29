@@ -272,14 +272,9 @@ class Builder:
             elif year:
                 return f"/{year}/"
             return "/archive/"
-        elif endpoint == "blog_feed":
-            return "/feed.atom"
         elif endpoint == "tag":
             tag = kwargs.get("tag", "")
             return f"/tags/{tag}/"
-        elif endpoint == "tagfeed":
-            tag = kwargs.get("tag", "")
-            return f"/tags/{tag}/feed.atom"
         elif endpoint == "tagcloud":
             return "/tags/"
         return "/"
@@ -390,12 +385,7 @@ class Builder:
         content_data = post.render_content()
         context = {"content": content_data, "ctx": post, "slug": post.slug}
 
-        template_name = (
-            "markdown_display.html"
-            if post.file_type == "markdown"
-            else "rst_display.html"
-        )
-        html = self.jinja_env.get_template(template_name).render(context)
+        html = self.jinja_env.get_template("content_display.html").render(context)
 
         Path(post.output_path).write_text(html, encoding="utf-8")
 
