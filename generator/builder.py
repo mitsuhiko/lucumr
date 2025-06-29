@@ -236,6 +236,7 @@ class Builder:
             project_folder = os.getcwd()
         project_folder = Path(project_folder).resolve()
         self.project_folder = project_folder
+        self.output_folder = project_folder / CONFIG["output_folder"]
         self.posts = []
         self.pages = []
         self.tags = defaultdict(list)
@@ -359,31 +360,24 @@ class Builder:
                 existing_files.add(str(rel_path))
 
                 try:
-                    # Read file content
                     content = filepath.read_text(encoding="utf-8")
-
-                    # Check if we can use cached metadata
                     cached_metadata = self.content_cache.get_cached_metadata(
                         str(rel_path), content
                     )
 
                     if cached_metadata:
-                        # Use cached metadata but re-parse content
                         post = BlogPost.from_metadata(
                             str(rel_path), cached_metadata, self, content
                         )
                     else:
-                        # Parse file and cache the metadata
                         post = BlogPost(str(rel_path), content, self)
                         self.content_cache.cache_metadata(
                             str(rel_path), content, post.to_metadata()
                         )
 
-                    # Add to collections if public
                     if post.public:
                         if post.pub_date:
                             self.posts.append(post)
-                            # Index by tags
                             for tag in post.tags:
                                 self.tags[tag].append(post)
                         else:
@@ -397,7 +391,6 @@ class Builder:
             print(f"Removed {len(deleted_files)} deleted files from cache")
 
         self.posts.sort(key=lambda x: x.pub_date, reverse=True)
-
         self.content_cache.save()
 
     def build_post(self, post):
@@ -432,17 +425,9 @@ class Builder:
             html = self.jinja_env.get_template("blog/index.html").render(context)
 
             if page_num == 1:
-                output_path = (
-                    self.project_folder / CONFIG["output_folder"] / "index.html"
-                )
+                output_path = self.output_folder / "index.html"
             else:
-                output_path = (
-                    self.project_folder
-                    / CONFIG["output_folder"]
-                    / "page"
-                    / str(page_num)
-                    / "index.html"
-                )
+                output_path = self.output_folder / "page" / str(page_num) / "index.html"
 
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_text(html, encoding="utf-8")
@@ -485,9 +470,7 @@ class Builder:
             )
 
         # Main archive
-        output_path = (
-            self.project_folder / CONFIG["output_folder"] / "archive" / "index.html"
-        )
+        output_path = self.output_folder / "archive" / "index.html"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         html = self.jinja_env.get_template("blog/archive.html").render(
             {"archive": years_data}
@@ -496,12 +479,7 @@ class Builder:
 
         # Year archives
         for year_data in years_data:
-            output_path = (
-                self.project_folder
-                / CONFIG["output_folder"]
-                / str(year_data["year"])
-                / "index.html"
-            )
+            output_path = self.output_folder / str(year_data["year"]) / "index.html"
             output_path.parent.mkdir(parents=True, exist_ok=True)
             html = self.jinja_env.get_template("blog/year_archive.html").render(
                 {"entry": year_data}
@@ -511,8 +489,7 @@ class Builder:
             # Month archives
             for month_data in year_data["months"]:
                 output_path = (
-                    self.project_folder
-                    / CONFIG["output_folder"]
+                    self.output_folder
                     / str(year_data["year"])
                     / month_data["month"]
                     / "index.html"
@@ -525,9 +502,7 @@ class Builder:
 
     def build_tag_pages(self):
         """Build tag pages and tag cloud."""
-        output_path = (
-            self.project_folder / CONFIG["output_folder"] / "tags" / "index.html"
-        )
+        output_path = self.output_folder / "tags" / "index.html"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         html = self.jinja_env.get_template("tagcloud.html").render()
         output_path.write_text(html, encoding="utf-8")
@@ -538,13 +513,7 @@ class Builder:
             tag_data = {"name": tag_name, "count": len(tag_posts)}
 
             # Tag page
-            output_path = (
-                self.project_folder
-                / CONFIG["output_folder"]
-                / "tags"
-                / tag_name
-                / "index.html"
-            )
+            output_path = self.output_folder / "tags" / tag_name / "index.html"
             output_path.parent.mkdir(parents=True, exist_ok=True)
             html = self.jinja_env.get_template("tag.html").render(
                 {"tag": tag_data, "entries": tag_posts}
@@ -566,7 +535,7 @@ class Builder:
             posts=recent_posts,
         )
 
-        output_path = self.project_folder / CONFIG["output_folder"] / "feed.atom"
+        output_path = self.output_folder / "feed.atom"
         output_path.write_text(feed_xml, encoding="utf-8")
 
     def _build_tag_feed(self, tag_name, tag_posts):
@@ -582,13 +551,7 @@ class Builder:
             posts=recent_posts,
         )
 
-        output_path = (
-            self.project_folder
-            / CONFIG["output_folder"]
-            / "tags"
-            / tag_name
-            / "feed.atom"
-        )
+        output_path = self.output_folder / "tags" / tag_name / "feed.atom"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(feed_xml, encoding="utf-8")
 
@@ -637,9 +600,7 @@ class Builder:
     def copy_static_files(self):
         """Copy static files to output directory."""
         static_src = self.project_folder / CONFIG["static_folder"]
-        static_dst = (
-            self.project_folder / CONFIG["output_folder"] / CONFIG["static_folder"]
-        )
+        static_dst = self.output_folder / CONFIG["static_folder"]
 
         if not static_src.exists():
             return
@@ -661,12 +622,7 @@ class Builder:
 
     def write_pygments_css(self):
         """Write Pygments stylesheet."""
-        css_path = (
-            self.project_folder
-            / CONFIG["output_folder"]
-            / CONFIG["static_folder"]
-            / "_pygments.css"
-        )
+        css_path = self.output_folder / CONFIG["static_folder"] / "_pygments.css"
         css_path.parent.mkdir(parents=True, exist_ok=True)
         css_path.write_text(markup.get_pygments_css())
 
