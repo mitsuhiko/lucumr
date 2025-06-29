@@ -114,7 +114,7 @@ AI might change this trajectory slightly, but we had a climate problem
 before all of this and we have give or take the same climate problem until
 we shift towards more renewable energy.  In fact, this new increased
 energy consumption might actually do us a great service here.  Solar is
-already the cheapest energy solution 1 on the market and if we need
+already the cheapest energy solution [^1] on the market and if we need
 more, that's quite likely the source that we will build more of.
 Particularly now that cost of energy storage is also going down quickly.
 
@@ -190,4 +190,4 @@ I really don't want to dismiss anyone's concerns.  I just feel that, for
 me, the utility of these tools has become obvious enough that I don't feel
 the need to argue or justify my choices anymore.
 
-1[https://en.wikipedia.org/wiki/Cost_of_electricity_by_source](https://en.wikipedia.org/wiki/Cost_of_electricity_by_source)
+[^1]: [https://en.wikipedia.org/wiki/Cost_of_electricity_by_source](https://en.wikipedia.org/wiki/Cost_of_electricity_by_source)

@@ -35,7 +35,7 @@ licensing, how it seems to change and what we could do to improve it.
 ## What Changed in 2007
 
 Until the GNU GPLv3 released, the number one Copyleft license was the GNU
-GPLv2 1.  Copyleft and GNU GPL were seen as the same thing.  GPL
+GPLv2 [^1].  Copyleft and GNU GPL were seen as the same thing.  GPL
 is a very restrictive license in the sense that it whitelists rights
 instead of just putting a handful of requirements into a license that
 otherwise permits everything.  This made the whole topic of GPL
@@ -63,7 +63,7 @@ GPL and how the ecosystem was supposed to work.
 There is a lot of code out there that depending on how you look at it,
 it's either GPLv2 or GPLv3.  This is due to it being possible to license
 code under GPL of a specific version or any later version.  What defines
-what a later version of a GPL license looks like?  The GPL itself 2:
+what a later version of a GPL license looks like?  The GPL itself [^2]:
 
 > If the Program specifies that a certain numbered version of the GNU
 General Public License “or any later version” applies to it, you have
@@ -77,7 +77,7 @@ that upgraded to GPLv3 and the camp that's GPLv2 or later and depending on
 the context is either GPLv2 or GPLv3.
 
 The most vocal projects about their disagreement with the GPLv3 have
-certainly been Linux 3 and Busybox 4 which both
+certainly been Linux [^3] and Busybox [^4] which both
 decided the only applicable license is the version 2 of the GPL.  On the
 other hand the vast majority of GNU code has been changed over to the
 GPLv3 a couple of years ago.
@@ -132,18 +132,18 @@ able to get your GPLv3 software in any app store, no matter how hard you
 try.  The license restrictions of the AppStore, Google's Play Store and
 similar distribution systems and the GPLv3 are just not compatible.
 
-1[the 451 group: On the continuing decline of the GPL](http://blogs.the451group.com/opensource/2011/12/15/on-the-continuing-decline-of-the-gpl/)
+[^gplstat]: [the 451 group: On the continuing decline of the GPL](http://blogs.the451group.com/opensource/2011/12/15/on-the-continuing-decline-of-the-gpl/)
 
-2[GNU General Public License Version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
+[^gplv3]: [GNU General Public License Version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
 
-3[Linus Torvalds on the GPL Version being used (2007)](http://thread.gmane.org/gmane.linux.kernel/372812)
+[^linuxgplv2]: [Linus Torvalds on the GPL Version being used (2007)](http://thread.gmane.org/gmane.linux.kernel/372812)
 
-4[LWN: Busy busy busybox](http://lwn.net/Articles/202106/)
+[^busyboxgpl]: [LWN: Busy busy busybox](http://lwn.net/Articles/202106/)
 
 ## The Stricter GPL
 
 That's however not the only thing that happened in 2007.  Another license
-was published: The GNU Affero GPLv3 5.  In license text nearly
+was published: The GNU Affero GPLv3 [^5].  In license text nearly
 equivalent to the GPLv3 it has some extra restrictions in that the license
 triggers in other ways than pure distribution.  The license was written to
 make it possible to enforce the GPL in environments where no traditional
@@ -167,7 +167,7 @@ inherits that right.
 I am not sure if that was the intended use of the license, but that's at
 least what it's definitely being used for now.
 
-5[http://www.gnu.org/licenses/agpl-3.0-standalone.html](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
+[^agplv3]: [http://www.gnu.org/licenses/agpl-3.0-standalone.html](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
 
 ## Anti GPL Movement
 
@@ -181,10 +181,10 @@ licensed.  It's being developed by Rob Landley who was the previous
 maintainer of the GPLv2 licensed Busybox project of similar scope.  What's
 interesting about Rob Landley is that he's the person who pulled through
 the license clarification of Busybox to mean “GPLv2 only” instead of
-“GPLv2 or later” 7.  Shortly after he did that, he left the
+“GPLv2 or later” [^7].  Shortly after he did that, he left the
 project due to being annoyed with the efforts required to clarify the
 license and the license trolling shown by some contributors to the
-project 8.
+project [^8].
 
 Considering that Busybox is one of the projects that got infamous for
 enforcing the GPL through the legal system it's very interesting the
@@ -196,7 +196,7 @@ likely his statement about the effectiveness of the GPL cases:
 > From a purely pragmatic perspective: I spent over a year doing busybox
 license enforcement, and a dozen lawsuits later I'm still unaware of a
 SINGLE LINE OF CODE added to the busybox repository as a result...
-9
+[^9]
 >
 
 In the same blog post he mentions how the response to GPLv3 by Google and
@@ -206,7 +206,7 @@ projects are now trying to rid the whole system of the GPL.  And that's
 something that can clearly be seen.
 
 Android goes very far in providing a GPL free userspace.  The general
-license information 10 generally tells people to license
+license information [^10] generally tells people to license
 under the Apache License 2.0 with the exception of kernel modules which
 have to be GPLv2 licenses.  Here again the whole irony of kernel and
 userspace being incompatibly kicks in.  As to why Google likes the ASL:
@@ -227,7 +227,7 @@ do so.  Using LGPL libraries would often force them to do so.
 Why are people so afraid of the GPL all the sudden?  Partially because the
 GPL has always been a radical license.  Especially in the absence of
 copyright reassignment.  For instance the GPLv2 comes with a clause that
-has been dubbed the “GPLv2 death penalty” 11.  Essentially it
+has been dubbed the “GPLv2 death penalty” [^11].  Essentially it
 means that whoever violates the GPLv2 automatically gets the license
 terminated and not reestablished until they explicitly obtain a new
 license.  Without one authoritative copyright holder it would essentially
@@ -246,22 +246,22 @@ the ones that think the GPLv2 license is okay but that they are not okay
 with the direction the license is taking.  Linus Torvalds obviously being
 a more prominent supporter of the latter camp.  That camp exists because
 the Free Software Foundation is largely stuck in their own world
-12 where cloud computing is the devil, cell phones are
+[^12] where cloud computing is the devil, cell phones are
 exclusively tracking devices and Android is something the GPL should
 prevent from happening.  There are GPL supporters that don't support the
 current view of the Free Software Foundation which is dangerous,
 considering they are the only ones that are in the position to shape the
 future versions of the GPL.  Even some GNU projects seem to be disagreeing
 with the goals of the GNU project and the Free Software Foundation.  On
-December 10th 2012 GnuTLS split off the GNU project 6.
+December 10th 2012 GnuTLS split off the GNU project [^6].
 
-6[Nikos Mavrogiannopoulos: gnutls is moving](http://article.gmane.org/gmane.network.gnutls.general/3026)
+[^gnusplit]: [Nikos Mavrogiannopoulos: gnutls is moving](http://article.gmane.org/gmane.network.gnutls.general/3026)
 
 ## The New Licensing
 
 As I mentioned before the reason I got interested with licenses again was
 GitHub.  Or more to the point, a presentation by Aaron Williamson
-13 from the Software Freedom Law Center in combination
+[^13] from the Software Freedom Law Center in combination
 with GitHub's latest changes of adding a license selector.
 
 Aaron Williamson's unscientific study of scraping 28% of the oldest GitHub
@@ -317,7 +317,7 @@ That license is also still incompatible with the GPLv3.
 The whole ordeal is particularly interesting as some not so nice parties
 have started doing license trolling through GPL licenses.  The most recent
 case is Oracle that relicensed Berkeley DB from BSD to APGLv3 which
-started a lengthy discussion on debian-legal 14.  Primarily
+started a lengthy discussion on debian-legal [^14].  Primarily
 because due to that package becoming AGPLv3 it implicitly changes the
 effective license for 106 other packages to AGPLv3 as well.  Considering
 the license change happens on a Debian installation and not in the
@@ -328,22 +328,22 @@ version of the library that was BSD licensed.  But if Debian would decide
 to make that software depend on the new version that is AGPLv3 licensed
 then the whole software would change license to AGPLv3 as well.
 
-7[Rob Landley: GPL version 2 only for BusyBox 1.3.0](http://article.gmane.org/gmane.linux.busybox/16880)
+[^busyboxgplv2l]: [Rob Landley: GPL version 2 only for BusyBox 1.3.0](http://article.gmane.org/gmane.linux.busybox/16880)
 
-8[Rob Landley: I'm going out now. I may be some time](http://thread.gmane.org/gmane.linux.busybox/17254)
+[^busyboxtroll]: [Rob Landley: I'm going out now. I may be some time](http://thread.gmane.org/gmane.linux.busybox/17254)
 
-9[Rob Landley on Toybox being BSD](http://landley.net/notes-2011.html#13-11-2011)
+[^landleygpl]: [Rob Landley on Toybox being BSD](http://landley.net/notes-2011.html#13-11-2011)
 
-10[Android Licensing Information](http://source.android.com/source/licenses.html)
+[^androidlicense]: [Android Licensing Information](http://source.android.com/source/licenses.html)
 
-11[LWN: Android and the GPLv2 death penalty](https://lwn.net/Articles/455013/)
+[^gpldeath]: [LWN: Android and the GPLv2 death penalty](https://lwn.net/Articles/455013/)
 
-12[7 Reasons Why Free Software Is Losing Influence](http://www.datamation.com/open-source/7-reasons-why-free-software-is-losing-influence.html)
+[^fslosing]: [7 Reasons Why Free Software Is Losing Influence](http://www.datamation.com/open-source/7-reasons-why-free-software-is-losing-influence.html)
 
-13[Licensing of Software on GitHub: A Quantitative
+[^githublicenses]: [Licensing of Software on GitHub: A Quantitative
 Analysis by Aaron Williamson](http://www.softwarefreedom.org/resources/2013/lcs-slides-aaronw/)
 
-14[Berkeley DB 6.0 license change to AGPLv3](http://lists.debian.org/debian-legal/2013/07/msg00000.html)
+[^bdbapgl]: [Berkeley DB 6.0 license change to AGPLv3](http://lists.debian.org/debian-legal/2013/07/msg00000.html)
 
 ## Licenses and Intentions
 
@@ -406,7 +406,7 @@ People that license software under the BSD or MIT license probably would
 not mind that much if copyrights would be abolished or greatly restricted.
 Richard Stallman's world on the other hand would would fall apart.  He
 even made a statement about how the Pirate Party will backfire on Free
-Software 15.
+Software [^15].
 
 The new generation has a new view on sharing and money as it stands.  They
 want to make it easy to share content and software and also make it easy
@@ -416,7 +416,7 @@ people's music,  that create narrated play-throughs through interactive
 entertainment media like computer games,  that provide lessons involved
 other people's content etc.
 
-15[Richard Stallman: How the Swedish Pirate Party Platform
+[^pirates]: [Richard Stallman: How the Swedish Pirate Party Platform
 Backfires on Free Software](http://www.gnu.org/philosophy/pirate-party.html)
 
 ## Real Help with Licensing

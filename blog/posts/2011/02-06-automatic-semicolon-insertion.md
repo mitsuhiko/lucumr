@@ -103,7 +103,7 @@ Except for the return example this seems straight forward and if you are
 avoiding linebreaks after the return statement you should be fine.  The
 last example stays a function call because the assignment by itself is a
 valid sentence.  If however one would add a plus after `c`, the expression
-in parentheses would not be the argument for a function call 1.
+in parentheses would not be the argument for a function call [^1].
 
 Furthermore because automatic semicolon insertion is there and you can't
 get rid of it, no harm in not setting semicolons.  Right?  After all,
@@ -292,7 +292,7 @@ yourself some headaches, your code will also look more consistent.
 Because there will be situations where a semicolon becomes necessary to
 resolve ambiguities.
 
-1This example was incorrect earlier.  I since fixed it and
+[^update]: This example was incorrect earlier.  I since fixed it and
 updated the section about function calls to also cover the mistake I
 made.  This was pointed out via mail and Twitter by [Chris Leary](http://twitter.com/cdleary).  Another reason to explicitly set
 semicolons :-)

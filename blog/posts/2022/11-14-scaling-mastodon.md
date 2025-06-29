@@ -24,7 +24,7 @@ towards decentralization.
 
 Decentralization promotes an utopian view of the world that I believe fails
 to address actual real problems in practice.  Yet on that decentralization
-wave a lot of projects are riding from crypto-currencies 1, defi or things
+wave a lot of projects are riding from crypto-currencies [^1], defi or things
 such as Mastodon.  All of these things have one thing in common: distrust.
 Some movements come from the distrust of governments or taxation, others
 come from the distrust of central services.
@@ -39,7 +39,7 @@ it should be neither of those two things.
 I rather understand what exactly the goals are that should be solved, and
 out of that the right approach on a technical level can be found.
 
-1Decentralization is these days most commonly associated
+[^1]: Decentralization is these days most commonly associated
 with the crypto space but I'm actually not entirely sure why.  Traditional
 banks are also decentralized, but they follow shared rules.  I can send
 from my Austrian bank to a bank in Estonia and it will work.  The tech

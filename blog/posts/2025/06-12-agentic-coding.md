@@ -15,7 +15,7 @@ questions about my own practices.  So, here goes nothing.
 
 For all intents and purposes, here's what I do: I predominently use
 [Claude Code](https://www.anthropic.com/claude-code) with the cheaper
-Max subscription for $100 a month 1.  That works well for several
+Max subscription for $100 a month [^1].  That works well for several
 reasons:
 
 - I exclusively use the cheaper Sonnet model. It's perfectly adequate for
@@ -317,7 +317,7 @@ but to write better, more maintainable, and resilient code.  Already today
 the code looks nothing like the terrible slop from a few months ago.  Stay
 adaptable, and happy coding!
 
-1This is not an advertisment for Claude Code.  It's just the agent I
+[^1]: This is not an advertisment for Claude Code.  It's just the agent I
 use at the moment.  What else is there?  Alternatives that are similar
 in their user experiences are [OpenCode](https://github.com/sst/opencode), [goose](https://block.github.io/goose/), [Codex](https://github.com/openai/codex) and many others.  There is also
 [Devin](https://devin.ai/) and Cursor's [background agents](https://docs.cursor.com/background-agent) but they work a bit

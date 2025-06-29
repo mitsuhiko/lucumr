@@ -10,7 +10,7 @@ This is mostly an FYI for node developers.  The issue being discussed in
 this post has caused [us](https://sentry.io)
 [quite a bit of pain](https://github.com/getsentry/sentry-javascript/issues/12317).
 It has to do with how node deals with timeouts.  In short: you can
-very easily create memory leaks 1 with the `setTimeout` API in node.
+very easily create memory leaks [^1] with the `setTimeout` API in node.
 You're probably familiar with that API since it's one that browsers
 provide for many, many years.  The API is pretty straightforward: you
 schedule a function to be called later, and you get a token back
@@ -145,7 +145,7 @@ class MyThing {
 ```
 
 Except it doesn't (today).  In fact today doing this will cause an
-unrecoverable memory leak because of a [bug in node](https://github.com/nodejs/node/issues/53335) 2.  Once that will be
+unrecoverable memory leak because of a [bug in node](https://github.com/nodejs/node/issues/53335) [^2].  Once that will be
 resolved however that should be a fine way to avoid problem.
 
 <details><summary>Workaround for the leak with a Monkey-Patch</summary>Since the bug is only triggered when a timer manages to run to completion,
@@ -258,9 +258,9 @@ propagating.  Today there is only a way to prevent a specific local
 storage from propagating by disabling it, but that requires knowing which
 ones exist.
 
-1Under normal circumstances these memory leaks would not be
+[^1]: Under normal circumstances these memory leaks would not be
 permanent leaks.  They would resolve themselves when you finally drop a
 reference to that token.  However due to a node bug it is currently
 possible for these leaks to be unrecoverable.
 
-2How we found *that bug* might be worth a story for another day.
+[^2]: How we found *that bug* might be worth a story for another day.

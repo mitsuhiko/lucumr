@@ -311,7 +311,7 @@ system will have to shovel it into memory before returning back to you.
 There is no “await touching this memory” expression, because if there were,
 we would have to `await` *everywhere*.  That might sound petty but
 blocking memory reads were at the source of a series of incidents at
-Sentry 1.
+Sentry [^1].
 
 The trade-off that `async`/`await` makes today is that the idea is that
 not everything needs to block or needs to suspend.  The reality, however,
@@ -670,7 +670,7 @@ combination of structured concurrency, channels, syntax support for
 spawning/joining/selecting will go a long way.  Watch this space for a
 future blog post about some things I found to work better than others.
 
-1Sentry works with large debug information files such as PDB or
+[^1]: Sentry works with large debug information files such as PDB or
 DWARF.  These files can be gigabytes in size and we memory map
 terabytes of preprocessed files into memory during processing.  Memory
 mapped files can block is hardly a surprise, but what we learned in the

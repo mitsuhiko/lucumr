@@ -163,7 +163,7 @@ pub trait Object: Debug + Send + Sync {
 ```
 
 This trait looks pretty appealing.  The `self` receiver type is reference
-counted (thanks to `&Arc<Self>`) and the interface is pretty minimal. 1
+counted (thanks to `&Arc<Self>`) and the interface is pretty minimal. [^1]
 `Enumerator` maybe needs a bit of explanation before we go further.  In
 Rust usually when you iterate over an object you have something called an
 `Iterator`.  Iterators usually borrow and you use traits to give the
@@ -672,7 +672,7 @@ ridiculous macro abuse necessary in Rust.
 
 Anyways.  Maybe this is useful to you.
 
-1Important note: You can actually make an `Arc<Self>` object safe but
+[^1]: Important note: You can actually make an `Arc<Self>` object safe but
 that involves moving the object which means manipulating the reference
 count.  If you are okay with the implication that this requires, you
 can avoid most of what this blog post talks about and just use

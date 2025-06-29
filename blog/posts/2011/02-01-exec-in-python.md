@@ -246,7 +246,7 @@ $ python -mtimeit -s 'from execcompile import test_local as t' 't()'
 100 loops, best of 3: 23.3 msec per loop
 ```
 
-Again, an increase in performance 3.  Why is that?  That has
+Again, an increase in performance [^3].  Why is that?  That has
 to do with the fact that fast locals are faster than dictionaries (duh).
 What is a fast local?  In a local scope Python keeps track of the names of
 variables it knows about.  Each of that variable is assigned a number
@@ -256,7 +256,7 @@ dictionary.  It will only fall back to the dictionary if this is necessary
 `exec` still exists in Python 3 (as a function) you no longer it at a
 local scope to override variables.  The Python compiler does not check if
 the `exec` builtin is used and will not unoptimize the scope because of
-that 1.
+that [^1].
 
 All of the above knowledge is good to know if you plan on utilizing the
 Python interpreter to interpret your own language by generating Python
@@ -286,7 +286,7 @@ all functions and classes imported from regular modules:
 'xml.sax.saxutils'
 ```
 
-Why is that important?  Because that is how pickle works 2:
+Why is that important?  Because that is how pickle works [^2]:
 
 ```pycon
 >>> pickle.loads(pickle.dumps(quoteattr))
@@ -427,12 +427,12 @@ in another Python environment.  And having different semantics in
 different frameworks/modules/libraries is very hurtful for Python as a
 runtime and language.
 
-1if one wants to argue that this is obvious: it should be.  But
+[^exec]: if one wants to argue that this is obvious: it should be.  But
 Python does track another builtin function to change the behaviour of
 the compiler: `super`.  So it would have been possible to do the same
 with `exec`.  It's for the better however that this does not happen.
 
-2if you however set `__module__` to `None` you will notice
+[^pickle]: if you however set `__module__` to `None` you will notice
 that Python is magically still able to find your function if it
 originated from a module registered in `sys.modules`.  How does that
 work?  It will actually walk through *all the modules* and look at *all
@@ -441,7 +441,7 @@ the global variables* to find that function again.
 I have no idea who came up with that idea, but it's an incredible slow
 operation if a lot of modules are loaded.
 
-3I actually made a mistake in this benchmark.  As correctly
+[^timingfix]: I actually made a mistake in this benchmark.  As correctly
 pointed out by [@thp4](http://twitter.com/thp4) the benchmark was
 flawed because it was comparing different iterations.  This has since
 been fixed.

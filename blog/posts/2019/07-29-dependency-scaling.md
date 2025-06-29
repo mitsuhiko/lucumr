@@ -34,7 +34,7 @@ smallest app quickly has north of 100 dependencies.
 Our [symbolicator](https://github.com/getsentry/symbolicator) project
 written in Rust currently has 303 unique dependencies.  Some of these are
 duplicates due to different versions being used.  For instance we depend
-on `rand 0.4` 1, `rand 0.5`, `rand 0.6` and `rand 0.7` and there a few more
+on `rand 0.4` [^1], `rand 0.5`, `rand 0.6` and `rand 0.7` and there a few more
 cases like this.  But even if we remove all of this we still have 280
 unique package names involved.
 
@@ -42,7 +42,7 @@ Currently I'm in the situation that I can just pray that when I run `cargo
 update` the release is clean.  There is no realistic way for me to audit
 this at all.
 
-1One thing of note here is that rand is a bit special in that some
+[^1]: One thing of note here is that rand is a bit special in that some
 older rand versions will depend on newer ones so that they use the same
 internals.  This is a trick that is also used by the libc library in
 Rust.  For the purpose of the number of dependencies this optimization
@@ -59,7 +59,7 @@ contributing to the same cause.  Those libraries in turn are sitting on
 top of very powerful binary reading and manipulation libraries which are a
 good thing not to be reinvented all over the place.
 
-A quite heated discussion 2 on Twitter emerged the last few days about the
+A quite heated discussion [^2] on Twitter emerged the last few days about the
 danger and cost of dependencies among some Rust developers.  One of the
 arguments that was brought up in support of dependencies was that software
 for non English speakers is mostly so terrible because people chose to
@@ -70,7 +70,7 @@ some problems are just too large not to be put into a common dependency.
 So clearly dependencies are something we do not want to get rid of.  But
 we also need to live with the downsides they bring.
 
-2The thread on twitter with various different view points on this
+[^2]: The thread on twitter with various different view points on this
 issue can be found here: [https://twitter.com/pcwalton/status/1155881388106821632](https://twitter.com/pcwalton/status/1155881388106821632)
 
 ## The Goal: Auditing

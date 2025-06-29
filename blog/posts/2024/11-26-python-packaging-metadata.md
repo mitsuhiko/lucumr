@@ -34,7 +34,7 @@ programmatically, via `require('packageName/package.json')`.
 
 - Dependencies (and all other metadata) are consistent across platforms
 and architectures.  Platform-specific binaries are handled via a filter
-mechanism (`os` and `cpu`) paired with `optionalDependencies`. 1
+mechanism (`os` and `cpu`) paired with `optionalDependencies`. [^1]
 
 - All metadata is static, and updates require explicit changes to
 `package.json` prior to distribution or installation.  Tools are
@@ -57,7 +57,7 @@ consulted.
 - Resolvers can rely on a single API call to fetch dependency metadata for
 a version, improving efficiency.  Practically this also means that the
 resolver only needs to hit a single URL to retrieve all possible
-dependencies of a dependency. 2
+dependencies of a dependency. [^2]
 
 - It makes auditing much easier because there are fewer moving parts and
 just one canonical location for metadata.
@@ -83,7 +83,7 @@ on different packages depending on the time of the day of the phase of the
 moon.
 
 Editable installs and caching are particularly problematic since metadata
-could become invalid almost immediately after being written. 3
+could become invalid almost immediately after being written. [^3]
 
 Some of this has been somewhat improved because the new `pyproject.toml`
 standard encourages static metadata.  However build systems are entirely
@@ -187,7 +187,7 @@ location than a wheel or a local checkout.
 
 Having support for dynamic metadata also means that developers continue
 to maintain elaborate and confusing systems.  For instance there is a
-plugin for hatch that dynamically creates a readme 4, requiring even
+plugin for hatch that dynamically creates a readme [^4], requiring even
 arbitrary Python code to run to display documentation.  There are
 plugins to automatically change versions to incorporate git version
 hashes.  As a result to figure out what version you actually have
@@ -232,7 +232,7 @@ lacked constraints from the start, imposing them now has become a daunting
 challenge.  Meanwhile, other ecosystems, like JavaScript's, took a more
 structured approach early on, avoiding many of these pitfalls entirely.
 
-1You can see how this works in action for `sentry-cli` for instance.
+[^1]: You can see how this works in action for `sentry-cli` for instance.
 The `@sentry/cli` package declares all its platform specific
 dependencies as `optionalDependencies` (relevant [package.json](https://github.com/getsentry/sentry-cli/blob/e08b23ac693e8c6f24517973ca4936643b70ccd7/package.json#L33C7-L39)).
 Each platform build has a filter in its `package.json` for `os` and
@@ -241,14 +241,14 @@ looks like: [package.json](https://github.com/getsentry/sentry-cli/blob/e08b23ac
 npm will attempt to install all optional dependencies, but it will skip
 over the ones that are not compatible with the current platform.
 
-2For `@sentry/cli` at version 2.39.0 for instance this means that
+[^2]: For `@sentry/cli` at version 2.39.0 for instance this means that
 this singular URL will return all the information that a resolver
 needs: [registry.npmjs.org/@sentry/cli/2.39.0](https://registry.npmjs.org/@sentry/cli)
 
-3A common error in the past was to receive a `pkg_resources.DistributionNotFound`
+[^3]: A common error in the past was to receive a `pkg_resources.DistributionNotFound`
 exception when trying to run a script in local development
 
-4I got some [flak on Bluesky](https://bsky.app/profile/hynek.me/post/3lbvwswpfwc2y)
+[^4]: I got some [flak on Bluesky](https://bsky.app/profile/hynek.me/post/3lbvwswpfwc2y)
 for throwing readme generators under the bus.  While they do not
 present the same problem when it comes to metadata like dependencies
 and versions do, they do still increase the complexity.  In an ideal

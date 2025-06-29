@@ -183,7 +183,7 @@ is that now every larger website has to implement SSL to protect against
 the only realistic attack vector which is someone surfing at Starbucks.
 
 But instead we fixed the problem on every single website out there instead
-of one Wifi standard 1.  But administrators largely don't understand SSL.
+of one Wifi standard [^1].  But administrators largely don't understand SSL.
 And I can't blame them.  Right now the total number of people in the world
 that probably understand the entirety of SSL are most likely in the low
 hundreds.  I have been dealing with SSL for years now and the more I use
@@ -209,7 +209,7 @@ where a relatively simple text based protocol has been replaced with a
 multiplexed stream of octets wrapped in a TLS connection.  The future is
 now.
 
-1It was brought up that even if you can trust other Wifi users you
+[^1]: It was brought up that even if you can trust other Wifi users you
 cannot trust the provider of the Wifi connection.  That is definitely
 true and defeats my point somewhat given how many Wifi access points
 are provided directly by unknown entities (bars themselves etc.).

@@ -8,6 +8,7 @@ from pygments.styles import get_style_by_name
 from markupsafe import Markup
 import marko
 from marko.ext.gfm import GFM
+from marko.ext import footnote
 from marko.html_renderer import HTMLRenderer
 
 from generator.config import CONFIG
@@ -131,7 +132,9 @@ def get_pygments_css():
 
 html_formatter = HtmlFormatter(style=get_style_by_name(CONFIG["pygments_style"]))
 
-markdown_parser = marko.Markdown(extensions=[GFM], renderer=PygmentsRenderer)
+markdown_parser = marko.Markdown(
+    extensions=[GFM, footnote.make_extension()], renderer=PygmentsRenderer
+)
 
 directives.register_directive("code-block", CodeBlock)
 directives.register_directive("sourcecode", CodeBlock)

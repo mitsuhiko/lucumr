@@ -84,9 +84,9 @@ HMAC is available for various hash functions, not just MD5 like above.
 Nowadays the most common version of HMAC is HMAC-SHA1 because of
 weaknesses in MD5.  It should however be added that while MD5 is known to
 be broken, this does not mean that HMAC-MD5 is.  The attacks against MD5
-do not work against HMAC-MD5 1.
+do not work against HMAC-MD5 [^1].
 
-1[Updated Security Considerations for the MD5 Message-Digest
+[^attacks]: [Updated Security Considerations for the MD5 Message-Digest
 and the HMAC-MD5 Algorithms](http://tools.ietf.org/html/rfc6151)
 
 ## Signature Anchoring

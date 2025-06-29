@@ -26,7 +26,7 @@ exclusivity period for the original creator to protect their core
 business.  After a designated time frame, the code transitions into Open
 Source via a process called DOSP: [Delayed Open Source Publication](https://opensource.org/delayed-open-source-publication).  This is not
 an entirely new idea, and I have been writing about it a few times before
-1 2.
+[^1] [^2].
 
 A recurring conversation I have in this context is the AGPL (Affero
 General Public License) as an alternative vehicle for balancing business
@@ -150,8 +150,8 @@ relatively short one: just two years.  Count to two and the code
 transitions to full, unshackled openness.  And that transition to Open
 Source is a promise that can't be taken from you.
 
-1Originally about the BUSL license which introduced the idea
+[^1]: Originally about the BUSL license which introduced the idea
 ([Open Source, SaaS and Monetization](/2019/11/4/open-source-and-saas/))
 
-2Later about our own DOSP based license, the [FSL](https://fsl.software/)
+[^2]: Later about our own DOSP based license, the [FSL](https://fsl.software/)
 ([FSL: A License For the Bazaar, Not the Cathedral](https://lucumr.pocoo.org/2023/11/19/cathedral-and-bazaaar-licensing/)).

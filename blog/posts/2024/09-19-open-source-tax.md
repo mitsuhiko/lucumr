@@ -99,7 +99,7 @@ in relation to your business (you own or are a part of) of what the amount
 should be.  Using the size of the development team as a metric offers an
 objective and quantifiable starting point.  The beauty in my mind of the
 developer count in particular is that it's somewhat independently
-observable from both the outside and inside 1.  The latter is important!  It
+observable from both the outside and inside [^1].  The latter is important!  It
 creates a baseline for people within a company to start a conversation
 about Open Source funding.
 
@@ -108,7 +108,7 @@ about Open Source funding.
 If you have feedback on this, particular the pledge I invite you mail me
 or to leave a comment on the Pledge's [issue tracker](https://github.com/opensourcepledge/osspledge.com/issues).
 
-1There is an analogy to historical taxation here.  For instance the
+[^1]: There is an analogy to historical taxation here.  For instance the
 [Window Tax](https://en.wikipedia.org/wiki/Window_tax) was taxation
 based on the number of Windows in a building.  That made enforcement
 easy because you could count them from street level.  The downside of

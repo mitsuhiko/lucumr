@@ -21,26 +21,26 @@ from docutils.parsers.rst.directives import images
 
 class MarkdownWriter(docutils.nodes.NodeVisitor):
     """Converts docutils AST nodes to Markdown format."""
-    
+
     def __init__(self, document):
         super().__init__(document)
         self.output = []
         self.list_depth = 0
         self.in_literal = False
         self.section_level = 0
-        
+
     def visit_document(self, node):
         pass
-        
+
     def depart_document(self, node):
         pass
-        
+
     def visit_section(self, node):
         self.section_level += 1
-        
+
     def depart_section(self, node):
         self.section_level -= 1
-        
+
     def visit_title(self, node):
         # RST document structure: document title is level 1, sections start at level 2
         # Check if this is a document title (parent is document) or section title
@@ -48,179 +48,202 @@ class MarkdownWriter(docutils.nodes.NodeVisitor):
             level = 1  # Document title
         else:
             level = min(self.section_level + 1, 6)  # Section headers start at 2
-        self.output.append('#' * level + ' ')
-        
+        self.output.append("#" * level + " ")
+
     def depart_title(self, node):
-        self.output.append('\n\n')
-        
+        self.output.append("\n\n")
+
     def visit_paragraph(self, node):
         # If we're in a blockquote and this isn't part of a list item, prefix with >
-        if getattr(self, '_in_blockquote', False) and not isinstance(node.parent, docutils.nodes.list_item):
-            self.output.append('> ')
-        
+        if getattr(self, "_in_blockquote", False) and not isinstance(
+            node.parent, docutils.nodes.list_item
+        ):
+            self.output.append("> ")
+
     def depart_paragraph(self, node):
-        if getattr(self, '_in_blockquote', False) and not isinstance(node.parent, docutils.nodes.list_item):
-            self.output.append('\n>\n')
+        if getattr(self, "_in_blockquote", False) and not isinstance(
+            node.parent, docutils.nodes.list_item
+        ):
+            self.output.append("\n>\n")
         else:
-            self.output.append('\n\n')
-        
+            self.output.append("\n\n")
+
     def visit_Text(self, node):
         text = str(node)
         self.output.append(text)
-            
+
     def depart_Text(self, node):
         pass
-        
+
     def visit_emphasis(self, node):
-        self.output.append('*')
-        
+        self.output.append("*")
+
     def depart_emphasis(self, node):
-        self.output.append('*')
-        
+        self.output.append("*")
+
     def visit_strong(self, node):
-        self.output.append('**')
-        
+        self.output.append("**")
+
     def depart_strong(self, node):
-        self.output.append('**')
-        
+        self.output.append("**")
+
     def visit_literal(self, node):
-        self.output.append('`')
+        self.output.append("`")
         self.in_literal = True
-        
+
     def depart_literal(self, node):
-        self.output.append('`')
+        self.output.append("`")
         self.in_literal = False
-        
+
     def visit_title_reference(self, node):
         # RST title references (single backticks) are often used for inline code
-        self.output.append('`')
-        
+        self.output.append("`")
+
     def depart_title_reference(self, node):
-        self.output.append('`')
-        
+        self.output.append("`")
+
+    def visit_footnote_reference(self, node):
+        # Convert RST footnote references to markdown footnote syntax
+        self.output.append("[^")
+
+    def depart_footnote_reference(self, node):
+        self.output.append("]")
+
+    def visit_footnote(self, node):
+        # Get the footnote label
+        label = node.get("names", [""])[0] if node.get("names") else ""
+        self.output.append(f"\n[^{label}]: ")
+
+    def depart_footnote(self, node):
+        self.output.append("\n")
+
+    def visit_label(self, node):
+        # Skip the label as we handle it in visit_footnote
+        raise docutils.nodes.SkipNode
+
     def visit_literal_block(self, node):
         # Extract language from classes attribute (e.g., "code rust" -> "rust")
-        classes = node.get('classes', [])
-        language = ''
-        
+        classes = node.get("classes", [])
+        language = ""
+
         # Look for language specification in classes
-        if len(classes) >= 2 and classes[0] == 'code':
+        if len(classes) >= 2 and classes[0] == "code":
             language = classes[1]
-        elif 'language' in node:
-            language = node['language']
-            
-        self.output.append(f'```{language}\n')
-        
+        elif "language" in node:
+            language = node["language"]
+
+        self.output.append(f"```{language}\n")
+
     def depart_literal_block(self, node):
-        self.output.append('\n```\n\n')
-        
+        self.output.append("\n```\n\n")
+
     def visit_doctest_block(self, node):
-        self.output.append('```\n')
-        
+        self.output.append("```\n")
+
     def depart_doctest_block(self, node):
-        self.output.append('\n```\n\n')
-        
+        self.output.append("\n```\n\n")
+
     def visit_quote(self, node):
         # Handle quoted blocks (indented content)
-        self.output.append('```\n')
-        
+        self.output.append("```\n")
+
     def depart_quote(self, node):
-        self.output.append('\n```\n\n')
-        
+        self.output.append("\n```\n\n")
+
     def visit_code_block(self, node):
-        language = node.get('language', '')
-        self.output.append(f'```{language}\n')
-        
+        language = node.get("language", "")
+        self.output.append(f"```{language}\n")
+
     def depart_code_block(self, node):
-        self.output.append('\n```\n\n')
-        
+        self.output.append("\n```\n\n")
+
     def visit_bullet_list(self, node):
         self.list_depth += 1
-        
+
     def depart_bullet_list(self, node):
         self.list_depth -= 1
         if self.list_depth == 0:
-            self.output.append('\n')
-        
+            self.output.append("\n")
+
     def visit_enumerated_list(self, node):
         self.list_depth += 1
-        
+
     def depart_enumerated_list(self, node):
         self.list_depth -= 1
         if self.list_depth == 0:
-            self.output.append('\n')
-        
+            self.output.append("\n")
+
     def visit_list_item(self, node):
-        indent = '  ' * (self.list_depth - 1)
-        if getattr(self, '_in_blockquote', False):
+        indent = "  " * (self.list_depth - 1)
+        if getattr(self, "_in_blockquote", False):
             # Inside blockquote - add > prefix
             if isinstance(node.parent, docutils.nodes.bullet_list):
-                self.output.append(f'> {indent}- ')
+                self.output.append(f"> {indent}- ")
             else:
-                self.output.append(f'> {indent}1. ')
+                self.output.append(f"> {indent}1. ")
         else:
             if isinstance(node.parent, docutils.nodes.bullet_list):
-                self.output.append(f'{indent}- ')
+                self.output.append(f"{indent}- ")
             else:
-                self.output.append(f'{indent}1. ')
-            
+                self.output.append(f"{indent}1. ")
+
     def depart_list_item(self, node):
-        self.output.append('\n')
-        
+        self.output.append("\n")
+
     def visit_reference(self, node):
-        if 'refuri' in node:
-            self.output.append('[')
-            
+        if "refuri" in node:
+            self.output.append("[")
+
     def depart_reference(self, node):
-        if 'refuri' in node:
-            self.output.append(f']({node["refuri"]})')
-            
+        if "refuri" in node:
+            self.output.append(f"]({node['refuri']})")
+
     def visit_target(self, node):
         # Skip internal targets for cleaner output
         pass
-            
+
     def depart_target(self, node):
         pass
-        
+
     def visit_block_quote(self, node):
         # block_quote nodes in RST should become markdown blockquotes
-        self.output.append('\n')
+        self.output.append("\n")
         self._in_blockquote = True
-        
+
     def depart_block_quote(self, node):
-        self.output.append('\n\n')
+        self.output.append("\n\n")
         self._in_blockquote = False
-        
+
     def visit_image(self, node):
-        uri = node['uri']
-        alt = node.get('alt', '')
-        self.output.append(f'![{alt}]({uri})')
-        
+        uri = node["uri"]
+        alt = node.get("alt", "")
+        self.output.append(f"![{alt}]({uri})")
+
     def depart_image(self, node):
         pass
-        
+
     def visit_line_block(self, node):
         pass
-        
+
     def depart_line_block(self, node):
-        self.output.append('\n\n')
-        
+        self.output.append("\n\n")
+
     def visit_line(self, node):
         pass
-        
+
     def depart_line(self, node):
-        self.output.append('  \n')  # Two spaces for line break
-        
+        self.output.append("  \n")  # Two spaces for line break
+
     def visit_transition(self, node):
-        self.output.append('\n---\n\n')
-        
+        self.output.append("\n---\n\n")
+
     def depart_transition(self, node):
         pass
-        
+
     def unknown_visit(self, node):
         """Handle unknown nodes gracefully."""
         pass
-        
+
     def unknown_departure(self, node):
         """Handle unknown nodes gracefully."""
         pass
@@ -228,137 +251,139 @@ class MarkdownWriter(docutils.nodes.NodeVisitor):
 
 class RSTToMarkdownConverter:
     """Main converter class that handles the full conversion process."""
-    
+
     def __init__(self):
         pass
-        
-    def parse_frontmatter(self, content: str) -> Tuple[Dict[str, Union[str, List[str]]], str]:
+
+    def parse_frontmatter(
+        self, content: str
+    ) -> Tuple[Dict[str, Union[str, List[str]]], str]:
         """Parse frontmatter from RST content."""
-        lines = content.split('\n')
+        lines = content.split("\n")
         frontmatter = {}
         content_start = 0
-        
+
         for i, line in enumerate(lines):
-            if line.strip() == '':
+            if line.strip() == "":
                 content_start = i + 1
                 break
-            
-            if ':' in line:
-                key, value = line.split(':', 1)
+
+            if ":" in line:
+                key, value = line.split(":", 1)
                 key = key.strip()
                 value = value.strip()
-                
+
                 # Handle lists (tags)
-                if value.startswith('[') and value.endswith(']'):
+                if value.startswith("[") and value.endswith("]"):
                     # Parse list format: [tag1, tag2, tag3]
                     value = value[1:-1]  # Remove brackets
                     if value:
-                        frontmatter[key] = [tag.strip() for tag in value.split(',')]
+                        frontmatter[key] = [tag.strip() for tag in value.split(",")]
                     else:
                         frontmatter[key] = []
                 else:
                     frontmatter[key] = value
-        
-        return frontmatter, '\n'.join(lines[content_start:])
-    
+
+        return frontmatter, "\n".join(lines[content_start:])
+
     def format_frontmatter(self, frontmatter: Dict[str, Union[str, List[str]]]) -> str:
         """Format frontmatter as YAML."""
-        lines = ['---']
-        
+        lines = ["---"]
+
         for key, value in frontmatter.items():
             if isinstance(value, list):
                 if value:
-                    lines.append(f'{key}:')
+                    lines.append(f"{key}:")
                     for item in value:
-                        lines.append(f'  - {item}')
+                        lines.append(f"  - {item}")
                 else:
-                    lines.append(f'{key}: []')
+                    lines.append(f"{key}: []")
             else:
-                lines.append(f'{key}: {value}')
-        
-        lines.append('---')
-        return '\n'.join(lines) + '\n\n'
-    
+                lines.append(f"{key}: {value}")
+
+        lines.append("---")
+        return "\n".join(lines) + "\n\n"
+
     def convert_ast_to_markdown(self, document: docutils.nodes.document) -> str:
         """Convert docutils AST to Markdown."""
         writer = MarkdownWriter(document)
-        
+
         # Use docutils' built-in visitor pattern
         document.walkabout(writer)
-        
-        return ''.join(writer.output)
-    
+
+        return "".join(writer.output)
+
     def convert_rst_content(self, rst_content: str) -> str:
         """Convert RST content to Markdown using docutils AST."""
         try:
             # Parse with docutils
             document = docutils.core.publish_doctree(rst_content)
-            
+
             # Convert to markdown
             markdown_content = self.convert_ast_to_markdown(document)
-            
+
             # Clean up excessive whitespace
-            markdown_content = re.sub(r'\n{3,}', '\n\n', markdown_content)
-            markdown_content = markdown_content.strip() + '\n'
-            
+            markdown_content = re.sub(r"\n{3,}", "\n\n", markdown_content)
+            markdown_content = markdown_content.strip() + "\n"
+
             return markdown_content
-            
+
         except Exception as e:
             print(f"Error converting RST content: {e}")
             # Fallback: return original content with warning
             return f"<!-- RST conversion failed: {e} -->\n{rst_content}"
-    
+
     def convert_file(self, input_path: Path, output_path: Path) -> bool:
         """Convert a single RST file to Markdown."""
         try:
             # Read input file
-            with open(input_path, 'r', encoding='utf-8') as f:
+            with open(input_path, "r", encoding="utf-8") as f:
                 content = f.read()
-            
+
             # Parse frontmatter and content
             frontmatter, rst_content = self.parse_frontmatter(content)
-            
+
             # Convert RST content to Markdown
             markdown_content = self.convert_rst_content(rst_content)
-            
+
             # Format output
             if frontmatter:
                 output_content = self.format_frontmatter(frontmatter) + markdown_content
             else:
                 output_content = markdown_content
-            
+
             # Ensure output directory exists
             output_path.parent.mkdir(parents=True, exist_ok=True)
-            
+
             # Write output file
-            with open(output_path, 'w', encoding='utf-8') as f:
+            with open(output_path, "w", encoding="utf-8") as f:
                 f.write(output_content)
-            
+
             return True
-            
+
         except Exception as e:
             print(f"Error converting {input_path}: {e}")
             return False
-    
+
     def convert_directory(self, input_dir: Path, output_dir: Path) -> Tuple[int, int]:
         """Convert all RST files in a directory tree."""
         converted = 0
         failed = 0
-        
-        for rst_file in input_dir.rglob('*.rst'):
+
+        for rst_file in input_dir.rglob("*.rst"):
             # Calculate relative path
             rel_path = rst_file.relative_to(input_dir)
-            
+
             # Change extension to .md
-            md_path = output_dir / rel_path.with_suffix('.md')
-            
+            md_path = output_dir / rel_path.with_suffix(".md")
+
             print(f"Converting {rst_file} -> {md_path}")
-            
+
             if self.convert_file(rst_file, md_path):
                 converted += 1
             else:
                 failed += 1
-        
+
         return converted, failed
 
 
@@ -368,12 +393,12 @@ def main():
         print("Usage: python convert_rst_to_md.py <input_dir> <output_dir>")
         print("       python convert_rst_to_md.py <input_file.rst> <output_file.md>")
         sys.exit(1)
-    
+
     input_path = Path(sys.argv[1])
     output_path = Path(sys.argv[2])
-    
+
     converter = RSTToMarkdownConverter()
-    
+
     if input_path.is_file():
         # Convert single file
         if converter.convert_file(input_path, output_path):
@@ -392,5 +417,5 @@ def main():
         sys.exit(1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

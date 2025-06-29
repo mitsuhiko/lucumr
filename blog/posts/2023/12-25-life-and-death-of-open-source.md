@@ -41,7 +41,7 @@ lot of hate.  Some of it might be warranted, but others just feels
 incredibly out of proportion.  I've noticed a fair amount of controversy
 surrounding the printer online, largely centered on its Chinese origins,
 its optional cloud service, and its impact on the Open Source 3D printing
-community.  I won't talk much about the China part 1 here, but I do
+community.  I won't talk much about the China part [^1] here, but I do
 want to talk about the cloud and license aspect.
 
 The reason I even write about this printer is the licensing situation and
@@ -80,7 +80,7 @@ I was able tell that Prusa is reconsidering their Open Source approach and
 that with a few days as a member of this community because people are
 [complaining](https://www.reddit.com/r/prusa3d/comments/10g6fgv/prusa_giving_up_on_its_open_source_roots/)
 (the MK4 design is no longer Open Source and the firmware apparently no
-longer developed in the open 2).  Prusa is not hiding that they are
+longer developed in the open [^2]).  Prusa is not hiding that they are
 reconsidering their ways thanks to a blog post by their founder about how
 they are [reconsidering their Open Source ways](https://blog.prusa3d.com/the-state-of-open-source-in-3d-printing-in-2023_76659/):
 
@@ -158,12 +158,12 @@ experience with an Open Source-like model, where the risk is managed over
 the long term, while allowing the companies that create these products to
 pay their employees and continue innovating.
 
-1If you do care about my opinion here: I have no business with China.
+[^1]: If you do care about my opinion here: I have no business with China.
 In some ways if I were to have to worry about something from a
 government, I care the least about China.  The US and my own one can
 cause a lot more problems to me.  If I were to never be able to go to
 China again, very little in my life would change.
 
-2An earlier version of this blog post stated that the Firmware is no
+[^2]: An earlier version of this blog post stated that the Firmware is no
 longer Open Source.  That is actually incorrect and what is no longer
 open is the controller design.

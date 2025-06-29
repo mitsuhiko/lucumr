@@ -121,12 +121,12 @@ always possible for everybody else at the speeds envisioned.
 
 I'm writing this because we're a few days away from the end of life of
 Python 2 at which point the community is also going to stop maintaining a
-lot of valuable tools like pytest, pip 1 and others for Python 2.
+lot of valuable tools like pytest, pip [^1] and others for Python 2.
 Yet the user base of the language has only migrated to ~50%.  My own
 libraries which are now maintained by the [pallets](https://palletsprojects.com/) community are joining in on this
 something I can understand but don't agree with.  I really wish the Python
 community all the best but I hope that someone does a post-mortem on all
 of this, because there are lots of things to be learned from all of this.
 
-1it has correctly been pointed out that pip is not deprecating
+[^1]: it has correctly been pointed out that pip is not deprecating
 Python 2 support [any time soon](https://pip.pypa.io/en/stable/development/release-process/#python-2-support).
