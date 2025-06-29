@@ -1,4 +1,3 @@
-public: yes
 tags: [javascript]
 summary: How node's timeout objects are potential sources of memory leaks.
 

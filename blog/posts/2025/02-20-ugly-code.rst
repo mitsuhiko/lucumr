@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: Why ugly and dumb code sometimes blind sights engineers from the
   ingenuity behind it.

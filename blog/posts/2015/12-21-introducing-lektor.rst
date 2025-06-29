@@ -1,4 +1,3 @@
-public: yes
 tags: [python, lektor, announcement]
 summary: |
   The background story to why I built yet another static website generator

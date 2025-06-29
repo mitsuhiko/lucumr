@@ -1,4 +1,3 @@
-public: yes
 tags: [licensing]
 summary: |
   Why the BSD licenses work for me.

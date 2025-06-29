@@ -1,4 +1,3 @@
-public: yes
 tags: [python]
 summary: A braindump on how to make multi version in Python work.
 

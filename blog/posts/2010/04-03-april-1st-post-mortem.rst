@@ -1,4 +1,3 @@
-public: yes
 tags: [flask, python]
 summary: |
   My conclusions of an April's fools day joke I made this year that later

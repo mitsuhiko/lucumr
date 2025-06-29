@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, payments, security]
 summary: |
   Some interesting notes about how the MST feature of Samsung Pay (and

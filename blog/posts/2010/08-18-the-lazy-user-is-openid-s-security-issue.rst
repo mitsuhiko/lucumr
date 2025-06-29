@@ -1,4 +1,3 @@
-public: yes
 tags: [openid, security]
 summary: an alternative way to look at OpenID's security.
 

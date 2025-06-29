@@ -1,4 +1,3 @@
-public: yes
 tags: [rust, python]
 summary: |
   Are you a Python programmer and interested in Rust?  This article goes

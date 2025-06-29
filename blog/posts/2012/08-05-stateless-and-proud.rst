@@ -1,4 +1,3 @@
-public: yes
 tags: [python, thoughts, web]
 summary: |
   Why the real time web does not require changes on your web framework

@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, ai]
 summary: A response to Glyph's opting out of AI.
 

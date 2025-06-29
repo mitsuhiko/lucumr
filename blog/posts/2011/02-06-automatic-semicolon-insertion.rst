@@ -1,4 +1,3 @@
-public: yes
 tags: [javascript]
 summary: |
   Why automatic semicolon insertion in JavaScript was a bad idea and why

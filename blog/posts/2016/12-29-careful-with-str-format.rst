@@ -1,4 +1,3 @@
-public: yes
 tags: [python, security]
 summary: |
   Some general warnings about the use of str.format in Python.

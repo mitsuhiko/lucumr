@@ -1,4 +1,3 @@
-public: yes
 tags: [rant, linux]
 summary: |
   Exploration into a human problem: the problem of simplifying complex

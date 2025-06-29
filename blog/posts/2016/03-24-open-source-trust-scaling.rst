@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, opensource, javascript]
 summary: |
   Some thoughts about why npm style micro-packages are a huge liability for

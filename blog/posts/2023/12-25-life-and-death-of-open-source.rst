@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, opensource, licensing]
 summary: More thoughts on Open Source licensing and companies.
 

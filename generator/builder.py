@@ -26,7 +26,6 @@ class BlogPost:
         self.summary = None
         self.pub_date = None
         self.tags = []
-        self.public = True
 
         # Determine file type
         self.file_type = "markdown" if source_path.endswith(".md") else "rst"
@@ -46,7 +45,6 @@ class BlogPost:
             frontmatter, content_start = self._parse_simple_frontmatter(content)
 
         # Apply frontmatter
-        self.public = frontmatter.get("public", True)
         self.tags = frontmatter.get("tags", [])
         self.summary = frontmatter.get("summary")
         if "title" in frontmatter:
@@ -70,7 +68,6 @@ class BlogPost:
 
         # Check for YAML frontmatter delimited by ---
         if lines and lines[0].strip() == "---":
-            in_frontmatter = True
             for i, line in enumerate(lines[1:], 1):
                 if line.strip() == "---":
                     content_start = i + 1
@@ -85,13 +82,8 @@ class BlogPost:
                         tags_str = value[1:-1]
                         tags = [tag.strip().strip("'\"") for tag in tags_str.split(",")]
                         frontmatter[key] = [tag for tag in tags if tag]
-                    elif key == "public":
-                        frontmatter[key] = value.lower() in ("yes", "true")
                     else:
                         frontmatter[key] = value
-        else:
-            # Fallback to simple frontmatter for backward compatibility
-            frontmatter, content_start = self._parse_simple_frontmatter(content)
 
         return frontmatter, content_start
 
@@ -116,8 +108,6 @@ class BlogPost:
                     tags_str = value[1:-1]
                     tags = [tag.strip().strip("'\"") for tag in tags_str.split(",")]
                     frontmatter[key] = [tag for tag in tags if tag]
-                elif key == "public":
-                    frontmatter[key] = value.lower() == "yes"
                 else:
                     frontmatter[key] = value
 
@@ -188,7 +178,6 @@ class BlogPost:
             "summary": self.summary,
             "pub_date": self.pub_date.isoformat() if self.pub_date else None,
             "tags": self.tags,
-            "public": self.public,
             "file_type": self.file_type,
             "content": self.content,
         }
@@ -207,7 +196,6 @@ class BlogPost:
             else None
         )
         post.tags = metadata["tags"]
-        post.public = metadata["public"]
         post.file_type = metadata["file_type"]
 
         # Re-parse content to extract body (skip header)
@@ -403,13 +391,12 @@ class Builder:
                             str(rel_path), content, post.to_metadata()
                         )
 
-                    if post.public:
-                        if post.pub_date:
-                            self.posts.append(post)
-                            for tag in post.tags:
-                                self.tags[tag].append(post)
-                        else:
-                            self.pages.append(post)
+                    if post.pub_date:
+                        self.posts.append(post)
+                        for tag in post.tags:
+                            self.tags[tag].append(post)
+                    else:
+                        self.pages.append(post)
 
                 except Exception as e:
                     print(f"Error processing {rel_path}: {e}")

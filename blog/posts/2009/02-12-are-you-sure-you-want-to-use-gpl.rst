@@ -1,4 +1,3 @@
-public: yes
 tags: [licensing, rant]
 summary: |
   My point of view on one of the most controversial topics in the

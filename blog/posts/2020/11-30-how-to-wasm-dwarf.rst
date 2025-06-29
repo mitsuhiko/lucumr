@@ -1,4 +1,3 @@
-public: yes
 tags: [wasm, rust]
 summary: |
   A short introduction of the current state of debugging WebAssembly code.

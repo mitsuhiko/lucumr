@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: Some very personal thoughts about the future of Austria.
 

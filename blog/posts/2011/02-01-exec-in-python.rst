@@ -1,4 +1,3 @@
-public: yes
 tags: [python]
 summary: |
   How `exec` and `eval` work in Python and a number of reasons why you

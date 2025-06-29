@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, rust]
 summary: |
   Why unsafe Rust is a complex and user unfriendly experience.

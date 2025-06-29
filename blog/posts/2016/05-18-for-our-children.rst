@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, austria, europe, politics]
 summary: |
   Thoughts about what I believe is wrong in Austria today and how we can

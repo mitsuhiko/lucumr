@@ -1,4 +1,3 @@
-public: yes
 tags: [python, thoughts]
 summary: |
   Why Python follows the Principle of Least Astonishment even when some

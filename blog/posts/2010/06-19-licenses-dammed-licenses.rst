@@ -1,4 +1,3 @@
-public: yes
 tags: [licensing]
 summary: |
   Adventures in License land.  We need more lawyers in the open source

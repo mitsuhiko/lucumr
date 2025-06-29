@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, rust, api]
 summary: |
   My thoughts about error handling in APIs after writing a Redis library

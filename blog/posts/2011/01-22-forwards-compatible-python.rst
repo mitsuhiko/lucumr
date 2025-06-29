@@ -1,4 +1,3 @@
-public: yes
 tags: [python]
 day-order: 2
 summary: |

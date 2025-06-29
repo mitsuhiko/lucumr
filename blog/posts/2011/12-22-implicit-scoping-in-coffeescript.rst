@@ -1,4 +1,3 @@
-public: yes
 tags: [javascript, thoughts]
 summary: |
   A longer explanation of why I think that the CoffeeScript scoping is

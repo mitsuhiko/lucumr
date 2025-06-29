@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: Make software that is capable to forget and decay information.
 

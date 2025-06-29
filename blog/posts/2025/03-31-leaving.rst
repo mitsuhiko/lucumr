@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, announcement]
 summary: Endings and new beginnings.
 

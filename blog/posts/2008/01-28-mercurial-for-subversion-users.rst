@@ -1,4 +1,3 @@
-public: yes
 tags: [hg]
 summary: |
   Short introduction into mercurial from the perspective of a subversion

@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: "Balancing empathy, group member with integrity and morals: a personal journey."
 

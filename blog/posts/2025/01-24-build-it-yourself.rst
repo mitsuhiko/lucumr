@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, rust]
 summary: We need a vibe shift on dependencies in programming.
 

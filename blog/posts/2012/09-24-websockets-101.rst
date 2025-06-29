@@ -1,4 +1,3 @@
-public: yes
 tags: [python, websocket]
 summary: |
   Quick introduction into the final specification of websockets

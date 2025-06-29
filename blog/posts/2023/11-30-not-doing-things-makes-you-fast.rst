@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, javascript]
 summary: Ramblings about bundleless JavaScript
 

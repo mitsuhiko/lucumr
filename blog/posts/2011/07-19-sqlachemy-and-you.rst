@@ -1,4 +1,3 @@
-public: yes
 tags: [python, sqlalchemy]
 summary: |
   The Django ORM feels so much easier than SQLAlchemy?  Maybe this article

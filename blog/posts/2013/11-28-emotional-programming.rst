@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, personal]
 summary: |
   Some reflections on emotional state and (especially my) software

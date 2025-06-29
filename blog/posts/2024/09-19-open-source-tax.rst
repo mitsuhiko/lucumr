@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: A discussion on purchase decisions and sustainable Open Source.
 

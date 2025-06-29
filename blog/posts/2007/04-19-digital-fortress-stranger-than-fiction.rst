@@ -1,4 +1,3 @@
-public: yes
 tags: [books]
 summary: |
   A book review from a really terrible science fiction book by Dan Brown.

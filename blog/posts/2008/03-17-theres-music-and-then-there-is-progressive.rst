@@ -1,4 +1,3 @@
-public: yes
 tags: [music]
 summary: |
   About my love to progressive metal and rock.

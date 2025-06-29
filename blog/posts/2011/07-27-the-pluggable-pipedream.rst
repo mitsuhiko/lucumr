@@ -1,4 +1,3 @@
-public: yes
 tags: [python, wsgi, braindump]
 summary: |
   Why WSGI is not as big of a problem as you would believe and why

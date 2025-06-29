@@ -1,4 +1,3 @@
-public: yes
 tags: [wsgi, python]
 summary: |
   A short summary about the current state of WSGI on Python 3.

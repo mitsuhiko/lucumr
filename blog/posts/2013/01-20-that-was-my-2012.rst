@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: |
   Recollection of what happened to me in 2012 and what might happen in

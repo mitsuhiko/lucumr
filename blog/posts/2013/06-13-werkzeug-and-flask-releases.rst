@@ -1,4 +1,3 @@
-public: yes
 tags: [python, flask, werkzeug, announcement]
 summary: |
   Update on the Flask 0.10 and Werkzeug 0.9 releases.

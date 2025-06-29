@@ -1,4 +1,3 @@
-public: yes
 tags: [git, thoughts, ui]
 summary: |
   Some thoughts on why git's complex user interface works so well in

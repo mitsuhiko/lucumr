@@ -1,4 +1,3 @@
-public: yes
 tags: [werkzeug, django, python]
 summary: |
   Why Werkzeug and WebOb exist when Django is already around.

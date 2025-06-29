@@ -1,4 +1,3 @@
-public: yes
 tags: [python, thoughts, politics]
 summary: |
   Observations about the problem of having strong opinions and sharing

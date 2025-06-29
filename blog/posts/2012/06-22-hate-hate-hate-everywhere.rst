@@ -1,4 +1,3 @@
-public: yes
 tags: [python, thoughts]
 summary: |
   A sad example of how easy it is to dismiss certain design principles

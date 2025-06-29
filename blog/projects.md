@@ -1,7 +1,3 @@
----
-public: yes
----
-
 # Projects
 
 Over the last couple of years I created and contributed to a number of

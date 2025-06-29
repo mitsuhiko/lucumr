@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: My thoughts on license choices for balancing business interests and
   Open Source software and why the FSL is a better choice than the AGPL.

@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, rust, python]
 summary: |
   An updated report on my experience with Rust and where I think it might

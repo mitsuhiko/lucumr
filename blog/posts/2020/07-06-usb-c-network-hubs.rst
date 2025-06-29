@@ -1,4 +1,3 @@
-public: yes
 tags: [desktop, usbc, network]
 summary: |
   A word of warning on USB-C/Thunderbolt hubs with ethernet ports.

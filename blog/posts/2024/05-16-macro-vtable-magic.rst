@@ -1,4 +1,3 @@
-public: yes
 tags: [rust]
 summary: How MiniJinja's dynamic reference counted objects work.
 

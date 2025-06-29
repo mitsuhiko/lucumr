@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, python]
 summary: |
   Furthermore I am of the oppinion that Python developers should write

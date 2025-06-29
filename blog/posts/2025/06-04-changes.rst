@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, ai]
 summary: "From fear to optimism: why I am convinced AI is worth embracing."
 

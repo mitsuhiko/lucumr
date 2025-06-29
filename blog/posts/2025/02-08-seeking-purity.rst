@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, rust, python]
 summary: Thoughts on purity in software engineering.
 

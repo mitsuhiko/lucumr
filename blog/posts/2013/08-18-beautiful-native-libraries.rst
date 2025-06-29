@@ -1,4 +1,3 @@
-public: yes
 tags: [python, c, thoughts]
 summary: |
   A guide on writing beautiful native libraries in C or C++ that compile

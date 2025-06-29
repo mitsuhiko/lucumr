@@ -1,4 +1,3 @@
-public: yes
 day-order: 1
 tags: [python, wsgi, thoughts]
 summary: |

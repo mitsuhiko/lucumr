@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, ai]
 summary: Why I'm a worried, but not too worried about AIs.
 

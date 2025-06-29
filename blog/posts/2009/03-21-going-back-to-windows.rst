@@ -1,4 +1,3 @@
-public: yes
 tags: [windows]
 summary: |
   Why I am running Windows on my desktop computer now instead of ubuntu.

@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, rust, python]
 summary: |
   Some notes about what appears to be current trend of programming

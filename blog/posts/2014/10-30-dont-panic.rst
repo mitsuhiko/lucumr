@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, rust, api]
 summary: |
   A look at stack unwinding, primarily in the context of Rust, why it

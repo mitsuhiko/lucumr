@@ -1,4 +1,3 @@
-public: yes
 tags: [python, import]
 summary: |
   Ways to deal with the Python Import System Blackbox.

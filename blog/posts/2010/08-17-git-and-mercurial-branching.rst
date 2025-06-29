@@ -1,4 +1,3 @@
-public: yes
 tags: [hg, git]
 summary: |
   Comparsion of mercurial's and git's branching systems and why one of

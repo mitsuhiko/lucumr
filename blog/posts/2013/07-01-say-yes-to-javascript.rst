@@ -1,4 +1,3 @@
-public: yes
 tags: [javascript, python, thoughts]
 summary: |
   Some random notes about why I think that removing the option to disable

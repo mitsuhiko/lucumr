@@ -1,4 +1,3 @@
-public: yes
 tags: [flask, pycon, python]
 summary: |
   A summary of the Flask talk at PyCon 2011 and what happened during the

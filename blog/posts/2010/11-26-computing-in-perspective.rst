@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: |
   Visualizing numbers and thinking about dimensions in computing.

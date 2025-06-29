@@ -1,4 +1,3 @@
-public: yes
 tags: [python, soa]
 summary: |
   A basic overview of building service oriented architecture like

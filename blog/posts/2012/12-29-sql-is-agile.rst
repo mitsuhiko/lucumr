@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: |
   Thoughts about why relational databases are not a bad choice when

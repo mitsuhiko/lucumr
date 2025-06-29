@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, personal, politics]
 summary: |
   In which I share some of my personal experiences and discoveries about

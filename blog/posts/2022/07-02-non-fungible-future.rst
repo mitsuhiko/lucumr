@@ -1,4 +1,3 @@
-public: yes
 summary: What a powerful NFT driven future could look like.
 
 A Non Fungible Future

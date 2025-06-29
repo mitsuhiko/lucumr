@@ -1,7 +1,3 @@
----
-public: yes
----
-
 # About Me
 
 <div style="float: right; margin-left: 20px; margin-bottom: 20px;">

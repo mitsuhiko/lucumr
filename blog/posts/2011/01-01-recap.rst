@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: |
   Recapitulation of my accomplishments and interesting events related to

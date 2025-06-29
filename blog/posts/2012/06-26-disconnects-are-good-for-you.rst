@@ -1,4 +1,3 @@
-public: yes
 tags: [python, thoughts, zmq]
 summary: |
   The hidden disconnects of ZeroMQ can be dangerous if you don't write

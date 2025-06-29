@@ -1,4 +1,3 @@
-public: yes
 tags: [rust]
 summary: |
   A useful pattern for making common types extensible.

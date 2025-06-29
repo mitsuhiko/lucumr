@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: |
   Some quick notes on application mimetypes and how they deal with

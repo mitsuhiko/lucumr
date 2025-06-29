@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, ai]
 summary: Current recommendations of agentic coding.
 

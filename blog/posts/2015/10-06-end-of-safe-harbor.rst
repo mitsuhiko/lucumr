@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, europe, security]
 summary: |
   Some in detail analysis about what the end of safe harbor means for

@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: A thought on human progress.
 

@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, games]
 summary: |
   Thoughts on Peter Molyneux' Curiosity game and why it's my biggest

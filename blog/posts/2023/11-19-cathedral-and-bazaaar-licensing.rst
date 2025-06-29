@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, licensing, opensource]
 summary: My personal commentary on Sentry's new FSL license.
 

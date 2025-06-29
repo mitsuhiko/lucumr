@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, ai, api]
 summary: Using programming agents to measure measuring developer productivity.
 

@@ -1,4 +1,3 @@
-public: yes
 tags: [hg, bitbucket]
 summary: |
   Old article about why I love bitbucket.

@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, licensing, privacy]
 summary: Some thoughts about the meaning of pseudonyms and anonymous contributions in Open Source.
 

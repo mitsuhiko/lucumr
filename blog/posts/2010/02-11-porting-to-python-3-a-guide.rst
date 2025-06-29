@@ -1,4 +1,3 @@
-public: yes
 tags: [python]
 summary: |
   Various notes on how to port libraries and applications over to Python 3

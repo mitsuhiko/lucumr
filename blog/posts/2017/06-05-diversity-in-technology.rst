@@ -1,4 +1,3 @@
-public: yes
 tags: [diversity, thoughts, opensource]
 summary: |
   Some personal thoughts and observations about the topic of diversity in

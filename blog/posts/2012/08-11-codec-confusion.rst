@@ -1,4 +1,3 @@
-public: yes
 tags: [python, thoughts, codecs]
 summary: |
   A recap of a sad example of where the wrong conclusion was drawn.

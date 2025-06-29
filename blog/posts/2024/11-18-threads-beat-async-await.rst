@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, async, python, javascript, rust]
 summary: Musings about async await again and why I think virtual threads
   are a better model.

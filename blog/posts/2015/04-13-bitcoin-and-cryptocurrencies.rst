@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, bitcoin]
 summary: |
   My thoughts on Bitcoin and some other cryptocurrencies and why many of

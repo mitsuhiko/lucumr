@@ -1,4 +1,3 @@
-public: yes
 tags: [ai, thoughts]
 summary: "Due to popular request: my use of LLM explained."
 

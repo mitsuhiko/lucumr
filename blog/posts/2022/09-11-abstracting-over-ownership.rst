@@ -1,4 +1,3 @@
-public: yes
 summary: In which I'm diving into some restrictions of the Rust type system involving closures.
 
 You Can't Do That: Abstracting over Ownership in Rust with Higher-Rank Type Bounds. Or Can You?

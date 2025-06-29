@@ -1,4 +1,3 @@
-public: yes
 tags: [announcement]
 summary: |
   Short update on why this site looks different and what changed under

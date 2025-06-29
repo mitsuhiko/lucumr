@@ -1,4 +1,3 @@
-public: yes
 tags: [rust, thoughts]
 summary: |
   Look at a tiny syntax detail that shows up in current versions of rust

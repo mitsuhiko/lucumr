@@ -1,4 +1,3 @@
-public: yes
 tags: [rust]
 summary: |
   Some things you can do with serde that were not in the mind of the

@@ -1,4 +1,3 @@
-public: yes
 tags: [c]
 summary: |
   Using the C preprocessor to achive basic generic collection types.

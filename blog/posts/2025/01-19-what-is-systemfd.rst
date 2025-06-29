@@ -1,4 +1,3 @@
-public: yes
 tags: [rust, web]
 summary: A re-introduction to socket activation with listenfd/systemfd.
 

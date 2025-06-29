@@ -1,7 +1,3 @@
----
-public: yes
----
-
 # Talks
 
 A non-complete list of talks I gave starting with 2009 and links to slides

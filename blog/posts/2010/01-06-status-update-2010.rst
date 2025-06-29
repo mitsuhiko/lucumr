@@ -1,4 +1,3 @@
-public: yes
 tags: [personal]
 summary: |
   Things that will change for me in 2010.

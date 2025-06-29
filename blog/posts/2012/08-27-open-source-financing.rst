@@ -1,4 +1,3 @@
-public: yes
 day-order: 2
 tags: [thoughts, finance]
 summary: |

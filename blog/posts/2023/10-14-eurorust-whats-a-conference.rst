@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, rust]
 summary: A recap of EuroRust 2023 and thoughts on Rust
 

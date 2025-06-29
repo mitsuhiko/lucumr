@@ -1,4 +1,3 @@
-public: yes
 tags: [rust, http, rest, api]
 summary: |
   Lessons learned from implementing a restful HTTP client for Rust.

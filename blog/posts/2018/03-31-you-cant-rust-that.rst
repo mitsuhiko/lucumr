@@ -1,4 +1,3 @@
-public: yes
 tags: [rust]
 summary: |
   Some tips for how to be more productive in Rust by avoiding situations you

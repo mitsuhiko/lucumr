@@ -1,4 +1,3 @@
-public: yes
 tags: [rust]
 summary: Some good news is coming in Rust 1.86
 

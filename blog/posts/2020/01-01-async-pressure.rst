@@ -1,4 +1,3 @@
-public: yes
 tags: [async, python]
 summary: |
   An introduction to back pressure in systems and why it matters.

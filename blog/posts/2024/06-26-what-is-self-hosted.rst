@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: Some thoughts on self hosted Open Source software.
 

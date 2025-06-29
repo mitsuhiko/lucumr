@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, javascript, opensource]
 summary: |
   Some more thoughts about dependencies.

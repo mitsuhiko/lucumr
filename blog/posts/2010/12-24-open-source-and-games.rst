@@ -1,4 +1,3 @@
-public: yes
 tags: [licensing, thoughts]
 summary: |
   Are games without assets open source?  Why are there so few commercial

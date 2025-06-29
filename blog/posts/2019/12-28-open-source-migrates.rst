@@ -1,4 +1,3 @@
-public: yes
 tags: [opensource, thoughts]
 summary: |
   How the Open Source community gets away with large, backwards

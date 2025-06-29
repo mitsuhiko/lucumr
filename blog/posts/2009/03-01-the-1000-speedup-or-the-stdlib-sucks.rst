@@ -1,4 +1,3 @@
-public: yes
 tags: [python, rant]
 summary: |
   How a small change on an import resulted in an 1000% speedup.

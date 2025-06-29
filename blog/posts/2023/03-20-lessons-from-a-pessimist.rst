@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, lessons]
 summary: On the topic of life lessons from a born pessimist.
 

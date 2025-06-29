@@ -1,4 +1,3 @@
-public: yes
 tags: [python]
 summary: |
   Some hidden features of the Python re module and the support machinery

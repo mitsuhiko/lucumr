@@ -1,4 +1,3 @@
-public: yes
 tags: [python, jinja, mako, genshi]
 summary: |
   A comparison of three of the most popular template engines for Python

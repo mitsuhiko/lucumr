@@ -1,4 +1,3 @@
-public: yes
 tags: [python]
 summary: |
   Short overview of things that are nice about Python 3 and parts where

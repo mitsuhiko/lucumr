@@ -1,4 +1,3 @@
-public: yes
 tags: [asyncio, python]
 summary: |
   A little confession that I have no idea how asyncio works in Python 3.

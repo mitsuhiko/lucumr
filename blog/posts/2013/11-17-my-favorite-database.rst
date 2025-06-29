@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts]
 summary: |
   A reinforcement about how signed data is useful to create distributed

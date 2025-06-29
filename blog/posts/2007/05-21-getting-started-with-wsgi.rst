@@ -1,4 +1,3 @@
-public: yes
 tags: [wsgi, python]
 summary: |
   A friendly introduction into getting started with WSGI on Python.

@@ -1,4 +1,3 @@
-public: yes
 tags: [rust, javascript, opensource, thoughts]
 summary: |
   An update to my struggles accepting that the current explosion of

@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, licensing]
 summary: |
   Some thoughts about the absolute madness that is currently going on with

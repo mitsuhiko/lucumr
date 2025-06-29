@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, javascript]
 summary: |
   An experience report of using JavaScript with angular for a few days and

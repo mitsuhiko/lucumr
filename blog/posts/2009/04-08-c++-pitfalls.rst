@@ -1,4 +1,3 @@
-public: yes
 tags: [c++]
 summary: |
   A concise list of some common C++ pitfalls.

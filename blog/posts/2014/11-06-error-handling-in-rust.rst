@@ -1,4 +1,3 @@
-public: yes
 tags: [rust]
 summary: |
   Overview of how to handle errors in the current version of the Rust

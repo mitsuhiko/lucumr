@@ -1,4 +1,3 @@
-public: yes
 tags: [poem]
 summary: A poem to my wife.
 

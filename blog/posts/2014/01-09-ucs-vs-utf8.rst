@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, python, unicode, rust]
 summary: |
   Some comparisons about different ways to deal with Unicode in

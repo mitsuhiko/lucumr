@@ -1,4 +1,3 @@
-public: yes
 tags: [design, thoughts]
 summary: |
   A few thoughts about how design on different levels and how users

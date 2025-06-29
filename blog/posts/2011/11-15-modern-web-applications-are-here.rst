@@ -1,4 +1,3 @@
-public: yes
 tags: [python, web, battlefield, thoughts]
 summary: |
   Battlefield 3's Battlelog system is an interesting web application that

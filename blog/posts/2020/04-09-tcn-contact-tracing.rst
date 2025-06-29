@@ -1,4 +1,3 @@
-public: yes
 tags: [covid19, thoughts]
 summary: |
   A short introduction to TCN based contact tracing

@@ -1,4 +1,3 @@
-public: yes
 tags: [rust]
 summary: |
   A creative workaround to the inability of implementing additional traits

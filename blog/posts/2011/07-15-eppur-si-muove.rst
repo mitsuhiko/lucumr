@@ -1,4 +1,3 @@
-public: yes
 tags: [python, thoughts]
 summary: |
   The problems with timezones and Python's datetime object and how you

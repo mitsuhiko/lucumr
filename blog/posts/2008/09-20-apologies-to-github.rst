@@ -1,4 +1,3 @@
-public: yes
 tags: [github, git]
 summary: |
   Apology for a mistake I made in an earlier blog post.

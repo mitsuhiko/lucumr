@@ -1,4 +1,3 @@
-public: yes
 tags: [python, web]
 summary: |
   A short list of common mistakes in Python web applications in terms of

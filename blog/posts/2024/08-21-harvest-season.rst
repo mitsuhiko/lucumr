@@ -1,4 +1,3 @@
-public: yes
 tags: [python, announcement, rye]
 summary: My thoughts on Rye and uv.
 

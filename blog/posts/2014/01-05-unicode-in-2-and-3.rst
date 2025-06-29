@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, python]
 summary: |
   Some thoughts about bytes and Unicode in Python 2 and Python 3.

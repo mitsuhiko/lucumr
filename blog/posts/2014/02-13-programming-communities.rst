@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, python]
 summary: |
   Some personal thoughts on the Python community and programming

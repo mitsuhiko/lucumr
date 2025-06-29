@@ -1,4 +1,3 @@
-public: yes
 summary: Now that Twitter is dying, what can replace it?
 
 Scaling Mastodon is Impossible

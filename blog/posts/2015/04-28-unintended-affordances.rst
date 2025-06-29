@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, ssl]
 summary: |
   Some thoughts about the different effects of security and why sometimes

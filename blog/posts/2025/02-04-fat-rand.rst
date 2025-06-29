@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, rust]
 summary: More musing on dependencies.
 

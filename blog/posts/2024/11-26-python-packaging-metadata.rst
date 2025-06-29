@@ -1,4 +1,3 @@
-public: yes
 tags: [python]
 summary: Some of the issues of why Python packaging is unnecessarily hard.
 

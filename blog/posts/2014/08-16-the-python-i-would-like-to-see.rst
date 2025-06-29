@@ -1,4 +1,3 @@
-public: yes
 tags: [python, thoughts]
 summary: |
   What I would imagine an better Python would look like.

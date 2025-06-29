@@ -1,4 +1,3 @@
-public: yes
 tags: [rust]
 summary: A trick to convert arbitrary values from owned strings.
 

@@ -1,4 +1,3 @@
-public: yes
 tags: [flask, python]
 summary: |
   First part of a series of articles about how Flaks works internally

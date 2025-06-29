@@ -1,4 +1,3 @@
-public: yes
 tags: [covid19, desktop]
 summary: |
   How my work from home situation looks like at the moment.

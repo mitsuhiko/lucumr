@@ -1,4 +1,3 @@
-public: yes
 tags: [thoughts, bitcoin]
 summary: |
   Some thoughts about various payment systems on the internet and how

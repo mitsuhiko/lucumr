@@ -1,4 +1,3 @@
-public: yes
 tags: [python, ai]
 summary: In a first for me, I published some agentic programmed AI slop to PyPI.
 
