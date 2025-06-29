@@ -1,4 +1,6 @@
+---
 public: yes
+---
 
 # Projects
 

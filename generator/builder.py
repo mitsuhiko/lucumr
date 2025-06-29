@@ -39,7 +39,64 @@ class BlogPost:
             self._extract_date_from_path()
 
     def _parse_content(self, content):
-        """Parse frontmatter and RST content."""
+        """Parse frontmatter based on file type."""
+        if self.file_type == "markdown":
+            frontmatter, content_start = self._parse_yaml_frontmatter(content)
+        else:
+            frontmatter, content_start = self._parse_simple_frontmatter(content)
+
+        # Apply frontmatter
+        self.public = frontmatter.get("public", True)
+        self.tags = frontmatter.get("tags", [])
+        self.summary = frontmatter.get("summary")
+        if "title" in frontmatter:
+            self.title = frontmatter["title"]
+
+        # Parse content for title if not in frontmatter
+        lines = content.split("\n")
+        self.content = "\n".join(lines[content_start:])
+        if "title" not in frontmatter:
+            extracted_title = markup.extract_title_from_content(
+                self.content, self.file_type
+            )
+            if extracted_title:
+                self.title = extracted_title
+
+    def _parse_yaml_frontmatter(self, content):
+        """Parse YAML frontmatter (for .md files)."""
+        lines = content.split("\n")
+        frontmatter = {}
+        content_start = 0
+
+        # Check for YAML frontmatter delimited by ---
+        if lines and lines[0].strip() == "---":
+            in_frontmatter = True
+            for i, line in enumerate(lines[1:], 1):
+                if line.strip() == "---":
+                    content_start = i + 1
+                    break
+                if ":" in line:
+                    key, value = line.split(":", 1)
+                    key = key.strip()
+                    value = value.strip()
+
+                    if key == "tags" and value.startswith("[") and value.endswith("]"):
+                        # Parse tags: [tag1, tag2, tag3]
+                        tags_str = value[1:-1]
+                        tags = [tag.strip().strip("'\"") for tag in tags_str.split(",")]
+                        frontmatter[key] = [tag for tag in tags if tag]
+                    elif key == "public":
+                        frontmatter[key] = value.lower() in ("yes", "true")
+                    else:
+                        frontmatter[key] = value
+        else:
+            # Fallback to simple frontmatter for backward compatibility
+            frontmatter, content_start = self._parse_simple_frontmatter(content)
+
+        return frontmatter, content_start
+
+    def _parse_simple_frontmatter(self, content):
+        """Parse simple frontmatter (for .rst files and fallback)."""
         lines = content.split("\n")
         frontmatter = {}
         content_start = 0
@@ -64,21 +121,7 @@ class BlogPost:
                 else:
                     frontmatter[key] = value
 
-        # Apply frontmatter
-        self.public = frontmatter.get("public", True)
-        self.tags = frontmatter.get("tags", [])
-        self.summary = frontmatter.get("summary")
-        if "title" in frontmatter:
-            self.title = frontmatter["title"]
-
-        # Parse content for title if not in frontmatter
-        self.content = "\n".join(lines[content_start:])
-        if "title" not in frontmatter:
-            extracted_title = markup.extract_title_from_content(
-                self.content, self.file_type
-            )
-            if extracted_title:
-                self.title = extracted_title
+        return frontmatter, content_start
 
     def _extract_date_from_path(self):
         """Extract publication date from file path."""
