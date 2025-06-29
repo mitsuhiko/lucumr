@@ -294,8 +294,7 @@ class Builder:
             return str(date_obj.year)
         elif format in ("full", "long"):
             return date_obj.strftime("%B %d, %Y")
-        elif format == "medium":
-            return date_obj.strftime("%b %d, %Y")
+        return date_obj.strftime("%b %d, %Y")
 
     def _get_recent_posts(self, limit=10):
         """Get recent blog posts."""
@@ -344,7 +343,7 @@ class Builder:
         for filepath in self.project_folder.rglob("*"):
             if (
                 filepath.is_file()
-                and not self.should_ignore(filepath.name)
+                and not self.should_ignore(filepath)
                 and (filepath.suffix in (".rst", ".md"))
             ):
                 rel_path = filepath.relative_to(self.project_folder)
