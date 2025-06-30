@@ -1,8 +1,9 @@
 ---
 tags:
   - thoughts
-summary: "Something on the topic of money and privilege that come with working in
-software."
+summary: |
+  Something on the topic of money and privilege that come with working in
+  software.
 ---
 
 # Be Humble

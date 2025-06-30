@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - lessons
-summary: "Things I learned and believe, condensed into some sort of guide."
+summary: Things I learned and believe, condensed into some sort of guide.
 ---
 
 # Reflecting on Life

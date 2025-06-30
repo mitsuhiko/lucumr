@@ -2,7 +2,7 @@
 tags:
   - python
   - rant
-summary: "How a small change on an import resulted in an 1000% speedup."
+summary: How a small change on an import resulted in an 1000% speedup.
 ---
 
 # The 1000% Speedup, or, the stdlib sucks

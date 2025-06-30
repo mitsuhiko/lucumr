@@ -361,7 +361,13 @@ class RSTToMarkdownConverter:
                 else:
                     lines.append(f"{key}: []")
             elif value:  # Only include non-empty values
-                lines.append(f'{key}: "{value}"')
+                # Use YAML block scalar for multiline content or content with quotes
+                if '\n' in value or '"' in value:
+                    lines.append(f"{key}: |")
+                    for line in value.split('\n'):
+                        lines.append(f"  {line}")
+                else:
+                    lines.append(f"{key}: {value}")
             else:
                 lines.append(f'{key}: ""')
 

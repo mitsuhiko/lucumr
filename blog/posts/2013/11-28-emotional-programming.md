@@ -2,8 +2,9 @@
 tags:
   - thoughts
   - personal
-summary: "Some reflections on emotional state and (especially my) software
-quality."
+summary: |
+  Some reflections on emotional state and (especially my) software
+  quality.
 ---
 
 # Emotional Programming in Open Source

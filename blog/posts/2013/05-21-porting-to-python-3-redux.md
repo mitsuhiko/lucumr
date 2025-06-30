@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - python
-summary: "Some updated tips for porting software to Python 3."
+summary: Some updated tips for porting software to Python 3.
 ---
 
 # Porting to Python 3 Redux

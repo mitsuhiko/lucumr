@@ -2,8 +2,9 @@
 tags:
   - thoughts
   - games
-summary: "Thoughts on Peter Molyneux' Curiosity game and why it's my biggest
-disappointment of the year."
+summary: |
+  Thoughts on Peter Molyneux' Curiosity game and why it's my biggest
+  disappointment of the year.
 ---
 
 # Death by Million Cubes

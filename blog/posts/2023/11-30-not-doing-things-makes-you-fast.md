@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - javascript
-summary: "Ramblings about bundleless JavaScript"
+summary: Ramblings about bundleless JavaScript
 ---
 
 # Bundleless: Not Doing Things Makes You Fast

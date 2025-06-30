@@ -3,8 +3,9 @@ tags:
   - javascript
   - python
   - thoughts
-summary: "Some random notes about why I think that removing the option to disable
-JavaScript in Firefox is one of the best things."
+summary: |
+  Some random notes about why I think that removing the option to disable
+  JavaScript in Firefox is one of the best things.
 ---
 
 # Say “Yes” to JavaScript

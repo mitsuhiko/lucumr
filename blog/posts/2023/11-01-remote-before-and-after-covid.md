@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - lessons
-summary: "What I learned about remote work after Covid and why it's so hard."
+summary: What I learned about remote work after Covid and why it's so hard.
 ---
 
 # Post Covid Remote Work Doesn't Work As Well

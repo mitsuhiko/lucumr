@@ -3,8 +3,9 @@ tags:
   - python
   - c
   - thoughts
-summary: "A guide on writing beautiful native libraries in C or C++ that compile
-to native code."
+summary: |
+  A guide on writing beautiful native libraries in C or C++ that compile
+  to native code.
 ---
 
 # Beautiful Native Libraries

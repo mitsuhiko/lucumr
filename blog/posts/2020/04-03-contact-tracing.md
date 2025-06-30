@@ -2,7 +2,7 @@
 tags:
   - covid19
   - thoughts
-summary: "Why contract tracing will be our future and why it's a good idea."
+summary: Why contract tracing will be our future and why it's a good idea.
 ---
 
 # App Assisted Contact Tracing

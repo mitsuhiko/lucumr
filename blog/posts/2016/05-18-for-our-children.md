@@ -4,8 +4,9 @@ tags:
   - austria
   - europe
   - politics
-summary: "Thoughts about what I believe is wrong in Austria today and how we can
-maybe break the trend."
+summary: |
+  Thoughts about what I believe is wrong in Austria today and how we can
+  maybe break the trend.
 ---
 
 # A Europe For Our Children

@@ -1,8 +1,9 @@
 ---
 tags:
   - python
-summary: "How `exec` and `eval` work in Python and a number of reasons why you
-don't want to use them."
+summary: |
+  How `exec` and `eval` work in Python and a number of reasons why you
+  don't want to use them.
 ---
 
 # Be careful with exec and eval in Python

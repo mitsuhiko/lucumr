@@ -1,7 +1,8 @@
 ---
 tags:
   - thoughts
-summary: ""Balancing empathy, group member with integrity and morals: a personal journey.""
+summary: |
+  "Balancing empathy, group member with integrity and morals: a personal journey."
 ---
 
 # What if My Tribe Is Wrong?

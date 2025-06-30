@@ -1,8 +1,9 @@
 ---
 tags:
   - thoughts
-summary: "Thoughts about why relational databases are not a bad choice when
-starting a new project."
+summary: |
+  Thoughts about why relational databases are not a bad choice when
+  starting a new project.
 ---
 
 # SQL is Agile

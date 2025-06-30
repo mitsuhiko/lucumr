@@ -3,8 +3,9 @@ tags:
   - thoughts
   - europe
   - security
-summary: "Some in detail analysis about what the end of safe harbor means for
-small companies, especially in Europe."
+summary: |
+  Some in detail analysis about what the end of safe harbor means for
+  small companies, especially in Europe.
 ---
 
 # The End of Safe Harbor and a Scary Path Forward

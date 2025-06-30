@@ -4,8 +4,9 @@ tags:
   - javascript
   - opensource
   - thoughts
-summary: "An update to my struggles accepting that the current explosion of
-the amount of dependencies is the best we can do."
+summary: |
+  An update to my struggles accepting that the current explosion of
+  the amount of dependencies is the best we can do.
 ---
 
 # Updated Thoughts on Trust Scaling

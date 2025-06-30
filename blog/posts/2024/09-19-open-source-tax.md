@@ -1,7 +1,7 @@
 ---
 tags:
   - thoughts
-summary: "A discussion on purchase decisions and sustainable Open Source."
+summary: A discussion on purchase decisions and sustainable Open Source.
 ---
 
 # Accidental Spending: A Case For an Open Source Tax?

@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - python
-summary: "Some thoughts about bytes and Unicode in Python 2 and Python 3."
+summary: Some thoughts about bytes and Unicode in Python 2 and Python 3.
 ---
 
 # More About Unicode in Python 2 and 3

@@ -2,8 +2,9 @@
 tags:
   - python
   - thoughts
-summary: "A sad example of how easy it is to dismiss certain design principles
-because it does not seem relevant at the time."
+summary: |
+  A sad example of how easy it is to dismiss certain design principles
+  because it does not seem relevant at the time.
 ---
 
 # Python Packaging: Hate, hate, hate everywhere

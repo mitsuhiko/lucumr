@@ -2,7 +2,7 @@
 tags:
   - python
   - thoughts
-summary: "What I would imagine an better Python would look like."
+summary: What I would imagine an better Python would look like.
 ---
 
 # The Python I Would Like To See

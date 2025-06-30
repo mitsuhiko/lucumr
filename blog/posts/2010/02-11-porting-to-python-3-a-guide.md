@@ -1,8 +1,9 @@
 ---
 tags:
   - python
-summary: "Various notes on how to port libraries and applications over to Python 3
-based on my experiences with the Jinja2 port."
+summary: |
+  Various notes on how to port libraries and applications over to Python 3
+  based on my experiences with the Jinja2 port.
 ---
 
 # Porting to Python 3 — A Guide

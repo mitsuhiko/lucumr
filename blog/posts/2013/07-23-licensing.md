@@ -2,9 +2,10 @@
 tags:
   - thoughts
   - licensing
-summary: "Some thoughts about the absolute madness that is currently going on with
-licensing in the Open Source community and how github's license chooser
-is making it worse."
+summary: |
+  Some thoughts about the absolute madness that is currently going on with
+  licensing in the Open Source community and how github's license chooser
+  is making it worse.
 ---
 
 # Licensing in a Post Copyright World

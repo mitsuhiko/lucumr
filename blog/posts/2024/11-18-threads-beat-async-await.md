@@ -5,7 +5,7 @@ tags:
   - python
   - javascript
   - rust
-summary: "Musings about async await again and why I think virtual threads"
+summary: Musings about async await again and why I think virtual threads
 ---
 
 # Playground Wisdom: Threads Beat Async/Await

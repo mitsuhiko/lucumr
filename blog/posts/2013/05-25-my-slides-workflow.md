@@ -1,8 +1,9 @@
 ---
 tags:
   - talks
-summary: "A quick overview of how I do my slide decks for my presentations for
-others to learn from."
+summary: |
+  A quick overview of how I do my slide decks for my presentations for
+  others to learn from.
 ---
 
 # My Slides Workflow

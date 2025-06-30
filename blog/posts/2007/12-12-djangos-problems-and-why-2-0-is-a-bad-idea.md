@@ -1,8 +1,9 @@
 ---
 tags:
   - django
-summary: "An old post of back in the days when Django was considering releasing
-a 2.0 version before 1.0."
+summary: |
+  An old post of back in the days when Django was considering releasing
+  a 2.0 version before 1.0.
 ---
 
 # Django’s Problems and Why 2.0 is a Bad Idea

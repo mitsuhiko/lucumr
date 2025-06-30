@@ -3,8 +3,9 @@ tags:
   - git
   - thoughts
   - ui
-summary: "Some thoughts on why git's complex user interface works so well in
-practice."
+summary: |
+  Some thoughts on why git's complex user interface works so well in
+  practice.
 ---
 
 # Why I Don't Hate Git: Hidden Consistency

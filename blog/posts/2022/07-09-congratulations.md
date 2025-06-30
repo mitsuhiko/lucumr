@@ -1,5 +1,5 @@
 ---
-summary: "More thoughts on supply chain and package managers."
+summary: More thoughts on supply chain and package managers.
 ---
 
 # Congratulations: We Now Have Opinions on Your Open Source Contributions

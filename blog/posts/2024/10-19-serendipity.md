@@ -1,7 +1,7 @@
 ---
 tags:
   - poem
-summary: "A poem to my wife."
+summary: A poem to my wife.
 ---
 
 # Serendipity

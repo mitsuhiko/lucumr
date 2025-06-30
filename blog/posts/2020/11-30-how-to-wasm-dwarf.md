@@ -2,7 +2,7 @@
 tags:
   - wasm
   - rust
-summary: "A short introduction of the current state of debugging WebAssembly code."
+summary: A short introduction of the current state of debugging WebAssembly code.
 ---
 
 # How to WASM DWARF

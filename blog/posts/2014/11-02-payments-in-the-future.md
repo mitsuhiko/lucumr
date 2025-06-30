@@ -2,8 +2,9 @@
 tags:
   - thoughts
   - bitcoin
-summary: "Some thoughts about various payment systems on the internet and how
-viable they are for open source project support."
+summary: |
+  Some thoughts about various payment systems on the internet and how
+  viable they are for open source project support.
 ---
 
 # The Future of Payments and Open Source Support

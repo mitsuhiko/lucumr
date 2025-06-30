@@ -3,7 +3,7 @@ tags:
   - werkzeug
   - django
   - python
-summary: "Why Werkzeug and WebOb exist when Django is already around."
+summary: Why Werkzeug and WebOb exist when Django is already around.
 ---
 
 # Pro/Cons about Werkzeug, WebOb and Django

@@ -1,8 +1,9 @@
 ---
 tags:
   - python
-summary: "Some hidden features of the Python re module and the support machinery
-that drives it."
+summary: |
+  Some hidden features of the Python re module and the support machinery
+  that drives it.
 ---
 
 # Python's Hidden Regular Expression Gems

@@ -2,7 +2,7 @@
 tags:
   - openid
   - security
-summary: "an alternative way to look at OpenID's security."
+summary: an alternative way to look at OpenID's security.
 ---
 
 # The Lazy User is OpenID's Security Issue

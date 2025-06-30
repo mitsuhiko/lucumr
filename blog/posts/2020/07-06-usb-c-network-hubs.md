@@ -3,7 +3,7 @@ tags:
   - desktop
   - usbc
   - network
-summary: "A word of warning on USB-C/Thunderbolt hubs with ethernet ports."
+summary: A word of warning on USB-C/Thunderbolt hubs with ethernet ports.
 ---
 
 # USB-C Hubs and Ethernet

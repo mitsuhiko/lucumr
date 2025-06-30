@@ -2,7 +2,7 @@
 tags:
   - rust
   - jinja
-summary: "Learnings from building MiniJinja, a template engine in Rust"
+summary: Learnings from building MiniJinja, a template engine in Rust
 ---
 
 # MiniJinja: Learnings from Building a Template Engine in Rust

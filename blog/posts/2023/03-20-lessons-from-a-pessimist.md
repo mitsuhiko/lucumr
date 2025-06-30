@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - lessons
-summary: "On the topic of life lessons from a born pessimist."
+summary: On the topic of life lessons from a born pessimist.
 ---
 
 # Lessons from a Pessimist: Make Your Pessimism Productive

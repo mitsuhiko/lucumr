@@ -1,7 +1,7 @@
 ---
 tags:
   - c++
-summary: "A concise list of some common C++ pitfalls."
+summary: A concise list of some common C++ pitfalls.
 ---
 
 # C++ Pitfalls

@@ -3,8 +3,9 @@ tags:
   - python
   - wsgi
   - braindump
-summary: "Why WSGI is not as big of a problem as you would believe and why
-framework independent pluggable applications don't work in practice."
+summary: |
+  Why WSGI is not as big of a problem as you would believe and why
+  framework independent pluggable applications don't work in practice.
 ---
 
 # WSGI and the Pluggable Pipe Dream

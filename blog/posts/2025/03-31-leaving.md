@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - announcement
-summary: "Endings and new beginnings."
+summary: Endings and new beginnings.
 ---
 
 # I'm Leaving Sentry

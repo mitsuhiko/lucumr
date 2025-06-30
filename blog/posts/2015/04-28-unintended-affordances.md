@@ -2,8 +2,9 @@
 tags:
   - thoughts
   - ssl
-summary: "Some thoughts about the different effects of security and why sometimes
-less security and less enforcing has unintended positive aspects."
+summary: |
+  Some thoughts about the different effects of security and why sometimes
+  less security and less enforcing has unintended positive aspects.
 ---
 
 # Unintended Affordances *(or why I believe encrypting everything is a bad idea)*

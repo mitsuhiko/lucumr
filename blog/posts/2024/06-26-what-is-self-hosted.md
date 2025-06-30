@@ -1,7 +1,7 @@
 ---
 tags:
   - thoughts
-summary: "Some thoughts on self hosted Open Source software."
+summary: Some thoughts on self hosted Open Source software.
 ---
 
 # What is Self Hosted? What is a Stack?

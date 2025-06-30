@@ -2,8 +2,9 @@
 tags:
   - python
   - thoughts
-summary: "Why Python follows the Principle of Least Astonishment even when some
-people are surprised."
+summary: |
+  Why Python follows the Principle of Least Astonishment even when some
+  people are surprised.
 ---
 
 # Python and the Principle of Least Astonishment

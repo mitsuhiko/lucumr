@@ -3,8 +3,9 @@ tags:
   - jinja
   - python
   - django
-summary: "Why Jinja2's template engine design makes it harder for your to shoot
-yourself into the foot compared to Django's limited templating system."
+summary: |
+  Why Jinja2's template engine design makes it harder for your to shoot
+  yourself into the foot compared to Django's limited templating system.
 ---
 
 # Not So Stupid Template Languages

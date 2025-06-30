@@ -2,7 +2,7 @@
 tags:
   - covid19
   - thoughts
-summary: "A short introduction to TCN based contact tracing"
+summary: A short introduction to TCN based contact tracing
 ---
 
 # Temporary Contact Number based Contact Tracing

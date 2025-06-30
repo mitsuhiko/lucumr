@@ -2,8 +2,9 @@
 tags:
   - thoughts
   - bitcoin
-summary: "My thoughts on Bitcoin and some other cryptocurrencies and why many of
-us are probably better off just ignoring the whole thing."
+summary: |
+  My thoughts on Bitcoin and some other cryptocurrencies and why many of
+  us are probably better off just ignoring the whole thing.
 ---
 
 # Bitcoin is Not a Good Consumer Product

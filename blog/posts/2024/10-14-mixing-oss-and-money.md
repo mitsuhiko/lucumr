@@ -1,7 +1,7 @@
 ---
 tags:
   - thoughts
-summary: "Thoughts on funding maintainers through the pledge, WordPress'"
+summary: Thoughts on funding maintainers through the pledge, WordPress'
 ---
 
 # The Inevitability of Mixing Open Source and Money

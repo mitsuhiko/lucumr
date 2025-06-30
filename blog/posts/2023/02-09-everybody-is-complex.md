@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - lessons
-summary: "Random thoughts about staying sane for people with ambitions."
+summary: Random thoughts about staying sane for people with ambitions.
 ---
 
 # Everybody is More Complex Than They Seem

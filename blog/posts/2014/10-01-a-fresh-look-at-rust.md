@@ -3,8 +3,9 @@ tags:
   - thoughts
   - rust
   - python
-summary: "An updated report on my experience with Rust and where I think it might
-be going."
+summary: |
+  An updated report on my experience with Rust and where I think it might
+  be going.
 ---
 
 # A Fresh Look at Rust

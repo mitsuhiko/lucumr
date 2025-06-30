@@ -3,8 +3,9 @@ tags:
   - python
   - linux
   - unicode
-summary: "A list of things about unicode on Linux and Python 3 you really did not
-want to know."
+summary: |
+  A list of things about unicode on Linux and Python 3 you really did not
+  want to know.
 ---
 
 # Everything you did not want to know about Unicode in Python 3

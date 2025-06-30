@@ -2,8 +2,9 @@
 tags:
   - rust
   - python
-summary: "Are you a Python programmer and interested in Rust?  This article goes
-over the basics of making the jump."
+summary: |
+  Are you a Python programmer and interested in Rust?  This article goes
+  over the basics of making the jump.
 ---
 
 # Rust for Python Programmers

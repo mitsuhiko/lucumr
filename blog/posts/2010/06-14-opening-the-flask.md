@@ -2,8 +2,9 @@
 tags:
   - flask
   - python
-summary: "First part of a series of articles about how Flaks works internally
-and how you can create micro frameworks with Werkzeug."
+summary: |
+  First part of a series of articles about how Flaks works internally
+  and how you can create micro frameworks with Werkzeug.
 ---
 
 # Opening The Flask
