@@ -410,10 +410,11 @@ class Builder:
 
         redirect_html = f'''<!doctype html>
 <meta charset="utf-8">
-<title>Redirecting...</title>
 <meta http-equiv="refresh" content="0;url={post.slug}">
+<meta name="robots" content="noindex">
 <link rel="canonical" href="{canonical_url}">
-<meta name="robots" content="noindex">'''
+<script>window.location.replace('{post.slug}');</script>
+'''
 
         redirect_path.write_text(redirect_html, encoding="utf-8")
 
