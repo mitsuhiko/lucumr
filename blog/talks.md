@@ -5,8 +5,8 @@ and recordings if available.
 
 ## 2025
 
--   [Agentic Coding](https://speakerdeck.com/mitsuhiko/agentic-coding-the-future-of-software-development-with-agents)
-    [recording](https://www.youtube.com/watch?v=nfOVgz_omlU), online ([Twitter recording](https://x.com/mitsuhiko/status/1939105797448872265),
+-   [Agentic Coding](https://speakerdeck.com/mitsuhiko/agentic-coding-the-future-of-software-development-with-agents),
+    online ([recording](https://www.youtube.com/watch?v=nfOVgz_omlU), [Twitter recording](https://x.com/mitsuhiko/status/1939105797448872265),
     [PDF](http://mitsuhiko.pocoo.org/agentic-coding.pdf))
 -   [Do Dumb Things](https://speakerdeck.com/mitsuhiko/do-dumb-things)
     @ PyCon Austria ([recording](https://www.youtube.com/watch?v=ej5RsTtVvQE), [PDF](http://mitsuhiko.pocoo.org/DoDumbThings.pdf))
