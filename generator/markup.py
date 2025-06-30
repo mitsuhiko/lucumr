@@ -1,6 +1,3 @@
-from docutils.core import publish_parts
-from docutils import nodes
-from docutils.parsers.rst import Directive, directives
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name, TextLexer, PhpLexer
 from pygments.formatters import HtmlFormatter
@@ -8,6 +5,7 @@ from pygments.styles import get_style_by_name
 from markupsafe import Markup
 import marko
 from marko.ext.gfm import GFM
+from marko.ext import footnote
 from marko.html_renderer import HTMLRenderer
 
 from generator.config import CONFIG
@@ -40,34 +38,6 @@ class PygmentsRenderer(HTMLRenderer):
         return super().render_fenced_code(element)
 
 
-class CodeBlock(Directive):
-    """Pygments code highlighting directive for RST."""
-
-    has_content = True
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = False
-
-    def run(self):
-        language = self.arguments[0]
-        code = "\n".join(self.content)
-        formatted = highlight_code(code, language)
-        return [nodes.raw("", formatted, format="html")]
-
-
-def render_rst(content):
-    """Render RST content to HTML."""
-    settings = {
-        "initial_header_level": 2,
-    }
-    parts = publish_parts(content, writer_name="html4css1", settings_overrides=settings)
-    return {
-        "title": Markup(parts["title"]).striptags() if parts["title"] else None,
-        "html_title": Markup(parts["html_title"]) if parts["html_title"] else "",
-        "fragment": Markup(parts["fragment"]),
-    }
-
-
 def render_markdown(content, title=None):
     """Render Markdown content to HTML."""
     # Remove the first heading from content since we render it separately
@@ -92,9 +62,7 @@ def render_markdown(content, title=None):
 
 def render_content(content, file_type, title=None):
     """Render content based on file type."""
-    if file_type == "markdown":
-        return render_markdown(content, title)
-    return render_rst(content)
+    return render_markdown(content, title)
 
 
 def render_summary(summary):
@@ -108,19 +76,11 @@ def render_summary(summary):
 
 def extract_title_from_content(content, file_type):
     """Extract title from content based on file type."""
-    if file_type == "rst":
-        try:
-            rst_parts = publish_parts(content, writer_name="html4css1")
-            if rst_parts["title"]:
-                return Markup(rst_parts["title"]).striptags()
-        except Exception:
-            pass
-    elif file_type == "markdown":
-        # Extract title from first heading in Markdown
-        for line in content.split("\n"):
-            line = line.strip()
-            if line.startswith("# "):
-                return line[2:].strip()
+    # Extract title from first heading in Markdown
+    for line in content.split("\n"):
+        line = line.strip()
+        if line.startswith("# "):
+            return line[2:].strip()
     return None
 
 
@@ -131,7 +91,6 @@ def get_pygments_css():
 
 html_formatter = HtmlFormatter(style=get_style_by_name(CONFIG["pygments_style"]))
 
-markdown_parser = marko.Markdown(extensions=[GFM], renderer=PygmentsRenderer)
-
-directives.register_directive("code-block", CodeBlock)
-directives.register_directive("sourcecode", CodeBlock)
+markdown_parser = marko.Markdown(
+    extensions=[GFM, footnote.make_extension()], renderer=PygmentsRenderer
+)

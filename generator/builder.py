@@ -29,7 +29,7 @@ class BlogPost:
         self.tags = []
 
         # Determine file type
-        self.file_type = "markdown" if source_path.endswith(".md") else "rst"
+        self.file_type = "markdown"
 
         # Parse content
         self._parse_content(content)
@@ -40,10 +40,7 @@ class BlogPost:
 
     def _parse_content(self, content):
         """Parse frontmatter based on file type."""
-        if self.file_type == "markdown":
-            frontmatter, content_start = self._parse_yaml_frontmatter(content)
-        else:
-            frontmatter, content_start = self._parse_simple_frontmatter(content)
+        frontmatter, content_start = self._parse_yaml_frontmatter(content)
 
         # Apply frontmatter
         self.tags = frontmatter.get("tags", [])
@@ -82,26 +79,6 @@ class BlogPost:
 
         return frontmatter, content_start
 
-    def _parse_simple_frontmatter(self, content):
-        """Parse simple frontmatter (for .rst files and fallback)."""
-        lines = content.split("\n")
-        frontmatter = {}
-        content_start = 0
-        yaml_lines = []
-
-        # Collect frontmatter lines until first blank line
-        for i, line in enumerate(lines):
-            if not line.strip():
-                content_start = i + 1
-                break
-            yaml_lines.append(line)
-
-        if yaml_lines:
-            yaml_content = "\n".join(yaml_lines)
-            frontmatter = yaml.safe_load(yaml_content) or {}
-
-        return frontmatter, content_start
-
     def _extract_date_from_path(self):
         """Extract publication date from file path."""
         match = re.search(r"posts/(\d{4})/(\d{2})-(\d{2})-", self.source_path)
@@ -130,14 +107,6 @@ class BlogPost:
         if not slug:
             return str(Path(CONFIG["output_folder"]) / "index.html")
         return str(Path(CONFIG["output_folder"]) / slug / "index.html")
-
-    def render_rst(self):
-        """Render RST content to HTML."""
-        result = markup.render_rst(self.content)
-        # Use self.title as fallback if no title extracted
-        if not result["title"]:
-            result["title"] = self.title
-        return result
 
     def render_markdown(self):
         """Render Markdown content to HTML."""
@@ -347,7 +316,7 @@ class Builder:
             if (
                 filepath.is_file()
                 and not self.should_ignore(filepath)
-                and (filepath.suffix in (".rst", ".md"))
+                and (filepath.suffix == ".md")
             ):
                 rel_path = filepath.relative_to(self.project_folder)
                 existing_files.add(str(rel_path))

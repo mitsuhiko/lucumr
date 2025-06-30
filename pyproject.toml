@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "generator"
 version = "1.0.0"
-description = "A simple static blog software based on restructured text and Jinja2"
+description = "A simple static blog software based on Markdown and Jinja2"
 authors = [
     {name = "Armin Ronacher", email = "armin.ronacher@active-4.com"},
 ]
@@ -13,7 +13,6 @@ license = {text = "BSD-3-Clause"}
 readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.8"
 dependencies = [
-    "docutils",
     "Jinja2>=3.0",
     "Pygments",
     "marko",
