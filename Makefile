@@ -1,6 +1,6 @@
 .PHONY: all clean build serve format lint
 
-all: build upload
+all: build
 
 clean:
 	rm -rf blog/_build

@@ -38,10 +38,6 @@ class PygmentsRenderer(HTMLRenderer):
         return super().render_fenced_code(element)
 
 
-
-
-
-
 def render_markdown(content, title=None):
     """Render Markdown content to HTML."""
     # Remove the first heading from content since we render it separately
@@ -98,4 +94,3 @@ html_formatter = HtmlFormatter(style=get_style_by_name(CONFIG["pygments_style"])
 markdown_parser = marko.Markdown(
     extensions=[GFM, footnote.make_extension()], renderer=PygmentsRenderer
 )
-

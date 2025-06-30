@@ -79,7 +79,6 @@ class BlogPost:
 
         return frontmatter, content_start
 
-
     def _extract_date_from_path(self):
         """Extract publication date from file path."""
         match = re.search(r"posts/(\d{4})/(\d{2})-(\d{2})-", self.source_path)
@@ -108,7 +107,6 @@ class BlogPost:
         if not slug:
             return str(Path(CONFIG["output_folder"]) / "index.html")
         return str(Path(CONFIG["output_folder"]) / slug / "index.html")
-
 
     def render_markdown(self):
         """Render Markdown content to HTML."""
