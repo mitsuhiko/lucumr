@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is Armin Ronacher's personal blog (lucumr.pocoo.org) built with generator, a custom static site generator that processes reStructuredText content. The blog spans 18+ years of content (2007-2025) and demonstrates modern web standards with dark/light mode support.
+This is Armin Ronacher's personal blog (lucumr.pocoo.org) built with generator, a custom static site generator that processes Markdown content. The blog spans 18+ years of content (2007-2025) and demonstrates modern web standards with dark/light mode support.
 
 ## Important Transition Information
 
@@ -29,26 +29,27 @@ make clean    # Remove build artifacts
 
 ### Content Structure
 - **Main content**: `blog/` directory contains all posts
-- **Blog posts**: Organized as `blog/YYYY/MM/DD/post-name.rst` in reStructuredText format
+- **Blog posts**: Organized as `blog/YYYY/MM/DD/post-name.md` in Markdown format
 - **Static assets**: `blog/static/` contains CSS, fonts, images, and avatars
 - **Templates**: `templates` contains Jinja2 HTML templates
 
 ### Post Format
-Blog posts are written in reStructuredText with frontmatter:
+Blog posts are written in Markdown with YAML frontmatter:
 
-```rst
+```markdown
+---
 public: yes
 tags: [tag1, tag2]
 summary: Brief description for feeds
+---
 
-Post Title
-==========
+# Post Title
 
-Content in reStructuredText format...
+Content in Markdown format...
 ```
 
 ### Build System
-- **generator**: Custom static site generator that processes RST content
+- **generator**: Custom static site generator that processes Markdown content
 - **Jinja2**: Template engine for HTML generation
 - **Pygments**: Syntax highlighting with "tango" style
 - **Output**: Static files generated to `blog/_build/` (gitignored)
@@ -61,10 +62,10 @@ Content in reStructuredText format...
 - Web fonts with preloading for performance
 
 ### Special Pages
-- `blog/about.rst` - Author biography and contact
-- `blog/projects.rst` - Portfolio and projects
-- `blog/talks.rst` - Speaking engagements
-- `blog/404.rst` - Custom error page
+- `blog/about.md` - Author biography and contact
+- `blog/projects.md` - Portfolio and projects
+- `blog/talks.md` - Speaking engagements
+- `blog/404.md` - Custom error page
 
 ## Content Management
 
@@ -73,6 +74,6 @@ Content in reStructuredText format...
 - Move to appropriate date folder when ready to publish
 
 ### Development Workflow
-1. Write content in RST format in appropriate `blog/YYYY/MM/DD/` directory
+1. Write content in Markdown format in appropriate `blog/YYYY/MM/DD/` directory
 2. Use `make serve` to preview changes locally
 3. Run `make build` to generate static site
