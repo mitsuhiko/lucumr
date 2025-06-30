@@ -3,7 +3,8 @@ tags:
   - opensource
   - thoughts
   - licensing
-summary: |
+summary: "My thoughts on monetizing open source SaaS businesses from my experience
+at Sentry."
 ---
 
 # Open Source, SaaS and Monetization

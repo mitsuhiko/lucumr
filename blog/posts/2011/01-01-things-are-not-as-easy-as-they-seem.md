@@ -2,8 +2,8 @@
 tags:
   - rant
   - linux
-summary: |
-Exploration into a human problem: the problem of simplifying complex
+summary: "Exploration into a human problem: the problem of simplifying complex
+matters."
 ---
 
 # Things are not as easy as they seem

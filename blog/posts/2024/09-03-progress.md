@@ -1,7 +1,7 @@
 ---
 tags:
   - thoughts
-summary: A thought on human progress.
+summary: "A thought on human progress."
 ---
 
 # Progress

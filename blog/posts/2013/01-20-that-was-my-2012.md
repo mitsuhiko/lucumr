@@ -1,7 +1,8 @@
 ---
 tags:
   - thoughts
-summary: |
+summary: "Recollection of what happened to me in 2012 and what might happen in
+2013."
 ---
 
 # What was my 2012

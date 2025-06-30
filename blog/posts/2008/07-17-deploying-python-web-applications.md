@@ -2,7 +2,7 @@
 tags:
   - python
   - fabric
-summary: |
+summary: "Short tutorial on how to use fabric to deploy Python web applications."
 ---
 
 # Deploying Python Web Applications

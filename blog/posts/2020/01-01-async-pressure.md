@@ -2,7 +2,7 @@
 tags:
   - async
   - python
-summary: |
+summary: "An introduction to back pressure in systems and why it matters."
 ---
 
 # I'm not feeling the async pressure

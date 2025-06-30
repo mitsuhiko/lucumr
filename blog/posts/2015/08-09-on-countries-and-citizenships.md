@@ -3,7 +3,9 @@ tags:
   - thoughts
   - personal
   - politics
-summary: |
+summary: "In which I share some of my personal experiences and discoveries about
+the more than confusing topic of moving countries and how citizenships
+and residences work."
 ---
 
 # On Countries, Citizenships, Residence and Paying Taxes

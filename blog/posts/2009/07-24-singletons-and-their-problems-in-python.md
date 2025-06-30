@@ -1,7 +1,8 @@
 ---
 tags:
   - python
-summary: |
+summary: "An exploration of singletons in Python, where they appear and why
+they can become a problem."
 ---
 
 # Singletons and their Problems in Python

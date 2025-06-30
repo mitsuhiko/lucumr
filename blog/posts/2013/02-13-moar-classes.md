@@ -2,7 +2,8 @@
 tags:
   - thoughts
   - python
-summary: |
+summary: "Furthermore I am of the oppinion that Python developers should write
+more classes."
 ---
 
 # Start Writing More Classes

@@ -1,7 +1,8 @@
 ---
 tags:
   - mono
-summary: |
+summary: "An old article from the time when mono just came out.  Still think it's
+an excellent environment."
 ---
 
 # Mono isn’t just for Apes

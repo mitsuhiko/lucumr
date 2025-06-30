@@ -3,7 +3,8 @@ tags:
   - python
   - sentry
   - opensource
-summary: |
+summary: "Some thoughts on me joining Sentry and the road of making an Open Source
+project into a company."
 ---
 
 # The Sentry in my Life

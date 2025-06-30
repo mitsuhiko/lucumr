@@ -1,7 +1,9 @@
 ---
 tags:
   - javascript
-summary: |
+summary: "Why automatic semicolon insertion in JavaScript was a bad idea and why
+you should be using explicit semicolons, even if you cannot disable that
+“feature”."
 ---
 
 # Dealing with JavaScript's Automatic Semicolon Insertion
@@ -292,7 +294,7 @@ yourself some headaches, your code will also look more consistent.
 Because there will be situations where a semicolon becomes necessary to
 resolve ambiguities.
 
-[^update]: This example was incorrect earlier.  I since fixed it and
+[^1]: This example was incorrect earlier.  I since fixed it and
 updated the section about function calls to also cover the mistake I
 made.  This was pointed out via mail and Twitter by [Chris Leary](http://twitter.com/cdleary).  Another reason to explicitly set
 semicolons :-)

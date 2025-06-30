@@ -2,7 +2,7 @@
 tags:
   - python
   - rant
-summary: |
+summary: "Read this with a grain of salt."
 ---
 
 # Why Python Sucks

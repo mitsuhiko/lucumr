@@ -2,7 +2,7 @@
 tags:
   - python
   - import
-summary: |
+summary: "Ways to deal with the Python Import System Blackbox."
 ---
 
 # Dealing with the Python Import Blackbox

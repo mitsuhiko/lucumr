@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - ai
-summary: A response to Glyph's opting out of AI.
+summary: "A response to Glyph's opting out of AI."
 ---
 
 # GenAI Criticism and Moral Quandaries

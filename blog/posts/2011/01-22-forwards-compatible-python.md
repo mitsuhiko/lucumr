@@ -1,8 +1,9 @@
 ---
 tags:
   - python
-day-order: 2
-summary: |
+day-order: "2"
+summary: "Some useful suggestions about how to write code that works well with
+2to3 and will eventually work on both Python 2 and 3."
 ---
 
 # Writing Forwards Compatible Python Code

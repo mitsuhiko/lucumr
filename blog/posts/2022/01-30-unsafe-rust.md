@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - rust
-summary: |
+summary: "Why unsafe Rust is a complex and user unfriendly experience."
 ---
 
 # Uninitialized Memory: Unsafe Rust is Too Hard

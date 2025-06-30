@@ -2,7 +2,8 @@
 tags:
   - design
   - thoughts
-summary: |
+summary: "A few thoughts about how design on different levels and how users
+respond to it."
 ---
 
 # Appreciating Design

@@ -3,7 +3,7 @@ tags:
   - python
   - thoughts
   - codecs
-summary: |
+summary: "A recap of a sad example of where the wrong conclusion was drawn."
 ---
 
 # Codec Confusion in Python

@@ -4,7 +4,8 @@ tags:
   - osx
   - mitm
   - security
-summary: |
+summary: "How to use OS X as a transparent man in the middle proxy for iOS and
+Android development."
 ---
 
 # OSX as Transparent Wifi MITM Proxy

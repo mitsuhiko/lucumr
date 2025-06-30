@@ -1,7 +1,8 @@
 ---
 tags:
   - hg
-summary: |
+summary: "Short introduction into mercurial from the perspective of a subversion
+user."
 ---
 
 # Mercurial for Subversion Users

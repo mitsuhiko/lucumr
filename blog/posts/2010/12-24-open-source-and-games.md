@@ -2,7 +2,8 @@
 tags:
   - licensing
   - thoughts
-summary: |
+summary: "Are games without assets open source?  Why are there so few commercial
+games releasing with open source models, images and more?"
 ---
 
 # Open Source and Games

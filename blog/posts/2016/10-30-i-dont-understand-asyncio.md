@@ -2,7 +2,7 @@
 tags:
   - asyncio
   - python
-summary: |
+summary: "A little confession that I have no idea how asyncio works in Python 3."
 ---
 
 # I don't understand Python's Asyncio

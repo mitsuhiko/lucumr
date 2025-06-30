@@ -3,7 +3,8 @@ tags:
   - python
   - thoughts
   - web
-summary: |
+summary: "Why the real time web does not require changes on your web framework
+and why those changes are actually not at all what you want."
 ---
 
 # Stateless and Proud in the Realtime World

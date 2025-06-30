@@ -1,5 +1,5 @@
 ---
-summary: What a powerful NFT driven future could look like.
+summary: "What a powerful NFT driven future could look like."
 ---
 
 # A Non Fungible Future

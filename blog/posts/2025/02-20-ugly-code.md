@@ -1,7 +1,7 @@
 ---
 tags:
   - thoughts
-summary: Why ugly and dumb code sometimes blind sights engineers from the
+summary: "Why ugly and dumb code sometimes blind sights engineers from the"
 ---
 
 # Ugly Code and Dumb Things

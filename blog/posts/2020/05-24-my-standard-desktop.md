@@ -2,7 +2,7 @@
 tags:
   - covid19
   - desktop
-summary: |
+summary: "How my work from home situation looks like at the moment."
 ---
 
 # My Standard Desktop

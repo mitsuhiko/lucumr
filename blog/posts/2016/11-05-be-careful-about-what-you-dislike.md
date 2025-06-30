@@ -3,7 +3,8 @@ tags:
   - python
   - thoughts
   - politics
-summary: |
+summary: "Observations about the problem of having strong opinions and sharing
+them with others."
 ---
 
 # Be Careful About What You Dislike

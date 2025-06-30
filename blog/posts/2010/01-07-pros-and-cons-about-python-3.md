@@ -1,7 +1,8 @@
 ---
 tags:
   - python
-summary: |
+summary: "Short overview of things that are nice about Python 3 and parts where
+I can't agree with the changes or it did not go far enough."
 ---
 
 # Pros and Cons about Python 3

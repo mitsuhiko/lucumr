@@ -1,7 +1,7 @@
 ---
 tags:
   - python
-summary: |
+summary: "An open source project that defined my life."
 ---
 
 # Python

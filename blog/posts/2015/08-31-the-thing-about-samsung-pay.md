@@ -3,7 +3,8 @@ tags:
   - thoughts
   - payments
   - security
-summary: |
+summary: "Some interesting notes about how the MST feature of Samsung Pay (and
+credit card transactions in general)."
 ---
 
 # Samsung Pay's MST Transactions and Merchant's Ability to Detect “Cloned” Magstripe Tracks

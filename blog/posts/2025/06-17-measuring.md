@@ -3,7 +3,7 @@ tags:
   - thoughts
   - ai
   - api
-summary: Using programming agents to measure measuring developer productivity.
+summary: "Using programming agents to measure measuring developer productivity."
 ---
 
 # We Can Just Measure Things

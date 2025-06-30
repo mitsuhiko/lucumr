@@ -2,8 +2,8 @@
 tags:
   - python
   - websocket
-summary: |
-(: rfc:`6455`).
+summary: "Quick introduction into the final specification of websockets
+(:rfc:`6455`)."
 ---
 
 # Websockets 101

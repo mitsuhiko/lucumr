@@ -3,7 +3,7 @@ tags:
   - thoughts
   - licensing
   - opensource
-summary: My personal commentary on Sentry's new FSL license.
+summary: "My personal commentary on Sentry's new FSL license."
 ---
 
 # FSL: A License For the Bazaar, Not the Cathedral

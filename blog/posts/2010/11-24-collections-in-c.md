@@ -1,7 +1,7 @@
 ---
 tags:
   - c
-summary: |
+summary: "Using the C preprocessor to achive basic generic collection types."
 ---
 
 # Collections in C

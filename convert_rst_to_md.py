@@ -28,6 +28,8 @@ class MarkdownWriter(docutils.nodes.NodeVisitor):
         self.list_depth = 0
         self.in_literal = False
         self.section_level = 0
+        self.footnotes = {}  # Store footnote mappings
+        self.footnote_counter = 1  # For auto-numbering footnotes
 
     def visit_document(self, node):
         pass
@@ -104,15 +106,32 @@ class MarkdownWriter(docutils.nodes.NodeVisitor):
 
     def visit_footnote_reference(self, node):
         # Convert RST footnote references to markdown footnote syntax
-        self.output.append("[^")
+        refid = node.get("refid", "")
+        if refid:
+            # Map RST footnote reference to a numbered footnote
+            if refid not in self.footnotes:
+                self.footnotes[refid] = str(self.footnote_counter)
+                self.footnote_counter += 1
+            self.output.append(f"[^{self.footnotes[refid]}]")
+        else:
+            # Fallback for unnamed references
+            self.output.append("[^1]")
+        raise docutils.nodes.SkipNode  # Skip children
 
     def depart_footnote_reference(self, node):
-        self.output.append("]")
+        pass  # Already handled in visit
 
     def visit_footnote(self, node):
-        # Get the footnote label
-        label = node.get("names", [""])[0] if node.get("names") else ""
-        self.output.append(f"\n[^{label}]: ")
+        # Get the footnote ID
+        footnote_id = node.get("ids", [""])[0] if node.get("ids") else ""
+        if footnote_id and footnote_id in self.footnotes:
+            footnote_num = self.footnotes[footnote_id]
+        else:
+            # Fallback numbering
+            footnote_num = str(self.footnote_counter)
+            self.footnote_counter += 1
+
+        self.output.append(f"\n[^{footnote_num}]: ")
 
     def depart_footnote(self, node):
         self.output.append("\n")
@@ -262,8 +281,11 @@ class RSTToMarkdownConverter:
         lines = content.split("\n")
         frontmatter = {}
         content_start = 0
+        i = 0
 
-        for i, line in enumerate(lines):
+        while i < len(lines):
+            line = lines[i]
+
             if line.strip() == "":
                 content_start = i + 1
                 break
@@ -273,8 +295,46 @@ class RSTToMarkdownConverter:
                 key = key.strip()
                 value = value.strip()
 
+                # Handle multiline values (YAML literal block scalar)
+                if value == "|":
+                    # Collect indented lines following the |
+                    multiline_content = []
+                    i += 1
+
+                    # Look for indented lines
+                    while i < len(lines):
+                        next_line = lines[i]
+                        if next_line.startswith("  ") and next_line.strip():
+                            # Add the line without the leading spaces
+                            multiline_content.append(next_line[2:])
+                            i += 1
+                        elif next_line.strip() == "":
+                            # Empty line - could be end of block or spacing within block
+                            # Peek ahead to see if there are more indented lines
+                            j = i + 1
+                            while j < len(lines) and lines[j].strip() == "":
+                                j += 1
+
+                            if j < len(lines) and lines[j].startswith("  "):
+                                # More indented content follows, include empty line
+                                multiline_content.append("")
+                                i += 1
+                            else:
+                                # End of multiline block
+                                break
+                        else:
+                            # Non-indented line, end of multiline block
+                            break
+
+                    # Only join if we have actual content, otherwise skip this field
+                    content = "\n".join(multiline_content).strip()
+                    if content:  # Only add if there's actual content
+                        frontmatter[key] = content
+                    # If empty content, don't add the key at all
+                    continue
+
                 # Handle lists (tags)
-                if value.startswith("[") and value.endswith("]"):
+                elif value.startswith("[") and value.endswith("]"):
                     # Parse list format: [tag1, tag2, tag3]
                     value = value[1:-1]  # Remove brackets
                     if value:
@@ -283,6 +343,8 @@ class RSTToMarkdownConverter:
                         frontmatter[key] = []
                 else:
                     frontmatter[key] = value
+
+            i += 1
 
         return frontmatter, "\n".join(lines[content_start:])
 
@@ -298,8 +360,10 @@ class RSTToMarkdownConverter:
                         lines.append(f"  - {item}")
                 else:
                     lines.append(f"{key}: []")
+            elif value:  # Only include non-empty values
+                lines.append(f'{key}: "{value}"')
             else:
-                lines.append(f"{key}: {value}")
+                lines.append(f'{key}: ""')
 
         lines.append("---")
         return "\n".join(lines) + "\n\n"

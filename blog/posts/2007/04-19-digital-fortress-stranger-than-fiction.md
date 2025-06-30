@@ -1,7 +1,7 @@
 ---
 tags:
   - books
-summary: |
+summary: "A book review from a really terrible science fiction book by Dan Brown."
 ---
 
 # Digital Fortress — Stranger Than Fiction

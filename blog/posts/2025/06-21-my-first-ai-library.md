@@ -2,7 +2,7 @@
 tags:
   - python
   - ai
-summary: In a first for me, I published some agentic programmed AI slop to PyPI.
+summary: "In a first for me, I published some agentic programmed AI slop to PyPI."
 ---
 
 # My First Open Source AI Generated Library

@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - python
-summary: Musings about the changes to Python over the years, particularly typing.
+summary: "Musings about the changes to Python over the years, particularly typing."
 ---
 
 # Untyped Python: The Python That Was

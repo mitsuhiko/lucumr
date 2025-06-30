@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - rust
-summary: We need a vibe shift on dependencies in programming.
+summary: "We need a vibe shift on dependencies in programming."
 ---
 
 # Build It Yourself

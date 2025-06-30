@@ -3,7 +3,8 @@ tags:
   - diversity
   - thoughts
   - opensource
-summary: |
+summary: "Some personal thoughts and observations about the topic of diversity in
+technology and in particular Open Source."
 ---
 
 # Diversity in Technology and Open Source

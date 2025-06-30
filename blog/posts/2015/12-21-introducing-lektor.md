@@ -3,7 +3,8 @@ tags:
   - python
   - lektor
   - announcement
-summary: |
+summary: "The background story to why I built yet another static website generator
+in Python."
 ---
 
 # Introducing Lektor — A Static File Content Management System For Python

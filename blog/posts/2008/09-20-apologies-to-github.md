@@ -2,7 +2,7 @@
 tags:
   - github
   - git
-summary: |
+summary: "Apology for a mistake I made in an earlier blog post."
 ---
 
 # Apologies to Github

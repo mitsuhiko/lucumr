@@ -1,7 +1,8 @@
 ---
 tags:
   - rust
-summary: |
+summary: "A creative workaround to the inability of implementing additional traits
+to `Any`."
 ---
 
 # Rust Any Part 2: As-Any Hack

@@ -3,7 +3,7 @@ tags:
   - python
   - announcement
   - rye
-summary: Rye is faster now by sitting on top of uv and it moves over to Astral.
+summary: "Rye is faster now by sitting on top of uv and it moves over to Astral."
 ---
 
 # Rye Grows With UV

@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - rust
-summary: Bringing the great successes of financial engineering to Rust.
+summary: "Bringing the great successes of financial engineering to Rust."
 ---
 
 # On Tech Debt: My Rust Library is now a CDO

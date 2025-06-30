@@ -2,7 +2,7 @@
 tags:
   - thoughts
   - rust
-summary: More musing on dependencies.
+summary: "More musing on dependencies."
 ---
 
 # Fat Rand: How Many Lines Do You Need To Generate A Random Number?

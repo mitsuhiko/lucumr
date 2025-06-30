@@ -2,7 +2,8 @@
 tags:
   - thoughts
   - python
-summary: |
+summary: "Some personal thoughts on the Python community and programming
+communities in general."
 ---
 
 # On Programming Communities

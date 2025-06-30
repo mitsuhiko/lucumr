@@ -3,7 +3,8 @@ tags:
   - sql
   - thoughts
   - postgres
-summary: |
+summary: "Some thoughts on why upserts are necessary to write reliable web
+applications."
 ---
 
 # A Case for Upserts

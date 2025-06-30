@@ -2,7 +2,8 @@
 tags:
   - javascript
   - thoughts
-summary: |
+summary: "A longer explanation of why I think that the CoffeeScript scoping is
+problematic and should be changed."
 ---
 
 # The Problem with Implicit Scoping in CoffeeScript

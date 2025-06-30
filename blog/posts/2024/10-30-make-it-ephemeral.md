@@ -1,7 +1,7 @@
 ---
 tags:
   - thoughts
-summary: Make software that is capable to forget and decay information.
+summary: "Make software that is capable to forget and decay information."
 ---
 
 # Make It Ephemeral: Software Should Decay and Lose Data

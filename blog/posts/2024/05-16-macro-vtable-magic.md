@@ -1,7 +1,7 @@
 ---
 tags:
   - rust
-summary: How MiniJinja's dynamic reference counted objects work.
+summary: "How MiniJinja's dynamic reference counted objects work."
 ---
 
 # Using Rust Macros for Custom VTables

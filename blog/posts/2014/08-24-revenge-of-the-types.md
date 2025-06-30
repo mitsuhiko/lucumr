@@ -3,7 +3,8 @@ tags:
   - thoughts
   - rust
   - python
-summary: |
+summary: "Some notes about what appears to be current trend of programming
+languages and my thoughts about it."
 ---
 
 # Revenge of the Types

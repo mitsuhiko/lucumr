@@ -3,7 +3,8 @@ tags:
   - flask
   - pycon
   - python
-summary: |
+summary: "A summary of the Flask talk at PyCon 2011 and what happened during the
+sprints."
 ---
 
 # Flask at PyCon 2011

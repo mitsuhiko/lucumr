@@ -2,7 +2,7 @@
 tags:
   - hg
   - bitbucket
-summary: |
+summary: "Old article about why I love bitbucket."
 ---
 
 # Bitbucket is no Bit bucket
