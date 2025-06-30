@@ -51,16 +51,13 @@ The initial prompt that started it all (including typos):
 
 > It should be fast but use pre-compiled regular expressions to parse the stream.  The idea here is that the output comes from systems that just pretend to speak XML but are not sufficiently protected against bad outoput (eg: LLMs)
 >
-> So for instance &amp; should turn into & but if &x is used (which is invalid) it should just retain as &x in the output.  Additionally if something is an invalid CDATA section we just gracefully ignore it.  If tags are incorrectly closed within a larger tag we recover the structure.  For instance <foo><p>a<p>b</foo> will just close the internal structures when </foo> comes around.
+> So for instance &amp; should turn into & but if &x is used (which is invalid) it should just retain as &x in the output.  Additionally if something is an invalid CDATA section we just gracefully ignore it.  If tags are incorrectly closed within a larger tag we recover the structure.  For instance `<foo><p>a<p>b</foo>` will just close the internal structures when `</foo>` comes around.
 >
 > Use ultrathink.  Break down the implementation into
 >
 > 1. planning
-
-> 1. api stubs
-
-> 1. implementation
-
+> 2. api stubs
+> 3. implementation
 > Use sub tasks and sub agents to conserve context
 >
 
