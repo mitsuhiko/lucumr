@@ -104,33 +104,37 @@ class BlogPost:
 
     def _extract_date_from_path(self):
         """Extract publication date from file path."""
-        # New pattern: posts/YEAR/MONTH-DAY-SLUG.rst
         match = re.search(r"posts/(\d{4})/(\d{2})-(\d{2})-", self.source_path)
         if match:
             year, month, day = match.groups()
             self.pub_date = datetime(int(year), int(month), int(day))
-        else:
-            # Legacy pattern: YYYY/MM/DD/filename.rst (for backward compatibility)
-            match = re.search(r"(\d{4})/(\d{1,2})/(\d{1,2})/", self.source_path)
-            if match:
-                year, month, day = match.groups()
-                self.pub_date = datetime(int(year), int(month), int(day))
 
     @property
     def slug(self):
-        """URL slug for this post."""
+        """URL slug for this post (canonical without leading zeros)."""
         if self.pub_date:
             basename = Path(self.source_path).stem
-            # For new format, extract slug from MONTH-DAY-SLUG pattern
+            if "posts/" in self.source_path:
+                match = re.search(r"\d{2}-\d{2}-(.+)$", basename)
+                if match:
+                    basename = match.group(1)
+            return f"/{self.pub_date.year}/{self.pub_date.month}/{self.pub_date.day}/{basename}/"
+        else:
+            rel_path = Path(self.source_path).with_suffix("").as_posix()
+            return f"/{rel_path}/"
+
+    @property
+    def slug_with_leading_zeros(self):
+        """URL slug with leading zeros (for redirect generation)."""
+        if self.pub_date:
+            basename = Path(self.source_path).stem
             if "posts/" in self.source_path:
                 match = re.search(r"\d{2}-\d{2}-(.+)$", basename)
                 if match:
                     basename = match.group(1)
             return f"/{self.pub_date.year}/{self.pub_date.month:02d}/{self.pub_date.day:02d}/{basename}/"
         else:
-            # Non-blog pages
-            rel_path = Path(self.source_path).with_suffix("").as_posix()
-            return f"/{rel_path}/"
+            return None
 
     @property
     def output_path(self):
@@ -285,10 +289,7 @@ class Builder:
             year = kwargs.get("year")
             month = kwargs.get("month")
             if year and month:
-                if isinstance(month, str):
-                    return f"/{year}/{month}/"
-                else:
-                    return f"/{year}/{month:02d}/"
+                return f"/{year}/{str(month).lstrip('0')}/"
             elif year:
                 return f"/{year}/"
             return "/archive/"
@@ -408,6 +409,27 @@ class Builder:
 
         Path(post.output_path).write_text(html, encoding="utf-8")
 
+        # Build redirect page if this is a blog post with leading zeros needed
+        if post.pub_date and post.slug != post.slug_with_leading_zeros:
+            self.build_redirect_page(post)
+
+    def build_redirect_page(self, post):
+        """Build a redirect page for the leading zero URL."""
+        redirect_slug = post.slug_with_leading_zeros.strip("/")
+        redirect_path = self.output_folder / redirect_slug / "index.html"
+        redirect_path.parent.mkdir(parents=True, exist_ok=True)
+
+        canonical_url = CONFIG["site_url"].rstrip("/") + post.slug
+
+        redirect_html = f'''<!doctype html>
+<meta charset="utf-8">
+<title>Redirecting...</title>
+<meta http-equiv="refresh" content="0;url={post.slug}">
+<link rel="canonical" href="{canonical_url}">
+<meta name="robots" content="noindex">'''
+
+        redirect_path.write_text(redirect_html, encoding="utf-8")
+
     def build_index_pages(self):
         """Build blog index with pagination."""
         posts_per_page = CONFIG["posts_per_page"]
@@ -490,7 +512,7 @@ class Builder:
                 output_path = (
                     self.output_folder
                     / str(year_data["year"])
-                    / month_data["month"]
+                    / str(month_data["month"]).lstrip("0")
                     / "index.html"
                 )
                 output_path.parent.mkdir(parents=True, exist_ok=True)
