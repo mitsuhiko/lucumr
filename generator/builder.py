@@ -124,19 +124,6 @@ class BlogPost:
             return f"/{rel_path}/"
 
     @property
-    def slug_with_leading_zeros(self):
-        """URL slug with leading zeros (for redirect generation)."""
-        if self.pub_date:
-            basename = Path(self.source_path).stem
-            if "posts/" in self.source_path:
-                match = re.search(r"\d{2}-\d{2}-(.+)$", basename)
-                if match:
-                    basename = match.group(1)
-            return f"/{self.pub_date.year}/{self.pub_date.month:02d}/{self.pub_date.day:02d}/{basename}/"
-        else:
-            return None
-
-    @property
     def output_path(self):
         """Output file path."""
         slug = self.slug.strip("/")
@@ -410,13 +397,13 @@ class Builder:
         Path(post.output_path).write_text(html, encoding="utf-8")
 
         # Build redirect page if this is a blog post with leading zeros needed
-        if post.pub_date and post.slug != post.slug_with_leading_zeros:
-            self.build_redirect_page(post)
+        slug_with_leading_zeros = pad_date_slug(post.slug)
+        if slug_with_leading_zeros != post.slug:
+            self.build_redirect_page(post, slug_with_leading_zeros)
 
-    def build_redirect_page(self, post):
+    def build_redirect_page(self, post, redirect_slug):
         """Build a redirect page for the leading zero URL."""
-        redirect_slug = post.slug_with_leading_zeros.strip("/")
-        redirect_path = self.output_folder / redirect_slug / "index.html"
+        redirect_path = self.output_folder / redirect_slug.strip("/") / "index.html"
         redirect_path.parent.mkdir(parents=True, exist_ok=True)
 
         canonical_url = CONFIG["site_url"].rstrip("/") + post.slug
@@ -676,3 +663,11 @@ class Builder:
 
         self.copy_static_files()
         self.write_pygments_css()
+
+
+def pad_date_slug(slug):
+    parts = slug.split("/")
+    if len(parts) >= 4 and all(x.isdigit() for x in parts[1:4]):
+        parts[2:4] = [f"{int(x):02d}" for x in parts[2:4]]
+        return "/".join(parts)
+    return slug
