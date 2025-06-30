@@ -1,8 +1,6 @@
 ---
-tags:
-  - thoughts
-  - rust
-summary: A recap of EuroRust 2023 and thoughts on Rust
+tags: ['thoughts', 'rust']
+summary: "A recap of EuroRust 2023 and thoughts on Rust"
 ---
 
 # EuroRust 2023 Reflections: What's a Conference For?

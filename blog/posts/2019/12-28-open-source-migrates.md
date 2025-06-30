@@ -1,10 +1,7 @@
 ---
-tags:
-  - opensource
-  - thoughts
-summary: |
-  How the Open Source community gets away with large, backwards
-  incompatible migrations by cheating and a lot of emotional distress.
+tags: ['opensource', 'thoughts']
+summary: "How the Open Source community gets away with large, backwards
+incompatible migrations by cheating and a lot of emotional distress."
 ---
 
 # Open Source Migrates With Emotional Distress

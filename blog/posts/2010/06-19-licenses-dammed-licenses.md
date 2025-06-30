@@ -1,9 +1,7 @@
 ---
-tags:
-  - licensing
-summary: |
-  Adventures in License land.  We need more lawyers in the open source
-  world.
+tags: ['licensing']
+summary: "Adventures in License land.  We need more lawyers in the open source
+world."
 ---
 
 # Licenses dammed Licenses

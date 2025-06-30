@@ -1,9 +1,7 @@
 ---
-tags:
-  - thoughts
-summary: |
-  Some quick notes on application mimetypes and how they deal with
-  encodings.
+tags: ['thoughts']
+summary: "Some quick notes on application mimetypes and how they deal with
+encodings."
 ---
 
 # Application Mimetypes and Encodings

@@ -1,9 +1,7 @@
 ---
-tags:
-  - thoughts
-summary: |
-  A reinforcement about how signed data is useful to create distributed
-  systems.
+tags: ['thoughts']
+summary: "A reinforcement about how signed data is useful to create distributed
+systems."
 ---
 
 # My Favorite Database is the Network

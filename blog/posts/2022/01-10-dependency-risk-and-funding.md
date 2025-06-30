@@ -1,9 +1,6 @@
 ---
-tags:
-  - thoughts
-  - javascript
-  - opensource
-summary: Some more thoughts about dependencies.
+tags: ['thoughts', 'javascript', 'opensource']
+summary: "Some more thoughts about dependencies."
 ---
 
 # Dependency Risk and Funding

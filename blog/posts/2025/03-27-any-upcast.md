@@ -1,7 +1,6 @@
 ---
-tags:
-  - rust
-summary: Some good news is coming in Rust 1.86
+tags: ['rust']
+summary: "Some good news is coming in Rust 1.86"
 ---
 
 # Rust Any Part 3: Finally we have Upcasts

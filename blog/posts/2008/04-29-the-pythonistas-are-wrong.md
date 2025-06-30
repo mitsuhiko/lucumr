@@ -1,5 +1,5 @@
 ---
-summary: Why the Python logo is not supposde to be a snake.
+summary: "Why the Python logo is not supposde to be a snake."
 ---
 
 # The Pythonistas are Wrong

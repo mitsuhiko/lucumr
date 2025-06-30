@@ -1,8 +1,6 @@
 ---
-tags:
-  - wsgi
-  - python
-summary: A short summary about the current state of WSGI on Python 3.
+tags: ['wsgi', 'python']
+summary: "A short summary about the current state of WSGI on Python 3."
 ---
 
 # WSGI on Python 3

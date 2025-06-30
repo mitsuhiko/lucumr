@@ -1,7 +1,6 @@
 ---
-tags:
-  - python
-summary: Some of the issues of why Python packaging is unnecessarily hard.
+tags: ['python']
+summary: "Some of the issues of why Python packaging is unnecessarily hard."
 ---
 
 # Constraints are Good: Python's Metadata Dilemma

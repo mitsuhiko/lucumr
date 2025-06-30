@@ -1,7 +1,6 @@
 ---
-tags:
-  - thoughts
-summary: Some very personal thoughts about the future of Austria.
+tags: ['thoughts']
+summary: "Some very personal thoughts about the future of Austria."
 ---
 
 # Austria: A Fearful Country In Need Of A Vision

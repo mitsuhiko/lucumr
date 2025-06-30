@@ -1,8 +1,6 @@
 ---
-tags:
-  - mysql
-  - python
-summary: Old blog post about the broken state of the MySQL python module.
+tags: ['mysql', 'python']
+summary: "Old blog post about the broken state of the MySQL python module."
 ---
 
 # The Sad State of MySQL Python

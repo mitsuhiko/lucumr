@@ -1,10 +1,7 @@
 ---
-tags:
-  - python
-  - soa
-summary: |
-  A basic overview of building service oriented architecture like
-  microservices with the help of nameko.
+tags: ['python', 'soa']
+summary: "A basic overview of building service oriented architecture like
+microservices with the help of nameko."
 ---
 
 # Nameko for Microservices

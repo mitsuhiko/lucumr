@@ -1,13 +1,8 @@
 ---
-tags:
-  - thoughts
-  - python
-  - unicode
-  - rust
-summary: |
-  Some comparisons about different ways to deal with Unicode in
-  programming languages, especially about how UCS encodings work
-  in comparison to UTF-8.
+tags: ['thoughts', 'python', 'unicode', 'rust']
+summary: "Some comparisons about different ways to deal with Unicode in
+programming languages, especially about how UCS encodings work
+in comparison to UTF-8."
 ---
 
 # UCS vs UTF-8 as Internal String Encoding

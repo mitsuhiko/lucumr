@@ -1,12 +1,7 @@
 ---
-tags:
-  - python
-  - jinja
-  - mako
-  - genshi
-summary: |
-  A comparison of three of the most popular template engines for Python
-  and why they are different.
+tags: ['python', 'jinja', 'mako', 'genshi']
+summary: "A comparison of three of the most popular template engines for Python
+and why they are different."
 ---
 
 # Python Template Engine Comparison

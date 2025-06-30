@@ -1,10 +1,8 @@
 ---
-tags:
-  - javascript
-summary: |
-  Why automatic semicolon insertion in JavaScript was a bad idea and why
-  you should be using explicit semicolons, even if you cannot disable that
-  “feature”.
+tags: ['javascript']
+summary: "Why automatic semicolon insertion in JavaScript was a bad idea and why
+you should be using explicit semicolons, even if you cannot disable that
+“feature”."
 ---
 
 # Dealing with JavaScript's Automatic Semicolon Insertion

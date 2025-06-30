@@ -1,8 +1,6 @@
 ---
-tags:
-  - github
-  - git
-summary: Apology for a mistake I made in an earlier blog post.
+tags: ['github', 'git']
+summary: "Apology for a mistake I made in an earlier blog post."
 ---
 
 # Apologies to Github

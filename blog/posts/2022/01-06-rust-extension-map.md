@@ -1,7 +1,6 @@
 ---
-tags:
-  - rust
-summary: A useful pattern for making common types extensible.
+tags: ['rust']
+summary: "A useful pattern for making common types extensible."
 ---
 
 # Rust Any Part 1: Extension Maps in Rust

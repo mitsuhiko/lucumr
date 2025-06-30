@@ -1,9 +1,7 @@
 ---
-tags:
-  - thoughts
-summary: |
-  Recapitulation of my accomplishments and interesting events related to
-  computing and Open Source of 2010.
+tags: ['thoughts']
+summary: "Recapitulation of my accomplishments and interesting events related to
+computing and Open Source of 2010."
 ---
 
 # A Recap

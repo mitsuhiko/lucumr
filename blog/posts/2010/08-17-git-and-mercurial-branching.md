@@ -1,10 +1,7 @@
 ---
-tags:
-  - hg
-  - git
-summary: |
-  Comparsion of mercurial's and git's branching systems and why one of
-  them works better for me than the other.
+tags: ['hg', 'git']
+summary: "Comparsion of mercurial's and git's branching systems and why one of
+them works better for me than the other."
 ---
 
 # Git and Mercurial Branching

@@ -1,9 +1,6 @@
 ---
-tags:
-  - ai
-  - thoughts
-summary: |
-  "Due to popular request: my use of LLM explained."
+tags: ['ai', 'thoughts']
+summary: "Due to popular request: my use of LLM explained."
 ---
 
 # How I Use AI: Meet My Promptly Hired Model Intern

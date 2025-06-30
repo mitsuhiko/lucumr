@@ -1,11 +1,7 @@
 ---
-tags:
-  - thoughts
-  - rust
-  - api
-summary: |
-  My thoughts about error handling in APIs after writing a Redis library
-  in Rust.
+tags: ['thoughts', 'rust', 'api']
+summary: "My thoughts about error handling in APIs after writing a Redis library
+in Rust."
 ---
 
 # On Error Handling in Rust

@@ -1,10 +1,7 @@
 ---
-tags:
-  - python
-  - web
-summary: |
-  A short list of common mistakes in Python web applications in terms of
-  security and architecture.
+tags: ['python', 'web']
+summary: "A short list of common mistakes in Python web applications in terms of
+security and architecture."
 ---
 
 # Common Mistakes as Python Web Developer

@@ -1,9 +1,7 @@
 ---
 day-order: 1
-tags:
-  - python
-  - thoughts
-summary: A quick update on the lack of updates from my side.
+tags: ['python', 'thoughts']
+summary: "A quick update on the lack of updates from my side."
 ---
 
 # About the Lack of Updates

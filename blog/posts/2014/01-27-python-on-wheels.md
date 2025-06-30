@@ -1,9 +1,6 @@
 ---
-tags:
-  - thoughts
-  - python
-  - deployment
-summary: A quick overview into wheel based Python deployments.
+tags: ['thoughts', 'python', 'deployment']
+summary: "A quick overview into wheel based Python deployments."
 ---
 
 # Python on Wheels

@@ -1,8 +1,6 @@
 ---
-tags:
-  - covid19
-  - desktop
-summary: How my work from home situation looks like at the moment.
+tags: ['covid19', 'desktop']
+summary: "How my work from home situation looks like at the moment."
 ---
 
 # My Standard Desktop

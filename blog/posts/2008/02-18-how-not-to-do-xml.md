@@ -1,8 +1,6 @@
 ---
-tags:
-  - xml
-  - rant
-summary: Experiences with XML in Wordpress (or what they call XML)
+tags: ['xml', 'rant']
+summary: "Experiences with XML in Wordpress (or what they call XML)"
 ---
 
 # How not to do XML

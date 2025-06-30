@@ -1,7 +1,6 @@
 ---
-tags:
-  - poem
-summary: A poem to my wife.
+tags: ['poem']
+summary: "A poem to my wife."
 ---
 
 # Serendipity

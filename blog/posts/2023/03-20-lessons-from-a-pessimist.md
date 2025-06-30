@@ -1,8 +1,6 @@
 ---
-tags:
-  - thoughts
-  - lessons
-summary: On the topic of life lessons from a born pessimist.
+tags: ['thoughts', 'lessons']
+summary: "On the topic of life lessons from a born pessimist."
 ---
 
 # Lessons from a Pessimist: Make Your Pessimism Productive

@@ -1,7 +1,6 @@
 ---
-tags:
-  - rust
-summary: A trick to convert arbitrary values from owned strings.
+tags: ['rust']
+summary: "A trick to convert arbitrary values from owned strings."
 ---
 
 # Bridging the Efficiency Gap Between FromStr and String

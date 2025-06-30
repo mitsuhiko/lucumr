@@ -1,8 +1,6 @@
 ---
-tags:
-  - thoughts
-  - ai
-summary: Why I'm a worried, but not too worried about AIs.
+tags: ['thoughts', 'ai']
+summary: "Why I'm a worried, but not too worried about AIs."
 ---
 
 # I Think AI Would Kill my Wife

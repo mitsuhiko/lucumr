@@ -1,8 +1,6 @@
 ---
-tags:
-  - hg
-  - bitbucket
-summary: Old article about why I love bitbucket.
+tags: ['hg', 'bitbucket']
+summary: "Old article about why I love bitbucket."
 ---
 
 # Bitbucket is no Bit bucket

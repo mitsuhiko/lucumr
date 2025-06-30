@@ -1,8 +1,6 @@
 ---
-tags:
-  - rust
-  - jinja
-summary: Learnings from building MiniJinja, a template engine in Rust
+tags: ['rust', 'jinja']
+summary: "Learnings from building MiniJinja, a template engine in Rust"
 ---
 
 # MiniJinja: Learnings from Building a Template Engine in Rust

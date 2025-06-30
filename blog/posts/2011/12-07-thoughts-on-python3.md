@@ -1,8 +1,6 @@
 ---
-tags:
-  - python
-  - thoughts
-summary: My current thoughts on the state of Python 3 and where it's heading.
+tags: ['python', 'thoughts']
+summary: "My current thoughts on the state of Python 3 and where it's heading."
 ---
 
 # Thoughts on Python 3

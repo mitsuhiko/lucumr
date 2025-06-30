@@ -1,8 +1,6 @@
 ---
-tags:
-  - python
-  - unicode
-summary: An updated guide on how to deal with unicode on Python 2 and 3.
+tags: ['python', 'unicode']
+summary: "An updated guide on how to deal with unicode on Python 2 and 3."
 ---
 
 # The Updated Guide to Unicode on Python

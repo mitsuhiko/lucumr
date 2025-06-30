@@ -1,9 +1,6 @@
 ---
-tags:
-  - thoughts
-  - opensource
-  - licensing
-summary: More thoughts on Open Source licensing and companies.
+tags: ['thoughts', 'opensource', 'licensing']
+summary: "More thoughts on Open Source licensing and companies."
 ---
 
 # The Life and Death of Open Source Companies

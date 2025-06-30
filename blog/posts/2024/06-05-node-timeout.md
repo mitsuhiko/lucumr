@@ -1,7 +1,6 @@
 ---
-tags:
-  - javascript
-summary: How node's timeout objects are potential sources of memory leaks.
+tags: ['javascript']
+summary: "How node's timeout objects are potential sources of memory leaks."
 ---
 
 # Your Node is Leaking Memory? setTimeout Could be the Reason

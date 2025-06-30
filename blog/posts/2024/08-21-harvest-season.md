@@ -1,9 +1,6 @@
 ---
-tags:
-  - python
-  - announcement
-  - rye
-summary: My thoughts on Rye and uv.
+tags: ['python', 'announcement', 'rye']
+summary: "My thoughts on Rye and uv."
 ---
 
 # Rye and uv: August is Harvest Season for Python Packaging

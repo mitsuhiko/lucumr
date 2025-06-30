@@ -1,7 +1,6 @@
 ---
-tags:
-  - thoughts
-summary: A thought on human progress.
+tags: ['thoughts']
+summary: "A thought on human progress."
 ---
 
 # Progress

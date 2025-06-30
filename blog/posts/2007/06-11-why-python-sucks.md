@@ -1,8 +1,6 @@
 ---
-tags:
-  - python
-  - rant
-summary: Read this with a grain of salt.
+tags: ['python', 'rant']
+summary: "Read this with a grain of salt."
 ---
 
 # Why Python Sucks

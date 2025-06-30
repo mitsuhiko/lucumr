@@ -1,8 +1,6 @@
 ---
-tags:
-  - python
-  - security
-summary: Some general warnings about the use of str.format in Python.
+tags: ['python', 'security']
+summary: "Some general warnings about the use of str.format in Python."
 ---
 
 # Be Careful with Python's New-Style String Format

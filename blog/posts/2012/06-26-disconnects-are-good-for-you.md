@@ -1,11 +1,7 @@
 ---
-tags:
-  - python
-  - thoughts
-  - zmq
-summary: |
-  The hidden disconnects of ZeroMQ can be dangerous if you don't write
-  your application to work around them.
+tags: ['python', 'thoughts', 'zmq']
+summary: "The hidden disconnects of ZeroMQ can be dangerous if you don't write
+your application to work around them."
 ---
 
 # ZeroMQ: Disconnects are Good for You

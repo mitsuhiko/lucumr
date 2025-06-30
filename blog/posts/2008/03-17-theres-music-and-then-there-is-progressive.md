@@ -1,7 +1,6 @@
 ---
-tags:
-  - music
-summary: About my love to progressive metal and rock.
+tags: ['music']
+summary: "About my love to progressive metal and rock."
 ---
 
 # There’s Music, And then there is Progressive

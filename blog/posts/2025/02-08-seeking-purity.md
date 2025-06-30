@@ -1,9 +1,6 @@
 ---
-tags:
-  - thoughts
-  - rust
-  - python
-summary: Thoughts on purity in software engineering.
+tags: ['thoughts', 'rust', 'python']
+summary: "Thoughts on purity in software engineering."
 ---
 
 # Seeking Purity

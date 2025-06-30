@@ -1,8 +1,6 @@
 ---
-tags:
-  - python
-  - ruby
-summary: Why ruby is more whitespace sensitive than Python.
+tags: ['python', 'ruby']
+summary: "Why ruby is more whitespace sensitive than Python."
 ---
 
 # Whitespace Sensitivity

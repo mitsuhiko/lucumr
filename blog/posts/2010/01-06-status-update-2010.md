@@ -1,7 +1,6 @@
 ---
-tags:
-  - personal
-summary: Things that will change for me in 2010.
+tags: ['personal']
+summary: "Things that will change for me in 2010."
 ---
 
 # Status Update 2010

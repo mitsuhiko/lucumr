@@ -1,8 +1,6 @@
 ---
-tags:
-  - wsgi
-  - python
-summary: A friendly introduction into getting started with WSGI on Python.
+tags: ['wsgi', 'python']
+summary: "A friendly introduction into getting started with WSGI on Python."
 ---
 
 # Getting Started with WSGI

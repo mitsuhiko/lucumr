@@ -1,7 +1,6 @@
 ---
-tags:
-  - thoughts
-summary: Visualizing numbers and thinking about dimensions in computing.
+tags: ['thoughts']
+summary: "Visualizing numbers and thinking about dimensions in computing."
 ---
 
 # Computing in Perspective

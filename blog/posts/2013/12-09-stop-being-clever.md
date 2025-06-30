@@ -1,10 +1,7 @@
 ---
-tags:
-  - thoughts
-  - javascript
-summary: |
-  An experience report of using JavaScript with angular for a few days and
-  my thoughts on what's wrong with JavaScript libraries.
+tags: ['thoughts', 'javascript']
+summary: "An experience report of using JavaScript with angular for a few days and
+my thoughts on what's wrong with JavaScript libraries."
 ---
 
 # Stop Being Cute and Clever

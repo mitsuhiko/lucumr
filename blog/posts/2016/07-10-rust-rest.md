@@ -1,10 +1,6 @@
 ---
-tags:
-  - rust
-  - http
-  - rest
-  - api
-summary: Lessons learned from implementing a restful HTTP client for Rust.
+tags: ['rust', 'http', 'rest', 'api']
+summary: "Lessons learned from implementing a restful HTTP client for Rust."
 ---
 
 # Rust and Rest

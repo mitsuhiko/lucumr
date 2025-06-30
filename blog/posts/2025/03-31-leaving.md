@@ -1,8 +1,6 @@
 ---
-tags:
-  - thoughts
-  - announcement
-summary: Endings and new beginnings.
+tags: ['thoughts', 'announcement']
+summary: "Endings and new beginnings."
 ---
 
 # I'm Leaving Sentry

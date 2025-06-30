@@ -1,7 +1,6 @@
 ---
-tags:
-  - licensing
-summary: Why the BSD licenses work for me.
+tags: ['licensing']
+summary: "Why the BSD licenses work for me."
 ---
 
 # free VS free

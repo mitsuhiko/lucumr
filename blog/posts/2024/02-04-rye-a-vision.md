@@ -1,8 +1,6 @@
 ---
-tags:
-  - python
-  - announcement
-summary: A progress update on where my Rye Project is today.
+tags: ['python', 'announcement']
+summary: "A progress update on where my Rye Project is today."
 ---
 
 # Rye: A Vision Continued

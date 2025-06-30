@@ -1,9 +1,7 @@
 ---
-tags:
-  - rust
-summary: |
-  Some tips for how to be more productive in Rust by avoiding situations you
-  cannot solve in Rust.
+tags: ['rust']
+summary: "Some tips for how to be more productive in Rust by avoiding situations you
+cannot solve in Rust."
 ---
 
 # You can't Rust that

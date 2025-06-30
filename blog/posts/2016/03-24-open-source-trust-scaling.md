@@ -1,11 +1,7 @@
 ---
-tags:
-  - thoughts
-  - opensource
-  - javascript
-summary: |
-  Some thoughts about why npm style micro-packages are a huge liability for
-  everybody and what we could do to make them work.
+tags: ['thoughts', 'opensource', 'javascript']
+summary: "Some thoughts about why npm style micro-packages are a huge liability for
+everybody and what we could do to make them work."
 ---
 
 # Micropackages and Open Source Trust Scaling

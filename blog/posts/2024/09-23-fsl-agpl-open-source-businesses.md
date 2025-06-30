@@ -1,7 +1,6 @@
 ---
-tags:
-  - thoughts
-summary: My thoughts on license choices for balancing business interests and
+tags: ['thoughts']
+summary: "My thoughts on license choices for balancing business interests and"
 ---
 
 # FSL: A Better Business/Open Source Balance Than AGPL

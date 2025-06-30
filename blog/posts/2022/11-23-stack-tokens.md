@@ -1,5 +1,5 @@
 ---
-summary: A proposal for lifetime restrictions in Rust with stack tokens.
+summary: "A proposal for lifetime restrictions in Rust with stack tokens."
 ---
 
 # A Better Way to Borrow in Rust: Stack Tokens

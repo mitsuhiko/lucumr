@@ -1,10 +1,7 @@
 ---
-tags:
-  - python
-  - sqlalchemy
-summary: |
-  The Django ORM feels so much easier than SQLAlchemy?  Maybe this article
-  can change your perception.
+tags: ['python', 'sqlalchemy']
+summary: "The Django ORM feels so much easier than SQLAlchemy?  Maybe this article
+can change your perception."
 ---
 
 # SQLAlchemy and You
