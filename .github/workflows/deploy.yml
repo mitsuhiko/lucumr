@@ -37,7 +37,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: blog/_build
-          key: blog-build-${{ hashFiles('blog/**/*.rst', 'blog/**/*.yml', 'blog/static/**', 'templates/**', 'generator/**') }}
+          key: blog-build-${{ hashFiles('blog/**/*.md', 'blog/static/**', 'templates/**') }}
           restore-keys: |
             blog-build-
 
