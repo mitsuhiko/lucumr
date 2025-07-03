@@ -15,6 +15,7 @@ from jinja2 import Environment, FileSystemLoader
 from generator.pagination import Pagination
 from generator.config import CONFIG
 from generator import markup
+from generator.social_preview import SocialPreviewGenerator
 
 
 class BlogPost:
@@ -221,6 +222,7 @@ class Builder:
         self.pages = []
         self.tags = defaultdict(list)
         self.content_cache = ContentCache(project_folder)
+        self.social_gen = SocialPreviewGenerator(project_folder)
         template_path = Path(__file__).parent / "templates"
         self.jinja_env = Environment(
             loader=FileSystemLoader([str(template_path)]), autoescape=True
@@ -359,7 +361,18 @@ class Builder:
         Path(post.output_path).parent.mkdir(parents=True, exist_ok=True)
 
         content_data = post.render_content()
-        context = {"content": content_data, "ctx": post, "slug": post.slug}
+
+        # Add social preview image URL if available
+        social_image_url = None
+        if post.title and post.pub_date:
+            social_image_url = self.social_gen.get_social_preview_url(post)
+
+        context = {
+            "content": content_data,
+            "ctx": post,
+            "slug": post.slug,
+            "social_image_url": social_image_url,
+        }
 
         html = self.jinja_env.get_template("content_display.html").render(context)
 
@@ -602,6 +615,29 @@ class Builder:
         css_path.parent.mkdir(parents=True, exist_ok=True)
         css_path.write_text(markup.get_pygments_css())
 
+    def generate_social_previews(self):
+        """Generate social media preview images for all blog posts."""
+        print("Generating social preview images...")
+        generated_count = 0
+        skipped_count = 0
+
+        for post in self.posts:
+            if not post.title or not post.pub_date:
+                continue
+            generated = self.social_gen.generate_for_post(post)
+            if generated:
+                generated_count += 1
+                print(f"Generated social preview for: {post.title}")
+            else:
+                skipped_count += 1
+
+        if generated_count > 0:
+            print(f"Generated {generated_count} social preview images")
+        if skipped_count > 0:
+            print(f"Skipped {skipped_count} up-to-date social preview images")
+
+        self.social_gen.save_cache()
+
     def build(self):
         """Build the site."""
         self.scan_content()
@@ -633,6 +669,7 @@ class Builder:
 
         self.copy_static_files()
         self.write_pygments_css()
+        self.generate_social_previews()
 
 
 def pad_date_slug(slug):

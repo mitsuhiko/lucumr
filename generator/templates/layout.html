@@ -13,8 +13,10 @@
     {%- endfor %}
     <link rel="apple-touch-icon" sizes="300x300" href="/static/avatar-small.jpg">
     <link rel="icon" type="image/png" sizes="300x300" href="/static/avatar-small.jpg">
+    {% block social_image %}
     <meta name="twitter:image" content="https://lucumr.pocoo.org/static/avatar-small.jpg">
     <meta property="og:image" content="https://lucumr.pocoo.org/static/avatar-small.jpg">
+    {% endblock %}
     <link rel="stylesheet" href="/static/fonts.css" type="text/css">
     <link rel="stylesheet" href="/static/style-2025.css" type="text/css">
     <link rel="stylesheet" href="/static/_pygments.css" type="text/css">
@@ -27,7 +29,9 @@
     <link rel="canonical" href="https://lucumr.pocoo.org{{ slug }}">
     <meta name="twitter:title" content="{{ self.title() }}">
     <meta name="twitter:domain" content="https://lucumr.pocoo.org/">
+    {% block twitter_card %}
     <meta name="twitter:card" content="summary">
+    {% endblock %}
     <meta name="twitter:creator" content="@mitsuhiko">
     <link rel="me" href="https://hachyderm.io/@mitsuhiko">
   {% endblock %}

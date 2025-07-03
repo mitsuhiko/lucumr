@@ -18,6 +18,7 @@ dependencies = [
     "marko",
     "watchdog",
     "PyYAML",
+    "Pillow",
 ]
 
 [project.scripts]

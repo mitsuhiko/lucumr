@@ -1,11 +1,68 @@
 {% extends "layout.html" %}
 {% block title %}{{ content.title }}{% endblock %}
+{% block social_image %}
+  {% if social_image_url %}
+  <meta name="twitter:image" content="{{ social_image_url }}">
+  <meta property="og:image" content="{{ social_image_url }}">
+  {% else %}
+  {{ super() }}
+  {% endif %}
+{% endblock %}
+
+{% block twitter_card %}
+  {% if social_image_url %}
+  <meta name="twitter:card" content="summary_large_image">
+  {% else %}
+  {{ super() }}
+  {% endif %}
+{% endblock %}
+
 {% block htmlhead %}
   {{ super() }}
   <meta name="description" content="{{ ctx.render_summary()|striptags }}">
   <meta name="twitter:description" content="{{ ctx.render_summary()|striptags }}">
   <meta property="og:description" content="{{ ctx.render_summary()|striptags }}">
   <meta property="og:type" content="article">
+  {% if ctx.pub_date %}
+  <meta property="article:published_time" content="{{ ctx.pub_date.isoformat() }}">
+  <meta property="article:author" content="Armin Ronacher">
+  {% if ctx.tags %}
+  {% for tag in ctx.tags %}
+  <meta property="article:tag" content="{{ tag }}">
+  {% endfor %}
+  {% endif %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ content.title|e }}",
+    "description": "{{ ctx.render_summary()|striptags|e }}",
+    "author": {
+      "@type": "Person",
+      "name": "Armin Ronacher",
+      "url": "https://lucumr.pocoo.org/about/"
+    },
+    "datePublished": "{{ ctx.pub_date.isoformat() }}",
+    "url": "https://lucumr.pocoo.org{{ slug }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://lucumr.pocoo.org{{ slug }}"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Armin Ronacher",
+      "url": "https://lucumr.pocoo.org/about/"
+    }{% if social_image_url %},
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ social_image_url }}",
+      "width": 1200,
+      "height": 630
+    }{% endif %}{% if ctx.tags %},
+    "keywords": {{ ctx.tags|tojson }}{% endif %}
+  }
+  </script>
+  {% endif %}
 {% endblock %}
 {% block body %}
   {{ content.html_title }}
