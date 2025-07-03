@@ -60,18 +60,11 @@ def render_markdown(content, title=None):
     }
 
 
-def render_content(content, file_type, title=None):
-    """Render content based on file type."""
-    return render_markdown(content, title)
-
-
 def render_summary(summary):
     """Render summary as HTML."""
     if not summary:
         return ""
-    # Always render summary as Markdown for consistency
-    html_content = markdown_parser(summary)
-    return Markup(html_content)
+    return Markup(markdown_parser(summary))
 
 
 def extract_title_from_content(content, file_type):

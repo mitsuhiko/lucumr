@@ -14,7 +14,12 @@ from jinja2 import Environment, FileSystemLoader
 
 from generator.pagination import Pagination
 from generator.config import CONFIG
-from generator import markup
+from generator.markup import (
+    extract_title_from_content,
+    render_markdown,
+    render_summary,
+    get_pygments_css,
+)
 from generator.social_preview import SocialPreviewGenerator
 
 
@@ -53,9 +58,7 @@ class BlogPost:
         lines = content.split("\n")
         self.content = "\n".join(lines[content_start:])
         if "title" not in frontmatter:
-            extracted_title = markup.extract_title_from_content(
-                self.content, self.file_type
-            )
+            extracted_title = extract_title_from_content(self.content, self.file_type)
             if extracted_title:
                 self.title = extracted_title
 
@@ -109,17 +112,13 @@ class BlogPost:
             return str(Path(CONFIG["output_folder"]) / "index.html")
         return str(Path(CONFIG["output_folder"]) / slug / "index.html")
 
-    def render_markdown(self):
-        """Render Markdown content to HTML."""
-        return markup.render_markdown(self.content, self.title)
-
     def render_content(self):
         """Render content based on file type."""
-        return markup.render_content(self.content, self.file_type, self.title)
+        return render_markdown(self.content, self.title)
 
     def render_summary(self):
         """Render summary as HTML."""
-        return markup.render_summary(self.summary)
+        return render_summary(self.summary)
 
     def to_metadata(self):
         """Extract metadata for caching (without complex objects)."""
@@ -613,7 +612,7 @@ class Builder:
         """Write Pygments stylesheet."""
         css_path = self.output_folder / CONFIG["static_folder"] / "_pygments.css"
         css_path.parent.mkdir(parents=True, exist_ok=True)
-        css_path.write_text(markup.get_pygments_css())
+        css_path.write_text(get_pygments_css())
 
     def generate_social_previews(self):
         """Generate social media preview images for all blog posts."""
