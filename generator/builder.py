@@ -51,16 +51,14 @@ class BlogPost:
         # Apply frontmatter
         self.tags = frontmatter.get("tags", [])
         self.summary = frontmatter.get("summary")
-        if "title" in frontmatter:
-            self.title = frontmatter["title"]
 
         # Parse content for title if not in frontmatter
         lines = content.split("\n")
         self.content = "\n".join(lines[content_start:])
-        if "title" not in frontmatter:
-            extracted_title = extract_title_from_content(self.content)
-            if extracted_title:
-                self.title = extracted_title
+
+        extracted_title = extract_title_from_content(self.content)
+        if extracted_title:
+            self.title = extracted_title
 
     def _parse_yaml_frontmatter(self, content):
         """Parse YAML frontmatter (for .md files)."""
