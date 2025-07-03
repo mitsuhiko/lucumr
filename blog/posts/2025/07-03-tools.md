@@ -5,8 +5,9 @@ summary: The solution to agentic flows was code all along.
 
 # Tools: Code Is All You Need
 
-If you've been following me on Twitter, you know I'm not a big fan of MCP right
-now.  It's not that I dislike the idea; I just haven't found it to work as
+If you've been following me on Twitter, you know I'm not a big fan of MCP
+([Model Context Protocol](https://en.wikipedia.org/wiki/Model_Context_Protocol))
+right now.  It's not that I dislike the idea; I just haven't found it to work as
 advertised.  In my view, MCP suffers from two major flaws:
 
 1. **It isn’t truly composable.**  Most composition happens through inference.
