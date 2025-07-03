@@ -35,7 +35,7 @@ My current take is that my data indicates that current MCP will always be harder
 to use than writing code, primarily due to the reliance on inference.  If you
 look at the approaches today for pushing towards higher tool counts, the
 proposals all include a layer of filtering.  You pass all your tools to an LLM
-and ask it to filter it down based on the taks at hand.  So far, there hasn't
+and ask it to filter it down based on the task at hand.  So far, there hasn't
 been much better approaches proposed.
 
 The main reason I believe this will most likely also hold true — that you
