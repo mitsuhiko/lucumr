@@ -58,7 +58,7 @@ class BlogPost:
         lines = content.split("\n")
         self.content = "\n".join(lines[content_start:])
         if "title" not in frontmatter:
-            extracted_title = extract_title_from_content(self.content, self.file_type)
+            extracted_title = extract_title_from_content(self.content)
             if extracted_title:
                 self.title = extracted_title
 
@@ -114,7 +114,7 @@ class BlogPost:
 
     def render_content(self):
         """Render content based on file type."""
-        return render_markdown(self.content, self.title)
+        return render_markdown(self.content)
 
     def render_summary(self):
         """Render summary as HTML."""

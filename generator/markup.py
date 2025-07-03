@@ -38,24 +38,27 @@ class PygmentsRenderer(HTMLRenderer):
         return super().render_fenced_code(element)
 
 
-def render_markdown(content, title=None):
+def render_markdown(content):
     """Render Markdown content to HTML."""
     # Remove the first heading from content since we render it separately
     content_lines = content.split("\n")
     filtered_lines = []
     found_first_heading = False
+    title = None
 
     for line in content_lines:
         if line.strip().startswith("# ") and not found_first_heading:
+            title = line.strip()
             found_first_heading = True
             continue
         filtered_lines.append(line)
 
     filtered_content = "\n".join(filtered_lines)
     html_content = markdown_parser(filtered_content)
+    html_title = Markup(markdown_parser(title)) if title else None
     return {
-        "title": title,
-        "html_title": Markup(f"<h1>{title}</h1>") if title else "",
+        "title": html_title.striptags() if html_title else None,
+        "html_title": html_title,
         "fragment": Markup(html_content),
     }
 
@@ -67,13 +70,13 @@ def render_summary(summary):
     return Markup(markdown_parser(summary))
 
 
-def extract_title_from_content(content, file_type):
-    """Extract title from content based on file type."""
+def extract_title_from_content(content):
+    """Extract title from content"""
     # Extract title from first heading in Markdown
     for line in content.split("\n"):
         line = line.strip()
         if line.startswith("# "):
-            return line[2:].strip()
+            return Markup(markdown_parser(line[2:].strip())).striptags()
     return None
 
 
