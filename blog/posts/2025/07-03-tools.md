@@ -77,14 +77,14 @@ work, particularly for small tasks, but it requires validation which can take
 almost the same time as doing it in the first place.  Getting an LLM to
 calculate for you sort of works, but it's much better for the LLM to write the
 Python code to do the calculation.  Why?  First, you can review the formula, not
-the calculation.  We can it ourselves or we can use the LLM as a judge to figure
-out if the *approach* is correct.  Don't really have to validate that Python
-calculates correct, you can rely on that.  So, by opting for code generation for
-task solving, we get a little closer to being able to verify and validate the
-process ourselves, rather than hoping the LLM inferred correctly.
+the calculated result.  We can write it ourselves or we can use the LLM as a
+judge to figure out if the *approach* is correct.  Don't really have to validate
+that Python calculates correct, you can rely on that.  So, by opting for code
+generation for task solving, we get a little closer to being able to verify and
+validate the process ourselves, rather than hoping the LLM inferred correctly.
 
 This obviously goes way beyond calculation.  Take, for instance, this blog.  I
-converted this entire blob from reStructuredText to Markdown recently.  I put
+converted this entire blog from reStructuredText to Markdown recently.  I put
 this conversion off for a really long time, partly because I was a little too
 lazy.  But also, when I was lazy enough to consider deploying an LLM for it, I
 just didn't trust it to do the conversion itself without regressing somewhere.
@@ -117,10 +117,10 @@ different way: through code.
     over the output of hundreds of files to analyze the differece to go back into
     the agentic loop for another iteration tep.
 
-Then I kicked off off this in a loop.  I did not provide all the posts, I
-started with 10 until differences were low and then had it do it for all.  It
-did this for maybe 30 minutes or so until I came back to it and found it in a
-pretty acceptable state.
+Then I kicked this off in a loop.  I did not provide all the posts, I started
+with 10 until differences were low and then had it do it for all.  It did this
+for maybe 30 minutes or so until I came back to it and found it in a pretty
+acceptable state.
 
 What's key about this transformation is not so much that the LLM was capable of
 pulling it off, but that I actually trusted this process at the end because I
