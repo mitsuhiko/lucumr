@@ -164,12 +164,12 @@ requiring very little context by comparison.
 
 This process is repeatable.  Once the script is written, I can execute it 100,
 200, or even 300 times without requiring any further inference.  This is a
-significant advantage that an MCP (Multi-Component Pipeline) typically cannot
-offer.  It's incredibly challenging to get an LLM to understand generic,
-abstract MCP tool calls.  I wish I could, for example, embed an MCP client
-directly into a shell script, allowing me to run remote MCP services efficiently
-via code generation, but actually doing that is incredibly hard because the
-tools are not written with non inference based automation in mind.
+significant advantage that an MCP typically cannot offer.  It's incredibly
+challenging to get an LLM to understand generic, abstract MCP tool calls.  I
+wish I could, for example, embed an MCP client directly into a shell script,
+allowing me to run remote MCP services efficiently via code generation, but
+actually doing that is incredibly hard because the tools are not written with
+non inference based automation in mind.
 
 Also, as ironic as it is: I'm a human, not an MCP client.  I can run and debug a
 script, I cannot even figure out how to reliably do MCP calls.  It's always a
