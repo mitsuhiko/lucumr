@@ -28,6 +28,7 @@ communication channels:
 -   via [email](armin.ronacher@active-4.com)
 -   find me on [GitHub](https://github.com/mitsuhiko)
 -   reach out to me on [X](https://x.com/mitsuhiko) or [Bluesky](https://bsky.app/profile/mitsuhiko.at).
+-   watch my stuff on [YouTube](https://www.youtube.com/@ArminRonacher)
 
 My usual nickname is `mitsuhiko`.
 
