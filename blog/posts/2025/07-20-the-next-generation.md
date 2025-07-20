@@ -12,7 +12,7 @@ Python community](/2014/2/13/programming-communities/).  Recently I found
 myself reminiscing again. This year at EuroPython I even gave a brief lightning
 talk recalling my time in the community — it made me tear up a little.
 
-There were to reasons for this trip down memory lane.  First, I had the
+There were two reasons for this trip down memory lane.  First, I had the
 opportunity to be part of the [new Python
 documentary](https://www.youtube.com/watch?v=pqBqdNIPrbo), which brought back a
 flood of memories (good and bad).  Second, I've found myself accidentally
