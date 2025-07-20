@@ -73,6 +73,7 @@ the important lessons about engineering.  We do not want to have a generation
 of developers held captive by a companies building vibe-coding tools with
 little incentive for their users to break from those shackles.
 
-[^1]: I'm using vibe coders here as people that give in to having the machine
-      program for them.  I believe that many programmers will start in this way
-      before they transition to more traditional software engineering.
+[^1]: I'm using [vibe coders](https://en.wikipedia.org/wiki/Vibe_coding) here
+      as people that give in to having the machine program for them.  I believe
+      that many programmers will start in this way before they transition to more
+      traditional software engineering.
