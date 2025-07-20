@@ -19,6 +19,7 @@ dependencies = [
     "watchdog",
     "PyYAML",
     "Pillow",
+    "smartypants>=2.0.2",
 ]
 
 [project.scripts]

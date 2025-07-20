@@ -4,6 +4,7 @@ from pygments.formatters import HtmlFormatter
 from pygments.styles import get_style_by_name
 from markupsafe import Markup
 import marko
+import smartypants
 from marko.ext.gfm import GFM
 from marko.ext import footnote
 from marko.html_renderer import HTMLRenderer
@@ -37,6 +38,12 @@ class PygmentsRenderer(HTMLRenderer):
             return highlight_code(code, language)
         return super().render_fenced_code(element)
 
+    @staticmethod
+    def escape_html(raw: str) -> str:
+        # For some reason quotes are always quoted here which causes issues
+        # later with smartypants.  So let's undo this.
+        return HTMLRenderer.escape_html(raw).replace("&quot;", '"')
+
 
 def render_markdown(content):
     """Render Markdown content to HTML."""
@@ -54,12 +61,12 @@ def render_markdown(content):
         filtered_lines.append(line)
 
     filtered_content = "\n".join(filtered_lines)
-    html_content = markdown_parser(filtered_content)
-    html_title = Markup(markdown_parser(title)) if title else None
+    html_content = markdown_to_html(filtered_content)
+    html_title = markdown_to_html(title) if title else None
     return {
         "title": html_title.striptags() if html_title else None,
         "html_title": html_title,
-        "fragment": Markup(html_content),
+        "fragment": html_content,
     }
 
 
@@ -67,7 +74,7 @@ def render_summary(summary):
     """Render summary as HTML."""
     if not summary:
         return ""
-    return Markup(markdown_parser(summary))
+    return markdown_to_html(summary)
 
 
 def extract_title_from_content(content):
@@ -76,13 +83,18 @@ def extract_title_from_content(content):
     for line in content.split("\n"):
         line = line.strip()
         if line.startswith("# "):
-            return Markup(markdown_parser(line[2:].strip())).striptags()
+            return markdown_to_html(line[2:].strip()).striptags()
     return None
 
 
 def get_pygments_css():
     """Get Pygments CSS styles."""
     return html_formatter.get_style_defs()
+
+
+def markdown_to_html(content):
+    """Convert Markdown content to HTML."""
+    return Markup(smartypants.smartypants(markdown_parser(content)))
 
 
 html_formatter = HtmlFormatter(style=get_style_by_name(CONFIG["pygments_style"]))

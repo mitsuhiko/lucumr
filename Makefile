@@ -4,6 +4,7 @@ all: build
 
 clean:
 	rm -rf blog/_build
+	rm -rf .generator_cache
 
 build:
 	cd blog && uv run build-blog
