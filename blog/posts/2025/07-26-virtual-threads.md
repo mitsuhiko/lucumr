@@ -43,12 +43,13 @@ by fully embracing threads.
 
 Another really positive thing that came out of async in Python was that a lot of
 experimentation was made to improve the ergonomics of those APIs.  The most
-important innovation has been the idea of structured concurrency.  Structured
-concurrency is all about the idea of disallowing one task to outlive its parent.
-And this is also a really good feature because it allows, for instance, a task
-to also have a relationship to the parent task, which makes the flow of
-information (such as context variables) much clearer than traditional threads
-and thread local variables do, where threads have effectively no real
+important innovation has been the idea of [structured
+concurrency](https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/).
+Structured concurrency is all about the idea of disallowing one task to outlive
+its parent. And this is also a really good feature because it allows, for
+instance, a task to also have a relationship to the parent task, which makes the
+flow of information (such as context variables) much clearer than traditional
+threads and thread local variables do, where threads have effectively no real
 relationships to their parents. 
 
 Unfortunately, task groups (the implementation of structured concurrency in
