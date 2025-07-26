@@ -199,6 +199,8 @@ You could also model this after what we have with async/await and make thread
 groups explicit:
 
 ```python
+from functools import partial
+
 def download_and_store(results, url):
     results[url] = fetch_url(url)
 
@@ -207,7 +209,7 @@ def download_all(urls):
 
     with ThreadGroup() as g:
         for url in urls:
-            g.spawn(lambda: download_and_store(results, url))
+            g.spawn(partial(download_and_store, results, url))
 
     return results
 ```
@@ -234,6 +236,8 @@ create more stable systems.  Something like this could also become a part of a
 thread group, directly limiting how many spawns can happen simultaniously.
 
 ```python
+from functools import partial
+
 def download_and_store(results_mutex, url):
     with results_mutex.lock() as results:
         result = fetch_url(url)
@@ -244,7 +248,7 @@ def download_all(urls):
 
     with ThreadGroup(max_concurrency=8) as g:
         for url in urls:
-            g.spawn(lambda: download_and_store(results, url))
+            g.spawn(partial(download_and_store, results, url))
 
     return results
 ```
