@@ -151,6 +151,8 @@ would do:
 Behind the scenes, something like this would happen:
 
 ```python
+from functools import partial
+
 def download_all(urls):
     results = {}
 
@@ -159,7 +161,7 @@ def download_all(urls):
             results[url] = fetch_url(url)
 
         for url in urls:
-            ThreadGroup.current.spawn(lambda: _thread(url))
+            ThreadGroup.current.spawn(partial(_thread, url))
 
     return results
 ```
