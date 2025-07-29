@@ -239,8 +239,8 @@ thread group, directly limiting how many spawns can happen simultaniously.
 from functools import partial
 
 def download_and_store(results_mutex, url):
+    result = fetch_url(url)
     with results_mutex.lock() as results:
-        result = fetch_url(url)
         results.store(url, result)
 
 def download_all(urls):
