@@ -17,6 +17,8 @@ class BackgroundBuilder:
         self.last_change_time = 0
         self.build_thread = None
         self.stop_event = threading.Event()
+        self.build_lock = threading.Lock()
+        self.is_building = False
 
     def _on_change(self, event):
         """Handle any file system change."""
@@ -27,16 +29,30 @@ class BackgroundBuilder:
     def _build_loop(self):
         """Background thread that triggers builds after debounce delay."""
         while not self.stop_event.is_set():
-            if (
-                self.last_change_time > 0
-                and time.time() - self.last_change_time > self.debounce_delay
-            ):
+            should_build = False
+
+            with self.build_lock:
+                if (
+                    self.last_change_time > 0
+                    and time.time() - self.last_change_time > self.debounce_delay
+                    and not self.is_building
+                ):
+                    should_build = True
+                    self.is_building = True
+                    # Capture the change time that triggered this build
+                    build_trigger_time = self.last_change_time
+
+            if should_build:
                 try:
                     self.builder.build()
                 except Exception:
                     traceback.print_exc()
                 finally:
-                    self.last_change_time = 0
+                    with self.build_lock:
+                        self.is_building = False
+                        # Only reset if no new changes came in during the build
+                        if self.last_change_time == build_trigger_time:
+                            self.last_change_time = 0
 
             time.sleep(0.1)
 
