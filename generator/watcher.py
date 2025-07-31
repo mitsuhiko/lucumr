@@ -10,7 +10,7 @@ from generator.builder import Builder
 class BackgroundBuilder:
     """Simple file watcher that triggers builder.build() for any change."""
 
-    def __init__(self, project_folder=None, debounce_delay=0.5):
+    def __init__(self, project_folder=None, debounce_delay=0.5, on_build_complete=None):
         self.builder = Builder(project_folder)
         self.debounce_delay = debounce_delay
         self.observer = Observer()
@@ -19,6 +19,9 @@ class BackgroundBuilder:
         self.stop_event = threading.Event()
         self.build_lock = threading.Lock()
         self.is_building = False
+        self.on_build_complete = on_build_complete
+        # Pass the reload callback to the builder
+        self.builder.on_page_rebuilt = on_build_complete
 
     def _on_change(self, event):
         """Handle any file system change."""

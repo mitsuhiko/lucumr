@@ -220,6 +220,7 @@ class Builder:
         self.tags = defaultdict(list)
         self.content_cache = ContentCache(project_folder)
         self.social_gen = SocialPreviewGenerator(project_folder)
+        self.on_page_rebuilt = None  # Callback for when individual pages are rebuilt
         template_path = Path(__file__).parent / "templates"
         self.jinja_env = Environment(
             loader=FileSystemLoader([str(template_path)]), autoescape=True
@@ -379,6 +380,10 @@ class Builder:
         slug_with_leading_zeros = pad_date_slug(post.slug)
         if slug_with_leading_zeros != post.slug:
             self.build_redirect_page(post, slug_with_leading_zeros)
+
+        # Notify that this individual page was rebuilt (triggers immediate reload)
+        if self.on_page_rebuilt:
+            self.on_page_rebuilt()
 
     def build_redirect_page(self, post, redirect_slug):
         """Build a redirect page for the leading zero URL."""
