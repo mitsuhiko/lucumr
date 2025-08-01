@@ -11,12 +11,9 @@ from generator.watcher import BackgroundBuilder
 HOST = "127.0.0.1"
 PORT = 5001
 
-# Global set to track active SSE connections
-active_sse_connections = set()
-sse_connections_lock = threading.Lock()
-
 # Global dictionary to track reload events by connection ID
 RELOAD_EVENTS = {}
+RELOAD_EVENTS_LOCK = threading.Lock()
 
 RELOAD_SCRIPT = """
 <script>
@@ -71,8 +68,6 @@ class LiveReloadHandler(SimpleHTTPRequestHandler):
 
         # Register this connection
         connection_id = id(self)
-        with sse_connections_lock:
-            active_sse_connections.add(connection_id)
 
         try:
             # Send initial connection message
@@ -83,7 +78,7 @@ class LiveReloadHandler(SimpleHTTPRequestHandler):
             reload_event = threading.Event()
 
             # Store the event so notify_reload can signal it
-            with sse_connections_lock:
+            with RELOAD_EVENTS_LOCK:
                 RELOAD_EVENTS[connection_id] = reload_event
 
             # Wait for reload signal
@@ -105,8 +100,7 @@ class LiveReloadHandler(SimpleHTTPRequestHandler):
                     break
         finally:
             # Unregister this connection
-            with sse_connections_lock:
-                active_sse_connections.discard(connection_id)
+            with RELOAD_EVENTS_LOCK:
                 RELOAD_EVENTS.pop(connection_id, None)
 
     def handle_file_with_reload(self):
@@ -158,11 +152,10 @@ class LiveReloadHandler(SimpleHTTPRequestHandler):
 
 def notify_reload():
     """Signal all SSE clients to reload."""
-    with sse_connections_lock:
+    with RELOAD_EVENTS_LOCK:
         # Signal all active connections exactly once
         for connection_id, event in list(RELOAD_EVENTS.items()):
-            if connection_id in active_sse_connections:
-                event.set()
+            event.set()
         # Clear events after signaling
         RELOAD_EVENTS.clear()
 
