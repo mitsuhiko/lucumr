@@ -47,6 +47,34 @@ p.theme-selector {
   input:checked + span { text-decoration: underline; }
 }
 
+/* tag sort controls */
+.tag-sort-controls {
+  margin: 10px 0 20px 0;
+  font-size: 14px;
+  color: var(--faded-color);
+}
+
+.tag-sort-controls input[type="radio"] {
+  display: none;
+}
+
+.tag-sort-controls label {
+  cursor: pointer;
+  display: inline;
+  text-decoration: none;
+}
+
+.tag-sort-controls label:hover {
+  text-decoration: underline;
+}
+
+.tag-sort-controls input:checked {
+  & + span {
+    text-decoration: underline;
+    color: var(--text-color);
+  }
+}
+
 /* headlines */
 h1, h2, h3, h4, h5, h6      { font-family: 'Lora', sans-serif;
                               font-weight: 500; color: var(--header-color) }
