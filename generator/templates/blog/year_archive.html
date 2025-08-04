@@ -8,7 +8,12 @@
     {%- for subentry in entry.months %}
       <li><a href="{{ link_to('blog_archive', year=entry.year,
                               month=subentry.month) }}">{{ subentry.month_name }}</a>
-        — {{ subentry.count }} {{ 'entry' if subentry.count == 1 else 'entries' }}
+        <ul>
+          {%- for entry in subentry.entries %}
+            <li><a href="{{ link_to('page', slug=entry.slug) }}">{{ entry.title }}</a>
+              {%- if entry.pub_date %}, {{ format_date(entry.pub_date, format='long') }}{% endif %}
+          {%- endfor %}
+        </ul>
     {%- endfor %}
   </ul>
 {% endblock %}
