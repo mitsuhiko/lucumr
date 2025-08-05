@@ -80,4 +80,52 @@
       <a href="{{ link_to('tag', tag=tag) }}">{{ tag }}</a>
     {%- endfor %}
   {% endif %}
+
+  <p class="markdown-links">
+    <a href="{{ slug.rstrip('/') }}.md" id="copy-markdown">copy as</a> / <a href="{{ slug.rstrip('/') }}.md" id="view-markdown">view</a> markdown
+  </p>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const copyLink = document.getElementById('copy-markdown');
+      const markdownUrl = '{{ slug.rstrip('/') }}.md';
+      
+      async function copyMarkdown() {
+        try {
+          const response = await fetch(markdownUrl);
+          const markdown = await response.text();
+          await navigator.clipboard.writeText(markdown);
+          
+          // Visual feedback
+          const originalText = copyLink.textContent;
+          copyLink.textContent = 'copied!';
+          setTimeout(() => {
+            copyLink.textContent = originalText;
+          }, 1000);
+        } catch (err) {
+          console.error('Failed to copy markdown:', err);
+          alert('Failed to copy markdown to clipboard');
+        }
+      }
+      
+      // Handle copy link click
+      if (copyLink) {
+        copyLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          copyMarkdown();
+        });
+      }
+      
+      // Handle Ctrl+C / Cmd+C when nothing is selected
+      document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+          const selection = window.getSelection();
+          if (selection.toString().length === 0) {
+            e.preventDefault();
+            copyMarkdown();
+          }
+        }
+      });
+    });
+  </script>
 {% endblock %}

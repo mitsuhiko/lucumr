@@ -376,6 +376,9 @@ class Builder:
 
         Path(post.output_path).write_text(html, encoding="utf-8")
 
+        # Generate markdown file alongside HTML for all posts and pages
+        self.build_markdown_file(post)
+
         # Build redirect page if this is a blog post with leading zeros needed
         slug_with_leading_zeros = pad_date_slug(post.slug)
         if slug_with_leading_zeros != post.slug:
@@ -385,6 +388,13 @@ class Builder:
         if self.on_page_rebuilt:
             self.on_page_rebuilt()
 
+    def build_markdown_file(self, post):
+        """Build markdown file alongside HTML."""
+        html_path = Path(post.output_path)
+        md_path = html_path.parent.parent / f"{html_path.parent.name}.md"
+        md_path.parent.mkdir(parents=True, exist_ok=True)
+        md_path.write_text(post.content, encoding="utf-8")
+
     def build_redirect_page(self, post, redirect_slug):
         """Build a redirect page for the leading zero URL."""
         redirect_path = self.output_folder / redirect_slug.strip("/") / "index.html"
@@ -392,13 +402,13 @@ class Builder:
 
         canonical_url = CONFIG["site_url"].rstrip("/") + post.slug
 
-        redirect_html = f'''<!doctype html>
+        redirect_html = f"""<!doctype html>
 <meta charset="utf-8">
 <meta http-equiv="refresh" content="0;url={post.slug}">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="{canonical_url}">
 <script>window.location.replace('{post.slug}');</script>
-'''
+"""
 
         redirect_path.write_text(redirect_html, encoding="utf-8")
 
@@ -559,7 +569,7 @@ class Builder:
             pub_date = post.pub_date.replace(tzinfo=timezone.utc).isoformat()
             content = str(post.render_content()["fragment"])
 
-            entry_xml = f'''  <entry>
+            entry_xml = f"""  <entry>
     <id>{post_url}</id>
     <title>{post.title or "Untitled"}</title>
     <link href="{post_url}" />
@@ -569,10 +579,10 @@ class Builder:
       <name>{CONFIG["author"]}</name>
     </author>
     <content type="html"><![CDATA[{content}]]></content>
-  </entry>'''
+  </entry>"""
             entries.append(entry_xml)
 
-        feed_xml = f'''<?xml version="1.0" encoding="utf-8"?>
+        feed_xml = f"""<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>{feed_url}</id>
   <title>{title}</title>
@@ -585,7 +595,7 @@ class Builder:
     <name>{CONFIG["author"]}</name>
   </author>
 {chr(10).join(entries)}
-</feed>'''
+</feed>"""
         return feed_xml
 
     def copy_static_files(self):

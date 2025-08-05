@@ -209,9 +209,9 @@ hr { border: none; border-bottom: 1px solid var(--border-color); height: 10px;
 
 /* expandables */
 details {
-    background: var(--code-background-color);
-    padding: 5px 15px;
-    border-radius: 2px;
+  background: var(--code-background-color);
+  padding: 5px 15px;
+  border-radius: 2px;
 }
 details summary { cursor: pointer; }
 details summary:hover { text-decoration: underline; color: var(--secondary-color); }
@@ -221,4 +221,13 @@ details[open] summary { text-decoration: underline; }
 span.date-warning {
   color: var(--date-warning-text-color);
   font-style: italic;
+}
+
+/* markdown links */
+p.markdown-links {
+  text-align: right;
+}
+
+p.tags + p.markdown-links {
+  margin-top: -15px;
 }
