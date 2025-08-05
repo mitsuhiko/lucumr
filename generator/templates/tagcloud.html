@@ -2,6 +2,11 @@
 {% block title %}Tags{% endblock %}
 {% block body %}
   <h1>Tags</h1>
+
+  <p>
+    <a href="/archive/">Browse chronological archive</a>
+  </p>
+
   <ul class=tagcloud>
   {%- for tag in get_tags(limit=50) %}
     <li><a href="{{ link_to('tag', tag=tag.name) }}" style="font-size: {{

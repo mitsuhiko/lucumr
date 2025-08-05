@@ -2,8 +2,17 @@
 {% block title %}Blog Archive{% endblock %}
 {% block body %}
 
+  {% block archive_title %}
   <h1>Blog Archive</h1>
+  {% endblock %}
 
+  <p>
+    <a href="/tags/">View tag cloud</a>{% if entry %},
+    <a href="/archive/">View entire archive</a>
+    {% endif %}
+  </p>
+
+  {% block archive_body %}
   <ul class=blog-archive>
   {%- for entry in archive %}
     <li><a href="{{ link_to('blog_archive', year=entry.year) }}">{{ entry.year }}</a>
@@ -16,4 +25,5 @@
       </ul>
   {%- endfor %}
   </ul>
+  {% endblock %}
 {% endblock %}
