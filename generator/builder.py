@@ -214,11 +214,7 @@ class Builder:
             project_folder = os.getcwd()
         project_folder = Path(project_folder).resolve()
         self.project_folder = project_folder
-        # Ensure output goes to blog/_build for consistency
-        if (project_folder / "blog").exists():
-            self.output_folder = project_folder / "blog" / CONFIG["output_folder"]
-        else:
-            self.output_folder = project_folder / CONFIG["output_folder"]
+        self.output_folder = project_folder / CONFIG["output_folder"]
         self.posts = []
         self.pages = []
         self.tags = defaultdict(list)
@@ -307,7 +303,7 @@ class Builder:
 
     def load_travel_data(self):
         """Load travel data from JSON file."""
-        travel_file = self.project_folder / "blog" / "travel.json"
+        travel_file = self.project_folder / "travel.json"
         travel_data = []
         if travel_file.exists():
             try:
