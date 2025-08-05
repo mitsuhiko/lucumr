@@ -4,7 +4,7 @@ import shutil
 import json
 import hashlib
 import yaml
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from collections import defaultdict
 from fnmatch import fnmatch
 from math import log, ceil
@@ -214,12 +214,16 @@ class Builder:
             project_folder = os.getcwd()
         project_folder = Path(project_folder).resolve()
         self.project_folder = project_folder
-        self.output_folder = project_folder / CONFIG["output_folder"]
+        # Ensure output goes to blog/_build for consistency
+        if (project_folder / "blog").exists():
+            self.output_folder = project_folder / "blog" / CONFIG["output_folder"]
+        else:
+            self.output_folder = project_folder / CONFIG["output_folder"]
         self.posts = []
         self.pages = []
         self.tags = defaultdict(list)
         self.content_cache = ContentCache(project_folder)
-        self.social_gen = SocialPreviewGenerator(project_folder)
+        # self.social_gen = SocialPreviewGenerator(project_folder)  # Temporarily disabled
         self.on_page_rebuilt = None  # Callback for when individual pages are rebuilt
         template_path = Path(__file__).parent / "templates"
         self.jinja_env = Environment(
@@ -231,6 +235,7 @@ class Builder:
             get_recent_blog_entries=self._get_recent_posts,
             get_tags=self._get_tags,
         )
+        self.travel_data = []
 
     def _link_to(self, endpoint, **kwargs):
         """Simple URL building."""
@@ -301,6 +306,25 @@ class Builder:
                     return True
         return False
 
+    def load_travel_data(self):
+        """Load travel data from JSON file."""
+        travel_file = self.project_folder / "blog" / "travel.json"
+        if travel_file.exists():
+            try:
+                with open(travel_file, 'r') as f:
+                    raw_data = json.load(f)
+                    self.travel_data = []
+                    for item in raw_data:
+                        travel_item = item.copy()
+                        travel_item['start_date'] = datetime.fromisoformat(item['start_date'])
+                        travel_item['end_date'] = datetime.fromisoformat(item['end_date'])
+                        self.travel_data.append(travel_item)
+            except Exception as e:
+                print(f"Error loading travel data: {e}")
+                self.travel_data = []
+        else:
+            self.travel_data = []
+
     def scan_content(self):
         """Scan for content files with caching for unchanged files."""
         # Track existing files for deletion detection
@@ -362,8 +386,8 @@ class Builder:
 
         # Add social preview image URL if available
         social_image_url = None
-        if post.title and post.pub_date:
-            social_image_url = self.social_gen.get_social_preview_url(post)
+        # if post.title and post.pub_date:
+        #     social_image_url = self.social_gen.get_social_preview_url(post)
 
         context = {
             "content": content_data,
@@ -598,6 +622,73 @@ class Builder:
 </feed>"""
         return feed_xml
 
+    def build_travel_page(self):
+        """Build travel page from JSON data."""
+        if not self.travel_data:
+            return
+            
+        # Sort travel data by start date
+        sorted_travel = sorted(self.travel_data, key=lambda x: x['start_date'])
+        
+        # Create travel page context
+        context = {
+            'travel_data': sorted_travel,
+            'title': 'Travel Schedule'
+        }
+        
+        # Render travel page
+        html = self.jinja_env.get_template("travel.html").render(context)
+        
+        # Write travel page
+        output_path = self.output_folder / "travel" / "index.html"
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(html, encoding="utf-8")
+        print(f"Built travel/index.html")
+
+    def build_travel_calendar(self):
+        """Build iCal calendar file from travel data."""
+        if not self.travel_data:
+            return
+            
+        # Generate iCal content
+        ical_lines = [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "PRODID:-//Armin Ronacher//Travel Schedule//EN",
+            "CALSCALE:GREGORIAN",
+            "METHOD:PUBLISH"
+        ]
+        
+        for travel in self.travel_data:
+            # Format dates for iCal (YYYYMMDD)
+            start_date = travel['start_date'].strftime('%Y%m%d')
+            end_date = (travel['end_date'] + timedelta(days=1)).strftime('%Y%m%d')  # iCal end dates are exclusive
+            
+            # Create unique ID
+            uid = f"travel-{travel['start_date'].strftime('%Y%m%d')}-{hash(travel['location'])}@lucumr.pocoo.org"
+            
+            event_lines = [
+                "BEGIN:VEVENT",
+                f"UID:{uid}",
+                f"DTSTART;VALUE=DATE:{start_date}",
+                f"DTEND;VALUE=DATE:{end_date}",
+                f"SUMMARY:Armin in {travel['location']}: {travel['title']}",
+                f"LOCATION:{travel['location']}",
+                f"DESCRIPTION:{travel.get('description', '')}",
+                "STATUS:CONFIRMED",
+                "TRANSP:TRANSPARENT",
+                "END:VEVENT"
+            ]
+            ical_lines.extend(event_lines)
+        
+        ical_lines.append("END:VCALENDAR")
+        
+        # Write calendar file
+        calendar_content = "\r\n".join(ical_lines)
+        output_path = self.output_folder / "travel.ics"
+        output_path.write_text(calendar_content, encoding="utf-8")
+        print(f"Built travel.ics")
+
     def copy_static_files(self):
         """Copy static files to output directory."""
         static_src = self.project_folder / CONFIG["static_folder"]
@@ -653,6 +744,7 @@ class Builder:
     def build(self):
         """Build the site."""
         self.scan_content()
+        self.load_travel_data()
 
         content_changed = False
         for post in self.posts + self.pages:
@@ -679,9 +771,15 @@ class Builder:
             print("Building feeds...")
             self.build_feeds()
 
+        print("Building travel page...")
+        self.build_travel_page()
+        
+        print("Building travel calendar...")
+        self.build_travel_calendar()
+
         self.copy_static_files()
         self.write_pygments_css()
-        self.generate_social_previews()
+        # self.generate_social_previews()  # Temporarily disabled due to missing fonts
 
 
 def pad_date_slug(slug):

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Travel Schedule{% endblock %}
+{% block body %}
+<article>
+  <header>
+    <h1>Travel Schedule</h1>
+  </header>
+  
+  <div class="entry">
+    <p>I'm now tracking some of my travel schedule here in case you want to meet up
+    spontaneously. Outside of travelling I'm currently based in Vienna, if you want
+    to meet, <a href="mailto:armin.ronacher@active-4.com">send me an email</a>.</p>
+    
+    <p>You can also <a href="/travel.ics">subscribe to my travel calendar</a> to get updates directly in your calendar application.</p>
+    
+    {% if travel_data %}
+    <ul>
+      {% for travel in travel_data %}
+      <li>
+        <strong>{{ format_date(travel.start_date, 'full') }}{% if travel.start_date != travel.end_date %} to {{ format_date(travel.end_date, 'full') }}{% endif %}</strong>: 
+        {{ travel.location }} for <em>{{ travel.title }}</em>
+        {% if travel.description %}
+        <br><small>{{ travel.description }}</small>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No upcoming travel planned at the moment.</p>
+    {% endif %}
+  </div>
+</article>
+{% endblock %}
