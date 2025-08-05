@@ -19,6 +19,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const sortControls = document.querySelectorAll('input[name="sort"]');
       const entriesList = document.getElementById('tag-entries');
+      const storageKey = 'tag-sort-preference';
       
       function sortEntries(sortBy) {
         const entries = Array.from(entriesList.children);
@@ -43,9 +44,26 @@
         });
       }
       
+      // Load saved preference from localStorage
+      const savedSort = localStorage.getItem(storageKey);
+      if (savedSort) {
+        const savedControl = document.querySelector(`input[name="sort"][value="${savedSort}"]`);
+        if (savedControl) {
+          // Clear default checked state
+          sortControls.forEach(function(control) {
+            control.checked = false;
+          });
+          // Set saved preference
+          savedControl.checked = true;
+          sortEntries(savedSort);
+        }
+      }
+      
       sortControls.forEach(function(control) {
         control.addEventListener('change', function() {
           if (this.checked) {
+            // Save preference to localStorage
+            localStorage.setItem(storageKey, this.value);
             sortEntries(this.value);
           }
         });
