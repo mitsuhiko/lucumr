@@ -311,13 +311,17 @@ class Builder:
         travel_file = self.project_folder / "blog" / "travel.json"
         if travel_file.exists():
             try:
-                with open(travel_file, 'r') as f:
+                with open(travel_file, "r") as f:
                     raw_data = json.load(f)
                     self.travel_data = []
                     for item in raw_data:
                         travel_item = item.copy()
-                        travel_item['start_date'] = datetime.fromisoformat(item['start_date'])
-                        travel_item['end_date'] = datetime.fromisoformat(item['end_date'])
+                        travel_item["start_date"] = datetime.fromisoformat(
+                            item["start_date"]
+                        )
+                        travel_item["end_date"] = datetime.fromisoformat(
+                            item["end_date"]
+                        )
                         self.travel_data.append(travel_item)
             except Exception as e:
                 print(f"Error loading travel data: {e}")
@@ -626,19 +630,22 @@ class Builder:
         """Build travel page from JSON data."""
         if not self.travel_data:
             return
-            
+
+        # Filter out past travel dates for HTML display
+        today = datetime.now().date()
+        future_travel = [
+            travel for travel in self.travel_data if travel["end_date"].date() >= today
+        ]
+
         # Sort travel data by start date
-        sorted_travel = sorted(self.travel_data, key=lambda x: x['start_date'])
-        
+        sorted_travel = sorted(future_travel, key=lambda x: x["start_date"])
+
         # Create travel page context
-        context = {
-            'travel_data': sorted_travel,
-            'title': 'Travel Schedule'
-        }
-        
+        context = {"travel_data": sorted_travel, "title": "Travel Schedule"}
+
         # Render travel page
         html = self.jinja_env.get_template("travel.html").render(context)
-        
+
         # Write travel page
         output_path = self.output_folder / "travel" / "index.html"
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -649,24 +656,35 @@ class Builder:
         """Build iCal calendar file from travel data."""
         if not self.travel_data:
             return
-            
+
+        # Filter travel data - keep events for 30 days after they end
+        today = datetime.now().date()
+        cutoff_date = today - timedelta(days=30)
+        calendar_travel = [
+            travel
+            for travel in self.travel_data
+            if travel["end_date"].date() >= cutoff_date
+        ]
+
         # Generate iCal content
         ical_lines = [
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
             "PRODID:-//Armin Ronacher//Travel Schedule//EN",
             "CALSCALE:GREGORIAN",
-            "METHOD:PUBLISH"
+            "METHOD:PUBLISH",
         ]
-        
-        for travel in self.travel_data:
+
+        for travel in calendar_travel:
             # Format dates for iCal (YYYYMMDD)
-            start_date = travel['start_date'].strftime('%Y%m%d')
-            end_date = (travel['end_date'] + timedelta(days=1)).strftime('%Y%m%d')  # iCal end dates are exclusive
-            
+            start_date = travel["start_date"].strftime("%Y%m%d")
+            end_date = (travel["end_date"] + timedelta(days=1)).strftime(
+                "%Y%m%d"
+            )  # iCal end dates are exclusive
+
             # Create unique ID
             uid = f"travel-{travel['start_date'].strftime('%Y%m%d')}-{hash(travel['location'])}@lucumr.pocoo.org"
-            
+
             event_lines = [
                 "BEGIN:VEVENT",
                 f"UID:{uid}",
@@ -677,12 +695,12 @@ class Builder:
                 f"DESCRIPTION:{travel.get('description', '')}",
                 "STATUS:CONFIRMED",
                 "TRANSP:TRANSPARENT",
-                "END:VEVENT"
+                "END:VEVENT",
             ]
             ical_lines.extend(event_lines)
-        
+
         ical_lines.append("END:VCALENDAR")
-        
+
         # Write calendar file
         calendar_content = "\r\n".join(ical_lines)
         output_path = self.output_folder / "travel.ics"
@@ -773,7 +791,7 @@ class Builder:
 
         print("Building travel page...")
         self.build_travel_page()
-        
+
         print("Building travel calendar...")
         self.build_travel_calendar()
 
