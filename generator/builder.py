@@ -223,7 +223,7 @@ class Builder:
         self.pages = []
         self.tags = defaultdict(list)
         self.content_cache = ContentCache(project_folder)
-        # self.social_gen = SocialPreviewGenerator(project_folder)  # Temporarily disabled
+        self.social_gen = SocialPreviewGenerator(project_folder)
         self.on_page_rebuilt = None  # Callback for when individual pages are rebuilt
         template_path = Path(__file__).parent / "templates"
         self.jinja_env = Environment(
@@ -235,7 +235,6 @@ class Builder:
             get_recent_blog_entries=self._get_recent_posts,
             get_tags=self._get_tags,
         )
-        self.travel_data = []
 
     def _link_to(self, endpoint, **kwargs):
         """Simple URL building."""
@@ -309,11 +308,11 @@ class Builder:
     def load_travel_data(self):
         """Load travel data from JSON file."""
         travel_file = self.project_folder / "blog" / "travel.json"
+        travel_data = []
         if travel_file.exists():
             try:
                 with open(travel_file, "r") as f:
                     raw_data = json.load(f)
-                    self.travel_data = []
                     for item in raw_data:
                         travel_item = item.copy()
                         travel_item["start_date"] = datetime.fromisoformat(
@@ -322,12 +321,11 @@ class Builder:
                         travel_item["end_date"] = datetime.fromisoformat(
                             item["end_date"]
                         )
-                        self.travel_data.append(travel_item)
+                        travel_data.append(travel_item)
             except Exception as e:
                 print(f"Error loading travel data: {e}")
-                self.travel_data = []
-        else:
-            self.travel_data = []
+
+        return travel_data
 
     def scan_content(self):
         """Scan for content files with caching for unchanged files."""
@@ -626,15 +624,12 @@ class Builder:
 </feed>"""
         return feed_xml
 
-    def build_travel_page(self):
+    def build_travel_page(self, travel_data):
         """Build travel page from JSON data."""
-        if not self.travel_data:
-            return
-
         # Filter out past travel dates for HTML display
         today = datetime.now().date()
         future_travel = [
-            travel for travel in self.travel_data if travel["end_date"].date() >= today
+            travel for travel in travel_data if travel["end_date"].date() >= today
         ]
 
         # Sort travel data by start date
@@ -652,18 +647,13 @@ class Builder:
         output_path.write_text(html, encoding="utf-8")
         print(f"Built travel/index.html")
 
-    def build_travel_calendar(self):
+    def build_travel_calendar(self, travel_data):
         """Build iCal calendar file from travel data."""
-        if not self.travel_data:
-            return
-
         # Filter travel data - keep events for 30 days after they end
         today = datetime.now().date()
         cutoff_date = today - timedelta(days=30)
         calendar_travel = [
-            travel
-            for travel in self.travel_data
-            if travel["end_date"].date() >= cutoff_date
+            travel for travel in travel_data if travel["end_date"].date() >= cutoff_date
         ]
 
         # Generate iCal content
@@ -762,7 +752,7 @@ class Builder:
     def build(self):
         """Build the site."""
         self.scan_content()
-        self.load_travel_data()
+        travel_data = self.load_travel_data()
 
         content_changed = False
         for post in self.posts + self.pages:
@@ -790,14 +780,14 @@ class Builder:
             self.build_feeds()
 
         print("Building travel page...")
-        self.build_travel_page()
+        self.build_travel_page(travel_data)
 
         print("Building travel calendar...")
-        self.build_travel_calendar()
+        self.build_travel_calendar(travel_data)
 
         self.copy_static_files()
         self.write_pygments_css()
-        # self.generate_social_previews()  # Temporarily disabled due to missing fonts
+        self.generate_social_previews()
 
 
 def pad_date_slug(slug):
