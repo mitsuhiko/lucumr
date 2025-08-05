@@ -5,6 +5,12 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  schedule:
+    # Run at 6:00 AM and 6:00 PM UTC daily
+    - cron: '0 6 * * *'
+    - cron: '0 18 * * *'
+  # Allow manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: read
