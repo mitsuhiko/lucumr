@@ -90,18 +90,35 @@
       const copyLink = document.getElementById('copy-markdown');
       const markdownUrl = '{{ slug.rstrip('/') }}.md';
       
+      function showFlashNotification(message) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = 'flash-notification';
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // Fade in
+        requestAnimationFrame(() => {
+          notification.style.opacity = '1';
+        });
+        
+        // Remove after 1 second
+        setTimeout(() => {
+          notification.style.opacity = '0';
+          setTimeout(() => {
+            document.body.removeChild(notification);
+          }, 200);
+        }, 1500);
+      }
+      
       async function copyMarkdown() {
         try {
           const response = await fetch(markdownUrl);
           const markdown = await response.text();
           await navigator.clipboard.writeText(markdown);
           
-          // Visual feedback
-          const originalText = copyLink.textContent;
-          copyLink.textContent = 'copied!';
-          setTimeout(() => {
-            copyLink.textContent = originalText;
-          }, 1000);
+          showFlashNotification('page copied as markdown to clipboard');
         } catch (err) {
           console.error('Failed to copy markdown:', err);
           alert('Failed to copy markdown to clipboard');

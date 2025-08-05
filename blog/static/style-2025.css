@@ -231,3 +231,69 @@ p.markdown-links {
 p.tags + p.markdown-links {
   margin-top: -15px;
 }
+
+/* flash notification */
+.flash-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 0.9em;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* tag cloud styles */
+.tag-link {
+  position: relative;
+}
+
+.tag-tooltip {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tag-tooltip::before,
+.tag-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+}
+
+.tag-tooltip::before {
+  border-top-color: var(--border-color);
+  margin-top: 1px;
+}
+
+.tag-tooltip::after {
+  border-top-color: var(--background-color);
+  border-width: 5px;
+}
+
+.tag-link:hover .tag-tooltip {
+  opacity: 1;
+}
