@@ -215,7 +215,7 @@ details {
 }
 details summary { cursor: pointer; }
 details summary:hover { text-decoration: underline; color: var(--secondary-color); }
-details[open] summary { text-decoration: underline; }
+details[open] summary { text-decoration: underline; margin-bottom: 15px; }
 
 /* date warning */
 span.date-warning {
