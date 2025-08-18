@@ -5,12 +5,14 @@ summary: "Exploration into providing MCPs with the most powerful of all tools: c
 
 # Your MCP Doesn't Need 30 Tools: It Needs Code
 
-I wrote a while back about why [code performs better than
-MCP](/2025/7/3/tools/) for some tasks. In particular, I pointed out that if
-you have command line tools available, agentic coding tools seem very happy to
-use those. In the meantime, I learned a few more things that put some nuance
-to this. There are a handful of challenges with CLI-based tools that are
-rather hard to resolve and require further examination.
+I wrote a while back about why [code performs better](/2025/7/3/tools/)
+than MCP ([Model Context
+Protocol](https://en.wikipedia.org/wiki/Model_Context_Protocol)) for some
+tasks. In particular, I pointed out that if you have command line tools
+available, agentic coding tools seem very happy to use those. In the meantime,
+I learned a few more things that put some nuance to this. There are a handful
+of challenges with CLI-based tools that are rather hard to resolve and require
+further examination.
 
 In this blog post, I want to present the (not so novel) idea that an
 interesting approach is using MCP servers exposing a single tool, that accepts
