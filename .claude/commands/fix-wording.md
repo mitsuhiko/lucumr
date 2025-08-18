@@ -15,3 +15,5 @@ that have pending changes or are untracked.
 The changes should be rather light (don't rewrite everything) but fix bad
 sentence structures, break up super long sentences.  In short: do a professional
 edit on the blog post.
+
+Use double spacing after full stops.

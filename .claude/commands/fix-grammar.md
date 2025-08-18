@@ -11,3 +11,5 @@ can diff it later.  If the backup file already exists, delete it.
 
 If a blog post was explicitly provided edit that, otherwise edit the ones
 that have pending changes or are untracked.
+
+Use double spacing after full stops.
