@@ -384,8 +384,8 @@ class Builder:
 
         # Add social preview image URL if available
         social_image_url = None
-        # if post.title and post.pub_date:
-        #     social_image_url = self.social_gen.get_social_preview_url(post)
+        if post.title and post.pub_date:
+            social_image_url = self.social_gen.get_social_preview_url(post)
 
         context = {
             "content": content_data,
