@@ -5,6 +5,7 @@ and recordings if available.
 
 ## 2025
 
+-   Ubertool MCPs @ Claude Code Anonymous London ([re-recording](https://www.youtube.com/watch?v=TMlPnIEEhPc))
 -   [Agentic Coding](https://speakerdeck.com/mitsuhiko/agentic-coding-the-future-of-software-development-with-agents),
     online ([recording](https://www.youtube.com/watch?v=nfOVgz_omlU), [Twitter recording](https://x.com/mitsuhiko/status/1939105797448872265),
     [PDF](http://mitsuhiko.pocoo.org/agentic-coding.pdf))
