@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block title %}Talks{% endblock %}
+{% block body %}
+<article>
+  <header>
+    <h1>Talks</h1>
+  </header>
+  
+  <div class="entry">
+    <p>A non-complete list of talks I gave starting with 2009 and links to slides
+    and recordings if available.</p>
+    
+    {% for year, talks in talks_by_year %}
+    <h2>{{ year }}</h2>
+    
+    <ul>
+      {% for talk in talks %}
+      <li>
+        {% if talk.date and talk.date > today() %}
+          <span class="upcoming-indicator">upcoming</span>
+        {% endif %}
+
+        {% if talk.links %}
+          {% if talk.links.slides %}
+            <a href="{{ talk.links.slides }}">{{ talk.title }}</a>
+          {% else %}
+            {{ talk.title }}
+          {% endif %}
+        {% else %}
+          {{ talk.title }}
+        {% endif %}
+        
+        {% if talk.venue %}
+          @ {{ talk.venue }}
+        {% endif %}
+        
+        {% if talk.date %}
+          — {{ talk.date|dateonlyformat }}
+        {% endif %}
+        
+        {% if talk.links %}
+          ({% set comma = joiner(", ") %}
+           {%- if talk.links.event %}{{ comma() }}<a href="{{ talk.links.event }}">event details</a>{% endif %}
+           {%- if talk.links.recording %}{{ comma() }}<a href="{{ talk.links.recording }}">recording</a>{% endif %}
+           {%- if talk.links.alt_recordings %}
+             {%- for alt_rec in talk.links.alt_recordings %}{{ comma() }}<a href="{{ alt_rec }}">alternative recording</a>{% endfor -%}
+           {%- endif %}
+           {%- if talk.links.pdf %}{{ comma() }}<a href="{{ talk.links.pdf }}">PDF</a>{% endif %})
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+</article>
+{% endblock %}

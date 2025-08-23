@@ -1,0 +1,392 @@
+- title: How to vibe code to a billion dollars
+  venue: Tech Soirée Vienna
+  date: 2025-08-27
+  links:
+    event: https://lu.ma/vienna-tech-soiree
+- title: Ubertool MCPs
+  venue: Claude Code Anonymous London
+  links:
+    recording: https://www.youtube.com/watch?v=TMlPnIEEhPc
+  date: 2025-08-11
+- title: Agentic Coding
+  venue: online
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/agentic-coding-the-future-of-software-development-with-agents
+    recording: https://www.youtube.com/watch?v=nfOVgz_omlU
+    alt_recordings:
+    - https://x.com/mitsuhiko/status/1939105797448872265
+    pdf: http://mitsuhiko.pocoo.org/agentic-coding.pdf
+  date: 2025-06-30
+- title: Do Dumb Things
+  venue: PyCon Austria
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/do-dumb-things
+    recording: https://www.youtube.com/watch?v=ej5RsTtVvQE
+    pdf: http://mitsuhiko.pocoo.org/DoDumbThings.pdf
+  date: 2025-04-07
+- title: No Assumptions — the role of the modern CTO
+  venue: 'London Tech Leaders #18'
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/no-assumptions
+    pdf: http://mitsuhiko.pocoo.org/NoAssumptions.pdf
+  date: 2024-12-28
+- title: The Complexity Genie
+  venue: Vendure
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/the-complexity-genie
+    recording: https://www.youtube.com/watch?v=B63n4WeN-Pc
+    pdf: http://mitsuhiko.pocoo.org/ComplexityKills.pdf
+  date: 2024-12-17
+- title: The Catch in Rye
+  venue: EuroPython 2024
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/the-catch-in-rye-seeding-change-and-lessons-learned
+    recording: https://www.youtube.com/watch?v=skTKaHVIL1c
+    pdf: http://mitsuhiko.pocoo.org/Rye.pdf
+  date: 2024-07-11
+- title: Rust at Sentry
+  venue: EuroRust 2023
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/rust-at-sentry-1
+    recording: https://www.youtube.com/watch?v=4_FGYGv-vUU
+    pdf: http://mitsuhiko.pocoo.org/RustAtSentry.pdf
+  date: 2023-10-14
+- title: Overcoming Variable Payloads to Optimize for Performance
+  venue: p99 2023
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/overcoming-variable-payloads-to-optimize-for-performance
+    pdf: http://mitsuhiko.pocoo.org/p99payload.pdf
+    recording: https://www.youtube.com/watch?v=-jpK9beWNGk
+  date: 2023-06-01
+- title: Rust API Design Learnings
+  venue: FOSDEM
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/rust-api-design-learnings
+    recording: https://www.youtube.com/watch?v=vMBMAH-SoXU
+    pdf: http://mitsuhiko.pocoo.org/RustAPI.pdf
+  date: 2023-02-05
+- title: The Snowball Effect of Open Source
+  venue: WeAreDevelopers World Congress Berlin
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/the-snowball-effect-of-open-source
+    recording: https://www.youtube.com/watch?v=AqqMOQN75pw
+    pdf: http://mitsuhiko.pocoo.org/wearedevs-opensource.pdf
+  date: 2022-06-14
+- title: Mobile Games are Living Organisms Too
+  venue: GDC 2022
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/mobile-games-are-living-organisms-too
+    pdf: http://mitsuhiko.pocoo.org/GDC-mobile-organisms.pdf
+  date: 2022-03-21
+- title: 'We gave a Mouse an NDK: Non Android Developers'' Experience with NDK'
+  venue: Droidcon 2019
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/we-gave-a-mouse-an-ndk
+    recording: https://www.droidcon.com/media-detail?video=380844400
+    pdf: http://dev.pocoo.org/~mitsuhiko/droidcon-ndk.pdf
+  date: 2019-11-25
+- title: Debug is the new Release
+  venue: PyCon China 2019
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/debug-is-the-new-release/
+    pdf: http://dev.pocoo.org/~mitsuhiko/DebugRelease.pdf
+  date: 2019-09-21
+- title: A Future Python
+  venue: PyCon India 2018
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/a-future-python
+    recording: https://www.youtube.com/watch?v=-4fzFKihmJw
+    pdf: http://dev.pocoo.org/~mitsuhiko/afuturepython.pdf
+  date: 2018-10-05
+- title: A Python for Future Generations
+  venue: EuroPython 2017
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/a-python-for-future-generations
+    recording: https://www.youtube.com/watch?v=xkcNoqHgNs8&feature=youtu.be&t=2890
+    pdf: http://dev.pocoo.org/~mitsuhiko/FuturePython.pdf
+  date: 2017-07-10
+- title: Rust at Sentry
+  venue: PolyConf 2017
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/rust-at-sentry
+    recording: https://www.youtube.com/watch?v=2Xu6EdEBa5E
+    pdf: http://dev.pocoo.org/~mitsuhiko/RustAtSentry.pdf
+  date: 2017-07-07
+- title: My Python is Rusting
+  venue: PyCon CZ
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/my-python-is-rusting
+    pdf: http://dev.pocoo.org/~mitsuhiko/PragArch.pdf
+  date: 2017-06-08
+- title: Pragmatic SaaS Architecture
+  venue: WeAreDevelopers
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/pragmantic-saas-architecture
+    recording: https://www.youtube.com/watch?v=W1fkGyIcePA
+    pdf: http://dev.pocoo.org/~mitsuhiko/PragArch.pdf
+  date: 2017-05-11
+- title: A Practical Road to SaaS' in Python
+  venue: QCon London
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/a-practical-road-to-saas-in-python
+    recording: https://www.infoq.com/presentations/saas-python
+    pdf: http://dev.pocoo.org/~mitsuhiko/practicalsaas.pdf
+  date: 2017-03-07
+- title: Rust for serious Developers
+  venue: TopConf Linz
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/rust-for-serious-developers
+    pdf: http://dev.pocoo.org/~mitsuhiko/seriousrust.pdf
+  date: 2017-03-01
+- title: Binary Python — introducing native code
+  venue: PyCon Belarus
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/binary-python
+    recording: https://www.youtube.com/watch?v=yhiHmBE9fNU
+    pdf: http://dev.pocoo.org/~mitsuhiko/binarypython.pdf
+  date: 2017-02-04
+- title: Shipping Sentry
+  venue: DevConTLV
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/shipping-sentry
+    pdf: http://dev.pocoo.org/~mitsuhiko/ShippingSentry.pdf
+  date: 2016-11-15
+- title: Flask for Fun and Profit
+  venue: PyBay 2016
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/flask-for-fun-and-profit
+    recording: https://www.youtube.com/watch?v=1ByQhAM5c1I
+    pdf: http://dev.pocoo.org/~mitsuhiko/flaskfun.pdf
+  date: 2016-08-20
+- title: Letters from the Battlefield
+  venue: PyCon APAC 2016
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/letters-from-the-battlefield
+    pdf: http://dev.pocoo.org/~mitsuhiko/battleletters.pdf
+  date: 2016-08-14
+- title: … how Python was shaped by leaky internals
+  venue: PyCon Russia 2016
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/dot-dot-dot-how-python-was-shaped-by-leaky-internals
+    recording: https://www.youtube.com/watch?v=qCGofLIzX6g
+    pdf: http://dev.pocoo.org/~mitsuhiko/leakypython.pdf
+  date: 2016-06-30
+- title: Iterate and Ship
+  venue: PyCon Sweden 2016
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/iterate-and-ship
+    recording: https://www.youtube.com/watch?v=ICEbze5xy4s
+    pdf: http://dev.pocoo.org/~mitsuhiko/PragArch.pdf
+  date: 2016-05-10
+- title: Happiness in Open Source
+  venue: PyCon Sweden 2016
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/happiness-in-open-source
+    recording: https://www.youtube.com/watch?v=lQz0oFQgAf4
+    pdf: http://dev.pocoo.org/~mitsuhiko/Happiness.pdf
+  date: 2016-05-09
+- title: 10 Years of Python Libraries
+  venue: PiterPy 2015
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/10-years-of-python-libraries
+    recording: https://www.youtube.com/watch?v=GJM_QT3GJd0
+    pdf: http://dev.pocoo.org/~mitsuhiko/OpenSource.pdf
+  date: 2015-03-20
+- title: Let's Talk About Templates
+  venue: Django under the Hood 2014
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/lets-talk-about-templates
+    pdf: http://dev.pocoo.org/~mitsuhiko/Templates.pdf
+  date: 2014-11-14
+- title: Writing Secure APIs
+  venue: PyCon Russia 2014
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/writing-secure-apis
+    pdf: http://dev.pocoo.org/~mitsuhiko/SecureAPIs.pdf
+  date: 2014-06-02
+- title: SSL, CAs and keeping your stuff safe
+  venue: PyGrunn 2014
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/ssl-cas-and-keeping-your-stuff-safe
+    pdf: http://dev.pocoo.org/~mitsuhiko/SSL.pdf
+  date: 2014-05-10
+- title: Modern and Different PostgreSQL
+  venue: DUMP 2014
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/modern-and-different-postgresql
+    recording: http://youtu.be/NYNB1wGqbiI
+    pdf: http://dev.pocoo.org/~mitsuhiko/postgres.pdf
+  date: 2014-03-15
+- title: Thinking Outside the Box
+  venue: EuroPython 2013
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/thinking-outside-the-box
+    recording: https://www.youtube.com/watch?v=5pZVqBFtuLk
+    pdf: http://pocoo.org/~mitsuhiko/OutsideTheBox.pdf
+  date: 2013-07-01
+- title: What Web Developers can Learn from Game Developers
+  venue: DJUGL June 2013
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/what-web-developers-can-learn-from-game-developers
+    pdf: http://dev.pocoo.org/~mitsuhiko/GameDevWeb.pdf
+  date: 2013-06-26
+- title: Why SQLAlchemy is Awesome
+  venue: Pyramid Meetup London June 2013
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/why-sqlalchemy-is-awesome
+    pdf: http://pocoo.org/~mitsuhiko/SQLAwesomy.pdf
+  date: 2013-06-04
+- title: A Year with MongoDB
+  venue: PyGrunn 2013
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/a-year-of-mongodb
+    recording: https://www.youtube.com/watch?v=0hUc4XyGpWg
+    pdf: http://pocoo.org/~mitsuhiko/mongodb.pdf
+  date: 2013-05-10
+- title: Advanced Flask Patterns
+  venue: PyCon Russia 2013
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/advanced-flask-patterns-1
+    recording: https://www.youtube.com/watch?v=6CeXt62Dt2A
+    pdf: http://dev.pocoo.org/~mitsuhiko/AdvFlaskPatterns.pdf
+  date: 2013-02-24
+- title: Schemas and Queues — a Rediscovered Approach for Web APIs
+  venue: DevCon Tel Aviv February 2013
+  links:
+    recording: https://www.youtube.com/watch?v=p8GBr3K1zvc
+  date: 2013-02-14
+- title: Rust from Python and Ruby
+  venue: RuPy Brno 2012
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/rust-from-python-and-ruby
+    recording: https://www.youtube.com/watch?v=OquyEi2CkbQ
+    pdf: http://pocoo.org/~mitsuhiko/Rust.pdf
+  date: 2012-11-17
+- title: Things you didn't know about Python
+  venue: PyCon ZA 2012
+  links:
+    slides: https://speakerdeck.com/u/mitsuhiko/p/didntknow
+    recording: https://www.youtube.com/watch?v=L96qiaKWk1E
+    pdf: http://pocoo.org/~mitsuhiko/didntknow.pdf
+  date: 2012-10-05
+- title: Happiness Through Ignorance
+  venue: PyCon JP 2012
+  links:
+    slides: https://speakerdeck.com/u/mitsuhiko/p/happiness-through-ignorance
+    recording: http://www.youtube.com/watch?feature=player_detailpage&v=EDlFk1hc8kc#t=739s
+    pdf: http://pocoo.org/~mitsuhiko/happiness.pdf
+  date: 2012-09-15
+- title: Advanced Flask Patterns
+  venue: EuroPython 2012
+  links:
+    slides: https://speakerdeck.com/u/mitsuhiko/p/advanced-flask-patterns
+    pdf: http://pocoo.org/~mitsuhiko/FlaskPatterns.pdf
+    pdf_with_notes: http://pocoo.org/~mitsuhiko/FlaskPatterns_notes.pdf
+  date: 2012-07-06
+- title: I am doing HTTP wrong — a fresh look at HTTP
+  venue: PyGrunn 2012
+  links:
+    slides: https://speakerdeck.com/u/mitsuhiko/p/i-am-doing-http-wrong
+    pdf: http://pocoo.org/~mitsuhiko/HTTP.pdf
+  date: 2012-05-13
+- title: Code Generation in Python — Dismantling Jinja
+  venue: PyCon 2012
+  links:
+    slides: http://speakerdeck.com/u/mitsuhiko/p/code-generation-in-python-dismantling-jinja
+    recording: https://www.youtube.com/watch?v=jXlR0Icvvh8
+    pdf: http://pocoo.org/~mitsuhiko/codegenjinja.pdf
+  date: 2012-03-12
+- title: 'Understanding Player Motivation: Applying Herzberg''s Two-Factor Theory
+    to Games-as-a-Service'
+  venue: GDC Online 2012
+  links:
+    vault_link: http://www.gdcvault.com/play/1016674/Understanding-Player-Motivation-Applying-Herzberg
+  date: 2012-10-10
+- title: Python Web Development
+  venue: TuGraz 2011
+  links:
+    slides: http://speakerdeck.com/u/mitsuhiko/p/python-web-development
+    recording: http://curry.tugraz.at/portal/1/watch/22.aspx
+    pdf: http://pocoo.org/~mitsuhiko/PythonWebFlask.pdf
+    code: https://github.com/mitsuhiko/tugraz-flask-demo/
+  date: 2011-11-23
+- title: Basket of Random Python Snippets
+  venue: Pycon Ukraine 2011
+  links:
+    slides: http://speakerdeck.com/u/mitsuhiko/p/basket-of-random-python-snippets
+    pdf: http://dev.pocoo.org/~mitsuhiko/PythonBasket.pdf
+  date: 2011-10-22
+- title: Cherry-Picking for Huge Success
+  venue: PyCodeConf 2011
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/cherry-picking-for-huge-success
+    pdf: http://dev.pocoo.org/~mitsuhiko/CherryPicking.pdf
+  date: 2011-10-11
+- title: 5 Years of Bad Ideas
+  venue: europython 2011
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/5-years-of-bad-ideas
+    recording: http://ep2011.europython.eu/conference/talks/5-years-of-bad-ideas
+    pdf: http://pocoo.org/~mitsuhiko/badideas.pdf
+  date: 2011-07-11
+- title: The Impact of Django
+  venue: djangocon.eu 2011
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/the-impact-of-django
+    recording: http://blip.tv/djangocon-europe-2011/wednesday-0930-armin-ronacher-5311189
+    pdf: http://dev.pocoo.org/~mitsuhiko/impact.pdf
+  date: 2011-06-07
+- title: The State of Python and the Web
+  venue: PyGrunn 2011
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/the-state-of-python-and-the-web
+    summary: http://reinout.vanrees.org/weblog/2011/05/20/pygrunn-state-of-webframeworks.html
+    pdf: http://dev.pocoo.org/~mitsuhiko/pyweb.pdf
+  date: 2011-05-09
+- title: Opening the Flask
+  venue: Pycon Atlanta 2011
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/opening-the-flask
+    recording: http://pycon.blip.tv/file/4878916/
+    pdf: http://dev.pocoo.org/~mitsuhiko/flask-pycon-2011.pdf
+  date: 2011-03-21
+- title: Good API Design
+  venue: Pycon Ukraine 2010
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/good-api-design
+    recording: http://uapycon.blip.tv/file/4399505/
+    pdf: http://dev.pocoo.org/~mitsuhiko/API.pdf
+  date: 2010-11-12
+- title: Python Idioms
+  venue: Pycon Poland 2010
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/python-idioms
+    pdf: http://dev.pocoo.org/~mitsuhiko/idioms.pdf
+  date: 2010-10-12
+- title: Flask Lighting Talk
+  venue: djangocon.eu 2010
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/flask-lighting-talk
+    pdf: http://dev.pocoo.org/~mitsuhiko/flask.pdf
+  date: 2010-06-12
+- title: WSGI on Python 3
+  venue: djangocon.eu 2010
+  links:
+    slides: https://speakerdeck.com/mitsuhiko/wsgi-and-python-3
+    pdf: http://dev.pocoo.org/~mitsuhiko/djangocon-wsgi.pdf
+  date: 2010-06-12
+- title: Python 3
+  venue: Linuxtage 2010 Graz
+  links:
+    pdf: http://dev.pocoo.org/~mitsuhiko/python3-linuxtage.pdf
+  date: 2010-04-24
+- title: Solace
+  venue: PDX Python
+  links:
+    pdf: http://dev.pocoo.org/~mitsuhiko/solace-pdxpython.pdf
+  date: 2009-08-11
+- title: Django without Django
+  venue: Djangocon 2009
+  links:
+    pdf: http://dev.pocoo.org/~mitsuhiko/django-without-django.pdf
+  date: 2009-09-09

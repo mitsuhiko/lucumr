@@ -17,7 +17,7 @@ dependencies = [
     "Pygments",
     "marko",
     "watchdog",
-    "PyYAML",
+    "pyyaml",
     "Pillow",
     "smartypants>=2.0.2",
 ]

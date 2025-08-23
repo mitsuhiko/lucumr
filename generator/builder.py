@@ -230,7 +230,9 @@ class Builder:
             format_date=self._format_date,
             get_recent_blog_entries=self._get_recent_posts,
             get_tags=self._get_tags,
+            today=self._get_today,
         )
+        self.jinja_env.filters["dateonlyformat"] = self._date_only_format
 
     def _link_to(self, endpoint, **kwargs):
         """Simple URL building."""
@@ -268,6 +270,25 @@ class Builder:
             return date_obj.strftime("%B %d, %Y")
         return date_obj.strftime("%b %d, %Y")
 
+    def _date_only_format(self, date_obj):
+        """Format date with ordinal suffix (e.g., 'December 1st', 'January 22nd')."""
+        if not date_obj:
+            return ""
+
+        # Get ordinal suffix
+        day = date_obj.day
+        if day in [1, 21, 31]:
+            suffix = "st"
+        elif day in [2, 22]:
+            suffix = "nd"
+        elif day in [3, 23]:
+            suffix = "rd"
+        else:
+            suffix = "th"
+
+        month = date_obj.strftime("%B")
+        return f"{month} {day}{suffix}"
+
     def _get_recent_posts(self, limit=10):
         """Get recent blog posts."""
         blog_posts = [p for p in self.posts if p.pub_date]
@@ -288,6 +309,10 @@ class Builder:
         tags.sort(key=lambda x: x["name"].lower())
         return tags
 
+    def _get_today(self):
+        """Get today's date."""
+        return datetime.now().date()
+
     def should_ignore(self, path):
         """Check if path should be ignored."""
         path_obj = Path(path)
@@ -303,7 +328,7 @@ class Builder:
 
     def load_travel_data(self):
         """Load travel data from events YAML file, filtering for travel type."""
-        events_file = self.project_folder / "blog" / "events.yaml"
+        events_file = self.project_folder / "events.yaml"
         travel_data = []
         if events_file.exists():
             try:
@@ -317,6 +342,27 @@ class Builder:
                 print(f"Error loading travel data: {e}")
 
         return travel_data
+
+    def load_talks_data(self):
+        """Load talks data from talks YAML file."""
+        talks_file = self.project_folder / "talks.yaml"
+        talks_data = []
+        if talks_file.exists():
+            try:
+                with open(talks_file, "r") as f:
+                    raw_data = yaml.safe_load(f)
+                    if raw_data:
+                        # Parse dates
+                        for item in raw_data:
+                            if isinstance(item.get("date"), str):
+                                item["date"] = datetime.strptime(
+                                    item["date"], "%Y-%m-%d"
+                                ).date()
+                            talks_data.append(item.copy())
+            except Exception as e:
+                print(f"Error loading talks data: {e}")
+
+        return talks_data
 
     def scan_content(self):
         """Scan for content files with caching for unchanged files."""
@@ -690,6 +736,37 @@ class Builder:
         output_path.write_text(calendar_content, encoding="utf-8")
         print(f"Built travel.ics")
 
+    def build_talks_page(self, talks_data):
+        """Build talks page from YAML data."""
+        # Group talks by year (descending order)
+        talks_by_year = defaultdict(list)
+        for talk in talks_data:
+            if talk.get("date"):
+                year = talk["date"].year
+                talks_by_year[year].append(talk)
+
+        # Sort talks within each year by date (descending)
+        for year, talks in talks_by_year.items():
+            talks.sort(key=lambda x: x["date"], reverse=True)
+
+        # Sort years in descending order
+        sorted_years = sorted(talks_by_year.keys(), reverse=True)
+
+        # Create talks page context
+        context = {
+            "talks_by_year": [(year, talks_by_year[year]) for year in sorted_years],
+            "title": "Talks",
+        }
+
+        # Render talks page
+        html = self.jinja_env.get_template("talks.html").render(context)
+
+        # Write talks page
+        output_path = self.output_folder / "talks" / "index.html"
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(html, encoding="utf-8")
+        print(f"Built talks/index.html")
+
     def copy_static_files(self):
         """Copy static files to output directory."""
         static_src = self.project_folder / CONFIG["static_folder"]
@@ -742,10 +819,29 @@ class Builder:
 
         self.social_gen.save_cache()
 
+    def _needs_rebuild(self, output_path, *dependency_paths):
+        """Check if output needs rebuilding based on dependency modification times."""
+        output_path = Path(output_path)
+
+        # If output doesn't exist, needs rebuild
+        if not output_path.exists():
+            return True
+
+        output_mtime = output_path.stat().st_mtime
+
+        # Check if any dependency is newer than output
+        for dep_path in dependency_paths:
+            dep_path = Path(dep_path)
+            if dep_path.exists() and dep_path.stat().st_mtime > output_mtime:
+                return True
+
+        return False
+
     def build(self):
         """Build the site."""
         self.scan_content()
         travel_data = self.load_travel_data()
+        talks_data = self.load_talks_data()
 
         content_changed = False
         for post in self.posts + self.pages:
@@ -772,11 +868,36 @@ class Builder:
             print("Building feeds...")
             self.build_feeds()
 
-        print("Building travel page...")
-        self.build_travel_page(travel_data)
+        # Build travel page and calendar with dependency tracking
+        travel_output = self.output_folder / "travel" / "index.html"
+        travel_dependencies = [
+            self.project_folder / "events.yaml",
+            Path(__file__).parent / "templates" / "travel.html",
+            Path(__file__).parent / "templates" / "layout.html",
+        ]
+
+        if self._needs_rebuild(travel_output, *travel_dependencies):
+            print("Building travel page...")
+            self.build_travel_page(travel_data)
+        else:
+            print("Travel page up to date")
 
         print("Building travel calendar...")
         self.build_travel_calendar(travel_data)
+
+        # Build talks page with dependency tracking
+        talks_output = self.output_folder / "talks" / "index.html"
+        talks_dependencies = [
+            self.project_folder / "talks.yaml",
+            Path(__file__).parent / "templates" / "talks.html",
+            Path(__file__).parent / "templates" / "layout.html",
+        ]
+
+        if self._needs_rebuild(talks_output, *talks_dependencies):
+            print("Building talks page...")
+            self.build_talks_page(talks_data)
+        else:
+            print("Talks page up to date")
 
         self.copy_static_files()
         self.write_pygments_css()

@@ -223,6 +223,18 @@ span.date-warning {
   font-style: italic;
 }
 
+/* upcoming indicator */
+span.upcoming-indicator {
+  color: var(--date-warning-text-color);
+  font-style: italic;
+  background: light-dark(rgba(238, 118, 26, 0.1), rgba(238, 118, 26, 0.15));
+  padding: 2px 6px;
+  line-height: 1.1em;
+  border-radius: 3px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
 /* markdown links */
 p.markdown-links {
   text-align: right;
