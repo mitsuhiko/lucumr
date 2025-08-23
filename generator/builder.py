@@ -302,24 +302,17 @@ class Builder:
         return False
 
     def load_travel_data(self):
-        """Load travel data from events JSON file, filtering for travel type."""
-        events_file = self.project_folder / "events.json"
+        """Load travel data from events YAML file, filtering for travel type."""
+        events_file = self.project_folder / "blog" / "events.yaml"
         travel_data = []
         if events_file.exists():
             try:
                 with open(events_file, "r") as f:
-                    raw_data = json.load(f)
+                    raw_data = yaml.safe_load(f)
                     for item in raw_data:
                         # Only include events with type "travel"
                         if item.get("type") == "travel":
-                            travel_item = item.copy()
-                            travel_item["start_date"] = datetime.fromisoformat(
-                                item["start_date"]
-                            )
-                            travel_item["end_date"] = datetime.fromisoformat(
-                                item["end_date"]
-                            )
-                            travel_data.append(travel_item)
+                            travel_data.append(item.copy())
             except Exception as e:
                 print(f"Error loading travel data: {e}")
 
@@ -623,11 +616,11 @@ class Builder:
         return feed_xml
 
     def build_travel_page(self, travel_data):
-        """Build travel page from JSON data."""
+        """Build travel page from YAML data."""
         # Filter out past travel dates for HTML display
         today = datetime.now().date()
         future_travel = [
-            travel for travel in travel_data if travel["end_date"].date() >= today
+            travel for travel in travel_data if travel["end_date"] >= today
         ]
 
         # Sort travel data by start date
@@ -651,7 +644,7 @@ class Builder:
         today = datetime.now().date()
         cutoff_date = today - timedelta(days=30)
         calendar_travel = [
-            travel for travel in travel_data if travel["end_date"].date() >= cutoff_date
+            travel for travel in travel_data if travel["end_date"] >= cutoff_date
         ]
 
         # Generate iCal content
@@ -666,9 +659,11 @@ class Builder:
         for travel in calendar_travel:
             # Format dates for iCal (YYYYMMDD)
             start_date = travel["start_date"].strftime("%Y%m%d")
-            end_date = (travel["end_date"] + timedelta(days=1)).strftime(
-                "%Y%m%d"
-            )  # iCal end dates are exclusive
+            # Convert to datetime for timedelta addition, then back to date
+            end_date_dt = datetime.combine(
+                travel["end_date"], datetime.min.time()
+            ) + timedelta(days=1)
+            end_date = end_date_dt.strftime("%Y%m%d")  # iCal end dates are exclusive
 
             # Create unique ID
             uid = f"travel-{travel['start_date'].strftime('%Y%m%d')}-{hash(travel['location'])}@lucumr.pocoo.org"
