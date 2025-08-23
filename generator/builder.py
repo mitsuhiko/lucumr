@@ -302,22 +302,24 @@ class Builder:
         return False
 
     def load_travel_data(self):
-        """Load travel data from JSON file."""
-        travel_file = self.project_folder / "travel.json"
+        """Load travel data from events JSON file, filtering for travel type."""
+        events_file = self.project_folder / "events.json"
         travel_data = []
-        if travel_file.exists():
+        if events_file.exists():
             try:
-                with open(travel_file, "r") as f:
+                with open(events_file, "r") as f:
                     raw_data = json.load(f)
                     for item in raw_data:
-                        travel_item = item.copy()
-                        travel_item["start_date"] = datetime.fromisoformat(
-                            item["start_date"]
-                        )
-                        travel_item["end_date"] = datetime.fromisoformat(
-                            item["end_date"]
-                        )
-                        travel_data.append(travel_item)
+                        # Only include events with type "travel"
+                        if item.get("type") == "travel":
+                            travel_item = item.copy()
+                            travel_item["start_date"] = datetime.fromisoformat(
+                                item["start_date"]
+                            )
+                            travel_item["end_date"] = datetime.fromisoformat(
+                                item["end_date"]
+                            )
+                            travel_data.append(travel_item)
             except Exception as e:
                 print(f"Error loading travel data: {e}")
 

@@ -4,6 +4,7 @@
     "location": "London, UK",
     "start_date": "2025-08-17",
     "end_date": "2025-08-19",
-    "description": "Invite-only event"
+    "description": "Invite-only event",
+    "type": "travel"
   }
 ]
