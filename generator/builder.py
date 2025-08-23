@@ -23,6 +23,9 @@ from generator.markup import (
 from generator.social_preview import SocialPreviewGenerator
 
 
+PDF_HOST = "https://raw.githubusercontent.com/mitsuhiko/talks/main/pdfs/"
+
+
 class BlogPost:
     """Represents a single blog post."""
 
@@ -348,19 +351,14 @@ class Builder:
         talks_file = self.project_folder / "talks.yaml"
         talks_data = []
         if talks_file.exists():
-            try:
-                with open(talks_file, "r") as f:
-                    raw_data = yaml.safe_load(f)
-                    if raw_data:
-                        # Parse dates
-                        for item in raw_data:
-                            if isinstance(item.get("date"), str):
-                                item["date"] = datetime.strptime(
-                                    item["date"], "%Y-%m-%d"
-                                ).date()
-                            talks_data.append(item.copy())
-            except Exception as e:
-                print(f"Error loading talks data: {e}")
+            with open(talks_file, "r") as f:
+                raw_data = yaml.safe_load(f)
+                if raw_data:
+                    for item in raw_data:
+                        pdf = item.get("links", {}).get("pdf")
+                        if pdf and "/" not in pdf:
+                            item["links"]["pdf"] = f"{PDF_HOST}{pdf}"
+                        talks_data.append(item)
 
         return talks_data
 
