@@ -43,9 +43,14 @@ used to restrict keys for governmental sign-in systems.
 One slightly more concerning issue today is that there is effectively no way to
 export private keys between authentication password managers.  You need to
 enroll all of your ecosystems individually into a password manager.  An attempt
-by an open source password manager to provide export of private keys was ruled
+by an open source password manager to reveal private keys to the user was ruled
 insecure and [should not be
 supported](https://github.com/keepassxreboot/keepassxc/issues/10407#issuecomment-1994299617).
+This taking away agency from the user is not an accident.  You can also see this
+with the passkey export specification which comes [with a
+protocol](https://fidoalliance.org/specs/cx/cxp-v1.0-wd-20241003.html) that,
+while enabling exports in principle, encourages a system to system transfer
+that does not hand over the user's credentials to the user. [^2]
 
 This might be for good intentions, but it also creates problems.  As someone
 recently trying to leave the Apple ecosystem step by step, I have noticed how
@@ -136,7 +141,14 @@ complex.
 This might just be the path we're going.  However, it is also one where we
 maybe want to reflect a little bit on whether this is really what we want.
 
+*Edit: I reworded the statement about pass key exports to not misrepresent
+the original comment on GitHub.*
+
 [^1]: This OAuth dependency also puts Open Source projects in an interesting
       situation.  For instance, the Thunderbird client ships with OAuth
       credentials for Google when you download it from Mozilla.  However, if you
       self-compile it, you don't have that access.
+
+[^2]: The details can be debated, but the protocol explicitly does not permit
+      a user to just hold on to a symmetrically encrypted export (or even a
+      plain text one).  The best option is the HPKE scheme.
