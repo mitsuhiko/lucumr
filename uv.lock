@@ -48,11 +48,11 @@ wheels = [
 
 [[package]]
 name = "marko"
-version = "2.1.4"
+version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/72/dc/c8cadbd83de1b38d95a48568b445a5553005ebdd32e00a333ca940113db4/marko-2.1.4.tar.gz", hash = "sha256:dd7d66f3706732bf8f994790e674649a4fd0a6c67f16b80246f30de8e16a1eac", size = 142795, upload-time = "2025-06-13T03:25:50.857Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/9c/6a/32545d2379822fb9a8843f01150011402888492541977a1193fe8d695df0/marko-2.2.0.tar.gz", hash = "sha256:213c146ba197c1d6bcb06ae3658b7d87e45f6def35c09905b86aa6bb1984eba6", size = 143406, upload-time = "2025-08-08T09:47:05.396Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c3/66/49e3691d14898fb6e34ccb337c7677dfb7e18269ed170f12e4b85315eae6/marko-2.1.4-py3-none-any.whl", hash = "sha256:81c2b9f570ca485bc356678d9ba1a1b3eb78b4a315d01f3ded25442fdc796990", size = 42186, upload-time = "2025-06-13T03:25:49.858Z" },
+    { url = "https://files.pythonhosted.org/packages/94/b1/87f54d8842b2aafdbb162301ac730587e04f30ad0fe9aabb12fa29f7a6f7/marko-2.2.0-py3-none-any.whl", hash = "sha256:d84f867429142627e896322c8ef167664f3a6cd6ea5a2b70c6af055998041bb7", size = 42683, upload-time = "2025-08-08T09:47:04.175Z" },
 ]
 
 [[package]]
