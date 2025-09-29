@@ -17,8 +17,8 @@
     <ul>
       {% for travel in travel_data %}
       <li>
-        <strong>{{ format_date(travel.start_date, 'full') }}{% if travel.start_date != travel.end_date %} to {{ format_date(travel.end_date, 'full') }}{% endif %}</strong>: 
-        {{ travel.location }} for <em>{{ travel.title }}</em>
+        <strong>{{ format_date(travel.start_date, 'full') }}{% if travel.start_date != travel.end_date %} to {{ format_date(travel.end_date, 'full') }}{% endif %}</strong>:
+        {{ travel.location }} for <em>{% if travel.link %}<a href="{{ travel.link }}">{{ travel.title }}</a>{% else %}{{ travel.title }}{% endif %}</em>
         {% if travel.description %}
         <br><small>{{ travel.description }}</small>
         {% endif %}

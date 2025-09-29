@@ -4,3 +4,10 @@
   end_date: 2025-08-19
   description: "Invite-only event"
   type: "travel"
+- title: "Slush'd Bratislava"
+  location: "Bratislava, SK"
+  start_date: 2025-10-21
+  end_date: 2025-10-21
+  description: "Giving a talk at Slush'd Bratislava on AI coding"
+  link: https://bratislavaslushd.com/
+  type: "travel"
