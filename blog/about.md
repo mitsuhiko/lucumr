@@ -10,12 +10,12 @@ As a dedicated software developer, I've had the privilege of creating a
 number of very popular Open Source projects, including Flask, Jinja2, and
 many [other widely used things](/projects/).
 
-For a decade, I've [been working on Sentry](/2025/3/31/leaving/),
-building out one of our regional offices, working on event ingestion, SDKs
-and leading the teams for our internal developer platform.  I also love
-sharing knowledge and experiences, which is why I give [talks at
-conferences and events](/talks/) and write about engineering and life
-on this blog.
+I founded [Earendil](https://earendil.com/).  For a decade, I've [been working
+on Sentry](/2025/3/31/leaving/), building out one of our regional offices,
+working on event ingestion, SDKs and leading the teams for our internal
+developer platform.  I also love sharing knowledge and experiences, which is
+why I give [talks at conferences and events](/talks/) and write about
+engineering and life on this blog.
 
 If my work has been valuable to you, I'd greatly appreciate your support
 through GitHub sponsors.
