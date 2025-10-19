@@ -44,7 +44,7 @@ the AI do.  I know it won't reach the point where I could sign off on a commit.
 That's why it's not 100%.
 
 As contrast: another quick prototype we built is a mess of unclear database
-tgables, markdown file clutter in the repo, and boatloads of unwanted emojis.
+tables, markdown file clutter in the repo, and boatloads of unwanted emojis.
 It served its purpose — validate an idea — but wasn't built to last, and we had
 no expectation to that end.
 
