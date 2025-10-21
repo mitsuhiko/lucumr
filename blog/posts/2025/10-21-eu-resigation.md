@@ -36,7 +36,7 @@ message.  Friday after 2pm, the notary won't reply — and the notary surely wil
 labor costs or regulation for why service ends there.  The bank will cite
 compliance for why they don't need to do anything.  The registrar will point at
 some law that allows them to demand a translation of a document by a court
-appointed translator [^1].  Everyone has a reason.  No one owns the outcome.
+appointed translator.  Everyone has a reason.  No one owns the outcome.
 
 Meanwhile, in the US, our counsel replies when it matters, even after hours.
 Bankers answer the same day.  The instinct is to enable progress, not enumerate
