@@ -156,7 +156,7 @@ div.entry-overview h1:after         { content: " —"; color: var(--text-color)
 div.entry-overview div.summary,
 div.entry-overview div.date,
 div.entry-overview div.summary p    { margin: 0; padding: 0; }
-div.entry-overview div.detail       { margin-left: 140px; }
+div.entry-overview div.detail       { margin-left: 140px; text-wrap: balance; }
 div.entry-overview div.date         { float: left; width: 120px; color: var(--faded-color);
                                       text-align: right; font-style: italic;
                                       font-size: 14px; }
