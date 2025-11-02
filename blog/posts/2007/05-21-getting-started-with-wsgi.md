@@ -10,7 +10,9 @@ projects and write articles. One of the things I wanted to write for a
 long time is a WSGI tutorial that does not require a specific framework
 or implementation. So here we go.
 
-![Getting started with WSGI](http://dev.pocoo.org/~mitsuhiko/wsgi-snake.png)## What's WSGI?
+![Getting started with WSGI](http://dev.pocoo.org/~mitsuhiko/wsgi-snake.png)
+
+## What's WSGI?
 
 Basically WSGI is lower level than CGI which you probably know. But in
 difference to CGI, WSGI does scale and can work in both multithreaded
@@ -294,14 +296,10 @@ complex than without the "help" of the framework)
 
 For that some utility libraries exist:
 
-- Duplicate explicit target name: "paste".
-
-[Paste](http://www.pythonpaste.org/) — used by pylons behind the scenes.
+- [Paste](http://www.pythonpaste.org/) — used by pylons behind the scenes.
 Implements request and response objects. Ships many middlewares.
 
-- Duplicate explicit target name: "werkzeug".
-
-[Werkzeug](http://werkzeug.pocoo.org/) — minimal WSGI library we wrote
+- [Werkzeug](http://werkzeug.pocoo.org/) — minimal WSGI library we wrote
 for pocoo. Ships unicode away request and response objects as well as an
 advanced URL mapper and a interactive debugger.
 
