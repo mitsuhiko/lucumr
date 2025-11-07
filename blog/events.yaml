@@ -17,3 +17,9 @@
   end_date: 2025-10-08
   description: "I will be for a few days in London but might be quite busy"
   type: "travel"
+- title: "Four days in San Francisco"
+  location: "San Francisco, UK"
+  start_date: 2025-11-09
+  end_date: 2025-11-12
+  description: "I will be for a few days in San Francisco but might be quite busy"
+  type: "travel"
