@@ -588,34 +588,57 @@ class Builder:
             self._build_tag_feed(tag_name, tag_posts)
 
     def build_feeds(self):
-        """Build Atom feeds."""
+        """Build Atom and RSS feeds."""
         # Main feed
         recent_posts = self.posts[:10]
-        feed_xml = self._generate_atom_feed(
+
+        # Generate Atom feed
+        atom_xml = self._generate_atom_feed(
             title=CONFIG["site_title"],
             feed_url=CONFIG["site_url"] + "feed.atom",
             subtitle=CONFIG["subtitle"],
             posts=recent_posts,
         )
-
         output_path = self.output_folder / "feed.atom"
-        output_path.write_text(feed_xml, encoding="utf-8")
+        output_path.write_text(atom_xml, encoding="utf-8")
+
+        # Generate RSS feed
+        rss_xml = self._generate_rss_feed(
+            title=CONFIG["site_title"],
+            feed_url=CONFIG["site_url"] + "feed.xml",
+            subtitle=CONFIG["subtitle"],
+            posts=recent_posts,
+        )
+        output_path = self.output_folder / "feed.xml"
+        output_path.write_text(rss_xml, encoding="utf-8")
 
     def _build_tag_feed(self, tag_name, tag_posts):
-        """Build feed for a specific tag."""
+        """Build Atom and RSS feeds for a specific tag."""
         recent_posts = sorted(
             tag_posts, key=lambda x: x.pub_date or datetime.min, reverse=True
         )[:10]
-        feed_xml = self._generate_atom_feed(
+
+        # Generate Atom feed
+        atom_xml = self._generate_atom_feed(
             title=f"{CONFIG['site_title']} - {tag_name}",
             feed_url=CONFIG["site_url"] + f"tags/{tag_name}/feed.atom",
             subtitle=f"Recent blog posts tagged with '{tag_name}'",
             posts=recent_posts,
         )
-
         output_path = self.output_folder / "tags" / tag_name / "feed.atom"
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(feed_xml, encoding="utf-8")
+        output_path.write_text(atom_xml, encoding="utf-8")
+
+        # Generate RSS feed
+        rss_xml = self._generate_rss_feed(
+            title=f"{CONFIG['site_title']} - {tag_name}",
+            feed_url=CONFIG["site_url"] + f"tags/{tag_name}/feed.xml",
+            subtitle=f"Recent blog posts tagged with '{tag_name}'",
+            posts=recent_posts,
+        )
+        output_path = self.output_folder / "tags" / tag_name / "feed.xml"
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(rss_xml, encoding="utf-8")
 
     def _generate_atom_feed(self, title, feed_url, subtitle, posts):
         """Generate Atom feed XML."""
@@ -658,6 +681,46 @@ class Builder:
 {chr(10).join(entries)}
 </feed>"""
         return feed_xml
+
+    def _generate_rss_feed(self, title, feed_url, subtitle, posts):
+        """Generate RSS 2.0 feed XML."""
+        now = datetime.now(timezone.utc)
+        # RFC 822 format for RSS pubDate
+        rss_date_format = now.strftime("%a, %d %b %Y %H:%M:%S +0000")
+
+        items = []
+        for post in posts:
+            if not post.pub_date:
+                continue
+
+            post_url = CONFIG["site_url"].rstrip("/") + post.slug
+            # RFC 822 format for RSS pubDate
+            pub_date = post.pub_date.replace(tzinfo=timezone.utc).strftime(
+                "%a, %d %b %Y %H:%M:%S +0000"
+            )
+            content = str(post.render_content()["fragment"])
+
+            item_xml = f"""    <item>
+      <title>{post.title or "Untitled"}</title>
+      <link>{post_url}</link>
+      <guid isPermaLink="true">{post_url}</guid>
+      <pubDate>{pub_date}</pubDate>
+      <description><![CDATA[{content}]]></description>
+    </item>"""
+            items.append(item_xml)
+
+        rss_xml = f"""<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{title}</title>
+    <link>{CONFIG["site_url"]}</link>
+    <description>{subtitle}</description>
+    <language>en</language>
+    <lastBuildDate>{rss_date_format}</lastBuildDate>
+{chr(10).join(items)}
+  </channel>
+</rss>"""
+        return rss_xml
 
     def build_travel_page(self, travel_data):
         """Build travel page from YAML data."""

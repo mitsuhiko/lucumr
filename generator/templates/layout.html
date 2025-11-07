@@ -5,6 +5,7 @@
   {% block htmlhead %}
     <title>{% block title %}Home{% endblock %} | Armin Ronacher's Thoughts and Writings</title>
     <link href="/feed.atom" rel="alternate" title="Armin Ronacher's Thoughts and Writings" type="application/atom+xml">
+    <link href="/feed.xml" rel="alternate" title="Armin Ronacher's Thoughts and Writings" type="application/rss+xml">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="preload" href="/static/avatar-tiny.jpg" as="image" type="image/jpeg">
     {%- for link in links %}
@@ -104,8 +105,9 @@
         <p>
           More info: <a href="/about#imprint">imprint</a> &amp;
           <a href="/ai-transparency">AI transparency</a>.
-          Subscribe <a href="/feed.atom" rel="alternate" title="Armin Ronacher's
-            Thoughts and Writings">to the atom feed</a>.
+          Subscribe via <a href="/feed.atom" rel="alternate" title="Armin Ronacher's
+            Thoughts and Writings">atom</a> / <a href="/feed.xml" rel="alternate" title="Armin Ronacher's
+            Thoughts and Writings">RSS</a>.
         <p class="theme-selector" hidden>
           Color scheme:
           <label><input type="radio" name="theme" value="system"> <span>auto</span></label>,
