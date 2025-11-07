@@ -19,7 +19,7 @@ lifetime and maybe ever.  Europe is not culturally aligned with
 entrepreneurship, it's opposed to the idea of employee equity, and our laws
 reflect that.
 
-What bothers me isn't the rules — it's the posture that develops form it within
+What bothers me isn't the rules — it's the posture that develops from it within
 people that should know better.  Across the system, everyone points at someone
 else.  If a process takes 10 steps, you'll find 10 people who feel absolved of
 responsibility because they can cite 9 other blockers.  Friction becomes a
