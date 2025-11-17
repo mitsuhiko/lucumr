@@ -52,7 +52,7 @@ The goal of code in many ways should be to be written in a way that it
 does not need updates.  It should eventually achieve some level of
 stability.  In the Rust ecosystem stable code is punished.  If you have a
 perfectly working dependency but you have a somewhat inactive bug tracker,
-RUSTSEC will come by and [give you a chunk rating](/2024/3/26/rust-cdo/).
+RUSTSEC will come by and [give you a junk rating](/2024/3/26/rust-cdo/).
 
 But there *is* a simpler path.  You write code yourself.  Sure, it's more
 work up front, but once it's written, it's done. No new crates, no waiting
