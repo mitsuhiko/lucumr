@@ -267,3 +267,5 @@ god](https://lucumr.pocoo.org/2025/1/24/build-it-yourself/).
   have anything that remotely looks like an interactive system that an agent
   should work with, you should [give it some Tmux
   skills](https://github.com/mitsuhiko/agent-commands/tree/main/skills/tmux).
+* [LLM APIs are a Synchronization Problem](/2025/11/22/llm-apis/).  This was a
+  separate realization that was too long for this post, so I wrote a separate one.
