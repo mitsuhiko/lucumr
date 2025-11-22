@@ -14,9 +14,9 @@ actually a distributed state synchronization problem.
 At its core, a large language model takes text, tokenizes it into numbers, and
 feeds those tokens through a stack of matrix multiplications and attention
 layers on the GPU.  Using a large set of fixed weights, it produces activations
-and predicts the next token.  If it weren't for temperature scaling and
-randomization, you could think of it having the potential of being a much more
-deterministic system, at least in principle.
+and predicts the next token.  If it weren't for temperature (randomization),
+you could think of it having the potential of being a much more deterministic
+system, at least in principle.
 
 As far as the core model is concerned, there's no magical distinction between
 "user text" and "assistant text"—everything is just tokens.  The only
