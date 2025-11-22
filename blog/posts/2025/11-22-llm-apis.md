@@ -144,7 +144,7 @@ fields.
 
 At the same time though, if the remote state gets wiped because the remote site
 doesn't want to hold it for that long, we would want to be in a situation where
-we can replay it entirely from scratch—which for instance the Responses API
+we can replay it entirely from scratch — which for instance the Responses API
 today does not allow.
 
 ## Future Unified APIs
