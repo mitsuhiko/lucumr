@@ -31,9 +31,15 @@ Let's ignore for a second which APIs already exist and just think about what
 usually happens in an agentic system.  If I were to have my LLM run locally on
 the same machine, there is still state to be maintained, but that state is very
 local to me.  You'd maintain the conversation history as tokens in RAM, and the
-model would keep a derived "working state" on the GPU—mainly the attention
+model would keep a derived "working state" on the GPU — mainly the attention
 key/value cache built from those tokens.  The weights themselves stay fixed;
 what changes per step are the activations and the KV cache.
+
+One further clarification: when I talk about state I don't just mean the
+visible token history because the model also carries an internal working state
+that isn't captured by simply re-sending tokens.  In other words: you can
+replay the tokens and regain the text content, but you won't restore the exact
+derived state the model had built.
 
 From a mental-model perspective, caching means "remember the computation you
 already did for a given prefix so you don't have to redo it."  Internally, that
