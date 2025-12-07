@@ -25,7 +25,7 @@ through GitHub sponsors.
 If you want to contact me, you can reach me via one of the following
 communication channels:
 
--   via [email](armin.ronacher@active-4.com)
+-   via [email](mailto:armin.ronacher@active-4.com)
 -   find me on [GitHub](https://github.com/mitsuhiko)
 -   reach out to me on [X](https://x.com/mitsuhiko) or [Bluesky](https://bsky.app/profile/mitsuhiko.at).
 -   watch my stuff on [YouTube](https://www.youtube.com/@ArminRonacher)
