@@ -32,11 +32,11 @@ was.
 Morally these things may be defensible, but in practice they have led to Europe
 losing its competitive edge and eroding social cohesion.  The combination of a
 strong social state and high taxes in particular does not mix well with the kind
-of immigration we have seen in the last decade: mostly low-skilled people
-escaping wars.  That means it's not unlikely that certain classes of immigrants
-are going to be net-negative for a very long time, if not forever, and
-increasingly society is starting to think about what the implications of that
-might be.
+of immigration we have seen in the last decade: mostly people escaping wars
+ending up in low-skilled jobs.  That means it's not unlikely that certain
+classes of immigrants are going to be net-negative for a very long time, if not
+forever, and increasingly society is starting to think about what the
+implications of that might be.
 
 Yet even all of that is not where our problems lie, and it's certainly not our
 presumed lack of free speech.  Any conversation on that topic is foolish because
