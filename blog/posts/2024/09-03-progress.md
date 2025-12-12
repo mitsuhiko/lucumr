@@ -5,8 +5,10 @@ summary: "A thought on human progress."
 
 # Progress
 
-![A two panel comic about human progress. Two people stand on the
-local maximum on a graph.](/static/progress.png)As I'm getting older a lot of my social circles are becoming ever more
+<style>.invert-in-dark { padding: 12px } :root[data-theme="dark"] .invert-in-dark { filter: invert(1) } @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]):not([data-theme="dark"]) .invert-in-dark { filter: invert(1) } }</style>
+<img class="invert-in-dark" alt="A two panel comic about human progress. Two people stand on the local maximum on a graph." src="/static/progress.png" style="width: 100%">
+
+As I'm getting older a lot of my social circles are becoming ever more
 conservative.  The focus shifts from building with ambition to fiercly
 protecting what one has achieved.  Shifting the mind on protectionism
 makes one consider all that can cause damage.  It puts the [focus on the
