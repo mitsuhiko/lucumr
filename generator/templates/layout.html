@@ -48,6 +48,10 @@
     </script>
   </head>
   <body hx-boost="true" hx-ext="head-support" hx-select="div.body" hx-target="div.body" hx-swap="outerHTML">
+    <div class="header-image">
+      <canvas id="header-canvas"></canvas>
+    </div>
+    <script src="/static/animation.js"></script>
     <script>
       let $THEME = null;
 
@@ -153,6 +157,9 @@
           </script>
         </p>
       </div>
+    </div>
+    <div class="footer-image">
+      <canvas id="footer-canvas"></canvas>
     </div>
     <script>
       window.setTimeout(() => {
