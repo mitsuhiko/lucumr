@@ -124,9 +124,14 @@
       field2 *= taper;
 
       // Metaball thresholds - higher = smaller blobs, lower = more merging
-      vec3 color = pageBg;
-      if (field1 > 0.92) color = dark;
-      if (field2 > 0.95) color = bright;
+      // Use smoothstep for ~0.5px anti-aliasing on low-DPI screens
+      float aaWidth = 0.005 / max(u_dpr, 1.0);
+
+      float blend1 = smoothstep(0.92 - aaWidth, 0.92 + aaWidth, field1);
+      float blend2 = smoothstep(0.95 - aaWidth, 0.95 + aaWidth, field2);
+
+      vec3 color = mix(pageBg, dark, blend1);
+      color = mix(color, bright, blend2);
 
       gl_FragColor = vec4(color, 1.0);
     }
@@ -152,7 +157,7 @@
   function initWaterEffect(canvasId, fadeTop) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return null;
-    const gl = canvas.getContext('webgl');
+    const gl = canvas.getContext('webgl', { antialias: true });
     if (!gl) return null;
 
     const vs = createShader(gl, gl.VERTEX_SHADER, vsSource);
@@ -192,6 +197,14 @@
   let effects = [];
   let startTime = performance.now();
   let lastFrameTime = 0;
+  let currentDpr = window.devicePixelRatio;
+
+  // For low-DPI screens, use supersampling (render at higher res)
+  function getEffectiveDpr() {
+    const dpr = window.devicePixelRatio;
+    // On low-DPI screens (dpr <= 1), render at 1.5x for smoother edges
+    return dpr <= 1 ? 1.5 : dpr;
+  }
 
   function render(timestamp) {
     // Skip rendering if page is hidden or no canvases are visible
@@ -209,7 +222,16 @@
     const elapsed = (performance.now() - startTime) / 1000.0;
     const isDark = getIsDark();
 
-    const dpr = window.devicePixelRatio;
+    // Detect DPI changes (e.g., moving window between monitors)
+    const newDpr = window.devicePixelRatio;
+    if (newDpr !== currentDpr) {
+      currentDpr = newDpr;
+      for (const effect of effects) {
+        effect.needsResize = true;
+      }
+    }
+
+    const effectiveDpr = getEffectiveDpr();
 
     for (const effect of effects) {
       const { canvas, gl, resolutionLoc, timeLoc, isDarkLoc, dprLoc } = effect;
@@ -218,8 +240,8 @@
       if (!visibleCanvases.has(canvas)) continue;
 
       if (effect.needsResize) {
-        canvas.width = canvas.offsetWidth * dpr;
-        canvas.height = canvas.offsetHeight * dpr;
+        canvas.width = canvas.offsetWidth * effectiveDpr;
+        canvas.height = canvas.offsetHeight * effectiveDpr;
         gl.viewport(0, 0, canvas.width, canvas.height);
         gl.uniform2f(resolutionLoc, canvas.width, canvas.height);
         effect.needsResize = false;
@@ -227,7 +249,7 @@
 
       gl.uniform1f(timeLoc, elapsed);
       gl.uniform1f(isDarkLoc, isDark);
-      gl.uniform1f(dprLoc, dpr);
+      gl.uniform1f(dprLoc, effectiveDpr);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
 
