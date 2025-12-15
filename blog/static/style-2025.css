@@ -82,7 +82,7 @@ h1 a, h2 a, h3 a, h4 a,
 h5 a, h6 a                  { text-decoration: none; }
 h1 a:hover, h2 a:hover,
 h3 a:hover, h4 a:hover      { text-decoration: underline; }
-h1                          { margin: 15px 0 25px 0; }
+h1                          { margin: 5px 0 25px 0; }
 h2                          { margin: 25px 0 10px 0; }
 h3                          { margin: 35px 0 10px 0; }
 h1                          { font-size: 52px; line-height: 56px; text-wrap: balance; }
@@ -102,10 +102,11 @@ div.header a:before         { content: ""; background: url(/static/avatar-tiny.j
                               box-shadow: 0 0 7px var(--hr-shadow); }
 div.header a:hover:before   { border-color: var(--secondary-color); }
 div.navigation              { float: right; }
-div.header, div.navigation  { height: 25px; margin-bottom: 42px; }
+div.header, div.navigation  { height: 25px; margin-bottom: 37px; }
 div.navigation ul           { margin: 0; padding: 0; list-style: none; }
 div.navigation ul li        { display: inline; margin: 0 2px; padding: 0; }
-div.body                    { clear: both; margin: 0 30px; line-height: 1.7; text-wrap: pretty; }
+div.body                    { clear: both; margin: 0 30px; line-height: 1.7; text-wrap: pretty;
+                              display: flow-root; /* prevent margin collapse for htmx swaps */ }
 div.footer                  { margin-top: 55px; font-size: 16px;
                               text-align: right; color: var(--faded-color); }
 div.footer p                { margin: 0; }

@@ -36,8 +36,18 @@
     <meta name="twitter:creator" content="@mitsuhiko">
     <link rel="me" href="https://hachyderm.io/@mitsuhiko">
   {% endblock %}
+    <script type="speculationrules">
+      {
+        "prefetch": [
+          {
+            "where": { "href_matches": "/*" },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
   </head>
-  <body>
+  <body hx-boost="true" hx-ext="head-support" hx-select="div.body" hx-target="div.body" hx-swap="outerHTML">
     <script>
       let $THEME = null;
 
@@ -55,10 +65,16 @@
       selectTheme(localStorage.getItem("theme") || "system");
       document.documentElement.setAttribute("data-initial-load", "true");
 
-      document.addEventListener("DOMContentLoaded", () => {
+      function updateDateWarning() {
         const dateEl = document.querySelector("p.date");
         if (dateEl) {
+          if (dateEl.querySelector(".date-warning")) {
+            return;
+          }
           const pubDate = new Date(dateEl.dataset.date);
+          if (Number.isNaN(pubDate.getTime())) {
+            return;
+          }
           const now = new Date();
           const dayDiff = Math.floor((now.getTime() - pubDate.getTime()) / (1000 * 60 * 60 * 24));
           const yearDiff = Math.floor(dayDiff / 365);
@@ -71,8 +87,21 @@
             dateEl.appendChild(warning);
           }
         }
+      }
+
+      if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+      }
+
+      document.addEventListener("DOMContentLoaded", updateDateWarning);
+      document.addEventListener("htmx:afterSettle", (e) => {
+        updateDateWarning();
+        setTimeout(() => window.scrollTo(0, 0), 50);
       });
     </script>
+    <script src="/static/htmx.min.js"></script>
+    <script src="/static/htmx-head-support.js"></script>
+    <script>htmx.config.scrollIntoViewOnBoost = false;</script>
     <div class=container>
       <div class=header>
         <a href="/about/">Armin Ronacher</a>'s Thoughts and Writings
