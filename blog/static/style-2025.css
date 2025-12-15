@@ -134,7 +134,7 @@ h1 em                       { color: black; font-size: 32px; display: block;
                               margin-left: 25px; margin-top: -15px; }
 
 /* layout elements */
-div.container               { max-width: 860px; margin: 38px auto; padding: 0 40px; flex: 1; }
+div.container               { width: 100%; max-width: 860px; margin: 38px auto; padding: 0 40px; flex: 1; box-sizing: content-box; }
 div.header                  { float: left; }
 div.header a:before         { content: ""; background: url(/static/avatar-tiny.jpg) no-repeat;
                               background-size: 32px; width: 32px; height: 32px;
