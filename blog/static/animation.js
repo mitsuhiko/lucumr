@@ -94,25 +94,39 @@
       vec3 dark = mix(lightDark, darkDark, u_isDark);
       vec3 pageBg = mix(lightPageBg, darkPageBg, u_isDark);
 
+      // Calculate boundary first so metaballs can react to it
+      float baseHeight = 50.0 * u_dpr;
+      float waveAmplitude = 25.0 * u_dpr;
+      float xCoord = gl_FragCoord.x / u_dpr;
+      float boundary = baseHeight;
+      boundary += vnoise(vec2(xCoord * 0.008, u_time * 0.08)) * waveAmplitude;
+      boundary += vnoise(vec2(xCoord * 0.02, u_time * 0.04 + 50.0)) * waveAmplitude * 0.4;
+
+      float pixelY = mix(gl_FragCoord.y, u_resolution.y - gl_FragCoord.y, u_fadeTop);
+      float distToBoundary = pixelY - boundary;
+
+      // Wall influence - blobs pool against the boundary
+      float wallRange = 40.0 * u_dpr;
+      float wallInfluence = smoothstep(wallRange, 0.0, distToBoundary) * 0.25;
+
       // Bottom layer - darker, larger scale
       vec2 p1 = p * 0.7 + vec2(u_time * 0.02, u_time * 0.015);
-      float field1 = metaball(warpCoords(p1, u_time * 0.6), u_time * 0.6);
+      float field1 = metaball(warpCoords(p1, u_time * 0.6), u_time * 0.6) + wallInfluence;
 
       // Top layer - brighter, smaller scale
       vec2 p2 = p + vec2(u_time * 0.06, -u_time * 0.02);
-      float field2 = metaball(warpCoords(p2 + 100.0, u_time), u_time);
+      float field2 = metaball(warpCoords(p2 + 100.0, u_time), u_time) + wallInfluence;
+
+      // Taper off fields below boundary (allows slight overhang)
+      float taperRange = 30.0 * u_dpr;
+      float taper = smoothstep(-taperRange, 0.0, distToBoundary);
+      field1 *= taper;
+      field2 *= taper;
 
       // Metaball thresholds - higher = smaller blobs, lower = more merging
       vec3 color = pageBg;
       if (field1 > 0.92) color = dark;
       if (field2 > 0.95) color = bright;
-
-      // Fade at edge
-      float fadePixels = 70.0 * u_dpr;
-      float pixelY = mix(gl_FragCoord.y, u_resolution.y - gl_FragCoord.y, u_fadeTop);
-      float fade = smoothstep(0.0, fadePixels, pixelY);
-      fade = fade * fade;
-      color = mix(pageBg, color, fade);
 
       gl_FragColor = vec4(color, 1.0);
     }
