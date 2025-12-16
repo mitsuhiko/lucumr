@@ -51,7 +51,6 @@
     <div class="header-image">
       <canvas id="header-canvas"></canvas>
     </div>
-    <script src="/static/animation.js"></script>
     <script>
       let $THEME = null;
 
@@ -103,9 +102,8 @@
         setTimeout(() => window.scrollTo(0, 0), 50);
       });
     </script>
-    <script src="/static/htmx.min.js"></script>
-    <script src="/static/htmx-head-support.js"></script>
-    <script>htmx.config.scrollIntoViewOnBoost = false;</script>
+    <script src="/static/htmx-bundle.min.js"></script>
+    <script src="/static/app.js"></script>
     <div class=container>
       <div class=header>
         <a href="/about/">Armin Ronacher</a>'s Thoughts and Writings
