@@ -21,6 +21,7 @@
     uniform float u_isDark;
     uniform float u_fadeTop;
     uniform float u_dpr;
+    uniform float u_hover;
     varying vec2 v_position;
 
     // Cheap hash - single multiply-add chain
@@ -47,16 +48,19 @@
 
     // Metaball field - sums smooth falloff from nearby blob centers
     // When blobs approach, their fields add up and merge organically
-    float metaball(vec2 p, float time) {
+    // Returns vec2(field, accentWeight) where accentWeight is 0-1 based on accent blob contribution
+    vec2 metaball(vec2 p, float time) {
       vec2 i = floor(p);
       vec2 f = fract(p);
 
       float sum = 0.0;
+      float accentSum = 0.0;
 
       for (int y = -1; y <= 1; y++) {
         for (int x = -1; x <= 1; x++) {
           vec2 neighbor = vec2(float(x), float(y));
-          vec2 point = hash2(i + neighbor);
+          vec2 cellId = i + neighbor;
+          vec2 point = hash2(cellId);
           point = 0.5 + 0.4 * sin(time * 0.3 + 6.28 * point);
           vec2 diff = neighbor + point - f;
           float r2 = dot(diff, diff);
@@ -64,11 +68,18 @@
           // Smooth polynomial falloff: (1 - r²)³ for r² < 1, else 0
           // This creates soft edges that blend when overlapping
           float influence = max(0.0, 1.0 - r2);
-          sum += influence * influence * influence;
+          float contrib = influence * influence * influence;
+          sum += contrib;
+
+          // Check if this blob is an accent blob (~8% chance based on cell)
+          float isAccent = step(0.92, hash(cellId + 0.5));
+          accentSum += contrib * isAccent;
         }
       }
 
-      return sum;
+      // Normalize accent weight by total contribution
+      float accentWeight = sum > 0.0 ? accentSum / sum : 0.0;
+      return vec2(sum, accentWeight);
     }
 
     // Cheap warping using value noise
@@ -91,9 +102,14 @@
       vec3 darkDark = vec3(0.12, 0.24, 0.40);
       vec3 darkPageBg = vec3(0.106, 0.192, 0.337);
 
+      // Hover accent colors (red from --secondary-color)
+      vec3 lightAccent = vec3(0.804, 0.055, 0.055);  // #cd0e0e
+      vec3 darkAccent = vec3(1.0, 0.4, 0.4);         // #ff6666
+
       vec3 bright = mix(lightBright, darkBright, u_isDark);
       vec3 dark = mix(lightDark, darkDark, u_isDark);
       vec3 pageBg = mix(lightPageBg, darkPageBg, u_isDark);
+      vec3 accent = mix(lightAccent, darkAccent, u_isDark);
 
       // Calculate boundary first so metaballs can react to it
       float baseHeight = 50.0 * u_dpr;
@@ -112,11 +128,15 @@
 
       // Bottom layer - darker, larger scale
       vec2 p1 = p * 0.7 + vec2(u_time * 0.02, u_time * 0.015);
-      float field1 = metaball(warpCoords(p1, u_time * 0.6), u_time * 0.6) + wallInfluence;
+      vec2 meta1 = metaball(warpCoords(p1, u_time * 0.6), u_time * 0.6);
+      float field1 = meta1.x + wallInfluence;
+      float accent1 = meta1.y;
 
       // Top layer - brighter, smaller scale
       vec2 p2 = p + vec2(u_time * 0.06, -u_time * 0.02);
-      float field2 = metaball(warpCoords(p2 + 100.0, u_time), u_time) + wallInfluence;
+      vec2 meta2 = metaball(warpCoords(p2 + 100.0, u_time), u_time);
+      float field2 = meta2.x + wallInfluence;
+      float accent2 = meta2.y;
 
       // Taper off fields below boundary (allows slight overhang)
       float taperRange = 30.0 * u_dpr;
@@ -131,8 +151,16 @@
       float blend1 = smoothstep(0.92 - aaWidth, 0.92 + aaWidth, field1);
       float blend2 = smoothstep(0.95 - aaWidth, 0.95 + aaWidth, field2);
 
-      vec3 color = mix(pageBg, dark, blend1);
-      color = mix(color, bright, blend2);
+      // Hard threshold for accent - blob is either accent or not
+      float isAccent1 = step(0.5, accent1);
+      float isAccent2 = step(0.5, accent2);
+
+      // Blend accent color based on hover state
+      vec3 dark1 = mix(dark, accent, isAccent1 * u_hover);
+      vec3 bright2 = mix(bright, accent, isAccent2 * u_hover);
+
+      vec3 color = mix(pageBg, dark1, blend1);
+      color = mix(color, bright2, blend2);
 
       gl_FragColor = vec4(color, 1.0);
     }
@@ -181,6 +209,7 @@
     const isDarkLoc = gl.getUniformLocation(program, 'u_isDark');
     const fadeTopLoc = gl.getUniformLocation(program, 'u_fadeTop');
     const dprLoc = gl.getUniformLocation(program, 'u_dpr');
+    const hoverLoc = gl.getUniformLocation(program, 'u_hover');
 
     gl.uniform1f(fadeTopLoc, fadeTop ? 1.0 : 0.0);
 
@@ -191,6 +220,9 @@
       timeLoc,
       isDarkLoc,
       dprLoc,
+      hoverLoc,
+      hoverTarget: 0,
+      hoverValue: 0,
       needsResize: true
     };
   }
@@ -234,8 +266,10 @@
 
     const effectiveDpr = getEffectiveDpr();
 
+    const deltaTime = FRAME_INTERVAL / 1000.0;
+
     for (const effect of effects) {
-      const { canvas, gl, resolutionLoc, timeLoc, isDarkLoc, dprLoc } = effect;
+      const { canvas, gl, resolutionLoc, timeLoc, isDarkLoc, dprLoc, hoverLoc } = effect;
 
       // Skip if this canvas is not visible
       if (!visibleCanvases.has(canvas)) continue;
@@ -248,9 +282,19 @@
         effect.needsResize = false;
       }
 
+      // Animate hover with exponential easing (~0.65 second transition)
+      const diff = effect.hoverTarget - effect.hoverValue;
+      if (Math.abs(diff) > 0.001) {
+        effect.hoverValue += diff * deltaTime * 6.0;
+        effect.hoverValue = Math.max(0, Math.min(1, effect.hoverValue));
+      } else {
+        effect.hoverValue = effect.hoverTarget;
+      }
+
       gl.uniform1f(timeLoc, elapsed);
       gl.uniform1f(isDarkLoc, isDark);
       gl.uniform1f(dprLoc, effectiveDpr);
+      gl.uniform1f(hoverLoc, effect.hoverValue);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
 
@@ -267,6 +311,19 @@
     ].filter(Boolean);
 
     if (effects.length === 0) return;
+
+    // Set up hover listeners for header and footer
+    for (const effect of effects) {
+      const container = effect.canvas.parentElement;
+      if (container) {
+        container.addEventListener('mouseenter', function() {
+          effect.hoverTarget = 1;
+        });
+        container.addEventListener('mouseleave', function() {
+          effect.hoverTarget = 0;
+        });
+      }
+    }
 
     // Track page visibility
     document.addEventListener('visibilitychange', function() {
@@ -323,4 +380,32 @@
   htmx.on('htmx:swapError', htmxFallbackToNative);
   // Server error responses (4xx, 5xx) - let browser handle natively
   htmx.on('htmx:responseError', htmxFallbackToNative);
+})();
+
+// Date warning for old articles
+(function() {
+  function updateDateWarning() {
+    const dateEl = document.querySelector("p.date");
+    if (!dateEl || dateEl.querySelector(".date-warning")) return;
+
+    const pubDate = new Date(dateEl.dataset.date);
+    if (Number.isNaN(pubDate.getTime())) return;
+
+    const dayDiff = Math.floor((Date.now() - pubDate.getTime()) / (1000 * 60 * 60 * 24));
+    const yearDiff = Math.floor(dayDiff / 365);
+
+    if (dayDiff >= 365) {
+      const warning = document.createElement("span");
+      warning.className = "date-warning";
+      warning.textContent = `this article is ${yearDiff} year${yearDiff != 1 ? 's' : ''} old.`;
+      dateEl.appendChild(document.createTextNode(" — "));
+      dateEl.appendChild(warning);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", updateDateWarning);
+  document.addEventListener("htmx:afterSettle", function() {
+    updateDateWarning();
+    setTimeout(function() { window.scrollTo(0, 0); }, 50);
+  });
 })();
