@@ -73,7 +73,11 @@
 
           // Check if this blob is an accent blob (~8% chance based on cell)
           float isAccent = step(0.92, hash(cellId + 0.5));
-          accentSum += contrib * isAccent;
+          // Random delay for staggered fade-in (0 to 0.75 of the 0-1 range = 0-2s of 2.65s total)
+          float blobDelay = hash(cellId + 0.7) * 0.75;
+          // Blob visibility based on hover progress and delay
+          float blobVisible = smoothstep(blobDelay, blobDelay + 0.25, u_hover);
+          accentSum += contrib * isAccent * blobVisible;
         }
       }
 
@@ -282,13 +286,12 @@
         effect.needsResize = false;
       }
 
-      // Animate hover with exponential easing (~0.65 second transition)
-      const diff = effect.hoverTarget - effect.hoverValue;
-      if (Math.abs(diff) > 0.001) {
-        effect.hoverValue += diff * deltaTime * 6.0;
-        effect.hoverValue = Math.max(0, Math.min(1, effect.hoverValue));
-      } else {
-        effect.hoverValue = effect.hoverTarget;
+      // Animate hover linearly (~2.65 second total for staggered blobs)
+      const hoverSpeed = 1.0 / 2.65; // Full animation over 2.65 seconds
+      if (effect.hoverTarget > effect.hoverValue) {
+        effect.hoverValue = Math.min(effect.hoverTarget, effect.hoverValue + deltaTime * hoverSpeed);
+      } else if (effect.hoverTarget < effect.hoverValue) {
+        effect.hoverValue = Math.max(effect.hoverTarget, effect.hoverValue - deltaTime * hoverSpeed);
       }
 
       gl.uniform1f(timeLoc, elapsed);
@@ -312,8 +315,8 @@
 
     if (effects.length === 0) return;
 
-    // Set up hover listeners for header and footer
-    for (const effect of effects) {
+    // Set up hover listeners for header and footer (each effect has independent hover state)
+    effects.forEach(function(effect) {
       const container = effect.canvas.parentElement;
       if (container) {
         container.addEventListener('mouseenter', function() {
@@ -323,7 +326,7 @@
           effect.hoverTarget = 0;
         });
       }
-    }
+    });
 
     // Track page visibility
     document.addEventListener('visibilitychange', function() {
