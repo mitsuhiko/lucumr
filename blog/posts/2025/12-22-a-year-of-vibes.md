@@ -1,6 +1,6 @@
 ---
 tags: ['personal', 'thoughts']
-summary: "A personal recap of 2025 and 20 years of engineering."
+summary: "A personal recap of 2025 and a year of a new style of engineering."
 ---
 
 # A Year Of Vibes
