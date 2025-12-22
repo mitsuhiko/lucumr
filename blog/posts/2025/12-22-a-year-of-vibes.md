@@ -1,5 +1,5 @@
 ---
-tags: ['personal', 'thoughts']
+tags: ['personal', 'thoughts', 'ai']
 summary: "A personal recap of 2025 and a year of a new style of engineering."
 ---
 
