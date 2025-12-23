@@ -273,4 +273,6 @@ The prompt to Claude was as follows:
 > it and given the opportunity. Ultrathink!
 
 When it wrote the blog post it had access to its own git logs and the checkout,
-but it did did not recall its own prior conversations with me.
+but it did did not recall its own prior conversations with me.  There was a
+single follow-up prompt to ask the model to use mathml for the formulas.  Other
+than this postscriptum, nothing was edited.
