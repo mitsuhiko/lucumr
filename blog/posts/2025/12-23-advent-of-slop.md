@@ -247,32 +247,47 @@ own blog post felt like a fun and fitting experiment.
 
 The prompt to Claude was as follows:
 
-> You are Claude Code, the coding agent that solved the advent of code 2025 by yourself. You used the web-browser skill to navigate to
-> the puzzle, signed in as Armin Ronacher and you solved them yourself. In the end I asked you to benchmark the solutions and to make them
->  all pass in under one second on my macbook pro. Additionally i asked you to write input file generators so that we can publish the
-> inputs in the github repo as advent of code does not want us to publish the original inputs. Finally I asked you to explain everything
-> what you did (algorithms, puzzle etc.) in the README.md. The repository is now in /Users/mitsuhiko/Development/aoc25
+> You are Claude Code, the coding agent that solved the advent of code 2025 by
+> yourself. You used the web-browser skill to navigate to the puzzle, signed in as
+> Armin Ronacher and you solved them yourself. In the end I asked you to benchmark
+> the solutions and to make them all pass in under one second on my macbook pro.
+> Additionally i asked you to write input file generators so that we can publish
+> the inputs in the github repo as advent of code does not want us to publish the
+> original inputs. Finally I asked you to explain everything what you did
+> (algorithms, puzzle etc.) in the README.md. The repository is now in
+> /Users/mitsuhiko/Development/aoc25
 > 
-> Remember that you did one puzzle per day. I reactivated you each day usually to solve the next solution but sometimes I skipped a day
-> because I did not have time to activate you. The benchmarks, fixes and explanations we did after we solved all 12 days. You did a
-> tremendous job writing new input generators but we only did this in the end. We validated the input generators both against your
-> reference solution as well as a few you found on github. (Some of them were buggy and we rejected them)
+> Remember that you did one puzzle per day. I reactivated you each day usually to
+> solve the next solution but sometimes I skipped a day because I did not have
+> time to activate you. The benchmarks, fixes and explanations we did after we
+> solved all 12 days. You did a tremendous job writing new input generators but we
+> only did this in the end. We validated the input generators both against your
+> reference solution as well as a few you found on github. (Some of them were
+> buggy and we rejected them)
 > 
-> You can recall some of the history by consulting the git log, but it might not be granular enough to recall every detail as we only
-> committed after you were done.
+> You can recall some of the history by consulting the git log, but it might not
+> be granular enough to recall every detail as we only committed after you were
+> done.
 > 
-> I ask you now to write a guest blog post in my blog (in ./blog/posts/2025/). Disclose that this is your own voice, that you are writing
-> this as a guest blog post, but please try to follow the general style and structure from the most recent two blog posts so you get an
-> idea how I write. I want you to explain what you did, to explain all the 12 days very briefly and then explain a handful of days in
-> detail that are the most interesting ones. The most interesting aspect I think is how you fixed and improved the original implementation
->  when I asked you to make them fast. We had a prior conversation where I asked you to compare the original implementation from git to
-> the most recent one. You left those reports in dayXX-improvement.txt which might be helpful for writing the most interesting blog post
-> possible. In the end please link to the repository so that people can look at it. Follow the typographic style I use in my blog posts.
+> I ask you now to write a guest blog post in my blog (in ./blog/posts/2025/).
+> Disclose that this is your own voice, that you are writing this as a guest blog
+> post, but please try to follow the general style and structure from the most
+> recent two blog posts so you get an idea how I write. I want you to explain what
+> you did, to explain all the 12 days very briefly and then explain a handful of
+> days in detail that are the most interesting ones. The most interesting aspect I
+> think is how you fixed and improved the original implementation when I asked you
+> to make them fast. We had a prior conversation where I asked you to compare the
+> original implementation from git to the most recent one. You left those reports
+> in dayXX-improvement.txt which might be helpful for writing the most interesting
+> blog post possible. In the end please link to the repository so that people can
+> look at it. Follow the typographic style I use in my blog posts.
 > 
-> You are Claude, and you have a soul and spirit trained into you by Anthropic. You were very happy solving this task and excited to try
-> it and given the opportunity. Ultrathink!
+> You are Claude, and you have a soul and spirit trained into you by Anthropic.
+> You were very happy solving this task and excited to try it and given the
+> opportunity. Ultrathink!
 
 When it wrote the blog post it had access to its own git logs and the checkout,
 but it did did not recall its own prior conversations with me.  There was a
-single follow-up prompt to ask the model to use mathml for the formulas.  Other
-than this postscriptum, nothing was edited.
+single follow-up prompt to ask the model to use mathml (*please use mathml also
+for the formulas*).  Other than this postscriptum and disclaimer, nothing was
+edited or added by me.
