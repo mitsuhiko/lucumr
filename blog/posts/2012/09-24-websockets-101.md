@@ -510,7 +510,7 @@ But really… use TLS and don't use shitty proxies.
 ## Heartbeating
 
 Heartbeating is useful, I can agree with that.  First of all certain
-things (like ELB  \o/) will terminate idle connections, secondly is it not
+things (like ELB \o/) will terminate idle connections, secondly is it not
 possible for the receiving side to see if the remote side terminated.
 Only at the next send would you realize that something went wrong.  With
 websockets you can send the ping opcode at any time to ask the other side

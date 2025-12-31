@@ -218,7 +218,7 @@ works on 3.x and I strongly recommend doing that, but be sure to open
 the file in binary mode, otherwise on Python 3 the decode will attempt
 to decode an already decoded unicode string, which does not make any
 sense. If you *need* normalized newlines (windows newlines converted to
-`' n'`) you would have to post-process the string by hand, but must
+`'\n'`) you would have to post-process the string by hand, but must
 applications and libraries are able to deal with any kind of newline
 anyways.
 

@@ -350,7 +350,7 @@ uniquely identify the file, secondly because there is also no way to
 get the URL of a `WebAssembly.Module`.  I really wish there was an
 API for that.
 
-- Speaking of `build_id` s: I wish everybody would embrace them and
+- Speaking of `build_id`s: I wish everybody would embrace them and
 they would become a standard.
 
 - The fact that we have code section relative offsets within DWARF files

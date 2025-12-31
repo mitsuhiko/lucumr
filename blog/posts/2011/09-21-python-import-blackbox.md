@@ -235,7 +235,7 @@ surprised me that it does.  The reason it surprises me is that Python
 normally shuts down modules in a very weird way by setting all the values
 in the global dictionary to `None`.   Since the actual modules is long
 gone when you get the import error you would think that the reference to
-the globals you have is full of `None` s and the names would never be
+the globals you have is full of `None`s and the names would never be
 the module name.
 
 To quote the documentation:
@@ -262,7 +262,7 @@ protocol also specifies that a module can inject `__loader__` into the
 frame so that the source can be loaded from the `__loader__` if the source
 is not based on the filesystem.  And for this to work the globals have to
 be there.  On top of that this also gives us confirmation that garbage
-collected modules must not clear out their globals with `None` s or we
+collected modules must not clear out their globals with `None`s or we
 would not be able to extract the sourcecode for certain import hooks when
 an import error occurs since the loader would be gone.
 
