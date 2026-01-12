@@ -1,3 +1,10 @@
+- title: "CASE Conference"
+  location: "Berlin, DE"
+  start_date: 2026-01-13
+  end_date: 2026-01-14
+  description: "Giving a talk 'The Machine and Me' about building and using agents at a startup"
+  link: https://www.case-conf.com/session/the-machine-and-me
+  type: "travel"
 - title: "Claude Code Anonymous"
   location: "London, UK"
   start_date: 2025-08-17
