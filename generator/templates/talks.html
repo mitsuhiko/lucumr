@@ -35,7 +35,7 @@
         {% endif %}
         
         {% if talk.date %}
-          — {{ talk.date|dateonlyformat }}
+          — {{ talk.date|dateonlyformat }}{% if talk.date_tentative %} (tentative){% endif %}
         {% endif %}
         
         {% if talk.links %}
