@@ -118,10 +118,11 @@ no matter where it comes from.
 Did I spark your interest?  I would really appreciate it if you give it a
 try and give feedback:
 
-<div style="text-align: center">
-    <p><em>a 16 minute introduction to Rye</em>
-    <iframe width="782" height="441" style="display: block; margin: 0 auto;" src="https://www.youtube.com/embed/q99TYA7LnuA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>- [Project Website](https://rye-up.com/)
+<p style="text-align: center"><em>a 16 minute introduction to Rye</em></p>
+
+<iframe width="782" height="441" style="display: block; margin: 0 auto;" src="https://www.youtube.com/embed/q99TYA7LnuA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+- [Project Website](https://rye-up.com/)
 
 - [User Guide and Documentation](https://rye-up.com/guide/)
 
