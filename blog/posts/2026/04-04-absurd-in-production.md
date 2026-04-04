@@ -65,14 +65,14 @@ made it possible to use Absurd for things like spawning child tasks from within
 a parent workflow and waiting for them to finish.  This is particularly useful
 for debugging with agents too.
 
-**absurdctl.**  We built this out as a proper CLI tool.  You can initialize
+**[absurdctl](https://earendil-works.github.io/absurd/tools/absurdctl/).**  We built this out as a proper CLI tool.  You can initialize
 schemas, run migrations, create queues, spawn tasks, emit events, retry failures
 from the command line.  It's installable via `uvx` or as a standalone binary.
 This has been invaluable for debugging production issues.  When something is
 stuck, being able to just `absurdctl dump-task --task-id=<id>` and see exactly
 where it stopped is a very different experience from digging through logs.
 
-**Habitat.**  A small Go application that serves up a web dashboard for
+**[Habitat](https://earendil-works.github.io/absurd/tools/habitat/).**  A small Go application that serves up a web dashboard for
 monitoring tasks, runs, checkpoints, and events.  It connects directly to
 Postgres and gives you a live view of what's happening.  It's simple, but it's
 the kind of thing that makes the system more enjoyable for humans.
