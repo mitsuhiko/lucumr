@@ -1,6 +1,8 @@
 - title: The Friction Is Your Judgment
   venue: AI Engineer, London, UK & Online
   date: 2026-04-10
+  links:
+    slides: https://mitsuhiko.github.io/talks/ai-engineer-talk/
 - title: Leaning In To Find Out
   venue: PyAI, San Francisco
   date: 2026-03-10
