@@ -146,7 +146,7 @@ thrown in with the same people who are devoid of any criticism.
 
 ## Failure Is Possible
 
-This line of thinking could be seen as an inherent "pro-innovation bias".  That
+This line of thinking could be seen as an inherent "pro-innovation bias."  That
 would be wrong, as plenty of technology deserves resistance.  Many people are
 right to resist, and sometimes the people who never gave a technology a chance
 saw problems earlier than everyone else.  Crypto is a good reminder: plenty of
