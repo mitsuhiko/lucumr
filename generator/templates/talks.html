@@ -38,7 +38,8 @@
           — {{ talk.date|dateonlyformat }}{% if talk.date_tentative %} (tentative){% endif %}
         {% endif %}
         
-        {% if talk.links %}
+        {% set has_extra_links = talk.links and (talk.links.event or talk.links.recording or talk.links.alt_recordings or talk.links.pdf) %}
+        {% if has_extra_links %}
           ({% set comma = joiner(", ") %}
            {%- if talk.links.event %}{{ comma() }}<a href="{{ talk.links.event }}">event details</a>{% endif %}
            {%- if talk.links.recording %}{{ comma() }}<a href="{{ talk.links.recording }}">recording</a>{% endif %}
