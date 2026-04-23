@@ -10,9 +10,10 @@ showing up: **equity**.
 
 Coming from a German-speaking, central European background, I found it
 surprisingly hard to fully internalize what that word means.  More than that, I
-find it very hard to talk to other Europeans about it.  Worst of all it's almost
-impossible to explain it in German without either sounding overly technical or
-losing an important part of the meaning.
+find it very [hard to talk with other
+Europeans](https://x.com/mitsuhiko/status/2047321138104045974) about it.  Worst
+of all it's almost impossible to explain it in German without either sounding
+overly technical or losing an important part of the meaning.
 
 This post is in English, but it is written mostly for readers in Germany,
 Austria, and Switzerland, and more broadly for people from continental Europe.
