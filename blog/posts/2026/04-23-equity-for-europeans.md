@@ -1,6 +1,6 @@
 ---
 tags: ['thoughts', 'finance', 'europe']
-summary: "In American English, equity combines legal fairness, ownership, and upside in one everyday concept."
+summary: "Equity combines legal fairness, ownership, and upside in one everyday concept."
 ---
 
 # Equity for Europeans
@@ -41,8 +41,8 @@ things.
 
 ## One Word, Shared Meanings
 
-In American English, "equity" often carries multiple things at once.  I believe
-the following ones to be the most important ones:
+In the English language, "equity" often carries multiple things at once.  I
+believe the following ones to be the most important ones:
 
 1. A legal-fairness dimension: historically tied to [equity in law](https://en.wikipedia.org/wiki/Equity_(law))
 2. A financial-accounting dimension: residual [value after debt](https://en.wikipedia.org/wiki/Equity_(finance))
