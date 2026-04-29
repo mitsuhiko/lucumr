@@ -10,7 +10,7 @@ remembers is easy, but designing software that deliberately “forgets” is
 a bit more complex.  By “forgetting,” I don't mean losing data because it
 wasn’t saved or losing it randomly due to bugs.  I'm referring to making a
 deliberate design decision to discard data at a later time.  This ability
-to forget can be an incredibly benefitial property for many applications.
+to forget can be an incredibly beneficial property for many applications.
 Most importantly software that forgets enables different user experiences.
 
 I'm willing to bet that your cloud storage or SaaS applications likely
@@ -23,8 +23,8 @@ interfaces feel familiar to older physical objects.  They resembled the
 appearance and behavior even though they didn't need to.  Ironically
 though skeuomorphism despite focusing on look and feel, rarely considers
 some of the hidden affordances of the physical world.  Critically, rarely
-does digial software feature degradation.  Yes, the trash bin was created
-as an appoximation of this, but the bin seemingly did not make it farther
+does digital software feature degradation.  Yes, the trash bin was created
+as an approximation of this, but the bin seemingly did not make it farther
 than file or email management software.  It also does not go far enough.
 
 In the physical world, much of what we create has a natural tendency to
@@ -65,11 +65,11 @@ metrics that are gone.
 
 In shared spaces with lots of users, few things are intended to last
 forever.  I hope that it will become more popular for software to take age
-more intentional into account.  For instance one can start fading out old
+more intentionally into account.  For instance one can start fading out old
 documents that are rarely maintained or refreshed.  I want software to hide
 old documents, dashboards etc. and that includes most critically not
 showing up in search.  I don't want to accidentally navigate to old and
-unused dashboards in the mids of an incident.
+unused dashboards in the midst of an incident.
 
 Sorting by frequency of use is insufficient to me.  Ideally software
 embraced an “ephemeral by default” approach.  While there’s some risk of
@@ -79,7 +79,7 @@ everything created starts with a short time-to-live (say, 30 days), after
 which it moves to a “to sort” folder.  If it’s not actively sorted and
 saved within six months, it's moved to a trash and eventually deleted.
 
-This idea extends far beyond dashboards!  Wiki and innformation management
+This idea extends far beyond dashboards!  Wiki and information management
 software like Notion could benefit from decaying notes, as the information
 they hold often becomes outdated quickly.  I routinely encounter more
 outdated pages than current ones.  While outright deletion may not be the
