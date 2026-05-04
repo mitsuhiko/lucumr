@@ -191,13 +191,13 @@ assumption that when someone writes to you, there is a person on the other side
 who has put some care into the interaction.  I would rather have someone ghost
 me or reject me than send me back some AI-generated slop.
 
-Change has to start with awareness and an unfortunate developmend is that LLMs
-don't just influence the text we rea and influence the text we write, even when
-we don't use htem.  Given the resulting ambiguity, we need to become more aware
+Change has to start with awareness and an unfortunate development is that LLMs
+don't just influence the text we read and they influence the text we write, even when
+we don't use them.  Given the resulting ambiguity, we need to become more aware
 of how easily we can turn into energy vampires when we use agents to back us up
 in interactions with others.  Consider that every time someone reads text coming
-from you, they will have to increasingly have to make a judgement call if it was
-you, or an LLM or you and an LLM that produced the interaction.  Transparency in
+from you, they will increasingly have to make a judgment call if it was
+you, an LLM, or you and an LLM that produced the interaction.  Transparency in
 either direction, when there is ambiguity, can help great lengths.
 
 When someone sends us undeclared slop, we need to change how we engage with
@@ -209,7 +209,7 @@ we need to throw more wrenches in.  The fact that it was cheap for you to
 produce does not make it cheap for someone else to receive, and we need to find
 more creative ways to increase the backpressure.  GitHub or whatever wants to
 replace it, will have a lot to improve here and some of which might be going
-against it's core KPIs.  More engagement is increasingly the wrong thing to look
+against its core KPIs.  More engagement is increasingly the wrong thing to look
 at if you want a long term healthy platform.
 
 Whatever we can do to rate-limit social interactions is something we should try:
@@ -218,9 +218,9 @@ more acceptance that sometimes the right response is no response at all.
 
 <small>
 
-And as for AI assistence on this blog, I have an [AI transparency
+And as for AI assistance on this blog, I have an [AI transparency
 disclaimer](/ai-transparency/) for a while.  In this particular blog post I used
-Pi as an agent to help me generate the dynamic visualization and I use the agent
+Pi as an agent to help me generate the dynamic visualization and I used
 to write the code to analyze and scrape Google Trends.
 
 </small>
