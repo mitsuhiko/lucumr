@@ -15,7 +15,7 @@
   `;
 
   const fsSource = `
-    precision mediump float;
+    precision highp float;
     uniform vec2 u_resolution;
     uniform float u_time;
     uniform float u_isDark;
@@ -95,7 +95,8 @@
 
     void main() {
       float scale = 0.0133;
-      vec2 p = gl_FragCoord.xy * scale;
+      // Keep blob density consistent with the DPR 2 desktop reference.
+      vec2 p = gl_FragCoord.xy * scale * (2.0 / u_dpr);
 
       // Wind Waker colors
       vec3 lightBright = vec3(0.10, 0.42, 0.70);
