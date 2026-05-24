@@ -66,19 +66,14 @@ A few years later, Flamework appeared on GitHub, not as an open-sourced
 piece of Flickr code but as a reimplementation of those same ideas.  You
 can explore its repository and see code like this:
 
-Cannot analyze code. No Pygments lexer found for "phpinline".
-
-```
-.. sourcecode:: phpinline
-
-    function _db_update($tbl, $hash, $where, $cluster, $shard){
-        $bits = array();
-        foreach(array_keys($hash) as $k){
-            $bits[] = "`$k`='$hash[$k]'";
-        }
-        return _db_write("UPDATE $tbl SET ".implode(', ',$bits)." WHERE $where", $cluster, $shard);
+```phpinline
+function _db_update($tbl, $hash, $where, $cluster, $shard){
+    $bits = array();
+    foreach(array_keys($hash) as $k){
+        $bits[] = "`$k`='$hash[$k]'";
     }
-
+    return _db_write("UPDATE $tbl SET ".implode(', ',$bits)." WHERE $where", $cluster, $shard);
+}
 ```
 
 Instinctively it makes me cringe.  Is that a SQL injection?  Well you were

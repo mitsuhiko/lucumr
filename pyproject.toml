@@ -26,5 +26,8 @@ dependencies = [
 build-blog = "generator.commands:main_build"
 serve-blog = "generator.commands:main_serve"
 
+[project.entry-points."pygments.lexers"]
+phpinline = "generator.lexers:PhpInlineLexer"
+
 [tool.hatch.build.targets.wheel]
 packages = ["generator"]

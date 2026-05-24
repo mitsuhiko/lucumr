@@ -1,5 +1,5 @@
 from pygments import highlight
-from pygments.lexers import get_lexer_by_name, TextLexer, PhpLexer
+from pygments.lexers import get_lexer_by_name, TextLexer
 from pygments.formatters import HtmlFormatter
 from pygments.styles import get_style_by_name
 from markupsafe import Markup
@@ -15,9 +15,7 @@ from generator.config import CONFIG
 def highlight_code(code, language):
     """Highlight code using Pygments with shared highlighting logic."""
     try:
-        if language == "phpinline":
-            lexer = PhpLexer(startinline=True)
-        elif language:
+        if language:
             lexer = get_lexer_by_name(language)
         else:
             lexer = TextLexer()
