@@ -117,10 +117,13 @@ again is an interesting statistic for us to look at.
 I pulled the public GitHub tracker data while writing this over the last 90
 days.  Excluding Earendil members, that leaves 3,145 external issues and pull
 requests.  Of those, 2,504 were auto-closed because they were from non-approved
-individuals.  17% were reopened.  For pull requests the number is worse: less
-than 10% were merged.
+individuals.  17% were re-opened but that somewhat undercounts issues, because
+some remain closed while we still fix them.  If we also count issues referenced
+by a main-branch commit or merged pull request that number rises to 26%.  For
+pull requests the number is worse: 60 of 714 auto-closed PRs were ultimately
+merged, or about 8%.
 
-<img src="/static/pi-issue-tracker-volume.png" alt="Weekly external volume and acceptance rate of Pi issues and pull requests from February 24 to May 24, 2026, excluding Earendil members, with reopened pull requests shown when they were later merged." style="width: 100%">
+<img src="/static/pi-issue-tracker-volume.png" alt="Weekly external volume and acceptance rate of Pi issues and pull requests" style="width: 100%; display: block; margin: 0; padding: 0">
 
 Many of the issues and PRs are complete slop and in some cases the humans did
 not even realize that they created them.  Sources of low-quality spam include

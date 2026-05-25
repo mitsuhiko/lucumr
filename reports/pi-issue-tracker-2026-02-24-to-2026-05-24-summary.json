@@ -1,0 +1,206 @@
+{
+  "author_associations": {
+    "issue:CONTRIBUTOR": 170,
+    "issue:MEMBER": 14,
+    "issue:NONE": 2063,
+    "pr:CONTRIBUTOR": 287,
+    "pr:FIRST_TIMER": 13,
+    "pr:FIRST_TIME_CONTRIBUTOR": 4,
+    "pr:MEMBER": 49,
+    "pr:NONE": 608
+  },
+  "closed_within_10m": {
+    "issue": 1484,
+    "pr": 667
+  },
+  "cutoff": "2026-02-24T00:00:00+00:00",
+  "end": "2026-05-24T09:55:03.792660+00:00",
+  "files": {
+    "daily_csv": "/Users/mitsuhiko/Development/lucumr/reports/pi-issue-tracker-2026-02-24-to-2026-05-24-daily.csv",
+    "items_csv": "/Users/mitsuhiko/Development/lucumr/reports/pi-issue-tracker-2026-02-24-to-2026-05-24-items.csv",
+    "weekly_csv": "/Users/mitsuhiko/Development/lucumr/reports/pi-issue-tracker-2026-02-24-to-2026-05-24-weekly.csv"
+  },
+  "generated_at": "2026-05-24T09:55:03.792660+00:00",
+  "item_count": 3208,
+  "possibly_openclaw_clanker_label": {
+    "issue": 212,
+    "pr": 116
+  },
+  "repo": "earendil-works/pi",
+  "states": {
+    "issue:closed": 2219,
+    "issue:open": 28,
+    "pr:closed": 953,
+    "pr:open": 8
+  },
+  "top_authors": {
+    "issue": [
+      [
+        "lmasiero",
+        13
+      ],
+      [
+        "MonkeyLeeT",
+        13
+      ],
+      [
+        "tryingET",
+        12
+      ],
+      [
+        "WhyNotHugo",
+        12
+      ],
+      [
+        "badlogic",
+        11
+      ],
+      [
+        "iRonin",
+        10
+      ],
+      [
+        "KJyang-0114",
+        8
+      ],
+      [
+        "louis030195",
+        8
+      ],
+      [
+        "richardanaya",
+        8
+      ],
+      [
+        "cad0p",
+        8
+      ],
+      [
+        "joakimwinum",
+        8
+      ],
+      [
+        "samfoy",
+        8
+      ],
+      [
+        "dpopsuev",
+        8
+      ],
+      [
+        "yhslai",
+        7
+      ],
+      [
+        "Ziphyrien",
+        7
+      ],
+      [
+        "bolasblack",
+        7
+      ],
+      [
+        "gustavhartz",
+        7
+      ],
+      [
+        "ddpie",
+        6
+      ],
+      [
+        "suse-coder",
+        6
+      ],
+      [
+        "markokocic",
+        6
+      ]
+    ],
+    "pr": [
+      [
+        "mitsuhiko",
+        33
+      ],
+      [
+        "aliou",
+        32
+      ],
+      [
+        "haoqixu",
+        16
+      ],
+      [
+        "Perlence",
+        13
+      ],
+      [
+        "ferologics",
+        12
+      ],
+      [
+        "yzhg1983",
+        10
+      ],
+      [
+        "mrexodia",
+        9
+      ],
+      [
+        "iRonin",
+        9
+      ],
+      [
+        "KJyang-0114",
+        8
+      ],
+      [
+        "markusylisiurunen",
+        7
+      ],
+      [
+        "rwachtler",
+        7
+      ],
+      [
+        "vegarsti",
+        7
+      ],
+      [
+        "julien-c",
+        7
+      ],
+      [
+        "Ziphyrien",
+        6
+      ],
+      [
+        "w-winter",
+        6
+      ],
+      [
+        "avyayv",
+        6
+      ],
+      [
+        "lajarre",
+        5
+      ],
+      [
+        "BillionClaw",
+        5
+      ],
+      [
+        "ayu-exorcist",
+        5
+      ],
+      [
+        "dnouri",
+        4
+      ]
+    ]
+  },
+  "totals": {
+    "issue": 2247,
+    "pr": 961
+  }
+}

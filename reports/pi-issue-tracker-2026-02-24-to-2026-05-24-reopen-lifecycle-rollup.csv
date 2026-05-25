@@ -1,0 +1,4 @@
+scope,total,auto_closed_by_github_actions_within_10m,reopened_after_auto_close,reopened_after_auto_close_pct_of_auto_closed,reclosed_after_auto_reopen_ever,reclosed_after_auto_reopen_ever_pct_of_reopened,reopened_after_auto_close_currently_closed,reopened_after_auto_close_currently_open
+all,3208,2506,440,17.56,413,93.86,412,28
+issue,2247,1792,371,20.70,346,93.26,345,26
+pr,961,714,69,9.66,67,97.10,67,2
