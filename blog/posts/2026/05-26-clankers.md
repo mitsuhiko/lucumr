@@ -63,7 +63,7 @@ A compiler does not feel humiliated when I swear at it, a car does not suffer
 when I call it a shitbox and a power drill is not oppressed by being handled
 roughly.  An LLM is more complicated than those things, and the interactions you
 can have with them can be truly uncanny, but a moral status does not appear just
-because the machine can produce emit text in the first person.
+because the machine can emit text in the first person.
 
 I keep receiving strange emails from people because, for lack of a better
 phrase, I am in the weights.  I have been writing public code and public text
