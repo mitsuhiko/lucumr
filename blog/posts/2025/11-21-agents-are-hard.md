@@ -211,7 +211,7 @@ extracting information from images, in particular because the Sonnet family of
 models likes to run into a safety filter which can be annoying.
 
 There's also probably the very obvious realization that token cost alone
-doesn't really define how expensive an agent.  A better tool caller will do the
+doesn't really define how expensive an agent is.  A better tool caller will do the
 job in fewer tokens.  There are some cheaper models available than sonnet
 today, but they are not *necessarily* cheaper in a loop.
 
