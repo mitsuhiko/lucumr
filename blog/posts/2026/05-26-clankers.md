@@ -5,7 +5,7 @@ summary: "Why I like the word clanker and why machines are not people."
 
 # Clanker: A Word For The Machine
 
-[In my last post](/2026/5/24/pi-oss/) I used the word "clanker" as an
+[In my last post](/2026/5/24/pi-oss/) I used the word "clanker[^1]" as an
 alternative to "agent" quite consistently and probably excessively.  That choice
 ended up attracting a lot more attention than I expected in the Hacker News
 comment section of that post and a number of folks had a very strong reaction:
@@ -211,3 +211,7 @@ racism through shitty robot jokes.
 
 If the word stops doing that work, I will find another one because the word
 isn't what matters as much as the boundary which is important to me.
+
+[^1]: The term Clanker was initially popularized by Star Wars: The Clone Wars
+      but was apparently already in use in science fiction before:
+      [sfdictionary: clanker](https://sfdictionary.com/view/3048/clanker)
