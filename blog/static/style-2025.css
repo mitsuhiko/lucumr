@@ -180,12 +180,10 @@ table           { border: 1px solid var(--table-border-color); border-collapse: 
 td, th          { padding: 2px 12px; border: 1px solid #ddd; }
 
 /* footnotes */
-table.footnote          { margin: 25px 0; background: transparent; border: none; }
-table.footnote + table.footnote { margin-top: -35px; }
-table.footnote td       { border: none; padding: 9px 0 0 0; font-size: 15px; }
-table.footnote td.label { padding-right: 10px; }
-table.footnote td p     { margin: 0; }
-table.footnote td p + p { margin-top: 15px; }
+sup.footnote-ref        { font-size: 0.72em; line-height: 0;
+                          position: relative; top: -0.45em; vertical-align: baseline; }
+sup.footnote-ref a      { text-decoration: none; }
+div.footnotes           { font-size: 14px; line-height: 20px; }
 
 /* blog overview */
 div.entry-overview                  { margin: 25px 122px 25px 102px; }
