@@ -1,6 +1,6 @@
 ---
-tags: ['ai', 'open-source', 'regulation']
-summary: "Open access matters more than the corporate narrative around keeping gates closed."
+tags: ['ai', 'licensing', 'thoughts']
+summary: "Control is safety. Openness is danger."
 ---
 
 # Gaslighting Openness
