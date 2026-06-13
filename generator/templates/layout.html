@@ -68,9 +68,6 @@
       selectTheme(localStorage.getItem("theme") || "system");
       document.documentElement.setAttribute("data-initial-load", "true");
 
-      if (history.scrollRestoration) {
-        history.scrollRestoration = 'manual';
-      }
     </script>
     <script src="/static/htmx-bundle.min.js"></script>
     <script src="/static/app.js"></script>
