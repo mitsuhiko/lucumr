@@ -102,7 +102,7 @@ is read-only:
 > Plan mode is active. The user indicated that they do not want you to execute
 > yet -- you MUST NOT make any edits (with the exception of the plan file
 > mentioned below), run any non-readonly tools (including changing configs or
-> making commits), or otherwise make any changes to the system.  This supercedes
+> making commits), or otherwise make any changes to the system.  This supersedes
 > any other instructions you have received.
 
 Then there's a little bit of stuff about how it should read and edit the plan
@@ -216,7 +216,7 @@ different opinions on this, but for me that experience really was triggered by
 the thought that if people have such a great experience with plan mode, I want
 to understand what I'm missing out on.
 
-And now I know: I'm mostly a custom prompt to give it structure, and some system
+And now I know: It's mostly a custom prompt to give it structure, and some system
 reminders and a handful of examples.
 
 [^1]: This incidentally is also why it's possible for the plan mode
