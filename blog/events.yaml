@@ -1,3 +1,9 @@
+- title: "Four days in San Francisco"
+  location: "San Francisco, CA"
+  start_date: 2026-06-28
+  end_date: 2026-07-01
+  description: "I will be in San Francisco for a few days but might be quite busy"
+  type: "travel"
 - title: "AI Engineer"
   location: "London, UK"
   start_date: 2026-04-08
@@ -31,7 +37,7 @@
   description: "I will be for a few days in London but might be quite busy"
   type: "travel"
 - title: "Four days in San Francisco"
-  location: "San Francisco, UK"
+  location: "San Francisco, CA"
   start_date: 2025-11-09
   end_date: 2025-11-12
   description: "I will be for a few days in San Francisco but might be quite busy"
