@@ -254,6 +254,14 @@ made-up keys appear exactly at the highest-entropy point of that task: after
 closing a several-hundred-token escaped `newText` string, where the model must
 decide `}` vs `, "..."`.
 
+Opus 4.8 and Sonnet 5 seem to have much stronger priors about what an edit tool
+call should look like and that prior appears to be Claude Code's edit schema: a
+flat old/new string pair, plus the optional `replace_all` flag.  My guess is
+that Opus has learned that an edit operation may have one extra optional field,
+but under Pi's nested `oldText`/`newText` shape it has no trained name for that
+field.  So it samples a plausible name fresh each time, which is why the
+failures produce dozens of random keys rather than one stable alias.
+
 As `strict` mode in Anthropic appears to fix this, I presume that on the server
 side they are refusing to sample a key that is not permitted by the JSON schema
 structure.  That would also explain why they have limits to the complexity of
