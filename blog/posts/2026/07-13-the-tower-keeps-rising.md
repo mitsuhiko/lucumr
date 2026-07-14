@@ -1,6 +1,6 @@
 ---
 tags: ['thoughts', 'ai']
-summary: "Vibe coding, Babel, and the collapse of shared architectural language."
+summary: "Vibecoding and the possible collapse of a shared language."
 ---
 
 # The Tower Keeps Rising
