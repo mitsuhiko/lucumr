@@ -66,7 +66,7 @@ us to learn.
 
 As I said many times before: agents do not feel pain, only humans do.  Agents
 now let us act in parts of the system where we would previously have needed
-other people and in code bases where the people would have revolved.
+other people and in code bases where the people would have revolted.
 
 When I look at some vibecoded scaled-up projects the codebases become Babel not
 because nobody can communicate, but because nobody needs to.  Every developer
