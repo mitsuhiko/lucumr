@@ -30,9 +30,9 @@ question my own choices.  This reaction often makes it hard to wish them
 well, even when deep down I want to.
 
 What if my tribe is just wrong on something?  I grew up with the idea of
-“[never again](https://en.wikipedia.org/wiki/Never_again)”.  Anything
+"[never again](https://en.wikipedia.org/wiki/Never_again)".  Anything
 that remotely looks like fascism really triggers me.  There is a well
-known propaganda film from the US Army called “[Don't Be a Sucker](https://www.youtube.com/watch?v=vGAqYNFQdZ4)” which warns Americans
+known propaganda film from the US Army called "[Don't Be a Sucker](https://www.youtube.com/watch?v=vGAqYNFQdZ4)" which warns Americans
 about the dangers of prejudice, discrimination, and fascist rhetoric.  I
 watched this a few times over the years and it still makes me wonder how
 people can fall for that kind of rhetoric.
@@ -47,7 +47,7 @@ pushing humanity forward.
 
 It's challenging to reconcile my strong opposition to their (and other's)
 rhetoric and policies with the need to maintain a nuanced view of them.
-Neither are “literal Hitler”.  Equating them with the most extreme
+Neither are "literal Hitler".  Equating them with the most extreme
 historical figures oversimplifies the situation and shuts down productive
 conversation.
 
@@ -57,7 +57,7 @@ very hard to engage with these complexities and it's deeply
 uncomfortable and quite frankly exhausting.
 
 Life becomes simpler when you just pick a side, but it will strip away the
-deeper understanding and nuance I want to hold onto.  I don’t want to fall
+deeper understanding and nuance I want to hold onto.  I don't want to fall
 into the trap of justifying or defending behaviors I fundamentally
 disagree with, nor do I want to completely shut out the perspectives of
 those who support him.  This means accepting that people I engage with,

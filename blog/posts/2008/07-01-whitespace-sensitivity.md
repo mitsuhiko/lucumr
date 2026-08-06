@@ -31,7 +31,7 @@ end
 puts bar/foo
 ```
 
-That prints “1”. That prints “1”.However take this minor modification:
+That prints "1". That prints "1".However take this minor modification:
 
 ```ruby
 foo = 23
@@ -45,7 +45,7 @@ puts bar /foo
 Now this gives you an error that the regular Expression literal is
 unterminated. That's what I call whitespace sensitivity :)
 
-You're wonderhing why I'm using a method for “bar” and not a locale
+You're wonderhing why I'm using a method for "bar" and not a locale
 variable? Because the parser keeps track of all assigned local variables
 or methods (Not sure what exactly it does) and the syntax ambiguities
 are resolved that way.

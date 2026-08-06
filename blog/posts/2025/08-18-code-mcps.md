@@ -173,17 +173,17 @@ debug with LLDB through `pexpect_tool`. Here is what that looked like:
 ⏺ I'll help you debug the ./demo-buggy executable with lldb. Let me start by examining what we have and then launch lldb to debug it.
 
 ⏺ List(~/Development/pexpect-mcp)
-  ⎿  Listed 28 paths (ctrl+r to expand)
+  ⎿ Listed 28 paths (ctrl+r to expand)
 
 ⏺ Now let me use the pexpect tool to start an lldb debugging session with the demo-buggy executable:
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "import pexpect\n\n# Spawn lldb with the demo-buggy executable\nchild = pexpect.spawn('lldb
                               ./demo-buggy')\nchild.expect(\"(lldb)\")\nprint(\"LLDB started successfully\")\nprint(child.before.decode() + child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Let's run the program to see what happens\nchild.sendline('run')\nchild.expect_list([pexpect.TIMEOUT, \"(lldb)\",
                               \"Process.*exited\"], timeout=5)\nprint(\"Output after 'run' command:\")\nprint(child.before.decode() + child.after.decode())")
-  ⎿  Error: 'str' object has no attribute 'search'
+  ⎿ Error: 'str' object has no attribute 'search'
 
 ⏺ Let me fix the pexpect usage:
 
@@ -191,57 +191,57 @@ debug with LLDB through `pexpect_tool`. Here is what that looked like:
                               pexpect.EOF, \"(lldb)\", \"Process.*exited\"], timeout=5)\n    print(f\"Matched pattern index: {index}\")\n    print(\"Output after
                               'run' command:\")\n    print(child.before.decode() + child.after.decode())\nexcept Exception as e:\n    print(f\"Exception: {e}\")\n
                                  print(\"Current buffer:\")\n    print(child.before.decode() if child.before else \"No before content\")")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Let's check what's in the buffer and set a breakpoint first\nchild.sendline('breakpoint set --name
                               main')\nchild.expect(\"(lldb)\")\nprint(\"Breakpoint set output:\")\nprint(child.before.decode() + child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Now run the program\nchild.sendline('run')\nchild.expect(\"(lldb)\")\nprint(\"Run output:\")\nprint(child.before.decode() +
                                child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Let's examine the source code first to understand what we're debugging\nchild.sendline('source
                               list')\nchild.expect(\"(lldb)\")\nprint(\"Source listing:\")\nprint(child.before.decode() + child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ Let me also look at the source code directly to understand what we're debugging:
 
 ⏺ Read(demo-buggy.c)
-  ⎿  Read 77 lines (ctrl+r to expand)
+  ⎿ Read 77 lines (ctrl+r to expand)
 
 ⏺ Perfect! Now I can see the bugs in the code. Let me continue with the lldb debugging session to demonstrate finding these issues:
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Continue execution to hit the crash\nchild.sendline('continue')\nchild.expect(\"(lldb)\")\nprint(\"Continue
                               output:\")\nprint(child.before.decode() + child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Let's examine the backtrace to see where the crash
                               occurred\nchild.sendline('bt')\nchild.expect(\"(lldb)\")\nprint(\"Backtrace:\")\nprint(child.before.decode() +
                               child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Let's examine the current frame and variables\nchild.sendline('frame variable')\nchild.expect(\"(lldb)\")\nprint(\"Frame
                               variables:\")\nprint(child.before.decode() + child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Let's look at the student structure to see the NULL pointer\nchild.sendline('p
                               *s')\nchild.expect(\"(lldb)\")\nprint(\"Student structure:\")\nprint(child.before.decode() + child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Let's specifically look at the scores pointer\nchild.sendline('p s->scores')\nchild.expect(\"(lldb)\")\nprint(\"Scores
                               pointer:\")\nprint(child.before.decode() + child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Let's also examine the disassembly around the crash\nchild.sendline('disassemble
                               --frame')\nchild.expect(\"(lldb)\")\nprint(\"Disassembly:\")\nprint(child.before.decode() + child.after.decode())")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Exit lldb\nchild.sendline('quit')\nchild.expect(pexpect.EOF)\nprint(\"LLDB session ended\")")
-  ⎿  Error: Operation timed out after 15 seconds
+  ⎿ Error: Operation timed out after 15 seconds
 
 ⏺ pexpect - pexpect_tool (MCP)(code: "# Force quit\nchild.close()\nprint(\"LLDB session closed\")")
-  ⎿  Code executed successfully
+  ⎿ Code executed successfully
 
 ⏺ Based on the debugging session with lldb, I've identified the main issues in ./demo-buggy:
 
@@ -275,7 +275,7 @@ Afterwards I asked it to dump it into a reusable Python script to be run later:
   file with those pscript commands so we can use it again later?
 
 ⏺ Write(debug_demo.py)
-  ⎿  Wrote 95 lines to debug_demo.py
+  ⎿ Wrote 95 lines to debug_demo.py
      #!/usr/bin/env python3
      """
      Debug script for demo-buggy using pexpect and lldb.
@@ -298,7 +298,7 @@ And from a fresh session we can ask it to execute it once more:
 > please run debug_demo.py with uv run to figure out what's going on
 
 ⏺ Bash(uv run debug_demo.py)
-  ⎿  Starting lldb debugging session for ./demo-buggy
+  ⎿ Starting lldb debugging session for ./demo-buggy
      ✓ LLDB started successfully
      … +155 lines (ctrl+r to expand)
 
@@ -418,7 +418,7 @@ down from ~30 tool definitions to 1:
 ⏺ I'll navigate to localhost:5001 and summarize the article links I find there.
 
   playwrightess-mcp - playwright_eval (MCP)(code: "await page.goto('http://localhost:5001')")
-  ⎿  {
+  ⎿ {
        "success": true,
        "result": "undefined",
      … +5 lines (ctrl+r to expand)
@@ -431,7 +431,7 @@ down from ~30 tool definitions to 1:
                                            href: link.href })).filter(link => link.text && link.text.length > 5));
                                            console.log('All links found:', allLinks); return allLinks; } return
                                            articleLinks;")
-  ⎿  {
+  ⎿ {
        "success": true,
        "result": [
      … +101 lines (ctrl+r to expand)

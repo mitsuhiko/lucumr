@@ -16,8 +16,8 @@ versions, it creates virtualenvs, it manages dependencies, and lints and
 formats.  Initially developed for my own use, I decided to release it to
 the public, and the feedback has been overwhelmingly positive.
 
-When I introduced it, I initiated a discussion thread titled [“Should Rye
-Exist”](https://github.com/mitsuhiko/rye/discussions/6) referencing the
+When I introduced it, I initiated a discussion thread titled ["Should Rye
+Exist"](https://github.com/mitsuhiko/rye/discussions/6) referencing the
 well known [XKCD #929](https://xkcd.com/927/) which humorously comments
 on the proliferation of competing standards.  I did not feel well throwing
 yet another Python packaging tool into the ring.

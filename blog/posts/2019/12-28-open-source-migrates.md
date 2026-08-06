@@ -71,8 +71,8 @@ community.
 
 A big reason why this all happens in the first place is because as an Open
 Source maintainer the standard response which works against almost all
-forms of criticism is “I'm not paid for this and I no longer want to
-maintain the old version of X”.  And in fact this is a pretty good
+forms of criticism is "I'm not paid for this and I no longer want to
+maintain the old version of X".  And in fact this is a pretty good
 argument because it's both true, and very few projects actually are large
 enough that a fork by some third party would actually survive.  Python for
 instance currently has a fork of 2.7 called [Tauthon](https://github.com/naftaliharris/tauthon) which got very little

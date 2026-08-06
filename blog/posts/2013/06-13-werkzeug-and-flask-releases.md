@@ -104,7 +104,7 @@ working.
 
 - Flask's internal error handling has been improved to make responding
 to error cases more consistent.  This also has the added benefit of
-making the “commit on success, rollback on error” finally fully
+making the "commit on success, rollback on error" finally fully
 reliable.  Previously the test client would suppress the error
 information in some cases.
 

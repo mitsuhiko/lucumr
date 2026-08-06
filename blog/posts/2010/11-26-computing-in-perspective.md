@@ -5,7 +5,7 @@ summary: "Visualizing numbers and thinking about dimensions in computing."
 
 # Computing in Perspective
 
-One of my professors at my university likes to “visualize” numbers by
+One of my professors at my university likes to "visualize" numbers by
 comparing them to things people know.  That way you get a much better
 estimation, even without having an actual picture in your hand.
 
@@ -105,7 +105,7 @@ give you an *O(log n)* — what's closer: constant or linear runtime?
 
 If you are like me and not very bright at mathematics and you don't have a
 good idea of the logarithmic scale besides it growing slowly, you could
-compare it to the “width of a number”.  This great comparison comes from
+compare it to the "width of a number".  This great comparison comes from
 the professor I mentioned before.  *log10(10)* is 1, *log10(100)* is 2,
 *log10(1000)* is 3 etc.  In fact you could use the logarithm to implement
 a function that returns the number of digits in an integer:
@@ -127,7 +127,7 @@ constant complexity than linear one.
 
 ## Sharing Comparisons
 
-Unfortunately I am really bad at sharing these “comparison objects”.
+Unfortunately I am really bad at sharing these "comparison objects".
 Mainly because what makes sense to me does not necessarily make sense to
 other people.  I can imagine a liter of water, a meter or centimeter quite
 well, but if you are American, chances are neither of these things have
@@ -157,7 +157,7 @@ a good idea of the complexity of certain things in general.
 
 [Jeff Dean](http://research.google.com/people/jeff/index.html) added a
 slide to one of his presentations which [did the rounds afterwards](http://axisofeval.blogspot.com/2010/11/numbers-everybody-should-know.html).
-It shows the “numbers everybody should know”.  I guess there is no point
+It shows the "numbers everybody should know".  I guess there is no point
 in learning the exat numbers but some of these stem from a basic
 understanding of how computers and our world works:
 

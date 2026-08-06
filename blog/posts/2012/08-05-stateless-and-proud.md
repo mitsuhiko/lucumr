@@ -63,9 +63,9 @@ came up.  This functionality was not well supported by anything but
 Mozilla browsers so it never became widespread.
 
 Another way to get information to the client in realtime is commonly named
-“long polling”.  The idea is that instead of repeatedly polling the server
-for results you poll it once and the server just does not reply with “no
-new messages” but it waits there until a message comes up.  This has the
+"long polling".  The idea is that instead of repeatedly polling the server
+for results you poll it once and the server just does not reply with "no
+new messages" but it waits there until a message comes up.  This has the
 advantage over regular polling that you get the message with a lower
 latency assuming you have a connection open (basically just the network
 latency) but you can only get one message that way.  Once the result is
@@ -140,7 +140,7 @@ without requiring a single database operation.
 It seems wrong to give up on these design ideas that make HTTP powerful
 just because we want to go from poll to push.  But we don't have to!
 
-## Publish — Subscribe
+## Publish — Subscribe
 
 Now unfortunately what's happening from here onwards is something you need
 to implement yourself.  Mainly because the only open source implementation

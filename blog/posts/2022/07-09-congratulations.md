@@ -21,7 +21,7 @@ packages makes a lot of sense.  Running a package index is expensive and
 the users of the package index really do want to reduce the chance that a
 package that they depend on is compromised.  In theory that type of protection
 really should apply to every package.  That's not what PyPI did, they decided to
-draw a line between “critical” and other packages.
+draw a line between "critical" and other packages.
 
 From the index' point of view I really understand this, but as a developer
 of Open Source software I'm quite conflicted about this.  The message to
@@ -31,7 +31,7 @@ it's within the bounds of it's terms of service to put further restrictions on
 such a project.
 
 However when I create an Open Source project, I do not chose to create a
-“critical” package.  It becomes that by adoption over time.  Right now the
+"critical" package.  It becomes that by adoption over time.  Right now the
 consequence of being a critical package is quite mild: you only need to enable
 2FA.  But a line has been drawn now and I'm not sure why it wouldn't be in the
 index best interest to put further restrictions in place.

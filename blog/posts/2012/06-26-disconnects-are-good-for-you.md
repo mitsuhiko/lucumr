@@ -6,7 +6,7 @@ your application to work around them."
 
 # ZeroMQ: Disconnects are Good for You
 
-ZeroMQ is a cool technology.  It's advertised as “better sockets” and I
+ZeroMQ is a cool technology.  It's advertised as "better sockets" and I
 can get behind that idea for the most part.  Unfortunately the high
 abstraction also makes it very easy to write applications that become
 unresponsive.  That's because ZeroMQ has an implicit state machine for a
@@ -23,7 +23,7 @@ two.
 
 When talking about TCP sockets the server socket has a way to `accept` a
 new client connection.  In the mainloop you typically wait until you
-accept a new connection which then “produces” a new socket.  In ZeroMQ
+accept a new connection which then "produces" a new socket.  In ZeroMQ
 there are always only two sockets in the request / response relationship.
 So how do you send replies back if a request comes?  It works because
 ZeroMQ switches state of the request socket.  When the request socket gets
@@ -106,8 +106,8 @@ So before the server was able to reply with a response the server died of
 an exception.  Very unfortunate.  If this was a TCP based server you would
 just restart the server after this incident, the client got a connection
 reset and would hopefully try again.  In ZeroMQ you're now in a worse spot
-after the server restart.  The server's socket is in the “accepting
-requests” state again but the client never noticed the server to disappear
+after the server restart.  The server's socket is in the "accepting
+requests" state again but the client never noticed the server to disappear
 and is still waiting for the reply to come.  This however will never
 happen.
 

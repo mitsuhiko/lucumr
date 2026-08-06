@@ -32,13 +32,13 @@ how moral purity in political and cultural discourse can become charged,
 so does the discourse around Rust, which has been dominated by the pursuit
 of memory safety.  Particularly within the core Rust community itself,
 discussion has moved beyond technical merits into something akin to
-ideological warfare.  The fundamental question of “Is this code memory
-safe?”, has shifted to “Was it made memory safe in the *correct* way?”.
+ideological warfare.  The fundamental question of "Is this code memory
+safe?", has shifted to "Was it made memory safe in the *correct* way?".
 This distinction matters because it introduces a purity test that values
 methodology over outcomes.  Safe C code, for example, is often dismissed
 as impossible, not necessarily because it *is* impossible, but because it
 lacks the strict guarantees that Rust's borrow checker enforces.
-Similarly, using Rust’s `unsafe` blocks is increasingly frowned upon,
+Similarly, using Rust's `unsafe` blocks is increasingly frowned upon,
 despite their intended purpose of enabling low-level optimizations when
 necessary.
 
@@ -65,8 +65,8 @@ to social media to push for changes in the Linux kernel development
 process.  The public shaming tactic failed, [leading the developer to
 conclude](https://lkml.org/lkml/2025/2/6/1292):
 
-> “If shaming on social media does not work, then tell me what does,
-because I'm out of ideas.”
+> "If shaming on social media does not work, then tell me what does,
+because I'm out of ideas."
 >
 
 It's not just the kernel where Rust's memory safety runs up against the
@@ -149,9 +149,9 @@ not even involve Rust at all — who knows.
 We also have to accept that not everyone is ready for change at the same
 pace. Forcing adoption when people aren't prepared only causes the
 pendulum to swing back hard.  It's tempting to look for a single authority
-to declare “the one true way,” but that won't smooth out the inevitable
+to declare "the one true way," but that won't smooth out the inevitable
 complications.  Indeed, those messy, incremental challenges are part of how
 real progress happens.  In the long run, these hard-won refinements tend
-to produce solutions that benefit all sides—if we’re patient enough to let
+to produce solutions that benefit all sides—if we're patient enough to let
 them take root.  The painful and messy transition is here to stay, and
 that's exactly why, in the end, it works.

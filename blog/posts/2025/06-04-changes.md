@@ -44,7 +44,7 @@ Never before have I seen a technology surface in every day life so
 quickly, so widely.  Smartphones adoption felt slow in comparison.  Today
 I can't finish a commute or coffee without spotting someone chatting with
 ChatGPT.  I've had conversations with baristas, hairdressers, parents at
-the playground — people who aren't what I would consider “tech-savvy” —
+the playground — people who aren't what I would consider "tech-savvy" —
 telling me how AI changed the way they write letters, search for recipes,
 help their kids with homework, or translate documents.  The ripple effect
 is already massive. And still, the majority of the world hasn't touched
@@ -54,7 +54,7 @@ to begin exploring their transformation.
 That's what makes this moment feel so strange — half revolutionary, half
 prelude.  And yet, oddly, there are so many technologists who are
 holdouts.  How could techies reject this change?  Thomas Ptacek's piece
-“[My AI Skeptic Friends Are All Nuts](https://fly.io/blog/youre-all-nuts/)” really resonated with me.  It
+"[My AI Skeptic Friends Are All Nuts](https://fly.io/blog/youre-all-nuts/)" really resonated with me.  It
 takes a humorous stab at the push against AI that is taking place from my
 very circles.  Why is it that so many people I've respected in tech for
 years — engineers, open source contributors — are the ones most resistant

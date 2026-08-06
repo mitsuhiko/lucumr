@@ -4,7 +4,7 @@ summary: "An old post of back in the days when Django was considering releasing
 a 2.0 version before 1.0."
 ---
 
-# Django’s Problems and Why 2.0 is a Bad Idea
+# Django's Problems and Why 2.0 is a Bad Idea
 
 I stumbled about [this thread on django-developers](http://groups.google.com/group/django-developers/browse_thread/thread/b4c237ad76f9eeca)
 which proposes calling the Django 1.0 release Django 2.0. One the one

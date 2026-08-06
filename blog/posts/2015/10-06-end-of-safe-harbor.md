@@ -46,7 +46,7 @@ engaging with the Irish authorities on that matter ever since.  The Irish
 rejected the complaint because they referred to the Safe Harbor act.  What
 changed now is that the European Court of Justice ruled the following:
 
-> In today’s judgment, the Court of Justice holds that the existence of
+> In today's judgment, the Court of Justice holds that the existence of
 a Commission decision finding that a third country ensures an adequate
 level of protection of the personal data transferred cannot eliminate
 or even reduce the powers available to the national supervisory
@@ -57,9 +57,9 @@ Union and the directive.
 >
 > **For all those reasons, the Court declares the Safe Harbour Decision
 invalid**. This judgment has the consequence that the Irish supervisory
-authority is required to examine Mr Schrems’ complaint with all due
+authority is required to examine Mr Schrems' complaint with all due
 diligence and, at the conclusion of its investigation, is to decide
-whether, pursuant to the directive, transfer of the data of Facebook’s
+whether, pursuant to the directive, transfer of the data of Facebook's
 European subscribers to the United States should be suspended on the
 ground that that country does not afford an adequate level of
 protection of personal data.

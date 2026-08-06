@@ -11,7 +11,7 @@ forward to: the chaos communication congress in Germany which is
 broadcasted live over the internet.
 
 This year that congress was called 27c3 and one of the talks there was
-entitled “Desktop on the Linux… (and BSD, of course)” and delivered by a
+entitled "Desktop on the Linux… (and BSD, of course)" and delivered by a
 raging man condemning everything about the desktop development in the last
 few years.  It's not uncommon to see talks where people try to claim that
 everybody but themselves are wrong and misguided.  The interesting thing
@@ -59,7 +59,7 @@ it is a mystery into which the mind will never penetrate.
 Now with everything that the mind cannot fully understand there will
 always be people that think to know better.  In case of the prime numbers
 we have a person called Peter Plichta who thinks to know better.  He
-“discovered” that if you put the prime numbers on rings of 24 items each,
+"discovered" that if you put the prime numbers on rings of 24 items each,
 that prime numbers will all be on certain positions on the ring.  However
 that by itself is not very interesting.  That's because prime numbers in
 the senary system (to the base 6) will always have 5 or 1 as last digit,
@@ -204,8 +204,8 @@ the actual applications.  This makes it impossible to make more radical
 changes to the way applications are designed on the desktop.  Fortunately
 GTK nowadays can draw window decorations itself without the help of the
 window decorator.  But I am pretty sure this change did not go without a
-lot of discussions and flamewars either (“Applications are not mean to
-draw the window decorations”).
+lot of discussions and flamewars either ("Applications are not mean to
+draw the window decorations").
 
 The presenter also pointed out that Gnome's applets were a bad idea and
 the old method worked so much better.  However what he was missing was

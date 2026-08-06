@@ -47,8 +47,8 @@ def make_counter():
     return inc
 ```
 
-CoffeeScript does a third thing which is “always reassign unless unknown
-from higher scope”.  In this case it looks like this:
+CoffeeScript does a third thing which is "always reassign unless unknown
+from higher scope".  In this case it looks like this:
 
 ```coffeescript
 makeCounter = ->
@@ -89,8 +89,8 @@ Later I added this line on the top of the file:
 {log, sin, cos, tan} = Math
 ```
 
-The purpose of that line is to “import” a bunch of functions from the
-`Math` “namespace”.  The end result is that in that file you can then
+The purpose of that line is to "import" a bunch of functions from the
+`Math` "namespace".  The end result is that in that file you can then
 use `tan(x)` instead of `Math.tan(x)`.  However adding that line now
 lets `shaderFromSource` fail.  Why?  Because it assigns to a variable
 named `log` which previously was local and just became global.

@@ -46,9 +46,9 @@ include "footer.php";
 ```
 
 Now the problem is that if you accept the filename blindly one could
-just pass a string with some leading “go one layer up” markers and access
+just pass a string with some leading "go one layer up" markers and access
 files somewhere else on the file system.  Now many people thought that
-wouldn't be a problem because the file has to end with “.php” so only PHP
+wouldn't be a problem because the file has to end with ".php" so only PHP
 files can be accessed.  Turns out that PHP never (at least not until
 recently) removed nullbytes from the string before opening the file.  Thus
 the underlying C function that opened the file stopped reading at the null
@@ -81,7 +81,7 @@ doing:
 '/foo'
 ```
 
-While in this case the attacker is “just” able to overwrite files anywhere
+While in this case the attacker is "just" able to overwrite files anywhere
 on the filesystem where the user has access (might be able to override
 your code and inject code that way!) it's not uncommon to read files on
 the filesystem as well and expose information that way.
@@ -193,13 +193,13 @@ text and convert newlines to `<br>` before feeding the data into the
 database.  Don't do this!
 
 There are a bunch of reasons for this but the most important one is called
-“context”.  Web applications these days are getting more and more complex,
+"context".  Web applications these days are getting more and more complex,
 mainly due to the concept of APIs.  A lot of the functionality of the
 website that was previously only avaiable in an HTML form is now also
 available as RESTful interfaces speaking some other format such as JSON.
 
 The context of a rendered text in your web application will most likely be
-“HTML”.  In that context, `<br>` makes a lot of sense.  But what if your
+"HTML".  In that context, `<br>` makes a lot of sense.  But what if your
 transport format is JSON and the client on the other side is not
 (directly) rendering into HTML?  This is the case for twitter clients for
 instance.  Yet someone at Twitter decided that the string with the
@@ -232,9 +232,9 @@ notification service where the message would contain an umlaut the
 information arrives here completely broken.  Turns out that one service
 assumes that HTML escaped information is to be transmitted, then however
 the other service only allows a few HTML escaped characters and completely
-freaks out when you substitute “ä” with “&auml;”.  If you ever are in the
-situation where you have to think about “is this plain text that is HTML
-escaped or just plain text” you are in deep troubles already.
+freaks out when you substitute "ä" with "&auml;".  If you ever are in the
+situation where you have to think about "is this plain text that is HTML
+escaped or just plain text" you are in deep troubles already.
 
 ## Spending too much Time with the Choice of Framework
 

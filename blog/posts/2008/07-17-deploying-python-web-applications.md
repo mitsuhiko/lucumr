@@ -16,10 +16,10 @@ stumbled upon fabric which is capistrano just in Python, with a working
 put command and less annoying in general.
 
 In combination with a custom virtualenv bootstrapping script Python web
-application deployment is a charm. One “fab bootstrap” later the servers
+application deployment is a charm. One "fab bootstrap" later the servers
 are creating a virtual python environment, compiling all dependencies,
 checking out all eggs and initializing the application environment.
-Updates are just one “fab production deploy” away.
+Updates are just one "fab production deploy" away.
 
 And the best part is that fabric is not limited to Python. You can use
 it to deploy anything you can control over ssh.
@@ -45,9 +45,9 @@ def bootstrap():
     put("/tmp/application.wsgi", "application.wsgi")
 ```
 
-Saved as fabfile.py “fab bootstrap” then asks for some servers and
+Saved as fabfile.py "fab bootstrap" then asks for some servers and
 bootstraps the application there, after changes in the repository you
-can “fab deploy” the latest version. Of course that's just a very basic
+can "fab deploy" the latest version. Of course that's just a very basic
 made up example, but it shows how you can use fabric.
 
 I'm using makefiles currently to execute common tasks for various Python

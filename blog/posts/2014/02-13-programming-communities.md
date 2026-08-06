@@ -25,7 +25,7 @@ track record from a certain point onwards.
 I owe a lot to online communities and people I met on the internet.  When
 I was about thirteen or so I bought two books on programming.  A book on
 Delphi and a book on Python.  The latter was a book by Gregor Lingl called
-“Python für Kids” which was a programming booked aimed towards young
+"Python für Kids" which was a programming booked aimed towards young
 people.  Without his book I my life would have been very different and I
 would have ended up as a Delphi programmer for a lot longer.
 

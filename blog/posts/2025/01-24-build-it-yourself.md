@@ -9,7 +9,7 @@ Another day, another [rant](/2016/3/24/open-source-trust-scaling/)
 [about](/2022/1/10/dependency-risk-and-funding/) [dependencies](/2024/3/26/rust-cdo/). from me.  This time I will ask you that we
 start and support a vibe shift when it comes to dependencies.
 
-You're probably familiar with the concept of “dependency churn.”  It's that
+You're probably familiar with the concept of "dependency churn."  It's that
 never-ending treadmill of updates, patches, audits, and transitive
 dependencies that we as developers love to casually install in the name of
 productivity.  Who doesn't enjoy waiting for yet another `cargo upgrade`
@@ -38,9 +38,9 @@ Because it's build on top of platform abstraction libraries that
 constantly churn, so it needs to update to avoid code duplication and
 blowing up compile times even more.
 
-But “big supply chain” will tell you that you must do it this way.  Don't
+But "big supply chain" will tell you that you must do it this way.  Don't
 you dare to copy paste that function into your library.  Or don't you dare
-to use “unsafe” yourself.  You're not qualified enough to write unsafe
+to use "unsafe" yourself.  You're not qualified enough to write unsafe
 code, let the platform abstraction architects do that.  Otherwise someone
 [will slap you](https://github.com/geiger-rs/cargo-geiger).  There are
 entire companies who are making a living of supplying you with the tools
@@ -63,8 +63,8 @@ that vibe shift we need in the Rust world: celebrating fewer dependencies
 rather than more.
 
 We're at a point in the most ecosystems where pulling in libraries is not
-just the default action, it's seen positively: “Look how modular and
-composable my code is!”  Actually, it might just be a symptom of never
+just the default action, it's seen positively: "Look how modular and
+composable my code is!"  Actually, it might just be a symptom of never
 wanting to type out more than a few lines.
 
 Now one will make the argument that it takes so much time to write all of
@@ -78,7 +78,7 @@ thousands of lines of other people's code for a single function.
 
 But let's face it: corporate code review culture has also has infected
 Open Source software.  Companies are more likely to reward engineers than
-scold them for pulling in that new “shiny library” that solves the problem
+scold them for pulling in that new "shiny library" that solves the problem
 they never actually had.  That creates problems, so dependabot and friends
 were born.  Today I just dread getting dependabot pull requests but on
 projects but I have to accept it.  I'm part of an ecosystem with my stuff

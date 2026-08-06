@@ -1,8 +1,8 @@
 ---
 tags: ['javascript']
-summary: "Why automatic semicolon insertion in JavaScript was a bad idea and why
+summary: 'Why automatic semicolon insertion in JavaScript was a bad idea and why
 you should be using explicit semicolons, even if you cannot disable that
-“feature”."
+"feature".'
 ---
 
 # Dealing with JavaScript's Automatic Semicolon Insertion
@@ -44,7 +44,7 @@ the input stream.
 - A token is a restricted token when it is allowed by some production
 of the grammar, but the production is a *restricted production* and
 the token would be the first token for a terminal or nonterminal
-immediately following the annotation “[no `LineTerminator` here]”
+immediately following the annotation "[no `LineTerminator` here]"
 within the production.
 
 If furthermore the restricted token is separated from the previous
@@ -262,7 +262,7 @@ expression between a property operator (`foo[(expression here)]`)
 when the programmer was writing an array literal.
 
 - Many i18n libraries are parsing JavaScript code to find strings marked
-as translatable.  The “parser” I wrote for  [Babel](http://babel.edgewall.org/) for instance is basically just trying
+as translatable.  The "parser" I wrote for  [Babel](http://babel.edgewall.org/) for instance is basically just trying
 to infer all that from the tokens instead of properly parsing the
 code.  This does give some wrong matches from time to time but I was
 too lazy to write a proper JavaScript parser from scratch for that.
@@ -287,7 +287,7 @@ var x=function(){}var y=function(){}
 ```
 
 [Are Semicolons Necessary in Javascript?](http://aresemicolonsnecessaryinjavascript.com/)  Despite popular
-belief the answer is “sometimes” and not “no”.  But to save yourself time
+belief the answer is "sometimes" and not "no".  But to save yourself time
 and troubles, just place them all the time.  Not only will it save
 yourself some headaches, your code will also look more consistent.
 Because there will be situations where a semicolon becomes necessary to

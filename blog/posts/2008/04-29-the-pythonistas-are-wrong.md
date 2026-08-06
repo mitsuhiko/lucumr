@@ -12,9 +12,9 @@ prove once and for all that the Pythonistas are wrong.
 
 Pythons almost NEVER look like this:
 
-![python logo](http://dev.pocoo.org/~mitsuhiko/python-logo.gif)The frog shown here is what the Python Foundation refers to as a “snake”
+![python logo](http://dev.pocoo.org/~mitsuhiko/python-logo.gif)The frog shown here is what the Python Foundation refers to as a "snake"
 (though it looks more like a frog), more specifically a blue/yellow one.
-The name “Python” however refers to a [group of six British Gentleman](http://en.wikipedia.org/wiki/Monty_Python) and something like 86.43%
+The name "Python" however refers to a [group of six British Gentleman](http://en.wikipedia.org/wiki/Monty_Python) and something like 86.43%
 people know that. The name was chosen because snakes just suck. Get it?
 It's not a snake, they are British.
 
@@ -24,7 +24,7 @@ NOT represented by snakes.
 
 ![scipy logo](http://dev.pocoo.org/~mitsuhiko/scipylogo.gif)See that one in the scipy logo? That's a public domain circle someone
 added a white snake to. A SNAKE. Look at the [wikipedia article](http://en.wikipedia.org/wiki/Python_Programming_Language) and search
-for “snake”. Yeah, no match.
+for "snake". Yeah, no match.
 
 ![pycon08 logo](http://dev.pocoo.org/~mitsuhiko/pycon08.png)Even the Pycon (where Guido van Rossum himself spoke) has made the
 mistake of choosing this stupid snake.

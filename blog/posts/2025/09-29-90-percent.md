@@ -127,7 +127,7 @@ early it, you won't be able to operate it in a stable manner later.
 
 Here's an example: I asked it to build a rate limiter.  It "worked" but lacked
 jitter and used poor storage decisions.  Easy to fix if you know rate limiters,
-dangerous if you don’t.
+dangerous if you don't.
 
 Agents also operate on conventional wisdom from the internet and in tern do
 things I would never do myself.  It loves to use dependencies (particularly

@@ -14,8 +14,8 @@ something that's *largely* bland.
 ![](/static/desktop-2020.jpg)## What's There
 
 Most of what I have here is from IKEA, like pretty much everything we own
-in this flat.  This is for a handful of reasons.  The first one is — and
-that's quite consistent with my general approach to most things — that
+in this flat.  This is for a handful of reasons.  The first one is — and
+that's quite consistent with my general approach to most things — that
 it's standardized, mass produced and if something breaks you can get it
 repaired easily.
 

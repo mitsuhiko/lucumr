@@ -268,7 +268,7 @@ before someone pointed that mistake out!
 
 These rules have made one of Rust's best features less and less
 approachable and also harder to understand.  The requirement for the
-existence `MaybeUninit` instead of “just” having the old
+existence `MaybeUninit` instead of "just" having the old
 `mem::uninitialized` API is obvious but shows how complex the rules of the
 language are.
 

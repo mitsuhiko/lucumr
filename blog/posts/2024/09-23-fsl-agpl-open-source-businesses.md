@@ -18,7 +18,7 @@ and a fascinating interconnection between the business model and license
 texts.
 
 As some of you might know I'm a strong proponent of the concept now
-branded as “[Fair Source](https://fair.io/about/)” which we support at
+branded as "[Fair Source](https://fair.io/about/)" which we support at
 Sentry.  Fair Source is defined by a family of springing licenses that
 give you the right to read and modify code, while also providing an
 exclusivity period for the original creator to protect their core
@@ -43,7 +43,7 @@ my reasoning.
 When you take a project like Sentry, which started as an Open Source
 project and later turned into a VC funded company, its model revolves
 around a commercial entity being in charge.  That model is often referred
-to as “single vendor.”  This is also the case with companies like
+to as "single vendor."  This is also the case with companies like
 Clickhouse Inc. or Elastic and their respective projects.
 
 Sentry today is no longer Open Source, it's Fair Source (FSL licensed).
@@ -107,7 +107,7 @@ version into a project that eventually [became known as Xapian](https://xapian.o
 
 What's the catch?  The catch is that the only people who could license it
 more liberally than GPLv2 are long gone from the project.  Xapian
-refers to its current license “[a historical accident](https://trac.xapian.org/wiki/Licensing)”.  The license choice causes
+refers to its current license "[a historical accident](https://trac.xapian.org/wiki/Licensing)".  The license choice causes
 some challenges specifically to how Xapian is embedded.  There are three
 remaining entities that would need to agree to the relicensing.  From my
 understanding none of those entities commercially use Xapian's original
@@ -128,8 +128,8 @@ get hold of the source code, you already have an irrevocable promise that
 it will eventually turn into Apache 2.0 (or MIT with the alternative license
 choice) which is about as non-strings attached as it can get.
 
-So in some ways a comparison is “AGPL now and forever” vs “FSL now, Apache
-2.0/MIT in two years”.
+So in some ways a comparison is "AGPL now and forever" vs "FSL now, Apache
+2.0/MIT in two years".
 
 That's not to say that AGPL (or SSPL) don't have their merits.  Xapian as
 much as it might suffer from their accidental license choice also *is* a
@@ -137,14 +137,14 @@ successful Open Source project that helped a lot of developers out there.
 Maybe the license did in fact work out well for them, and because
 everybody is in the same boat it also has created a community of equals.
 
-I do believe however it's important to recognize that “single-vendor AGPL
-with a CLA” is absolutely not the same as “community driven AGPL project
-without the CLA”.
+I do believe however it's important to recognize that "single-vendor AGPL
+with a CLA" is absolutely not the same as "community driven AGPL project
+without the CLA".
 
 The title claims that FSL balances Open Source better than AGPL, and it's
 fair to question how a license that isn't Open Source can achieve that.
 The key lies in understanding that Fair Source is built on the concept of
-*delayed* Open Source.  Yes, there's a waiting period, but it’s a
+*delayed* Open Source.  Yes, there's a waiting period, but it's a
 relatively short one: just two years.  Count to two and the code
 transitions to full, unshackled openness.  And that transition to Open
 Source is a promise that can't be taken from you.

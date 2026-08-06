@@ -92,7 +92,7 @@ If you run this, this will print the following:
 3 (number)
 ```
 
-So each value in this object has itself been “boxed” in a value.  As far
+So each value in this object has itself been "boxed" in a value.  As far
 as the engine is concerned, everything is a value.
 
 ## Objects
@@ -123,7 +123,7 @@ which if a type implements can be boxed into a value.  All the dynamic
 operations of the value are forwarded into the internal `Object`.  These
 operations are the following:
 
-- `repr()`: returns the “representation” of the object.  The
+- `repr()`: returns the "representation" of the object.  The
 representation define is how the object is represented (serialized) and
 how it behaves.  Valid representations are `Seq` (the object is a list or
 sequence), `Map` (the object is a struct or map), `Iterable` (the object
@@ -137,7 +137,7 @@ object, for instance used for functions)
 Additionally there is quite a few extra API (to render them to strings, to
 make them callable etc.) but we can ignore this for now.  In addition
 there are a few more but some of them just have default implementations.
-For instance the “length” of an object by default comes from the length of
+For instance the "length" of an object by default comes from the length of
 the enumerator returned by `enumerate()`.
 
 So how would one design a trait like this?  For sake of keeping this post
@@ -314,7 +314,7 @@ type_erase! {
 }
 ```
 
-You can read this as “map trait Object into a DynObject smart pointer”.
+You can read this as "map trait Object into a DynObject smart pointer".
 The actual macro has a few extra things (it also supports building the
 necessary vtable entries for `fmt::Debug` and other traits) but let's
 focus on the simple pieces.  This macro generates some pretty wild output.

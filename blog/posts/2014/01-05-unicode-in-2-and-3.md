@@ -89,7 +89,7 @@ non byte-strings.  When does this happen and how does it work?
 
 Essentially when you have an operation involving a byte-string and a
 Unicode-string, the byte-string is promoted into a Unicode string by going
-through an implicit decoding process that uses the “default encoding”
+through an implicit decoding process that uses the "default encoding"
 which is set to ASCII.  Python did provide a way to change this encoding
 at one point, but nowadays the `site.py` module removes the function to
 set this encoding after it sets the encoding to `ASCII`.  If you start
@@ -253,13 +253,13 @@ TypeError: Can't convert 'bytes' object to str implicitly
 ```
 
 Oha!  Python 3 can already deal with this.  And we get a nice error.  I
-would even argue that “Can't convert 'bytes' object to str implicitly” is
-a lot nicer than “'bytes' object has no attribute 'encode'”.
+would even argue that "Can't convert 'bytes' object to str implicitly" is
+a lot nicer than "'bytes' object has no attribute 'encode'".
 
 Why do we still not have those encoding methods back?  I really don't know
 and I no longer care either.  I have been told multiple times now that my
-point of view is wrong and I don't understand beginners, or that the “text
-model” has been changed and my request makes no sense.
+point of view is wrong and I don't understand beginners, or that the "text
+model" has been changed and my request makes no sense.
 
 ## Byte-Strings are Gone
 
@@ -282,7 +282,7 @@ formatting for bytes](http://bugs.python.org/issue3982).
 
 This is getting ridiculous now though, because it turned out that the
 model chosen for Python 3 just does not work in reality.  For instance in
-Python 3 the developers just “upgraded” some APIs to Unicode only, making
+Python 3 the developers just "upgraded" some APIs to Unicode only, making
 them completely useless for real-world situations.  For instance you could
 no longer parse byte only URLs with the standard library, the implicit
 assumption was that every URL as Unicode (for that matter, you could not
@@ -363,8 +363,8 @@ like `yield from`, `nonlocal`, SNI SSL support etc.)
 
 In light of [only about 3% of all Python developers using Python 3
 properly](http://alexgaynor.net/2014/jan/03/pypi-download-statistics/)
-and developers proudly declaring on Twitter that “the migration is going
-as planned” I got so incredibly frustrated that I nearly published an
+and developers proudly declaring on Twitter that "the migration is going
+as planned" I got so incredibly frustrated that I nearly published an
 multi page rant about my experience with Python 3 and how we should kill
 it.
 

@@ -19,7 +19,7 @@ been using this test bed to run a of experiments over the last year.  I
 learned a lot about what is missing in the ecosystem by building it and
 where the challenges are.  What I enjoyed the most of working on it so far
 has been the feedback from various people on it.  I wanted to explore what
-a “cargo for Python” is like and it's becoming ever more evident what that
+a "cargo for Python" is like and it's becoming ever more evident what that
 might look like.  At the same time from the very start I was very clear in
 [questioning its existence](https://github.com/mitsuhiko/rye/discussions/6).
 
@@ -41,7 +41,7 @@ stands, three things that Rye does are either already picking Astral
 tools, or will soon default to doing so.
 
 This led to a few conversations if it would make sense for Astral to
-continue the work on Rye and build it out into that “cargo for Python”.
+continue the work on Rye and build it out into that "cargo for Python".
 I'm very much convinced that there should be such a tool and that is
 something Charlie from Astral shares.  Where we landed is a plan that
 looks like the following:
@@ -58,7 +58,7 @@ exploring a multi-version Python import system.
 
 Rye will turn into a blessed breeding ground of different things.  As the
 user experience becomes more obvious uv itself will turn from what
-it is today — low level plumbing — into that higher level tool with a
+it is today — low level plumbing — into that higher level tool with a
 clear migration path of folks using `rye` to that new `uv`.
 
 To try Rye on top of uv today [install](https://rye-up.com/guide/installation/) or update to the latest

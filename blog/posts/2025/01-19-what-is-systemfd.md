@@ -48,9 +48,9 @@ elsewhere](https://github.com/watchexec/watchexec/blob/main/doc/packages.md).
 
 But what about the socket?  The solution to this problem I picked comes
 from [systemd](https://en.wikipedia.org/wiki/Systemd).  Systemd has a
-“protocol” that standardizes passing file descriptors from one process to
+"protocol" that standardizes passing file descriptors from one process to
 another through environment variables.  In systemd parlance this is called
-“socket activation,” as it allows systemd to only launch a program if
+"socket activation," as it allows systemd to only launch a program if
 someone started making a request to the socket.  This concept was
 originally introduced by Apple as part of launchd.
 
@@ -173,7 +173,7 @@ Now how does this work on Windows?  The answer is that `systemfd` and
 passing work on Windows.  That's a more complex system which involves a
 local RPC server.  However the system does also support Windows and the
 details about how it works are largely irrelevant for you as a user
-— unless you want to implement that protocol for another programming
+— unless you want to implement that protocol for another programming
 language.
 
 ## Potential Improvements

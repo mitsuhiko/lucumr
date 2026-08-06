@@ -45,7 +45,7 @@ and exposing unintended side effects.
 For instance `str()` in Python used to be a function and was later
 converted into a type.  `dir()` in Python is a builtin function whereas
 `quit()` is an instance of a quitter type.  `cgi.escape()` is a
-“function”.  On the surface they all work exactly the same, but really the
+"function".  On the surface they all work exactly the same, but really the
 only thing they have in common is that you can call them.
 
 In Ruby there are no functions, instead there are objects that have
@@ -91,7 +91,7 @@ shows how different the languages treat expressions.
 In Python there are statements and expressions.  The syntax allows for
 statements to contain other statements and expressions to contain other
 expressions.  If an expression is used in the spot where a statement is
-expected it's wrapped in what the grammar calls an “expression statement”.
+expected it's wrapped in what the grammar calls an "expression statement".
 The purpose of the expression statement is to throw away the resulting
 value of the expression.  This is obvious in both the syntax
 representation as well as the bytecode.
@@ -111,7 +111,7 @@ Module(body=[Expr(value=Call(func=Name(id='foo', ctx=Load()),
 ```
 
 The call appears on module level, a module has multiple statements in the
-body.  In this case it calls the name “foo” (which is loaded) with no
+body.  In this case it calls the name "foo" (which is loaded) with no
 arguments or keyword arguments of any sort.  Since it's an expression it
 is wrapped in an `Expr` node.  This allows an expression to be used
 there and also then tells the code generator to throw away the result.
@@ -123,7 +123,7 @@ This would be the bytecode for it:
             6 POP_TOP
 ```
 
-It tells the interpreter: load the value for the global variable “foo”,
+It tells the interpreter: load the value for the global variable "foo",
 then call it without arguments, then throw away the return value.
 
 This is very different from Ruby.  In Ruby many statements are implemented
@@ -320,7 +320,7 @@ some of the same syntax.  The iteration protocol however itself works
 slightly different by utilizing the return value to indicate a break or
 continue.
 
-In accordance with Rust's memory model there are different “blocks”
+In accordance with Rust's memory model there are different "blocks"
 (called closures) as well.  Here is also where Rust diverges from Ruby.
 In Ruby a block is a syntactical suffix to a method invocation, in Rust a
 closure is a syntactical construct that can stand on itself.  Closures can
@@ -386,7 +386,7 @@ Rust has solved that problem currently in an incredible elegant way and
 that is by giving the presence or absence of the semicolon a meaning.
 
 Trailing semicolon in the last expression in a block means: ignore value
-(or convert it to “nil” (`()`)), the absence of it means to bubble up
+(or convert it to "nil" (`()`)), the absence of it means to bubble up
 that expression.
 
 Before we go further with that I want to point out how amazing semicolons
@@ -460,7 +460,7 @@ itself and that is the indication if the iteration should continue or
 terminate.  The `for` statement is a neat little syntax abstraction
 around the iteration protocol that adds the `return true` and `return
 false` for you to make it look nicer.  Since the return at that point is
-up for new use it can be repurposed to mean “return from outer function”,
+up for new use it can be repurposed to mean "return from outer function",
 and that's what it does.  So Rust, like Ruby benefits greatly from having
 the `return` up for other use.
 
@@ -506,7 +506,7 @@ Now given all these things, here is why the semicolon trick is awesome.
 From the iteration example you see the explicit `return` is not really
 an option because it's too important.  So what's the downside of always
 returning the last value?  The downside is that you would have to put
-`()` (Rust's version of “nil”) in a bunch of functions to fulfil the
+`()` (Rust's version of "nil") in a bunch of functions to fulfil the
 requirements of the callback's signature since otherwise the type inferred
 from the function would be the value of the last expression.  This would
 be especially annoying if different branches yield different types.

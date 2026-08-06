@@ -4,9 +4,9 @@ summary: "An old article from the time when mono just came out.  Still think it'
 an excellent environment."
 ---
 
-# Mono isn’t just for Apes
+# Mono isn't just for Apes
 
-On my trip through the Scotland I bought an edition of “Linux Format” to
+On my trip through the Scotland I bought an edition of "Linux Format" to
 have something to read while waiting for the train. I was reading the
 letters to the editor when I came across one letter that was basically
 an insult to the magazine complaining about their [Mono](http://www.mono-project.com/) support. Apparently they reviewed
@@ -28,15 +28,15 @@ environments are an OS X notebook and an Ubuntu linux one. I still do
 have a windows box but I just use it for playing. As a matter of fact
 I'm only interested in Mono and not the Microsoft versions of the .NET
 technologies. What I've seen so far is that Mono implemented all the
-cool features I actually want to use. That is C# with generics, “yield
-return”, lambdas, extension methods and LINQ (that is .NET 3.0 + some
+cool features I actually want to use. That is C# with generics, "yield
+return", lambdas, extension methods and LINQ (that is .NET 3.0 + some
 3.5 features as far as I know, afair LINQ is a 3.5 feature). They also
 have XSP2 and `System.Web` which makes it possible to use it for web
-applications. What I've seen so far qualifies as “awesome” so I want to
+applications. What I've seen so far qualifies as "awesome" so I want to
 share my feelings about Mono and why I think it's the best since the
 advent of ubuntu. My real experience with Mono is only a few weeks old
 therefore I may be missing quite a few things so please take this
-“review” with a grain of salt.
+"review" with a grain of salt.
 
 I think there are three major types of critics of Mono in the Open
 Source community. Those who think Microsoft pays Novell for developing
@@ -152,19 +152,19 @@ they are used all over the place which is clever.
 
 A huge advantage over Java is also that you have delegates and lambdas
 which enable a lot of cool stuff not possible in Java. C# also knows
-“yield return” which is essentially a helper to generate Enumerator
+"yield return" which is essentially a helper to generate Enumerator
 (iterator in Python) objects automatically which saves you tons of
 boilerplate code. Another neat thing about C# is that you have
 preprocessor directives which enable conditional compilation and allow
 you to affect the error reporting by providing different line numbers or
-filenames in “#line” comments. I often wished for something like that in
+filenames in "#line" comments. I often wished for something like that in
 Python for example when writing Jinja which has to do an ugly hack to
 rewrite the Tracebacks on the fly to get a proper debug output.
 
 But C# goes far beyond that. Apparently the thread safety in C# is
 mostly achieved by per-object locking which you can control with
 `lock(obj) { ... }` which makes it a lot easier to write thread safe
-classes. The Python “with” statement is available as `using (expr) { ...
+classes. The Python "with" statement is available as `using (expr) { ...
 }` which leads to much shorter code compared to Java. Take this Java
 example:
 

@@ -10,7 +10,7 @@ If you've been following me on Twitter, you know I'm not a big fan of MCP
 right now.  It's not that I dislike the idea; I just haven't found it to work as
 advertised.  In my view, MCP suffers from two major flaws:
 
-1. **It isn’t truly composable.**  Most composition happens through inference.
+1. **It isn't truly composable.**  Most composition happens through inference.
 2. **It demands too much context.**  You must supply significant upfront input, and
    every tool invocation consumes even more context than simply writing and
    running code.
@@ -56,7 +56,7 @@ willing to provide you with a custom piece of software to solve your specific
 problem.  And yes, maybe your task requires some inference, but many do need
 them all the time.
 
-There is a reason we say “to replace oneself with a shell script”, it's because
+There is a reason we say "to replace oneself with a shell script", it's because
 that has been happening for a long time.  With LLMs and programming, the idea is
 that rather than replacing yourself with a shell script, you're replacing
 yourself with an LLM.  But you run into three problems: cost, speed, and general
@@ -208,9 +208,9 @@ watch:
 
 * My [Agentic Coding Talk](https://www.youtube.com/watch?v=nfOVgz_omlU) where
   I go into this topic a bit.
-* Drew Breunig's post “[How to fix your context](https://www.dbreunig.com/2025/06/26/how-to-fix-your-context.html)”
+* Drew Breunig's post "[How to fix your context](https://www.dbreunig.com/2025/06/26/how-to-fix-your-context.html)"
   which covers some attempts to improve MCP tool selection if you cannot avoid
   it.
-* Manuel Odendahl's excellent “[MCPs are Boring](https://www.youtube.com/watch?v=J3oJqan2Gv8)”
+* Manuel Odendahl's excellent "[MCPs are Boring](https://www.youtube.com/watch?v=J3oJqan2Gv8)"
   talk from AI Engineer that was one of the first to point to the challenges
   with MCP.

@@ -40,7 +40,7 @@ appointed translator.  Everyone has a reason.  No one owns the outcome.
 
 Meanwhile, in the US, our counsel replies when it matters, even after hours.
 Bankers answer the same day.  The instinct is to enable progress, not enumerate
-reasons you can’t have it.  The goal is the outcome and the rules are
+reasons you can't have it.  The goal is the outcome and the rules are
 constraints to navigate, not a shield to hide behind.
 
 So what's the point?  I can't fix politics.  What I can do: act with agency,

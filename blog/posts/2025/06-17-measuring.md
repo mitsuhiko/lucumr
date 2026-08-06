@@ -17,12 +17,12 @@ Xcode for this project.  This got me thinking quite a bit more that this
 has been an entirely unacceptable experience for a long time, but with
 programming agents, the pain becomes measurable.
 
-When I first dove into programming I found the idea of [RTFM](https://en.wikipedia.org/wiki/RTFM) quite hilarious.  “Why are you
-asking dumb questions, just read it up.”  The unfortunate reality is that
+When I first dove into programming I found the idea of [RTFM](https://en.wikipedia.org/wiki/RTFM) quite hilarious.  "Why are you
+asking dumb questions, just read it up."  The unfortunate reality is that
 the manual often doesn't exist — or is wrong.  In fact, we as engineers
 are quite willing to subject each others to completely inadequate tooling,
 bad or missing documentation and ridiculous API footguns all the time.
-“User error” is what we used to call this, nowadays it's a “skill issue”.
+"User error" is what we used to call this, nowadays it's a "skill issue".
 It puts the blame on the user and absolves the creator, at least
 momentarily.  For APIs it can be random crashes if you use a function
 wrong, for programs it can be impossible to navigate UI or lack of error

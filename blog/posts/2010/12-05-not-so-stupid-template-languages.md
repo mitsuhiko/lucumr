@@ -24,15 +24,15 @@ render HTML or XML or plain text.
 >
 
 I suppose the macro part there is written especially with Jinja2 in mind
-there because I know very few templating systems calling things “macros”.
-In fact, the only reason Jinja2 calls its functions “macros” is that
-“enddef” sounded stupid as a keyword and “endfunction” was past the
+there because I know very few templating systems calling things "macros".
+In fact, the only reason Jinja2 calls its functions "macros" is that
+"enddef" sounded stupid as a keyword and "endfunction" was past the
 threshold of keyword lengths I was happy with.
 
 So what is a macro in Jinja2 and why does it exist in the first place?  A
 macro is basically nothing more than a template that is meant for
 including, but with the additional information about what variables it
-wants.  It's the Python principle of “explicit is better than implicit”
+wants.  It's the Python principle of "explicit is better than implicit"
 applied for templating languages.
 
 Take the following Django template as example:
@@ -48,8 +48,8 @@ Take the following Django template as example:
 From looking at that specific code it's completely impossible to figure
 out what variables the included template depends on.  One might guess that
 user is used, but there are two other variables available for sure: first
-of all “users” is clearly available for the included template, however
-django also adds “forloop” implicitly into the context, so the template
+of all "users" is clearly available for the included template, however
+django also adds "forloop" implicitly into the context, so the template
 that was included could use that too.  Additionally however it might access
 the current request, current user or tons of other variables.
 
@@ -62,11 +62,11 @@ is happening in a template.  Especially if you want to look over
 templates written by someone else it's a huge time saver.
 
 1. it allows the templating system to apply huge performance
-improvements.  “forloop” / “loop” is never referenced?  No point in
+improvements.  "forloop" / "loop" is never referenced?  No point in
 creating an object then.
 
 1. Macros are functions and thus can be used in an expression context.
-This – among other things – makes it possible to expand / call macros
+This - among other things - makes it possible to expand / call macros
 in the context of internationalized blocks.
 
 This example here makes this pretty obvious:
@@ -125,10 +125,10 @@ before leads to inconsistent syntax rules.  A giant mess.
 
 I'm not arguing there that Django's template system would be bad, I think
 it's good enough for what it does.  I however disagree strongly with the
-fact that “non stupid template languages” are too complex for people to
+fact that "non stupid template languages" are too complex for people to
 handle or give them additional power to make your code unmaintainable.
 
 Those are different systems with different ideas and different
-consequences.  The “unrestricted template languages are bad and result in
-PHP spaghetti code” straw man argument is just that: a straw man.  I have
+consequences.  The "unrestricted template languages are bad and result in
+PHP spaghetti code" straw man argument is just that: a straw man.  I have
 seen equally bad Django, PHP, Jinja2 and Mako templates.

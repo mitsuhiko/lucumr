@@ -19,7 +19,7 @@ flood of memories (good and bad).  Second, I've found myself accidentally
 pulled towards agentic coding and vibe coders[^1].  Over the last month and a half
 I have spoken with so many people on AI and programming and realized that a
 growing number of them are people I might not, in the past, have described as
-“programmers.”  Even on the way to the conference I had the pleasure to engage
+"programmers."  Even on the way to the conference I had the pleasure to engage
 in a multi-hour discussion on the train with an air traffic controller who
 ventured into programming because of ChatGPT to make his life easier.
 
@@ -47,10 +47,10 @@ successful software engineers through outreach programs (like
 much of my early carreer from learning from others on the Python IRC channels.
 
 We need to pay close attention to vibe coding.  And that not because it might
-produce lower‑quality code, but because if we don't intentionally welcome the
+produce lower-quality code, but because if we don't intentionally welcome the
 next generation learning through these tools, they will miss out on important
 lessons many of us learned the hard way.  It would be a mistake to treat them
-as outcasts or “not real” programmers.  Remember that many of our first
+as outcasts or "not real" programmers.  Remember that many of our first
 programs did not have functions, were a mess of GOTO and things copy/pasted
 together.
 
@@ -59,14 +59,14 @@ ChatGPT build something.  Lucky for us: in many of those cases the AI picks
 Python.  We should treat this as an opportunity and anticipate an expansion in
 the kinds of people who might want to attend a Python conference.  Yet many of
 these new programmers are not even aware that programming communities and
-conferences exist.  It’s in the Python community’s interest to find ways to
+conferences exist.  It's in the Python community's interest to find ways to
 pull them in.
 
 Consider this: I can name the person who brought me into Python.  But if you
 were brought in via ChatGPT or a programming agent, there may be no human there
 — just the AI.  That lack of human connection is, I think, the biggest
 downside.  So we will need to compensate: to reach out, to mentor, to create
-on‑ramps.  To instil the idea that you should be looking for a community,
+on-ramps.  To instil the idea that you should be looking for a community,
 because the AI won't do that.  We need to turn a solitary interaction with an
 AI into a shared journey with a community, and to move them towards learning
 the important lessons about engineering.  We do not want to have a generation

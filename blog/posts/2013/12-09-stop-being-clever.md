@@ -98,7 +98,7 @@ in terms of code quality, but it seems fewer people care because it
 runs on the client instead of server.  You don't have to pay for your
 slowly running JavaScript code.
 
-## “Clever” Code
+## "Clever" Code
 
 The first pain point is people being cute and clever with JavaScript.  And
 that makes me reviewing code and hunting for bugs ridiculously paranoid.
@@ -345,7 +345,7 @@ Python has many more tools for making immutable objects interesting.  For
 instance it supports operator overloading and has first class support for
 using immutable objects as hash keys.  JavaScript has neither.
 
-## “Useful Magic”
+## "Useful Magic"
 
 I love angular, very much so.  It's one of the sanest systems out there
 for UI design in JavaScript but the magic in it frightens me.  It starts
@@ -412,7 +412,7 @@ weird ways or duplicate the function for their own use.  It's not uncommon
 to have half a dozen implementations of the same functionality in a larger
 JavaScript application.
 
-## “But it runs”
+## "But it runs"
 
 PHP got big because it just worked and it took no time to get started.  A
 whole generation of developers started working with it and together that
@@ -434,7 +434,7 @@ thought about security at all.  With the complete absence of escaping
 functions, HTML is concatenated with input strings left and right.
 
 And unlike PHP performance does not matter because client side JavaScript
-“scales linearly with the number of users” running the application.
+"scales linearly with the number of users" running the application.
 
 Angular is not inherently slow, but it's just so easy to make slow Angular
 directives and there are too many out there (and it's too easy to make your

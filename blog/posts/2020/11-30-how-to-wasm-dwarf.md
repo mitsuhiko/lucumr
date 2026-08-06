@@ -12,7 +12,7 @@ for this is that it is quickly becoming a widely supported compilation
 target for a range of runtimes.  This lets one ship a custom WebAssembly
 runtime to run your stuff and then update the code that is running on it
 trivially across a variety of environments.  It's a more modern take of
-Java's “compile once run everywhere” philosophy.
+Java's "compile once run everywhere" philosophy.
 
 Not excited about WebAssembly yet?  You really should be though.  There
 are so many projects now that show the power of it.  From [emulating Flash](https://ruffle.rs/) to [edge computing](https://www.fastly.com/blog/how-fastly-and-developer-community-invest-in-webassembly-ecosystem),
@@ -23,7 +23,7 @@ There is one catch though: if you start distributing more and more complex
 WebAssembly targets to the edge (or browser) and you want to do fast
 iteration, you are going to experience crashes and errors in production
 that haven't shown up during development.  So you need a crash reporting
-tool.  If we emphasize the “web” in WebAssembly for a second then one
+tool.  If we emphasize the "web" in WebAssembly for a second then one
 instantly starts thinking about source maps.  Source maps are what enables
 crash reporting of minified JavaScript in production.  Source maps take
 the location in a minified JavaScript file and let us figure out where
@@ -47,8 +47,8 @@ environment.
 
 If you have never looked at the internals of WebAssembly you can find lots
 of explanations online about how it works.  However one of the probably
-most interesting ways to get excited about it is a talk titled [“A talk
-Near the Future of Python”](https://www.youtube.com/watch?v=r-A78RgMhZU) by David Beazley where he
+most interesting ways to get excited about it is a talk titled ["A talk
+Near the Future of Python"](https://www.youtube.com/watch?v=r-A78RgMhZU) by David Beazley where he
 live codes a WASM interpreter in Python.  The reason the talk is a great
 way to dive into WASM is because it shows really well the basics of what
 it's all about.
@@ -79,7 +79,7 @@ something fancy in your application (like IO or really anything that
 sounds like a syscall) the runtime needs to "inject" that into your
 module.  This sounds like wild west and in a way it is.  To allow
 interoperability of different runtimes some standards are emerging.  The
-most prominent one is called “[WASI](https://wasi.dev/)”.
+most prominent one is called "[WASI](https://wasi.dev/)".
 
 ## How to WebAssembly
 
@@ -148,13 +148,13 @@ a stack trace out of a memory dump you don't just need the DWARF data, you
 also need the executable.  The reason for this is that that the process of
 creating a stack trace is also something that the executable itself needs
 for a lot of languages.  So for instance C++ has exceptions and in order
-to throw them, it needs to “unwind” the stack.  For that it uses on some
+to throw them, it needs to "unwind" the stack.  For that it uses on some
 platforms a derived version of DWARF embedded in the binary as `eh_frame`.
 Since often that information is not retained in the debug files we
 typically need both.
 
-To match those two files together the concept of “build IDs” (also called
-“debug IDs” and/or “code IDs”) has been established.  In Mach-O binaries
+To match those two files together the concept of "build IDs" (also called
+"debug IDs" and/or "code IDs") has been established.  In Mach-O binaries
 they are prominently stored as a header in the Mach-O file and are called
 `LC_UUID`.  In ELF binaries two systems are used: the more modern
 the `NT_GNU_BUILD_ID` ELF note in the program headers or the more legacy
@@ -202,7 +202,7 @@ look into the debug information for `utils.dylib` and look for `0x1024 -
 With WebAssembly we have two immediate problems.  First of all code and
 data live are separated.  This is generally called a [Harvard architecture](https://en.wikipedia.org/wiki/Harvard_architecture).  Functions in
 WASM are as far as the runtime is concerned referenced by name or index.
-The “address” of a function is not a thing that WASM understands.  It
+The "address" of a function is not a thing that WASM understands.  It
 might be something that would be nice to have for the language that
 compiles down to it though.  For instance it's very common to take the
 address of a function in C++ and put it into a variable.  The other place

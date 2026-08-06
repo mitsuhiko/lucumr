@@ -129,7 +129,7 @@ testsuite changed through the conversion to Python 3 in unintended ways.
 ## Write a Compatibility Module
 
 So you're going to skip six, can you live without helpers?  The answer is
-“no”.  You will still need a small compatibility module but that is small
+"no".  You will still need a small compatibility module but that is small
 enough that you can just keep it in your package.  Here are some basic
 examples of what such a compatibility module could look like:
 
@@ -195,7 +195,7 @@ limited to ASCII only characters.
 This property is very useful for unified codebases because the general
 trend with Python 3 is to introduce Unicode in some interfaces that
 previously did not support it, but never the inverse.  Since native
-string literals “upgrade” to Unicode but still somewhat support
+string literals "upgrade" to Unicode but still somewhat support
 Unicode in 2.x this string literal is very flexible.
 
 For instance the `datetime.strftime` function strictly does not

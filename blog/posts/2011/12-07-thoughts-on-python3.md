@@ -23,8 +23,8 @@ express that nearly as often enough.
 Quite the contrary actually.  I love Python, I love discussing ways and
 implementations but I am not committing the project despite my commit bit.
 I am a pain in the ass at language summits, if I am attending them, and can
-see why my opinion would be unpopular.  “Always complaining, not doing
-anything”.  There is just so much stuff I would love to see Python do but
+see why my opinion would be unpopular.  "Always complaining, not doing
+anything".  There is just so much stuff I would love to see Python do but
 at the end of the day, I'm a user of Python more than a developer.
 
 When you read my comments about Python 3 since it was released as the
@@ -39,7 +39,7 @@ specifies that a release will never happen.  PyPy is making amazing
 progress but at the same time it continues to be a project that is so far
 from the architecture of other stuff that it will probably fight with
 acceptance problems for a longer time.  In many ways PyPy is currently
-doing stuff that “you don't do”.  And I think it's amazing.
+doing stuff that "you don't do".  And I think it's amazing.
 
 ## Why do we use Python?
 
@@ -50,14 +50,14 @@ discussing stuff with Nick Coghlan at the last day's party.  We were drunk
 but as a result of that the discussion was very honest to say the least.
 We both pretty much agreed on the fact that the Python language is with
 faults and that some of these faults are now being further worked on and
-in some regards even exposed.  The “`yield from`” PEP was brought up as a
+in some regards even exposed.  The "`yield from`" PEP was brought up as a
 perfect example where a questionable design decision (coroutines as
 generators) was further expanded to make it somewhat work.  Yet even with
-the “`yield from`” changes they are still miles away from the user
+the "`yield from`" changes they are still miles away from the user
 friendliness of greenlets.
 
-This discussion largely came from the talk “The Prejudgement of
-Programming Languages” by Gary Bernhardt on the same day at the
+This discussion largely came from the talk "The Prejudgement of
+Programming Languages" by Gary Bernhardt on the same day at the
 conference.  And we both agreed that Ruby's blocks are amazing design but
 for many reasons don't work that well in Python in its current design.
 
@@ -163,7 +163,7 @@ immediately.  And in my absolutely personal opinion Python 3.3/3.4 should
 be more like Python 3 and Python 2.8 should happen and be a bit more like
 Python 3.  Because as it stands, Python 3 is the XHTML of the programming
 language world.  It's incompatible to what it tries to replace but does
-not offer much besides being more “correct”.
+not offer much besides being more "correct".
 
 ## The Thing with Unicode
 
@@ -224,8 +224,8 @@ these problems are very real.
 So if you now operate on the filesystem in Python 3, even with the new
 surrogate escape encoding it feels weird at times.  It's a painful
 procedure and it's painful because the tools are missing to deal with the
-mess.  Python 3 basically tells you “Buddy, your filesystem is now
-Unicode”, but it does not provide you with ways to deal with the mess.  It
+mess.  Python 3 basically tells you "Buddy, your filesystem is now
+Unicode", but it does not provide you with ways to deal with the mess.  It
 does not even tell you out of the box if Python fakes the filesystem
 Unicode support or not, it does not tell you if normalization happens, it
 does not tell you how you are supposed to compare filenames.
@@ -235,10 +235,10 @@ world.  Traditionally my mac has a American keyboard layout, American
 locale, American everything basically — with the exception of how numbers
 and dates are formatted.  The result of that (and I suppose the fact that
 I upgraded my mac since Tiger) I had the situation that when I logged into
-my remote server the locale was set to the string “POSIX”.  What is
-“POSIX” you are asking?  I have no freaking idea.  But the end result of
+my remote server the locale was set to the string "POSIX".  What is
+"POSIX" you are asking?  I have no freaking idea.  But the end result of
 that was that Python was about as clueless as me and decided to go with
-“ANSI_X3.4_1968”.  This also marked the day that I learned that ASCII goes
+"ANSI_X3.4_1968".  This also marked the day that I learned that ASCII goes
 by many names.  Turns out that's indeed just another name for ASCII.  And
 lo and behold my remote Python interpreter did not show the entries
 properly from a folder which internationalized filenames.  Why did they
@@ -267,7 +267,7 @@ And why am I writing this here?  Because all in all I have to argue that
 the Unicode support in Python 3 is causing me tons more problems than it
 ever did in Python 2.
 
-If one sticks to the Python 2 Zen of “explicit is better than implicit”
+If one sticks to the Python 2 Zen of "explicit is better than implicit"
 then Unicode becomes a non-issue in terms of decoding and encoding.  Here
 is how the part of every application looks like that talks to other
 services:  bytes come in, Unicode goes out.  You can explain that.  You
@@ -302,7 +302,7 @@ easy.
 But it does not exist and Python's interpreter internals are not designed
 to make a new string type a possibility.
 
-## “We broke their World”
+## "We broke their World"
 
 [Nick talked about](http://readthedocs.org/docs/ncoghlan_devs-python-notes/en/latest/py3k_binary_protocols.html)
 how the Python core team broke the web developer's world.  The core team
@@ -349,7 +349,7 @@ it to have the same level of perfection that goes into the design of a
 Porsche.  Yes.  It's developer facing stuff, but a product must be
 designed well from top to bottom.
 
-I can make my stuff “work” on Python 3, and I would still hate it.  I want
+I can make my stuff "work" on Python 3, and I would still hate it.  I want
 to make it **work**.  I want to feel the same level of enjoyment in using
 my libraries or other people's libraries on Python 3 I had in Python 2.
 
@@ -374,7 +374,7 @@ packages, the unified representation of strings in memory.
 But right now porting a library to Python 3 currently feels like
 developing the Python 2 library and making a shitty version for Python 3
 to prove that it works there.  Jinja2 on Python 3 is by all means (pardon
-my French) “fucking awful”.  It's horrible and I should be ashamed to use
+my French) "fucking awful".  It's horrible and I should be ashamed to use
 it.  For example Jinja2 loads two one megabyte regular expressions into
 memory in the Python 3 version and I did not care when I released it.  I
 just wanted it to kinda work there.
@@ -394,7 +394,7 @@ improved path module that exposes more behavior of the underlying file
 system.  It has to be bolder and force a default encoding on text files
 that is not depending on the execution environment.  It has to provide
 more tools to explicitly deal with encoded strings.  It needs support for
-IRIs and not just URLs.  It needs that more than “`yield from`”.  There
+IRIs and not just URLs.  It needs that more than "`yield from`".  There
 need to be helpers to deal with the transcoding that is necessary to map
 URLs to the filesystem.
 
@@ -437,7 +437,7 @@ at what people are doing to make their code work on both 2.x and 3.x.
 Technologies are evolving fast and it would break my heart to see that
 Python ruins itself by just ignoring possible dark clouds in the sky.
 
-Python is not “too big to fail”.  Python can become unpopular very
+Python is not "too big to fail".  Python can become unpopular very
 quickly.  Pascal and Delphi became niche languages even though they were
 amazing even after the introduction of the .NET framework and C#.  They
 were ruined by mismanagement more than anything else.  People still

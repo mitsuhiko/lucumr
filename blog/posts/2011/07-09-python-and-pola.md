@@ -9,8 +9,8 @@ people are surprised."
 When you use something for a long time you will develop some kind of
 sensing of what goes together and what does not appear to fit the common
 pattern.  The Python community seems to have given this effect a name: if
-something matches the common patterns it's “pythonic” if it's not, it's
-deemed “unpythonic”.  Most aspects of the language itself are designed to
+something matches the common patterns it's "pythonic" if it's not, it's
+deemed "unpythonic".  Most aspects of the language itself are designed to
 not surprise you if you use them in case there would be more than one
 possible behavior.  This is what many people refer to the [Principle of
 Least Astonishment](http://en.wikipedia.org/wiki/Principle_of_least_astonishment)).  In my
@@ -31,9 +31,9 @@ of small examples that almost exclusively used the good parts of the
 standard library and hardly any user written logic.  One example used
 `itertools` and the `gzip` module to load a logfile, parse and analyze it.
 I found that a very interesting example because it showed that if you do
-not think of “I will use a while loop here, here and here, and a condition
-there and then I have the first part” but as “this is what I want to do,
-this is what I need and am done”.
+not think of "I will use a while loop here, here and here, and a condition
+there and then I have the first part" but as "this is what I want to do,
+this is what I need and am done".
 
 I think Python does an amazing job by making people look at the broader
 picture instead of boring implementation details.

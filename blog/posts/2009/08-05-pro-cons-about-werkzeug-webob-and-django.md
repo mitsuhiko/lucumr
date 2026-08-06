@@ -39,7 +39,7 @@ tempting, I don't think it's a good idea. Using the WSGI environment as
 a communication channel seems wrong to me. The main problem with it is
 that WebOb cannot achieve what it's doing with standard environment
 keys. There are currently five WebOb keys in the environment for
-“caching” purposes and for compatibility with paste it also understands
+"caching" purposes and for compatibility with paste it also understands
 a couple of paste environment keys.
 
 The idea is that other applications can get a request again at a
@@ -172,7 +172,7 @@ and response objects.
 - There is no support for if-range and friends.
 
 - The response stream is useless because each `write()` ends up as a
-separate “item” in the application iterator. Because each item is
+separate "item" in the application iterator. Because each item is
 followed by a flush it makes the response stream essentially useless.
 
 - The `MultiDict` is unordered which means that some information is

@@ -27,7 +27,7 @@ closures and lots of chaining that Python cannot support well.  These
 features are much easier to understand and write in a non indentation
 based language.  Let's look at the same example in both languages.
 
-First a Python example of printing “Hello World” three times:
+First a Python example of printing "Hello World" three times:
 
 ```python
 def main():
@@ -62,7 +62,7 @@ types or number of arguments to a print function.
 
 The most familiar yet different feature is object behavior.  In Python a
 class can opt into certain behavior by implementing special methods.
-This is usually called “conforming to a protocol”.  For instance to make
+This is usually called "conforming to a protocol".  For instance to make
 an object iterable it implements the `__iter__` method that returns an
 iterator.  These methods must be implemented in the class itself and
 cannot *really* be changed afterwards (ignoring monkeypatching).
@@ -145,7 +145,7 @@ happens.  What happens if you need to return more than one error?  This is
 where things differ from a philosophical point of view.
 
 In Python a function can fail with any error and there is nothing you can
-do about that.  If you ever used the Python “requests” library and you
+do about that.  If you ever used the Python "requests" library and you
 caught down all request exceptions and then got annoyed that SSL errors
 are not caught by this, you will understand the problem.  There is very
 little you can do if a library does not document what it returns.
@@ -204,8 +204,8 @@ result was an error, then the program aborts.
 The part where Rust and Python become completely different languages is
 the concept of mutability and ownership.  Python is a garbage collected
 language and as a result pretty much everything can happen with the
-objects at runtime.  You can freely pass them around and it will “just
-work”.  Obviously you can still generate memory leaks but most problems
+objects at runtime.  You can freely pass them around and it will "just
+work".  Obviously you can still generate memory leaks but most problems
 will be resolved for you automatically at runtime.
 
 In Rust however there is no garbage collector, yet the memory management
@@ -220,7 +220,7 @@ scope.
 More complex ownership scenarios can be expressed by lifetime annotations
 and the function signatures.  For instance in the case of the `Add`
 implementation in the previous example the receiver was called `self`
-like in Python.  However unlike in Python the value is “moved” into the
+like in Python.  However unlike in Python the value is "moved" into the
 function whereas in Python the method is invoked with a mutable reference.
 What this means is that in Python you could do something like this:
 
@@ -240,7 +240,7 @@ out self to a global list.  That means if you run the above example you
 have two references to the first instance of `MyType`: one is in
 `leaks` the other is in `a`.  In Rust this is impossible.  There can
 only ever be one owner.  If you would append `self` to `leaks` the
-compiler would “move” the value there and you could not return it from the
+compiler would "move" the value there and you could not return it from the
 function because it was already moved elsewhere.  You would have to move
 it back first to return it (for instance by removing it from the list
 again).
@@ -459,7 +459,7 @@ Python 3 for instance.  There is a clear separation of concerns.
 
 ## Distribution and Libraries
 
-Rust comes with a combination of virtualenv+pip+setuptools called “cargo”.
+Rust comes with a combination of virtualenv+pip+setuptools called "cargo".
 Well, not entirely virtualenv as it can only work with one version of Rust
 by default, but other than that it works as you expect.  Even better than
 in Python land can you depend on different versions of libraries and

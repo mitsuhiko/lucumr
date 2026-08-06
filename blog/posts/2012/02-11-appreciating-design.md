@@ -28,7 +28,7 @@ German ubuntu community I deployed a phpBB installation a few years prior
 to when I used Trac first.  One of the great features of phpBB was that
 people wrote extensions for it that provided extra functionality to the
 base bulletin board system.  The way these plugins worked however was by
-actually modifying the code.  Called “mods” they came with long
+actually modifying the code.  Called "mods" they came with long
 installation instructions that showed the specific places where you had to
 copy/paste code in.  Not even diff files were provided in those days but
 it still sortof worked because people took the time to hand patch their
@@ -105,7 +105,7 @@ and ultimately he wants me to get this car.
 Apple seems to be doing very much the same.  Many Apple computer users
 are as loyal to their product as buyers of cars.  They will point how
 cool the case design is, how nicely the lid closes, how cute the machine
-looks when the sleep light is “breathing” or how few problems they have
+looks when the sleep light is "breathing" or how few problems they have
 with it.  I know many flaws in my Macs but that does not stop me from
 continue supporting the company and getting their products.  That's
 because I appreciate the work that went into every part of it.
@@ -123,8 +123,8 @@ have had a look at the internals if they were communicated properly and
 that might have helped improving it.  As it stands right now, only a small
 community remains around Trac and only one active developer remains.
 
-With Battlefield 3 it's very similar.  The advert said “the easiest way to
-play with friends” but it did not say why Battlelog (their online
+With Battlefield 3 it's very similar.  The advert said "the easiest way to
+play with friends" but it did not say why Battlelog (their online
 community and also main menu) was cool.  Why it's better for the user than
 the main menu being in the game.  Combined with the fact that the game did
 not deliver in some other parts (such as missing VOIP support) people
@@ -133,15 +133,15 @@ with it.  And an unhappy fanbase is the very last you want to have when it
 comes to multiplayer games because those games are sold in a very similar
 way: if my friends play I want to play it too.  Selling technical
 excellence to computer gamers would not have been hard either because they
-take pride in “knowing more” about computers and game then their console
+take pride in "knowing more" about computers and game then their console
 playing friends.
 
 ## Make them appreciate it
 
-I guess to a large degree the idea of “the best design is the one you
-don't notice” plays into that but that does not mean it wouldn't be great
+I guess to a large degree the idea of "the best design is the one you
+don't notice" plays into that but that does not mean it wouldn't be great
 to point it out nonetheless.  And by that I don't mean putting a red arrow
-on the product saying “this is a cool design element” but by providing a
+on the product saying "this is a cool design element" but by providing a
 nicely designed website or folder that shows the thought process that went
 into it.
 

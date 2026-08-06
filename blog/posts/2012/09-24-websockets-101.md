@@ -68,7 +68,7 @@ through many iterations and basically had to be changed multiple times
 because of unforeseen security problems that came up with misbehaving
 proxies.  The protocol I created for the internal communication of our
 server is upgrading from HTTP just like websockets do, but without the
-“secure” parts.  And here is why it does not matter:
+"secure" parts.  And here is why it does not matter:
 
 Everybody knows about HTTP proxies.  We have proxies that do load
 balancing on the application side, we have proxies that do SSL offloading,
@@ -387,7 +387,7 @@ RFC provides us with:
 
 Good news first:  as of the websocket version specified by the RFC it's
 only a header in front of each packet.  The bad news is that it's a rather
-complex header and it has the frighting word “mask” in it.  Here are the
+complex header and it has the frighting word "mask" in it.  Here are the
 individual parts explained:
 
 - `fin` (*1 bit*): indicates if this frame is the final frame that
@@ -515,8 +515,8 @@ possible for the receiving side to see if the remote side terminated.
 Only at the next send would you realize that something went wrong.  With
 websockets you can send the ping opcode at any time to ask the other side
 to pong.  Pings can be sent whenever an endpoint thinks it should and a
-pong is sent “as soon as is practical”.  Someone also decided that
-something like ping and pong are too simple so they were “improved” so
+pong is sent "as soon as is practical".  Someone also decided that
+something like ping and pong are too simple so they were "improved" so
 that they can carry application data and if you pong you have to send the
 payload of the ping back.  Sounds easy enough to implement but this
 actually can make it fairly annoying to deal with because now there is

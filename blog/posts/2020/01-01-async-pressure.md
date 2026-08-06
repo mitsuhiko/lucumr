@@ -55,7 +55,7 @@ aspect of networking.
 
 All these processing pipelines are normally scaled for a certain amount of
 messages (or in this case luggage) per time period.  If the number exceeds
-this — or worst of all — if the pipeline stalls terrible things can
+this — or worst of all — if the pipeline stalls terrible things can
 happen.  An example of this in the real world was the London Heathrow
 Terminal 5 opening where 42,000 bags failed to be routed correctly over 10
 days because the IT infrastructure did not work correctly.  They had to
@@ -312,8 +312,8 @@ connection.
 Coming from a TCP background where flow control is managed silently behind
 the scenes can set a developer down a dangerous path where one just reads
 bytes from a socket and assumes this is all there is to know.  However the
-TCP API is misleading because flow control is — from an API perspective
-— completely hidden from the user.  When you design your own streaming
+TCP API is misleading because flow control is — from an API perspective
+— completely hidden from the user.  When you design your own streaming
 based protocol you will need to absolutely make sure that there is a
 bidirectional communication channel and that the sender is not just
 sending, but also reading to see if they are allowed to continue.
@@ -365,7 +365,7 @@ you might have forgotten to make some functions async that should have
 been.  And a different programming environment does not help here.  The
 same issues people have in all programming environments including the
 latest additions like go and Rust.  It's not uncommon to find open issues
-about “handle flow control” or “handle back pressure” even on very popular
+about "handle flow control" or "handle back pressure" even on very popular
 projects that are open for a lengthy period of time because it turns out
 that it's really hard to add after the fact.  For instance go has an open
 issue from 2014 [about adding a semaphore to all filesystem IO](https://github.com/golang/go/issues/7903) because it can overload the
@@ -374,9 +374,9 @@ able to break the server due to insufficient back pressure.  There are
 many, many more examples.
 
 If you look at the Python hyper-h2 docs there are a shocking amount of
-examples that say something along the lines of “does not handle flow
-control”, “It does not obey HTTP/2 flow control, which is a flaw, but it
-is otherwise functional” etc.  I believe the fact flow control is very
+examples that say something along the lines of "does not handle flow
+control", "It does not obey HTTP/2 flow control, which is a flaw, but it
+is otherwise functional" etc.  I believe the fact flow control is very
 complex once it shows up in the surface and it's easy to just pretend it's
 not an issue, is why we're in this mess in the first place.  Flow control
 also adds a significant overhead and doesn't look good in benchmarks.

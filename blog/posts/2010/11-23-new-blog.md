@@ -8,7 +8,7 @@ the hood and where the rest of the content went."
 
 I really wanted to stop giving status updates like this on my blog as
 irrelevant information is much better suited for twitter, but let this be
-the last exception.  I used to use my own blog software “Zine” on this
+the last exception.  I used to use my own blog software "Zine" on this
 website but after a while I had to recognice that I hate traditional
 weblog software.  When I started blogging a few years ago I used wordpress
 like everybody else did.  I also used subversion (if at all) and generally

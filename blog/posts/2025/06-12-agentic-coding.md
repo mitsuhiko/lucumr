@@ -84,12 +84,12 @@ not need to figure out which tests to run, go does.
 
 - **Go is sloppy:** Rob Pike famously described Go as suitable for
 developers who aren't equipped to handle a complex language.  Substitute
-“developers” with “agents,” and it perfectly captures why Go's
+"developers" with "agents," and it perfectly captures why Go's
 simplicity benefits agentic coding.
 
 - **Structural interfaces:** interfaces in Go are structural.  If a type
 has the methods an interface expects, then it conforms.  This is
-incredibly easy for LLMs to “understand”.  There is very little surprise
+incredibly easy for LLMs to "understand".  There is very little surprise
 for the agent.
 
 - **Go has low eco-system churn:** Go's entire ecosystem embraces
@@ -98,7 +98,7 @@ the likelihood of AI generating outdated code — starkly contrasting
 JavaScript's fast-moving ecosystem for instance.
 
 For comparison, Python — my initial choice — often poses significant
-challenges.  Agents struggle with Python's magic (eg: Pytest’s fixture
+challenges.  Agents struggle with Python's magic (eg: Pytest's fixture
 injection) or complex runtime challenges (eg: wrong event loop when
 working with async), frequently producing incorrect code that even the
 agentic loop has challenges resolving.  Python also has practical
@@ -145,7 +145,7 @@ normally do:
 1. I had to protect the process manager against being spawend a second
 time when it's already running.  I use a [fork of shoreman](https://gist.github.com/mitsuhiko/8ca80fda0bf48045d54bcd34d76ad887)
 which writes a pidfile.  When spanwed a second time it errors and logs
-“services already running”.  Why does that matter?  Because the agent
+"services already running".  Why does that matter?  Because the agent
 sometimes does not know if the server is already running and otherwise
 happily spawns it a second time resulting in two version of the
 service bound to the same port.
@@ -161,7 +161,7 @@ Here an example agentic interaction that demonstrates this rather well:
    dynamic onboarding:
 
 ⏺ Bash(make dev)
-  ⎿  Error: error: services are already running
+  ⎿ Error: error: services are already running
      make: *** [dev] Error 1
 
 ⏺ The development server is already running. Let me check the logs to see the frontend URL:
@@ -236,7 +236,7 @@ longer make sense, you now might have the AI continue making a now
 outdated pattern.
 
 In theory this should be the same for agents and humans, but the reality
-is that agents make upgrades so “cheap” that it's tempting to just let the
+is that agents make upgrades so "cheap" that it's tempting to just let the
 AI do it and see if tests still pass.  I do not find this to be a
 successful path at all.  Be even more conservative about upgrades than
 before.
@@ -249,8 +249,8 @@ agentic coding, the more I am convinced of this.
 
 Simple code significantly outperforms complex code in agentic contexts.  I
 just recently wrote about [ugly code](https://lucumr.pocoo.org/2025/2/20/ugly-code/) and I think in the
-context of agents this is worth re-reading.  Have the agent do “the
-dumbest possible thing that will work”.
+context of agents this is worth re-reading.  Have the agent do "the
+dumbest possible thing that will work".
 
 - **Prefer functions** with clear, descriptive and longer than usual
 function names over classes.

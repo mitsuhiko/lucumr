@@ -74,7 +74,7 @@ options were available.  For example, when we needed an Open Source PDB
 implementation for analyzing Windows crashes but couldn't find a suitable
 solution, we contributed to a promising Rust crate instead of relying on
 Windows VMs and Microsoft's dbghelp.  When we started, our ingestion
-system handled a few thousand requests per second — now it handles well
+system handled a few thousand requests per second — now it handles well
 over a million.
 
 While building an SDK may seem straightforward, maintaining and updating

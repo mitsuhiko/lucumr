@@ -9,9 +9,9 @@ This will be a slightly different post.  It has to do with the country I
 am living in with my family: Austria.  More importantly it has to do with
 some some observations and of mine about how this country functions.
 
-There is a rather famous quote about Vienna: “If the world once ends, I'll
+There is a rather famous quote about Vienna: "If the world once ends, I'll
 move to Vienna, because that's where everything happens fifty years
-later”.  It has been attributed to Gustav Mahler who lived at the tail end
+later".  It has been attributed to Gustav Mahler who lived at the tail end
 of the 19th century.  It might also have been said by anyone else or
 about a different city.  Yet as a description of Vienna is highly
 accurate — even today — and it in many ways describes the culture here.
@@ -22,21 +22,21 @@ progress for as long as it can get away with.  It's not always stuck in
 the past.  There are definitely exceptions to the rule but in many ways
 this conservatism is the backdrop to every day decision making.  The way I
 like to portray what is happening here is that there is a strong desire
-for “stability” and fear of the unknown.  Austrians prefer to miss out on
+for "stability" and fear of the unknown.  Austrians prefer to miss out on
 a fad over adopting something too early.
 
 While a country is defined by its borders, the culture is defined by it's
-population.  So we need to define what an “Austrian” is.  That turns out to be
+population.  So we need to define what an "Austrian" is.  That turns out to be
 rather complex and this complexity matters a lot.  Austria is a country of
-9.1 Million people.  Let's take a news article from a few days ago: “4,9
-Million Austrians travelled for vacation in 2023” according to Statistics
+9.1 Million people.  Let's take a news article from a few days ago: "4,9
+Million Austrians travelled for vacation in 2023" according to Statistics
 Austria.  When you read a statistic like that, you can extrapolate that
 this refers to residents in Austria.  Austria has almost 20% foreigners;
 in Vienna that number is 35%.  Those foreigners are divided into EU
 citizens, refugees (and those applying and waiting to be processed) and
 other third country nationals.  They have vastly different permissions and
 rights.  It's comparatively easy to get a visa or work permit on paper
-(called “Aufenthaltstitel”) but it can involves a lot of bureaucracy to
+(called "Aufenthaltstitel") but it can involves a lot of bureaucracy to
 actually get one.  Even as a dependent of a EU citizen it can take months
 to get your permit processed, particularly in Vienna despite the fact that
 EU law requires this to take effect immediately.  The MA35 authority in
@@ -50,7 +50,7 @@ can speak German on B1 level or higher.  Simplifications for children are
 almost non existing.  You also cannot be abroad for more than 20% of the
 time which sometimes is an issue for business travellers.  It also
 requires you to renounce other citizenships when you want to become
-Austrian.  This leads to the other definition of “Austrian”: someone with
+Austrian.  This leads to the other definition of "Austrian": someone with
 Austrian citizenship.  Austria has some of the lowest naturalization rates
 in the EU.  Except it also has a citizenship through the backdoor.  If you
 are a descendent of a holocaust victim, you are entitled citizenship
@@ -103,11 +103,11 @@ this one to me).
 
 What else do you need permits for?  Well one of new things that has been
 thrown in recently has been the packaging directive of the European Union.
-A sender of a package has to “license” the packaging to send it to an end
+A sender of a package has to "license" the packaging to send it to an end
 user.  The license fee then goes to local waste management.  So far, so
 good.  Unfortunately in the case of Austria you need to go to a notary to
-register your “Representatives for packaging and single-use plastic
-products”.  You can take an educated guess how many foreign companies want
+register your "Representatives for packaging and single-use plastic
+products".  You can take an educated guess how many foreign companies want
 to jump through these hoops.  Some sellers refuse to sell to Austria (it's
 a small country after all), others pay for excessive fees from third
 parties that can provide such services.  Established local sellers are

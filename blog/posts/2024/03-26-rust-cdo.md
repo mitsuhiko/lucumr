@@ -54,7 +54,7 @@ you will eventually be called out like `learned-rust-this-way` was.  So
 while that might buy you time, it does not really solve the issue.
 
 However here is what actually does work: you just merge that code into
-your own library.  Now that junk tech debt is suddenly rated “AAA”.  For
+your own library.  Now that junk tech debt is suddenly rated "AAA".  For
 as long as you never touch that code any more, you never reveal to anyone
 that you did that, and you just keep maintaining your library like you did
 before, the world keeps spinning on.
@@ -68,6 +68,6 @@ Who won?  I think nobody really.
 <small>As for the title: a [CDO](https://en.wikipedia.org/wiki/Collateralized_debt_obligation)
 is a financial instrument that became pretty infamous during the financial
 crisis of 2007.  An entertaining explanation of that can be found in
-“[The Big Short](https://en.wikipedia.org/wiki/The_Big_Short_(film))”.
+"[The Big Short](https://en.wikipedia.org/wiki/The_Big_Short_(film))".
 
 </small>

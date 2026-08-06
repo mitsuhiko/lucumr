@@ -6,16 +6,16 @@ summary: "Make software that is capable to forget and decay information."
 # Make It Ephemeral: Software Should Decay and Lose Data
 
 Most software that exists today does not forget.  Creating software that
-remembers is easy, but designing software that deliberately “forgets” is
-a bit more complex.  By “forgetting,” I don't mean losing data because it
-wasn’t saved or losing it randomly due to bugs.  I'm referring to making a
+remembers is easy, but designing software that deliberately "forgets" is
+a bit more complex.  By "forgetting," I don't mean losing data because it
+wasn't saved or losing it randomly due to bugs.  I'm referring to making a
 deliberate design decision to discard data at a later time.  This ability
 to forget can be an incredibly benefitial property for many applications.
 Most importantly software that forgets enables different user experiences.
 
 I'm willing to bet that your cloud storage or SaaS applications likely
 serve as dumping grounds for outdated, forgotten files and artifacts.
-This doesn’t have to be the case.
+This doesn't have to be the case.
 
 Older computer software often aimed to replicate physical objects and
 experiences.  This approach (skeuomorphism) was about making digital
@@ -33,10 +33,10 @@ gathers dust and fades.  A notebook fills with notes and random scribbles,
 becomes worn, and eventually ends up in a cabinet to finally end its
 life discarded in a bin.  We probably all clear out our desk every couple
 of months, tossing outdated items to keep the space manageable.  When I do
-that, a key part of this is quickly judging how “old” some paper looks.
+that, a key part of this is quickly judging how "old" some paper looks.
 But even without regular cleaning, things are naturally lost or discarded
 over time on my desk.  Yet software rarely behaves this way.  I think
-that’s a problem.
+that's a problem.
 
 When data is kept indefinitely by default, it changes our relationship
 with that software.  People sometimes may hesitate to create anything in
@@ -48,7 +48,7 @@ searchable and discoverable.  This persistence seems advantageous but can
 quickly lead to more and more clutter.
 
 Adding new data to software is easy.  Scheduling it for automatic deletion
-is a bit harder.  Simulating any kind of “visual decay” to hint at age or
+is a bit harder.  Simulating any kind of "visual decay" to hint at age or
 relevance is rarely seen in today's software though it wouldn't be all
 that hard to add.  I'm not convinced that the work required to implement
 any of those things is why it does not exist, I think it's more likely
@@ -72,11 +72,11 @@ showing up in search.  I don't want to accidentally navigate to old and
 unused dashboards in the mids of an incident.
 
 Sorting by frequency of use is insufficient to me.  Ideally software
-embraced an “ephemeral by default” approach.  While there’s some risk of
+embraced an "ephemeral by default" approach.  While there's some risk of
 data loss, you can make the deletion purely virtual (at least for a
-while).  Imagine dashboard software with built-in “garbage collection”:
+while).  Imagine dashboard software with built-in "garbage collection":
 everything created starts with a short time-to-live (say, 30 days), after
-which it moves to a “to sort” folder.  If it’s not actively sorted and
+which it moves to a "to sort" folder.  If it's not actively sorted and
 saved within six months, it's moved to a trash and eventually deleted.
 
 This idea extends far beyond dashboards!  Wiki and innformation management
@@ -84,9 +84,9 @@ software like Notion could benefit from decaying notes, as the information
 they hold often becomes outdated quickly.  I routinely encounter more
 outdated pages than current ones.  While outright deletion may not be the
 solution, irrelevant notes and documents showing up in searches add to the
-clutter and make finding useful information harder.  “But I need my data
-sometimes years later” I hear you say.  What about making it intentional?
-Archive them in year books.  Make me intentionally “dig into the archives”
+clutter and make finding useful information harder.  "But I need my data
+sometimes years later" I hear you say.  What about making it intentional?
+Archive them in year books.  Make me intentionally "dig into the archives"
 if I really have to.  There are many very intentional ways of dealing with
 this problem.
 

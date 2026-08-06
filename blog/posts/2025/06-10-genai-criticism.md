@@ -14,12 +14,12 @@ criticism, I thought is would be a good opportunity to respond.
 ## Focusing on Code
 
 For this discussion, I'm focusing on AI as a tool for generating text and
-code — not images, video, or music.  My perspective is that there’s a clear
+code — not images, video, or music.  My perspective is that there's a clear
 difference between utilitarian outputs (code, simple text) and creative
 outputs that are meant to evoke emotion (art, music, well articulated
 writings, etc.).  For example, when I get an email from a real estate
 broker, I expect clear information, not art.  Similarly, when I add
-something to a virtual shopping cart, I don’t care how artistic the code
+something to a virtual shopping cart, I don't care how artistic the code
 is that makes it work.  In fact, even today without AI, I better not know.
 
 So, like Glyph, I want to focus on code.
@@ -43,7 +43,7 @@ they differ from mine.  I've certainly had my own frustrations with AI tools.
 
 The difference, I think, is that I've learned over time how to use these
 tools more effectively, and that's led to better results.  For me, it's not
-just “neutral-to-positive” — it's been astonishingly positive.  As I write
+just "neutral-to-positive" — it's been astonishingly positive.  As I write
 this, my agent is fixing code in another window for me.  I recorded [a
 video of it fixing issues in a library](https://www.youtube.com/watch?v=sQYXZCUvpIc) if you want to see what
 this looks like.
@@ -116,7 +116,7 @@ already the cheapest energy solution [^1] on the market and if we need
 more, that's quite likely the source that we will build more of.
 Particularly now that cost of energy storage is also going down quickly.
 
-As for copyright and “stealing”: I've always felt that copyright terms are
+As for copyright and "stealing": I've always felt that copyright terms are
 too long, scraping is beneficial, and sharing knowledge is a net positive
 for humanity.  That's what drew me to Open Source in the first place.  Glyph
 argues that scrapers are more aggressive now, but I'm not sure if that is

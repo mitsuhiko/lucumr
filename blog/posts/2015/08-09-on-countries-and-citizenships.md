@@ -61,8 +61,8 @@ PermitsPermits come in different flavours and not all countries have the same
 approach to them.  In most countries there are permits to stay and
 separate permits to work and sometimes there are residence permits
 which work differently.  In Austria for instance there are permits
-called “Aufenthaltstitel” which literally translates to “entitlement
-for stay” which also usually comes with an indication if you are
+called "Aufenthaltstitel" which literally translates to "entitlement
+for stay" which also usually comes with an indication if you are
 allowed to become part of the workforce or not.  For instance a family
 member permit gives you the right to work whereas a permit for stay
 for students will only give you limited permissions for working.

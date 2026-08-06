@@ -56,7 +56,7 @@ other global variables or constants.
 That means the big difference is that a Python module has the ability to
 store state, a C# namespace does not. There is nothing you can store on
 a C# namespace that could change at runtime. That means the only thing
-“stored” on a C# namespace is compiled code that was loaded from an
+"stored" on a C# namespace is compiled code that was loaded from an
 assembly (something like a .pyc file in Python, just more portable).
 
 So what are the implications?
@@ -78,7 +78,7 @@ ensure *there will only be one*. So as you might have guessed, it's what
 we call a singleton.
 
 The second step, the execution of code to create the module attributes
-is the second “problem” here. It's what creates the shared state or what
+is the second "problem" here. It's what creates the shared state or what
 can create the shared state. In order to not talk about irrelevant
 things, let's have a look at one of the modules from the [standard
 library](http://lucumr.pocoo.org/2009/3/2/std-stands-for-sleazy-tattered-and-dead),

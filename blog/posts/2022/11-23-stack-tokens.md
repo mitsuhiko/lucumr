@@ -263,7 +263,7 @@ through such an API.  [Here is what this could look like](https://play.rust-lang
 
 ## Soundness
 
-So here is an important question: is this sound?  The answer is “unclear”
+So here is an important question: is this sound?  The answer is "unclear"
 as it makes a statement about relationships of stacks to threads that's
 not entirely explored.  To quote Ralf Jung on a reddit thread about this topic:
 

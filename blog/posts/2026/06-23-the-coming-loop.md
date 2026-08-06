@@ -5,7 +5,7 @@ summary: "Loops, harnesses, and why even loop skeptics may end up with them."
 
 # The Coming Loop
 
-> I don’t prompt Claude anymore. I have loops running that prompt Claude and
+> I don't prompt Claude anymore. I have loops running that prompt Claude and
 > figuring out what to do. My job is to write loops.
 >
 > — Boris Cherny
@@ -64,7 +64,7 @@ loop.
 Furthermore it's well understood that models tend to observe some local failure
 and add a local defense.  [Karpathy
 mentioned](https://x.com/karpathy/status/1976082963382272334) how they are
-“mortally terrified of exceptions”.  In systems with important invariants,
+"mortally terrified of exceptions".  In systems with important invariants,
 especially persisted data formats or core infrastructure, the right fix is not
 "handle every malformed case."  The right fix is to make the malformed case
 unrepresentable or impossible to write in the first place.  Yet even with a lot

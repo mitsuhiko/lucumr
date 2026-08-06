@@ -208,7 +208,7 @@ the `new` method.  We say we take a `CallbackTrait<Arg>` for the function.  This
 exist yet, we will add it in a bit.  The function takes a single argument which is typed `Arg`
 which uses our earlier `TryConvertValue` trait.  Because that trait takes a lifetime, we need to
 come up with one.  Since we do not have a lifetime we can use here, we can use `for<'a>` to
-“create” one by using the higher-ranked trait bounds feature.
+"create" one by using the higher-ranked trait bounds feature.
 
 As for the `CallbackTrait` we still need to declare and implement it:
 

@@ -60,7 +60,7 @@ show up with an IP address and they think a cable is connected.
 - if the USB-C hub is disconnected from power / table network cable is
 removed the network comes back.
 
-The USB hubs where this happen for me is a “FLYLAND” hub as well as an
+The USB hubs where this happen for me is a "FLYLAND" hub as well as an
 "AUKEY" one.  I also have a one here from a reputable brand that shows the
 same thing, but I'm not sure if that is not actually a fake that Amazon
 delivered.
@@ -68,7 +68,7 @@ delivered.
 In general though with all three hubs the same thing happens.  I haven't
 had too much time exploring what they actually do but different comments
 on the internet suggested different explanations.  One is that the
-ethernet card in the hub starts sending “PAUSE” flow control frames when
+ethernet card in the hub starts sending "PAUSE" flow control frames when
 the hub is powered but disconnected from the laptop at high intervals.
 
 This frame apparently is not too common and there are other people

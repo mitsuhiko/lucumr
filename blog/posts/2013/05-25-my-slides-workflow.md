@@ -52,11 +52,11 @@ a basic inspiration for colors that work together.  The initial color I
 generally pick from the topic of the presentation.  For instance for my
 MongoDB presentation I decided on an earthy brown due to the official
 MongoDB art guidelines.  But my color choices sometimes just don't seem to
-make much sense for anyone but myself.  For instance for my “Happiness
-Through Ignorance” presentation I had two things to guide me.  One was the
+make much sense for anyone but myself.  For instance for my "Happiness
+Through Ignorance" presentation I had two things to guide me.  One was the
 location of where I gave the presentation (Japan), the other one was the
 general topic of the presentation which was discussing the idea of
-“ignorance is bliss”.  Both of these things made me go with pink as color
+"ignorance is bliss".  Both of these things made me go with pink as color
 due to the association of pink and light blue with young children and a
 blossoming cherry tree which I then also used as abstract art on the
 slides.

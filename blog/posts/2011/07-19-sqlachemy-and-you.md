@@ -40,8 +40,8 @@ different databases, on top of that you have the SQL abstraction language,
 sitting on top of that and the table definitions you have the basic ORM
 and on top of that you have the declarative ORM which looks very close
 to the Django ORM.  The other more striking difference however is that
-SQLAlchemy follows the “Unit of Work” pattern whereas Django's ORM follows
-something that is very close to the “Active Record” pattern.
+SQLAlchemy follows the "Unit of Work" pattern whereas Django's ORM follows
+something that is very close to the "Active Record" pattern.
 
 What's the difference?  Django's ORM is basically quite simple.  Each time
 you do any query it generates a SQL expression for you and sends a query
@@ -49,7 +49,7 @@ to the database.  Then it constructs and object for you.  That object can
 be modified and if you call `save()` on it, it will update the record in
 the database with the new values of the attributes.  This is not at all
 how SQLAlchemy's ORM component works.  In SQLAlchemy you have an object
-called the “session”.  It basically encapsulates a transaction.  However
+called the "session".  It basically encapsulates a transaction.  However
 it does more.  Each object is tracked by primary key in this session.  As
 such each object only exists once by primary key.  As such you can safely make a
 lot of queries and you never have things out of sync.  When you commit the
@@ -93,7 +93,7 @@ find the transaction in the queryset when the actual query fires and it
 does that by finding the current thread which owns a transaction.
 
 So how does that work in SQLAlchemy?  As we have established, objects are
-always “owned” by a session and keyed by primary key.  Each primary key
+always "owned" by a session and keyed by primary key.  Each primary key
 can only exist once.  Because that session is quite fundamental and needs
 to work in many setups this is configurable.  But first we need to figure
 out what the difference between a Django queryset and a SQLAlchemy query
@@ -439,7 +439,7 @@ be a compound of more than one column.
 If you want to filter a query in Django you generally use keyword
 arguments in the format `column__operation=value`.  For instance
 `column__contains='e'` to check if a string column named `column`
-contains the letter “e”.  In SQLAlchemy instead you are using expressions.
+contains the letter "e".  In SQLAlchemy instead you are using expressions.
 These expressions can be printed to see what query they would generate.
 
 Here some examples:
@@ -589,7 +589,7 @@ for age, count in session.query(User.age,
 Distinct counts are simple as well, just call `.distinct()` on the
 query.  In fact: if you have a rough idea of what the SQL would look like
 you can get to the expected result with pure guesswork and SQLAlchemy will
-most likely “just work” ™.
+most likely "just work" ™.
 
 ### Joins
 

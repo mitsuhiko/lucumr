@@ -8,8 +8,8 @@ more classes."
 
 The Python community in my mind has the dangerous opinion that classes are
 unnecessary fluff that should be replaced with functions wherever
-possible.  The fact that there is a talk of the title “Stop Writing
-Classes” with 50.000 views on YouTube is not helping.  I want to give a
+possible.  The fact that there is a talk of the title "Stop Writing
+Classes" with 50.000 views on YouTube is not helping.  I want to give a
 counter argument to this idea that classes are evil by sharing some
 examples of why I think we can't have enough classes.
 
@@ -120,7 +120,7 @@ terminated within that buffer.  If for instance you read `4096` bytes
 into a buffer and the buffer contents are `["hello world"]` then each
 token is fully terminated in the buffer.  If however the buffer would have
 only been 12 bytes long then only `["hello worl` would have fitted in.
-In that case in-situ processing of the string “hello world” is not
+In that case in-situ processing of the string "hello world" is not
 possible without some extra buffering.
 
 </small>Why am I writing all of this?  Turns out parsing in Python is not really
@@ -168,7 +168,7 @@ This is so disappointing considering you can see that internally that JSON
 library has exactly the functionality one would need for stream
 processing.
 
-“But I don't need stream processing”.  That's a pretty weak argument.  For
+"But I don't need stream processing".  That's a pretty weak argument.  For
 starters it goes against the current trend of what Pythonistas are raving
 about: user level context switches aka cooperative multitasking aka green
 threads aka gevent.  It's nice and everything if your IO is neatly
@@ -201,8 +201,8 @@ things in mind.
 Let's have a look outside of our comfy Python box.  A family of libraries
 I like a lot is [msgpack](http://msgpack.org/).  It's essentially a
 binary version of JSON that's quite efficient to parse.  The Python
-library essentially suffers like many other libraries from the “one
-method to rule them all” mantra.  (Yes, there is a streaming reader but
+library essentially suffers like many other libraries from the "one
+method to rule them all" mantra.  (Yes, there is a streaming reader but
 that suffers from the same problem)
 
 This is (pretty much the only) Python API:

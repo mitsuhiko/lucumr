@@ -7,18 +7,18 @@ summary: "Some thoughts on self hosted Open Source software."
 
 My colleague [Ben Vingar](https://x.com/bentlegen/) wrote a tool called
 [Counterscale](https://counterscale.dev/) which I would describe as
-“deploy your own analytics”.  Except there is a catch: it needs Cloudflare
+"deploy your own analytics".  Except there is a catch: it needs Cloudflare
 to run.  Is it really self hosted if your only way to deploy it is some
 proprietary cloud vendor?
 
 ## What's a Stack?
 
 Many years ago we talked about software stacks.  A common one happened to
-be “LAMP”.  Short for: Linux, Apache, MySQL and typically PHP, though
+be "LAMP".  Short for: Linux, Apache, MySQL and typically PHP, though
 Python and Perl were choices for the P just as well.  LAMP lends itself
 very well for self hosting because all of it is Open Source software you
 can run and operate yourself free of charge.  There was however also a
-second stack which was not entirely unpopular: “WAMP“ (The W meaning
+second stack which was not entirely unpopular: "WAMP" (The W meaning
 Microsoft Windows).  You would not necessarily run it yourself if you had
 a choice, but I deployed more than one of these.  Why? Because some SMEs
 were already running Windows.  If you wrote some software in PHP, having
@@ -52,7 +52,7 @@ stuff today in a neatly packaged and reusable thing.
 Now of course you can build software that runs entirely on Open Source
 software.  In case of Counterscale you don't even have to look very far:
 Plausible exists.  It's also Open Source, it's also an analytics tool, but
-rather than being like a “CGI script” in spirit, it's a pretty heavy thing.
+rather than being like a "CGI script" in spirit, it's a pretty heavy thing.
 You gotta run docker containers, run a rather beefy ClickHouse
 installation, I believe it needs Kafka etc.  Running Plausible yourself is
 definitely not neatly as easy as setting up Counterscale.  You do however,
@@ -74,7 +74,7 @@ higher level abstractions than you would find otherwise.  You don't have
 to think about scaling workers, you don't have to think about scaling
 databases.  The downside of course is that it locks you into that platform.
 
-But what would be necessary to have your “own Cloudflare” thing you can
+But what would be necessary to have your "own Cloudflare" thing you can
 run once and then run all your cool mini CGI like scripts above?  We miss
 some necessary protocols.  Yet building these protocols is tricky because
 you target often the least common denominator.  Technology also here is
@@ -110,7 +110,7 @@ direction in the sense that it says quite clearly that some components are
 useful: databases, caches, SSL, crons etc.  However it's ambition stops at
 the boundary of the Laravel ecosystem which is understandable.
 
-Yet maybe over time we can see more of a “SaaS in a box” kind of
+Yet maybe over time we can see more of a "SaaS in a box" kind of
 experience.  A thing you run, that you can plug your newfangled,
 serverless mini tools in, that can leverage auth and all the needs of a
 modern web application like queues, column stores, caches etc.

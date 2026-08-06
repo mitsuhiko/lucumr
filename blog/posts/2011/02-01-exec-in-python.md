@@ -32,8 +32,8 @@ right thing to do.
 
 Disclaimer beforehand: the numbers for this post are taken from Python 2.7
 on OS X.  Do not ever trust benchmarks, take them only as a reference and
-test it for yourself on your target environment.  Also: “Yay, another post
-about the security implications of `eval`/`exec`.”  Wrong!  I am assuming
+test it for yourself on your target environment.  Also: "Yay, another post
+about the security implications of `eval`/`exec`."  Wrong!  I am assuming
 that everybody already knows how to *properly* use these two, so I will
 not talk about security here.
 

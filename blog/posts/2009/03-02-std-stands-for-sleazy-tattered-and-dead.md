@@ -4,7 +4,7 @@ summary: "My experiences with the Python standard library and why I'm not the
 biggest fan of it or at least the way it works currenctly."
 ---
 
-# “STD” stands for Sleazy, Tattered and Dead
+# "STD" stands for Sleazy, Tattered and Dead
 
 [My latest discovery](http://lucumr.pocoo.org/2009/3/1/the-1000-speedup-or-the-stdlib-sucks)
 of a [behavior bug in Python](http://bugs.python.org/issue5401) earned
@@ -36,7 +36,7 @@ tons of stuff right. It may sound awkward if you know the library in
 detail, but believe me, the fact alone that it nearly worked flawlessly
 with WSGI is noteworthy. It's incredible if you think that WSGI was
 added years after the library was written. So some forward thinking in
-terms of “decoupling” it from CGI did the library very well.
+terms of "decoupling" it from CGI did the library very well.
 
 However the age of `cgi` shines through. I just recently discovered that
 the infamous `cgi.FieldStorage` provides `multipart/mixed` support. This
@@ -69,7 +69,7 @@ also impossible to select the upload storage based on the content length
 or stop parsing if resources are exhausted (someone trying to submit a
 gigabyte of form data to the server, which is always stored in memory).
 
-The `Cookie` module is one of my “favourites”. It comes with backwards
+The `Cookie` module is one of my "favourites". It comes with backwards
 compatible code that can be used to let an attacker execute arbitrary
 code on the server and has an API that is so weird and magical that few
 in the history of Python frameworks exposed that API to the user. On
@@ -266,7 +266,7 @@ versions of the same library into the Python interpreter. Imagine you
 could install different versions of SQLAlchemy via debian's `apt-get`
 and the application could require a specific version. If the package
 installation is easy and simple there would be no problem with moving
-“essentials” like the `urllib`, `cgi`, `sqlite` or all the XML modules
+"essentials" like the `urllib`, `cgi`, `sqlite` or all the XML modules
 outside of the standard library and on the Python package index.
 
 The great libraries are great because they are actively developed. And

@@ -179,7 +179,7 @@ actually uses some form of database for it, why otherwise would you use
 PHP …
 
 - the gold rewards in the game that are generated for tapping is
-apparently entirely client side — I did not even bother finding out
+apparently entirely client side — I did not even bother finding out
 how purchases are handled.  I would not be surprised if that was not
 very secure.
 
@@ -213,12 +213,12 @@ the API to see how it works in detail and if it's exploitable.
 
 ## The Disappointment
 
-The idea of “tap the cube until it's gone” is easy if only one player does
+The idea of "tap the cube until it's gone" is easy if only one player does
 it.  If you have more than one it starts getting ridiculously complex and
 I find it amazing that they did not realize the problem with their
 execution before it went live.  I think the most interesting part about
 all of this is how little players will appreciate the complexity in the
-design because “it's just a large cube”.
+design because "it's just a large cube".
 
 I guess I should be expecting Molyneux to disappoint by now, but I did not
 imagine him to fail on such a simplistic concept.  How could the
@@ -235,7 +235,7 @@ smaller.  I would actually be curious if that is possible and how the
 technology decisions would look like.
 
 I think Molyneux does not fail so much with the idea but with the lack of
-people that tell him “no, we can't do this (yet / at all)”.  The idea of a
+people that tell him "no, we can't do this (yet / at all)".  The idea of a
 cube where everybody taps on is interesting but the laws of nature make
 this very hard to implement unless all tappers sit on zero latency network
 and even then it would be hard to give the last tapper a satisfying

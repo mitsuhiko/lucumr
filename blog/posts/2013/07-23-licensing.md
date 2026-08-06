@@ -66,7 +66,7 @@ code under GPL of a specific version or any later version.  What defines
 what a later version of a GPL license looks like?  The GPL itself [^2]:
 
 > If the Program specifies that a certain numbered version of the GNU
-General Public License “or any later version” applies to it, you have
+General Public License "or any later version" applies to it, you have
 the option of following the terms and conditions either of that
 numbered version or of any later version published by the Free
 Software Foundation.
@@ -84,7 +84,7 @@ GPLv3 a couple of years ago.
 
 The fun effect of this now is that it's absolutely clear that there are
 two different worlds in which GNU and Linux are living.  There is a
-certain irony that “GNU/Linux” is now a sort of license conflict.  Since
+certain irony that "GNU/Linux" is now a sort of license conflict.  Since
 the vast majority of GNU projects are on GPLv3 only and Linux will always
 be GPLv2 there is no more code sharing that can happen between these
 projects as a result.
@@ -107,12 +107,12 @@ the GPL has to ensure that derived works are provided under compatible
 license terms.  Now however the license does more than that.
 
 The biggest issue for companies with the GPLv3 is most likely the
-“anti-tivoization” part of the license that has a whole extra section on
+"anti-tivoization" part of the license that has a whole extra section on
 how the license interacts when it's part of a consumer product.  The exact
-definition of what a consumer product is a vague definition of “any
+definition of what a consumer product is a vague definition of "any
 tangible personal property which is normally used for personal, family or
-house hold purposes” or alternatively “anything designed or sold for
-incorporation into a dwelling”.  It also says that in case of doubt a
+house hold purposes" or alternatively "anything designed or sold for
+incorporation into a dwelling".  It also says that in case of doubt a
 product should be seen as consumer product.
 
 What happens if the product is a consumer product?  In essence the license
@@ -180,8 +180,8 @@ Toybox for instance is a project that's prime existence is to not be GPL
 licensed.  It's being developed by Rob Landley who was the previous
 maintainer of the GPLv2 licensed Busybox project of similar scope.  What's
 interesting about Rob Landley is that he's the person who pulled through
-the license clarification of Busybox to mean “GPLv2 only” instead of
-“GPLv2 or later” [^6].  Shortly after he did that, he left the
+the license clarification of Busybox to mean "GPLv2 only" instead of
+"GPLv2 or later" [^6].  Shortly after he did that, he left the
 project due to being annoyed with the efforts required to clarify the
 license and the license trolling shown by some contributors to the
 project [^7].
@@ -227,7 +227,7 @@ do so.  Using LGPL libraries would often force them to do so.
 Why are people so afraid of the GPL all the sudden?  Partially because the
 GPL has always been a radical license.  Especially in the absence of
 copyright reassignment.  For instance the GPLv2 comes with a clause that
-has been dubbed the “GPLv2 death penalty” [^10].  Essentially it
+has been dubbed the "GPLv2 death penalty" [^10].  Essentially it
 means that whoever violates the GPLv2 automatically gets the license
 terminated and not reestablished until they explicitly obtain a new
 license.  Without one authoritative copyright holder it would essentially
@@ -279,8 +279,8 @@ existence of licenses.  As such I see GitHub's newly added license
 choosing helper dialog problematic.  When you make a new repository it
 gives you a dialog to pick a license without any explanation of what the
 licenses mean.  It even bolds some licenses for you.  The ones that it
-deems more important than others are “Apache v2 License”, “GPLv2” and
-“MIT”.  The irony is that two of the licenses that the dialog deems
+deems more important than others are "Apache v2 License", "GPLv2" and
+"MIT".  The irony is that two of the licenses that the dialog deems
 important are actually incompatible with each other.  (Apache and GPLv2).
 
 If people did not spend any time before adding a license to their
@@ -442,7 +442,7 @@ of the community to come to some conclusions about what it means for the
 ecosystem.
 
 Right now I believe, the license choosing wizard of GitHub is a shitty
-“solution” to the problem of people not adding licenses to their code.
+"solution" to the problem of people not adding licenses to their code.
 And it's probably not just a bad solution, it's one that might actually be
 hurtful if people are not aware of what the effects of the respective
 license are.

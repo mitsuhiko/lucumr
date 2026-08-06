@@ -84,9 +84,9 @@ to go to) and the lack of a clear conference identity made it less
 appealing to me.
 
 My fondest memories of Python conferences are the sprints, are the
-“Birds of a Feather” sessions, the hallway track, connecting to people
-eye-to-eye.  The latter being particularly important.  [Łukasz Langa](https://lukasz.langa.pl/) described me this year as “more nuanced in
-person [than online]”.  I believe this to be true to all of us.  I don't
+"Birds of a Feather" sessions, the hallway track, connecting to people
+eye-to-eye.  The latter being particularly important.  [Łukasz Langa](https://lukasz.langa.pl/) described me this year as "more nuanced in
+person [than online]".  I believe this to be true to all of us.  I don't
 even remeber having a bad experience with someone in person, even if I had
 massive disagreements on Twitter or an issue tracker.
 
@@ -148,7 +148,7 @@ that go to those conferences are geographically split, and some of the
 folks that did the most for the Rust project are not going at all.  This
 is not good.
 
-The combination of the “graduation” of Rust out of Mozilla, the pandemic
+The combination of the "graduation" of Rust out of Mozilla, the pandemic
 and just a lot of churn in the Rust project has left a void.  I wish that
 a goal of the Rust Foundation would be to help finance regular get-togethers
 of the core Rust project (and maybe former influential members), key players

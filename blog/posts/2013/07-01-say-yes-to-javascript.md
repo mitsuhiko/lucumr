@@ -4,16 +4,16 @@ summary: "Some random notes about why I think that removing the option to disabl
 JavaScript in Firefox is one of the best things."
 ---
 
-# Say “Yes” to JavaScript
+# Say "Yes" to JavaScript
 
 A few days ago Mozilla finally removed some options from their control
-panel.  The one I am most happy about is [the removal](https://bugzilla.mozilla.org/show_bug.cgi?id=873709) of the “Disable
-JavaScript” checkbox.  This goes hand in hand with an earlier blog post
+panel.  The one I am most happy about is [the removal](https://bugzilla.mozilla.org/show_bug.cgi?id=873709) of the "Disable
+JavaScript" checkbox.  This goes hand in hand with an earlier blog post
 by Alex Limi about [Checkboxes that kill your product](http://limi.net/checkboxes-that-kill/).  If you have not read that
 link, do it now.
 
-My immediate response to change of removing the switch was: “Thank god,
-that should have happened ages ago”.  When I was happily tweeting this I
+My immediate response to change of removing the switch was: "Thank god,
+that should have happened ages ago".  When I was happily tweeting this I
 got some responses about how I can support such a step in the browser that
 removes features and restricts a user's freedom.  Instead of replying to
 each and every tweet I figured I might just write down my thoughts on that
@@ -67,7 +67,7 @@ you even without JavaScript.  At the same time I can enhance your browser
 experience through better written JavaScript code that allows me to do
 things with your browser that plain HTML does not allow.
 
-Instead of having a global “disable JavaScript and cookies” flag we should
+Instead of having a global "disable JavaScript and cookies" flag we should
 instead invest more into things like tightly tuned browser extensions that
 intelligently remove obnoxious JavaScript from specific pages.
 

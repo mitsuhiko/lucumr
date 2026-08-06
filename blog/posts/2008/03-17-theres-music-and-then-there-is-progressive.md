@@ -3,7 +3,7 @@ tags: ['music']
 summary: "About my love to progressive metal and rock."
 ---
 
-# There’s Music, And then there is Progressive
+# There's Music, And then there is Progressive
 
 Many of you probably already know that I'm one of those metalheads. But
 mainly because the number of concept albums is a lot higher compared to
@@ -58,7 +58,7 @@ It's hard for me to select *the* Dream Theater album as all of them are
 incredible pieces of music but Octavarium is one of my personal
 favorites and every song on the album is totally different.
 
-**Opeth — Still Life** is a great death metal – progressive metal
+**Opeth — Still Life** is a great death metal - progressive metal
 cross-over concept album telling the story of a young Christ that
 discovers that Christianity isn't exactly what he thought it would be
 and gets expelled from his home town. 15 years later he returns and is

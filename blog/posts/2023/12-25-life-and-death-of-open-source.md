@@ -81,14 +81,14 @@ longer developed in the open [^2]).  Prusa is not hiding that they are
 reconsidering their ways thanks to a blog post by their founder about how
 they are [reconsidering their Open Source ways](https://blog.prusa3d.com/the-state-of-open-source-in-3d-printing-in-2023_76659/):
 
-> […] things we’ve been doing at Prusa Research for over ten years were
+> […] things we've been doing at Prusa Research for over ten years were
 only possible thanks to the great **3D printing community** and
 **open-source philosophy**. However, the new printers and software
 releases have made me think again about the current state of open
 source in the 3D printing world. How sustainable it is, how our
 competitors deal with it, what it brings to the community, and what
 troubles us as developers.  Consider this article as a **call for
-discussion** – as a kick-off that will (hopefully) open up a new
+discussion** - as a kick-off that will (hopefully) open up a new
 perspective on the connection between open-source licensing, consumer
 hardware, and software development.
 >
@@ -130,7 +130,7 @@ user.  They manufacture the parts and provide the firmware.
 If they go out of business, owning their device becomes much riskier than
 owning printers from the Open Source community.  For an end-user, having an
 Open Source license is a far stronger proposition.  That's why I find the
-comparison of the FSL to a “source available” or even “proprietary”
+comparison of the FSL to a "source available" or even "proprietary"
 license somewhat insulting. A hypothetical FSL-inspired license for Open
 Source hardware would grant a hardware company a limited-time non-compete
 advantage over other players in the space, while giving users and the

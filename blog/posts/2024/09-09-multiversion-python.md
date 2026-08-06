@@ -29,22 +29,22 @@ module.  This in some ways presents the first issue.
 Distributions</summary>Python's terms for packages are super confusing.  Here is what I will use
 in this article:
 
-- `foo.py`: this is a python “module”.  It gets registered in
+- `foo.py`: this is a python "module".  It gets registered in
 `sys.modules` as `'foo'` and has an attribute `__name__` set to
 `'foo'`.
 
-- `foo/__init__.py`: declares also a Python “module” named `'foo'` but
-it is simultaniously a “package”.  Unlike a normal module it also has
+- `foo/__init__.py`: declares also a Python "module" named `'foo'` but
+it is simultaniously a "package".  Unlike a normal module it also has
 two extra attributes: `__path__` which is set to `['./foo']` so that
 sub modules can be found and it has an attribute `__package__` which
 is also set to `'foo'` which marks it as package.
 
 - Additionally on PyPI one can register things.  These things were called
 packages at one point and are now mostly called "projects".  Within
-Python however they are not called Projects but “distribution packages”.
+Python however they are not called Projects but "distribution packages".
 For instance this is what you see when you try to use the
 [importlib.metadata](https://docs.python.org/3/library/importlib.metadata.html)
-API.  For now I will just call this a “distribution”.
+API.  For now I will just call this a "distribution".
 
 Note that a distribution can ship both modules and multiple at once.  You
 could have a package called `whatever` and it reports a `foo.py` file and
@@ -102,7 +102,7 @@ this as `import_module('foo')` and now we would not find the entry in
 `sys.modules`.
 
 This means that in addition to the new entries in `sys.modules` we would
-also need to register some proxies that “redirect” us to the real names.
+also need to register some proxies that "redirect" us to the real names.
 These proxies however would need to know if they point to `1.0.0` or
 `2.0.0`.
 
@@ -221,7 +221,7 @@ PyInit_foo(void)
 ```
 
 So both the name of the module created as well as the name of what is
-imported is entirely hardcoded.  A C extension does not “know” what the
+imported is entirely hardcoded.  A C extension does not "know" what the
 intended name is, it must know this on its own.
 
 In some sense this is already a bit of a disconnect beween the Python and

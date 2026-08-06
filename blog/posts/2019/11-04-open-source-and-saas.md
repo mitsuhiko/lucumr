@@ -62,7 +62,7 @@ own forks.
 Open Source is pretty clear cut: it does not discriminate.  If you get the
 source, you can do with it what you want (within the terms of the
 license) and no matter who you are (within the terms of the license).
-However as Open Source is defined — and also how I see it — Open Source
+However as Open Source is defined — and also how I see it — Open Source
 comes with no strings attached.  The moment we restrict what you can do
 with it — like not compete — it becomes something else.
 

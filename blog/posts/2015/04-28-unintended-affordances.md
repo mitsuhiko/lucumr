@@ -53,7 +53,7 @@ important to not just consider the situations in which everything goes by
 design.
 
 Which leads me to the concept of encrypting everything.  There is the idea
-that “there is no such thing as insensitive web traffic” and that the
+that "there is no such thing as insensitive web traffic" and that the
 privacy of communication is absolute.  For a long time this was not a very
 contested idea because the total number of encrypted traffic was quite a
 small percentage of the overall communications.  Now however pretty much
@@ -77,7 +77,7 @@ think we did not yet discuss as a society.
 
 When implemented properly, encryption is a very binary enforcement: there
 is no way around it.  It's something that we as developers like very much
-because it just “makes sense” to us.  But it does not come for free.
+because it just "makes sense" to us.  But it does not come for free.
 
 First of all encryption cannot stand on its own, it needs the concept of
 trust.  The most common form of encryption these days is SSL where the
@@ -103,8 +103,8 @@ instance on the use of SSL.  The frontend that does SSL offloading for
 firebase.com for instance currently lists more than 580 subject
 alternative names.  Not only does that mean that you are downloading a
 really big certificate, but also that the SSL encryption is a bit of a lie
-for you as a user.  The certificate in front of “firebase” is also good
-for “tappinass”.  Sure enough, neither firebase nor that other website are
+for you as a user.  The certificate in front of "firebase" is also good
+for "tappinass".  Sure enough, neither firebase nor that other website are
 holding the private keys to the cert, so they cannot impersonate each
 other, but their CDN provider can.  Don't get me wrong, there is nothing
 wrong with that because they chose to outsource this to their CDN, but
@@ -166,7 +166,7 @@ purposes.  Now however you will find them everywhere.  Even reputable
 companies like Nokia have been found intercepting SSL traffic on their
 mobile phones.
 
-Worst of all is that “SSL everywhere” goes against what it should actually
+Worst of all is that "SSL everywhere" goes against what it should actually
 protect as a side effect.  There are probably more misconfigured SSL
 systems that give users the illusion of safety than correctly set up ones.
 There will be the point in a year or two when the first websites that got
@@ -187,7 +187,7 @@ And I can't blame them.  Right now the total number of people in the world
 that probably understand the entirety of SSL are most likely in the low
 hundreds.  I have been dealing with SSL for years now and the more I use
 it, the more I have to surrender to the complexities in it.  When a few
-years ago I would have said “I understand SSL” I now no longer claim I
+years ago I would have said "I understand SSL" I now no longer claim I
 have any understanding of SSL at all.
 
 This is a problem.  Because SSL at this point is becoming more and more of

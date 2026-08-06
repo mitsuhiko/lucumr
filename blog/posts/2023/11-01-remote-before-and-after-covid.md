@@ -48,7 +48,7 @@ outside of my reach.
 
 My theory on what makes a successful company or project is collaboration
 and some shared, deeply rooted values.  In some ways we sometimes do not
-quite know what our values are, we just “get them”.  We get them because
+quite know what our values are, we just "get them".  We get them because
 when we talk to each other we get subtle hints about being on the same
 page about a topic.  Alongside that there is shared excitement about
 subtle, small details or things one could build.  This kind of shared

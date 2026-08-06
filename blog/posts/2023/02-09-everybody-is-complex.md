@@ -13,8 +13,8 @@ When I wake up in the morning I usually have something to do.  That
 doesn't necessarily mean I will do that, but it grounds me.  When I was
 21 my existence was quite monochromatic.  I went to bed in the evening and
 I continued my work in the morning where I left it off the day before.
-And like a good performing stock, through that I went “up and to the
-right”.  Probably all the metrics I would have used to measure my life
+And like a good performing stock, through that I went "up and to the
+right".  Probably all the metrics I would have used to measure my life
 were trending in only one direction and life was good.  Work defined me
 and by my own standards and enough people that I interacted with I was
 successful.

@@ -22,7 +22,7 @@ I'm sure everybody remembers the [XKCD on dependencies](https://xkcd.com/2347/):
 [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/)What I like about this comic is that you can insert a whole bunch of
 projects in your head into that comic.  I like to imagine that the
 mentioned project is [Curl](https://curl.se/).  It's maintained largely
-by a single person — Daniel Stenberg — for more than 20 years.  Curl is a
+by a single person — Daniel Stenberg — for more than 20 years.  Curl is a
 good example of an actual crucial dependency.  It's *everywhere*.  I have
 seen it on game consoles, in cars, on MP3 players, smart speakers, bluray
 players, embedded devices, command line utilities, backend servers, …
@@ -54,14 +54,14 @@ that library.
 A few days ago the developer behind that library decided to release a new
 version of the library that no longer does what it advertised on the tin.
 Since it was a minor update quite a few people ended up with that version.
-They didn't however even know that they were depending on “that one
-package”, they probably pulled it in because something else in their
+They didn't however even know that they were depending on "that one
+package", they probably pulled it in because something else in their
 dependency chain needed it.
 
 If you went to the GitHub repo of that developer you found two things:
 some conspirational content in the readme of the repo, but also a
 justification for why their library no longer did what it was supposed to
-do: the developer was dissatisfied with “fortune 500” using their code for
+do: the developer was dissatisfied with "fortune 500" using their code for
 free and asked for a six figure contract or for people to fork it.
 
 What I wish people would actually start discussing when it comes to these

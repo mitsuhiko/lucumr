@@ -144,7 +144,7 @@ then looks it up by offsetting on demand.
 
 *To recap: instead of storing a pointer to an object itself, store some
 information so that you can calculate the pointer later.  This is also
-commonly called using “handles”.*
+commonly called using "handles".*
 
 ## Refcounts are not Dirty
 
@@ -199,8 +199,8 @@ This should make it immediately obvious that this API is not fun.  First
 of all the config is immutable.  Secondly we can only access the config
 object within the closure passed to the `with` function.  Any attempt of
 trying to borrow from this config object and have it outlive the closure
-will fail (probably with something like “cannot infer an appropriate
-lifetime”).  There is no way around it!
+will fail (probably with something like "cannot infer an appropriate
+lifetime").  There is no way around it!
 
 This API is clearly objectively bad.  Imagine we want to look up more of
 those thread local variables.  So let's look at both of those issues

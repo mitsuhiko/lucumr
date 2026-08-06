@@ -8,15 +8,15 @@ games releasing with open source models, images and more?"
 
 A few days ago the [Humble Indie Bundle 2](http://www.humblebundle.com/)
 released.  It contains five independently developed games including the
-universally acclaimed “Braid” puzzle and “Machinarium” adventure games.
+universally acclaimed "Braid" puzzle and "Machinarium" adventure games.
 As with last year they upgraded the bundle after a certain amount of
 revenue was made.  This year they included last year's bundle in its
 entirety for all people that bought it before a certain time and for
 everyone that pays more than the average.
 
-Additionally yesterday they announced that “Revenge of the Titans” will
-become open source.  This is similar to last year where “Gish”, “Aquaria”,
-“Lugaru HD” and “Penumbra Overture” went Open Source.  However here the
+Additionally yesterday they announced that "Revenge of the Titans" will
+become open source.  This is similar to last year where "Gish", "Aquaria",
+"Lugaru HD" and "Penumbra Overture" went Open Source.  However here the
 important part is that all of these titles went Open Source for their
 sourcecode only.  This does not include the assets.  I totally understand
 the motivation behind that and I welcome any open sourcing of games as it
@@ -39,7 +39,7 @@ code into one of four categories:
 a great idea.  If you want to connect different systems it makes a lot
 of sense to make the communication interface open source so that
 everybody can work on that.  I think the buzzword for that is probably
-“interoperability”.
+"interoperability".
 
 *Community Maintenance*If a company went out of business or is no longer maintaining a
 particular piece of software, projects are often opened for everybody.
@@ -82,8 +82,8 @@ would release that code, I have no troubles using a matching license.
 *Best Solution Available*Apple for instance chose the GCC compiler toolkit because it was the
 best one available for the price.  Apple's motivation was that they
 can distribute the compiler to anyone as cheaply as possible.  At the
-same time however Apple was always terribly afraid of the “must remain
-open” part of the license.  They would much rather have a license
+same time however Apple was always terribly afraid of the "must remain
+open" part of the license.  They would much rather have a license
 without that clause attached.  That might also explain a lot why they
 invest a lot of time and money into the development of the LLVM
 infrastructure and the clang compiler that is based on it.
@@ -93,13 +93,13 @@ sourcing match perfectly up with the user's reasoning.  If you want to
 work together the lines between user and developer blur.  It's very
 likely that contributions will come from both sides with the intent to
 make the system better.  Unless of course one side wants to harm the
-other one, but then one can hardly speak about “working together” any
+other one, but then one can hardly speak about "working together" any
 more.
 
 ## In An Ideal World …
 
 So as mentioned earlier the Humble Indie Bundle campaign managed to
-convince developers to send a “Thank You” to the community by releasing
+convince developers to send a "Thank You" to the community by releasing
 the code under open source licenses.  The motivation there is both a
 marketing reason (might convince other people to spend more money) and
 because it made sense for them.  They earned a lot of money with that and
@@ -211,7 +211,7 @@ license attached most of the time.  Yet they depend on the ability to
 remix an existing game.
 
 Independent developers often claim to make up for their smaller budget
-with deeper game concepts and stories.  And looking at games like “Braid”
+with deeper game concepts and stories.  And looking at games like "Braid"
 I can only agree with that.  However what about stepping into a new
 direction the next time you open source something, and actually share the
 assets too?  Maybe on a game where the financial hit wouldn't be too
@@ -222,7 +222,7 @@ And if that does not work out, why not open source assets and music
 instead of the code?  Especially if the assets require attribution, there
 is no reason why it shouldn't drive traffic back to the original creators.
 
-And with that: Happy Christmas everybody and a big “Thank You” to the
+And with that: Happy Christmas everybody and a big "Thank You" to the
 independent game community and all people behind the Humble Indie Bundle.
 Indie games are what brought me back to graphic programming because they
 show that even with a limited budged and simpler artstyle you can create

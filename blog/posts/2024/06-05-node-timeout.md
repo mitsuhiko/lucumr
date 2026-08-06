@@ -41,7 +41,7 @@ Timeout {
 }
 ```
 
-This “leaks” out some of the internals of how the timeout is implemented
+This "leaks" out some of the internals of how the timeout is implemented
 internally.  For the last few years I think this has been just fine.
 Typically you used this object primarily as a token similar to how you
 would do that with a number.  Might look something like this:
@@ -60,7 +60,7 @@ class MyThing {
 
 For the lifetime of `MyThing`, even after `clearTimeout` has been called
 or the timeout runs to completion, the object holds on to this timeout.
-While on completion or cancellation, the timeout is marked as “destroyed”
+While on completion or cancellation, the timeout is marked as "destroyed"
 in node terms and removed from it's internal tracking.  What however
 happens is that this `Timeout` object is actually surviving until someone
 overrides or deletes the `this.timeout` reference.  That's because the
@@ -119,7 +119,7 @@ That's because every single async local storage that is created registers
 itself with the timeout with a custom `Symbol(kResourceStore)` which even
 remains on there after a timeout has been cleared or the timeout ran to
 completion.  This means that the more async local storage you use, the
-more “stuff” you hold on if you don't clear our the timeouts.
+more "stuff" you hold on if you don't clear our the timeouts.
 
 The fix seems obvious: rather than holding on to timeouts, hold on to the
 underlying ID.  That's because you can convert a `Timeout` into a
@@ -149,7 +149,7 @@ resolved however that should be a fine way to avoid problem.
 
 <details><summary>Workaround for the leak with a Monkey-Patch</summary>Since the bug is only triggered when a timer manages to run to completion,
 you could in theory forcefully clear the timeout or interval on completion
-if node “allocated” a primitive ID for it like so:
+if node "allocated" a primitive ID for it like so:
 
 ```javascript
 const kHasPrimitive = Reflect

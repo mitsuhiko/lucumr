@@ -33,7 +33,7 @@ replacing tools with something else.
 For the few Python guys that don't know what setuptools is or why it
 exists, let me provide you with a very basic recap of what it originally
 wanted to do.  Back in the days someone (and I really don't know who)
-added a system called “distutils” to Python.  The purpose of that library
+added a system called "distutils" to Python.  The purpose of that library
 was to provide functionality to distribute Python libraries.  And for its
 existence we should all be really glad because besides all it's faults it
 is still providing us with some of the most important bits of Python
@@ -233,7 +233,7 @@ concept.
 ## Why Go Binary?
 
 It's very easy to ignore binary distributions.  A lot of code is written
-in “just” Python and the compilation is very cheap.  The only thing that
+in "just" Python and the compilation is very cheap.  The only thing that
 happens is parsing of the python files and writing out bytecode.  Some
 other things however are more expensive to compile.  The one that causes
 me most troubles is lxml because it takes a minute or two to compile.  Now

@@ -101,7 +101,7 @@ most promising protocols here.  It has a low cost variant which satisfies
 most of the qualities of the strawman protocol while reducing the amount
 of data greatly (to around 1.5MB of data per day for a peak infection rate
 of 40.000 infections a day).  Additionally it comes with a protocol
-extension (“Unlinkable decentralized proximity tracing”) which improves on
+extension ("Unlinkable decentralized proximity tracing") which improves on
 the simple protocol in a few important aspects.  Specifically it makes it
 significantly harder for an adversary to track or identify infected users
 at the cost of higher bandwidth requirements.

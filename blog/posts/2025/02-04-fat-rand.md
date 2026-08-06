@@ -18,7 +18,7 @@ it.  If for instance if you want to generate a random UUID, the `uuid`
 crate will depend on it.  Due to its nature it also has a high security
 exposure.
 
-I don't want to frame this as “`rand` is a bad crate”.  It's not a bad
+I don't want to frame this as "`rand` is a bad crate".  It's not a bad
 crate at all!  It is however a crate that does not appear very concerned
 about how many dependencies it has, and I want to put this in perspective:
 of all the dependencies and lines of codes it pulls in, how many does it

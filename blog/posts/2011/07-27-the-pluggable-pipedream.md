@@ -7,8 +7,8 @@ framework independent pluggable applications don't work in practice."
 # WSGI and the Pluggable Pipe Dream
 
 As a Python web developer you are at one point confronted with the term
-“[WSGI](http://www.python.org/dev/peps/pep-0333/)” (which after 6 years of existence still does not have an
-official truncation.  Some rhyme it with “Whisky”, others just pronounce
+"[WSGI](http://www.python.org/dev/peps/pep-0333/)" (which after 6 years of existence still does not have an
+official truncation.  Some rhyme it with "Whisky", others just pronounce
 the abbreviation, other's just call it by the pep number 333).  WSGI when
 it was created was a pretty awesome thing.  It made it possible to use any
 Python web application with any webserver by specifying a gateway layer.
@@ -21,7 +21,7 @@ from a niche protocol nobody knew to *the* protocol for web applications
 people tried to change and replace it.  Why is that and why does nobody
 succeed in replacing it?
 
-WSGI stands for “Webserver Gateway Interface” and it really envisioned as
+WSGI stands for "Webserver Gateway Interface" and it really envisioned as
 this bridge between server and application.  Additionally the PEP
 explained how you can use middlewares and this was the beginning of the
 end.  The PEP also suggested that people would write their frameworks
@@ -32,7 +32,7 @@ many people is or was to use the WSGI layer as a way to combine multiple
 applications together.
 
 WebOb for instance went very far with that.  For as long as all your
-applications are only using WebOb and nothing else you can “attach” a
+applications are only using WebOb and nothing else you can "attach" a
 request object to a WSGI environment at any point in the WSGI chain and
 you are operating on basically the same request object with the same data
 behind.  This however goes well beyond what WSGI specifies or encourages.
@@ -166,8 +166,8 @@ def weird_app(environ, start_response):
 
 This is the extreme example which you will not see in practice.  The
 server should attempt to change the headers if still not sent or recover
-in whatever way possible from that error condition.  The “headers are sent
-when the first non empty string is yielded” rule is nothing more than a
+in whatever way possible from that error condition.  The "headers are sent
+when the first non empty string is yielded" rule is nothing more than a
 neat nod to async systems that can use this neat trick to yield empty
 strings to signal that they are not ready yet.  I don't know if this was
 intentional behavior but the PEP is quite elaborate on mentioning that
@@ -182,7 +182,7 @@ harder than it needs to be.
 Where WSGI is annoying is relaying messages from one WSGI app to another.
 Let's assume for a moment WSGI would lack the `start_response()`
 callable and that empty string thing and a write callable.  The canonical
-“Hello World” would probably look like this:
+"Hello World" would probably look like this:
 
 ```python
 def hello_world(environ):
@@ -258,8 +258,8 @@ cases that cause problems and those are rare.
 1. Headers cannot be streamed which might be a problem with responses
 that have a huge amount of headers.
 
-1. Trailers are not specified at all except for that “servers might do
-chunked responses”
+1. Trailers are not specified at all except for that "servers might do
+chunked responses"
 
 1. Chunked request data is totally unimplementable on top of the current
 specification due to the ill-specified WSGI input thing.
@@ -285,8 +285,8 @@ out there learned to live with WSGI as it is and it works for us.  There
 are some corner cases where we would love it to be improved like the input
 thing, but it's hardly something that's worth breaking API over.  We
 already wrote the code and coming up with a new spec at that point mostly
-just supports the “the great thing about standards is that there are so
-many to chose from” sentiment.  Especially now that WSGI was just extended
+just supports the "the great thing about standards is that there are so
+many to chose from" sentiment.  Especially now that WSGI was just extended
 to deal with Python 3's unicode behavior we have to be very careful not to
 force more complexity into everybody's code.
 
@@ -318,7 +318,7 @@ and here is why.
 I love small applications that work together.  And the layer I let those
 applications work together is called HTTP.  In fact, I will even have a
 talk about this at PyCodeConf.  But what I do not believe in is that
-magical plug that is called “framework independent pluggable application”.
+magical plug that is called "framework independent pluggable application".
 I don't know where this idea came from that it might work, but it does
 not.  The idea that you can reused code on top of WSGI to work with
 Framework 1 and Framework 2 is not working out.  If they are truly divided

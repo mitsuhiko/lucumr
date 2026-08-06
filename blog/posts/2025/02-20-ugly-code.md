@@ -5,8 +5,8 @@ summary: "Why ugly and dumb code sometimes blind sights engineers from the"
 
 # Ugly Code and Dumb Things
 
-This week I had a conversation with one of our engineers about “shitty
-code” which lead me to sharing with him one of my more unusual
+This week I had a conversation with one of our engineers about "shitty
+code" which lead me to sharing with him one of my more unusual
 inspirations: [Flamework](https://github.com/exflickr/flamework/), a
 pseudo framework created at Flickr.
 
@@ -42,8 +42,8 @@ goal of making it into a reusable product.  That rewrite shipped
 successfully and it lives to this very day.
 
 But it took me years to fully realize what was happening here: reusability
-is not that important when you’re building an application, but it’s
-crucial when you’re building a library or framework.
+is not that important when you're building an application, but it's
+crucial when you're building a library or framework.
 
 ## The Flickr Philosophy
 
@@ -87,8 +87,8 @@ Code like this often triggers a visceral reaction, especially in engineers
 who prize clean design.
 
 How does something like that get created?  Cal Henderson described
-Flickr's principle as “doing the dumbest possible thing that will work.”
-Maybe “dumb” is too strong — “simple” might be more apt.  Yet simplicity
+Flickr's principle as "doing the dumbest possible thing that will work."
+Maybe "dumb" is too strong — "simple" might be more apt.  Yet simplicity
 can look messy to someone expecting a meticulously engineered codebase.
 This is not at all uncommon and I have seen it over and over.  The first
 large commercial project that got traction that I ever worked on ([Plurk](https://en.wikipedia.org/wiki/Plurk)) was also pretty pragmatic and
@@ -126,7 +126,7 @@ small price to pay.
 
 ## A Question of Balance
 
-At the end of the day, where you stand on “shitty code” depends on your
+At the end of the day, where you stand on "shitty code" depends on your
 primary goal:
 
 - Are you shipping a product and racing to meet user needs?
@@ -143,7 +143,7 @@ The real challenge is deciding which route to take — and when.  Even with
 experience, it is can be hard to know when to move from quick fixes to
 more robust foundations.  The principles behind Flamework are also
 reflected in [Sentry's development philosophy](https://develop.sentry.dev/getting-started/philosophy/).  One more
-poignant one being “Embrace the Duct Tape”.  Yet as Sentry matured, much
+poignant one being "Embrace the Duct Tape".  Yet as Sentry matured, much
 of our duct tape didn't stand the test of time, and was re-applied at
 moments when the real solution would have been a solid foundation poured
 with concrete.

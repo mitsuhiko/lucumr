@@ -10,12 +10,12 @@ about engineering, teams and quite frankly personal mental health. My hope
 is that those who want to learn from me find it useful. This is a
 continuation to this.*
 
-Over the years, I've been asked countless times: “What advice would you
-give to young programmers or engineers?”  For the longest time, I
+Over the years, I've been asked countless times: "What advice would you
+give to young programmers or engineers?"  For the longest time, I
 struggled to answer.  I wasn't sure I had anything definitive or profound
 to offer.  And truthfully, even now, I'm not convinced I have enough
 answers.  But as I've reflected on my journey to here, I've formulated
-some ideas that I believe are worth sharing — if only to provide a bit of
+some ideas that I believe are worth sharing — if only to provide a bit of
 guidance to those just starting out.  For better or worse, I think those
 things are applicable regardless of profession.
 
@@ -85,7 +85,7 @@ needs to be fulfilling, even if work is just a few hours a day.
 
 ## Dare To Commit
 
-Life isn't about sampling everything; it’s about making deliberate choices
+Life isn't about sampling everything; it's about making deliberate choices
 and committing to the ones that matter.  You don't need to date twenty
 people to find the right partner, nor do you need a network of hundred
 acquaintances to succeed.  Similarly, you don't need to work at ten
@@ -105,7 +105,7 @@ like the rise of AI in software engineering — your experience and
 expertise aren't wasted.  Your gained experience makes it much easier for
 you to adjust course and it will give you the necessary trust in yourself.
 It allows to leverage what you've learned in new ways.  While it's true
-that choosing from limited options might not always lead to the “best”
+that choosing from limited options might not always lead to the "best"
 possible outcome, the time and effort you invest in your chosen path can
 often outweigh the hypothetical gains of a different choice.  In many
 cases, mastery and fulfillment come not from chasing endless possibilities
@@ -124,7 +124,7 @@ when visa issues are involved) has one incredible benefit: you really have
 to commit to your relationship.  It's expensive and you spend a lot of
 time talking and sharing intimate thoughts.  It also forces you to make a
 concious decision if the two of you believe it's worth continuing.  You
-don't have the option to just “test drive” it.  It forces you to figure
+don't have the option to just "test drive" it.  It forces you to figure
 out all the hard things upfront.  Career, values, ambitions, children, the
 whole thing.  That's a very different experience to swiping right and see
 what comes from it.
@@ -145,7 +145,7 @@ poke at the parts where dragons can be.  Only in situations of stress and
 challenge will you truly find out how the other person works and if that
 works for you.
 
-I have heard people talk about “going to IKEA” for a date.  I think that's
+I have heard people talk about "going to IKEA" for a date.  I think that's
 a brilliant idea.  Imagining a life together and struggling a bit through
 conflict and resolution is exactly the right way to go about it.
 

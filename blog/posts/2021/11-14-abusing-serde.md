@@ -17,7 +17,7 @@ some of the use cases I think are quite interesting and worth sharing.
 ## Abusing Serialization
 
 One of the very interesting use cases for serde is to use it as some form
-of reflection framework to expose structs to other “environments” that
+of reflection framework to expose structs to other "environments" that
 cannot natively support rust structs.  These are situations where as a
 developer you serialize a serializable object just to immediately
 deserialize it again in a slightly different format.  Instead of
@@ -57,7 +57,7 @@ serialized to serde with the default `Serialize` implementation.  This
 object is then passed to the template via `context!(user)`.  What this
 does is creating a map with a single key called `user` and set to the
 value of that variable.  The goal here is to allow the template engine to
-access “attributes” of this user like `name`.  Now Rust is not dynamic by
+access "attributes" of this user like `name`.  Now Rust is not dynamic by
 nature which means that normally doing something like this at runtime is
 not possible.  We can however do this because serde will implement the
 `Serialize` trait like this (in pseudocode):
@@ -114,7 +114,7 @@ serialized.  It looks like this:
 
 But as you can tell from this, if one were to craft such a JSON document,
 it would be picked up by serde JSON as if it was an arbitrary precision
-integer.  Not great.  It also means that the “value” part in itself again
+integer.  Not great.  It also means that the "value" part in itself again
 needs to be serde compatible.  For arbitrary precision integers that's
 okay because it can be represented as a string.  But what if what you want
 to pass between serialize and serializer is not at all serializable?
@@ -126,8 +126,8 @@ type called [Value](https://docs.rs/minijinja/0.8.2/minijinja/value/struct.Value
 As you would expect it can hold integers, floating point values, strings,
 lists, objects and a bunch of more things.  It can however also hold data
 that serde does not know anything about.  In particular it can hold
-a special type of string called a “safe” string which is a string that
-holds safe HTML that does not need escaping or what's called “dynamic”
+a special type of string called a "safe" string which is a string that
+holds safe HTML that does not need escaping or what's called "dynamic"
 values.  The latter are particularly interesting because they cannot be
 serialized.
 
@@ -146,7 +146,7 @@ this is the loop variable in a MiniJinja template:
 MiniJinja (like Jinja2) provides the special `loop` variable to access the
 state of the loop itself.  For instance you can access `loop.index` to get
 access to the current loop iteration number.  The way this works in
-MiniJinja is that the “loop controller” is passed directly to the template
+MiniJinja is that the "loop controller" is passed directly to the template
 and stored in the value itself as reference counted value.   Effectively
 this is what is happening internally:
 

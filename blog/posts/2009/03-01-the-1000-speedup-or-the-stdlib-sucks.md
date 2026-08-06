@@ -7,7 +7,7 @@ summary: "How a small change on an import resulted in an 1000% speedup."
 
 I hate the [stdlib](http://docs.python.org/dev/library). There! I said
 it. Why do I hate it? `Cookie`, `cgi`, `urllib`, n'uff said. Today I can
-add another module to the “I hate you” list.
+add another module to the "I hate you" list.
 
 I noticed that [Werkzeug](http://werkzeug.pocoo.org/)'s
 `SharedDataMiddleware` was just delivering 50 requests a second. I tried

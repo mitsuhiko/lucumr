@@ -14,7 +14,7 @@ mind of what a lockfile is supposed to look like or even be used for.
 
 In those discussions however also a small other aspect re-emerged: Python
 has a metadata problem.  Python's metadata system is too complex and
-suffers from what I would call “lack of constraints”.
+suffers from what I would call "lack of constraints".
 
 ## JavaScript: Example of Useful Constraints
 
@@ -86,8 +86,8 @@ could become invalid almost immediately after being written. [^3]
 
 Some of this has been somewhat improved because the new `pyproject.toml`
 standard encourages static metadata.  However build systems are entirely
-allowed to override that by falling back to what is called “dynamic
-metadata” and this is something that is commonly done.
+allowed to override that by falling back to what is called "dynamic
+metadata" and this is something that is commonly done.
 
 In practice this system incurs a tremendous tax to everybody that can be
 easily missed.

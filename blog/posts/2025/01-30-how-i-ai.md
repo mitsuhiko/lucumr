@@ -19,8 +19,8 @@ Before moving on, I want to include an an important disclaimer: I am by no
 means an expert in AI; I'm mostly an enthusiastic user.  Absolutely
 nothing here is novel!  What I do here is pretty boring which to some
 degree is the point.  I won't be covering underlying technology or my
-programmatic experience.  This is strictly about how I use AI as a “techy
-consumer”.
+programmatic experience.  This is strictly about how I use AI as a "techy
+consumer".
 
 In addition, as you read through this article you will probably figure out
 rather quickly that the way I use AI — despite being used in part for
@@ -87,10 +87,10 @@ the desire naturally grows to use more tooling.  As for which models
 (and services) to use day to day I don't have a particular strong strategy
 and preferences change quickly.  For instance after DeepSeek's R1 release,
 I started exploring it quite a bit for programming — and it's doing a
-phenomenal job at it —  and as of writing that's just a few days old.
+phenomenal job at it — and as of writing that's just a few days old.
 
 If you want to run models locally, Apple Silicon machines currently offer
-some of the best “bang for your buck” in terms of performance, power
+some of the best "bang for your buck" in terms of performance, power
 usage, and money.  With [tailscale](https://tailscale.com/), I can even
 access my MacBook's Open WebUI interface from my phone, as long as it is
 powered on.
@@ -115,9 +115,9 @@ llm -m deepseek-coder '# write timsort in python'
 
 - By default, Open WebUI only connects to OpenAI or Ollama. If you want to
 add the hosted Anthropic or DeepSeek models, you need to create a custom
-function in the “Functions” section of Open WebUI's admin panel.
+function in the "Functions" section of Open WebUI's admin panel.
 
-- Import the functions and configure your API keys, and you’re ready to go.
+- Import the functions and configure your API keys, and you're ready to go.
 
 Functions you can import to the WebUI:
 
@@ -127,7 +127,7 @@ Functions you can import to the WebUI:
 
 </details>## AI Affordances
 
-One frequent concern I hear is “you cannot trust LLMs” as they tend to
+One frequent concern I hear is "you cannot trust LLMs" as they tend to
 hallucinate.  I get this in particular when I explain that I frequently
 use this as a replacement for Google!  However, I approach the risk of
 hallucination the same way I would when seeking advice from another human:
@@ -204,7 +204,7 @@ figure out what it thinks of the text, etc.
 
 Here are some of the things I use AI for when writing:
 
-- **Grammar checking:** I compare the AI’s suggested revisions side by
+- **Grammar checking:** I compare the AI's suggested revisions side by
 side with my original text and pick the changes I prefer.
 
 - **Restructuring:** AI often helps me see when my writing is too wordy.
@@ -213,12 +213,12 @@ did not read well and that I did not publish.  Models like o1 are very
 helpful in identifying things that don't need to be said.
 
 - **Writing Notes and finding key points:** Here, I ask the AI to read
-through a draft “like a Computer Science 101 student” and take notes.
+through a draft "like a Computer Science 101 student" and take notes.
 This helps me see if what it absorbed matches what I intended to
 convey.
 
 - **Roast my Article:**  I have a few prompts that asks the AI to
-“roast” or criticize my article, as if commenting on Reddit, Twitter,
+"roast" or criticize my article, as if commenting on Reddit, Twitter,
 or Hacker News.  Even though these critiques seem shallow, they can
 sting, and they often highlight weaknesses in my argument or lack of
 clarity.  Even if they don't necessarily impact the writing, they
@@ -242,7 +242,7 @@ try to reason through it.
 - **Fuzzy parsing:** Sometimes you have an output, but you don't
 have the input.  As an example I have a little side project to write a
 command line tool help generator, and AI is really good at taking the
-output, “parsing“ it and creating a structure as input.  That is a
+output, "parsing" it and creating a structure as input.  That is a
 good first step to then generate out the code that should match again
 that output.
 
@@ -261,7 +261,7 @@ quickly on some harder problems.
 
 Pair programming is fantastic, but not always possible if you're
 programming alone at home.  An LLM can serve as a stand-in discussion
-partner — a poor man's interlocutor.  Thankfully it's actually not all
+partner — a poor man's interlocutor.  Thankfully it's actually not all
 that poor, because it's really good at telling you what stuff is called.
 This is most fun if you do it with voice mode, but it also works quite
 well in text.
@@ -273,7 +273,7 @@ the start, but if you keep concatenating to the same buffer, it's really
 inefficient. So, remember what the Big-O of that is if you do it in a loop,
 and wasn't there, like, a humorous name for this kind of algorithm?
 >
-> **AI:** You’re thinking of the “Schlemiel the Painter’s algorithm.” It’s a
+> **AI:** You're thinking of the "Schlemiel the Painter's algorithm." It's a
 humorous way of describing the inefficiency of repeatedly appending to a
 string using operations like `strcat`, which copies from the start each
 time. The Big O complexity for this operation is O(n^2) if done repeatedly
@@ -298,13 +298,13 @@ languages.  For a recent example, my kids have Greek friends and we tried
 to understand the difference between some Greek words that came up.  I
 have no idea how to write it, Google translate does not understand my
 attempts of pronouncing them either.  However, ChatGPT does.  If I ask it
-in voice mode what “pa-me-spee-tee” in Greek means it knows what I tried
+in voice mode what "pa-me-spee-tee" in Greek means it knows what I tried
 to mumble and replies in a helpful manner.
 
 Lastly the use on the go.  Sometimes I'm just not in a position where I
 can actually write it down on a keyboard, but if I basically talk to
 ChatGPT, it can transcribe it down and it will also remove some of my
-“um's” and it will just be there and I can copy-paste it later and edit
+"um's" and it will just be there and I can copy-paste it later and edit
 it.  (To prove a point, I transcribed the previous sentence with the
 mobile app).  This is a very different experience than transcribing on iOS
 natively.  It understands enough context of what I'm babbling that it will
@@ -322,7 +322,7 @@ use AI to make illustrations, though I have in the past.  The reason is
 that there is a certain style that goes along with these illustrations,
 which is just incredibly off-putting.  They are noticeably AI-generated,
 and typically quite low-quality.  People have taken to calling these
-images “AI slop” and I personally respond really badly to it.  When
+images "AI slop" and I personally respond really badly to it.  When
 someone throws me a pull request, an email or a text message that is
 obviously AI-generated without disclosing this, I immediately have a very
 low opinion of them.

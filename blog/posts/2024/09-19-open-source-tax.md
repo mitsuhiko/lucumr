@@ -11,8 +11,8 @@ money to Open Source.  At Sentry we have been [funding our Open Source
 dependencies](https://blog.sentry.io/we-just-gave-500-000-dollars-to-open-source-maintainers/)
 for a few years now and we're trying to encourage others to do the same.
 
-It’s not an easy ask, of course.  One quite memorable point raised
-was what I would call “accidental spending”.  The story goes like this:
+It's not an easy ask, of course.  One quite memorable point raised
+was what I would call "accidental spending".  The story goes like this:
 an engineering team spins up a bunch of Kubernetes machines.
 As the fleet grows in scale some inefficiencies creep in.  To troubleshoot
 or optimize, additional services such as load balancers, firewalls, cloud
@@ -24,7 +24,7 @@ debugging quicker you reduce that downtime, by having that load balancer
 you can auto scale and save on unused computing resources etc.).
 But often, the payoff feels abstract and are hard to quantify.
 
-I call those purchases “accidental” because they are proportional to the
+I call those purchases "accidental" because they are proportional to the
 deployed infrastructure and largely acting like a tax on top of
 everything.  Only after a while does the scale of that line item become
 apparent.  On the other hand intentionally purchasing a third party system
@@ -45,8 +45,8 @@ to handle funds effectively.  After all many of these projects are run by
 individuals and not formal organizations.
 
 Companies are unlikely to fund something without understanding the return
-on investment.  One better understood idea is to turn that one “random
-person in Nebraska” maintaining a critical dependency into a
+on investment.  One better understood idea is to turn that one "random
+person in Nebraska" maintaining a critical dependency into a
 well-organized team with good op-sec.  But for that to happen, funding
 needs to scale from pennies to dollars, making it really worthwhile.
 
@@ -58,7 +58,7 @@ like thing.  That might leverage the general willingness to just pile up
 on things to do good things.  If we all pay 3% on top of our Cloud or SaaS
 bills to give to Open Source this would quickly add up.
 
-While I’m intrigued by the idea, I also have my doubts that this would
+While I'm intrigued by the idea, I also have my doubts that this would
 work.  It goes back to the problem mentioned earlier that some
 Open Source projects just have no governance or are not even ready to
 receive money.  How much value you put on a dependency is also very
@@ -70,15 +70,15 @@ package more than some algorithm would be able to determine about how
 important that package is to us.
 
 So the challenge with the tax — as appealing as it is — is that it might
-make the “purchase decision” of funding Open Source easier, but it would
+make the "purchase decision" of funding Open Source easier, but it would
 probably make the distribution problem much worse.  Deliberate,
 intentional funding is key.  At least for the moment.
 
-Still, it’s worth considering.  The “what if” is a powerful idea.  Using a
-restaurant analogy, the “open-source tax” is like the mandatory VAT or
+Still, it's worth considering.  The "what if" is a powerful idea.  Using a
+restaurant analogy, the "open-source tax" is like the mandatory VAT or
 health surcharge on your bill: no choice is involved.  Another model could
 be more like the tip suggestions on a receipt offering a choice but also
-guidance on what’s appropriate to contribute.
+guidance on what's appropriate to contribute.
 
 The current model we propose with our upcoming [Open Source Pledge](https://osspledge.com/about/) is to suggest like a tip what you
 should give in relation to your developer work force.  Take the average

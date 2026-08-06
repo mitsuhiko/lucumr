@@ -79,7 +79,7 @@ error[E0599]: no method named `downcast_ref` found for struct
 
 The reason for this is that a `Box<dyn DebugAny>` unfortunately is not a
 `Box<dyn Any>` and as such we don't get the methods from it that we
-need.  So how do we fix this?  The simplest method is the “as any” pattern
+need.  So how do we fix this?  The simplest method is the "as any" pattern
 where we implement a method on our `DebugAny` trait that upcasts into an
 `Any`.  This looks like this:
 

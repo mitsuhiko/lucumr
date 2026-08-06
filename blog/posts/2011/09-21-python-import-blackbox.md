@@ -14,8 +14,8 @@ Apparently Python does clean it up on module deallocation.*
 For a long time Python's import system was (although customizable) at the
 very core a black box.  You could hook into some parts of it but others
 were hidden from you.  On top of that the only signalling that the import
-system has is “here is your module, be happy” or “oh look, an import
-error”.  Unfortunately Python's exceptions are an example of a [stringly
+system has is "here is your module, be happy" or "oh look, an import
+error".  Unfortunately Python's exceptions are an example of a [stringly
 typed API](http://stackoverflow.com/questions/2349378/new-programming-jargon-you-coined/2444303#2444303),
 and one of the worst.
 
@@ -49,8 +49,8 @@ except ImportError:
 ```
 
 However if now `foo` is failing to import because `bar` is missing you get
-the import error “No module named simplefoo” even though the correct error
-would have been “No module named bar”.
+the import error "No module named simplefoo" even though the correct error
+would have been "No module named bar".
 
 ## The Problem
 
@@ -100,7 +100,7 @@ ImportError: No module named missing_module
 As you can see, the error message does not even include the whole import
 path at all times.  Sometimes the error message is something completely
 unrelated, sometimes the whole error message is just the module name.
-Sometimes it's “No module named %s”, sometimes the module name is on
+Sometimes it's "No module named %s", sometimes the module name is on
 quotes.  This is because various parts of the system can abort an import
 process and since this is customizable …
 

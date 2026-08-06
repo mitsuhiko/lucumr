@@ -30,7 +30,7 @@ struct for later versions of the library and code that compiled against
 the older version of the library continues to work.
 
 If you look at C++ classes, you will sooner or later notice that the
-“new” operator and size of the allocated structure where the operator is
+"new" operator and size of the allocated structure where the operator is
 called. That means if you change the size of your class later (by adding
 a new private member for example) you have to recompile the code,
 otherwise new would not allocate enough memory and most likely crash in
@@ -141,7 +141,7 @@ will cause memory leaks and headaches.
 `operator=`… returns a reference to `this`
 
 `operator+` and friends… return the newly constructed object *by value*. Do not use
-“new”!
+"new"!
 
 `operator[]`… returns a reference. Otherwise it's not possible to add/change
 items.
@@ -169,7 +169,7 @@ int main()
 While this code would work perfectly fine in C, it's very dangerous
 in C++ because `do_something_with` could raise an exception.  Even
 if *you* don't raise one there, something else could still raise one
-(Like for example “new”).  The correct solution for this particular
+(Like for example "new").  The correct solution for this particular
 problem would be using streams of course, but if you need to work
 with pointers, wrap them in something that closes the resource in
 the destructor:
@@ -218,7 +218,7 @@ The preprocessor does not know that `Pair<...>` belongs together and will
 try to split it up.
 
 Another common problem seems to be that wrapped template definitions often
-end in “>>” which the parser interprets as right-shift but you actually
+end in ">>" which the parser interprets as right-shift but you actually
 wanted to close two templates.  In this case you have to add some
 whitespace:
 

@@ -12,7 +12,7 @@ Austria instead of going to work or having the kids at daycare, two of
 those weeks were under mandatory social distancing because of SARS-CoV-2.
 
 And as cute as [social distancing](https://en.wikipedia.org/wiki/Social_distancing)
-and “flattening the curve” sounds at first, the consequences to our daily
+and "flattening the curve" sounds at first, the consequences to our daily
 lives are beyond anything I could have imagined would happen in my
 lifetime.
 
@@ -73,7 +73,7 @@ bluetooth.  It then cycles this ID in regular intervals.
 
 When another device (the infected person) sees this ID it measures signal
 strength and time observed.  When enough time was spent with the other
-person and that contact was “close enough” it records the broadcast
+person and that contact was "close enough" it records the broadcast
 (encrypted ID) on the device.  The device also just deletes records older
 than 5 days.
 
@@ -102,7 +102,7 @@ tracking people but still be useful for contact tracing.
 ## The Phone in your Pocket
 
 I had conversations with a lot of people over the last few days about
-contact tracing apps and I noticed — particularly from technically minded
+contact tracing apps and I noticed — particularly from technically minded
 people — an aversion against the idea of contact tracing via apps.  This
 does not surprise me, because it's an emotional topic.  However it does
 hammer home a point that people are very good at misjudging data privacy.

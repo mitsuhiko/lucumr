@@ -56,7 +56,7 @@ memory internally than bytestrings did (2 to 4 times as much for
 strings).  Secondly a lot of stuff broke from Python 2 to Python 3 and
 due to the low number of users a lot of these issues are yet to be
 noticed.  As with all problems in the language and standard library
-itself just fixing them is not a solution.  To also support “older”
+itself just fixing them is not a solution.  To also support "older"
 versions of Python 3 developers will always add workarounds to their
 code for problems also in the standard library.  That's unfortunately
 pretty much a chicken-egg problem.
@@ -102,7 +102,7 @@ A pretty depressing quote on Python 3 [came from Mark Pilgrim](http://www.reddit
 > Python 3 is a commercial disaster. In 2010Q3 I had negative sales of
 DiP3 [Dive into Python 3]. More people returned it than bought it. I'm
 considering retro-fitting the book's content to Python 2.7 and
-re-releasing it as “Dive Into Python 2.” Seriously.
+re-releasing it as "Dive Into Python 2." Seriously.
 >
 
 At least this clearly shows that Python 3 is not going as good as it
@@ -111,7 +111,7 @@ could, and that rethinking the roadmap might be a good idea.
 ## Variety
 
 The other thing that is constantly on my mind is the variety in
-frameworks, WSGI implementations and a bunch of other “competing”
+frameworks, WSGI implementations and a bunch of other "competing"
 libraries.  As far as I am concerned we are doing great, much better than
 before.  Of course I am sitting in my happy little spot of not having a
 whole lot of users compared to the other big frameworks out there, but
@@ -132,7 +132,7 @@ because both are aiming for the same thing as well, but unfortunately that
 seems to be pretty unlikely due to the fact that Bottle does not want to
 have any dependencies.  However switching from Bottle to Flask would be a
 piece of cake for any Bottle user as that process could be fully
-automated.  Lately Flask also comes in a “Kitchensink” release that is a
+automated.  Lately Flask also comes in a "Kitchensink" release that is a
 zip file with Flask and all dependencies to drop into a folder.  That way
 you don't have to deal with virtualenv or anything else if you don't want
 to or if you can't.

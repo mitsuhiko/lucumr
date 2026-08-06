@@ -44,7 +44,7 @@ embellish it. […]
 David Heinemeier Hansson, [The perils of mixing open source and
 money](https://dhh.dk/2013/the-perils-of-mixing-open-source-and-money.html)
 
-At face value, this suggests that Open Source and money shouldn’t mix,
+At face value, this suggests that Open Source and money shouldn't mix,
 and that the absence of monetary rewards fosters a unique creative
 process.  There's certainly truth to this, but in reality, Open Source and
 money often mix quickly.
@@ -58,7 +58,7 @@ next.js, pydantic, …).  Even when money doesn't directly fund an Open
 Source project, others may still profit from it, yet often those are not
 the original creators.  These dynamics create stresses and moral dilemmas.
 
-I’ve said this before, but it’s no coincidence that Rails has a
+I've said this before, but it's no coincidence that Rails has a
 foundation, large conferences, a strong core team, and a trademark, while
 Flask has none of it.  There are barriers and it takes a lot of energy and
 determination to push a project to a level where it can sustain itself.
@@ -96,9 +96,9 @@ of being wronged.
 
 This is where the lines between law and morality blur.  Matt feels
 mistreated, especially by a private equity firm, but neither trademarks
-nor license terms can resolve the issue for him.  It’s a moral question,
-and sadly, Matt’s actions have alienated many who would otherwise support
-him.  He's turning into a “mad king” and behaving immoral in his own ways.
+nor license terms can resolve the issue for him.  It's a moral question,
+and sadly, Matt's actions have alienated many who would otherwise support
+him.  He's turning into a "mad king" and behaving immoral in his own ways.
 
 The reality is that we humans are messy and unpredictable.  We don't quite
 know how we will behave until we have been throw into a particular

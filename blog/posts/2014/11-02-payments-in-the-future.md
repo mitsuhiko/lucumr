@@ -157,8 +157,8 @@ I did not even care about the tip4commit thing any more by the time it was
 submitted to reddit (the issue was already closed as far as I was
 concerned because I did not want to waste more time with it) but all the
 sudden I got email and comments.  The reddit post had the awesome title
-“This guy is complaining about tip4commit, please help educate about
-Bitcoin”.  I do not want to be educated about Bitcoin.  I have been
+"This guy is complaining about tip4commit, please help educate about
+Bitcoin".  I do not want to be educated about Bitcoin.  I have been
 following the Bitcoin project since before ASIC mining, by now I have read
 all the arguments …
 

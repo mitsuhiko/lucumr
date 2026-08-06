@@ -43,8 +43,8 @@ the operating system, but in one way or another, C is the language of
 choice for libraries and the C calling conventions is the lingua franca of
 shared libraries.
 
-“The greatest trick that C ever pulled was convince the world that it does
-not have a runtime”.  I'm not sure where I heard the quote first, but it's
+"The greatest trick that C ever pulled was convince the world that it does
+not have a runtime".  I'm not sure where I heard the quote first, but it's
 incredibly appropriate when talking about libraries.  Essentially C is so
 commonplace that everything can assume that some basic functionality is
 provided by the C standard library.  That's the one thing that everybody
@@ -143,7 +143,7 @@ add something that looks like this:
 ```
 
 On Windows it will set `YL_API` (I used `YL` as short version for
-“Your Library” here, pick a prefix that fits you) for DLLs appropriately
+"Your Library" here, pick a prefix that fits you) for DLLs appropriately
 depending on what flag is set.  Whoever includes the header without doing
 anything fancy before will automatically get `__declspec(dllimport)` in
 its place.  This is a really good default behavior on Windows.  For other
@@ -345,7 +345,7 @@ clashes.
 ## Context Objects
 
 Global state is terrible, so what's the solution?  Generally the solution
-is to have what I would call “context” objects that hold the state
+is to have what I would call "context" objects that hold the state
 instead.  These objects would have all the important stuff on that you
 would otherwise put into a global variable.  That way the user of your
 library can have multiple of those.  Then make each API function take that
@@ -766,7 +766,7 @@ expose.
 - Don't go crazy with structs
 
 - let people customize the memory allocators.  If you can't do it per
-“context” object, at least do it per library.
+"context" object, at least do it per library.
 
 - Be careful when using the STL, always only through a typedef that adds
 your allocator.

@@ -15,7 +15,7 @@ would be possible to draw any conclusion out of personal experience.
 The last two weeks however made me realize however that I would never
 start a project with MongoDB — or for that matter any other non relational
 database as primary data store — again.  Notice however that I said
-“start”.  I did not say I will never use MongoDB again, I said I will
+"start".  I did not say I will never use MongoDB again, I said I will
 most likely not start a project with that again.
 
 Now before I start with explaining myself I want to give a few disclaimers
@@ -28,7 +28,7 @@ When I'm talking non-relational here I'm mostly talking about MongoDB
 however because that's what everybody else is talking about as well.  The
 newcomers to the pocoo IRC channel are overwhelmingly picking MongoDB as
 data store to get started.  In fact that is happening in so high numbers
-that the sentence “MongoDB is not the only data store” was added to the
+that the sentence "MongoDB is not the only data store" was added to the
 title.
 
 The reason for this blog post is that I see a lot of people claiming that
@@ -95,7 +95,7 @@ know your type.
 Now the lack of schemas should not be a reason to not use MongoDB or any
 other relational data store.  It's easy to add schemas on top and things
 like mongoengine for Python already do that for you.  While it does punch
-some holes into the concept of “you don't need schemas” it does not really
+some holes into the concept of "you don't need schemas" it does not really
 question the use of a non-relational data store.  As far as I am concerned
 relational vs. non-relational is not about schemas vs. the lack of schemas
 but the embracing the idea of denormalized data.
@@ -115,7 +115,7 @@ have been the case for a few joins and a group by.  It's because it was
 not written with that in mind the first place.  I suddenly needed the data
 in a different format.
 
-## Killed by “Too Complicated”
+## Killed by "Too Complicated"
 
 What I took away from the last month is that there is a lot of value in
 being able to adjust to changes quickly.  We were in the lucky position of

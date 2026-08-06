@@ -112,7 +112,7 @@ maintained as the original one.
 
 Duplicate explicit target name: "zine".
 
-I guess this is also what Steve Ballmer referred to as “cancer”.
+I guess this is also what Steve Ballmer referred to as "cancer".
 Unfortunately he's not entirely wrong there. For example I tried to
 develop an interactive administration shell for [Zine](http://zine.pocoo.org/) but without readline (which I cannot use as
 Zine is BSD licensed) the user experience is just meh. I would have to
@@ -157,5 +157,5 @@ companies that work with it.
 Before you license your code under an Open Source license: Think about
 the license! Both types of licenses have their advantages and
 disadvantages and it would be stupid to use the GPL without thinking
-just because “everybody does”. Many just do because they haven't read
+just because "everybody does". Many just do because they haven't read
 the license either.

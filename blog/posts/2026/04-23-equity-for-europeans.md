@@ -17,7 +17,7 @@ overly technical or losing an important part of the meaning.
 
 This post is in English, but it is written mostly for readers in Germany,
 Austria, and Switzerland, and more broadly for people from continental Europe.
-I move between “German-speaking” and “continental European” a bit.  They are not
+I move between "German-speaking" and "continental European" a bit.  They are not
 the same thing, of course, but many continental European countries share a
 civil-law background that differs sharply from the English common-law and equity
 tradition.  The words differ by language and jurisdiction, but the conceptual gap
@@ -141,7 +141,7 @@ differently.
 
 ## Normalize Equity
 
-When you hear “equity,” it helps to think of it as a rightful stake.
+When you hear "equity," it helps to think of it as a rightful stake.
 Historically, it is connected to fairness and the recognition of a claim where
 strict rules would be too rigid.  Financially, it is the part that remains after
 prior obligations.  Culturally, it is something that can grow into control,

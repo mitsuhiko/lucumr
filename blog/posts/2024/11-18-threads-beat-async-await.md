@@ -64,7 +64,7 @@ they are likely to conclude that mouse and cat move simultaneously.
 The reason is that if you are exposed to programming via Scratch you are
 exposed to a primitive form of actor programming.  The cat and the mouse
 are both actors.  In fact, the UI makes this pretty damn clear, just that
-the actors are called “sprites”.  You attach logic to a sprite on the
+the actors are called "sprites".  You attach logic to a sprite on the
 screen and all these pieces of logic run *at the same time*.
 Mind-blowing.  You can even send messages from sprite to sprite.
 
@@ -82,7 +82,7 @@ There is something else though you should keep in mind: Scratch will not
 talk about threads, it will not talk about monads, it will not talk about
 `async`/`await`, it will not talk about schedulers.  As far as you are
 concerned as a programmer, it's an imperative (though colorful and visual)
-language with some basic “syntax” support for message passing.
+language with some basic "syntax" support for message passing.
 Concurrency comes natural.  A child can program it.  It's not something to
 be afraid of.
 
@@ -113,14 +113,14 @@ functional programming has all its stuff figured out, and imperative
 programming does not.
 
 Instead, I want to talk about how functional languages and imperative
-languages are dealing with “waiting”.
+languages are dealing with "waiting".
 
 The first thing I want to back to is the example from above.  Both of the
 functions (for the cat and the mouse) can be seen as separate threads of
 execution.  When the code calls `sleep(10)` there's clearly an
 expectation by the programmer that the computer will temporarily pause the
 execution and continue later.  I don't want to bore you with monads, so as
-my “functional” programming language, I will use JavaScript and promises.
+my "functional" programming language, I will use JavaScript and promises.
 I think that's an abstraction that most readers will be sufficiently
 familiar with:
 
@@ -168,22 +168,22 @@ async function moveMouseAsync() {
 
 Behind the scenes though, nothing has really changed, and in particular,
 when you call that function, you just get an object that encompasses the
-“composition of the computation”.  That object is a promise which will
+"composition of the computation".  That object is a promise which will
 eventually hold the resulting value.  In fact, in some languages like C#, the
 compiler will really just transpile this into chained function calls.
 With the promise in hand, you can await the result, or register a callback
 with `then` which gets invoked if this thing ever runs to completion.
 
 For a programmer, I think `async`/`await` is clearly understood as some
-sort of neat abstraction — an abstraction over promises and callbacks.
+sort of neat abstraction — an abstraction over promises and callbacks.
 However strictly speaking, it's just worse than where we started out,
 because in terms of expressiveness, we have lost an important affordance:
 we cannot freely suspend.
 
 In the original blocking code, when we invoked `sleep` we suspended for 10
 milliseconds implicitly; we cannot do the same with the async call.  Here
-we have to “`await`” the sleep operation.  This is the crucial aspect of
-why we're having these “colored functions”.  Only an async function can
+we have to "`await`" the sleep operation.  This is the crucial aspect of
+why we're having these "colored functions".  Only an async function can
 call another async function, as you cannot `await` in a sync function.
 
 ## Halting Problems
@@ -219,7 +219,7 @@ Let me clarify first that this is not a JavaScript specific problem, but
 it's nice to show it this way.  This is a completely legal thing!  It's a
 promise, that never resolves.  That is not a bug!  The anonymous function
 in the promise itself will return, the stack will unwind, and we are left
-with a “pending” promise that will eventually get garbage collected.  That
+with a "pending" promise that will eventually get garbage collected.  That
 is a bit of a problem because since it will never resolve, you can also
 never await it.
 
@@ -275,7 +275,7 @@ debugging and are also crucial for profiling.
 
 Okay, so we know there is at least some challenge with the promise model.
 What other abstractions are there?  I will make the argument that a
-function being able to “suspend” a thread of execution is a bloody great
+function being able to "suspend" a thread of execution is a bloody great
 capability and abstraction.  Think of it for a moment: no matter where I
 am, I can say I need to wait for something and continue later where I left
 off.  This is particularly crucial to apply back-pressure if you decide to
@@ -303,7 +303,7 @@ not think of it this way, but there are many reasons why just touching a
 memory region can take time.  The most obvious one is memory-mapped files.
 If you're touching a page that hasn't been loaded yet, the operating
 system will have to shovel it into memory before returning back to you.
-There is no “await touching this memory” expression, because if there were,
+There is no "await touching this memory" expression, because if there were,
 we would have to `await` *everywhere*.  That might sound petty but
 blocking memory reads were at the source of a series of incidents at
 Sentry [^1].
@@ -341,9 +341,9 @@ So lets focus on threads for a second.  As said before, what we are
 looking for is the ability for any function to yield / suspend.  That's
 what threads allow us to do!
 
-When I am talking about “threads” here, I'm not necessarily referring to a
+When I am talking about "threads" here, I'm not necessarily referring to a
 specific kind of implementation of threads.  Think of the example of
-promises from above for a moment: we had the concept of “sleeping”, but we
+promises from above for a moment: we had the concept of "sleeping", but we
 did not really say how that is implemented.  There is clearly some
 underlying scheduler that can enable that, but how that takes places is
 outside the scope of the language.  Threads can be like that.  They could
@@ -351,8 +351,8 @@ be real OS threads, they could be virtual and be implemented with fibers
 or coroutines.  At the end of the day, we don't necessarily have to care
 about it as developer if the language gets it right.
 
-The reason this matters is that when I talk about “suspending” or
-“continuing somewhere else,” immediately the thought of coroutines and
+The reason this matters is that when I talk about "suspending" or
+"continuing somewhere else," immediately the thought of coroutines and
 fibers come to mind.  That's because many languages that support them give
 you those capabilities.  But it's good to step back for a second and just
 think about general affordances that we want, and not how they are
@@ -417,7 +417,7 @@ Python on the other hand had a completely different origin story.  In the
 days before `async`/`await`, Python already had threads — real,
 operating system level threads.  What it did not have however was the
 ability for multiple of those threads to run in parallel.  The reason for
-this obviously the GIL (Global Interpreter Lock).  However that “just” makes
+this obviously the GIL (Global Interpreter Lock).  However that "just" makes
 things not to scale to more than one core, so let's ignore that for a
 second.  Because it had threads, it also rather early had people
 experiment with implementing virtual threads in Python.  Back in the day
@@ -426,14 +426,14 @@ so virtual threads were seen as a fast way to spawn more of these
 concurrent things.  There were two ways in which Python got virtual
 threads.  One was the Stackless Python project, which was an alternative
 implementation of Python (many patches for cpython rather) that
-implemented what's called a “stackless VM” (basically a VM that does not
+implemented what's called a "stackless VM" (basically a VM that does not
 maintain a C stack).  In short, what that enabled is implementing something
-that stackless called “tasklets” which were functions that could be
+that stackless called "tasklets" which were functions that could be
 suspended and resumed.  Stackless did not have a bright future because the
 stackless nature meant that you could not have interleaving Python -> C ->
 Python calls and suspend with them on the stack.
 
-There was a second attempt in Python called “greenlet”.  The way greenlet
+There was a second attempt in Python called "greenlet".  The way greenlet
 worked was implementing coroutines in a custom extension module.  It is
 pretty gnarly in its implementation, but it does allow for cooperative
 multi tasking.  However, like stackless, that did not win out.  Instead,
@@ -470,12 +470,12 @@ not have other issues.  The reality is that threads alone are just not
 enough.  You need to synchronize and talk between threads quite often and
 sometimes you just need to wait.  For instance you need to wait for user
 input.  You still want to do something, while you're stuck there
-processing that input.  So over time .NET introduced “tasks” which are an
+processing that input.  So over time .NET introduced "tasks" which are an
 abstraction over async operations.  They are part of the .NET threading
 system and the way you interact with them is that you write your code in
 there, you can suspend from tasks with syntax.  .NET will run the task on
 the current thread, and if you do some blocking you stay blocked.  This is
-in that sense, quite different from JavaScript where while no new “thread”
+in that sense, quite different from JavaScript where while no new "thread"
 is created, you pend the execution in the scheduler.  The reason it works
 this way in .NET is that some of the motivation of this system was to
 allow UI triggered code to access the main UI thread without blocking it.
@@ -487,7 +487,7 @@ functions.
 
 I really don't want to go into Rust, but Rust's async system is probably
 the weirdest of them all because it's polling-based.  In short: unless you
-actively “wait” for a task to complete, it will not make progress.  So the
+actively "wait" for a task to complete, it will not make progress.  So the
 purpose of a scheduler there is to make sure that a task actually can make
 progress.  Why did rust end up with `async`/`await`?  Primarily because
 they wanted something that works without a runtime and a scheduler and the
@@ -542,7 +542,7 @@ number.
 ## Threads are the Answer, Not Coroutines
 
 I already alluded to this above a few times, but when we think about being
-able to “suspend” from an arbitrary point in time, we often immediately
+able to "suspend" from an arbitrary point in time, we often immediately
 think of coroutines as a programmers.  For good reasons: coroutines are
 amazing, they are fun, and every programming language should have them!
 
@@ -583,7 +583,7 @@ Lastly I do want to say something nice about `async`/`await` and celebrate
 the innovations that it has brought up.  I believe that this language
 feature singlehandedly drove some crucial innovation about concurrent
 programming by making it widely accessible.  In particular it moved many
-developers from a basic “single thread per request” model to breaking down
+developers from a basic "single thread per request" model to breaking down
 tasks into smaller chunks, even in languages like Python.  For me, the
 biggest innovation here goes to [Trio](https://trio.readthedocs.io/en/stable/), which introduced the concept
 of structured concurrency via its nursery.  That concept has eventually

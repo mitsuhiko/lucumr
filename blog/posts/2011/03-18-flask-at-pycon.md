@@ -33,7 +33,7 @@ from now on.
 What else?  Modules!  Flask modules are the one part of Flask I am very
 unhappy with and it took us a while to find something that solves most of
 the problems (including the name).  So with the next Flask release we will
-ship a new concept for modules called “Blueprints”.  Essentially what
+ship a new concept for modules called "Blueprints".  Essentially what
 these blueprints will do is capturing construction information.  You can
 then attach these blueprints to applications (even multiple times if you
 like).  They can either extend the application itself or are registered

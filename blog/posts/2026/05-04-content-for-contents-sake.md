@@ -65,7 +65,7 @@ LLM text.  The first time I became aware of this was that I used the word
 "substrate" in a talk I gave earlier this year.  I am not sure where I picked it
 up, but I really liked it for what I wanted to express and I did not want to use
 the word "foundation".  Since then, however, I am reading this word everywhere.
-This, in itself, might be a case of the [Baader–Meinhof
+This, in itself, might be a case of the [Baader-Meinhof
 phenomenon](https://en.wikipedia.org/wiki/Frequency_illusion), but you can also
 see from the selection above that my coding agent loves substrate more than it
 should, and that Google Trends shows an increase.

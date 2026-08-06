@@ -4,18 +4,18 @@ summary: "The problems with timezones and Python's datetime object and how you
 would properly use them."
 ---
 
-# “Eppur si muove!”* – Dealing with Timezones in Python
+# "Eppur si muove!"* - Dealing with Timezones in Python
 
 As a result of our world not being a flat disc but a rotating geoid and
 our solar system only having one sun, we have different time of days at
 different parts at precisely the same time.  Everybody learns that in
-school these days and is well aware of the effects on human life (“Call
-your aunt over sea and she will pick up at an odd time”, jetlag etc.).
+school these days and is well aware of the effects on human life ("Call
+your aunt over sea and she will pick up at an odd time", jetlag etc.).
 But unfortunately that whole timezone thing is only partially based on
 constraints our world gave us and in computing we have to deal with these
 oddities as well.
 
-<small>* “[and yet it moves](http://en.wikipedia.org/wiki/E_pur_si_muove!)” is
+<small>* "[and yet it moves](http://en.wikipedia.org/wiki/E_pur_si_muove!)" is
 what people say Galileo Galilei uttered upon leaving the courtyard after
 being forced to recant his belief that the Earth rotates around the Sun.
 Which unfortunately is the case and gives us these wonderful timezone
@@ -30,10 +30,10 @@ which I cannot correct now, can I :-)
 
 ## What's a Timezone?
 
-What's your timezone?  If you respond with “UTC+X” that will be correct
+What's your timezone?  If you respond with "UTC+X" that will be correct
 for this very moment, but not necessarily true over time.  If you look at
 the timezone info database you will find that Berlin and Vienna, even
-though they are both in “UTC+1” will have a different timezone
+though they are both in "UTC+1" will have a different timezone
 (Europe/Berlin vs Europe/Vienna).  Why that?  The reason are differences
 in daylight saving time and historical dates.  Even if those two countries
 and cities nowadays have the same DST configurations, a hundred years ago
@@ -184,7 +184,7 @@ actually a much better idea to not do that.  If you assume that every
 datetime object without a tzinfo object is in UTC, that's the better
 solution.  You can actually take advantage of the fact that you cannot
 compare these two, similar to how you cannot mix bytes and unicode in
-Python 3.  Use that “API weakness” to your advantage.
+Python 3.  Use that "API weakness" to your advantage.
 
 1. internally always use offset naive datetime objects and consider them
 UTC.

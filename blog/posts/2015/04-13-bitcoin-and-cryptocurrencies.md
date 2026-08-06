@@ -62,18 +62,18 @@ makes things appear more complex than they are.
 
 I liked [Graydon Hoare's description of Bitcoin](http://graydon2.dreamwidth.org/201698.html):
 
-> […] the problem space that “bitcoin” launched itself into:
+> […] the problem space that "bitcoin" launched itself into:
 >
 > The problem of acquiring — automatically — a system-wide
 consensus view of a data structure otherwise built using a totally
-open-ended membership, using content-addressed storage of “accounts”
+open-ended membership, using content-addressed storage of "accounts"
 and a spine of linked hashes of the transactions causing them to
-change (the so-called “block chain”).
+change (the so-called "block chain").
 >
 > You could call it the problem of automatically selecting, at any given
-moment, an “official” branch out of all the forks of a git repository
-in existence in the world, so that everyone knows “where to look” to
-get “the official” current state of it. Only this git repository
+moment, an "official" branch out of all the forks of a git repository
+in existence in the world, so that everyone knows "where to look" to
+get "the official" current state of it. Only this git repository
 contains financial account balances and you have to be the owner of an
 account to change it (this part is comparatively easy cryptography).
 >
@@ -87,7 +87,7 @@ compute-power) to distribute the authority for selecting the official
 consensus-state. This has set up a ridiculous hardware-manufacturing
 arms race in a very particular flavour of compute-power (colliding
 prefixes of SHA256), burned a small country worth of oil, and produced
-a “transaction processing” network with extremely confusing and
+a "transaction processing" network with extremely confusing and
 non-obvious failure modes that can sustain about the same rate of
 account-updates as, say, a team of human slide-rule operators. […]
 A single cell phone runs circles around it in transaction processing
@@ -113,8 +113,8 @@ in the Bitcoin so much?
 There is a certain demographic which see ill will and conspiracies around
 every corner.  A second demographic sees governments as a beast from hell
 and taxes are what supports that monster.  The intersections of those two
-groups seems to overlap scarily close with a sizable chunk of the “Bitcoin
-community”.  If your base assumptions are that this world works like this,
+groups seems to overlap scarily close with a sizable chunk of the "Bitcoin
+community".  If your base assumptions are that this world works like this,
 then I assume that many of the perceived benefits of Bitcoin (distributed,
 somewhat anonymous, non government controlled etc.) might make a lot of
 sense.
@@ -124,13 +124,13 @@ Bitcoin be the worst economic base in such a world?  Without Internet
 there is no Bitcoin.  This might not seem like a big problem, but when we
 go by recent examples of where people were faced with governments that
 clearly had bad intents, the availability of internet was very quickly
-“spotty” or gone entirely.  When the Arab Spring took place the people in
+"spotty" or gone entirely.  When the Arab Spring took place the people in
 the countries most affected by violent revolutions either lost their
 internet access quickly through government control or because the
 infrastructure ended up destroyed.  In either case using Bitcoin for
 everyday transactions would have been impossible.
 
-Bitcoin is often called “digital gold” by supporters, but I'm not sure how
+Bitcoin is often called "digital gold" by supporters, but I'm not sure how
 much of Gold's properties actually apply to Bitcoin.  It's not that I have
 a great understanding of assets (or economics in general) but I can
 understand the appeal of gold a lot.  It's rare and the artificial
@@ -171,7 +171,7 @@ idea.  Probably until [the government decides to outlaw it](http://en.wikipedia.
 This is without a doubt, the most promising area for Bitcoin: the criminal
 element.  There is not a day where a Bitcoin exchange gets hacked, or
 someone uses Bitcoin as a way to extort money out of people.  Not exactly
-surprising because Bitcoin's biggest “strength” is its inability to link
+surprising because Bitcoin's biggest "strength" is its inability to link
 Bitcoin transactions to individuals and the irreversibility of them.
 
 However independently of if Bitcoin was created as a ponzi scheme or not,
@@ -183,7 +183,7 @@ not just just be used to attack people willingly engaging in the Bitcoin
 ecosystem, but also by harming people that have nothing to do with
 Bitcoin.  A good example for that is the [CryptoLocker](http://en.wikipedia.org/wiki/CryptoLocker) ransomware which encrypts
 people's harddrives and asks them to pay in Bitcoin to unlock it.  Before
-Bitcoin this sort of “business model” was too risky to pull off, but now
+Bitcoin this sort of "business model" was too risky to pull off, but now
 it's easy and safe.
 
 Bitcoin will always be valuable for criminals because Bitcoin is written
@@ -207,7 +207,7 @@ to grow), but also because people lose coins.
 
 While Bitcoin's monetary base inflates like crazy until 20 years or so
 from now, there is a natural tendency to hoard coins (colloquially
-apparently called to “hodl”) for as long as possible.
+apparently called to "hodl") for as long as possible.
 
 This is interesting for traders because it means that their coins will
 lose value on the short term, but if they keep the dream alive for long
@@ -313,7 +313,7 @@ really don't think that given the available technologies, Bitcoin is the
 one to be looking out for, it might be the one that wins.  But it would
 probably only be used for settle transactions between Banks and not by end
 users.  For that the network is neither strong enough nor user friendly.
-I fully expect that the “currency” aspect of Bitcoin will be dead in less
+I fully expect that the "currency" aspect of Bitcoin will be dead in less
 than five to ten years.
 
 I believe that ultimately Bitcoin gets too much wrong, and the biggest
@@ -323,8 +323,8 @@ Bitcoin is based on the idea that you can replace trust with computation.
 I'm pretty sure there are fancy papers that explore the topic of trust in
 detail, but the crux of it is, that trust is more of a chain.
 
-While the mantra of the Bitcoin community appears to be “vires in numeris”
-when it should rather be “omnis fides in alia fide iacet”.  It's trust all
+While the mantra of the Bitcoin community appears to be "vires in numeris"
+when it should rather be "omnis fides in alia fide iacet".  It's trust all
 the way down.  You can't do away with trusting people.  You need to trust
 the Bitcoin developer, the server that provides the Bitcoin client, the
 integrity of the SSL connection by trusting the CA.  You trust your

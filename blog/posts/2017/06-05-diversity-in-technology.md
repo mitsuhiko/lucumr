@@ -9,8 +9,8 @@ technology and in particular Open Source."
 It's a topic I generally do not talk much about but a recent [Wired
 Article](https://www.wired.com/2017/06/diversity-open-source-even-worse-tech-overall/)
 made me think about finally writing down my thoughts on this topic.  The
-title of that article was “Diversity in Open Source Is Even Worse Than in
-Tech Overall” and that is undoubtedly true.
+title of that article was "Diversity in Open Source Is Even Worse Than in
+Tech Overall" and that is undoubtedly true.
 
 When you start an Open Source project today, in particular one which is
 further disconnected from frontend technologies there is a very high
@@ -35,7 +35,7 @@ environments (It took emojis to become popular for people to develop
 a general understanding of why Unicode is useful in the western world).
 
 A lot of the criticism that comes against the diversity movement is that
-it undermines the idea of “meritocracy” and that it does not mirror the
+it undermines the idea of "meritocracy" and that it does not mirror the
 realities in the real world by artificially balancing teams.  Both of
 those arguments are weird in a way because they are very hard to defend
 if you look at larger parts of society.  Tech for recent historical
@@ -59,8 +59,8 @@ care about.  The most successful consumer products that came out of the
 Open Source community are probably things like The Gimp.  A project that
 not only has a ridiculous name for a consumer product, but also one that
 is everything but user friendly.  If you do a Google auto complete search
-for “Why is Gimp” it completes to “slow [on mac]”, “bad”, “complicated”
-and “unintuitive”.  In many ways I think the answer is probably a
+for "Why is Gimp" it completes to "slow [on mac]", "bad", "complicated"
+and "unintuitive".  In many ways I think the answer is probably a
 reflection of the developer community lacking focus in some key areas.
 There is no reason that Open Source software has to be user unfriendly.
 

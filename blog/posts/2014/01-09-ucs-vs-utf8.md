@@ -276,8 +276,8 @@ placing the regular letter followed by the combining diaeresis character.
 
 So for quite a few operations (like validating length, font rendering
 etc.) the basic operations a string type provides are already non
-sufficient anyways.  Something as simple as “is this string long enough
-for a tweet” already requires quite a bit of special casing.
+sufficient anyways.  Something as simple as "is this string long enough
+for a tweet" already requires quite a bit of special casing.
 
 So far at least I have not missed direct character access for anything but
 peeking at known ASCII characters in Rust and I don't really expect that

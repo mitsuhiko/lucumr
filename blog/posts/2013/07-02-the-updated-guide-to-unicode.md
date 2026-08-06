@@ -104,7 +104,7 @@ unicode and bytes:
 
 That might not seem like a big deal at first, but APIs have the attitude
 of spreading further.  For instance opening a file will set the name
-attribute to a “string” of that type:
+attribute to a "string" of that type:
 
 ```pycon
 >>> open(b'/tmp/test/Schei\xc3\x9f_Encoding').name
@@ -197,11 +197,11 @@ the encoding so it has to apply some tricks.  Where in Python 2.x we made
 a string stick to being bytes in that case, on Python 3 there are two more
 choices you have.  These strings don't have proper names and look like
 regular unicode strings, so I am going to give them names for the sake of
-the argument.  Let's call the regular unicode string a “text” string.
+the argument.  Let's call the regular unicode string a "text" string.
 Each character in that string is correctly internally represented and no
 surprises are to be expected.
 
-In addition to that there are strings I would call “transport decoded”
+In addition to that there are strings I would call "transport decoded"
 strings.  Those strings are used in a few places.  The most common case
 where you are dealing with those strings is the WSGI protocol and most
 things that interface with HTTP.  WSGI declares that strings in the WSGI
@@ -210,7 +210,7 @@ other words what happens is that all unicode strings in the Python 3 WSGI
 environment are actually incorrectly encoded for any codepoint above
 ASCII.  In order to properly decode that strings you will need to encode
 the string back to latin 1 and decode from the intended encoding.
-Werkzeug internally refers to such strings as “dance encoded” strings.
+Werkzeug internally refers to such strings as "dance encoded" strings.
 The following logic has to be applied to properly re-decode them to the
 actual character set:
 
@@ -233,8 +233,8 @@ be utf-8 encoded.  This is incredibly common with custom headers emitted
 by applications as well as the cookie headers if the cookie header is set
 via JavaScript as the browser API does not provide automatic encoding.
 
-The second string type that is common on Python 3 is the “surrogate
-escaped string”.  These are unicode strings that cannot be encoded to an
+The second string type that is common on Python 3 is the "surrogate
+escaped string".  These are unicode strings that cannot be encoded to an
 unicode encoding because they are actually invalid.  These strings are
 created by APIs that think an encoding is a specific one but cannot
 guarantee it because the underlying system does not fully enforce that.
@@ -300,7 +300,7 @@ def is_surrogate_escaped(s):
     return False
 ```
 
-Both “transport decoded” and “surrogate escaped” strings are the same type
+Both "transport decoded" and "surrogate escaped" strings are the same type
 as regular strings so the best way to keep them apart is memorize where
 they come from.  In Werkzeug I wrote helper functions that fetch the
 strings from their container (WSGI environ) and immediately decode them so
@@ -401,7 +401,7 @@ comparisons.
 - running out of memory / huge strings: this happens when you try to
 pass a large integer to the `bytes()` constructor.  I have seen this
 happen a few times when porting to Python 3 where the pattern was a
-form of “if object not an instance of bytes, call `bytes()` on it”.
+form of "if object not an instance of bytes, call `bytes()` on it".
 This is dangerous because integers are valid input values to the
 `bytes()` constructor that will allocate as many null bytes as
 the integer passed.  The recommendation there is to stop using that

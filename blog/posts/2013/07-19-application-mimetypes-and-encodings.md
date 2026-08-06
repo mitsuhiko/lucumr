@@ -10,7 +10,7 @@ For some reason lots of people are under the impression that each and
 every mimetype accepts a charset parameter.  If you think that is the
 case: that is incorrect.  If a mimetype accepts a charset parameter
 depends on the mimetype and as a rule of thumb, mimetypes that don't start
-with “text/” often don't accept one.
+with "text/" often don't accept one.
 
 There are two mimetypes where I constantly see people putting charset
 declarations next to incorrectly, and then causing a lot of confusion, now

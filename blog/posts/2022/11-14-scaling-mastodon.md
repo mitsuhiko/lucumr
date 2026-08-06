@@ -166,7 +166,7 @@ agreement on if larger or smaller instance are going to make the problem
 of moderation better or worse.
 
 Yet there is the belief that you can somehow create a coherent experience
-into a “whatever”.  Whatever it is actually.  My first mastodon instance
+into a "whatever".  Whatever it is actually.  My first mastodon instance
 was [de-federated by accident from my current instance](https://github.com/hachyderm/hack/issues/4).  I moved to that instance
 though because many other hackers in the Open Source space did, and unlike
 Fosstodon it seems to allow non English content which I do care about
@@ -208,7 +208,7 @@ from other domains, because people use it to host doxxed content.  I
 really a hard time for a few weeks when I first discovered what my
 software ended up being used for.
 
-But at least you could make the argument that a pastebin is “just” hosting
+But at least you could make the argument that a pastebin is "just" hosting
 content.  I think running a Mastodon server is worse and being hosted by
 one that you're not on comes with a whole lot of extra risks.
 
@@ -309,10 +309,10 @@ platform [lichess](https://lichess.org/) is both [Open Source and a
 foundation](https://lichess.org/blog/Y1wpBhEAAB8AwbeG/taking-lichess-to-the-next-level).
 I personally would love to see more than this.
 
-A “Not Twitter Foundation” that runs an installation of an Open Source
+A "Not Twitter Foundation" that runs an installation of an Open Source
 implementation of a scalable micro blogging platform is very appealing to
-me.  And maybe with a foundation behind it, it could become a “town
-square”.  And maybe that means that there will be different town squares
+me.  And maybe with a foundation behind it, it could become a "town
+square".  And maybe that means that there will be different town squares
 with different languages and following different local laws.
 
 And then let the market figure out if that foundation does a good job at

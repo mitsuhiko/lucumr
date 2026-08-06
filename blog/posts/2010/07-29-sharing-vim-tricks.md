@@ -39,8 +39,8 @@ If the slash is part of your searchword, you could also use `:%s#search
 for#replace with#g`. The second weird rule is that if you want to insert
 a newline, `\n` won't do that, `\r` does. For replacements `\n` is
 actually the nullbyte! But don't worry, `\r` inserts the correct newline
-sign that is currently in use for this document. The `g` means: “replace
-all matches in a line”. Without that, it would only replace the first
+sign that is currently in use for this document. The `g` means: "replace
+all matches in a line". Without that, it would only replace the first
 occurrence of each line. This is a pretty obscure thing that this is not
 the default, but in some cases you might want to remove the `/g`. If you
 replace that way, Vim will do replacements for the searchword on each

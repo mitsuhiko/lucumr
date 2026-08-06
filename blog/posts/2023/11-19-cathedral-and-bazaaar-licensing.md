@@ -19,7 +19,7 @@ I believe this license to be closer to Open Source than what we had
 before.
 
 When I started Open Source development, there was a very famous essay
-by Eric S. Raymond called “The Cathedral and the Bazaar”.  It describes
+by Eric S. Raymond called "The Cathedral and the Bazaar".  It describes
 the bazaar style development model that Linux propagated at the time.
 Patches were passed around freely on a mailing list, source was always
 available even between releases.  This is how Raymond described the
@@ -108,9 +108,9 @@ Its intent, language, and practical impact arguably make it more robust
 and exciting than any other source-available license today.  The two-year
 exclusivity period is ambitious.  But one thing is clear: until its
 expiration, the license does not qualify as Open Source.  While I
-recognize the sensitivity around the term “Open Source”, I assert that the
+recognize the sensitivity around the term "Open Source", I assert that the
 FSL's approach is more closely aligned with Open Source ideals than mere
-source availability.  I consider it an “Eventually Open Source” license,
+source availability.  I consider it an "Eventually Open Source" license,
 though perhaps a more fitting term needs to be found.
 
 I see how incredibly strong many feel about the BUSL and now the FSL.  In
