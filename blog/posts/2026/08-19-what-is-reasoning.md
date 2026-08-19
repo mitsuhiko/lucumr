@@ -90,3 +90,12 @@ explain why a [custom `think`
 tool](https://gist.github.com/mitsuhiko/0904a3d89741e8e3bcca1ca93ea076de) can
 trick models into putting some reasoning where it should not go — but only when
 native reasoning is disabled.
+
+<details><summary><small>Fun fact: this blog post triggered safey checks</small></summary>
+
+Hilariously enough I was unable to use GPT 5.6 terra for spell and grammar checking
+on this blog post because of safety filters.  Had to switch to Kimi.
+
+<img src="/static/gpt-5.6-terra-spell-check.png" alt="GPT-5.6-terra refusing to spell-check this blog post" style="width: 100%">
+
+</details>
