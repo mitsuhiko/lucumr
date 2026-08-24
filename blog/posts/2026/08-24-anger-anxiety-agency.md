@@ -64,12 +64,12 @@ necessarily know what will happen.  Ownership comes with agency, but it does not
 provide foresight, and this change is disorienting for everybody.  I engage with
 plenty of people who project confidence in public and are much less certain in
 private.  Many of them are placing bets, but they are talking with confidence
-about those bets, trying to stay afloat while the ground moves under them.  They
-experience that uncertainty from a position where they can act on it, and they
-are often standing somewhere with a megaphone to get others on their side to
-increase their odds.
+about those bets, trying to keep their business afloat while the ground moves
+under them.  They experience that uncertainty from a position where they can act
+on it, and they are often standing somewhere with a megaphone to get others on
+their side to improve their odds.
 
-I feel that contradiction myself.  I am simultaneously tremendously excited, but
+I feel that contradiction myself: I am simultaneously tremendously excited, but
 I am also unsure what will happen next.  I do not know what it will mean to be a
 programmer in the future, and, as the owner of a company, I am also not sure
 where the high ground will be when this all settles.  Much of what I learned
