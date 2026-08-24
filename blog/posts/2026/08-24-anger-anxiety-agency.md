@@ -66,7 +66,7 @@ plenty of people who project confidence in public and are much less certain in
 private.  Many of them are placing bets, but they are talking with confidence
 about those bets, trying to stay afloat while the ground moves under them.  They
 experience that uncertainty from a position where they can act on it, and they
-are often standing somewhere with a speakerphone to get others on their side to
+are often standing somewhere with a megaphone to get others on their side to
 increase their odds.
 
 I feel that contradiction myself.  I am simultaneously tremendously excited, but
