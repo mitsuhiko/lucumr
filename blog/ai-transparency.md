@@ -9,7 +9,7 @@ I also routinely use LLMs to give me ideas for how to simplify ideas and
 as a sparring partner in brain storming of blog posts.
 
 You can find the prompts I usually use [in the
-repository](https://github.com/mitsuhiko/lucumr/tree/main/.claude/commands).
+repository](https://github.com/mitsuhiko/lucumr/tree/main/.pi).
 
 <small>
 
