@@ -15,7 +15,7 @@
   `;
 
   const fsSource = `
-    precision mediump float;
+    precision highp float;
     uniform vec2 u_resolution;
     uniform float u_time;
     uniform float u_isDark;
@@ -24,14 +24,17 @@
     uniform float u_hover;
     varying vec2 v_position;
 
-    // Cheap hash - single multiply-add chain
+    // Trig-free hash to avoid mobile GPU sin() tiling artifacts.
     float hash(vec2 p) {
-      return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+      vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+      p3 += dot(p3, p3.yzx + 33.33);
+      return fract((p3.x + p3.y) * p3.z);
     }
 
     vec2 hash2(vec2 p) {
-      p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
-      return fract(sin(p) * 43758.5453);
+      vec3 p3 = fract(vec3(p.xyx) * vec3(0.1031, 0.1030, 0.0973));
+      p3 += dot(p3, p3.yzx + 33.33);
+      return fract((p3.xx + p3.yz) * p3.zy);
     }
 
     // Simple value noise - much cheaper than simplex
@@ -95,7 +98,8 @@
 
     void main() {
       float scale = 0.0133;
-      vec2 p = gl_FragCoord.xy * scale;
+      // Keep blob density consistent with the DPR 2 desktop reference.
+      vec2 p = gl_FragCoord.xy * scale * (2.0 / u_dpr);
 
       // Wind Waker colors
       vec3 lightBright = vec3(0.10, 0.42, 0.70);
