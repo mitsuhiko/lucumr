@@ -14,7 +14,7 @@ in the depths of the internet.
 Some of the more meaningful commercial projects and initiatives I worked on:
 
 -   [Plurk](http://www.plurk.com/) — the first commercial project I
-    worked on.  A microblogging platform similar to Twitter with a unieuq
+    worked on.  A microblogging platform similar to Twitter with a unique
     timelime.
 
 -   [Fireline](http://fireteam.net/fireline/) — online services platform for games.
