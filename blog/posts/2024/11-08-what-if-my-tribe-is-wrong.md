@@ -7,7 +7,7 @@ summary: "Balancing empathy, group member with integrity and morals: a personal 
 
 I wrote in the past about how I'm a [pessimist that strives for positive
 outcomes](/2023/3/20/lessons-from-a-pessimist/).  One of the things
-that I gradually learned is is wishing others to succeed.  That is
+that I gradually learned is wishing others to succeed.  That is
 something that took me a long time to learn.  I did not see the value in
 positive towards other people's success, but there is.  There is one thing
 to be sceptical to a project or initiative, but you can still encourage
@@ -40,8 +40,8 @@ people can fall for that kind of rhetoric.
 But is it really all that hard?  Isn't that happening today again?  I have
 a very hard time supporting what Trump or Musk are standing for or people
 that align with them.  Trump's rhetoric and plans are counter to
-everything I stand for and the remind me a lot of that film.  It's even
-harder for me with Musk.  His morals are completely off, he seems to a
+everything I stand for and they remind me a lot of that film.  It's even
+harder for me with Musk.  His morals are completely off, he seems to be a
 person I would not want to be friends with, yet he's successful and he's
 pushing humanity forward.
 
@@ -62,7 +62,7 @@ into the trap of justifying or defending behaviors I fundamentally
 disagree with, nor do I want to completely shut out the perspectives of
 those who support him.  This means accepting that people I engage with,
 might see things very differently, and that maintaining those
-relationships and wishing them well them requires a level of tolerance I'm
+relationships and wishing them well requires a level of tolerance I'm
 not sure I possess yet.
 
 The reason it's particularly hard to me that even if I accept that my
