@@ -2,5 +2,6 @@ _build
 _trash
 .venv
 .env
+.temp
 .generator_cache
 __pycache__
