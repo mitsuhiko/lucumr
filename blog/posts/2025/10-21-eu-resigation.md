@@ -39,9 +39,8 @@ some law that allows them to demand a translation of a document by a court
 appointed translator.  Everyone has a reason.  No one owns the outcome.
 
 Meanwhile, in the US, our counsel replies when it matters, even after hours.
-Bankers answer the same day.  The instinct is to enable progress, not enumerate
-reasons you can't have it.  The goal is the outcome and the rules are
-constraints to navigate, not a shield to hide behind.
+Bankers answer the same day.  They try to get things done despite the rules and
+they are not hiding behind them.
 
 So what's the point?  I can't fix politics.  What I can do: act with agency,
 and surround myself with people who do the same and speak in support of it.
@@ -57,25 +56,22 @@ feedback.  That could exist right now.  It rarely does or falls short.
 Yes, much in Europe is objectively worse for builders.  We have to accept it.
 Then squeeze everything you can from what is in your control:
 
-* Own the handoff. When you're step 3 of 10, behave like step 10 depends on you
+* When you're step 3 of 10, behave like step 10 depends on you
   and behave like you control all 10 steps.  Anticipate blockers further down
-  the line.  Move same day.  Eliminate ambiguity.  Close loops.
-* Default to clarity.  Send checklists.  Preempt the next two questions.
-  Reduce the number of touches.
-* Model urgency without theatrics.  Be calm, fast, and precise.  Don't
-  make your customer chase you.
-* Use judgment.  Rules exist and we can't break them all.  But we can work with
-  them and be guided by them.
+  the line, move same day and eliminate ambiguity early.
+* Default to clarity.  Send checklists and preempt the next two questions.
+* Be calm, fast, and precise.  Don't make your customer chase you.
+* Use judgment to question and interpret rules.  We can't break all rules but
+  they usually leave some freedom for interpretation.
 
-Select for agency.  Choose partners who answer promptly when it's material and
-who don't confuse process with progress.
+When working with partners select for agency by chosoing those who answer
+promptly when it matters.
 
-The trap is not only regulation.  It's the learned helplessness it breeds.  If
-we let friction set our standards, we become the friction.  We won't legislate
-our way to a US-style environment anytime soon.  But we don't need permission
-to be better operators inside a bad one.
-
-That's the contrast and it's the part we control.
+We seem to be suffering from learned helplessness.  I'm worried that we've got
+so used to these delays that we now accept them from each other, even when we
+could do something about them.  We won't legislate our way to a US-style
+environment anytime soon.  But we don't need permission to be better operators
+inside a bad one.
 
 ----
 
@@ -86,8 +82,6 @@ praying for their failure.  I'd rather see both Europe and the US succeed than
 celebrate Europe failing slightly less.
 
 And no, saying I feel gratitude and happiness when I get a midnight reply
-doesn't make me anti-work-life balance ([I am not](/2025/9/4/996/)).  It means
-when something is truly time-critical, fast, clear action lifts everyone.  The
-times someone sent a document in minutes, late at night, both sides felt good
-about it when it mattered.  Responsiveness, used with judgment, is not
-exploitation; it's respect for outcomes and the relationships we form.
+doesn't make me anti-work-life balance ([I am not](/2025/9/4/996/)).  But when
+something is really critical and someoen sends you a document in minutes, even
+late at night, both sides feel good about it.
