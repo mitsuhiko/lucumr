@@ -9,7 +9,7 @@ I'm more and more convinced that all of AI engineering is
 [Neijuan](https://en.wikipedia.org/wiki/Neijuan) (内卷, meaning curl inwards).  In
 China it describes a system that demands ever more effort and competition
 without improving output.  The way in which it sometimes shows up in the West is
-[the 996 nonsense](2025/9/4/996/).  The English term for Neijuan is "Involution"
+[the 996 nonsense](/2025/9/4/996/).  The English term for Neijuan is "Involution"
 from the book [Agricultural
 Involution](https://en.wikipedia.org/wiki/Agricultural_Involution).
 Agricultural involution describes the intensification of farming that raises
