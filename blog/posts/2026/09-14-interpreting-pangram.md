@@ -15,7 +15,7 @@ bogus](https://x.com/DavidSacks/status/2099040321351106807?s=20).
 
 Now Pangram has a pretty low false positive rate, but if you have ever used an
 LLM as a writing assitant, you will have probably noticed that it claims your
-posts 100% AI, even though you don't feel like they are.
+posts 100% AI, even though you don't *feel* like they are.
 
 Pangram itself is a trained model, that attempts to detect segments of text as
 being definitely human, definitely AI and a mixture of the two.  If you want to
