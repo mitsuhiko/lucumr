@@ -28,7 +28,7 @@ they can pick up on these co-authored details.  Pangram claims their model to
 have rates of 0.0041% false AI accusations and 0.34% missed AI text.
 
 So now that we know this I figured it might be fun to have an LLM re-create
-David's tweet.  I firstI came up with a prompt.  And when I say I came up with
+David's tweet.  I first came up with a prompt.  And when I say I came up with
 that prompt I in fact used an LLM to propose to me from that tweet what I might
 want to say for the structure.  I'm sure if you ask Pangram about if the above
 text is AI, it will probably say so, but that's not really the point.  The point
