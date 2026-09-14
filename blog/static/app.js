@@ -407,8 +407,11 @@
   }
 
   document.addEventListener("DOMContentLoaded", updateDateWarning);
-  document.addEventListener("htmx:afterSettle", function() {
+  document.addEventListener("htmx:afterSettle", function(event) {
     updateDateWarning();
-    setTimeout(function() { window.scrollTo(0, 0); }, 50);
+    // History restores have no boosted request and manage their own scroll position.
+    if (event.detail.boosted) {
+      setTimeout(function() { window.scrollTo(0, 0); }, 50);
+    }
   });
 })();
