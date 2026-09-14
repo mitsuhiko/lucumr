@@ -43,12 +43,12 @@ If you are curious, this is the prompt I used:
 > Context of this tweet is this post by Dario:
 > https://darioamodei.com/post/we-must-pace-the-frontier
 >
-> And this tweet by Sam Altman: <tweet>I agree with Dario that we need to pace
+> And this tweet by Sam Altman: "I agree with Dario that we need to pace
 > the frontier. This has been a primary topic of discussions we've had at OpenAI
 > in recent weeks.
 > 
 > Committing to having independent evaluators with employee-like access is a
-> great idea, and we will do the same. We'll have more to share soon.</tweet>
+> great idea, and we will do the same. We'll have more to share soon."
 > 
 > Structure for the post:
 > 
