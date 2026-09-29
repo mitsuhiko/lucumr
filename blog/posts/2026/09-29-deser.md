@@ -1,6 +1,6 @@
 ---
 tags: ['rust']
-summary: "Rethinking Rust Serialization"
+summary: "Can we do better than Serde?"
 ---
 
 # Deser: Rethinking Rust Serialization
