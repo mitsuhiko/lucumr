@@ -172,6 +172,10 @@ pre, code, tt   { font-family: 'Ubuntu Mono', 'Consolas', 'Deja Vu Sans Mono',
 pre             { line-height: 1.5; background: var(--code-block-background-color);
                   color: var(--code-block-text-color); padding: 8px 30px; width: 100%; overflow-x: auto;
                   margin: -8px -30px -8px -30px; border-radius: 2px; box-shadow: 0 0 3px var(--pre-shadow); }
+/* consecutive code blocks: the negative margins would collapse and let the
+   boxes touch, so space them apart (23px - 8px leaves a 15px gap) */
+pre + pre,
+div.highlight + div.highlight > pre { margin-top: 23px; }
 code, tt        { background: var(--code-background-color); }
 
 /* tables */
