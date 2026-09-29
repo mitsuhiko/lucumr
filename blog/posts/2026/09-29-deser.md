@@ -489,4 +489,5 @@ between formats or hook it up with
 [tokio](https://github.com/mitsuhiko/deser/tree/main/deser-tokio).
 
 For documentation see [docs.rs/deser](https://docs.rs/deser/latest/deser/)
-and the code itself is [on GitHub](https://github.com/mitsuhiko/deser).
+and the code itself is [on GitHub](https://github.com/mitsuhiko/deser) alongside
+[many examples](https://github.com/mitsuhiko/deser/tree/main/examples).
