@@ -29,7 +29,14 @@
   const buffers = new Map();
   let playing = null;
   const listeners = new Set();
-  const audio = () => (ac ??= new AudioContext());
+  const audio = () => {
+    if (!ac) {
+      // iOS puts Web Audio in the "ambient" session, which the silent switch mutes
+      if (navigator.audioSession) navigator.audioSession.type = "playback";
+      ac = new AudioContext();
+    }
+    return ac;
+  };
   function bufferOf(file) {
     if (!buffers.has(file)) {
       buffers.set(file, fetch(BASE + file).then((r) => r.arrayBuffer()).then((b) => audio().decodeAudioData(b)));
