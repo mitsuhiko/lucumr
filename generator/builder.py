@@ -25,6 +25,24 @@ from generator.social_preview import SocialPreviewGenerator
 
 PDF_HOST = "https://raw.githubusercontent.com/mitsuhiko/talks/main/pdfs/"
 
+_FEED_SCRIPT_RE = re.compile(
+    r"<(script|noscript)\b[^>]*>.*?</\1>\s*", re.DOTALL | re.IGNORECASE
+)
+_FEED_INTERACTIVE_RE = re.compile(
+    r"<div\b[^>]*\bdata-interactive\b[^>]*>.*?</div>", re.DOTALL | re.IGNORECASE
+)
+
+
+def feed_html(fragment, post_url):
+    """Post HTML for feeds: scripts dropped, interactive placeholders (``<div
+    data-interactive>``) replaced with a link to the post."""
+    html = _FEED_SCRIPT_RE.sub("", str(fragment)).replace("<p></p>", "")
+    return _FEED_INTERACTIVE_RE.sub(
+        f'<p><em><a href="{post_url}">Interactive demo: see the post on the '
+        f"website.</a></em></p>",
+        html,
+    )
+
 
 class BlogPost:
     """Represents a single blog post."""
@@ -651,7 +669,7 @@ class Builder:
 
             post_url = CONFIG["site_url"].rstrip("/") + post.slug
             pub_date = post.pub_date.replace(tzinfo=timezone.utc).isoformat()
-            content = str(post.render_content()["fragment"])
+            content = feed_html(post.render_content()["fragment"], post_url)
 
             entry_xml = f"""  <entry>
     <id>{post_url}</id>
@@ -698,7 +716,7 @@ class Builder:
             pub_date = post.pub_date.replace(tzinfo=timezone.utc).strftime(
                 "%a, %d %b %Y %H:%M:%S +0000"
             )
-            content = str(post.render_content()["fragment"])
+            content = feed_html(post.render_content()["fragment"], post_url)
 
             item_xml = f"""    <item>
       <title>{post.title or "Untitled"}</title>

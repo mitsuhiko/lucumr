@@ -135,6 +135,9 @@ class LiveReloadHandler(SimpleHTTPRequestHandler):
                     )
                     self.end_headers()
                     self.wfile.write(content.encode("utf-8"))
+                elif self.headers.get("Range"):
+                    # Byte ranges, so that audio and video can seek
+                    self.handle_range(full_path)
                 else:
                     # For non-HTML files, serve normally
                     super().do_GET()
@@ -145,9 +148,57 @@ class LiveReloadHandler(SimpleHTTPRequestHandler):
             # Fall back to default behavior
             super().do_GET()
 
+    def handle_range(self, full_path):
+        """Serve a single byte range (``Range: bytes=start-end``) of a file."""
+        size = full_path.stat().st_size
+        try:
+            unit, _, spec = self.headers["Range"].partition("=")
+            first, _, last = spec.split(",")[0].strip().partition("-")
+            if unit.strip() != "bytes":
+                raise ValueError(unit)
+            if first:
+                start, end = int(first), int(last) if last else size - 1
+            else:
+                start, end = max(0, size - int(last)), size - 1
+            end = min(end, size - 1)
+            if start > end:
+                raise ValueError(spec)
+        except ValueError:
+            self.send_response(416)
+            self.send_header("Content-Range", f"bytes */{size}")
+            self.end_headers()
+            return
+        self.send_response(206)
+        self.send_header("Content-Type", self.guess_type(str(full_path)))
+        self.send_header("Accept-Ranges", "bytes")
+        self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+        self.send_header("Content-Length", str(end - start + 1))
+        # so that a browser never mixes parts of an older version of the file in
+        self.send_header(
+            "Last-Modified", self.date_time_string(int(full_path.stat().st_mtime))
+        )
+        self.send_header("Cache-Control", "no-cache")
+        self.end_headers()
+        with full_path.open("rb") as f:
+            f.seek(start)
+            remaining = end - start + 1
+            while remaining > 0:
+                chunk = f.read(min(65536, remaining))
+                if not chunk:
+                    break
+                self.wfile.write(chunk)
+                remaining -= len(chunk)
+
     def log_message(self, format, *args):
         """Suppress log messages."""
         pass
+
+
+# Python guesses audio/mp4a-latm for .m4a, which not every browser plays
+LiveReloadHandler.extensions_map = {
+    **SimpleHTTPRequestHandler.extensions_map,
+    ".m4a": "audio/mp4",
+}
 
 
 def notify_reload():
