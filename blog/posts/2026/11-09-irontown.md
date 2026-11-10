@@ -77,7 +77,7 @@ carried by people who aren't going to benefit from it.
 
 So it's no surprise that AI feels like a threat to many today.  Communities
 currently [strongly align](/2026/6/6/communities-of-not/) themselves with one
-side and fight against the other.  The forst spirit did not have to die and the
+side and fight against the other.  The forest spirit did not have to die and the
 boars did not have to die in a senseless war.
 
 The question is not whether there will be iron, but what kind of Irontown we
