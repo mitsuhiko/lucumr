@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'rant', 'thoughts']
+tags: ['python', 'thoughts']
 summary: "Why the Python logo is not supposde to be a snake."
 ---
 

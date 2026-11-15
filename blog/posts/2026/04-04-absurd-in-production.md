@@ -1,5 +1,5 @@
 ---
-tags: ['databases', 'engineering']
+tags: ['databases', 'engineering', 'ai']
 summary: Five months of durable execution with just Postgres.
 ---
 

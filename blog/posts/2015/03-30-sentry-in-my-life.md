@@ -1,5 +1,5 @@
 ---
-tags: ['sentry', 'open-source', 'work', 'announcement', 'business']
+tags: ['sentry', 'opensource', 'life', 'announcement', 'business']
 summary: "Some thoughts on me joining Sentry and the road of making an Open Source
 project into a company."
 ---

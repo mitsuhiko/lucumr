@@ -1,5 +1,5 @@
 ---
-tags: ['operating-systems', 'thoughts', 'rant']
+tags: ['os', 'thoughts']
 summary: "Why a popular choice for an operating system does not necessarily
 mean you will become more productive and a better programmer."
 ---

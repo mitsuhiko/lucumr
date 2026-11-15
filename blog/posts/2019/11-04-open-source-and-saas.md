@@ -1,5 +1,5 @@
 ---
-tags: ['licensing', 'open-source', 'sentry', 'thoughts', 'business']
+tags: ['opensource', 'sentry', 'thoughts', 'business']
 summary: "My thoughts on monetizing open source SaaS businesses from my experience
 at Sentry."
 ---

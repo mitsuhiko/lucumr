@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'open-source', 'business', 'finance']
+tags: ['thoughts', 'business', 'opensource']
 summary: "Thoughts on funding maintainers through the pledge, WordPress'"
 ---
 

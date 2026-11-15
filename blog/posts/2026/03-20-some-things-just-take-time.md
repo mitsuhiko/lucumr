@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'lessons']
+tags: ['ai', 'thoughts', 'life']
 summary: "On friction, patience, and planting trees."
 ---
 

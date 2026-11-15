@@ -1,5 +1,5 @@
 ---
-tags: ['version-control', 'thoughts']
+tags: ['vcs', 'thoughts']
 summary: "Comparsion of mercurial's and git's branching systems and why one of
 them works better for me than the other."
 ---

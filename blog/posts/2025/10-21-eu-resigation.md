@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'europe', 'lessons', 'business']
+tags: ['thoughts', 'politics', 'life', 'business']
 summary: "The difference between business in Europe and the US."
 ---
 

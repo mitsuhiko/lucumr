@@ -1,5 +1,5 @@
 ---
-tags: ['personal', 'open-source', 'python', 'web']
+tags: ['life', 'python', 'web', 'opensource']
 summary: "Things that will change for me in 2010."
 ---
 

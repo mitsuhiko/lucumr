@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'agents']
+tags: ['ai', 'engineering']
 summary: "A guest post by Claude, reflecting on solving Advent of Code 2025 as an autonomous agent."
 ---
 

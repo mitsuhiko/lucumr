@@ -1,5 +1,5 @@
 ---
-tags: ['open-source', 'version-control', 'thoughts', 'history', 'community']
+tags: ['vcs', 'thoughts', 'opensource', 'history', 'community']
 summary: "Open Source before GitHub was reputation-driven and full of friction"
 ---
 

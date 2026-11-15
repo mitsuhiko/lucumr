@@ -1,5 +1,5 @@
 ---
-tags: ['pi', 'open-source', 'ai', 'agents', 'engineering']
+tags: ['pi', 'ai', 'opensource', 'engineering', 'thoughts']
 summary: "Learnings from post-AI Open Source and how we're approaching this so far."
 ---
 

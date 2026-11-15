@@ -1,5 +1,5 @@
 ---
-tags: ['finance', 'thoughts', 'open-source', 'europe']
+tags: ['business', 'thoughts', 'politics', 'opensource']
 summary: "Some thoughts about various payment systems on the internet and how
 viable they are for open source project support."
 ---

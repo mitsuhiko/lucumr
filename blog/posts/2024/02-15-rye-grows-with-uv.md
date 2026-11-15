@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'packaging', 'announcement', 'tooling', 'open-source']
+tags: ['python', 'packaging', 'announcement', 'tooling', 'opensource']
 summary: "Rye is faster now by sitting on top of uv and it moves over to Astral."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'politics', 'europe']
+tags: ['ai', 'thoughts', 'politics', 'opensource']
 summary: "Control is safety. Openness is danger."
 ---
 

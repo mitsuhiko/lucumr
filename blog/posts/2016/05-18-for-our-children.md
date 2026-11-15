@@ -1,5 +1,5 @@
 ---
-tags: ['austria', 'politics', 'thoughts', 'europe']
+tags: ['politics', 'thoughts']
 summary: "Thoughts about what I believe is wrong in Austria today and how we can
 maybe break the trend."
 ---

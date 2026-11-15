@@ -1,5 +1,5 @@
 ---
-tags: ['flask', 'python', 'conferences', 'web', 'open-source']
+tags: ['flask', 'python', 'conferences', 'web', 'opensource']
 summary: "A summary of the Flask talk at PyCon 2011 and what happened during the
 sprints."
 ---

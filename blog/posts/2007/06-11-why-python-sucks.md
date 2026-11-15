@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'rant', 'thoughts']
+tags: ['python', 'thoughts']
 summary: "Read this with a grain of salt."
 ---
 

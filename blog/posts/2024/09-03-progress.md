@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'lessons']
+tags: ['thoughts', 'life']
 summary: "A thought on human progress."
 ---
 

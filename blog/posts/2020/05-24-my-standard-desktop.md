@@ -1,5 +1,5 @@
 ---
-tags: ['hardware', 'work', 'personal']
+tags: ['hardware', 'life']
 summary: "How my work from home situation looks like at the moment."
 ---
 

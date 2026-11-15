@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'agents', 'mcp', 'thoughts']
+tags: ['ai', 'thoughts']
 summary: The solution to agentic flows was code all along.
 ---
 

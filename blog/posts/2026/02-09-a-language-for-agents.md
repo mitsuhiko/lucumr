@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'agents', 'thoughts', 'engineering']
+tags: ['ai', 'thoughts', 'engineering']
 summary: "What programming languages would agents want to program in?"
 ---
 

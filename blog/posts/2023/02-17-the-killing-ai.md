@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'ai-society']
+tags: ['ai', 'thoughts']
 summary: "Why I'm a worried, but not too worried about AIs."
 ---
 

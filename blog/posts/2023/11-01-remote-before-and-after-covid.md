@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'lessons', 'work', 'covid19', 'sentry']
+tags: ['life', 'thoughts', 'covid19', 'sentry']
 summary: "What I learned about remote work after Covid and why it's so hard."
 ---
 

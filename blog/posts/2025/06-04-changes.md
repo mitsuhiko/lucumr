@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'ai-society', 'agents']
+tags: ['ai', 'thoughts']
 summary: "From fear to optimism: why I am convinced AI is worth embracing."
 ---
 

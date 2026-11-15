@@ -1,5 +1,5 @@
 ---
-tags: ['lessons', 'thoughts', 'personal']
+tags: ['life', 'thoughts']
 summary: "Random thoughts about staying sane for people with ambitions."
 ---
 

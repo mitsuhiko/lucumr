@@ -1,5 +1,5 @@
 ---
-tags: ['packaging', 'open-source', 'thoughts', 'security']
+tags: ['packaging', 'thoughts', 'security', 'opensource']
 summary: "More thoughts on supply chain and package managers."
 ---
 

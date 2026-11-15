@@ -1,6 +1,6 @@
 ---
 day-order: 2
-tags: ['finance', 'thoughts', 'open-source', 'business']
+tags: ['business', 'thoughts', 'opensource']
 summary: "A short writeup about finances for Open Source projects and ideas for
 how to improve it."
 ---

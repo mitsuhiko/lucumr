@@ -1,5 +1,5 @@
 ---
-tags: ['go', 'ai', 'agents', 'jinja', 'engineering']
+tags: ['go', 'ai', 'jinja', 'engineering', 'rust']
 summary: "Agents can now port code bases much better than before."
 ---
 

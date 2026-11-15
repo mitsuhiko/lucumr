@@ -1,5 +1,5 @@
 ---
-tags: ['politics', 'ai', 'europe', 'thoughts', 'ai-society']
+tags: ['politics', 'ai', 'thoughts']
 summary: "AI nationalism, safety and European weakness."
 ---
 

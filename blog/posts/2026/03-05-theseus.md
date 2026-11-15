@@ -1,5 +1,5 @@
 ---
-tags: ['licensing', 'ai', 'thoughts', 'open-source', 'python']
+tags: ['opensource', 'ai', 'thoughts', 'python']
 summary: "Slopforks: what happens when a library gets rewritten with AI?"
 ---
 

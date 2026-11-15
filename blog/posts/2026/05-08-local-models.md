@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'local-models', 'pi', 'agents']
+tags: ['ai', 'thoughts', 'pi', 'announcement']
 summary: "Local models need focus and polish."
 ---
 

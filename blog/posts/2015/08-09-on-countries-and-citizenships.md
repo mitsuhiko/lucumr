@@ -1,5 +1,5 @@
 ---
-tags: ['politics', 'personal']
+tags: ['politics', 'life']
 summary: "In which I share some of my personal experiences and discoveries about
 the more than confusing topic of moving countries and how citizenships
 and residences work."

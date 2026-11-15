@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rant']
+tags: ['thoughts', 'security']
 summary: "Now that Twitter is dying, what can replace it?"
 ---
 

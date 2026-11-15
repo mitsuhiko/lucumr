@@ -1,5 +1,5 @@
 ---
-tags: ['personal', 'python', 'open-source']
+tags: ['life', 'python', 'opensource']
 summary: "Recapitulation of my accomplishments and interesting events related to
 computing and Open Source of 2010."
 ---

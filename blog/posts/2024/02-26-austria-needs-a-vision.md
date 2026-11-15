@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'austria', 'politics', 'rant', 'europe']
+tags: ['thoughts', 'politics']
 summary: "Some very personal thoughts about the future of Austria."
 ---
 

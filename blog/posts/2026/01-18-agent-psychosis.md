@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'agents', 'thoughts', 'ai-society', 'community']
+tags: ['ai', 'thoughts', 'community', 'engineering', 'opensource']
 summary: "What's going on with the AI builder community right now?"
 ---
 

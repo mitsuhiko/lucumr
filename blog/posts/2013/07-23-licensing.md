@@ -1,5 +1,5 @@
 ---
-tags: ['licensing', 'thoughts', 'open-source', 'history']
+tags: ['opensource', 'thoughts', 'history']
 summary: "Some thoughts about the absolute madness that is currently going on with
 licensing in the Open Source community and how github's license chooser
 is making it worse."

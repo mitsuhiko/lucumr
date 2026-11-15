@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'types', 'agents', 'thoughts', 'engineering']
+tags: ['ai', 'types', 'thoughts', 'engineering', 'javascript']
 summary: "A curious thing about types and agents"
 ---
 

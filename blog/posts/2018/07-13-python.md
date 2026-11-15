@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'thoughts', 'personal']
+tags: ['python', 'thoughts', 'life']
 summary: "An open source project that defined my life."
 ---
 

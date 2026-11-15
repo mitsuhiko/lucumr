@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'ai-society']
+tags: ['ai', 'thoughts']
 summary: "Are we all discovering the same things at once?"
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['open-source', 'licensing', 'thoughts', 'business', 'hardware']
+tags: ['opensource', 'thoughts', 'business', 'hardware']
 summary: "More thoughts on Open Source licensing and companies."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'agents', 'engineering', 'thoughts']
+tags: ['ai', 'engineering', 'thoughts']
 summary: "Loops, harnesses, and why even loop skeptics may end up with them."
 ---
 

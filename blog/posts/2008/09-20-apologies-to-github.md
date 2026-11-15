@@ -1,5 +1,5 @@
 ---
-tags: ['version-control', 'community']
+tags: ['vcs', 'community']
 summary: "Apology for a mistake I made in an earlier blog post."
 ---
 

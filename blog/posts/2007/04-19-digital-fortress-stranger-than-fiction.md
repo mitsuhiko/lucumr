@@ -1,5 +1,5 @@
 ---
-tags: ['culture', 'security', 'rant']
+tags: ['culture', 'security', 'thoughts']
 summary: "A book review from a really terrible science fiction book by Dan Brown."
 ---
 

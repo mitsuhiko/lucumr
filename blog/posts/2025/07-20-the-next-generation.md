@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'python', 'community', 'ai-society']
+tags: ['ai', 'thoughts', 'python', 'community']
 summary: Vibe coders and self-tought ChatGPT users are programmers too.
 ---
 

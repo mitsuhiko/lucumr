@@ -1,5 +1,5 @@
 ---
-tags: ['security', 'thoughts', 'privacy']
+tags: ['security', 'thoughts']
 summary: "Some thoughts in support of simple solutions."
 ---
 

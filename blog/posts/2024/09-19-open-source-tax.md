@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'open-source', 'business', 'finance']
+tags: ['thoughts', 'business', 'opensource']
 summary: "A discussion on purchase decisions and sustainable Open Source."
 ---
 

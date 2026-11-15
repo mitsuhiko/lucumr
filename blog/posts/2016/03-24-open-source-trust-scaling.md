@@ -1,5 +1,5 @@
 ---
-tags: ['javascript', 'thoughts', 'open-source', 'packaging', 'security']
+tags: ['javascript', 'thoughts', 'packaging', 'security', 'opensource']
 summary: "Some thoughts about why npm style micro-packages are a huge liability for
 everybody and what we could do to make them work."
 ---

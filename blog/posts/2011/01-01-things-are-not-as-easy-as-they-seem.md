@@ -1,5 +1,5 @@
 ---
-tags: ['operating-systems', 'open-source', 'thoughts', 'community', 'rant']
+tags: ['thoughts', 'os', 'community', 'opensource']
 summary: "Exploration into a human problem: the problem of simplifying complex
 matters."
 ---

@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'ai-society']
+tags: ['ai', 'thoughts']
 summary: "A response to Glyph's opting out of AI."
 ---
 

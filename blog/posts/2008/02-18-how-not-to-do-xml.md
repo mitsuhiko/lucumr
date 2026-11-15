@@ -1,5 +1,5 @@
 ---
-tags: ['rant', 'thoughts', 'web']
+tags: ['thoughts', 'web']
 summary: "Experiences with XML in Wordpress (or what they call XML)"
 ---
 

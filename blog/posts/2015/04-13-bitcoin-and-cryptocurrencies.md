@@ -1,5 +1,5 @@
 ---
-tags: ['finance', 'thoughts']
+tags: ['business', 'thoughts']
 summary: "My thoughts on Bitcoin and some other cryptocurrencies and why many of
 us are probably better off just ignoring the whole thing."
 ---
