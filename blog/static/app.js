@@ -415,3 +415,68 @@
     }
   });
 })();
+
+// Tag pages. These run on full loads and after htmx-boosted navigation, since
+// boosted swaps never fire DOMContentLoaded. Both are safe to run repeatedly.
+(function() {
+  const storageKey = 'tag-sort-preference';
+
+  function sortEntries(list, sortBy) {
+    const entries = Array.from(list.children);
+    entries.sort(function(a, b) {
+      if (sortBy === 'date') {
+        // Newest first
+        return (b.dataset.date || '').localeCompare(a.dataset.date || '');
+      }
+      return parseInt(a.dataset.idx, 10) - parseInt(b.dataset.idx, 10);
+    });
+    entries.forEach(function(entry) { list.appendChild(entry); });
+  }
+
+  function initTagSort() {
+    const list = document.getElementById('tag-entries');
+    if (!list) return;
+    const controls = document.querySelectorAll('input[name="sort"]');
+
+    const saved = localStorage.getItem(storageKey);
+    const savedControl = saved && document.querySelector(`input[name="sort"][value="${saved}"]`);
+    if (savedControl) {
+      savedControl.checked = true;
+      sortEntries(list, saved);
+    }
+
+    controls.forEach(function(control) {
+      if (control.dataset.sortBound) return;
+      control.dataset.sortBound = '1';
+      control.addEventListener('change', function() {
+        if (this.checked) {
+          localStorage.setItem(storageKey, this.value);
+          sortEntries(list, this.value);
+        }
+      });
+    });
+  }
+
+  function initTagCloud() {
+    document.querySelectorAll('.tag-link').forEach(function(link) {
+      if (link.querySelector('.tag-tooltip')) return;
+      const count = link.getAttribute('data-count');
+      const tooltip = document.createElement('div');
+      tooltip.className = 'tag-tooltip';
+      tooltip.textContent = count === '1' ? '1 article' : count + ' articles';
+      link.appendChild(tooltip);
+    });
+  }
+
+  function init() {
+    initTagSort();
+    initTagCloud();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  document.addEventListener('htmx:afterSettle', init);
+})();

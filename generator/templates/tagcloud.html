@@ -14,17 +14,4 @@
   {%- endfor %}
   </ul>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const tagLinks = document.querySelectorAll('.tag-link');
-      
-      tagLinks.forEach(function(link) {
-        const count = link.getAttribute('data-count');
-        const tooltip = document.createElement('div');
-        tooltip.className = 'tag-tooltip';
-        tooltip.textContent = count === '1' ? '1 article' : count + ' articles';
-        link.appendChild(tooltip);
-      });
-    });
-  </script>
 {% endblock %}
