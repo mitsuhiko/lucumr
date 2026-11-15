@@ -1,5 +1,5 @@
 ---
-tags: ['django']
+tags: ['django', 'web', 'thoughts', 'rant', 'python']
 summary: "An old post of back in the days when Django was considering releasing
 a 2.0 version before 1.0."
 ---

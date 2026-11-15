@@ -1,5 +1,5 @@
 ---
-tags: ['javascript', 'thoughts']
+tags: ['javascript', 'thoughts', 'engineering']
 summary: "A longer explanation of why I think that the CoffeeScript scoping is
 problematic and should be changed."
 ---

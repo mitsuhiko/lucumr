@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['personal', 'work']
 summary: "Recollection of what happened to me in 2012 and what might happen in
 2013."
 ---

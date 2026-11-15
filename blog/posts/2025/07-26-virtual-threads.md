@@ -1,5 +1,5 @@
 ---
-tags: [async, javascript, python, thoughts]
+tags: ['python', 'async', 'thoughts', 'api']
 summary: A follow-up to how I wish async would work.
 ---
 

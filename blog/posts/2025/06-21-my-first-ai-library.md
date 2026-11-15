@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'ai']
+tags: ['ai', 'python', 'announcement', 'agents']
 summary: "In a first for me, I published some agentic programmed AI slop to PyPI."
 ---
 

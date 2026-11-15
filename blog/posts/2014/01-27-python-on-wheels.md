@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'python', 'deployment']
+tags: ['python', 'packaging', 'tutorial', 'tooling']
 summary: "A quick overview into wheel based Python deployments."
 ---
 

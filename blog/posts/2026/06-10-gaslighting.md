@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'licensing', 'thoughts']
+tags: ['ai', 'thoughts', 'politics', 'europe']
 summary: "Control is safety. Openness is danger."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['open-source', 'ai', 'thoughts']
+tags: ['open-source', 'ai', 'thoughts', 'version-control', 'community']
 summary: "Codeberg drew a democratic, but suboptimal line."
 ---
 

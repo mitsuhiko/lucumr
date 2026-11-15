@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'python']
+tags: ['python', 'thoughts', 'unicode']
 summary: "Some thoughts about bytes and Unicode in Python 2 and Python 3."
 ---
 

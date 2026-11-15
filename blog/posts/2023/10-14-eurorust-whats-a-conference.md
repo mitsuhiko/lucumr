@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust']
+tags: ['rust', 'thoughts', 'conferences', 'community']
 summary: "A recap of EuroRust 2023 and thoughts on Rust"
 ---
 

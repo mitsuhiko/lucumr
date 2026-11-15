@@ -1,5 +1,5 @@
 ---
-tags: ['ai']
+tags: ['ai', 'agents', 'thoughts', 'engineering']
 summary: "My Agent abstractions keep breaking somewhere I don't expect."
 ---
 

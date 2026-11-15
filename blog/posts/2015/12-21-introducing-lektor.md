@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'lektor', 'announcement']
+tags: ['announcement', 'python', 'web']
 summary: "The background story to why I built yet another static website generator
 in Python."
 ---

@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'finance', 'europe']
+tags: ['finance', 'europe', 'thoughts']
 summary: "Equity combines legal fairness, ownership, and upside in one everyday concept."
 ---
 

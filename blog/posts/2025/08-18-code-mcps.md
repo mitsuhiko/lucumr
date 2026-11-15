@@ -1,5 +1,5 @@
 ---
-tags: [ai, thoughts]
+tags: ['ai', 'mcp', 'agents', 'python', 'tooling']
 summary: "Exploration into providing MCPs with the most powerful of all tools: code."
 ---
 

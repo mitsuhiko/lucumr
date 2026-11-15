@@ -1,5 +1,5 @@
 ---
-tags: ['licensing']
+tags: ['licensing', 'open-source', 'thoughts']
 summary: "Why the BSD licenses work for me."
 ---
 

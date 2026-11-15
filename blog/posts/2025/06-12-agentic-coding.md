@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'ai']
+tags: ['ai', 'agents', 'engineering', 'tooling', 'go']
 summary: "Current recommendations of agentic coding."
 ---
 

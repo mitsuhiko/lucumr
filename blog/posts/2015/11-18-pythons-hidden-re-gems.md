@@ -1,5 +1,5 @@
 ---
-tags: ['python']
+tags: ['python', 'tutorial']
 summary: "Some hidden features of the Python re module and the support machinery
 that drives it."
 ---

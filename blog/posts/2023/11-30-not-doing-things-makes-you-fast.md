@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'javascript']
+tags: ['javascript', 'thoughts', 'web', 'tooling', 'engineering']
 summary: "Ramblings about bundleless JavaScript"
 ---
 

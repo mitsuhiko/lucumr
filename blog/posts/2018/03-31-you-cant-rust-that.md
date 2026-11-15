@@ -1,5 +1,5 @@
 ---
-tags: ['rust']
+tags: ['rust', 'engineering']
 summary: "Some tips for how to be more productive in Rust by avoiding situations you
 cannot solve in Rust."
 ---

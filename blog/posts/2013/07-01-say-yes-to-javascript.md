@@ -1,5 +1,5 @@
 ---
-tags: ['javascript', 'python', 'thoughts']
+tags: ['javascript', 'thoughts', 'web']
 summary: "Some random notes about why I think that removing the option to disable
 JavaScript in Firefox is one of the best things."
 ---

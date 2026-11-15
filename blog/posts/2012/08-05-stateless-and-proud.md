@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'thoughts', 'web']
+tags: ['web', 'thoughts', 'python', 'networking', 'flask']
 summary: "Why the real time web does not require changes on your web framework
 and why those changes are actually not at all what you want."
 ---

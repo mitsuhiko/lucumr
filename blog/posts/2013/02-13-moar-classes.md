@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'python']
+tags: ['python', 'thoughts', 'api', 'engineering']
 summary: "Furthermore I am of the oppinion that Python developers should write
 more classes."
 ---

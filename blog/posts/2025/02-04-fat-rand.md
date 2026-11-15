@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust']
+tags: ['rust', 'thoughts', 'engineering', 'packaging']
 summary: "More musing on dependencies."
 ---
 

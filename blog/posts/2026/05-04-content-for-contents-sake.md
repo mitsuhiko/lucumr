@@ -1,5 +1,5 @@
 ---
-tags: ['ai']
+tags: ['ai', 'ai-society', 'thoughts', 'rant']
 summary: "Why are so many interactions online terrible now?"
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'ai-society', 'agents']
 summary: "Why I like the word clanker and why machines are not people."
 ---
 

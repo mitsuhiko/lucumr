@@ -1,5 +1,5 @@
 ---
-tags: ['python']
+tags: ['python', 'thoughts']
 summary: "An exploration of singletons in Python, where they appear and why
 they can become a problem."
 ---

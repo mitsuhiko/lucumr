@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'pi']
+tags: ['ai', 'pi', 'agents', 'thoughts']
 summary: "About an aggravating tool-calling regression in newer Claude models."
 ---
 

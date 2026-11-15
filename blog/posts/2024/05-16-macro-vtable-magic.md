@@ -1,5 +1,5 @@
 ---
-tags: ['rust']
+tags: ['rust', 'jinja', 'tutorial', 'types']
 summary: "How MiniJinja's dynamic reference counted objects work."
 ---
 

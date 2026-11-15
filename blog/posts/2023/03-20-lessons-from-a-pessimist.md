@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'lessons']
+tags: ['lessons', 'thoughts']
 summary: "On the topic of life lessons from a born pessimist."
 ---
 

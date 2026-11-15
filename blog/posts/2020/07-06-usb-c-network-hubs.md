@@ -1,5 +1,5 @@
 ---
-tags: ['desktop', 'usbc', 'network']
+tags: ['hardware', 'networking']
 summary: "A word of warning on USB-C/Thunderbolt hubs with ethernet ports."
 ---
 

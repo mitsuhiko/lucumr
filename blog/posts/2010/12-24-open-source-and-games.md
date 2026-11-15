@@ -1,5 +1,5 @@
 ---
-tags: ['licensing', 'thoughts']
+tags: ['licensing', 'thoughts', 'open-source', 'games']
 summary: "Are games without assets open source?  Why are there so few commercial
 games releasing with open source models, images and more?"
 ---

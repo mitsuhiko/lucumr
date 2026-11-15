@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'tooling']
 summary: "Due to popular request: my use of LLM explained."
 ---
 

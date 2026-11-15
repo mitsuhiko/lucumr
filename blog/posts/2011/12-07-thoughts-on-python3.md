@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'thoughts']
+tags: ['python', 'thoughts', 'unicode']
 summary: "My current thoughts on the state of Python 3 and where it's heading."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['werkzeug', 'django', 'python']
+tags: ['python', 'django', 'web', 'thoughts', 'api']
 summary: "Why Werkzeug and WebOb exist when Django is already around."
 ---
 

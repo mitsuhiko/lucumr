@@ -1,5 +1,5 @@
 ---
-tags: ['rust']
+tags: ['rust', 'tutorial']
 summary: "A creative workaround to the inability of implementing additional traits
 to `Any`."
 ---

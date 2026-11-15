@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'lessons']
+tags: ['lessons', 'thoughts', 'personal', 'work']
 summary: "Things I learned and believe, condensed into some sort of guide."
 ---
 

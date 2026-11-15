@@ -1,5 +1,5 @@
 ---
-tags: ['licensing']
+tags: ['licensing', 'open-source', 'flask', 'thoughts']
 summary: "Adventures in License land.  We need more lawyers in the open source
 world."
 ---

@@ -1,5 +1,5 @@
 ---
-tags: ['rust', 'python']
+tags: ['rust', 'python', 'tutorial']
 summary: "Are you a Python programmer and interested in Rust?  This article goes
 over the basics of making the jump."
 ---

@@ -1,5 +1,5 @@
 ---
-tags: ['rust', 'javascript', 'opensource', 'thoughts']
+tags: ['thoughts', 'rust', 'packaging', 'open-source', 'engineering']
 summary: "An update to my struggles accepting that the current explosion of
 the amount of dependencies is the best we can do."
 ---

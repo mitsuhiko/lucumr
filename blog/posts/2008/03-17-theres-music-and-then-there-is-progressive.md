@@ -1,5 +1,5 @@
 ---
-tags: ['music']
+tags: ['culture', 'thoughts']
 summary: "About my love to progressive metal and rock."
 ---
 

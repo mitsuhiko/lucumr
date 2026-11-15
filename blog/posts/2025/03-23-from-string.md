@@ -1,5 +1,5 @@
 ---
-tags: ['rust']
+tags: ['rust', 'tutorial']
 summary: "A trick to convert arbitrary values from owned strings."
 ---
 

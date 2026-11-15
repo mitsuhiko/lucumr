@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'websocket']
+tags: ['web', 'networking']
 summary: "Quick introduction into the final specification of websockets
 (:rfc:`6455`)."
 ---

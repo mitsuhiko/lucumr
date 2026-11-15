@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'earendil']
+tags: ['earendil', 'business', 'announcement', 'personal']
 summary: "Introducing Earendil and my cofounder to the curious minds."
 ---
 

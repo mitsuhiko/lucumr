@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'javascript', 'opensource']
+tags: ['open-source', 'thoughts', 'packaging', 'javascript']
 summary: "Some more thoughts about dependencies."
 ---
 

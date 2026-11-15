@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'europe', 'politics']
+tags: ['politics', 'europe', 'thoughts']
 summary: "Addressing the American billionaires' opinion on Europe in my feed"
 ---
 

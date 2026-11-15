@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'flask', 'werkzeug', 'announcement']
+tags: ['announcement', 'python', 'flask', 'web']
 summary: "Update on the Flask 0.10 and Werkzeug 0.9 releases."
 ---
 

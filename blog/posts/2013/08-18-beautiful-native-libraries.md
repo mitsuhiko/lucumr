@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'c', 'thoughts']
+tags: ['c', 'api', 'engineering', 'tutorial']
 summary: "A guide on writing beautiful native libraries in C or C++ that compile
 to native code."
 ---

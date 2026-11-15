@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust', 'python']
+tags: ['rust', 'thoughts', 'engineering', 'python']
 summary: "An updated report on my experience with Rust and where I think it might
 be going."
 ---

@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'agents', 'engineering']
 summary: "Some thoughts on Astra and newfangled long-horizon models."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['wasm', 'rust']
+tags: ['tutorial', 'tooling']
 summary: "A short introduction of the current state of debugging WebAssembly code."
 ---
 

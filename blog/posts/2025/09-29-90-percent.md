@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'engineering', 'agents']
 summary: "AI is writing 90% of the code I was in charge of"
 ---
 

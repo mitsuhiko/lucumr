@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'sqlalchemy']
+tags: ['python', 'databases', 'tutorial', 'web']
 summary: "The Django ORM feels so much easier than SQLAlchemy?  Maybe this article
 can change your perception."
 ---

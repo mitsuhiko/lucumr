@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust', 'api']
+tags: ['rust', 'thoughts', 'api', 'engineering']
 summary: "My thoughts about error handling in APIs after writing a Redis library
 in Rust."
 ---

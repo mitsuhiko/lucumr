@@ -1,4 +1,5 @@
 ---
+tags: ['rust', 'types']
 summary: "In which I'm diving into some restrictions of the Rust type system involving closures."
 ---
 

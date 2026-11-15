@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'games']
+tags: ['games', 'thoughts', 'engineering']
 summary: "Thoughts on Peter Molyneux' Curiosity game and why it's my biggest
 disappointment of the year."
 ---

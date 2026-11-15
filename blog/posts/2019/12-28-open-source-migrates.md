@@ -1,5 +1,5 @@
 ---
-tags: ['opensource', 'thoughts']
+tags: ['open-source', 'thoughts', 'community', 'python']
 summary: "How the Open Source community gets away with large, backwards
 incompatible migrations by cheating and a lot of emotional distress."
 ---

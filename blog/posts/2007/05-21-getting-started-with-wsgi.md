@@ -1,5 +1,5 @@
 ---
-tags: ['wsgi', 'python']
+tags: ['wsgi', 'python', 'web', 'tutorial']
 summary: "A friendly introduction into getting started with WSGI on Python."
 ---
 

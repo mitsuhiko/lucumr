@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust']
+tags: ['rust', 'engineering']
 summary: "Why unsafe Rust is a complex and user unfriendly experience."
 ---
 

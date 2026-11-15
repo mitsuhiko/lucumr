@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust', 'python']
+tags: ['rust', 'thoughts', 'engineering', 'community', 'python']
 summary: "Thoughts on purity in software engineering."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'ai']
+tags: ['thoughts', 'community', 'ai']
 summary: "On the strange hostility that grows in communities built around abstinence."
 ---
 

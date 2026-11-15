@@ -1,5 +1,5 @@
 ---
-tags: ['git', 'thoughts', 'ui']
+tags: ['version-control', 'thoughts', 'design']
 summary: "Some thoughts on why git's complex user interface works so well in
 practice."
 ---

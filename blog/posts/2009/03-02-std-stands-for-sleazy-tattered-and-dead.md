@@ -1,5 +1,5 @@
 ---
-tags: ['python']
+tags: ['python', 'thoughts', 'engineering', 'rant', 'web']
 summary: "My experiences with the Python standard library and why I'm not the
 biggest fan of it or at least the way it works currenctly."
 ---

@@ -1,4 +1,5 @@
 ---
+tags: ['rust', 'api', 'types']
 summary: "A proposal for lifetime restrictions in Rust with stack tokens."
 ---
 

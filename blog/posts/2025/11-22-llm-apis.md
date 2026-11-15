@@ -1,5 +1,5 @@
 ---
-tags: ['ai']
+tags: ['ai', 'api', 'thoughts', 'engineering']
 summary: "Maybe the LLM message APIs should be rethought as a synchronization problem."
 ---
 

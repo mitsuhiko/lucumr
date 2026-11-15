@@ -1,5 +1,5 @@
 ---
-tags: ['rust', 'web']
+tags: ['rust', 'web', 'tooling', 'tutorial', 'networking']
 summary: "A re-introduction to socket activation with listenfd/systemfd."
 ---
 

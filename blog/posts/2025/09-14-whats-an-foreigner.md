@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'austria', 'europe', 'politics']
+tags: ['politics', 'thoughts', 'europe', 'austria']
 summary: Thoughts on immigration.
 ---
 

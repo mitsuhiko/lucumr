@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['thoughts', 'engineering', 'lessons', 'web']
 summary: "Why ugly and dumb code sometimes blind sights engineers from the"
 ---
 

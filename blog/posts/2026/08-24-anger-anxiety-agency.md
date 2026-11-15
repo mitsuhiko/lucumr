@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'work']
+tags: ['ai', 'thoughts', 'work', 'ai-society']
 summary: "Who is the AI villain we should be angry at?"
 ---
 

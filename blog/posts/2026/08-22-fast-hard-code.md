@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'programming', 'thoughts']
+tags: ['ai', 'thoughts', 'agents']
 summary: "People pick languages differently with LLMs."
 ---
 

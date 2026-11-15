@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'thoughts', 'codecs']
+tags: ['python', 'unicode']
 summary: "A recap of a sad example of where the wrong conclusion was drawn."
 ---
 

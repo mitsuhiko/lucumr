@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'python']
+tags: ['python', 'thoughts', 'types', 'history', 'engineering']
 summary: "Musings about the changes to Python over the years, particularly typing."
 ---
 

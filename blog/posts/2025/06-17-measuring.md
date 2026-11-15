@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'ai', 'api']
+tags: ['ai', 'thoughts', 'agents', 'engineering', 'tooling']
 summary: "Using programming agents to measure measuring developer productivity."
 ---
 

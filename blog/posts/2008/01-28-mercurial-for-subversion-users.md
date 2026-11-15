@@ -1,5 +1,5 @@
 ---
-tags: ['hg']
+tags: ['version-control', 'tutorial']
 summary: "Short introduction into mercurial from the perspective of a subversion
 user."
 ---

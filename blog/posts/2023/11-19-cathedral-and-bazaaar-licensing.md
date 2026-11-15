@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'licensing', 'opensource']
+tags: ['licensing', 'open-source', 'thoughts', 'sentry', 'business']
 summary: "My personal commentary on Sentry's new FSL license."
 ---
 

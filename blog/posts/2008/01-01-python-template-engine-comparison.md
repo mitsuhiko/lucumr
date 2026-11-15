@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'jinja', 'mako', 'genshi']
+tags: ['python', 'jinja', 'web']
 summary: "A comparison of three of the most popular template engines for Python
 and why they are different."
 ---

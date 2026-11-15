@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'announcement']
+tags: ['sentry', 'announcement', 'thoughts', 'work', 'personal']
 summary: "Endings and new beginnings."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'agents']
 summary: "Why a measured position on AI tends to lean towards actually trying it."
 ---
 

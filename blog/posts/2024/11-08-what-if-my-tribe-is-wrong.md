@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['thoughts', 'personal', 'politics']
 summary: "Balancing empathy, group member with integrity and morals: a personal journey."
 ---
 

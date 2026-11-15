@@ -1,5 +1,5 @@
 ---
-tags: ['announcement']
+tags: ['announcement', 'thoughts']
 summary: "Short update on why this site looks different and what changed under
 the hood and where the rest of the content went."
 ---

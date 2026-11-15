@@ -1,5 +1,5 @@
 ---
-tags: ['covid19', 'desktop']
+tags: ['hardware', 'work', 'personal']
 summary: "How my work from home situation looks like at the moment."
 ---
 

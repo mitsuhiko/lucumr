@@ -1,5 +1,5 @@
 ---
-tags: ['flask', 'python']
+tags: ['python', 'web', 'thoughts', 'flask']
 summary: "My conclusions of an April's fools day joke I made this year that later
 lead to the development of the Flask micro framework."
 ---

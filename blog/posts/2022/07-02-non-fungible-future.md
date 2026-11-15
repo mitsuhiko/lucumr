@@ -1,4 +1,5 @@
 ---
+tags: ['finance', 'business', 'thoughts']
 summary: "What a powerful NFT driven future could look like."
 ---
 

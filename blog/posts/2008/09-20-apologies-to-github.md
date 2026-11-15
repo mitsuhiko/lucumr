@@ -1,5 +1,5 @@
 ---
-tags: ['github', 'git']
+tags: ['version-control', 'community']
 summary: "Apology for a mistake I made in an earlier blog post."
 ---
 

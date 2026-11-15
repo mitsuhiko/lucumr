@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'async', 'python', 'javascript', 'rust']
+tags: ['async', 'thoughts', 'engineering', 'javascript', 'python']
 summary: "Musings about async await again and why I think virtual threads"
 ---
 

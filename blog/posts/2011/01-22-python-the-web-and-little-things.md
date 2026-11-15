@@ -1,6 +1,6 @@
 ---
 day-order: 1
-tags: ['python', 'wsgi', 'thoughts']
+tags: ['python', 'thoughts', 'web', 'wsgi']
 summary: "A bunch of things currently on my mind regarding web development with
 Python and future directions."
 ---

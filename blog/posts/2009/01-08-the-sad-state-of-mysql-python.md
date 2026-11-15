@@ -1,5 +1,5 @@
 ---
-tags: ['mysql', 'python']
+tags: ['databases', 'python']
 summary: "Old blog post about the broken state of the MySQL python module."
 ---
 

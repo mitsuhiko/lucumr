@@ -1,5 +1,5 @@
 ---
-tags: ['rust']
+tags: ['rust', 'announcement']
 summary: "Can we do better than Serde?"
 ---
 

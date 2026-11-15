@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'ai-society', 'culture']
 summary: "Thoughts on reconciling incompatible needs."
 ---
 

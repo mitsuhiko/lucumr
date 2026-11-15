@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust']
+tags: ['rust', 'thoughts', 'engineering', 'open-source']
 summary: "Bringing the great successes of financial engineering to Rust."
 ---
 

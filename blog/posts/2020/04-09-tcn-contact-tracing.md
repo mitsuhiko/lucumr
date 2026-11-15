@@ -1,5 +1,5 @@
 ---
-tags: ['covid19', 'thoughts']
+tags: ['covid19', 'privacy', 'security']
 summary: "A short introduction to TCN based contact tracing"
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['covid19', 'thoughts']
+tags: ['covid19', 'thoughts', 'privacy']
 summary: "Why contract tracing will be our future and why it's a good idea."
 ---
 

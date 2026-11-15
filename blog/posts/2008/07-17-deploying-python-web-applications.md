@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'fabric']
+tags: ['python', 'tooling', 'tutorial']
 summary: "Short tutorial on how to use fabric to deploy Python web applications."
 ---
 

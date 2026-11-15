@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'announcement', 'rye']
+tags: ['packaging', 'python', 'tooling', 'thoughts']
 summary: "My thoughts on Rye and uv."
 ---
 

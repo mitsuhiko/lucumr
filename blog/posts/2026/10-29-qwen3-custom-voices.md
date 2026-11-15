@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'audio']
+tags: ['ai', 'tutorial', 'local-models']
 summary: "Cloning, designing and blending voices with Qwen3-TTS."
 ---
 

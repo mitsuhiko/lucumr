@@ -1,5 +1,5 @@
 ---
-tags: ['python']
+tags: ['python', 'packaging', 'thoughts', 'engineering']
 summary: "Some of the issues of why Python packaging is unnecessarily hard."
 ---
 

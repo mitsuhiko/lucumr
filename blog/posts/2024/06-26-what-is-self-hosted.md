@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['thoughts', 'web', 'open-source']
 summary: "Some thoughts on self hosted Open Source software."
 ---
 

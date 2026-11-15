@@ -1,5 +1,5 @@
 ---
-tags: ['rust', 'http', 'rest', 'api']
+tags: ['rust', 'web', 'api', 'engineering']
 summary: "Lessons learned from implementing a restful HTTP client for Rust."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['thoughts', 'databases']
 summary: "Thoughts about why relational databases are not a bad choice when
 starting a new project."
 ---

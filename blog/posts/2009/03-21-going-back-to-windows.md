@@ -1,5 +1,5 @@
 ---
-tags: ['windows']
+tags: ['operating-systems', 'tooling']
 summary: "Why I am running Windows on my desktop computer now instead of ubuntu."
 ---
 

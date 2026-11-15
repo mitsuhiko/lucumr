@@ -1,5 +1,5 @@
 ---
-tags: ['rust', 'jinja']
+tags: ['rust', 'jinja', 'engineering']
 summary: "Learnings from building MiniJinja, a template engine in Rust"
 ---
 

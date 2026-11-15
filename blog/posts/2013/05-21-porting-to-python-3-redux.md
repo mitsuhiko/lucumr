@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'python']
+tags: ['python', 'tutorial', 'engineering', 'unicode']
 summary: "Some updated tips for porting software to Python 3."
 ---
 

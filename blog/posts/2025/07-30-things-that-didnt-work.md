@@ -1,5 +1,5 @@
 ---
-tags: [thoughts, ai, vibecoding]
+tags: ['ai', 'agents', 'thoughts', 'tooling']
 summary: Some of my attempts to make agents work better that just didn't work.
 ---
 

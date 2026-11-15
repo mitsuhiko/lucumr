@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'thoughts']
+tags: ['python', 'tutorial']
 summary: "The problems with timezones and Python's datetime object and how you
 would properly use them."
 ---

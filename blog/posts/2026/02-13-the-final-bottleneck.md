@@ -1,5 +1,5 @@
 ---
-tags: ['ai']
+tags: ['ai', 'thoughts', 'engineering']
 summary: "AI speeds up writing code, but accountability and review capacity still impose hard limits."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['jinja', 'python', 'django']
+tags: ['jinja', 'python', 'django', 'web', 'engineering']
 summary: "Why Jinja2's template engine design makes it harder for your to shoot
 yourself into the foot compared to Django's limited templating system."
 ---

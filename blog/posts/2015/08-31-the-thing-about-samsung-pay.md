@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'payments', 'security']
+tags: ['security', 'finance']
 summary: "Some interesting notes about how the MST feature of Samsung Pay (and
 credit card transactions in general)."
 ---

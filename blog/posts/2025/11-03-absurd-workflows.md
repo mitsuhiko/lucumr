@@ -1,5 +1,5 @@
 ---
-tags: [ai, announcements]
+tags: ['announcement', 'databases', 'engineering', 'ai']
 summary: Durable execution with just postgres.
 ---
 

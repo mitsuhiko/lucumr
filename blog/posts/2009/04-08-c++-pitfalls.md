@@ -1,5 +1,5 @@
 ---
-tags: ['c++']
+tags: ['c', 'engineering']
 summary: "A concise list of some common C++ pitfalls."
 ---
 

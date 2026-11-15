@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['thoughts', 'hardware']
 summary: "Visualizing numbers and thinking about dimensions in computing."
 ---
 

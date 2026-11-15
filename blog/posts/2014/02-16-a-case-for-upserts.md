@@ -1,5 +1,5 @@
 ---
-tags: ['sql', 'thoughts', 'postgres']
+tags: ['databases', 'thoughts', 'web']
 summary: "Some thoughts on why upserts are necessary to write reliable web
 applications."
 ---

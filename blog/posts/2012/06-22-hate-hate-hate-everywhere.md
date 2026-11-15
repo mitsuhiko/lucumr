@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'thoughts']
+tags: ['python', 'packaging', 'tooling']
 summary: "A sad example of how easy it is to dismiss certain design principles
 because it does not seem relevant at the time."
 ---

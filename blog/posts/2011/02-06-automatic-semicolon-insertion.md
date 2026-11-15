@@ -1,5 +1,5 @@
 ---
-tags: ['javascript']
+tags: ['javascript', 'engineering']
 summary: 'Why automatic semicolon insertion in JavaScript was a bad idea and why
 you should be using explicit semicolons, even if you cannot disable that
 "feature".'

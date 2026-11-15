@@ -1,5 +1,5 @@
 ---
-tags: ['openid', 'security']
+tags: ['security', 'web', 'thoughts']
 summary: "an alternative way to look at OpenID's security."
 ---
 

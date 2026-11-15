@@ -1,5 +1,5 @@
 ---
-tags: ['ai']
+tags: ['ai', 'thoughts']
 summary: "What is AI generated text anyways?"
 ---
 

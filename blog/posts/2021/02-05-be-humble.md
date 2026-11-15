@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['thoughts', 'lessons', 'rant', 'work']
 summary: "Something on the topic of money and privilege that come with working in
 software."
 ---

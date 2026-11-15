@@ -1,5 +1,5 @@
 ---
-tags: ['rust']
+tags: ['rust', 'tutorial']
 summary: "A useful pattern for making common types extensible."
 ---
 

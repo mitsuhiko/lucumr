@@ -1,5 +1,5 @@
 ---
-tags: ['wsgi', 'python']
+tags: ['wsgi', 'python', 'web', 'unicode', 'api']
 summary: "A short summary about the current state of WSGI on Python 3."
 ---
 

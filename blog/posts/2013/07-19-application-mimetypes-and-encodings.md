@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['web', 'unicode']
 summary: "Some quick notes on application mimetypes and how they deal with
 encodings."
 ---

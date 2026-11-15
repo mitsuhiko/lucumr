@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'ruby']
+tags: ['python']
 summary: "Why ruby is more whitespace sensitive than Python."
 ---
 

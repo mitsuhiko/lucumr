@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'thoughts']
+tags: ['python', 'thoughts', 'c']
 summary: "What I would imagine an better Python would look like."
 ---
 

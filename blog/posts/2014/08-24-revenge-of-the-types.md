@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust', 'python']
+tags: ['python', 'thoughts', 'types']
 summary: "Some notes about what appears to be current trend of programming
 languages and my thoughts about it."
 ---

@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'ai']
+tags: ['ai', 'thoughts', 'agents', 'engineering', 'community']
 summary: "Vibecoding and the possible collapse of a shared language."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'personal']
+tags: ['thoughts', 'personal', 'open-source']
 summary: "Some reflections on emotional state and (especially my) software
 quality."
 ---

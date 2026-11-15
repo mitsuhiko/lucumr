@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'web']
+tags: ['web', 'python', 'security', 'engineering']
 summary: "A short list of common mistakes in Python web applications in terms of
 security and architecture."
 ---

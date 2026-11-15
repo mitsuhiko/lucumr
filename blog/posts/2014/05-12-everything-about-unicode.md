@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'linux', 'unicode']
+tags: ['unicode', 'python', 'operating-systems', 'rant']
 summary: "A list of things about unicode on Linux and Python 3 you really did not
 want to know."
 ---

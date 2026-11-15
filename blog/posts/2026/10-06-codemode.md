@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'pi']
+tags: ['pi', 'ai', 'agents', 'mcp', 'javascript']
 summary: "If you just need bash, why do you need codemode?"
 ---
 

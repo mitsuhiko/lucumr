@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['thoughts', 'design']
 summary: "Make software that is capable to forget and decay information."
 ---
 

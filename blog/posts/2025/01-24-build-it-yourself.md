@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust']
+tags: ['rust', 'thoughts', 'engineering', 'rant', 'packaging']
 summary: "We need a vibe shift on dependencies in programming."
 ---
 

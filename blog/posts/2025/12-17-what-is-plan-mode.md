@@ -1,5 +1,5 @@
 ---
-tags: [ai]
+tags: ['ai', 'agents']
 summary: "What I learned about plan mode as a non-plan mode user who plans."
 ---
 

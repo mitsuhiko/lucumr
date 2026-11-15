@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'import']
+tags: ['python', 'tutorial']
 summary: "Ways to deal with the Python Import System Blackbox."
 ---
 

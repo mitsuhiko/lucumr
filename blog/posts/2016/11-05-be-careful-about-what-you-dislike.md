@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'thoughts', 'politics']
+tags: ['thoughts', 'lessons', 'python', 'politics']
 summary: "Observations about the problem of having strong opinions and sharing
 them with others."
 ---

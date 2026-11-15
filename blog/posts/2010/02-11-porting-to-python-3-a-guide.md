@@ -1,5 +1,5 @@
 ---
-tags: ['python']
+tags: ['python', 'unicode', 'tutorial']
 summary: "Various notes on how to port libraries and applications over to Python 3
 based on my experiences with the Jinja2 port."
 ---

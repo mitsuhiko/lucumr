@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'web', 'battlefield', 'thoughts']
+tags: ['web', 'javascript', 'engineering', 'games']
 summary: "Battlefield 3's Battlelog system is an interesting web application that
 many of us missed.  Here is why it's amazing and worth a look at."
 ---

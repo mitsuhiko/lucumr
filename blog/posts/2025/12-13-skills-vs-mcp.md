@@ -1,5 +1,5 @@
 ---
-tags: [ai, thoughts]
+tags: ['ai', 'thoughts', 'agents', 'mcp']
 summary: "Some findings of using Skills and the loadout pattern with MCP."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'soa']
+tags: ['python', 'networking']
 summary: "A basic overview of building service oriented architecture like
 microservices with the help of nameko."
 ---

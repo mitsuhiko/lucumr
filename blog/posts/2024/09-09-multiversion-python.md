@@ -1,5 +1,5 @@
 ---
-tags: ['python']
+tags: ['python', 'packaging']
 summary: "A braindump on how to make multi version in Python work."
 ---
 

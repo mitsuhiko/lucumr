@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'ai']
+tags: ['ai', 'earendil', 'thoughts', 'pi', 'announcement']
 summary: "On a shared journey with Mario."
 ---
 

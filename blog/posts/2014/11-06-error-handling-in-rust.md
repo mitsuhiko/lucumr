@@ -1,5 +1,5 @@
 ---
-tags: ['rust']
+tags: ['rust', 'tutorial']
 summary: "Overview of how to handle errors in the current version of the Rust
 programming language."
 ---

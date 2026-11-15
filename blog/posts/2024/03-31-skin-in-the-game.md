@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'licensing', 'privacy']
+tags: ['thoughts', 'open-source', 'privacy', 'community', 'licensing']
 summary: "Some thoughts about the meaning of pseudonyms and anonymous contributions in Open Source."
 ---
 

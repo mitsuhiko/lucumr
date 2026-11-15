@@ -1,5 +1,5 @@
 ---
-tags: ['hg', 'bitbucket']
+tags: ['version-control', 'open-source', 'thoughts']
 summary: "Old article about why I love bitbucket."
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'announcement']
+tags: ['python', 'packaging', 'tooling', 'thoughts']
 summary: "A progress update on where my Rye Project is today."
 ---
 

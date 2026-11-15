@@ -1,5 +1,5 @@
 ---
-tags: ['vim']
+tags: ['tooling', 'tutorial']
 summary: "Things I love about vim and that I think are worth sharing."
 ---
 

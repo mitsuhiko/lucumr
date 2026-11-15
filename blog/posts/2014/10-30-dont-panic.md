@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'rust', 'api']
+tags: ['rust', 'thoughts', 'api']
 summary: "A look at stack unwinding, primarily in the context of Rust, why it
 exists and a discussion about if it's a good idea."
 ---

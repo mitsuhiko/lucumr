@@ -1,5 +1,5 @@
 ---
-tags: ['ai']
+tags: ['ai', 'thoughts', 'ai-society', 'politics']
 summary: "Are we all going to die?"
 ---
 

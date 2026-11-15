@@ -1,6 +1,6 @@
 ---
 day-order: 1
-tags: ['python', 'thoughts']
+tags: ['personal', 'open-source', 'python']
 summary: "A quick update on the lack of updates from my side."
 ---
 

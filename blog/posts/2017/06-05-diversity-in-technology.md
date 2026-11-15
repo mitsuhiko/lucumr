@@ -1,5 +1,5 @@
 ---
-tags: ['diversity', 'thoughts', 'opensource']
+tags: ['open-source', 'community', 'thoughts']
 summary: "Some personal thoughts and observations about the topic of diversity in
 technology and in particular Open Source."
 ---

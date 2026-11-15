@@ -1,5 +1,5 @@
 ---
-tags: ['python', 'unicode']
+tags: ['python', 'unicode', 'tutorial']
 summary: "An updated guide on how to deal with unicode on Python 2 and 3."
 ---
 

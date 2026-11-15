@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['security', 'web']
 summary: "A reinforcement about how signed data is useful to create distributed
 systems."
 ---

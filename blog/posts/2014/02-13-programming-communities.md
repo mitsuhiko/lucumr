@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'python']
+tags: ['python', 'thoughts', 'community', 'personal', 'history']
 summary: "Some personal thoughts on the Python community and programming
 communities in general."
 ---

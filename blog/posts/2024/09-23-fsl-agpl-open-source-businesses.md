@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts']
+tags: ['thoughts', 'licensing', 'open-source', 'business']
 summary: "My thoughts on license choices for balancing business interests and"
 ---
 
