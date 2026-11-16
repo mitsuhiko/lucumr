@@ -848,13 +848,23 @@ class Builder:
         self.scan_content()
         talks_data = self.load_talks_data()
 
+        # Every page goes through the layout, so a change to any template
+        # makes all of them stale (and with them the indexes and feeds)
+        templates_mtime = max(
+            (
+                p.stat().st_mtime
+                for p in (Path(__file__).parent / "templates").rglob("*")
+                if p.is_file()
+            ),
+            default=0,
+        )
+
         content_changed = False
         for post in self.posts + self.pages:
             output_path = Path(post.output_path)
             source_path = Path(post.source_path)
-            if (
-                not output_path.exists()
-                or source_path.stat().st_mtime > output_path.stat().st_mtime
+            if not output_path.exists() or output_path.stat().st_mtime < max(
+                source_path.stat().st_mtime, templates_mtime
             ):
                 self.build_post(post)
                 print(f"Rebuilt {post.source_path}")
