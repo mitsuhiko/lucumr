@@ -85,12 +85,29 @@ remembered by a browser) gets `ridgeline` (`FALLBACK` in core.js), then
 - `env.still`: draw the finished picture at once and do not animate (reduced
   motion, screenshots).
 - `env.palette()`: the page's colours for the current theme as `[r, g, b]`
-  (0..1): `paper` (the page background), `ink`, `primary`, `secondary`,
-  `header`, `faded`, `border`.
+  (0..1), read from the custom properties of style-2025.css (so a change
+  there reaches the artwork): `paper` (`--background-color`), `ink`
+  (`--text-color`), `primary`, `secondary`, `header`, `faded`, `border`.
+  Derived from them in OKLab, in the hue of the navy (`--header-color`):
+  `graphite` (the pencil), `chalk` (white pencil on navy), `shade` (deep
+  blue-grey), `sky`, `mist`.  A colour of the page is never written into a
+  variant; take it from here.
 - `env.invalidate()`: ask for a frame (e.g. from a pointer event).
 - `env.util`: `hash`, `rng`, `noise1`, `noise2`, `fbm2`, `clamp`, `lerp`,
-  `smoothstep`, `hex`, `css`, `mix`, `hsl`, `toHex`, and `gl.program`,
-  `gl.quad`, `gl.texture`.
+  `smoothstep`, `hex`, `css`, `toHex`, `hsl`, the colour helpers below, and
+  `gl.program`, `gl.quad`, `gl.texture`.
+
+Colours are mixed in OKLab, where equal steps look equal and lightness is
+the lightness one sees: `mix(a, b, t)` (so a pigment mixed with white or the
+navy keeps its hue), `blend(colors, weights)`, `lightness(c)` (0..1; use it,
+not a weighted sum of RGB), `chroma(c)`, `saturate(c, k)` (chroma scaled, the
+lightness kept), `relight(c, L, k)` (the same hue at lightness L),
+`tone(like, L, C)` (the hue of `like` at L and C: the blog's blues at any
+depth), `gouache(c, lo, hi, keep)` (a colour meant for white paper as it goes
+on the navy one: lifted to between lo and hi, hue kept, chroma times keep),
+`lch(L, C, h)`, `lab(c)` and `rgb(lab)`.  Colours outside sRGB give up chroma,
+not hue or lightness.  Pigments (the tags' colours, the sun, a jinja red) are
+given once, for white paper; on the navy they go through `gouache`.
 
 `post` (from `LucumrArt.describe`):
 

@@ -158,7 +158,6 @@
       return v;
     };
   }
-  function luma(c) { return 0.3 * c[0] + 0.59 * c[1] + 0.11 * c[2]; }
 
   // A profile from nodes: cell(k) gives [x, h] pairs inside cell k, in order.
   function piecewise(cw, cell) {
@@ -777,16 +776,21 @@
     for (let k = Math.floor(P.X0 / cw) - pad; k <= Math.floor(P.X1 / cw) + pad; k++) cb(k);
   }
 
-  // The pigment as it goes on this paper: on navy it is gouache, lighter and chalky.
+  // The pigment as it goes on this paper: on navy it is gouache, lighter and
+  // chalky.  Made light in OKLab, it keeps its hue (mixed with white, as it
+  // was, a red went pink and an orange went beige), and loses some chroma the
+  // further it is lifted.
   function pigment(P, tag) {
     let c = tag.house ? mix(P.pal[tag.house[0]], P.pal[tag.house[1]], tag.house[2]) : tag.rgb;
-    // a bleak post is painted with greyed pigments
+    // a bleak post is painted with greyed pigments: the cool grey of the same lightness
     const grey = Math.max(0, 0.6 - P.scene.C.valence) * 0.85;
-    if (grey > 0) c = mix(c, [luma(c) * 0.92, luma(c) * 0.94, luma(c)], grey);
+    if (grey > 0) c = mix(c, U.tone(P.pal.shade, U.lightness(c), 0.012), grey);
     if (!P.dark) return c;
-    const l = luma(c), want = 0.62;
-    return l >= want ? c : mix(c, WHITE, (want - l) / (1 - l));
+    const l = U.lightness(c), want = 0.7;
+    return l >= want ? c : U.relight(c, want, 1 - 0.55 * (want - l) / (1 - l));
   }
+  // A colour given for white paper as it goes on the navy one.
+  function gouache(P, c) { return P.dark ? U.gouache(c, 0.78, 0.93) : c; }
   function tinted(P, color, amount) { return mix(P.graphite, color, amount === undefined ? 0.3 : amount); }
 
   // A long pencil line y = fn(X): pressure comes and goes, parts are gone over twice.
@@ -939,7 +943,7 @@
     const sc = P.scene, w = P.wash, kind = sc.skyKind, seed = sc.seed;
     // the register's pigment, well thinned with the grey of the air
     const thin = function(c) {
-      c = P.dark ? mix(c, P.pal.paper, 0.2) : mix(c, kind === 'storm' ? [0.3, 0.32, 0.4] : [0.6, 0.66, 0.76], kind === 'storm' ? 0.6 : 0.4);
+      c = P.dark ? mix(c, P.pal.paper, 0.2) : mix(c, kind === 'storm' ? U.tone(P.pal.shade, 0.4, 0.035) : U.tone(P.pal.sky, 0.72, 0.04), kind === 'storm' ? 0.6 : 0.4);
       return mix(c, P.dark ? [0.8, 0.66, 0.5] : [0.92, 0.72, 0.48], 0.5 * P.warmth);
     };
     const base = sc.sky ? thin(pigment(P, sc.sky)) : P.air;
@@ -977,7 +981,7 @@
     }
 
     if (kind === 'storm') {
-      const dark = P.dark ? mix(base, P.pal.paper, 0.3) : mix(base, [0.16, 0.17, 0.24], 0.55);
+      const dark = P.dark ? mix(base, P.pal.paper, 0.3) : mix(base, P.pal.shade, 0.55);
       cells(P, 120, function(k) {
         const r = cellRng(seed + 45, k);
         softBlob(w, (k + r()) * 120, 2 + 16 * r(), 60 + 70 * r(), 10 + 16 * r(), dark, 0.2 + 0.25 * r());
@@ -1096,7 +1100,7 @@
     // (what an `ai` post is about keeps more of its pigment than a mere echo)
     const color = mix(pig, P.air, 0.6 * t * (R.form ? 0.45 : 1));
     return {
-      color: color, alpha: lerp(0.56, R.form ? 0.34 : 0.18, Math.pow(t, 0.8)) * quiet * (R.family === 'ink' ? 0.7 : 1), shade: mix(color, [0.07, 0.08, 0.16], 0.45),
+      color: color, alpha: lerp(0.56, R.form ? 0.34 : 0.18, Math.pow(t, 0.8)) * quiet * (R.family === 'ink' ? 0.7 : 1), shade: mix(color, U.tone(P.pal.shade, 0.2, 0.041), 0.45),
       line: mix(P.graphite, pig, 0.3), weight: lerp(0.95, 0.32, t) * quiet
     };
   }
@@ -1557,7 +1561,7 @@
       wash: function(env) {
         // dry brush on the flanks of the towers
         const P = env.P, R = env.R, tmp = env.tmp;
-        const ink = P.dark ? [0.95, 0.96, 0.98] : [0.07, 0.08, 0.1];
+        const ink = P.dark ? P.pal.chalk : U.tone(P.pal.shade, 0.17, 0.012);
         tmp.strokeStyle = css(ink);
         tmp.lineCap = 'round';
         cells(P, R.prof.cw, function(k) {
@@ -1578,7 +1582,7 @@
       pencil: function(env) {
         // the outline is a brush: it swells and thins and runs dry
         const P = env.P, R = env.R, w = P.wash;
-        const ink = P.dark ? [0.95, 0.96, 0.98] : [0.07, 0.08, 0.1];
+        const ink = P.dark ? P.pal.chalk : U.tone(P.pal.shade, 0.17, 0.012);
         w.save();
         w.strokeStyle = css(ink);
         w.lineCap = 'round';
@@ -1654,7 +1658,7 @@
           const y = env.yOf(x) + (7 + i * 3.6) * R.sc, l = (9 + 12 * r()) * R.sc;
           B.seg(x + indent, y, x + indent + l, y + 0.3 * (r() - 0.5), r.int(3));
         }
-        if (R.tag.name === 'python' && r() < 0.5) softBlob(P.wash, x + 12 * R.sc, env.yOf(x) + 13 * R.sc, 17 * R.sc, 8 * R.sc, P.dark ? [0.95, 0.85, 0.5] : [0.93, 0.74, 0.2], 0.4);
+        if (R.tag.name === 'python' && r() < 0.5) softBlob(P.wash, x + 12 * R.sc, env.yOf(x) + 13 * R.sc, 17 * R.sc, 8 * R.sc, gouache(P, [0.93, 0.74, 0.2]), 0.4);
       });
       B.flush(P, env.look.line, env.look.weight * 0.5, 0.85);
     },
@@ -1708,7 +1712,7 @@
     // worry, anger, bleakness: a bank of dark cloud hanging from the top edge
     const gloom = clamp(0.9 * m.worried + 0.7 * m.angry + 0.5 * m.conflicted + 1.5 * Math.max(0, 0.4 - C.valence), 0, 1);
     if (gloom > 0.08) {
-      const dark = P.dark ? mix(P.pal.paper, [0.04, 0.07, 0.15], 0.7) : mix(P.air, [0.2, 0.22, 0.3], 0.72);
+      const dark = P.dark ? mix(P.pal.paper, P.pal.shade, 0.7) : mix(P.air, U.tone(P.pal.shade, 0.345, 0.036), 0.72);
       cells(P, 96, function(k) {
         const r = cellRng(seed + 201, k);
         const x = (k + r()) * 96;
@@ -1736,9 +1740,9 @@
     const light = clamp(0.95 * m.hopeful + 0.5 * m.playful + 1.5 * Math.max(0, C.valence - 0.72), 0, 1);
     if (light > 0.15 && sc.skyKind !== 'glow' && sc.skyKind !== 'burst') {
       const r = cellRng(seed + 205, 0);
-      const x = side * (150 + 190 * r()), y = lerp(50, 30, light), warm = P.dark ? [0.98, 0.82, 0.55] : [0.96, 0.72, 0.36];
+      const x = side * (150 + 190 * r()), y = lerp(50, 30, light), warm = gouache(P, [0.96, 0.72, 0.36]);
       softBlob(w, x, y, 150 + 80 * light, 34 + 16 * light, warm, (P.dark ? 0.3 : 0.38) * light);
-      softBlob(w, x, y, 46, 22, P.dark ? [1, 0.9, 0.7] : [0.97, 0.6, 0.4], 0.3 * light);
+      softBlob(w, x, y, 46, 22, gouache(P, [0.97, 0.6, 0.4]), 0.3 * light);
       if (light > 0.4) {
         // the sun is the paper
         w.globalCompositeOperation = 'destination-out';
@@ -2013,7 +2017,7 @@
   function tower(P, x, y, seed) {
     // a tower still going up: floors, and scaffolding above the last one
     const o = { weight: 0.9, seed: seed, wobble: 0.2, width: 0.9 }, h = 27, wd = 4;
-    P.wash.fillStyle = css(P.dark ? [0.85, 0.86, 0.9] : [0.45, 0.42, 0.44], P.dark ? 0.55 : 0.35);
+    P.wash.fillStyle = css(gouache(P, [0.45, 0.42, 0.44]), P.dark ? 0.55 : 0.35);
     P.wash.fillRect(x - wd, y - h, wd * 2, h + 1);
     drawPoly(P, [[x - wd, y + 1], [x - wd, y - h], [x + wd, y - h], [x + wd, y + 1]], Object.assign({ retrace: true }, o));
     for (let i = 1; i < 6; i++) drawPoly(P, [[x - wd, y - i * 4.5], [x + wd, y - i * 4.5]], Object.assign({}, o, { weight: 0.5 }));
@@ -2025,7 +2029,7 @@
   const MOTIFS = {
     water: function(P, M) {         // a lake at the foot of the range
       const front = P.scene.ridges[0], w = P.wash, B = new Batch(), y0 = front.yBase + 3;
-      const blue = P.dark ? [0.62, 0.8, 0.95] : [0.3, 0.54, 0.74];
+      const blue = gouache(P, [0.3, 0.54, 0.74]);
       cells(P, 46, function(k) {
         const r = cellRng(M.seed, k);
         const x = (k + r()) * 46;
@@ -2042,20 +2046,20 @@
     },
     fire: function(P, M) {          // smoke from the summit
       const p = onCrest(P.scene, highest(P.scene, M.x, 90)), w = P.wash, r = cellRng(M.seed, 1), side = P.scene.shear < 0 ? -1 : 1;
-      const grey = P.dark ? [0.8, 0.8, 0.84] : [0.4, 0.38, 0.4], pts = [];
+      const grey = gouache(P, [0.4, 0.38, 0.4]), pts = [];
       for (let i = 0; i < 10; i++) {
         const x = p[0] + side * i * i * 0.55 + 2.5 * Math.sin(i * 1.3 + r() * 6), y = p[1] - 2 - i * 4.6;
         pts.push([x, y]);
         softBlob(w, x, y, 3 + i * 1.9, 2.5 + i * 1.1, grey, 0.26);
       }
       drawPoly(P, pts, { weight: 0.45, seed: M.seed, curve: true });
-      softBlob(w, p[0], p[1] - 1, 7, 4, P.dark ? [1, 0.6, 0.35] : [0.9, 0.33, 0.1], 0.8);
+      softBlob(w, p[0], p[1] - 1, 7, 4, gouache(P, [0.9, 0.33, 0.1]), 0.8);
     },
     stone: function(P, M) {         // a cairn
       const p = onCrest(P.scene, highest(P.scene, M.x, 90));
       [[5, 0], [3.8, 3.2], [2.6, 5.8], [1.5, 7.9]].forEach(function(s, i) {
         drawPoly(P, circle(p[0] + (i % 2 ? 0.6 : -0.4), p[1] - 1.4 - s[1], s[0], 0, TAU, 9).map(function(q) { return [q[0], p[1] - 1.4 - s[1] + (q[1] - (p[1] - 1.4 - s[1])) * 0.42]; }),
-          { weight: 0.85, seed: M.seed + i, close: true, wobble: 0.3, fill: P.dark ? [0.8, 0.82, 0.86] : [0.55, 0.53, 0.5], fillAlpha: 0.35 });
+          { weight: 0.85, seed: M.seed + i, close: true, wobble: 0.3, fill: gouache(P, [0.55, 0.53, 0.5]), fillAlpha: 0.35 });
       });
     },
     air: function(P, M) {           // the wind, drawn
@@ -2067,7 +2071,7 @@
       }
     },
     growth: function(P, M) {        // a wood on the ridge
-      const B = new Batch(), green = P.dark ? [0.62, 0.8, 0.5] : [0.36, 0.54, 0.18];
+      const B = new Batch(), green = gouache(P, [0.36, 0.54, 0.18]);
       for (let i = -24; i <= 24; i++) {
         const r = cellRng(M.seed, i), x = M.x + i * 8 + 5 * r();
         if (r() > 1.15 - Math.abs(i) / 26 || r() < 0.2) continue;
@@ -2091,7 +2095,7 @@
     },
     light: function(P, M) {         // a star low over the range
       if (P.scene.skyKind === 'glow' || P.scene.skyKind === 'burst') return;
-      const x = M.x, y = 20, w = P.wash, B = new Batch(), r = cellRng(M.seed, 2), warm = P.dark ? [1, 0.9, 0.6] : [0.96, 0.74, 0.3];
+      const x = M.x, y = 20, w = P.wash, B = new Batch(), r = cellRng(M.seed, 2), warm = gouache(P, [0.96, 0.74, 0.3]);
       softBlob(w, x, y, 44, 22, warm, 0.4);
       for (let i = 0; i < 12; i++) {
         const an = i / 12 * TAU + 0.2 * r(), r0 = 4 + r(), r1 = r0 + (i % 3 === 0 ? 11 : 4) + 4 * r();
@@ -2100,7 +2104,7 @@
       B.flush(P, tinted(P, warm, 0.5), 0.6, 0.85);
     },
     body: function(P, M) {          // veins down the flank
-      const w = P.wash, red = P.dark ? [1, 0.6, 0.62] : [0.62, 0.1, 0.18];
+      const w = P.wash, red = gouache(P, [0.62, 0.1, 0.18]);
       w.save();
       w.strokeStyle = css(red);
       w.lineCap = 'round';
@@ -2581,7 +2585,7 @@
     P.pencil.save();
     P.pencil.clip(clip);
     B.flush(P, tinted(P, color, 0.4), weight, 0.85);
-    B2.flush(P, P.dark ? [0.96, 0.97, 0.99] : mix(P.graphite, [0, 0, 0], 0.5), weight, 1.5);
+    B2.flush(P, P.dark ? P.pal.chalk : mix(P.graphite, P.pal.ink, 0.5), weight, 1.5);
     P.pencil.restore();
   }
 
@@ -2614,8 +2618,8 @@
     F.strata.forEach(function(S) {
       const color = pigment(P, S.tag);
       S.beds.forEach(function(bed, i) {
-        let c = bed.hue > 0 ? mix(color, P.dark ? WHITE : [1, 0.9, 0.7], 0.1 * bed.hue) : mix(color, P.dark ? P.pal.paper : [0.2, 0.25, 0.45], -0.12 * bed.hue);
-        if (S.tag.name === 'python' && i % 4 === 2) c = mix(c, P.dark ? [0.95, 0.85, 0.5] : [0.93, 0.74, 0.2], 0.7);
+        let c = bed.hue > 0 ? mix(color, P.dark ? WHITE : [1, 0.9, 0.7], 0.1 * bed.hue) : mix(color, P.dark ? P.pal.paper : P.pal.header, -0.12 * bed.hue);
+        if (S.tag.name === 'python' && i % 4 === 2) c = mix(c, gouache(P, [0.93, 0.74, 0.2]), 0.7);
         // `ai`: every other bed in the pigment of what the post is about
         if (S.form && i % 2 === 1) c = mix(c, pigment(P, S.form.tag), 0.35 + 0.6 * S.form.p);     // blue with a touch of yellow
         w.fillStyle = css(c);
@@ -2664,7 +2668,7 @@
       w.fill(path);
       w.globalCompositeOperation = 'source-over';
       w.globalAlpha = P.dark ? 0.4 : 0.42;
-      w.fillStyle = css(P.dark ? [0.72, 0.78, 0.88] : [0.25, 0.26, 0.33]);
+      w.fillStyle = css(U.tone(P.pal.shade, P.dark ? 0.83 : 0.385, 0.035));
       w.fill(path);
       dikes.push({ left: left, right: right, path: path, seed: d.seed });
     }, 1);
@@ -2780,7 +2784,7 @@
   // The motif again, where the section cuts through it.
   const BELOW = {
     water: function(P, M) {         // a tarn in the lowest hollow
-      const F = P.scene.ground, w = P.wash, blue = P.dark ? [0.62, 0.8, 0.95] : [0.3, 0.54, 0.74];
+      const F = P.scene.ground, w = P.wash, blue = gouache(P, [0.3, 0.54, 0.74]);
       let xl = M.x, low = -1;
       for (let d = -220; d <= 220; d += 3) if (F.surface(M.x + d) > low) { low = F.surface(M.x + d); xl = M.x + d; }
       const level = low - 8;
@@ -2803,7 +2807,7 @@
       B.flush(P, tinted(P, blue, 0.5), 0.5, 0.8);
     },
     fire: function(P, M, clip) {    // what feeds it: a body of melt rising from below
-      const w = P.wash, hot = P.dark ? [1, 0.62, 0.4] : [0.88, 0.32, 0.1], left = [], right = [];
+      const w = P.wash, hot = gouache(P, [0.88, 0.32, 0.1]), left = [], right = [];
       for (let y = 250; y <= P.H + 12; y += 8) {
         const t = smooth(250, 330, y), half = (4 + 44 * t * t) * (0.8 + 0.2 * noise1(y / 30, M.seed));
         const cx = M.x + 10 * noise1(y / 60, M.seed + 1);
@@ -2832,11 +2836,11 @@
       for (let i = 0; i < 6; i++) {
         const r = cellRng(M.seed, 10 + i), x = M.x + (r() - 0.5) * 260, rad = 2 + 4 * r(), y = F.surface(x) - rad * 0.55;
         drawPoly(P, circle(x, y, rad, 0, TAU, 9).map(function(q) { return [q[0], y + (q[1] - y) * 0.62]; }),
-          { weight: 0.85, seed: M.seed + i, close: true, wobble: 0.35, fill: P.dark ? [0.8, 0.82, 0.86] : [0.55, 0.53, 0.5], fillAlpha: 0.4 });
+          { weight: 0.85, seed: M.seed + i, close: true, wobble: 0.35, fill: gouache(P, [0.55, 0.53, 0.5]), fillAlpha: 0.4 });
       }
     },
     growth: function(P, M) {        // the wood, and its roots
-      const F = P.scene.ground, B = new Batch(), green = P.dark ? [0.62, 0.8, 0.5] : [0.36, 0.54, 0.18];
+      const F = P.scene.ground, B = new Batch(), green = gouache(P, [0.36, 0.54, 0.18]);
       P.pencil.save();
       P.pencil.strokeStyle = css(tinted(P, green, 0.3));
       P.pencil.lineCap = 'round';
@@ -2869,7 +2873,7 @@
       B.flush(P, P.graphite, 0.75, 0.9);
     },
     body: function(P, M, clip) {    // veins through the rock
-      const w = P.wash, red = P.dark ? [1, 0.6, 0.62] : [0.62, 0.1, 0.18];
+      const w = P.wash, red = gouache(P, [0.62, 0.1, 0.18]);
       w.save();
       w.clip(clip);
       w.strokeStyle = css(red);
@@ -2950,13 +2954,13 @@
       X0: -lw / 2 / k - 4, X1: lw / 2 / k + 4,
       dark: dark, pal: pal, scene: scene, hand: scene.hand,
       lw: 1 / Math.pow(Math.min(1, css1), 0.6),
-      graphite: dark ? [0.9, 0.93, 0.97] : [0.17, 0.19, 0.25]
+      graphite: pal.graphite
     };
     const sky = scene.sky ? pigment(P, scene.sky) : null;
     // warmth: hope and play, and how personal the post is
     const C = scene.C;
     P.warmth = clamp(0.6 * C.mood.hopeful + 0.4 * C.mood.playful + 0.9 * Math.max(0, C.personal - 0.45), 0, 1);
-    P.air = dark ? pal.paper : (sky ? mix([0.62, 0.7, 0.82], sky, 0.35) : [0.6, 0.69, 0.82]);
+    P.air = dark ? pal.paper : (sky ? mix(pal.sky, sky, 0.35) : pal.sky);
     if (!dark) P.air = mix(P.air, [0.9, 0.76, 0.56], 0.45 * P.warmth);
     if (surface.kind === 'footer') paintFooter(P); else paintHeader(P);
     P.tmp.canvas.width = 0;
@@ -2979,7 +2983,7 @@
     #endif
     uniform vec2 u_res;
     uniform float u_scale, u_dark;
-    uniform vec3 u_paper;
+    uniform vec3 u_paper, u_mist;
     uniform vec4 u_amb, u_off, u_mistY;
     uniform vec2 u_mix;
 
@@ -3022,7 +3026,7 @@
       vec3 lit = u_paper + d * (1. + shade * u_amb.x);
       // in the cloud's shadow the light is cooler, a little darker even on pale paint
       lit = mix(lit, lit * mix(vec3(.82, .86, .95), vec3(.86, .9, 1.), u_dark), paint * max(shade, 0.) * u_amb.x * (1. - u_dark));
-      vec3 hazed = mix(u_paper + (lit - u_paper) * (1. - m), mix(lit, mix(u_paper, vec3(.8, .86, .95), .45), m * .8), u_dark);
+      vec3 hazed = mix(u_paper + (lit - u_paper) * (1. - m), mix(lit, mix(u_paper, u_mist, .45), m * .8), u_dark);
       return clamp(mix(color, hazed, paint), 0., 1.);
     }
   `;
@@ -3147,7 +3151,7 @@
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     }
-    const AIR = ['res', 'scale', 'dark', 'paper', 'amb', 'off', 'mix', 'mistY'];
+    const AIR = ['res', 'scale', 'dark', 'paper', 'mist', 'amb', 'off', 'mix', 'mistY'];
     function locations(program, names) {
       const out = {};
       names.forEach(function(name) { out[name] = gl.getUniformLocation(program, 'u_' + name); });
@@ -3222,7 +3226,9 @@
     }
     function setAir(u, strength, air) {
       const sign = env.dark ? -0.8 : 1;
+      const mist = env.palette().mist;
       gl.uniform1f(u.dark, env.dark ? 1 : 0);
+      gl.uniform3f(u.mist, mist[0], mist[1], mist[2]);
       gl.uniform4f(u.amb, strength, air.shadow * sign, air.mist, air.sun * sign);
       gl.uniform4f(u.off, drift.off[0], drift.off[1], drift.off[2], drift.off[3]);
       gl.uniform2f(u.mix, air.mix[0], air.mix[1]);

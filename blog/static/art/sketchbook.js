@@ -2809,18 +2809,16 @@
 
   // the pigments of a choice, mixed by how likely each label is
   function blend(post, facet, table) {
-    const c = [0, 0, 0];
+    const colors = [], weights = [];
     let sum = 0;
     Object.keys(table).forEach(function(label) {
       const w = post.share(facet, label);
       if (w <= 0) return;
-      const rgb = U.hex(table[label]);
-      c[0] += rgb[0] * w;
-      c[1] += rgb[1] * w;
-      c[2] += rgb[2] * w;
+      colors.push(U.hex(table[label]));
+      weights.push(w);
       sum += w;
     });
-    return sum > 0.2 ? [c[0] / sum, c[1] / sum, c[2] / sum] : null;
+    return sum > 0.2 ? U.blend(colors, weights) : null;     // mixed in OKLab
   }
 
   function reading(post) {
@@ -2867,10 +2865,11 @@
   function tone(read, rgb, alpha) {
     if (!read.known) return { rgb: rgb, a: alpha };
     let c = read.mood ? U.mix(rgb, read.mood, 0.24) : rgb;
-    const g = lum(c), bleak = clamp((0.5 - read.valence) * 2, 0, 1), joy = clamp((read.valence - 0.5) * 2, 0, 1);
-    c = U.mix(c, [g, g, g], bleak * 0.4);
-    c = U.mix(c, [0.13, 0.14, 0.2], bleak * 0.14);
-    c = c.map(function(v) { return clamp(g + (v - g) * (1 + joy * 0.4), 0, 1); });
+    const bleak = clamp((0.5 - read.valence) * 2, 0, 1), joy = clamp((read.valence - 0.5) * 2, 0, 1);
+    // chroma in OKLab: greyer when bleak, more saturated when joyful, the
+    // lightness kept
+    c = U.saturate(c, (1 - bleak * 0.4) * (1 + joy * 0.4));
+    c = U.mix(c, read.shade, bleak * 0.14);
     c = U.mix(c, [1, 1, 1], joy * 0.1);
     return { rgb: c, a: alpha * lerp(1.15, 0.85, read.valence) * (1 - 0.3 * read.thin) };
   }
@@ -2898,7 +2897,7 @@
     return [
       mk('~a', '~idle', colors.primary, 0.4, 'subject'),
       mk('~b', 'thoughts', U.mix(colors.primary, colors.header, 0.6), 0.35, 'register'),
-      mk('~c', '~idle', U.hex('#3d8fc4'), 0.25, 'subject')
+      mk('~c', '~idle', U.tone(colors.primary, 0.62, 0.11), 0.25, 'subject')
     ];
   }
 
@@ -3005,6 +3004,7 @@
     const W = surface.width, H = surface.height, footer = surface.kind === 'footer';
     const house = !post.tags.length;
     const read = reading(post);
+    read.shade = colors.shade;
     // the ai tag takes the pigment of what kind of ai post this is
     const pigment = function(t) {
       return t.name === 'ai' && read.ai ? Object.assign({}, t, { rgb: U.mix(t.rgb, read.ai, 0.62) }) : t;
@@ -3016,7 +3016,7 @@
         rgb: U.hex(IMAGERY_PIGMENT[read.imagery]), weight: tags[0].weight * 0.9, loose: post.loose, energy: post.energy
       });
     }
-    const scene = { strokes: [], washes: [], W: W, H: H, house: house };
+    const scene = { strokes: [], washes: [], W: W, H: H, house: house, colors: colors };
     const ctx = { post: post, tags: tags, H: H, half: W / 2, kind: surface.kind, read: read };
     // what the text is like shows in the margins: a long post leaves more
     // notes, one full of code some lines of it, an old one has faded a little
@@ -3215,7 +3215,6 @@
     return canvas;
   }
 
-  function lum(c) { return 0.3 * c[0] + 0.59 * c[1] + 0.11 * c[2]; }
 
   // a closed outline as radii: a few low harmonics, so it is uneven but smooth
   function radial(rand, n, amp, kmin, kmax, offset) {
@@ -3260,15 +3259,13 @@
       // light: transparent pigment that multiplies; dark: chalk, lighter than the paper
       let rgb = w.rgb;
       if (dark) {
-        let t = 0.1;
-        while (lum(U.mix(rgb, [1, 1, 1], t)) < 0.5 && t < 0.8) t += 0.05;
-        rgb = U.mix(rgb, [0.93, 0.95, 1], t);
+        rgb = U.gouache(rgb, 0.64, 0.8, 0.9);
         if (scene.house) w = Object.assign({}, w, { a: w.a * 0.7 });     // blue on blue: keep it down
-      } else if (lum(rgb) < 0.22) {
+      } else if (U.lightness(rgb) < 0.34) {
         rgb = U.mix(rgb, [1, 1, 1], 0.15);
       }
       // black and the near blacks are used thin
-      if (w.k === 'blob' && !dark) w = Object.assign({}, w, { a: w.a * lerp(0.55, 1, clamp(lum(w.rgb) / 0.35, 0, 1)) });
+      if (w.k === 'blob' && !dark) w = Object.assign({}, w, { a: w.a * lerp(0.55, 1, clamp(U.lightness(w.rgb) / 0.46, 0, 1)) });
       g.globalCompositeOperation = dark ? 'source-over' : 'multiply';
       if (dark) {
         // chalk only catches the tooth of the paper, and every patch is
@@ -3487,14 +3484,10 @@
 
       function pencilColor(colors, dark, rgb) {
         if (rgb === 'house') return dark ? U.mix(colors.header, [1, 1, 1], 0.5) : U.mix(colors.primary, colors.header, 0.45);
-        if (!rgb) return dark ? [0.9, 0.93, 0.97] : [0.2, 0.2, 0.235];
+        if (!rgb) return colors.graphite;
         // a coloured pencil: on blue paper only light ones show
-        if (dark) {
-          let t = 0.3;
-          while (lum(U.mix(rgb, [1, 1, 1], t)) < 0.62 && t < 0.85) t += 0.05;
-          return U.mix(rgb, [1, 1, 1], t);
-        }
-        return lum(rgb) > 0.6 ? U.mix(rgb, [0.3, 0.2, 0], 0.35) : U.mix(rgb, [0, 0, 0], 0.08);
+        if (dark) return U.gouache(rgb, 0.74, 0.9);
+        return U.lightness(rgb) > 0.68 ? U.mix(rgb, [0.3, 0.2, 0], 0.35) : U.mix(rgb, [0, 0, 0], 0.08);
       }
 
       // Once the picture is finished it lives in the visible canvas alone.

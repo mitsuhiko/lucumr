@@ -21,6 +21,7 @@
     uniform float u_fadeTop;
     uniform float u_dpr;
     uniform float u_hover;
+    uniform vec3 u_paper, u_accent;    // the page's background and --secondary-color
     varying vec2 v_position;
 
     // Cheap hash - single multiply-add chain
@@ -99,20 +100,14 @@
       // Wind Waker colors
       vec3 lightBright = vec3(0.10, 0.42, 0.70);
       vec3 lightDark = vec3(0.04, 0.22, 0.44);
-      vec3 lightPageBg = vec3(1.0, 1.0, 1.0);
 
       vec3 darkBright = vec3(0.32, 0.55, 0.82);
       vec3 darkDark = vec3(0.12, 0.24, 0.40);
-      vec3 darkPageBg = vec3(0.106, 0.192, 0.337);
-
-      // Hover accent colors (red from --secondary-color)
-      vec3 lightAccent = vec3(0.804, 0.055, 0.055);  // #cd0e0e
-      vec3 darkAccent = vec3(1.0, 0.4, 0.4);         // #ff6666
 
       vec3 bright = mix(lightBright, darkBright, u_isDark);
       vec3 dark = mix(lightDark, darkDark, u_isDark);
-      vec3 pageBg = mix(lightPageBg, darkPageBg, u_isDark);
-      vec3 accent = mix(lightAccent, darkAccent, u_isDark);
+      vec3 pageBg = u_paper;
+      vec3 accent = u_accent;
 
       // Calculate boundary first so metaballs can react to it
       float baseHeight = 50.0 * u_dpr;
@@ -188,6 +183,8 @@
           isDarkLoc: gl.getUniformLocation(program, 'u_isDark'),
           dprLoc: gl.getUniformLocation(program, 'u_dpr'),
           hoverLoc: gl.getUniformLocation(program, 'u_hover'),
+          paperLoc: gl.getUniformLocation(program, 'u_paper'),
+          accentLoc: gl.getUniformLocation(program, 'u_accent'),
           hoverTarget: 0,
           hoverValue: 0
         };
@@ -207,6 +204,7 @@
           if (!env.still && now - lastFrame < FRAME_INTERVAL) return FRAME_INTERVAL - (now - lastFrame);
           lastFrame = now;
           const hoverStep = FRAME_INTERVAL / 2.65; // staggered blobs take 2.65s in total
+          const colors = env.palette();
           effects.forEach(function(effect) {
             const surface = effect.surface, gl = effect.gl;
             if (!surface.visible) return;
@@ -219,6 +217,8 @@
             gl.uniform2f(effect.resolutionLoc, surface.canvas.width, surface.canvas.height);
             gl.uniform1f(effect.timeLoc, now - start);
             gl.uniform1f(effect.isDarkLoc, env.dark ? 1.0 : 0.0);
+          gl.uniform3fv(effect.paperLoc, colors.paper);
+          gl.uniform3fv(effect.accentLoc, colors.secondary);
             gl.uniform1f(effect.dprLoc, surface.dpr);
             gl.uniform1f(effect.hoverLoc, effect.hoverValue);
             gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);

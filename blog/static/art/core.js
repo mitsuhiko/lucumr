@@ -87,15 +87,104 @@ window.LucumrArt = (function() {
     const c = rgb.map(function(v) { return Math.round(clamp(v, 0, 1) * 255); });
     return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (alpha === undefined ? 1 : alpha) + ')';
   }
-  function mix(a, b, t) {
-    return [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
-  }
   function hsl(h, s, l) {
     const f = function(n) {
       const k = (n + h * 12) % 12;
       return l - s * Math.min(l, 1 - l) * Math.max(-1, Math.min(k - 3, 9 - k, 1));
     };
     return [f(0), f(8), f(4)];
+  }
+
+  // OKLab (Björn Ottosson's): a space where equal steps look like equal
+  // steps.  Every mix of the artwork happens there, so a pigment mixed with
+  // white or with the navy paper keeps its hue instead of going muddy, and
+  // lightness (L, 0..1) is the lightness one sees, not a weighted sum of RGB.
+  // lab([r, g, b]) is [L, a, b]; rgb([L, a, b]) is sRGB (clamped).
+  function toLinear(c) { return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
+  function toGamma(c) { return c <= 0.0031308 ? 12.92 * c : 1.055 * Math.pow(c, 1 / 2.4) - 0.055; }
+  function lab(c) {
+    const r = toLinear(c[0]), g = toLinear(c[1]), b = toLinear(c[2]);
+    const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+    const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+    const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+    return [
+      0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s,
+      1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
+      0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s
+    ];
+  }
+  function linearOf(L, a, b) {
+    const l = Math.pow(L + 0.3963377774 * a + 0.2158037573 * b, 3);
+    const m = Math.pow(L - 0.1055613458 * a - 0.0638541728 * b, 3);
+    const s = Math.pow(L - 0.0894841775 * a - 1.2914855480 * b, 3);
+    return [
+      4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
+      -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
+      -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s
+    ];
+  }
+  function rgb(c) {
+    return linearOf(c[0], c[1], c[2]).map(function(v) { return clamp(toGamma(clamp(v, 0, 1)), 0, 1); });
+  }
+  // L, chroma and hue (radians) to sRGB; a colour outside sRGB gives up
+  // chroma, not lightness or hue
+  function lch(L, C, h) {
+    L = clamp(L, 0, 1);
+    const a = Math.cos(h), b = Math.sin(h);
+    const fits = function(c) {
+      return linearOf(L, c * a, c * b).every(function(v) { return v >= -0.0005 && v <= 1.0005; });
+    };
+    if (!fits(C)) {
+      let lo = 0, hi = C;
+      for (let i = 0; i < 14; i++) {
+        const mid = (lo + hi) / 2;
+        if (fits(mid)) lo = mid; else hi = mid;
+      }
+      C = lo;
+    }
+    return rgb([L, C * a, C * b]);
+  }
+  function mix(a, b, t) {
+    if (t === 0) return a.slice();
+    const A = lab(a), B = lab(b);
+    return rgb([lerp(A[0], B[0], t), lerp(A[1], B[1], t), lerp(A[2], B[2], t)]);
+  }
+  // the lightness one sees, 0 (black) .. 1 (white)
+  function lightness(c) { return lab(c)[0]; }
+  function chroma(c) { const v = lab(c); return Math.hypot(v[1], v[2]); }
+  // the same hue at lightness L, its chroma scaled by k (a colour pencil on
+  // navy paper is the pigment made light, not the pigment mixed with white)
+  function relight(c, L, k) {
+    const v = lab(c);
+    return lch(L, Math.hypot(v[1], v[2]) * (k === undefined ? 1 : k), Math.atan2(v[2], v[1]));
+  }
+  // c with its chroma scaled by k (0: the grey of the same lightness)
+  function saturate(c, k) {
+    const v = lab(c);
+    return lch(v[0], Math.hypot(v[1], v[2]) * k, Math.atan2(v[2], v[1]));
+  }
+  // the hue of `like` at lightness L and chroma C: the blog's blues, from its
+  // own colours, at any depth
+  function tone(like, L, C) {
+    const v = lab(like);
+    return lch(L, C, Math.atan2(v[2], v[1]));
+  }
+  // A colour meant for white paper as it goes on the navy one, as gouache or
+  // chalk: lighter (to between lo and hi: the lighter it was, the lighter
+  // still), its hue kept, its chroma scaled by keep (0.75: a quarter given up).
+  function gouache(c, lo, hi, keep) {
+    return relight(c, lerp(lo, hi, smoothstep(0.5, 0.85, lightness(c))), keep === undefined ? 0.75 : keep);
+  }
+  // the mean of colours in OKLab, by weight
+  function blend(colors, weights) {
+    const sum = [0, 0, 0];
+    let total = 0;
+    colors.forEach(function(c, i) {
+      const w = weights ? weights[i] : 1, v = lab(c);
+      sum[0] += v[0] * w; sum[1] += v[1] * w; sum[2] += v[2] * w;
+      total += w;
+    });
+    return total > 0 ? rgb(sum.map(function(v) { return v / total; })) : null;
   }
   function toHex(rgb) {
     return '#' + rgb.map(function(v) {
@@ -149,11 +238,21 @@ window.LucumrArt = (function() {
   const util = {
     hash: hash, rng: rng, clamp: clamp, lerp: lerp, smoothstep: smoothstep,
     noise1: noise1, noise2: noise2, fbm2: fbm2,
-    hex: hex, css: css, mix: mix, hsl: hsl, toHex: toHex, gl: glutil
+    hex: hex, css: css, mix: mix, hsl: hsl, toHex: toHex, gl: glutil,
+    lab: lab, rgb: rgb, lch: lch, lightness: lightness, chroma: chroma, relight: relight,
+    saturate: saturate, tone: tone, blend: blend, gouache: gouache
   };
 
-  // The page's own colours (style-2025.css), as [r, g, b].
-  const PALETTES = {
+  // The page's colours, as [r, g, b], read from style-2025.css (its custom
+  // properties are light-dark() pairs, resolved here for each theme), so the
+  // artwork has no colours of its own for the page.  FALLBACK is only for a
+  // page without the stylesheet.
+  const CSS_COLORS = {
+    paper: '--background-color', ink: '--text-color', primary: '--primary-color',
+    secondary: '--secondary-color', header: '--header-color', faded: '--faded-color',
+    border: '--border-color'
+  };
+  const FALLBACK_COLORS = {
     light: {
       paper: '#ffffff', ink: '#000000', primary: '#115ca1', secondary: '#cd0e0e',
       header: '#1b3156', faded: '#7b8894', border: '#adbac7'
@@ -163,11 +262,50 @@ window.LucumrArt = (function() {
       header: '#96afda', faded: '#aec3d6', border: '#819bb4'
     }
   };
+  function cssColors(scheme) {
+    const out = {}, root = getComputedStyle(document.documentElement);
+    const probe = document.createElement('span');
+    probe.style.cssText = 'display:none;color-scheme:' + scheme;
+    (document.body || document.documentElement).appendChild(probe);
+    Object.keys(CSS_COLORS).forEach(function(key) {
+      let value = null;
+      if (root.getPropertyValue(CSS_COLORS[key]).trim()) {
+        probe.style.color = 'var(' + CSS_COLORS[key] + ')';
+        const text = getComputedStyle(probe).color, n = (text.match(/-?[\d.]+/g) || []).map(Number);
+        // rgb(r, g, b) in 0..255, or color(srgb r g b) in 0..1
+        if (n.length >= 3) value = /^color\(/.test(text) ? n.slice(0, 3) : n.slice(0, 3).map(function(v) { return v / 255; });
+      }
+      out[key] = value || hex(FALLBACK_COLORS[scheme][key]);
+    });
+    probe.remove();
+    return out;
+  }
+  // What the artwork draws with besides: all of it derived from the page's
+  // colours in OKLab.  The blues take the hue of --header-color (the navy of
+  // the dark paper); the numbers are lightness and chroma.
+  //   graphite  the pencil: dark blue-grey on white, chalk on navy
+  //   chalk     white pencil and chalk on the navy paper
+  //   shade     deep blue-grey, for shadow and bleakness
+  //   sky       the pale blue of a clear sky on white paper
+  //   mist      what mist is on the navy paper
+  const palettes = {};
   function palette(dark) {
-    const source = PALETTES[dark ? 'dark' : 'light'];
-    const result = {};
-    Object.keys(source).forEach(function(key) { result[key] = hex(source[key]); });
-    return result;
+    const scheme = dark ? 'dark' : 'light';
+    if (palettes[scheme]) return copy(palettes[scheme]);
+    const p = cssColors(scheme);
+    const navy = dark ? p.paper : p.header;
+    p.chalk = dark ? relight(p.ink, 0.95, 0.8) : p.paper.slice();
+    p.graphite = dark ? relight(p.ink, 0.94) : tone(navy, 0.32, 0.026);
+    p.shade = tone(navy, dark ? 0.19 : 0.28, dark ? 0.043 : 0.032);
+    p.sky = tone(navy, 0.755, 0.052);
+    p.mist = tone(navy, 0.89, 0.036);
+    palettes[scheme] = p;
+    return copy(p);
+  }
+  function copy(p) {
+    const out = {};
+    Object.keys(p).forEach(function(key) { out[key] = p[key].slice(); });
+    return out;
   }
 
   // ---- tags and posts ----------------------------------------------------
@@ -179,7 +317,9 @@ window.LucumrArt = (function() {
   function tag(name) {
     const known = data.tags[name] || {};
     const r = rng('tag:' + name);
-    const fallbackColor = toHex(hsl(r(), 0.45, 0.42));
+    // the same lightness and chroma for every hue (hsl would make a yellow
+    // light and a blue dark)
+    const fallbackColor = toHex(lch(0.55, 0.11, r() * 2 * Math.PI));
     return {
       name: name,
       known: !!known.role,
