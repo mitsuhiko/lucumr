@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'api', 'types']
 summary: "A proposal for lifetime restrictions in Rust with stack tokens."
+facets:
+  mood: {reflective: 0.42, angry: 0.23, matter_of_fact: 0.17, hopeful: 0.13}
+  scale: {craft: 1}
+  time: {future: 0.82, present: 0.16}
+  ai: {not_ai: 1}
+  imagery: {none: 0.67}
+  stance: {builder: 0.53, advocate: 0.4}
+  actor: {idea: 0.53, individual: 0.46}
+  ending: {open: 1}
+  tension: 0.21
+  certainty: 0.39
+  valence: 0.57
+  energy: 0.47
+  wander: 0.32
+  personal: 0.48
+  humor: 0.18
+  technical: 0.94
 ---
 
 # A Better Way to Borrow in Rust: Stack Tokens

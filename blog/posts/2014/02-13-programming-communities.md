@@ -2,6 +2,23 @@
 tags: ['python', 'thoughts', 'community', 'life', 'history']
 summary: "Some personal thoughts on the Python community and programming
 communities in general."
+facets:
+  mood: {reflective: 0.98}
+  scale: {community: 0.83, self: 0.17}
+  time: {past: 1}
+  ai: {not_ai: 1}
+  imagery: {growth: 0.34, none: 0.34, crowd: 0.16, road: 0.12}
+  stance: {witness: 1}
+  actor: {group: 0.8, individual: 0.2}
+  ending: {open: 0.56, resolved: 0.42}
+  tension: 0.26
+  certainty: 0.7
+  valence: 0.76
+  energy: 0.2
+  wander: 0.55
+  personal: 0.84
+  humor: 0.16
+  technical: 0.32
 ---
 
 # On Programming Communities

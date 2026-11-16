@@ -2,6 +2,23 @@
 tags: ['vcs', 'tutorial']
 summary: "Short introduction into mercurial from the perspective of a subversion
 user."
+facets:
+  mood: {matter_of_fact: 0.98}
+  scale: {craft: 0.74, community: 0.26}
+  time: {present: 0.99}
+  ai: {not_ai: 1}
+  imagery: {none: 0.45, water: 0.38}
+  stance: {teacher: 1}
+  actor: {idea: 0.47, group: 0.37, individual: 0.12}
+  ending: {practical: 0.7, resolved: 0.27}
+  tension: 0.03
+  certainty: 0.86
+  valence: 0.67
+  energy: 0.34
+  wander: 0.33
+  personal: 0.33
+  humor: 0.17
+  technical: 0.75
 ---
 
 # Mercurial for Subversion Users

@@ -1,6 +1,23 @@
 ---
 tags: ['c', 'engineering']
 summary: "A concise list of some common C++ pitfalls."
+facets:
+  mood: {matter_of_fact: 0.76, playful: 0.12}
+  scale: {craft: 0.99}
+  time: {present: 0.71, past: 0.27}
+  ai: {not_ai: 1}
+  imagery: {none: 0.7, building: 0.21}
+  stance: {teacher: 0.97}
+  actor: {idea: 0.64, individual: 0.34}
+  ending: {open: 0.83, practical: 0.12}
+  tension: 0.04
+  certainty: 0.63
+  valence: 0.47
+  energy: 0.37
+  wander: 0.28
+  personal: 0.43
+  humor: 0.27
+  technical: 0.78
 ---
 
 # C++ Pitfalls

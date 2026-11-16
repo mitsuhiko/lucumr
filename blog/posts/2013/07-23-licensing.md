@@ -3,6 +3,23 @@ tags: ['opensource', 'thoughts', 'history']
 summary: "Some thoughts about the absolute madness that is currently going on with
 licensing in the Open Source community and how github's license chooser
 is making it worse."
+facets:
+  mood: {worried: 0.76, angry: 0.14}
+  scale: {community: 0.99}
+  time: {past: 0.58, present: 0.36}
+  ai: {not_ai: 1}
+  imagery: {body: 0.5, none: 0.22, road: 0.11}
+  stance: {critic: 0.73, advocate: 0.19}
+  actor: {company: 0.57, group: 0.22, idea: 0.19}
+  ending: {resolved: 0.58, open: 0.21, call: 0.15}
+  tension: 0.83
+  certainty: 0.77
+  valence: 0.25
+  energy: 0.57
+  wander: 0.52
+  personal: 0.37
+  humor: 0.29
+  technical: 0.55
 ---
 
 # Licensing in a Post Copyright World

@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'thoughts', 'engineering', 'packaging']
 summary: "We need a vibe shift on dependencies in programming."
+facets:
+  mood: {angry: 1}
+  scale: {craft: 0.83, community: 0.15}
+  time: {future: 0.66, present: 0.33}
+  ai: {not_ai: 0.75, writing: 0.12, agents: 0.11}
+  imagery: {building: 0.35, body: 0.32, road: 0.13, none: 0.13}
+  stance: {advocate: 0.9, critic: 0.1}
+  actor: {group: 0.41, company: 0.35, idea: 0.14}
+  ending: {call: 0.6, practical: 0.34}
+  tension: 0.87
+  certainty: 0.96
+  valence: 0.4
+  energy: 0.7
+  wander: 0.54
+  personal: 0.54
+  humor: 0.44
+  technical: 0.67
 ---
 
 # Build It Yourself

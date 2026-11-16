@@ -1,0 +1,154 @@
+{
+  "model": ["typesafe", "jev-latest"],
+  "ranges": {
+    "tension": [0.02, 0.87],
+    "certainty": [0.34, 0.97],
+    "valence": [0.2, 0.77],
+    "energy": [0.27, 0.68],
+    "wander": [0.22, 0.55],
+    "personal": [0.28, 0.74],
+    "humor": [0.05, 0.51],
+    "technical": [0.22, 0.97]
+  },
+  "questions": {
+    "mood": {
+      "type": "choice",
+      "instructions": "The dominant emotional tone of the post as a whole.",
+      "criteria": {
+        "hopeful": "optimistic, excited, sees things getting better",
+        "worried": "anxious, uneasy, warns about where things are heading",
+        "angry": "frustrated, indignant, pushes back against something",
+        "reflective": "contemplative, weighing things, thinking out loud without a strong emotion",
+        "playful": "light, humorous, having fun with the topic",
+        "matter_of_fact": "neutral and explanatory, reports or explains without much feeling",
+        "conflicted": "torn between two views, ambivalent"
+      }
+    },
+    "scale": {
+      "type": "choice",
+      "instructions": "Whose world the post is mostly about.",
+      "criteria": {
+        "self": "the author himself, his life and feelings",
+        "craft": "the daily work of programming and its tools",
+        "community": "open source projects and communities and the people in them",
+        "industry": "companies, markets, the tech industry",
+        "society": "society at large, politics, culture, humanity"
+      }
+    },
+    "time": {
+      "type": "choice",
+      "instructions": "Where the post mostly looks.",
+      "criteria": {
+        "past": "looks back: history, how things were, lessons learned",
+        "present": "describes how things are right now",
+        "future": "looks ahead: what will or should happen"
+      }
+    },
+    "ai": {
+      "type": "choice",
+      "instructions": "If the post is about AI, which part of it.",
+      "criteria": {
+        "agents": "coding agents and working with them day to day",
+        "models": "what models can do, how they behave or reason, model releases",
+        "local": "local or open-weight models and the hardware to run them",
+        "society": "AI's effect on society, politics, jobs, regulation",
+        "community": "AI's effect on open source, communities and collaboration",
+        "writing": "AI-generated text and content, authenticity, slop",
+        "risk": "AI safety, doom, loss of control",
+        "business": "AI companies, money, markets",
+        "not_ai": "the post is not mainly about AI"
+      }
+    },
+    "imagery": {
+      "type": "choice",
+      "instructions": "Look only at the title and at the metaphors and images the author himself uses in the text (not at the topic). Which family of images do they come from? Software, computers and code are the topic, not imagery: answer 'none' unless the author actually uses a figurative image.",
+      "criteria": {
+        "water": "sea, river, rain, waves, flow, flood, drowning, ships",
+        "fire": "fire, heat, burning, forge, explosion",
+        "stone": "mountains, rock, iron, weight, foundations",
+        "air": "sky, clouds, fog, wind, ghosts, the intangible",
+        "growth": "plants, trees, gardens, roots, harvest, seasons, things taking time to grow",
+        "building": "towers, houses, cities, towns, walls, construction",
+        "road": "paths, journeys, crossings, maps, borders, divides",
+        "light": "stars, sun, lamps, darkness and light",
+        "body": "illness, madness, the body, the senses",
+        "crowd": "people, tribes, gatherings, a lone figure",
+        "none": "the author uses no figurative imagery worth mentioning"
+      }
+    },
+    "stance": {
+      "type": "choice",
+      "instructions": "The role the author takes in this post.",
+      "criteria": {
+        "builder": "shows something he made and how",
+        "teacher": "explains how something works or how to do it",
+        "critic": "argues against something",
+        "advocate": "argues for something, tries to convince",
+        "observer": "describes and weighs what he sees without taking a firm side",
+        "witness": "tells what happened to him personally"
+      }
+    },
+    "actor": {
+      "type": "choice",
+      "instructions": "Who or what drives the events the post talks about.",
+      "criteria": {
+        "individual": "a single person, usually the author",
+        "group": "a community, a team, a movement",
+        "company": "companies and their decisions",
+        "machine": "software, tools or AI acting on their own",
+        "state": "governments, laws, countries",
+        "idea": "nobody in particular: a technique, a design, an idea"
+      }
+    },
+    "ending": {
+      "type": "choice",
+      "instructions": "How the post ends.",
+      "criteria": {
+        "resolved": "with a firm conclusion or verdict",
+        "open": "with a question, doubt or unresolved thought",
+        "call": "with a call to the reader to do something",
+        "practical": "with a practical wrap-up: links, next steps, a summary of what to use"
+      }
+    },
+    "tension": {
+      "type": "score",
+      "instructions": "How much the post is about a conflict between opposing forces or groups.",
+      "criteria": ["no conflict at all", "slight friction", "a noticeable disagreement", "a clear conflict", "the conflict is the whole post"]
+    },
+    "certainty": {
+      "type": "score",
+      "instructions": "How sure the author is.",
+      "criteria": ["searching, mostly questions", "tentative", "balanced", "confident", "assertive, sure of the conclusion"]
+    },
+    "valence": {
+      "type": "score",
+      "instructions": "How bright or dark the outlook of the post is.",
+      "criteria": ["bleak", "gloomy", "neutral", "bright", "joyful"]
+    },
+    "energy": {
+      "type": "score",
+      "instructions": "How agitated the writing is.",
+      "criteria": ["very calm and quiet", "calm", "engaged", "heated", "very agitated, urgent"]
+    },
+    "wander": {
+      "type": "score",
+      "instructions": "How the text moves.",
+      "criteria": ["strictly structured, step by step", "orderly", "a clear line with some detours", "meandering", "freely associative, wandering from thought to thought"]
+    },
+    "personal": {
+      "type": "score",
+      "instructions": "How personal the post is.",
+      "criteria": ["entirely impersonal", "a few personal remarks", "the author's own experience matters", "largely about the author's own life or feelings", "intimate"]
+    },
+    "humor": {
+      "type": "score",
+      "instructions": "How much humour there is in the writing.",
+      "criteria": ["entirely earnest", "dry here and there", "some jokes", "often funny", "playful throughout"]
+    },
+    "technical": {
+      "type": "score",
+      "instructions": "How technical the post is.",
+      "criteria": ["no technical content", "technology as a backdrop", "technical ideas without detail", "technical detail and some code", "deeply technical, mostly code and internals"]
+    }
+  }
+}

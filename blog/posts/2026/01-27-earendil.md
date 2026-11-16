@@ -1,6 +1,23 @@
 ---
 tags: ['earendil', 'business', 'announcement', 'life']
 summary: "Introducing Earendil and my cofounder to the curious minds."
+facets:
+  mood: {hopeful: 0.79, reflective: 0.15}
+  scale: {society: 0.47, self: 0.4, industry: 0.12}
+  time: {future: 0.73, present: 0.27}
+  ai: {not_ai: 0.53, society: 0.39}
+  imagery: {water: 0.93}
+  stance: {witness: 0.67, advocate: 0.29}
+  actor: {group: 0.38, company: 0.33, individual: 0.29}
+  ending: {call: 0.93}
+  tension: 0.18
+  certainty: 0.71
+  valence: 0.74
+  energy: 0.3
+  wander: 0.48
+  personal: 0.72
+  humor: 0.07
+  technical: 0.28
 ---
 
 # Colin and Earendil

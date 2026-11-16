@@ -1,6 +1,23 @@
 ---
 tags: ['tutorial', 'tooling']
 summary: "A short introduction of the current state of debugging WebAssembly code."
+facets:
+  mood: {hopeful: 0.8, matter_of_fact: 0.17}
+  scale: {craft: 0.99}
+  time: {present: 0.89, future: 0.11}
+  ai: {not_ai: 1}
+  imagery: {none: 0.58, road: 0.21, body: 0.12}
+  stance: {teacher: 0.94}
+  actor: {company: 0.32, group: 0.28, idea: 0.21, individual: 0.16}
+  ending: {resolved: 0.43, open: 0.39, practical: 0.16}
+  tension: 0.14
+  certainty: 0.73
+  valence: 0.68
+  energy: 0.47
+  wander: 0.37
+  personal: 0.47
+  humor: 0.26
+  technical: 0.9
 ---
 
 # How to WASM DWARF

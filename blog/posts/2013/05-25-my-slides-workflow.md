@@ -2,6 +2,23 @@
 tags: ['design', 'tooling', 'conferences']
 summary: "A quick overview of how I do my slide decks for my presentations for
 others to learn from."
+facets:
+  mood: {matter_of_fact: 0.58, reflective: 0.4}
+  scale: {self: 0.68, craft: 0.32}
+  time: {present: 0.97}
+  ai: {not_ai: 1}
+  imagery: {growth: 0.5, none: 0.39}
+  stance: {teacher: 0.76, builder: 0.21}
+  actor: {individual: 1}
+  ending: {practical: 0.91}
+  tension: 0.04
+  certainty: 0.65
+  valence: 0.59
+  energy: 0.34
+  wander: 0.38
+  personal: 0.65
+  humor: 0.26
+  technical: 0.44
 ---
 
 # My Slides Workflow

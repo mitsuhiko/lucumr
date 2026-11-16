@@ -2,6 +2,23 @@
 tags: ['sentry', 'opensource', 'life', 'announcement', 'business']
 summary: "Some thoughts on me joining Sentry and the road of making an Open Source
 project into a company."
+facets:
+  mood: {hopeful: 0.98}
+  scale: {self: 0.72, craft: 0.15}
+  time: {future: 0.52, present: 0.37, past: 0.11}
+  ai: {not_ai: 1}
+  imagery: {crowd: 0.66, none: 0.26}
+  stance: {witness: 0.87, advocate: 0.11}
+  actor: {company: 0.55, individual: 0.42}
+  ending: {resolved: 0.39, open: 0.39, practical: 0.21}
+  tension: 0.04
+  certainty: 0.83
+  valence: 0.78
+  energy: 0.34
+  wander: 0.37
+  personal: 0.73
+  humor: 0.11
+  technical: 0.44
 ---
 
 # The Sentry in my Life

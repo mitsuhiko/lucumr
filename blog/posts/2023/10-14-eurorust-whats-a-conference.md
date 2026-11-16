@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'thoughts', 'conferences', 'community']
 summary: "A recap of EuroRust 2023 and thoughts on Rust"
+facets:
+  mood: {reflective: 0.87, hopeful: 0.13}
+  scale: {community: 1}
+  time: {future: 0.48, past: 0.45}
+  ai: {not_ai: 1}
+  imagery: {body: 0.45, crowd: 0.41}
+  stance: {advocate: 0.86, critic: 0.12}
+  actor: {group: 0.95}
+  ending: {resolved: 0.97}
+  tension: 0.31
+  certainty: 0.6
+  valence: 0.71
+  energy: 0.34
+  wander: 0.37
+  personal: 0.59
+  humor: 0.13
+  technical: 0.2
 ---
 
 # EuroRust 2023 Reflections: What's a Conference For?

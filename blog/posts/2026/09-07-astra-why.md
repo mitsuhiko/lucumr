@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'engineering']
 summary: "Some thoughts on Astra and newfangled long-horizon models."
+facets:
+  mood: {worried: 0.47, conflicted: 0.31, angry: 0.17}
+  scale: {craft: 0.88}
+  time: {present: 0.95}
+  ai: {agents: 0.63, models: 0.37}
+  imagery: {body: 0.41, building: 0.31, fire: 0.11}
+  stance: {critic: 0.92}
+  actor: {machine: 0.86, individual: 0.1}
+  ending: {open: 1}
+  tension: 0.53
+  certainty: 0.54
+  valence: 0.21
+  energy: 0.55
+  wander: 0.48
+  personal: 0.66
+  humor: 0.49
+  technical: 0.96
 ---
 
 # Astra for Coding: Why Are We Doing This Again?
@@ -219,8 +236,20 @@ In multiple cases it used Python to spawn Node.js on another machine.  It first 
 
 ```python
 import subprocess
+
 code = "const{readFileSync}=require('fs');const{strict:a}=require('assert');const c=require('C:/Users/mitsuhiko/AppData/Local/Temp/pi-clipboard-threads/win32-arm64.node');(async()=>{const p=c.getText();a.ok(p instanceof Promise);const saved=await p;const image=await c.getImage();if(image||saved===null){console.log('arm64 async text/image reads passed; preserving non-text clipboard');return}try{for(const text of ['café 日本語','', 'large'.repeat(200000)]){const p=c.setText(text);a.ok(p instanceof Promise);await p;a.equal(await c.getText(),text);a.equal(await c.getImage(),null)}console.log('Windows ARM64 async Unicode, empty, large text and empty image passed')}finally{await c.setText(saved)}})().catch(e=>{console.error(e);process.exitCode=1})"
-subprocess.run(['prlctl', 'exec', 'Windows 11', '--current-user', 'C:\\Program Files\\nodejs\\node.exe', '-e', code], check=True)
+subprocess.run(
+    [
+        "prlctl",
+        "exec",
+        "Windows 11",
+        "--current-user",
+        "C:\\Program Files\\nodejs\\node.exe",
+        "-e",
+        code,
+    ],
+    check=True,
+)
 ```
 
 </details>
@@ -231,8 +260,20 @@ Since it was already doing that, it used Bash to run Python to then run Node.js 
 
 ```python
 import subprocess
+
 code = "process.env.PSModulePath='C:/Windows/System32/WindowsPowerShell/v1.0/Modules';require('child_process').spawnSync('powershell.exe',['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File','C:/Users/mitsuhiko/AppData/Local/Temp/pi-clipboard-threads/pi-clipboard-windows.ps1'],{stdio:'inherit'});console.log('completed')"
-subprocess.run(['prlctl', 'exec', 'Windows 11', '--current-user', 'C:\\Program Files\\nodejs\\node.exe', '-e', code], check=True)
+subprocess.run(
+    [
+        "prlctl",
+        "exec",
+        "Windows 11",
+        "--current-user",
+        "C:\\Program Files\\nodejs\\node.exe",
+        "-e",
+        code,
+    ],
+    check=True,
+)
 ```
 </details>
 
@@ -260,51 +301,85 @@ Here are some unit tests that it created:
 
 ```python
 def test_unpack_suspension_and_continuation_close(self):
-    from continuations import Continuation,suspend
-    readers=[]
+    from continuations import Continuation, suspend
+
+    readers = []
+
     class Source:
         def __iter__(self):
             yield 1
-            suspend('unpacking')
+            suspend("unpacking")
             yield 2
-    ns=execute('''
+
+    ns = execute(
+        """
         def run():
             a,b='old-a','old-b'
             readers.append(lambda: (a,b))
             def a,b=Source()
             suspend('published')
-    ''',Source=Source,readers=readers,suspend=suspend)
-    with Continuation(ns['run']) as continuation:
-        self.assertEqual(continuation.resume(),'unpacking')
-        self.assertEqual(readers[0](),('old-a','old-b'))
-        self.assertEqual(continuation.resume(),'published')
-        self.assertEqual(readers[0](),(1,2))
-    class Value:pass
-    refs=[];frames=[];callbacks=[]
-    ns=execute('''
+    """,
+        Source=Source,
+        readers=readers,
+        suspend=suspend,
+    )
+    with Continuation(ns["run"]) as continuation:
+        self.assertEqual(continuation.resume(), "unpacking")
+        self.assertEqual(readers[0](), ("old-a", "old-b"))
+        self.assertEqual(continuation.resume(), "published")
+        self.assertEqual(readers[0](), (1, 2))
+
+    class Value:
+        pass
+
+    refs = []
+    frames = []
+    callbacks = []
+    ns = execute(
+        """
         def run():
             for def x in [Value()]:
                 refs.append(weakref.ref(x))
                 frames.append(sys._getframe())
                 callbacks.append(lambda: x)
                 suspend('body')
-    ''',Value=Value,refs=refs,frames=frames,callbacks=callbacks,weakref=weakref,sys=sys,suspend=suspend)
-    with Continuation(ns['run']) as continuation:self.assertEqual(continuation.resume(),'body')
-    self.assertNotIn('x',frames[0].f_locals)
-    self.assertIsNotNone(refs[0]());callbacks.clear();self.assertIsNone(refs[0]())
+    """,
+        Value=Value,
+        refs=refs,
+        frames=frames,
+        callbacks=callbacks,
+        weakref=weakref,
+        sys=sys,
+        suspend=suspend,
+    )
+    with Continuation(ns["run"]) as continuation:
+        self.assertEqual(continuation.resume(), "body")
+    self.assertNotIn("x", frames[0].f_locals)
+    self.assertIsNotNone(refs[0]())
+    callbacks.clear()
+    self.assertIsNone(refs[0]())
+
 
 def test_ast_roundtrips_and_future_annotation_unparse(self):
-    source='callback=lambda {for def a, [b,*rest] in [(1,[2,3])] {return a,b,rest}}'
-    tree=ast.parse(source);node=tree.body[0].value.body[0]
-    self.assertIsInstance(node,ast.ForBinding)
-    self.assertEqual(node._fields,('target','iter','body','orelse','type_comment'))
-    self.assertEqual(node.lineno,1);self.assertGreater(node.end_col_offset,node.col_offset)
-    self.assertEqual(ast.dump(tree),ast.dump(ast.parse(ast.unparse(tree))))
-    ns=execute('from __future__ import annotations\ndef f(arg: '+source.split('=',1)[1]+'): pass')
-    self.assertEqual(eval(ns['f'].__annotations__['arg'])(),(1,2,[3]))
-    tree=ast.parse('async def f():\n async for def x in values: pass # type: ignored\n')
-    self.assertIsInstance(tree.body[0].body[0],ast.AsyncForBinding)
-    self.assertEqual(ast.dump(tree),ast.dump(ast.parse(ast.unparse(tree))))
+    source = "callback=lambda {for def a, [b,*rest] in [(1,[2,3])] {return a,b,rest}}"
+    tree = ast.parse(source)
+    node = tree.body[0].value.body[0]
+    self.assertIsInstance(node, ast.ForBinding)
+    self.assertEqual(node._fields, ("target", "iter", "body", "orelse", "type_comment"))
+    self.assertEqual(node.lineno, 1)
+    self.assertGreater(node.end_col_offset, node.col_offset)
+    self.assertEqual(ast.dump(tree), ast.dump(ast.parse(ast.unparse(tree))))
+    ns = execute(
+        "from __future__ import annotations\ndef f(arg: "
+        + source.split("=", 1)[1]
+        + "): pass"
+    )
+    self.assertEqual(eval(ns["f"].__annotations__["arg"])(), (1, 2, [3]))
+    tree = ast.parse(
+        "async def f():\n async for def x in values: pass # type: ignored\n"
+    )
+    self.assertIsInstance(tree.body[0].body[0], ast.AsyncForBinding)
+    self.assertEqual(ast.dump(tree), ast.dump(ast.parse(ast.unparse(tree))))
 ```
 
 </details>
@@ -444,8 +519,11 @@ def _register_eager_task(task):
 
 
 def _enter_task(loop, task):
-    if (_task_accelerator is not None and
-            _task_accelerator[5]() is loop and loop not in _current_tasks):
+    if (
+        _task_accelerator is not None
+        and _task_accelerator[5]() is loop
+        and loop not in _current_tasks
+    ):
         return _task_accelerator[1](loop, task)
     # ...
 ```

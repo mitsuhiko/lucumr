@@ -1,6 +1,23 @@
 ---
 tags: ['security', 'web', 'thoughts']
 summary: "an alternative way to look at OpenID's security."
+facets:
+  mood: {worried: 0.76}
+  scale: {craft: 0.98}
+  time: {present: 0.96}
+  ai: {not_ai: 1}
+  imagery: {none: 0.8}
+  stance: {critic: 0.89}
+  actor: {idea: 0.77, individual: 0.14}
+  ending: {open: 0.54, call: 0.28, practical: 0.18}
+  tension: 0.3
+  certainty: 0.4
+  valence: 0.24
+  energy: 0.49
+  wander: 0.42
+  personal: 0.48
+  humor: 0.24
+  technical: 0.58
 ---
 
 # The Lazy User is OpenID's Security Issue

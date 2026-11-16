@@ -1,6 +1,23 @@
 ---
 tags: ['javascript', 'thoughts', 'web', 'tooling', 'engineering']
 summary: "Ramblings about bundleless JavaScript"
+facets:
+  mood: {hopeful: 0.5, angry: 0.41}
+  scale: {craft: 1}
+  time: {future: 0.92}
+  ai: {not_ai: 1}
+  imagery: {none: 0.89}
+  stance: {advocate: 0.95}
+  actor: {idea: 0.83, individual: 0.16}
+  ending: {resolved: 0.94}
+  tension: 0.67
+  certainty: 0.87
+  valence: 0.75
+  energy: 0.5
+  wander: 0.41
+  personal: 0.38
+  humor: 0.12
+  technical: 0.51
 ---
 
 # Bundleless: Not Doing Things Makes You Fast

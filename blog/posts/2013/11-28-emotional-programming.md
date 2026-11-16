@@ -2,6 +2,23 @@
 tags: ['thoughts', 'life', 'opensource']
 summary: "Some reflections on emotional state and (especially my) software
 quality."
+facets:
+  mood: {reflective: 0.34, conflicted: 0.33, worried: 0.29}
+  scale: {self: 0.92}
+  time: {present: 0.87, past: 0.13}
+  ai: {not_ai: 1}
+  imagery: {none: 0.66, body: 0.15}
+  stance: {witness: 0.96}
+  actor: {individual: 0.96}
+  ending: {open: 0.66, resolved: 0.32}
+  tension: 0.33
+  certainty: 0.72
+  valence: 0.3
+  energy: 0.47
+  wander: 0.6
+  personal: 0.77
+  humor: 0.04
+  technical: 0.32
 ---
 
 # Emotional Programming in Open Source

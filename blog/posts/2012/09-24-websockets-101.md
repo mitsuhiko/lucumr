@@ -2,6 +2,23 @@
 tags: ['web', 'networking']
 summary: "Quick introduction into the final specification of websockets
 (:rfc:`6455`)."
+facets:
+  mood: {angry: 0.95}
+  scale: {craft: 0.98}
+  time: {past: 0.52, present: 0.45}
+  ai: {not_ai: 1}
+  imagery: {none: 0.62, body: 0.2}
+  stance: {teacher: 0.83, builder: 0.12}
+  actor: {individual: 0.6, idea: 0.27, company: 0.1}
+  ending: {open: 0.72, resolved: 0.14, practical: 0.14}
+  tension: 0.19
+  certainty: 0.86
+  valence: 0.24
+  energy: 0.64
+  wander: 0.43
+  personal: 0.54
+  humor: 0.62
+  technical: 0.91
 ---
 
 # Websockets 101
@@ -249,7 +266,7 @@ quickly realize that the results are just wrong:
 
 ```pycon
 >>> import urlparse
->>> urlparse.urlparse('wss://foo/?bar=baz')
+>>> urlparse.urlparse("wss://foo/?bar=baz")
 ParseResult(scheme='wss', netloc='foo', path='/?bar=baz',
             params='', query='', fragment='')
 ```

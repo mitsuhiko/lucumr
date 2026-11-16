@@ -2,6 +2,23 @@
 tags: ['wsgi', 'python', 'web', 'api', 'thoughts']
 summary: "Why WSGI is not as big of a problem as you would believe and why
 framework independent pluggable applications don't work in practice."
+facets:
+  mood: {reflective: 0.92}
+  scale: {craft: 0.99}
+  time: {future: 0.41, past: 0.36, present: 0.23}
+  ai: {not_ai: 1}
+  imagery: {none: 0.32, road: 0.21, building: 0.18, water: 0.16, body: 0.11}
+  stance: {critic: 0.77, advocate: 0.16}
+  actor: {idea: 0.51, group: 0.42}
+  ending: {open: 0.57, resolved: 0.26, call: 0.16}
+  tension: 0.56
+  certainty: 0.72
+  valence: 0.46
+  energy: 0.49
+  wander: 0.62
+  personal: 0.48
+  humor: 0.31
+  technical: 0.8
 ---
 
 # WSGI and the Pluggable Pipe Dream
@@ -64,11 +81,11 @@ such you could not transparently convert an API like this into WSGI:
 
 ```python
 def my_view(request):
-    request.start_response('200 OK')
-    request.send_header('Content-Type', 'text/plain')
+    request.start_response("200 OK")
+    request.send_header("Content-Type", "text/plain")
     request.end_headers()
-    request.write('Hello World!')
-    request.write('Goodbye World!')
+    request.write("Hello World!")
+    request.write("Goodbye World!")
     request.end()
 ```
 
@@ -77,9 +94,10 @@ The direct the entirely equivalent example would be this:
 ```python
 def my_view(environ, start_response):
     def generate():
-        yield 'Hello World!'
-        yield 'Goodbye World!'
-    start_response('200 OK', [('Content-Type', 'text/plain')])
+        yield "Hello World!"
+        yield "Goodbye World!"
+
+    start_response("200 OK", [("Content-Type", "text/plain")])
     return generate()
 ```
 
@@ -153,15 +171,17 @@ perfectly valid WSGI code:
 ```python
 def weird_app(environ, start_response):
     try:
-        start_response('200 OK', [('Content-Type', 'text/plain')])
-        yield ''
-        yield ''
-        raise Exception('Something went wrong late')
+        start_response("200 OK", [("Content-Type", "text/plain")])
+        yield ""
+        yield ""
+        raise Exception("Something went wrong late")
     except Exception, e:
-        start_response('500 INTERNAL SERVER ERROR',
-                       [('Content-Type', 'text/plain')],
-                       sys.exc_info())
-        yield 'Application Failed'
+        start_response(
+            "500 INTERNAL SERVER ERROR",
+            [("Content-Type", "text/plain")],
+            sys.exc_info(),
+        )
+        yield "Application Failed"
 ```
 
 This is the extreme example which you will not see in practice.  The
@@ -186,8 +206,7 @@ callable and that empty string thing and a write callable.  The canonical
 
 ```python
 def hello_world(environ):
-    return '200 OK', [('Content-Type', 'text/plain')], \
-           ['Hello World!']
+    return "200 OK", [("Content-Type", "text/plain")], ["Hello World!"]
 ```
 
 Simple and straightforward indeed, and it would be incredible easy to

@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'announcement']
 summary: "Can we do better than Serde?"
+facets:
+  mood: {reflective: 0.46, matter_of_fact: 0.36, hopeful: 0.13}
+  scale: {craft: 0.98}
+  time: {present: 0.92}
+  ai: {not_ai: 0.99}
+  imagery: {none: 0.47, building: 0.15, crowd: 0.11}
+  stance: {builder: 0.94}
+  actor: {individual: 0.62, idea: 0.2, machine: 0.17}
+  ending: {practical: 0.99}
+  tension: 0.31
+  certainty: 0.66
+  valence: 0.67
+  energy: 0.36
+  wander: 0.3
+  personal: 0.49
+  humor: 0.27
+  technical: 0.94
 ---
 
 # Deser: Rethinking Rust Serialization

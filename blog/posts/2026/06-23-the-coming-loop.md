@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'engineering', 'thoughts']
 summary: "Loops, harnesses, and why even loop skeptics may end up with them."
+facets:
+  mood: {worried: 0.82, conflicted: 0.17}
+  scale: {craft: 0.9}
+  time: {future: 0.98}
+  ai: {agents: 0.94}
+  imagery: {body: 0.94}
+  stance: {critic: 0.49, observer: 0.49}
+  actor: {machine: 0.87, idea: 0.1}
+  ending: {open: 0.94}
+  tension: 0.77
+  certainty: 0.65
+  valence: 0.24
+  energy: 0.51
+  wander: 0.41
+  personal: 0.65
+  humor: 0.2
+  technical: 0.49
 ---
 
 # The Coming Loop

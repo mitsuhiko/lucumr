@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'thoughts', 'unicode']
 summary: "Some thoughts about bytes and Unicode in Python 2 and Python 3."
+facets:
+  mood: {angry: 1}
+  scale: {craft: 0.86, self: 0.12}
+  time: {past: 0.49, present: 0.49}
+  ai: {not_ai: 1}
+  imagery: {none: 0.58, road: 0.3}
+  stance: {critic: 0.88, advocate: 0.12}
+  actor: {group: 0.7, idea: 0.21}
+  ending: {open: 0.58, resolved: 0.41}
+  tension: 0.87
+  certainty: 0.99
+  valence: 0.04
+  energy: 0.81
+  wander: 0.48
+  personal: 0.65
+  humor: 0.23
+  technical: 0.92
 ---
 
 # More About Unicode in Python 2 and 3
@@ -102,7 +119,7 @@ So here are some situations where the default encoding kicks in:
 1. Implicit encoding upon string concatenation:
 
 ```pycon
->>> "Hello " + u"World"
+>>> "Hello " + "World"
 u'Hello World'
 ```
 
@@ -114,7 +131,7 @@ because the default encoding is set to ASCII.
 1. Implicit encoding through comparison:
 
 ```pycon
->>> "Foo" == u"Foo"
+>>> "Foo" == "Foo"
 True
 ```
 
@@ -136,7 +153,7 @@ it won't be changed back.
 The implicit decoding as part of a codec operation looks like this:
 
 ```pycon
->>> "foo".encode('utf-8')
+>>> "foo".encode("utf-8")
 'foo'
 ```
 
@@ -167,9 +184,9 @@ default encoding in which case any string coercion is disabled:
 
 ```pycon
 >>> import sys
->>> sys.setdefaultencoding('undefined')
+>>> sys.setdefaultencoding("undefined")
 
->>> "foo" + u"bar"
+>>> "foo" + "bar"
 Traceback (most recent call last):
     raise UnicodeError("undefined encoding")
 UnicodeError: undefined encoding
@@ -186,7 +203,7 @@ many, many codecs that are incredibly useful.  For instance it's very
 common to decode with the hex codec in Python 2:
 
 ```pycon
->>> "\x00\x01".encode('hex')
+>>> "\x00\x01".encode("hex")
 '0001'
 ```
 
@@ -198,10 +215,10 @@ perform partial decoding of zlib streams:
 
 ```pycon
 >>> import codecs
->>> decoder = codecs.getincrementaldecoder('zlib')('strict')
->>> decoder.decode('x\x9c\xf3H\xcd\xc9\xc9Wp')
+>>> decoder = codecs.getincrementaldecoder("zlib")("strict")
+>>> decoder.decode("x\x9c\xf3H\xcd\xc9\xc9Wp")
 'Hello '
->>> decoder.decode('\xcdK\xceO\xc9\xccK/\x06\x00+\xad\x05\xaf')
+>>> decoder.decode("\xcdK\xceO\xc9\xccK/\x06\x00+\xad\x05\xaf")
 'Encodings'
 ```
 
@@ -212,7 +229,7 @@ can deal with.  Because of this you can now trigger errors like this on
 Python 3:
 
 ```pycon
->>> "Hello World".encode('zlib_codec')
+>>> "Hello World".encode("zlib_codec")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: 'str' does not support the buffer interface
@@ -229,11 +246,12 @@ Let's just settle for a function with the same behavior for the moment:
 ```python
 import codecs
 
+
 def encode(s, name, *args, **kwargs):
     codec = codecs.lookup(name)
     rv, length = codec.encode(s, *args, **kwargs)
     if not isinstance(rv, (str, bytes, bytearray)):
-        raise TypeError('Not a string or byte codec')
+        raise TypeError("Not a string or byte codec")
     return rv
 ```
 
@@ -241,12 +259,12 @@ Now we can use this as replacement for the `.encode()` method we had on
 byte strings:
 
 ```pycon
->>> b'Hello World'.encode('latin1')
+>>> b"Hello World".encode("latin1")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: 'bytes' object has no attribute 'encode'
 
->>> encode(b'Hello World', 'latin1')
+>>> encode(b"Hello World", "latin1")
 Traceback (most recent call last):
   File "<stdin>", line 4, in encode
 TypeError: Can't convert 'bytes' object to str implicitly
@@ -296,10 +314,10 @@ though, just the return value is vastly different now:
 
 ```pycon
 >>> from urllib.parse import urlparse
->>> urlparse('http://www.google.com/')
+>>> urlparse("http://www.google.com/")
 ParseResult(scheme='http', netloc='www.google.com',
             path='/', params='', query='', fragment='')
->>> urlparse(b'http://www.google.com/')
+>>> urlparse(b"http://www.google.com/")
 ParseResultBytes(scheme=b'http', netloc=b'www.google.com',
                  path=b'/', params=b'', query=b'', fragment=b'')
 ```
@@ -335,7 +353,7 @@ on Python 2 as a result of this:
 
 ```pycon
 >>> from urllib.request import urlopen
->>> r = urlopen('https://pypi.python.org/pypi/Flask/json')
+>>> r = urlopen("https://pypi.python.org/pypi/Flask/json")
 >>> from flask import json
 >>> json.load(r)
 Traceback (most recent call last):

@@ -1,6 +1,23 @@
 ---
 tags: ['vcs', 'community']
 summary: "Apology for a mistake I made in an earlier blog post."
+facets:
+  mood: {reflective: 0.73, matter_of_fact: 0.25}
+  scale: {community: 0.51, self: 0.28, craft: 0.19}
+  time: {past: 1}
+  ai: {not_ai: 1}
+  imagery: {none: 0.65, body: 0.28}
+  stance: {witness: 0.92}
+  actor: {individual: 0.39, group: 0.35, company: 0.25}
+  ending: {open: 0.55, resolved: 0.43}
+  tension: 0.52
+  certainty: 0.69
+  valence: 0.54
+  energy: 0.23
+  wander: 0.28
+  personal: 0.7
+  humor: 0.14
+  technical: 0.28
 ---
 
 # Apologies to Github

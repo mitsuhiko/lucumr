@@ -2,6 +2,23 @@
 tags: ['security', 'web']
 summary: "A reinforcement about how signed data is useful to create distributed
 systems."
+facets:
+  mood: {matter_of_fact: 0.79, hopeful: 0.17}
+  scale: {craft: 1}
+  time: {present: 0.87}
+  ai: {not_ai: 1}
+  imagery: {none: 0.76, air: 0.13}
+  stance: {advocate: 0.86, teacher: 0.14}
+  actor: {idea: 0.92}
+  ending: {resolved: 0.83, practical: 0.14}
+  tension: 0.06
+  certainty: 0.91
+  valence: 0.73
+  energy: 0.35
+  wander: 0.28
+  personal: 0.39
+  humor: 0.19
+  technical: 0.75
 ---
 
 # My Favorite Database is the Network

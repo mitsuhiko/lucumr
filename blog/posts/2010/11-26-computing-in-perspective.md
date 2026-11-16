@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'hardware']
 summary: "Visualizing numbers and thinking about dimensions in computing."
+facets:
+  mood: {reflective: 0.7, matter_of_fact: 0.29}
+  scale: {craft: 0.86, self: 0.13}
+  time: {present: 0.94}
+  ai: {not_ai: 1}
+  imagery: {light: 0.38, none: 0.38, water: 0.13}
+  stance: {teacher: 0.61, advocate: 0.29}
+  actor: {idea: 0.51, individual: 0.47}
+  ending: {open: 0.45, practical: 0.34, resolved: 0.21}
+  tension: 0.01
+  certainty: 0.72
+  valence: 0.69
+  energy: 0.32
+  wander: 0.47
+  personal: 0.48
+  humor: 0.2
+  technical: 0.74
 ---
 
 # Computing in Perspective

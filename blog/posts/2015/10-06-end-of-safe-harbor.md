@@ -2,6 +2,23 @@
 tags: ['security', 'politics', 'thoughts']
 summary: "Some in detail analysis about what the end of safe harbor means for
 small companies, especially in Europe."
+facets:
+  mood: {worried: 0.61, conflicted: 0.38}
+  scale: {industry: 0.86, society: 0.13}
+  time: {future: 0.88, present: 0.11}
+  ai: {not_ai: 1}
+  imagery: {road: 0.85}
+  stance: {observer: 0.66, critic: 0.32}
+  actor: {state: 0.99}
+  ending: {open: 0.56, resolved: 0.42}
+  tension: 0.89
+  certainty: 0.51
+  valence: 0.18
+  energy: 0.47
+  wander: 0.42
+  personal: 0.3
+  humor: 0.23
+  technical: 0.49
 ---
 
 # The End of Safe Harbor and a Scary Path Forward

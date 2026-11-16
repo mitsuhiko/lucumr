@@ -3,6 +3,23 @@ tags: ['python', 'unicode', 'engineering', 'tutorial']
 day-order: 2
 summary: "Some useful suggestions about how to write code that works well with
 2to3 and will eventually work on both Python 2 and 3."
+facets:
+  mood: {matter_of_fact: 0.84, hopeful: 0.13}
+  scale: {craft: 1}
+  time: {future: 0.89, present: 0.11}
+  ai: {not_ai: 1}
+  imagery: {none: 0.79, road: 0.13}
+  stance: {teacher: 0.97}
+  actor: {idea: 0.76, individual: 0.15}
+  ending: {practical: 0.64, resolved: 0.32}
+  tension: 0.14
+  certainty: 0.9
+  valence: 0.65
+  energy: 0.38
+  wander: 0.24
+  personal: 0.29
+  humor: 0.19
+  technical: 0.9
 ---
 
 # Writing Forwards Compatible Python Code
@@ -75,38 +92,38 @@ these string literals to unicode.  Please be aware of the following
 differences between Python 2.6:
 
 ```pycon
->>> b'foo'
+>>> b"foo"
 'foo'
->>> b'foo'[0]
+>>> b"foo"[0]
 'f'
->>> b'foo' + u'bar'
+>>> b"foo" + "bar"
 u'foobar'
->>> list(b'foo')
+>>> list(b"foo")
 ['f', 'o', 'o']
 ```
 
 and Python 3 regarding byte strings:
 
 ```pycon
->>> b'foo'[0]
+>>> b"foo"[0]
 102
->>> b'foo' + 'bar'
+>>> b"foo" + "bar"
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: can't concat bytes to str
->>> list(b'foo')
+>>> list(b"foo")
 [102, 111, 111]
 ```
 
 As a replacement for the above Python 2 idioms, you can use this instead:
 
 ```pycon
->>> b'foo'[0:0 + 1]
+>>> b"foo"[0 : 0 + 1]
 b'f'
->>> b'foo' + 'bar'.encode('latin1')
+>>> b"foo" + "bar".encode("latin1")
 b'foobar'
->>> to_charlist = lambda x: [x[c:c + 1] for c in range(len(x))]
->>> to_charlist(b'foo')
+>>> to_charlist = lambda x: [x[c : c + 1] for c in range(len(x))]
+>>> to_charlist(b"foo")
 [b'f', b'o', b'o']
 ```
 
@@ -126,9 +143,10 @@ A lot of people are using code like this on Python 2:
 ```python
 class Foo(object):
     def __str__(self):
-        return unicode(self).encode('utf-8')
+        return unicode(self).encode("utf-8")
+
     def __unicode__(self):
-        return u'Hello World'
+        return "Hello World"
 ```
 
 2to3 assumes that your API is not unicode compatible and will convert it
@@ -137,9 +155,10 @@ to this:
 ```python
 class Foo(object):
     def __str__(self):
-        return str(self).encode('utf-8')
+        return str(self).encode("utf-8")
+
     def __unicode__(self):
-        return 'Hello World'
+        return "Hello World"
 ```
 
 Now this is just wrong.  First of all `__unicode__` is unused in Python 3,
@@ -151,15 +170,17 @@ that makes a check for Python 3:
 ```python
 import sys
 
+
 class UnicodeMixin(object):
     if sys.version_info > (3, 0):
         __str__ = lambda x: x.__unicode__()
     else:
-        __str__ = lambda x: unicode(x).encode('utf-8')
+        __str__ = lambda x: unicode(x).encode("utf-8")
+
 
 class Foo(UnicodeMixin):
     def __unicode__(self):
-        return u'Hello World'
+        return "Hello World"
 ```
 
 That way your object will still have an `__unicode__` attribute on Python
@@ -172,14 +193,14 @@ rename `__unicode__` to `__str__` and remove the helper class.
 This problem is a little more tricky.  In Python 2 the following is true:
 
 ```pycon
->>> 'foo' == u'foo'
+>>> "foo" == "foo"
 True
 ```
 
 Not so in Python 3:
 
 ```pycon
->>> b'foo' == 'foo'
+>>> b"foo" == "foo"
 False
 ```
 
@@ -192,7 +213,7 @@ a unicode or bytestring operation:
 
 ```pycon
 >>> import unicodenazi
->>> u'foo' == 'foo'
+>>> "foo" == "foo"
 __main__:1: UnicodeWarning: Implicit conversion of str to unicode
 True
 ```
@@ -271,7 +292,7 @@ this work if the header is limited to latin1?  For Python 3 (and only for
 Python 3) you will need to apply a little trick:
 
 ```python
-return cookie_value.encode('utf-8').decode('latin1')
+return cookie_value.encode("utf-8").decode("latin1")
 ```
 
 That way you just fake encoded utf-8 into a unicode string.  The WSGI

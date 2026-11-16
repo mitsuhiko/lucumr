@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "Why I like the word clanker and why machines are not people."
+facets:
+  mood: {reflective: 0.54, angry: 0.23, worried: 0.14}
+  scale: {society: 0.61, craft: 0.23, self: 0.15}
+  time: {present: 0.81, future: 0.18}
+  ai: {agents: 0.68, models: 0.23}
+  imagery: {body: 0.52, none: 0.2, stone: 0.16}
+  stance: {advocate: 0.86, critic: 0.14}
+  actor: {individual: 0.53, idea: 0.23, group: 0.16}
+  ending: {resolved: 0.65, open: 0.25, practical: 0.1}
+  tension: 0.79
+  certainty: 0.82
+  valence: 0.48
+  energy: 0.51
+  wander: 0.33
+  personal: 0.59
+  humor: 0.27
+  technical: 0.34
 ---
 
 # Clanker: A Word For The Machine

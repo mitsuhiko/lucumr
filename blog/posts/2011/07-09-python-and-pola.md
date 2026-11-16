@@ -2,6 +2,23 @@
 tags: ['python', 'thoughts']
 summary: "Why Python follows the Principle of Least Astonishment even when some
 people are surprised."
+facets:
+  mood: {reflective: 0.59, matter_of_fact: 0.28}
+  scale: {craft: 0.98}
+  time: {past: 0.63, present: 0.37}
+  ai: {not_ai: 1}
+  imagery: {body: 0.51, none: 0.4}
+  stance: {teacher: 0.53, advocate: 0.43}
+  actor: {idea: 0.71, group: 0.27}
+  ending: {resolved: 0.83, open: 0.16}
+  tension: 0.2
+  certainty: 0.83
+  valence: 0.75
+  energy: 0.42
+  wander: 0.39
+  personal: 0.41
+  humor: 0.34
+  technical: 0.79
 ---
 
 # Python and the Principle of Least Astonishment
@@ -88,9 +105,8 @@ For instance consider you have a class like this:
 
 ```python
 class MyAPI(object):
-
     def get_time(self):
-        return 'the current time as string'
+        return "the current time as string"
 ```
 
 Imagine we would want to expose all the methods of this class over HTTP
@@ -152,10 +168,10 @@ second is `x[1]` etc.).  You can easily test this yourself:
 
 ```pycon
 >>> class Foo(object):
-...  def __getitem__(self, x):
-...   if x == 10: raise IndexError()
-...   return chr(ord('a') + x)
-...
+...     def __getitem__(self, x):
+...         if x == 10:
+...             raise IndexError()
+...         return chr(ord("a") + x)
 >>> list(Foo())
 ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 ```
@@ -206,8 +222,8 @@ public methods.  In Python 2.x the Tuple type for instance does not expose
 any non-special methods and yet you can use it to make a string out of it:
 
 ```pycon
->>> tup = ('foo', 'bar')
->>> ', '.join(tup)
+>>> tup = ("foo", "bar")
+>>> ", ".join(tup)
 'foo, bar'
 ```
 
@@ -215,7 +231,7 @@ Even better, you can efficiently use this to make a string from a
 generator:
 
 ```pycon
->>> ', '.join(x.upper() for x in ['foo', 'bar'])
+>>> ", ".join(x.upper() for x in ["foo", "bar"])
 'FOO, BAR'
 ```
 
@@ -234,7 +250,7 @@ same problem, but you needed an extra import and it did not look any nicer
 I think:
 
 ```python
-assert string.join(', ', iterable) == ', '.join(iterable)
+assert string.join(", ", iterable) == ", ".join(iterable)
 ```
 
 ## Pass by … What Exactly?

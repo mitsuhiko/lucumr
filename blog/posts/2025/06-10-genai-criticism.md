@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "A response to Glyph's opting out of AI."
+facets:
+  mood: {hopeful: 0.97}
+  scale: {self: 0.51, craft: 0.46}
+  time: {present: 0.52, future: 0.48}
+  ai: {agents: 0.88}
+  imagery: {road: 0.3, body: 0.25, none: 0.24}
+  stance: {advocate: 0.95}
+  actor: {individual: 0.41, machine: 0.34, idea: 0.12}
+  ending: {resolved: 0.97}
+  tension: 0.8
+  certainty: 0.89
+  valence: 0.76
+  energy: 0.34
+  wander: 0.28
+  personal: 0.71
+  humor: 0.22
+  technical: 0.42
 ---
 
 # GenAI Criticism and Moral Quandaries

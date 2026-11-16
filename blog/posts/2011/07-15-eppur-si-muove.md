@@ -2,6 +2,23 @@
 tags: ['python', 'tutorial']
 summary: "The problems with timezones and Python's datetime object and how you
 would properly use them."
+facets:
+  mood: {playful: 0.45, matter_of_fact: 0.29, angry: 0.25}
+  scale: {craft: 1}
+  time: {present: 0.74, past: 0.16, future: 0.1}
+  ai: {not_ai: 1}
+  imagery: {light: 0.39, none: 0.29, body: 0.14}
+  stance: {teacher: 0.86, advocate: 0.12}
+  actor: {idea: 0.73, state: 0.22}
+  ending: {practical: 0.95}
+  tension: 0.14
+  certainty: 0.91
+  valence: 0.42
+  energy: 0.52
+  wander: 0.39
+  personal: 0.32
+  humor: 0.53
+  technical: 0.77
 ---
 
 # "Eppur si muove!"* - Dealing with Timezones in Python

@@ -2,6 +2,23 @@
 tags: ['opensource', 'flask', 'thoughts']
 summary: "Adventures in License land.  We need more lawyers in the open source
 world."
+facets:
+  mood: {reflective: 0.6, conflicted: 0.25, playful: 0.11}
+  scale: {community: 0.94}
+  time: {past: 0.97}
+  ai: {not_ai: 1}
+  imagery: {water: 0.59, none: 0.23, road: 0.12}
+  stance: {witness: 0.76, observer: 0.14}
+  actor: {individual: 0.94}
+  ending: {open: 0.87}
+  tension: 0.46
+  certainty: 0.14
+  valence: 0.43
+  energy: 0.47
+  wander: 0.54
+  personal: 0.62
+  humor: 0.44
+  technical: 0.45
 ---
 
 # Licenses dammed Licenses

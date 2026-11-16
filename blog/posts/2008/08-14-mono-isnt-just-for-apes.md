@@ -2,6 +2,23 @@
 tags: ['thoughts', 'opensource']
 summary: "An old article from the time when mono just came out.  Still think it's
 an excellent environment."
+facets:
+  mood: {hopeful: 0.98}
+  scale: {craft: 0.77, community: 0.19}
+  time: {present: 0.9}
+  ai: {not_ai: 1}
+  imagery: {crowd: 0.36, none: 0.31, body: 0.17, road: 0.1}
+  stance: {advocate: 1}
+  actor: {individual: 0.73, group: 0.11}
+  ending: {call: 0.98}
+  tension: 0.56
+  certainty: 0.83
+  valence: 0.81
+  energy: 0.48
+  wander: 0.52
+  personal: 0.63
+  humor: 0.34
+  technical: 0.75
 ---
 
 # Mono isn't just for Apes

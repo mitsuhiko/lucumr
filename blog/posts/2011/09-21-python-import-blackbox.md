@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'tutorial']
 summary: "Ways to deal with the Python Import System Blackbox."
+facets:
+  mood: {matter_of_fact: 0.51, reflective: 0.46}
+  scale: {craft: 1}
+  time: {present: 0.61, past: 0.39}
+  ai: {not_ai: 1}
+  imagery: {none: 0.37, air: 0.3, light: 0.27}
+  stance: {builder: 0.53, teacher: 0.46}
+  actor: {individual: 0.49, idea: 0.4, machine: 0.11}
+  ending: {resolved: 0.95}
+  tension: 0.04
+  certainty: 0.69
+  valence: 0.54
+  energy: 0.41
+  wander: 0.34
+  personal: 0.45
+  humor: 0.29
+  technical: 0.97
 ---
 
 # Dealing with the Python Import Blackbox
@@ -114,6 +131,7 @@ Python:
 
 ```python
 import sys
+
 a_value = [1, 2, 3]
 this = sys.modules[__name__]
 assert a_value is this.a_value
@@ -131,7 +149,7 @@ Consider this `fail_module.py`:
 import sys
 
 # this works
-this = sys.modules['fail_module']
+this = sys.modules["fail_module"]
 
 # this fails
 import missing_module
@@ -148,7 +166,7 @@ Traceback (most recent call last):
     import missing_module
 ImportError: No module named missing_module
 >>> import sys
->>> 'fail_module' in sys.modules
+>>> "fail_module" in sys.modules
 False
 ```
 
@@ -206,11 +224,11 @@ def import_module(module_name):
 You can use it like this:
 
 ```python
-json = import_module('simplejson')
+json = import_module("simplejson")
 if json is None:
-    json = import_module('json')
+    json = import_module("json")
     if json is None:
-        raise RuntimeError('Unable to find a json implementation')
+        raise RuntimeError("Unable to find a json implementation")
 ```
 
 Generally the implementation is straightforward.  Try to import with

@@ -2,6 +2,23 @@
 tags: ['thoughts', 'opensource', 'community', 'python']
 summary: "How the Open Source community gets away with large, backwards
 incompatible migrations by cheating and a lot of emotional distress."
+facets:
+  mood: {angry: 0.66, reflective: 0.23}
+  scale: {community: 1}
+  time: {past: 0.72, present: 0.21}
+  ai: {not_ai: 0.99}
+  imagery: {body: 0.56, road: 0.26}
+  stance: {critic: 0.93}
+  actor: {group: 1}
+  ending: {open: 0.76, call: 0.17}
+  tension: 0.9
+  certainty: 0.86
+  valence: 0.23
+  energy: 0.59
+  wander: 0.56
+  personal: 0.48
+  humor: 0.23
+  technical: 0.4
 ---
 
 # Open Source Migrates With Emotional Distress

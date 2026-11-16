@@ -3,6 +3,23 @@ day-order: 2
 tags: ['business', 'thoughts', 'opensource']
 summary: "A short writeup about finances for Open Source projects and ideas for
 how to improve it."
+facets:
+  mood: {reflective: 0.91}
+  scale: {community: 0.88}
+  time: {future: 0.6, present: 0.38}
+  ai: {not_ai: 1}
+  imagery: {none: 0.62, growth: 0.14}
+  stance: {observer: 0.73, advocate: 0.18}
+  actor: {individual: 0.43, group: 0.31, idea: 0.21}
+  ending: {resolved: 0.4, practical: 0.25, call: 0.2, open: 0.15}
+  tension: 0.17
+  certainty: 0.46
+  valence: 0.52
+  energy: 0.27
+  wander: 0.42
+  personal: 0.53
+  humor: 0.07
+  technical: 0.29
 ---
 
 # Open Source Financing

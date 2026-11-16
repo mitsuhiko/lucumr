@@ -2,6 +2,23 @@
 tags: ['rust', 'tutorial']
 summary: "A creative workaround to the inability of implementing additional traits
 to `Any`."
+facets:
+  mood: {matter_of_fact: 0.99}
+  scale: {craft: 1}
+  time: {present: 0.54, past: 0.46}
+  ai: {not_ai: 1}
+  imagery: {none: 0.78, road: 0.13}
+  stance: {teacher: 0.97}
+  actor: {idea: 0.64, individual: 0.34}
+  ending: {practical: 0.78, resolved: 0.21}
+  tension: 0.03
+  certainty: 0.9
+  valence: 0.59
+  energy: 0.34
+  wander: 0.12
+  personal: 0.25
+  humor: 0.14
+  technical: 0.99
 ---
 
 # Rust Any Part 2: As-Any Hack

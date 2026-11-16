@@ -2,6 +2,23 @@
 tags: ['politics', 'thoughts']
 summary: "Thoughts about what I believe is wrong in Austria today and how we can
 maybe break the trend."
+facets:
+  mood: {worried: 0.79, reflective: 0.16}
+  scale: {society: 1}
+  time: {present: 0.88}
+  ai: {not_ai: 1}
+  imagery: {growth: 0.52, road: 0.17, body: 0.12, none: 0.12}
+  stance: {critic: 0.69, advocate: 0.28}
+  actor: {group: 0.6, state: 0.36}
+  ending: {call: 1}
+  tension: 0.81
+  certainty: 0.72
+  valence: 0.35
+  energy: 0.5
+  wander: 0.31
+  personal: 0.38
+  humor: 0.05
+  technical: 0.07
 ---
 
 # A Europe For Our Children

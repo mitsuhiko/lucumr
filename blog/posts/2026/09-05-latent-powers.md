@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "Are we all discovering the same things at once?"
+facets:
+  mood: {reflective: 1}
+  scale: {self: 0.37, community: 0.33, craft: 0.25}
+  time: {past: 0.77, present: 0.21}
+  ai: {models: 0.6, community: 0.22, agents: 0.15}
+  imagery: {road: 0.56, body: 0.18, none: 0.16}
+  stance: {observer: 0.48, witness: 0.46}
+  actor: {machine: 0.81, individual: 0.13}
+  ending: {open: 1}
+  tension: 0.03
+  certainty: 0.28
+  valence: 0.59
+  energy: 0.33
+  wander: 0.57
+  personal: 0.65
+  humor: 0.28
+  technical: 0.51
 ---
 
 # Latent Powers

@@ -2,6 +2,23 @@
 tags: ['announcement', 'thoughts']
 summary: "Short update on why this site looks different and what changed under
 the hood and where the rest of the content went."
+facets:
+  mood: {matter_of_fact: 0.69, reflective: 0.3}
+  scale: {self: 0.71, craft: 0.29}
+  time: {present: 0.73, past: 0.25}
+  ai: {not_ai: 1}
+  imagery: {none: 0.94}
+  stance: {witness: 0.6, advocate: 0.2, builder: 0.12}
+  actor: {individual: 1}
+  ending: {practical: 0.89}
+  tension: 0.09
+  certainty: 0.95
+  valence: 0.55
+  energy: 0.28
+  wander: 0.37
+  personal: 0.62
+  humor: 0.17
+  technical: 0.43
 ---
 
 # New Blog

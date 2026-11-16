@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'earendil', 'thoughts', 'pi', 'announcement']
 summary: "On a shared journey with Mario."
+facets:
+  mood: {hopeful: 0.62, reflective: 0.38}
+  scale: {craft: 0.41, self: 0.38, industry: 0.1}
+  time: {past: 0.48, future: 0.33, present: 0.19}
+  ai: {agents: 0.93}
+  imagery: {building: 0.35, none: 0.25, road: 0.11}
+  stance: {advocate: 0.77, witness: 0.21}
+  actor: {company: 0.51, individual: 0.43}
+  ending: {practical: 0.87, call: 0.1}
+  tension: 0.36
+  certainty: 0.9
+  valence: 0.79
+  energy: 0.31
+  wander: 0.45
+  personal: 0.73
+  humor: 0.01
+  technical: 0.38
 ---
 
 # Mario and Earendil

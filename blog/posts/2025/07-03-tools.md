@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: The solution to agentic flows was code all along.
+facets:
+  mood: {reflective: 0.55, matter_of_fact: 0.21, angry: 0.18}
+  scale: {craft: 0.99}
+  time: {future: 0.61, present: 0.38}
+  ai: {agents: 0.98}
+  imagery: {none: 0.7, road: 0.13}
+  stance: {critic: 0.59, advocate: 0.4}
+  actor: {individual: 0.69, idea: 0.16, machine: 0.15}
+  ending: {practical: 0.6, call: 0.37}
+  tension: 0.66
+  certainty: 0.79
+  valence: 0.61
+  energy: 0.45
+  wander: 0.41
+  personal: 0.52
+  humor: 0.21
+  technical: 0.66
 ---
 
 # Tools: Code Is All You Need

@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'tutorial']
 summary: "A trick to convert arbitrary values from owned strings."
+facets:
+  mood: {matter_of_fact: 0.97}
+  scale: {craft: 1}
+  time: {present: 0.83, future: 0.16}
+  ai: {not_ai: 1}
+  imagery: {road: 0.71, none: 0.28}
+  stance: {builder: 0.9, teacher: 0.1}
+  actor: {idea: 0.69, individual: 0.3}
+  ending: {practical: 0.99}
+  tension: 0.02
+  certainty: 0.75
+  valence: 0.67
+  energy: 0.31
+  wander: 0.26
+  personal: 0.25
+  humor: 0.15
+  technical: 0.97
 ---
 
 # Bridging the Efficiency Gap Between FromStr and String

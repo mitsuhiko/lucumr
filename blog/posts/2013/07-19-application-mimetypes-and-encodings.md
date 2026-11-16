@@ -2,6 +2,23 @@
 tags: ['web', 'unicode']
 summary: "Some quick notes on application mimetypes and how they deal with
 encodings."
+facets:
+  mood: {angry: 0.51, matter_of_fact: 0.46}
+  scale: {craft: 0.99}
+  time: {present: 0.88, past: 0.1}
+  ai: {not_ai: 1}
+  imagery: {none: 0.96}
+  stance: {critic: 0.45, teacher: 0.39, advocate: 0.16}
+  actor: {group: 0.81, idea: 0.16}
+  ending: {resolved: 0.67, practical: 0.27}
+  tension: 0.42
+  certainty: 0.98
+  valence: 0.42
+  energy: 0.48
+  wander: 0.28
+  personal: 0.27
+  humor: 0.12
+  technical: 0.75
 ---
 
 # Application Mimetypes and Encodings

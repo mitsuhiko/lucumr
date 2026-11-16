@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'types']
 summary: "Some good news is coming in Rust 1.86"
+facets:
+  mood: {hopeful: 0.95}
+  scale: {craft: 0.98}
+  time: {present: 0.69, past: 0.28}
+  ai: {not_ai: 1}
+  imagery: {none: 0.89}
+  stance: {teacher: 0.71, builder: 0.18}
+  actor: {group: 0.84}
+  ending: {practical: 0.93}
+  tension: 0.03
+  certainty: 0.89
+  valence: 0.78
+  energy: 0.4
+  wander: 0.24
+  personal: 0.35
+  humor: 0.2
+  technical: 0.87
 ---
 
 # Rust Any Part 3: Finally we have Upcasts

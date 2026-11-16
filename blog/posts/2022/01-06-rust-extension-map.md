@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'tutorial']
 summary: "A useful pattern for making common types extensible."
+facets:
+  mood: {matter_of_fact: 1}
+  scale: {craft: 1}
+  time: {present: 0.73, future: 0.27}
+  ai: {not_ai: 1}
+  imagery: {none: 0.84, road: 0.13}
+  stance: {teacher: 0.91}
+  actor: {idea: 0.96}
+  ending: {practical: 0.77, call: 0.13, open: 0.1}
+  tension: 0.01
+  certainty: 0.84
+  valence: 0.62
+  energy: 0.33
+  wander: 0.14
+  personal: 0.08
+  humor: 0.1
+  technical: 0.97
 ---
 
 # Rust Any Part 1: Extension Maps in Rust

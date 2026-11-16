@@ -2,6 +2,23 @@
 tags: ['networking', 'python']
 summary: "The hidden disconnects of ZeroMQ can be dangerous if you don't write
 your application to work around them."
+facets:
+  mood: {angry: 0.44, reflective: 0.28, worried: 0.16}
+  scale: {craft: 1}
+  time: {present: 0.84, future: 0.1}
+  ai: {not_ai: 1}
+  imagery: {body: 0.46, fire: 0.27, air: 0.18}
+  stance: {critic: 0.77, teacher: 0.14}
+  actor: {idea: 0.87, machine: 0.11}
+  ending: {open: 0.79, practical: 0.16}
+  tension: 0.14
+  certainty: 0.55
+  valence: 0.26
+  energy: 0.51
+  wander: 0.38
+  personal: 0.45
+  humor: 0.45
+  technical: 0.79
 ---
 
 # ZeroMQ: Disconnects are Good for You
@@ -39,12 +56,12 @@ import zmq
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
-socket.connect('tcp://*:5555')
+socket.connect("tcp://*:5555")
 while 1:
     # Get request
     request = socket.recv()
     # Reply with response
-    socket.send('this is anwer to ' + request)
+    socket.send("this is anwer to " + request)
 ```
 
 The client to this is very simple as well.  Instead of using `REP` it uses
@@ -98,8 +115,8 @@ while 1:
     # Receive a request
     request = socket.recv()
     # Reply with a response, but sadly we get an exception
-    raise Exception('Unfortunately this failed')
-    socket.send('this is answer to ' + request)
+    raise Exception("Unfortunately this failed")
+    socket.send("this is answer to " + request)
 ```
 
 So before the server was able to reply with a response the server died of
@@ -136,8 +153,8 @@ ZeroMQ socket that adds a `timeout` parameter to all important calls:
 from functools import update_wrapper
 import zmq
 
-class Socket(zmq.Socket):
 
+class Socket(zmq.Socket):
     def __init__(self, ctx, type, default_timeout=None):
         zmq.Socket.__init__(self, ctx, type)
         self.default_timeout = default_timeout
@@ -147,7 +164,7 @@ class Socket(zmq.Socket):
 
     def _timeout_wrapper(f):
         def wrapper(self, *args, **kwargs):
-            timeout = kwargs.pop('timeout', self.default_timeout)
+            timeout = kwargs.pop("timeout", self.default_timeout)
             if timeout is not None:
                 timeout = int(timeout * 1000)
                 poller = zmq.Poller()
@@ -155,10 +172,11 @@ class Socket(zmq.Socket):
                 if not poller.poll(timeout):
                     return self.on_timeout()
             return f(self, *args, **kwargs)
-        return update_wrapper(wrapper, f, ('__name__', '__doc__'))
+
+        return update_wrapper(wrapper, f, ("__name__", "__doc__"))
 
     for _meth in dir(zmq.Socket):
-        if _meth.startswith(('send', 'recv')):
+        if _meth.startswith(("send", "recv")):
             locals()[_meth] = _timeout_wrapper(getattr(zmq.Socket, _meth))
 
     del _meth, _timeout_wrapper

@@ -1,6 +1,23 @@
 ---
 tags: ['life', 'thoughts']
 summary: "Random thoughts about staying sane for people with ambitions."
+facets:
+  mood: {reflective: 0.99}
+  scale: {self: 1}
+  time: {past: 0.97}
+  ai: {not_ai: 1}
+  imagery: {road: 0.43, light: 0.34, none: 0.14}
+  stance: {witness: 0.9}
+  actor: {individual: 1}
+  ending: {resolved: 0.99}
+  tension: 0.3
+  certainty: 0.81
+  valence: 0.73
+  energy: 0.23
+  wander: 0.5
+  personal: 0.81
+  humor: 0.08
+  technical: 0.07
 ---
 
 # Everybody is More Complex Than They Seem

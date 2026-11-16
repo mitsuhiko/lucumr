@@ -2,6 +2,23 @@
 tags: ['os', 'thoughts']
 summary: "Why a popular choice for an operating system does not necessarily
 mean you will become more productive and a better programmer."
+facets:
+  mood: {angry: 0.98}
+  scale: {craft: 0.76, community: 0.12, self: 0.11}
+  time: {present: 0.97}
+  ai: {not_ai: 1}
+  imagery: {body: 0.47, water: 0.19, none: 0.16}
+  stance: {critic: 0.97}
+  actor: {company: 0.61, group: 0.26, individual: 0.12}
+  ending: {resolved: 0.56, call: 0.42}
+  tension: 0.75
+  certainty: 0.9
+  valence: 0.25
+  energy: 0.76
+  wander: 0.63
+  personal: 0.6
+  humor: 0.57
+  technical: 0.69
 ---
 
 # Use OS X you Git!

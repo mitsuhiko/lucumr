@@ -1,6 +1,23 @@
 ---
 tags: ['announcement', 'python', 'flask', 'web']
 summary: "Update on the Flask 0.10 and Werkzeug 0.9 releases."
+facets:
+  mood: {hopeful: 0.79, matter_of_fact: 0.18}
+  scale: {craft: 0.86, community: 0.14}
+  time: {present: 0.83}
+  ai: {not_ai: 1}
+  imagery: {none: 0.69, road: 0.12}
+  stance: {builder: 0.78}
+  actor: {group: 0.53, individual: 0.46}
+  ending: {resolved: 0.78, practical: 0.19}
+  tension: 0.05
+  certainty: 0.81
+  valence: 0.77
+  energy: 0.39
+  wander: 0.23
+  personal: 0.36
+  humor: 0.25
+  technical: 0.76
 ---
 
 # New Werkzeug and Flask Releases

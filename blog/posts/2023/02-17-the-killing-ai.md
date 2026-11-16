@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "Why I'm a worried, but not too worried about AIs."
+facets:
+  mood: {worried: 1}
+  scale: {society: 0.56, craft: 0.2, self: 0.19}
+  time: {future: 0.69, present: 0.31}
+  ai: {risk: 0.97}
+  imagery: {body: 0.57, none: 0.29}
+  stance: {critic: 0.49, advocate: 0.43}
+  actor: {machine: 0.93}
+  ending: {open: 0.48, call: 0.34, resolved: 0.17}
+  tension: 0.43
+  certainty: 0.52
+  valence: 0.26
+  energy: 0.58
+  wander: 0.49
+  personal: 0.49
+  humor: 0.51
+  technical: 0.52
 ---
 
 # I Think AI Would Kill my Wife

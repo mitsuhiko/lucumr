@@ -1,0 +1,43 @@
+#!/bin/sh
+# Screenshot a page of the blog with headless Chrome, to look at its artwork.
+#
+#   scripts/art-shot OUT.png [PATH] [WIDTHxHEIGHT] [WAIT_MS]
+#
+# PATH is a site path ("/2026/1/14/minijinja-go-port/?art=strata&still").
+# WAIT_MS is virtual time: Chrome renders only a handful of animation frames in
+# it, so a shot without ?still shows the start of an animation, not a moment
+# WAIT_MS into it.
+#
+# The dev server (make serve) must be running on port 5001.  Console output of
+# the page (errors included) is printed.  Pages follow the system's light/dark
+# setting.
+#
+#   scripts/art-shot /tmp/post.png '/2026/1/14/minijinja-go-port/?still' 1400x3000
+#   scripts/art-shot /tmp/strata.png '/?art=strata&still'
+set -eu
+out=${1:?usage: art-shot OUT.png [PATH] [WIDTHxHEIGHT] [WAIT_MS]}
+target=${2:-/?still}
+size=${3:-1400x4300}
+wait=${4:-3000}
+case "$target" in
+  /*\?*) url="http://127.0.0.1:5001$target&noreload" ;;
+  /*) url="http://127.0.0.1:5001$target?noreload" ;;
+  *) echo "art-shot: PATH must start with /" >&2; exit 2 ;;
+esac
+chrome=${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}
+profile=$(mktemp -d)
+trap 'rm -rf "$profile"' EXIT
+"$chrome" --headless=new --user-data-dir="$profile" --no-first-run --hide-scrollbars \
+  --disable-background-networking --ignore-gpu-blocklist --enable-logging=stderr \
+  --window-size="$(echo "$size" | tr x ,)" --virtual-time-budget="$wait" \
+  --screenshot="$out" "$url" >"$profile/log" 2>&1 &
+pid=$!
+# Chrome sometimes does not exit: give it 45 seconds
+(sleep 45; kill "$pid" 2>/dev/null) 2>/dev/null &
+watchdog=$!
+wait "$pid" 2>/dev/null || { echo "art-shot: chrome failed or timed out" >&2; tail -5 "$profile/log" >&2; }
+kill "$watchdog" 2>/dev/null || true
+wait "$watchdog" 2>/dev/null || true
+# what the page wrote to the console (errors of a variant end up here)
+grep -o 'CONSOLE.*' "$profile/log" | grep -v 'Live reload' || true
+ls -l "$out" | awk '{print $5 " bytes: " $NF}'

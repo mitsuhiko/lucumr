@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'python', 'announcement']
 summary: "In a first for me, I published some agentic programmed AI slop to PyPI."
+facets:
+  mood: {playful: 0.52, reflective: 0.27, matter_of_fact: 0.14}
+  scale: {craft: 0.75, self: 0.22}
+  time: {past: 0.91}
+  ai: {agents: 0.51, models: 0.43}
+  imagery: {none: 0.77}
+  stance: {builder: 0.75, witness: 0.22}
+  actor: {machine: 0.52, individual: 0.48}
+  ending: {open: 1}
+  tension: 0.05
+  certainty: 0.59
+  valence: 0.72
+  energy: 0.35
+  wander: 0.42
+  personal: 0.57
+  humor: 0.36
+  technical: 0.69
 ---
 
 # My First Open Source AI Generated Library

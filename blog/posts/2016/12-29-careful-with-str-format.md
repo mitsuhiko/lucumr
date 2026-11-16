@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'security']
 summary: "Some general warnings about the use of str.format in Python."
+facets:
+  mood: {worried: 0.66, matter_of_fact: 0.3}
+  scale: {craft: 0.98}
+  time: {present: 0.61, past: 0.37}
+  ai: {not_ai: 1}
+  imagery: {none: 0.95}
+  stance: {teacher: 0.65, advocate: 0.2}
+  actor: {idea: 0.72, individual: 0.23}
+  ending: {practical: 0.95}
+  tension: 0.11
+  certainty: 0.92
+  valence: 0.35
+  energy: 0.45
+  wander: 0.21
+  personal: 0.37
+  humor: 0.05
+  technical: 0.97
 ---
 
 # Be Careful with Python's New-Style String Format
@@ -34,7 +51,7 @@ problem here.
 Essentially one can do things like the following:
 
 ```pycon
->>> 'class of {0} is {0.__class__}'.format(42)
+>>> "class of {0} is {0.__class__}".format(42)
 "class of 42 is <class 'int'>"
 ```
 
@@ -69,15 +86,15 @@ is pretty crazy.  Here is an example from a hypothetical web application
 setup that would leak the secret key:
 
 ```python
-CONFIG = {
-    'SECRET_KEY': 'super secret key'
-}
+CONFIG = {"SECRET_KEY": "super secret key"}
+
 
 class Event(object):
     def __init__(self, id, level, message):
         self.id = id
         self.level = level
         self.message = message
+
 
 def format_event(format_string, event):
     return format_string.format(event=event)
@@ -100,6 +117,7 @@ behavior.
 from string import Formatter
 from collections import Mapping
 
+
 class MagicFormatMapping(Mapping):
     """This class implements a dummy wrapper to fix a bug in the Python
     standard library for string formatting.
@@ -114,7 +132,7 @@ class MagicFormatMapping(Mapping):
         self._last_index = 0
 
     def __getitem__(self, key):
-        if key == '':
+        if key == "":
             idx = self._last_index
             self._last_index += 1
             try:
@@ -130,16 +148,16 @@ class MagicFormatMapping(Mapping):
     def __len__(self):
         return len(self._kwargs)
 
+
 # This is a necessary API but it's undocumented and moved around
 # between Python releases
 try:
     from _string import formatter_field_name_split
 except ImportError:
-    formatter_field_name_split = lambda \
-        x: x._formatter_field_name_split()
+    formatter_field_name_split = lambda x: x._formatter_field_name_split()
+
 
 class SafeFormatter(Formatter):
-
     def get_field(self, field_name, args, kwargs):
         first, rest = formatter_field_name_split(field_name)
         obj = self.get_value(first, args, kwargs)
@@ -150,14 +168,16 @@ class SafeFormatter(Formatter):
                 obj = obj[i]
         return obj, first
 
+
 def safe_getattr(obj, attr):
     # Expand the logic here.  For instance on 2.x you will also need
     # to disallow func_globals, on 3.x you will also need to hide
     # things like cr_frame and others.  So ideally have a list of
     # objects that are entirely unsafe to access.
-    if attr[:1] == '_':
+    if attr[:1] == "_":
         raise AttributeError(attr)
     return getattr(obj, attr)
+
 
 def safe_format(_string, *args, **kwargs):
     formatter = SafeFormatter()
@@ -169,9 +189,9 @@ Now you can use the `safe_format` method as a replacement for
 `str.format`:
 
 ```pycon
->>> '{0.__class__}'.format(42)
+>>> "{0.__class__}".format(42)
 "<type 'int'>"
->>> safe_format('{0.__class__}', 42)
+>>> safe_format("{0.__class__}", 42)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: __class__

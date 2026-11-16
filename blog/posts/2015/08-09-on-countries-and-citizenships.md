@@ -3,6 +3,23 @@ tags: ['politics', 'life']
 summary: "In which I share some of my personal experiences and discoveries about
 the more than confusing topic of moving countries and how citizenships
 and residences work."
+facets:
+  mood: {matter_of_fact: 0.94}
+  scale: {society: 0.97}
+  time: {present: 0.98}
+  ai: {not_ai: 1}
+  imagery: {road: 0.63, none: 0.23}
+  stance: {teacher: 0.99}
+  actor: {state: 0.98}
+  ending: {resolved: 0.5, open: 0.4, practical: 0.1}
+  tension: 0.07
+  certainty: 0.7
+  valence: 0.4
+  energy: 0.25
+  wander: 0.35
+  personal: 0.32
+  humor: 0.22
+  technical: 0.08
 ---
 
 # On Countries, Citizenships, Residence and Paying Taxes

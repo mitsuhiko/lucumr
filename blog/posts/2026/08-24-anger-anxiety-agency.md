@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'life']
 summary: "Who is the AI villain we should be angry at?"
+facets:
+  mood: {reflective: 0.5, conflicted: 0.43}
+  scale: {industry: 0.78, self: 0.21}
+  time: {future: 0.81, present: 0.19}
+  ai: {society: 0.88}
+  imagery: {stone: 0.28, water: 0.25, crowd: 0.14, air: 0.11, road: 0.1}
+  stance: {advocate: 0.87}
+  actor: {idea: 0.48, machine: 0.31, company: 0.18}
+  ending: {call: 0.99}
+  tension: 0.4
+  certainty: 0.39
+  valence: 0.59
+  energy: 0.35
+  wander: 0.47
+  personal: 0.68
+  humor: 0.09
+  technical: 0.27
 ---
 
 # Anger, Anxiety and Agency

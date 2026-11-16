@@ -2,6 +2,23 @@
 tags: ['rust', 'tutorial']
 summary: "Overview of how to handle errors in the current version of the Rust
 programming language."
+facets:
+  mood: {matter_of_fact: 0.66, hopeful: 0.33}
+  scale: {craft: 1}
+  time: {present: 0.72, future: 0.27}
+  ai: {not_ai: 1}
+  imagery: {none: 0.73, building: 0.17}
+  stance: {teacher: 0.99}
+  actor: {group: 0.52, idea: 0.43}
+  ending: {practical: 0.74, open: 0.18}
+  tension: 0.06
+  certainty: 0.72
+  valence: 0.72
+  energy: 0.34
+  wander: 0.2
+  personal: 0.36
+  humor: 0.04
+  technical: 0.92
 ---
 
 # Improved Error Handling in Rust

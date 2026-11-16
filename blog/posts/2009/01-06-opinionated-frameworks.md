@@ -2,6 +2,23 @@
 tags: ['django', 'jinja', 'python', 'web', 'thoughts']
 summary: "Status update on Jinja and django templates and why it's not a big
 deal that django has a limiting templating engine."
+facets:
+  mood: {reflective: 0.92}
+  scale: {craft: 0.97}
+  time: {present: 0.78, past: 0.12, future: 0.1}
+  ai: {not_ai: 1}
+  imagery: {none: 0.23, body: 0.2, building: 0.14, air: 0.13, light: 0.11}
+  stance: {observer: 0.84, advocate: 0.11}
+  actor: {individual: 0.47, idea: 0.3, group: 0.19}
+  ending: {call: 0.96}
+  tension: 0.28
+  certainty: 0.49
+  valence: 0.57
+  energy: 0.29
+  wander: 0.52
+  personal: 0.49
+  humor: 0.27
+  technical: 0.54
 ---
 
 # Opinionated Frameworks

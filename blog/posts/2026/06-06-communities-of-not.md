@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'community', 'ai']
 summary: "On the strange hostility that grows in communities built around abstinence."
+facets:
+  mood: {reflective: 0.81, worried: 0.1}
+  scale: {community: 0.97}
+  time: {present: 0.95}
+  ai: {community: 0.91}
+  imagery: {crowd: 0.92}
+  stance: {critic: 0.73, advocate: 0.26}
+  actor: {group: 1}
+  ending: {call: 0.98}
+  tension: 0.91
+  certainty: 0.79
+  valence: 0.48
+  energy: 0.38
+  wander: 0.33
+  personal: 0.3
+  humor: 0.14
+  technical: 0.25
 ---
 
 # Communities of Not

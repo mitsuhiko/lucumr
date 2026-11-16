@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'web', 'tooling', 'tutorial', 'networking']
 summary: "A re-introduction to socket activation with listenfd/systemfd."
+facets:
+  mood: {matter_of_fact: 0.92}
+  scale: {craft: 1}
+  time: {present: 0.77, past: 0.21}
+  ai: {not_ai: 1}
+  imagery: {none: 0.96}
+  stance: {teacher: 0.55, builder: 0.45}
+  actor: {individual: 0.69, machine: 0.21, idea: 0.1}
+  ending: {open: 0.44, call: 0.41, practical: 0.13}
+  tension: 0.01
+  certainty: 0.83
+  valence: 0.66
+  energy: 0.3
+  wander: 0.13
+  personal: 0.49
+  humor: 0.1
+  technical: 0.78
 ---
 
 # Automatic Server Reloading in Rust on Change: What is listenfd/systemfd?

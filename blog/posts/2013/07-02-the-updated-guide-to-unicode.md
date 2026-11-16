@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'unicode', 'tutorial']
 summary: "An updated guide on how to deal with unicode on Python 2 and 3."
+facets:
+  mood: {matter_of_fact: 0.51, angry: 0.32, reflective: 0.12}
+  scale: {craft: 1}
+  time: {present: 0.81, past: 0.18}
+  ai: {not_ai: 1}
+  imagery: {none: 0.72, water: 0.1, road: 0.1}
+  stance: {teacher: 0.98}
+  actor: {idea: 0.65, individual: 0.21, machine: 0.11}
+  ending: {practical: 0.6, resolved: 0.38}
+  tension: 0.11
+  certainty: 0.8
+  valence: 0.37
+  energy: 0.47
+  wander: 0.28
+  personal: 0.45
+  humor: 0.25
+  technical: 0.96
 ---
 
 # The Updated Guide to Unicode on Python
@@ -69,11 +86,11 @@ The following code example shows that the bytes object is very different
 of the string object indeed:
 
 ```pycon
->>> 'key=%s' % 'value'
+>>> "key=%s" % "value"
 'key=value'
->>> 'key=%s' % b'value'
+>>> "key=%s" % b"value"
 "key=b'value'"
->>> b'key=%s' % b'value'
+>>> b"key=%s" % b"value"
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: unsupported operand type(s) for %: 'bytes' and 'bytes'
@@ -81,11 +98,11 @@ TypeError: unsupported operand type(s) for %: 'bytes' and 'bytes'
 '10'
 >>> bytes(10)
 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
->>> list('foo')
+>>> list("foo")
 ['f', 'o', 'o']
->>> list(b'foo')
+>>> list(b"foo")
 [102, 111, 111]
->>> 'foo' == b'foo'
+>>> "foo" == b"foo"
 False
 ```
 
@@ -96,9 +113,9 @@ interchangeably.  For instance all the file system APIs operate on both
 unicode and bytes:
 
 ```pycon
->>> os.listdir('/tmp/test')
+>>> os.listdir("/tmp/test")
 ['Scheiß_Encoding']
->>> os.listdir(b'/tmp/test')
+>>> os.listdir(b"/tmp/test")
 [b'Schei\xc3\x9f_Encoding']
 ```
 
@@ -107,7 +124,7 @@ of spreading further.  For instance opening a file will set the name
 attribute to a "string" of that type:
 
 ```pycon
->>> open(b'/tmp/test/Schei\xc3\x9f_Encoding').name
+>>> open(b"/tmp/test/Schei\xc3\x9f_Encoding").name
 b'/tmp/test/Schei\xc3\x9f_Encoding'
 ```
 
@@ -119,9 +136,9 @@ It's not just file operations, it also happens on other APIs like the
 urllib parsing module which can produce both bytes and unicode strings:
 
 ```pycon
->>> x.parse_qs(b'foo=bar')
+>>> x.parse_qs(b"foo=bar")
 {b'foo': [b'bar']}
->>> x.parse_qs('foo=bar')
+>>> x.parse_qs("foo=bar")
 {'foo': ['bar']}
 ```
 
@@ -184,7 +201,7 @@ guarantees that a file opened in text mode and without a defined encoding
 is UTF-8.  So do the world a favor and open text files like this:
 
 ```python
-with open(filename, 'r', encoding='utf-8') as f:
+with open(filename, "r", encoding="utf-8") as f:
     ...
 ```
 
@@ -215,13 +232,14 @@ The following logic has to be applied to properly re-decode them to the
 actual character set:
 
 ```python
-def wsgi_decoding_dance(s, charset='utf-8', errors='replace'):
-    return s.encode('latin1').decode(charset, errors)
+def wsgi_decoding_dance(s, charset="utf-8", errors="replace"):
+    return s.encode("latin1").decode(charset, errors)
 
-def wsgi_encoding_dance(s, charset='utf-8', errors='replace'):
+
+def wsgi_encoding_dance(s, charset="utf-8", errors="replace"):
     if isinstance(s, bytes):
-        return s.decode('latin1', errors)
-    return s.encode(charset).decode('latin1', errors)
+        return s.decode("latin1", errors)
+    return s.encode(charset).decode("latin1", errors)
 ```
 
 This logic is not just required for WSGI however, the same requirement
@@ -241,8 +259,8 @@ guarantee it because the underlying system does not fully enforce that.
 This functionality is provided by the `'surrogateescape'` error handler:
 
 ```pycon
->>> letter = '\N{LATIN CAPITAL LETTER U WITH DIAERESIS}'.encode('latin1')
->>> decoded_letter = letter.decode('utf-8', 'surrogateescape')
+>>> letter = "\N{LATIN CAPITAL LETTER U WITH DIAERESIS}".encode("latin1")
+>>> decoded_letter = letter.decode("utf-8", "surrogateescape")
 >>> decoded_letter
 '\udcdc'
 ```
@@ -252,7 +270,7 @@ unicode based filesystem functions.  If you try to encode such a string to
 `utf-8` for instance you will receive an `UnicodeEncodeError`:
 
 ```pycon
->>> decoded_letter.encode('utf-8')
+>>> decoded_letter.encode("utf-8")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeEncodeError: 'utf-8' codec can't encode character
@@ -286,15 +304,16 @@ detect that error when it happens the issue becomes much easier to debug
 These functions might be useful:
 
 ```python
-def remove_surrogate_escaping(s, method='ignore'):
-    assert method in ('ignore', 'replace'), 'invalid removal method'
-    return s.encode('utf-8', method).decode('utf-8')
+def remove_surrogate_escaping(s, method="ignore"):
+    assert method in ("ignore", "replace"), "invalid removal method"
+    return s.encode("utf-8", method).decode("utf-8")
+
 
 def is_surrogate_escaped(s):
     try:
-        s.encode('utf-8')
+        s.encode("utf-8")
     except UnicodeEncodeError as e:
-        if e.reason == 'surrogates not allowed':
+        if e.reason == "surrogates not allowed":
             return True
         raise
     return False
@@ -428,9 +447,9 @@ def normalize_string_tuple(tup):
     is_text = isinstance(next(tupiter, None), str)
     for arg in tupiter:
         if isinstance(arg, str) != is_text:
-            raise TypeError('Cannot mix str and bytes arguments (got %s)'
-                % repr(tup))
+            raise TypeError("Cannot mix str and bytes arguments (got %s)" % repr(tup))
     return tup
+
 
 def make_literal_wrapper(reference):
     """Given a reference string it returns a function that can be
@@ -439,7 +458,7 @@ def make_literal_wrapper(reference):
     """
     if isinstance(reference, str):
         return lambda x: x
-    return lambda x: x.encode('ascii')
+    return lambda x: x.encode("ascii")
 ```
 
 These functions together go quite far to make APIs work for both strings
@@ -449,22 +468,21 @@ helpers:
 
 ```python
 def url_unparse(components):
-    scheme, netloc, path, query, fragment = \
-        normalize_string_tuple(components)
+    scheme, netloc, path, query, fragment = normalize_string_tuple(components)
     s = make_literal_wrapper(scheme)
-    url = s('')
-    if netloc or (scheme and path.startswith(s('/'))):
-        if path and path[:1] != s('/'):
-            path = s('/') + path
-        url = s('//') + (netloc or s('')) + path
+    url = s("")
+    if netloc or (scheme and path.startswith(s("/"))):
+        if path and path[:1] != s("/"):
+            path = s("/") + path
+        url = s("//") + (netloc or s("")) + path
     elif path:
         url += path
     if scheme:
-        url = scheme + s(':') + url
+        url = scheme + s(":") + url
     if query:
-        url = url + s('?') + query
+        url = url + s("?") + query
     if fragment:
-        url = url + s('#') + fragment
+        url = url + s("#") + fragment
     return url
 ```
 
@@ -484,28 +502,31 @@ def is_text_reader(s):
     """
     return type(s.read(0)) is str
 
+
 def is_bytes_reader(s):
     """Given a file object open for reading this function checks if
     the reader is bytes based.
     """
     return type(s.read(0)) is bytes
 
+
 def is_text_writer(s):
     """Given a file object open for writing this function checks if
     the reader is text based.
     """
     try:
-        s.write('')
+        s.write("")
         return True
     except TypeError:
         return False
+
 
 def is_bytes_writer(s):
     """Given a file object open for writing this function checks if
     the reader is bytes based.
     """
     try:
-        s.write(b'')
+        s.write(b"")
         return True
     except TypeError:
         return False

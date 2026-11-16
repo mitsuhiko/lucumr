@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'python', 'tooling']
 summary: "Exploration into providing MCPs with the most powerful of all tools: code."
+facets:
+  mood: {reflective: 0.73, matter_of_fact: 0.16}
+  scale: {craft: 1}
+  time: {present: 0.63, future: 0.23, past: 0.14}
+  ai: {agents: 0.99}
+  imagery: {none: 0.71, body: 0.1}
+  stance: {advocate: 0.51, builder: 0.48}
+  actor: {individual: 0.39, idea: 0.35, machine: 0.26}
+  ending: {open: 0.95}
+  tension: 0.27
+  certainty: 0.65
+  valence: 0.65
+  energy: 0.45
+  wander: 0.4
+  personal: 0.5
+  humor: 0.31
+  technical: 0.89
 ---
 
 # Your MCP Doesn't Need 30 Tools: It Needs Code
@@ -109,8 +126,8 @@ functions!  That's a lot.  But many of these cannot be used in isolation well
 anyway.  Take this motivating example from the docs:
 
 ```python
-child = pexpect.spawn('scp foo user@example.com:.')
-child.expect('Password:')
+child = pexpect.spawn("scp foo user@example.com:.")
+child.expect("Password:")
 child.sendline(mypassword)
 ```
 

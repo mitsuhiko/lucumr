@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'engineering', 'life', 'web']
 summary: "Why ugly and dumb code sometimes blind sights engineers from the"
+facets:
+  mood: {reflective: 0.81, conflicted: 0.19}
+  scale: {craft: 0.86, self: 0.12}
+  time: {past: 1}
+  ai: {not_ai: 1}
+  imagery: {building: 0.68, body: 0.15, stone: 0.12}
+  stance: {observer: 0.57, advocate: 0.33}
+  actor: {individual: 0.41, idea: 0.33, company: 0.24}
+  ending: {resolved: 0.67, open: 0.31}
+  tension: 0.82
+  certainty: 0.76
+  valence: 0.63
+  energy: 0.37
+  wander: 0.43
+  personal: 0.65
+  humor: 0.26
+  technical: 0.72
 ---
 
 # Ugly Code and Dumb Things

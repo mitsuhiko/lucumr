@@ -123,7 +123,11 @@ class LiveReloadHandler(SimpleHTTPRequestHandler):
                     content = full_path.read_text(encoding="utf-8")
 
                     # Inject script before closing </body> tag, or at end if no </body>
-                    if "</body>" in content:
+                    # (not for ?noreload: a headless browser taking a screenshot
+                    # would wait for the event stream forever)
+                    if "noreload" in parsed_path.query:
+                        pass
+                    elif "</body>" in content:
                         content = content.replace("</body>", f"{RELOAD_SCRIPT}</body>")
                     else:
                         content += RELOAD_SCRIPT

@@ -1,6 +1,23 @@
 ---
 tags: ['culture', 'thoughts']
 summary: "About my love to progressive metal and rock."
+facets:
+  mood: {matter_of_fact: 0.4, reflective: 0.32, hopeful: 0.17, playful: 0.11}
+  scale: {self: 0.49, society: 0.47}
+  time: {present: 0.73, past: 0.22}
+  ai: {not_ai: 1}
+  imagery: {none: 0.37, road: 0.27, water: 0.16}
+  stance: {advocate: 1}
+  actor: {individual: 0.84}
+  ending: {call: 0.99}
+  tension: 0.12
+  certainty: 0.78
+  valence: 0.67
+  energy: 0.4
+  wander: 0.32
+  personal: 0.52
+  humor: 0.14
+  technical: 0.28
 ---
 
 # There's Music, And then there is Progressive

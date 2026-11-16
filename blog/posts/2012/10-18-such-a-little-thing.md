@@ -3,6 +3,23 @@ tags: ['rust', 'thoughts']
 summary: "Look at a tiny syntax detail that shows up in current versions of rust
 that has profound implications on how the language deals with almost
 everything being an expression."
+facets:
+  mood: {hopeful: 0.68, playful: 0.21}
+  scale: {craft: 0.99}
+  time: {present: 0.9}
+  ai: {not_ai: 1}
+  imagery: {none: 0.7, road: 0.11}
+  stance: {advocate: 0.99}
+  actor: {idea: 0.88}
+  ending: {resolved: 0.99}
+  tension: 0.37
+  certainty: 0.98
+  valence: 0.85
+  energy: 0.52
+  wander: 0.47
+  personal: 0.46
+  humor: 0.37
+  technical: 0.91
 ---
 
 # Such a Little Thing: The Semicolon in Rust
@@ -67,8 +84,7 @@ First in Python:
 
 ```pycon
 >>> def power_it(x):
-...  return x ** 2
-...
+...     return x**2
 >>> map(power_it, [1, 2, 3, 4])
 [1, 4, 9, 16]
 ```
@@ -105,9 +121,19 @@ foo()
 On a syntax level this is the representation:
 
 ```python
-Module(body=[Expr(value=Call(func=Name(id='foo', ctx=Load()),
-                             args=[], keywords=[],
-                             starargs=None, kwargs=None))])
+Module(
+    body=[
+        Expr(
+            value=Call(
+                func=Name(id="foo", ctx=Load()),
+                args=[],
+                keywords=[],
+                starargs=None,
+                kwargs=None,
+            )
+        )
+    ]
+)
 ```
 
 The call appears on module level, a module has multiple statements in the

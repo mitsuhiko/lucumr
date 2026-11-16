@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'api', 'thoughts', 'engineering']
 summary: "Maybe the LLM message APIs should be rethought as a synchronization problem."
+facets:
+  mood: {reflective: 0.89}
+  scale: {craft: 0.93}
+  time: {future: 0.62, present: 0.37}
+  ai: {models: 0.6, agents: 0.39}
+  imagery: {none: 0.62, building: 0.16, road: 0.11}
+  stance: {critic: 0.48, advocate: 0.47}
+  actor: {idea: 0.46, company: 0.34, individual: 0.1}
+  ending: {open: 1}
+  tension: 0.26
+  certainty: 0.53
+  valence: 0.36
+  energy: 0.39
+  wander: 0.34
+  personal: 0.46
+  humor: 0.1
+  technical: 0.7
 ---
 
 # LLM APIs are a Synchronization Problem

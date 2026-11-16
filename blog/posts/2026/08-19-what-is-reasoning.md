@@ -1,6 +1,23 @@
 ---
 tags: ['ai']
 summary: "A short summary of how reasoning traces work."
+facets:
+  mood: {matter_of_fact: 0.89}
+  scale: {craft: 0.68, industry: 0.23}
+  time: {present: 0.95}
+  ai: {models: 1}
+  imagery: {none: 0.77}
+  stance: {teacher: 0.99}
+  actor: {idea: 0.46, machine: 0.37, individual: 0.11}
+  ending: {open: 0.51, resolved: 0.3, practical: 0.19}
+  tension: 0.1
+  certainty: 0.59
+  valence: 0.54
+  energy: 0.35
+  wander: 0.41
+  personal: 0.31
+  humor: 0.34
+  technical: 0.76
 ---
 
 # What Is Reasoning

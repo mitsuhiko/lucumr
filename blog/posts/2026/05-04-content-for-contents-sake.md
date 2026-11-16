@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "Why are so many interactions online terrible now?"
+facets:
+  mood: {worried: 0.86, angry: 0.14}
+  scale: {society: 0.81}
+  time: {present: 0.88, future: 0.11}
+  ai: {writing: 0.98}
+  imagery: {body: 0.3, none: 0.22, fire: 0.15, building: 0.1}
+  stance: {critic: 0.93}
+  actor: {machine: 0.81}
+  ending: {practical: 0.73, call: 0.22}
+  tension: 0.82
+  certainty: 0.57
+  valence: 0.18
+  energy: 0.69
+  wander: 0.45
+  personal: 0.65
+  humor: 0.32
+  technical: 0.49
 ---
 
 # Content for Content's Sake

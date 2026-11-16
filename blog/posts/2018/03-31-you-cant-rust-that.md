@@ -2,6 +2,23 @@
 tags: ['rust', 'engineering']
 summary: "Some tips for how to be more productive in Rust by avoiding situations you
 cannot solve in Rust."
+facets:
+  mood: {matter_of_fact: 0.54, reflective: 0.4}
+  scale: {craft: 0.99}
+  time: {past: 0.75, present: 0.23}
+  ai: {not_ai: 1}
+  imagery: {road: 0.49, none: 0.26, body: 0.18}
+  stance: {teacher: 0.98}
+  actor: {individual: 0.52, idea: 0.46}
+  ending: {practical: 0.95}
+  tension: 0.1
+  certainty: 0.9
+  valence: 0.68
+  energy: 0.41
+  wander: 0.21
+  personal: 0.48
+  humor: 0.24
+  technical: 0.91
 ---
 
 # You can't Rust that

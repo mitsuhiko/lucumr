@@ -1,6 +1,23 @@
 ---
 tags: ['hardware', 'networking']
 summary: "A word of warning on USB-C/Thunderbolt hubs with ethernet ports."
+facets:
+  mood: {angry: 0.66, reflective: 0.21, matter_of_fact: 0.11}
+  scale: {self: 0.81, craft: 0.13}
+  time: {past: 0.67, present: 0.33}
+  ai: {not_ai: 1}
+  imagery: {none: 0.43, water: 0.26, body: 0.11, fire: 0.1}
+  stance: {witness: 0.84, observer: 0.14}
+  actor: {machine: 0.43, individual: 0.4, idea: 0.15}
+  ending: {call: 0.71, practical: 0.18, open: 0.11}
+  tension: 0.08
+  certainty: 0.32
+  valence: 0.32
+  energy: 0.51
+  wander: 0.5
+  personal: 0.54
+  humor: 0.29
+  technical: 0.68
 ---
 
 # USB-C Hubs and Ethernet

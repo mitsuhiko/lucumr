@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'thoughts', 'types', 'history', 'engineering']
 summary: "Musings about the changes to Python over the years, particularly typing."
+facets:
+  mood: {reflective: 0.49, worried: 0.21, conflicted: 0.2, angry: 0.1}
+  scale: {self: 0.68, craft: 0.32}
+  time: {past: 1}
+  ai: {not_ai: 1}
+  imagery: {road: 0.39, growth: 0.2, air: 0.15, body: 0.1}
+  stance: {critic: 0.54, observer: 0.28, witness: 0.1}
+  actor: {idea: 0.38, individual: 0.32, group: 0.3}
+  ending: {open: 0.77, practical: 0.15}
+  tension: 0.88
+  certainty: 0.74
+  valence: 0.41
+  energy: 0.55
+  wander: 0.57
+  personal: 0.71
+  humor: 0.28
+  technical: 0.52
 ---
 
 # Untyped Python: The Python That Was

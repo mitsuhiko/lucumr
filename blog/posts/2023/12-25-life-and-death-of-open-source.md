@@ -1,6 +1,23 @@
 ---
 tags: ['opensource', 'thoughts', 'business', 'hardware']
 summary: "More thoughts on Open Source licensing and companies."
+facets:
+  mood: {reflective: 0.67, conflicted: 0.14, worried: 0.1}
+  scale: {community: 0.71, industry: 0.28}
+  time: {present: 0.81, future: 0.18}
+  ai: {not_ai: 1}
+  imagery: {none: 0.36, body: 0.29, building: 0.16, growth: 0.11}
+  stance: {advocate: 0.87}
+  actor: {company: 0.99}
+  ending: {open: 0.51, resolved: 0.4}
+  tension: 0.85
+  certainty: 0.85
+  valence: 0.51
+  energy: 0.51
+  wander: 0.5
+  personal: 0.57
+  humor: 0.17
+  technical: 0.44
 ---
 
 # The Life and Death of Open Source Companies

@@ -1,6 +1,23 @@
 ---
 tags: ['life', 'thoughts', 'covid19', 'sentry']
 summary: "What I learned about remote work after Covid and why it's so hard."
+facets:
+  mood: {reflective: 0.9}
+  scale: {industry: 0.51, self: 0.48}
+  time: {past: 0.87}
+  ai: {not_ai: 1}
+  imagery: {building: 0.63, body: 0.25, crowd: 0.1}
+  stance: {advocate: 0.59, witness: 0.24}
+  actor: {company: 0.37, individual: 0.31, state: 0.14, group: 0.1}
+  ending: {resolved: 0.82, open: 0.16}
+  tension: 0.47
+  certainty: 0.8
+  valence: 0.46
+  energy: 0.4
+  wander: 0.45
+  personal: 0.73
+  humor: 0.08
+  technical: 0.23
 ---
 
 # Post Covid Remote Work Doesn't Work As Well

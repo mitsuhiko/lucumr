@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'pi', 'announcement']
 summary: "Local models need focus and polish."
+facets:
+  mood: {hopeful: 0.6, angry: 0.36}
+  scale: {craft: 0.91}
+  time: {future: 0.92}
+  ai: {local: 0.98}
+  imagery: {building: 0.4, none: 0.27}
+  stance: {builder: 0.57, advocate: 0.42}
+  actor: {individual: 0.9}
+  ending: {call: 0.71, practical: 0.29}
+  tension: 0.35
+  certainty: 0.85
+  valence: 0.7
+  energy: 0.59
+  wander: 0.3
+  personal: 0.54
+  humor: 0.31
+  technical: 0.72
 ---
 
 # Pushing Local Models With Focus And Polish

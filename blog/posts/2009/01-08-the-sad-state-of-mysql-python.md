@@ -1,6 +1,23 @@
 ---
 tags: ['databases', 'python']
 summary: "Old blog post about the broken state of the MySQL python module."
+facets:
+  mood: {worried: 0.73, angry: 0.26}
+  scale: {craft: 0.67, community: 0.32}
+  time: {present: 0.93}
+  ai: {not_ai: 1}
+  imagery: {body: 0.48, none: 0.44}
+  stance: {critic: 0.89}
+  actor: {individual: 0.44, machine: 0.22, idea: 0.17, group: 0.11}
+  ending: {practical: 0.98}
+  tension: 0.17
+  certainty: 0.56
+  valence: 0.18
+  energy: 0.51
+  wander: 0.41
+  personal: 0.5
+  humor: 0.28
+  technical: 0.63
 ---
 
 # The Sad State of MySQL Python

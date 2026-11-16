@@ -1,6 +1,23 @@
 ---
 tags: ['packaging', 'thoughts', 'security', 'opensource']
 summary: "More thoughts on supply chain and package managers."
+facets:
+  mood: {conflicted: 0.73, worried: 0.22}
+  scale: {community: 0.94}
+  time: {future: 0.96}
+  ai: {not_ai: 1}
+  imagery: {body: 0.37, none: 0.33, road: 0.18}
+  stance: {critic: 0.55, advocate: 0.41}
+  actor: {company: 0.86}
+  ending: {open: 0.69, resolved: 0.26}
+  tension: 0.83
+  certainty: 0.55
+  valence: 0.47
+  energy: 0.45
+  wander: 0.42
+  personal: 0.49
+  humor: 0.2
+  technical: 0.51
 ---
 
 # Congratulations: We Now Have Opinions on Your Open Source Contributions

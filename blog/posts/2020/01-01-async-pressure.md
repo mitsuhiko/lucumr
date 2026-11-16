@@ -1,6 +1,23 @@
 ---
 tags: ['async', 'python']
 summary: "An introduction to back pressure in systems and why it matters."
+facets:
+  mood: {worried: 0.38, angry: 0.31, matter_of_fact: 0.17, reflective: 0.1}
+  scale: {craft: 1}
+  time: {present: 0.78, future: 0.16}
+  ai: {not_ai: 1}
+  imagery: {body: 0.51, water: 0.42}
+  stance: {advocate: 0.66, teacher: 0.27}
+  actor: {idea: 0.91}
+  ending: {call: 1}
+  tension: 0.19
+  certainty: 0.87
+  valence: 0.28
+  energy: 0.51
+  wander: 0.38
+  personal: 0.24
+  humor: 0.42
+  technical: 0.8
 ---
 
 # I'm not feeling the async pressure
@@ -94,6 +111,7 @@ handful of situations where we accidentally forgot about back pressure:
 ```python3
 from asyncio import start_server, run
 
+
 async def on_client_connected(reader, writer):
     while True:
         data = await reader.readline()
@@ -101,10 +119,12 @@ async def on_client_connected(reader, writer):
             break
         writer.write(data)
 
+
 async def server():
-    srv = await start_server(on_client_connected, '127.0.0.1', 8888)
+    srv = await start_server(on_client_connected, "127.0.0.1", 8888)
     async with srv:
         await srv.serve_forever()
+
 
 run(server())
 ```
@@ -208,6 +228,7 @@ from asyncio.sync import Semaphore
 
 semaphore = Semaphore(200)
 
+
 async def handle_request(request):
     await semaphore.acquire()
     try:
@@ -232,6 +253,7 @@ semaphore how many tokens are left, then we could do something like this:
 from hypothetical_asyncio.sync import Semaphore, Service
 
 semaphore = Semaphore(200)
+
 
 class RequestHandlerService(Service):
     async def handle(self, request):

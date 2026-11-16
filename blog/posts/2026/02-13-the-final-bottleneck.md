@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'engineering']
 summary: "AI speeds up writing code, but accountability and review capacity still impose hard limits."
+facets:
+  mood: {worried: 0.52, reflective: 0.35, conflicted: 0.13}
+  scale: {craft: 0.57, community: 0.28, industry: 0.11}
+  time: {present: 0.57, future: 0.36}
+  ai: {community: 0.81, agents: 0.12}
+  imagery: {water: 0.92}
+  stance: {observer: 0.67, critic: 0.25}
+  actor: {machine: 0.6, idea: 0.27, group: 0.1}
+  ending: {open: 0.81, resolved: 0.19}
+  tension: 0.57
+  certainty: 0.24
+  valence: 0.33
+  energy: 0.51
+  wander: 0.47
+  personal: 0.49
+  humor: 0.2
+  technical: 0.44
 ---
 
 # The Final Bottleneck

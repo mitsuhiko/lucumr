@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'engineering']
 summary: "Why unsafe Rust is a complex and user unfriendly experience."
+facets:
+  mood: {angry: 0.57, worried: 0.4}
+  scale: {craft: 0.98}
+  time: {present: 0.54, past: 0.45}
+  ai: {not_ai: 1}
+  imagery: {none: 0.84, road: 0.11}
+  stance: {critic: 0.83, teacher: 0.11}
+  actor: {group: 0.46, individual: 0.3, idea: 0.2}
+  ending: {open: 0.57, resolved: 0.38}
+  tension: 0.47
+  certainty: 0.62
+  valence: 0.22
+  energy: 0.5
+  wander: 0.39
+  personal: 0.54
+  humor: 0.15
+  technical: 0.97
 ---
 
 # Uninitialized Memory: Unsafe Rust is Too Hard

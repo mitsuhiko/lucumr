@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "What is AI generated text anyways?"
+facets:
+  mood: {reflective: 0.84, conflicted: 0.1}
+  scale: {industry: 0.89}
+  time: {present: 0.59, past: 0.4}
+  ai: {writing: 1}
+  imagery: {none: 0.73, road: 0.19}
+  stance: {builder: 0.55, observer: 0.34}
+  actor: {individual: 0.42, machine: 0.34, company: 0.18}
+  ending: {open: 1}
+  tension: 0.53
+  certainty: 0.6
+  valence: 0.44
+  energy: 0.39
+  wander: 0.35
+  personal: 0.51
+  humor: 0.24
+  technical: 0.51
 ---
 
 # Interpreting Pangram

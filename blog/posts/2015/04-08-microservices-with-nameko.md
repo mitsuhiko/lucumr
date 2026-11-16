@@ -2,6 +2,23 @@
 tags: ['python', 'networking']
 summary: "A basic overview of building service oriented architecture like
 microservices with the help of nameko."
+facets:
+  mood: {hopeful: 0.46, matter_of_fact: 0.45}
+  scale: {craft: 0.99}
+  time: {present: 0.97}
+  ai: {not_ai: 1}
+  imagery: {none: 0.43, body: 0.21, building: 0.17, air: 0.13}
+  stance: {advocate: 0.91}
+  actor: {idea: 0.49, machine: 0.22, company: 0.11, individual: 0.1}
+  ending: {call: 0.95}
+  tension: 0.02
+  certainty: 0.84
+  valence: 0.75
+  energy: 0.34
+  wander: 0.28
+  personal: 0.4
+  humor: 0.17
+  technical: 0.78
 ---
 
 # Nameko for Microservices
@@ -81,8 +98,9 @@ So how does that look in practice?  Something like this:
 ```python
 from nameko.rpc import rpc
 
+
 class HelloWorldService(object):
-    name = 'helloworld'
+    name = "helloworld"
 
     @rpc
     def hello(self, name):
@@ -97,7 +115,7 @@ helper that launches an interactive Python shell with an `n` object that
 provides RPC access:
 
 ```pycon
->>> n.rpc.helloworld.hello(name='John')
+>>> n.rpc.helloworld.hello(name="John")
 u'Hello, John!'
 ```
 
@@ -148,13 +166,13 @@ import json
 from nameko.web.handlers import http
 from werkzeug.wrappers import Response
 
-class HttpServiceService(object):
-    name = 'helloworld'
 
-    @http('GET', '/get/<int:value>')
+class HttpServiceService(object):
+    name = "helloworld"
+
+    @http("GET", "/get/<int:value>")
     def get_method(self, request, value):
-        return Response(json.dumps({'value': value}),
-                        mimetype='application/json')
+        return Response(json.dumps({"value": value}), mimetype="application/json")
 ```
 
 The endpoint function can itself invoke other parts of the system via RPC
@@ -180,13 +198,15 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = "users"
     id = sa.Column(sa.Integer, primary_key=True)
     username = sa.Column(sa.String)
 
+
 class MyService(object):
-    name = 'myservice'
+    name = "myservice"
     session = Session(Base)
 
     @rpc
@@ -207,14 +227,14 @@ from nameko.extensions import DependencyProvider
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-class Session(DependencyProvider):
 
+class Session(DependencyProvider):
     def __init__(self, declarative_base):
         self.declarative_base = declarative_base
         self.sessions = WeakKeyDictionary()
 
     def get_dependency(self, worker_ctx):
-        db_uri = self.container.config['DATABASE_URL']
+        db_uri = self.container.config["DATABASE_URL"]
         engine = create_engine(db_uri)
         session_cls = sessionmaker(bind=engine)
         self.sessions[worker_ctx] = session = session_cls()

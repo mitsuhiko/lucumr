@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'thoughts']
 summary: "Read this with a grain of salt."
+facets:
+  mood: {angry: 0.73, conflicted: 0.22}
+  scale: {craft: 0.98}
+  time: {present: 0.72, future: 0.27}
+  ai: {not_ai: 1}
+  imagery: {none: 0.55, body: 0.38}
+  stance: {critic: 0.95}
+  actor: {individual: 0.67, idea: 0.25}
+  ending: {open: 0.53, resolved: 0.29, practical: 0.17}
+  tension: 0.2
+  certainty: 0.82
+  valence: 0.49
+  energy: 0.78
+  wander: 0.61
+  personal: 0.48
+  humor: 0.53
+  technical: 0.74
 ---
 
 # Why Python Sucks

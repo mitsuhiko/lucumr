@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'business', 'opensource']
 summary: "A discussion on purchase decisions and sustainable Open Source."
+facets:
+  mood: {reflective: 0.91}
+  scale: {industry: 0.75, community: 0.23}
+  time: {future: 0.84, present: 0.16}
+  ai: {not_ai: 1}
+  imagery: {none: 0.3, building: 0.27, crowd: 0.26}
+  stance: {advocate: 0.97}
+  actor: {company: 0.81, idea: 0.1}
+  ending: {call: 0.85, practical: 0.13}
+  tension: 0.3
+  certainty: 0.54
+  valence: 0.62
+  energy: 0.3
+  wander: 0.43
+  personal: 0.42
+  humor: 0.23
+  technical: 0.37
 ---
 
 # Accidental Spending: A Case For an Open Source Tax?

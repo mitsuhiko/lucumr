@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'unicode']
 summary: "A recap of a sad example of where the wrong conclusion was drawn."
+facets:
+  mood: {angry: 0.9}
+  scale: {craft: 0.96}
+  time: {past: 0.91}
+  ai: {not_ai: 1}
+  imagery: {body: 0.76, none: 0.17}
+  stance: {critic: 0.46, teacher: 0.32, advocate: 0.22}
+  actor: {idea: 0.69, individual: 0.17}
+  ending: {resolved: 0.97}
+  tension: 0.59
+  certainty: 0.97
+  valence: 0.29
+  energy: 0.66
+  wander: 0.4
+  personal: 0.41
+  humor: 0.37
+  technical: 0.97
 ---
 
 # Codec Confusion in Python
@@ -32,25 +49,27 @@ are roughly implemented like this:
 ```python
 import codecs
 
+
 class basestring(object):
     ...
-    def encode(self, encoding, errors='strict'):
+
+    def encode(self, encoding, errors="strict"):
         rv = codecs.lookup(encoding).encode(self, errors)[0]
         if not isinstance(rv, basestring):
-            raise TypeError('encoder did not return a string/unicode object')
+            raise TypeError("encoder did not return a string/unicode object")
         return rv
 
-    def decode(self, encoding, errors='strict'):
+    def decode(self, encoding, errors="strict"):
         rv = codecs.lookup(encoding).decode(self, errors)[0]
         if not isinstance(rv, basestring):
-            raise TypeError('encoder did not return a string/unicode object')
+            raise TypeError("encoder did not return a string/unicode object")
         return rv
 
-class str(basestring):
-    ...
 
-class unicode(basestring):
-    ...
+class str(basestring): ...
+
+
+class unicode(basestring): ...
 ```
 
 Alright, so they are just shortcuts for functionality hidden in another
@@ -67,7 +86,7 @@ on a simple example.  Alex was arguing against `str.encode` because of
 this:
 
 ```pycon
->>> '\xe2\x98\x83'.encode('utf-8')
+>>> "\xe2\x98\x83".encode("utf-8")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeDecodeError: 'ascii' codec can't decode byte 0xe2 in position 0: ordinal not in range(128)
@@ -80,7 +99,7 @@ get rid of the `encode` function on strings.  However there are
 legitimate cases for string to string encodings:
 
 ```pycon
->>> 'foo'.encode('base64')
+>>> "foo".encode("base64")
 'Zm9v\n'
 ```
 
@@ -103,7 +122,7 @@ Not only is that error message misleading, it also does not show up at all
 if the string does indeed fit into ascii:
 
 ```pycon
->>> 'foo'.encode('utf-8')
+>>> "foo".encode("utf-8")
 'foo'
 ```
 
@@ -118,13 +137,13 @@ interpreter and disable that behavior:
 >>> import sys
 >>> reload(sys)
 <module 'sys' (built-in)>
->>> sys.setdefaultencoding('undefined')
+>>> sys.setdefaultencoding("undefined")
 
->>> '\xe2\x98\x83'.encode('utf-8')
+>>> "\xe2\x98\x83".encode("utf-8")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeError: undefined encoding
->>> 'foo'.encode('utf-8')
+>>> "foo".encode("utf-8")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeError: undefined encoding

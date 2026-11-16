@@ -2,6 +2,23 @@
 tags: ['databases', 'thoughts', 'web']
 summary: "Some thoughts on why upserts are necessary to write reliable web
 applications."
+facets:
+  mood: {angry: 1}
+  scale: {craft: 0.99}
+  time: {present: 0.74, future: 0.23}
+  ai: {not_ai: 1}
+  imagery: {none: 0.94}
+  stance: {advocate: 1}
+  actor: {group: 0.46, idea: 0.39, individual: 0.1}
+  ending: {open: 0.79, resolved: 0.19}
+  tension: 0.59
+  certainty: 0.97
+  valence: 0.23
+  energy: 0.63
+  wander: 0.34
+  personal: 0.46
+  humor: 0.18
+  technical: 0.8
 ---
 
 # A Case for Upserts

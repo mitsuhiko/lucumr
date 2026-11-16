@@ -2,6 +2,23 @@
 tags: ['rust', 'python', 'tutorial']
 summary: "Are you a Python programmer and interested in Rust?  This article goes
 over the basics of making the jump."
+facets:
+  mood: {matter_of_fact: 0.76, hopeful: 0.22}
+  scale: {craft: 1}
+  time: {present: 0.95}
+  ai: {not_ai: 1}
+  imagery: {none: 0.54, stone: 0.14}
+  stance: {teacher: 0.99}
+  actor: {individual: 0.5, idea: 0.33, group: 0.14}
+  ending: {resolved: 0.52, practical: 0.32, open: 0.16}
+  tension: 0.04
+  certainty: 0.82
+  valence: 0.74
+  energy: 0.34
+  wander: 0.26
+  personal: 0.28
+  humor: 0.27
+  technical: 0.84
 ---
 
 # Rust for Python Programmers
@@ -79,7 +96,6 @@ added to itself.  First in Python:
 
 ```python
 class MyType(object):
-
     def __init__(self, value):
         self.value = value
 
@@ -227,10 +243,12 @@ What this means is that in Python you could do something like this:
 ```python
 leaks = []
 
+
 class MyType(object):
     def __add__(self, other):
         leaks.append(self)
         return self
+
 
 a = MyType() + MyType()
 ```

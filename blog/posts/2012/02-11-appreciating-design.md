@@ -2,6 +2,23 @@
 tags: ['design', 'thoughts']
 summary: "A few thoughts about how design on different levels and how users
 respond to it."
+facets:
+  mood: {reflective: 0.88}
+  scale: {craft: 0.74, community: 0.2}
+  time: {past: 0.97}
+  ai: {not_ai: 1}
+  imagery: {none: 0.45, building: 0.29, body: 0.14}
+  stance: {advocate: 0.98}
+  actor: {idea: 0.62, company: 0.21}
+  ending: {resolved: 0.47, open: 0.33, call: 0.16}
+  tension: 0.35
+  certainty: 0.79
+  valence: 0.5
+  energy: 0.45
+  wander: 0.52
+  personal: 0.57
+  humor: 0.21
+  technical: 0.59
 ---
 
 # Appreciating Design

@@ -2,6 +2,23 @@
 tags: ['python', 'tutorial']
 summary: "Some hidden features of the Python re module and the support machinery
 that drives it."
+facets:
+  mood: {matter_of_fact: 0.67, reflective: 0.15, playful: 0.13}
+  scale: {craft: 1}
+  time: {present: 0.79, past: 0.21}
+  ai: {not_ai: 1}
+  imagery: {none: 0.78, light: 0.11}
+  stance: {teacher: 0.52, builder: 0.42}
+  actor: {idea: 0.76, individual: 0.2}
+  ending: {practical: 0.89}
+  tension: 0.01
+  certainty: 0.84
+  valence: 0.7
+  energy: 0.4
+  wander: 0.35
+  personal: 0.42
+  humor: 0.26
+  technical: 0.98
 ---
 
 # Python's Hidden Regular Expression Gems
@@ -55,8 +72,8 @@ matching itself will be anchored to that position.
 In particular this means you can do something like this:
 
 ```pycon
->>> pattern = re.compile('bar')
->>> string = 'foobar'
+>>> pattern = re.compile("bar")
+>>> string = "foobar"
 >>> pattern.match(string) is None
 True
 >>> pattern.match(string, 3)
@@ -74,8 +91,8 @@ In addition to the matching Python can search which means it will skip
 ahead until it finds a match:
 
 ```pycon
->>> pattern = re.compile('bar')
->>> pattern.search('foobar')
+>>> pattern = re.compile("bar")
+>>> pattern.search("foobar")
 <_sre.SRE_Match object at 0x103c9a578>
 >>> _.start()
 3
@@ -95,9 +112,10 @@ then try one by one.  If none matches we skip a character ahead:
 
 ```python
 rules = [
-    ('bold', re.compile(r'\*\*')),
-    ('link', re.compile(r'\[\[(.*?)\]\]')),
+    ("bold", re.compile(r"\*\*")),
+    ("link", re.compile(r"\[\[(.*?)\]\]")),
 ]
+
 
 def tokenize(string):
     pos = 0
@@ -110,14 +128,14 @@ def tokenize(string):
             if match is not None:
                 start, end = match.span()
                 if start > last_end:
-                    yield 'text', string[last_end:start]
+                    yield "text", string[last_end:start]
                 yield tok, match.group()
                 last_end = pos = match.end()
                 break
         else:
             pos += 1
     if last_end < len(string):
-        yield 'text', string[last_end:]
+        yield "text", string[last_end:]
 ```
 
 This is not a particularly beautiful solution, and it's also not very
@@ -165,19 +183,39 @@ from sre_parse import Pattern, SubPattern, parse
 from sre_compile import compile as sre_compile
 from sre_constants import BRANCH, SUBPATTERN
 
-class Scanner(object):
 
+class Scanner(object):
     def __init__(self, rules, flags=0):
         pattern = Pattern()
         pattern.flags = flags
         pattern.groups = len(rules) + 1
 
         self.rules = [name for name, _ in rules]
-        self._scanner = sre_compile(SubPattern(pattern, [
-            (BRANCH, (None, [SubPattern(pattern, [
-                (SUBPATTERN, (group, parse(regex, flags, pattern))),
-            ]) for group, (_, regex) in enumerate(rules, 1)]))
-        ])).scanner
+        self._scanner = sre_compile(
+            SubPattern(
+                pattern,
+                [
+                    (
+                        BRANCH,
+                        (
+                            None,
+                            [
+                                SubPattern(
+                                    pattern,
+                                    [
+                                        (
+                                            SUBPATTERN,
+                                            (group, parse(regex, flags, pattern)),
+                                        ),
+                                    ],
+                                )
+                                for group, (_, regex) in enumerate(rules, 1)
+                            ],
+                        ),
+                    )
+                ],
+            )
+        ).scanner
 
     def scan(self, string, skip=False):
         sc = self._scanner(string)
@@ -193,19 +231,21 @@ class Scanner(object):
 So how do we use this?  Like this:
 
 ```python
-scanner = Scanner([
-    ('whitespace', r'\s+'),
-    ('plus', r'\+'),
-    ('minus', r'\-'),
-    ('mult', r'\*'),
-    ('div', r'/'),
-    ('num', r'\d+'),
-    ('paren_open', r'\('),
-    ('paren_close', r'\)'),
-])
+scanner = Scanner(
+    [
+        ("whitespace", r"\s+"),
+        ("plus", r"\+"),
+        ("minus", r"\-"),
+        ("mult", r"\*"),
+        ("div", r"/"),
+        ("num", r"\d+"),
+        ("paren_open", r"\("),
+        ("paren_close", r"\)"),
+    ]
+)
 
-for token, match in scanner.scan('(1 + 2) * 3'):
-    print (token, match.group())
+for token, match in scanner.scan("(1 + 2) * 3"):
+    print(token, match.group())
 ```
 
 In this form it will raise an `EOFError` in case it cannot lex something,
@@ -219,22 +259,25 @@ out which parts we skipped over.  So here the first example adjusted to
 do exactly that:
 
 ```python
-scanner = Scanner([
-    ('bold', r'\*\*'),
-    ('link', r'\[\[(.*?)\]\]'),
-])
+scanner = Scanner(
+    [
+        ("bold", r"\*\*"),
+        ("link", r"\[\[(.*?)\]\]"),
+    ]
+)
+
 
 def tokenize(string):
     pos = 0
     for rule, match in self.scan(string, skip=True):
-        hole = string[pos:match.start()]
+        hole = string[pos : match.start()]
         if hole:
-            yield 'text', hole
+            yield "text", hole
         yield rule, match.group()
         pos = match.end()
     hole = string[pos:]
     if hole:
-        yield 'text', hole
+        yield "text", hole
 ```
 
 ## Fixing up Groups

@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'thoughts', 'engineering', 'packaging']
 summary: "More musing on dependencies."
+facets:
+  mood: {worried: 0.74, angry: 0.16}
+  scale: {craft: 0.91}
+  time: {present: 0.94}
+  ai: {not_ai: 1}
+  imagery: {body: 0.54, none: 0.26}
+  stance: {critic: 0.95}
+  actor: {group: 0.56, individual: 0.2, idea: 0.13}
+  ending: {practical: 0.55, open: 0.42}
+  tension: 0.55
+  certainty: 0.7
+  valence: 0.28
+  energy: 0.49
+  wander: 0.28
+  personal: 0.47
+  humor: 0.26
+  technical: 0.81
 ---
 
 # Fat Rand: How Many Lines Do You Need To Generate A Random Number?

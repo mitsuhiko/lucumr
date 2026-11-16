@@ -2,6 +2,23 @@
 tags: ['web', 'thoughts', 'python', 'networking', 'flask']
 summary: "Why the real time web does not require changes on your web framework
 and why those changes are actually not at all what you want."
+facets:
+  mood: {matter_of_fact: 0.5, hopeful: 0.29, reflective: 0.15}
+  scale: {craft: 0.98}
+  time: {future: 0.91}
+  ai: {not_ai: 1}
+  imagery: {none: 0.51, fire: 0.15}
+  stance: {advocate: 1}
+  actor: {idea: 0.72, individual: 0.17}
+  ending: {call: 0.75, resolved: 0.17}
+  tension: 0.58
+  certainty: 0.94
+  valence: 0.74
+  energy: 0.43
+  wander: 0.32
+  personal: 0.43
+  humor: 0.2
+  technical: 0.75
 ---
 
 # Stateless and Proud in the Realtime World
@@ -113,8 +130,8 @@ def chat_application(connection):
     username = None
     while not connection.closed:
         event = connection.poll()
-        if event['type'] == 'whoami':
-            username = event['data']['username']
+        if event["type"] == "whoami":
+            username = event["data"]["username"]
         ...
 ```
 

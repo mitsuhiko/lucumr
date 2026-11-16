@@ -1,6 +1,23 @@
 ---
 tags: ['pi', 'ai', 'javascript']
 summary: "If you just need bash, why do you need codemode?"
+facets:
+  mood: {reflective: 0.55, matter_of_fact: 0.41}
+  scale: {craft: 0.99}
+  time: {present: 0.9}
+  ai: {agents: 0.97}
+  imagery: {body: 0.84}
+  stance: {teacher: 0.72, builder: 0.16, observer: 0.1}
+  actor: {machine: 0.53, company: 0.25, idea: 0.13}
+  ending: {open: 0.75, practical: 0.13, resolved: 0.12}
+  tension: 0.24
+  certainty: 0.69
+  valence: 0.64
+  energy: 0.39
+  wander: 0.34
+  personal: 0.44
+  humor: 0.19
+  technical: 0.93
 ---
 
 # What is Codemode

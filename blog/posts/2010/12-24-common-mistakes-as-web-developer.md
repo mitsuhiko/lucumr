@@ -2,6 +2,23 @@
 tags: ['web', 'python', 'security', 'engineering']
 summary: "A short list of common mistakes in Python web applications in terms of
 security and architecture."
+facets:
+  mood: {matter_of_fact: 0.5, angry: 0.4}
+  scale: {craft: 1}
+  time: {present: 0.62, future: 0.2, past: 0.18}
+  ai: {not_ai: 1}
+  imagery: {building: 0.51, none: 0.3, road: 0.1}
+  stance: {teacher: 0.44, critic: 0.37, advocate: 0.19}
+  actor: {individual: 0.61, idea: 0.32}
+  ending: {practical: 0.42, resolved: 0.39, open: 0.12}
+  tension: 0.21
+  certainty: 0.96
+  valence: 0.51
+  energy: 0.53
+  wander: 0.34
+  personal: 0.4
+  humor: 0.29
+  technical: 0.78
 ---
 
 # Common Mistakes as Python Web Developer
@@ -65,7 +82,7 @@ always always will you find code like this:
 ```python
 def upload_file(file):
     destination_file = os.path.join(UPLOAD_FOLDER, file.filename)
-    with open(destination_file, 'wb') as f:
+    with open(destination_file, "wb") as f:
         copy_fd(file, f)
 ```
 
@@ -75,9 +92,9 @@ doing:
 
 ```pycon
 >>> import os
->>> os.path.join('/var/www/uploads', '../foo')
+>>> os.path.join("/var/www/uploads", "../foo")
 '/var/www/uploads/../foo'
->>> os.path.join('/var/www/uploads', '/foo')
+>>> os.path.join("/var/www/uploads", "/foo")
 '/foo'
 ```
 
@@ -96,11 +113,11 @@ tricky.  At the very least you should do this:
 ```python
 import os, re
 
-_split = re.compile(r'[\0%s]' % re.escape(''.join(
-    [os.path.sep, os.path.altsep or ''])))
+_split = re.compile(r"[\0%s]" % re.escape("".join([os.path.sep, os.path.altsep or ""])))
+
 
 def secure_filename(path):
-    return _split.sub('', path)
+    return _split.sub("", path)
 ```
 
 This will remove any slashes and null bytes from the filename.  Why also
@@ -109,7 +126,7 @@ Python might not, but your code.  A nullbyte in the filename will trigger
 a `TypeError` which very few people are expecting:
 
 ```pycon
->>> open('\0')
+>>> open("\0")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: file() argument 1 must be encoded string without NULL bytes, not str
@@ -128,9 +145,10 @@ want the file to be in.  That's easy to prevent:
 ```python
 import posixpath
 
+
 def is_secure_path(path):
     path = posixpath.normpath(path)
-    return not path.startswith(('/', '../'))
+    return not path.startswith(("/", "../"))
 ```
 
 On windows the whole situation is more tricky (and I fell into that trap a
@@ -150,15 +168,15 @@ folder on POSIX and Windows:
 ```python
 import os
 
-non_slash_sep = [sep for sep in (os.path.sep, os.path.altsep)
-                 if sep not in (None, '/')]
+non_slash_sep = [sep for sep in (os.path.sep, os.path.altsep) if sep not in (None, "/")]
+
 
 def is_in_folder(filename):
     filename = os.path.normpath(filename)
     for sep in non_slash_seps:
         if sep in filename:
             return False
-    return os.path.isabs(filename) or filename.startswith('../')
+    return os.path.isabs(filename) or filename.startswith("../")
 ```
 
 The idea is that we consider the filenames to be in posix notation and

@@ -2,6 +2,23 @@
 tags: ['python', 'unicode', 'thoughts']
 summary: "Short overview of things that are nice about Python 3 and parts where
 I can't agree with the changes or it did not go far enough."
+facets:
+  mood: {angry: 0.99}
+  scale: {craft: 0.98}
+  time: {present: 0.47, past: 0.43, future: 0.1}
+  ai: {not_ai: 1}
+  imagery: {none: 0.76, body: 0.11}
+  stance: {critic: 1}
+  actor: {group: 0.57, individual: 0.29, idea: 0.13}
+  ending: {resolved: 0.98}
+  tension: 0.74
+  certainty: 0.95
+  valence: 0.22
+  energy: 0.68
+  wander: 0.48
+  personal: 0.55
+  humor: 0.2
+  technical: 0.86
 ---
 
 # Pros and Cons about Python 3
@@ -137,8 +154,8 @@ The fact that this code works is alarming already:
 
 ```python
 class Foo(Bar):
-  def foo(self):
-    super().foo()
+    def foo(self):
+        super().foo()
 ```
 
 Assuming you know Python used to work function invocation wise the fact
@@ -147,9 +164,11 @@ not work:
 
 ```python
 _super = super
+
+
 class Foo(Bar):
-  def foo(self):
-    _super().foo()
+    def foo(self):
+        _super().foo()
 ```
 
 That's just wrong. The use of the name of a global function (which btw I

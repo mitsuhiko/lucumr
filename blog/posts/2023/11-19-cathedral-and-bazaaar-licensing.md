@@ -1,6 +1,23 @@
 ---
 tags: ['opensource', 'thoughts', 'sentry', 'business']
 summary: "My personal commentary on Sentry's new FSL license."
+facets:
+  mood: {reflective: 0.66, hopeful: 0.24}
+  scale: {community: 0.91}
+  time: {present: 0.47, past: 0.37, future: 0.16}
+  ai: {not_ai: 0.99}
+  imagery: {building: 0.93}
+  stance: {advocate: 1}
+  actor: {company: 0.92}
+  ending: {open: 0.73, resolved: 0.26}
+  tension: 0.62
+  certainty: 0.88
+  valence: 0.72
+  energy: 0.43
+  wander: 0.48
+  personal: 0.51
+  humor: 0.07
+  technical: 0.41
 ---
 
 # FSL: A License For the Bazaar, Not the Cathedral

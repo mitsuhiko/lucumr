@@ -2,6 +2,23 @@
 tags: ['thoughts', 'rust', 'packaging', 'engineering', 'opensource']
 summary: "An update to my struggles accepting that the current explosion of
 the amount of dependencies is the best we can do."
+facets:
+  mood: {reflective: 0.69, worried: 0.29}
+  scale: {craft: 0.89, community: 0.1}
+  time: {future: 0.75, present: 0.21}
+  ai: {not_ai: 1}
+  imagery: {none: 0.61, fire: 0.14, building: 0.1}
+  stance: {advocate: 0.87}
+  actor: {idea: 0.42, group: 0.31, individual: 0.23}
+  ending: {practical: 0.84, open: 0.15}
+  tension: 0.34
+  certainty: 0.41
+  valence: 0.52
+  energy: 0.34
+  wander: 0.36
+  personal: 0.49
+  humor: 0.13
+  technical: 0.64
 ---
 
 # Updated Thoughts on Trust Scaling

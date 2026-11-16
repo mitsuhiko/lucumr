@@ -2,6 +2,23 @@
 tags: ['thoughts', 'os', 'community', 'opensource']
 summary: "Exploration into a human problem: the problem of simplifying complex
 matters."
+facets:
+  mood: {reflective: 0.72, angry: 0.16, hopeful: 0.11}
+  scale: {community: 0.99}
+  time: {present: 0.42, past: 0.34, future: 0.24}
+  ai: {not_ai: 0.99}
+  imagery: {crowd: 0.38, none: 0.26, body: 0.14}
+  stance: {advocate: 0.86, critic: 0.13}
+  actor: {group: 0.77, individual: 0.13}
+  ending: {call: 0.98}
+  tension: 0.74
+  certainty: 0.83
+  valence: 0.69
+  energy: 0.49
+  wander: 0.51
+  personal: 0.47
+  humor: 0.32
+  technical: 0.57
 ---
 
 # Things are not as easy as they seem

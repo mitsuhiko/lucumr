@@ -2,6 +2,23 @@
 tags: ['opensource', 'thoughts']
 summary: "My point of view on one of the most controversial topics in the
 open source world: licensing"
+facets:
+  mood: {reflective: 0.8, matter_of_fact: 0.15}
+  scale: {community: 0.78, craft: 0.1}
+  time: {past: 0.95}
+  ai: {not_ai: 1}
+  imagery: {body: 0.46, none: 0.23, road: 0.22}
+  stance: {advocate: 0.53, critic: 0.22, observer: 0.14}
+  actor: {individual: 0.74, idea: 0.24}
+  ending: {call: 0.47, practical: 0.39, resolved: 0.12}
+  tension: 0.57
+  certainty: 0.74
+  valence: 0.48
+  energy: 0.41
+  wander: 0.3
+  personal: 0.52
+  humor: 0.27
+  technical: 0.51
 ---
 
 # Are you sure you want to use GPL?

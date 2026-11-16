@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""Put the classifier's answers into the posts' frontmatter as ``facets:``.
+
+    scripts/art-facets [/tmp/art-facets-raw.json]
+
+The input is what ``scripts/art-classify.js`` wrote.  A choice becomes the
+labels with their probabilities (those below 0.1 are dropped, the top one is
+always kept), a score becomes a number in 0..1.  An existing ``facets:`` block
+is replaced; nothing else in the file is touched.
+"""
+
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+MIN_PROBABILITY = 0.1
+
+
+def facet_lines(answers, questions):
+    lines = ["facets:"]
+    for name, question in questions.items():
+        answer = answers[name]
+        if question["type"] == "choice":
+            ranked = sorted(answer["probabilities"].items(), key=lambda item: -item[1])
+            kept = [
+                (label, p)
+                for i, (label, p) in enumerate(ranked)
+                if i == 0 or p >= MIN_PROBABILITY
+            ]
+            inner = ", ".join(f"{label}: {round(p, 2)}" for label, p in kept)
+            lines.append(f"  {name}: {{{inner}}}")
+        else:
+            top = len(question["criteria"]) - 1
+            lines.append(f"  {name}: {round(min(max(answer['score'] / top, 0), 1), 2)}")
+    return lines
+
+
+def apply(path, lines):
+    text = path.read_text(encoding="utf-8")
+    match = re.match(r"---\n(.*?)\n---\n", text, re.DOTALL)
+    if not match:
+        raise ValueError(f"{path}: no frontmatter")
+    kept = []
+    skipping = False
+    for line in match.group(1).split("\n"):
+        if line.startswith("facets:"):
+            skipping = True
+        elif skipping and line.startswith((" ", "\t")):
+            continue
+        else:
+            skipping = False
+            kept.append(line)
+    header = "\n".join(kept + lines)
+    path.write_text(f"---\n{header}\n---\n{text[match.end() :]}", encoding="utf-8")
+
+
+def main():
+    source = Path(sys.argv[1] if len(sys.argv) > 1 else "/tmp/art-facets-raw.json")
+    questions = json.loads((ROOT / "generator" / "art_facets.json").read_text())[
+        "questions"
+    ]
+    done = 0
+    for result in json.loads(source.read_text()):
+        if not result.get("answers"):
+            print(f"skipped {result['file']}: {result.get('error')}")
+            continue
+        apply(ROOT / result["file"], facet_lines(result["answers"], questions))
+        done += 1
+    print(f"wrote facets into {done} posts")
+
+
+if __name__ == "__main__":
+    main()

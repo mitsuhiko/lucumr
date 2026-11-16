@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'python', 'community']
 summary: Vibe coders and self-tought ChatGPT users are programmers too.
+facets:
+  mood: {hopeful: 0.75, reflective: 0.24}
+  scale: {community: 0.98}
+  time: {future: 0.94}
+  ai: {community: 0.73, agents: 0.26}
+  imagery: {road: 0.64, crowd: 0.12}
+  stance: {advocate: 1}
+  actor: {machine: 0.53, group: 0.18, idea: 0.17, individual: 0.11}
+  ending: {call: 0.77, resolved: 0.2}
+  tension: 0.42
+  certainty: 0.74
+  valence: 0.75
+  energy: 0.41
+  wander: 0.47
+  personal: 0.55
+  humor: 0.15
+  technical: 0.33
 ---
 
 # Welcoming The Next Generation of Programmers

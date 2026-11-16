@@ -1,6 +1,23 @@
 ---
 tags: ['announcement', 'databases', 'engineering', 'ai']
 summary: Durable execution with just postgres.
+facets:
+  mood: {matter_of_fact: 0.54, playful: 0.42}
+  scale: {craft: 1}
+  time: {present: 0.98}
+  ai: {agents: 0.95}
+  imagery: {none: 0.49, road: 0.44}
+  stance: {builder: 0.98}
+  actor: {machine: 0.6, individual: 0.28, idea: 0.1}
+  ending: {resolved: 0.91}
+  tension: 0.14
+  certainty: 0.94
+  valence: 0.71
+  energy: 0.37
+  wander: 0.25
+  personal: 0.34
+  humor: 0.31
+  technical: 0.77
 ---
 
 # Absurd Workflows: Durable Execution With Just Postgres

@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'politics']
 summary: "Are we all going to die?"
+facets:
+  mood: {angry: 0.93}
+  scale: {society: 0.54, industry: 0.43}
+  time: {present: 0.63, future: 0.37}
+  ai: {risk: 0.67, society: 0.31}
+  imagery: {none: 0.26, body: 0.24, road: 0.21, fire: 0.13}
+  stance: {critic: 0.91}
+  actor: {company: 0.99}
+  ending: {open: 0.99}
+  tension: 0.79
+  certainty: 0.77
+  valence: 0.28
+  energy: 0.65
+  wander: 0.51
+  personal: 0.45
+  humor: 0.45
+  technical: 0.44
 ---
 
 # P(doom)

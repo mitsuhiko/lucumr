@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'types']
 summary: "In which I'm diving into some restrictions of the Rust type system involving closures."
+facets:
+  mood: {reflective: 0.52, angry: 0.25, conflicted: 0.11, worried: 0.1}
+  scale: {craft: 0.94}
+  time: {past: 0.81, present: 0.19}
+  ai: {not_ai: 1}
+  imagery: {road: 0.68, none: 0.1}
+  stance: {witness: 0.76, builder: 0.12}
+  actor: {individual: 0.8, idea: 0.18}
+  ending: {practical: 0.6, open: 0.33}
+  tension: 0.17
+  certainty: 0.21
+  valence: 0.23
+  energy: 0.48
+  wander: 0.47
+  personal: 0.6
+  humor: 0.4
+  technical: 0.98
 ---
 
 # You Can't Do That: Abstracting over Ownership in Rust with Higher-Rank Type Bounds. Or Can You?

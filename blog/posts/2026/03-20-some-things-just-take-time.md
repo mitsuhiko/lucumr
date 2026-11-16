@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'life']
 summary: "On friction, patience, and planting trees."
+facets:
+  mood: {reflective: 0.63, worried: 0.36}
+  scale: {industry: 0.67, self: 0.12, community: 0.12}
+  time: {present: 0.83, past: 0.1}
+  ai: {community: 0.51, society: 0.18}
+  imagery: {growth: 1}
+  stance: {advocate: 0.57, critic: 0.43}
+  actor: {group: 0.41, idea: 0.38}
+  ending: {resolved: 0.86, practical: 0.1}
+  tension: 0.8
+  certainty: 0.92
+  valence: 0.44
+  energy: 0.38
+  wander: 0.46
+  personal: 0.58
+  humor: 0.09
+  technical: 0.3
 ---
 
 # Some Things Just Take Time

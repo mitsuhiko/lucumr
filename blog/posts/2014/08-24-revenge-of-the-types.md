@@ -2,6 +2,23 @@
 tags: ['python', 'thoughts', 'types']
 summary: "Some notes about what appears to be current trend of programming
 languages and my thoughts about it."
+facets:
+  mood: {reflective: 0.5, angry: 0.32}
+  scale: {craft: 1}
+  time: {future: 0.7, past: 0.15, present: 0.15}
+  ai: {not_ai: 1}
+  imagery: {road: 0.69, none: 0.16}
+  stance: {critic: 0.86, advocate: 0.14}
+  actor: {idea: 0.58, group: 0.28, individual: 0.12}
+  ending: {resolved: 0.98}
+  tension: 0.55
+  certainty: 0.9
+  valence: 0.24
+  energy: 0.47
+  wander: 0.5
+  personal: 0.48
+  humor: 0.27
+  technical: 0.88
 ---
 
 # Revenge of the Types
@@ -172,6 +189,7 @@ this:
 ```python
 from typing import List
 
+
 def print_all_usernames(users: List[User]) -> None:
     for user in users:
         print(user.username)
@@ -219,7 +237,7 @@ expression into a regular expression pattern.  It takes a string and
 returns a pattern object.  Looks roughly like this:
 
 ```pycon
->>> re.compile('foobar')
+>>> re.compile("foobar")
 <_sre.SRE_Pattern object at 0x1089926b8>
 ```
 
@@ -227,7 +245,7 @@ As you can see this pattern object comes from the `_sre` module which is
 a bit internal but generally available:
 
 ```pycon
->>> type(re.compile('foobar'))
+>>> type(re.compile("foobar"))
 <type '_sre.SRE_Pattern'>
 ```
 
@@ -248,7 +266,7 @@ the type of the pattern, it's an `_sre.SRE_Pattern` type.  As such
 a subclass of `object`:
 
 ```pycon
->>> isinstance(re.compile(''), object)
+>>> isinstance(re.compile(""), object)
 True
 ```
 
@@ -256,7 +274,7 @@ And all objects implement some very common methods as we know.  For
 instance all objects implement `__repr__`:
 
 ```pycon
->>> re.compile('').__repr__()
+>>> re.compile("").__repr__()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: __repr__
@@ -270,7 +288,7 @@ you actually inspect the object with `dir()` you will notice that lots
 of stuff is missing:
 
 ```pycon
->>> dir(re.compile(''))
+>>> dir(re.compile(""))
 ['__copy__', '__deepcopy__', 'findall', 'finditer', 'match',
  'scanner', 'search', 'split', 'sub', 'subn']
 ```

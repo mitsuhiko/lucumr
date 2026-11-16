@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "Why a measured position on AI tends to lean towards actually trying it."
+facets:
+  mood: {reflective: 0.98}
+  scale: {craft: 0.93}
+  time: {present: 0.99}
+  ai: {agents: 1}
+  imagery: {road: 0.59, crowd: 0.34}
+  stance: {observer: 0.63, advocate: 0.31}
+  actor: {group: 0.55, idea: 0.36}
+  ending: {resolved: 0.9}
+  tension: 0.93
+  certainty: 0.81
+  valence: 0.54
+  energy: 0.33
+  wander: 0.28
+  personal: 0.33
+  humor: 0.09
+  technical: 0.27
 ---
 
 # The Center Has a Bias

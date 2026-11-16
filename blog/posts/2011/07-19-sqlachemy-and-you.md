@@ -2,6 +2,23 @@
 tags: ['python', 'databases', 'tutorial', 'web']
 summary: "The Django ORM feels so much easier than SQLAlchemy?  Maybe this article
 can change your perception."
+facets:
+  mood: {matter_of_fact: 0.88, playful: 0.11}
+  scale: {craft: 1}
+  time: {present: 0.98}
+  ai: {not_ai: 1}
+  imagery: {body: 0.41, none: 0.22, road: 0.14, building: 0.13}
+  stance: {teacher: 0.99}
+  actor: {idea: 0.66, individual: 0.25}
+  ending: {open: 0.53, practical: 0.26, resolved: 0.19}
+  tension: 0.31
+  certainty: 0.88
+  valence: 0.61
+  energy: 0.41
+  wander: 0.17
+  personal: 0.27
+  humor: 0.38
+  technical: 0.91
 ---
 
 # SQLAlchemy and You
@@ -178,6 +195,7 @@ To get this baseclass you basically just need this:
 
 ```python
 from sqlalchemy.ext.declarative import declarative_base
+
 Base = declarative_base()
 ```
 
@@ -196,8 +214,9 @@ The equivalent SQLAlchemy model with declarative base looks like this:
 ```python
 from sqlalchemy import Column, Integer, String
 
+
 class Person(Base):
-    __tablename__ = 'persons'
+    __tablename__ = "persons"
     id = Column(Integer, primary_key=True)
     first_name = Column(String(30))
     last_name = Column(String(30))
@@ -215,9 +234,9 @@ In Django this is straightforward:
 class Manufacturer(models.Model):
     name = models.CharField(max_length=30)
 
+
 class Car(models.Model):
-    manufacturer = models.ForeignKey(Manufacturer,
-                                     related_name='cars')
+    manufacturer = models.ForeignKey(Manufacturer, related_name="cars")
     name = models.CharField(max_length=30)
 ```
 
@@ -227,19 +246,20 @@ In SQLAlchemy we have to be a little bit more expressive:
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship, backref
 
+
 class Manufacturer(Base):
-    __tablename__ = 'manufacturers'
+    __tablename__ = "manufacturers"
     id = Column(Integer, primary_key=True)
     name = Column(String(30))
+
 
 class Car(models.Model):
-    __tablename__ = 'cars'
+    __tablename__ = "cars"
     id = Column(Integer, primary_key=True)
-    manufacturer_id = Column(Integer, ForeignKey('manufacturers.id'))
+    manufacturer_id = Column(Integer, ForeignKey("manufacturers.id"))
     name = Column(String(30))
 
-    manufacturer = relationship('Manufacturer', backref=
-        backref('cars', lazy='dynamic'))
+    manufacturer = relationship("Manufacturer", backref=backref("cars", lazy="dynamic"))
 ```
 
 Here we have to model the relationship ourself.  First we need to declare
@@ -255,9 +275,11 @@ automatically.  If it does not, you can explicitly provide one as a string
 or real expression:
 
 ```python
-manufacturer = relationship('Manufacturer',
-    primaryjoin='Car.manufacturer_id == Manufacturer.id',
-    backref=backref('cars', lazy='dynamic'))
+manufacturer = relationship(
+    "Manufacturer",
+    primaryjoin="Car.manufacturer_id == Manufacturer.id",
+    backref=backref("cars", lazy="dynamic"),
+)
 ```
 
 The `backref` argument automatically declares the reverse.  It will attach
@@ -308,6 +330,7 @@ done for you:
 class Topping(models.Model):
     name = models.CharField(max_length=30)
 
+
 class Pizza(models.Model):
     toppings = models.ManyToManyField(Topping)
     name = models.CharField(max_length=30)
@@ -319,23 +342,28 @@ In SQLAlchemy we have to construct a helper table to join over:
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship, backref
 
-pizza_toppings = Table('pizza_toppings', Base.metadata,
-    Column('topping_id', Integer, ForeignKey('toppings.id')),
-    Column('pizza_id', Integer, ForeignKey('pizzas.id'))
+pizza_toppings = Table(
+    "pizza_toppings",
+    Base.metadata,
+    Column("topping_id", Integer, ForeignKey("toppings.id")),
+    Column("pizza_id", Integer, ForeignKey("pizzas.id")),
 )
 
+
 class Topping(Base):
-    __tablename__ = 'toppings'
+    __tablename__ = "toppings"
     id = Column(Integer, primary_key=True)
     name = Column(String(30))
+
 
 class Pizza(models.Model):
-    __tablename__ = 'pizzas'
+    __tablename__ = "pizzas"
     id = Column(Integer, primary_key=True)
     name = Column(String(30))
 
-    toppings = relationship('Topping', secondary=pizza_toppings,
-                            backref=backref('pizzas', lazy='dynamic'))
+    toppings = relationship(
+        "Topping", secondary=pizza_toppings, backref=backref("pizzas", lazy="dynamic")
+    )
 ```
 
 ## Translating Queries From Django To SQLAlchemy
@@ -351,17 +379,17 @@ Inserting entries in Django can be done with either creating an instance
 of a model or by using the `create()` method of the object manager:
 
 ```python
-foo = MyModel(field1='value', field2='value')
+foo = MyModel(field1="value", field2="value")
 foo.save()
 
 # or alternatively
-foo = MyModel.objects.create(field1='value', field2='value')
+foo = MyModel.objects.create(field1="value", field2="value")
 ```
 
 In SQLAlchemy you need to do this instead:
 
 ```python
-foo = MyModel(field1='value', field2='value')
+foo = MyModel(field1="value", field2="value")
 session.add(foo)
 ```
 
@@ -404,7 +432,7 @@ session:
 
 ```python
 obj = MyModel.query.get(the_id)
-obj.name = 'New Value'
+obj.name = "New Value"
 session.commit()
 ```
 
@@ -472,8 +500,7 @@ you pass such an expression to `filter()`:
 
 ```python
 active_users_with_a_or_b = User.query.filter(
-    (User.name.startswith('a') | User.name.startswith('b')) &
-    (User.is_active == True)
+    (User.name.startswith("a") | User.name.startswith("b")) & (User.is_active == True)
 ).all()
 ```
 
@@ -520,8 +547,7 @@ thing for each database:
 from sqlalchemy.sql import extract
 
 entries_a_month = Entry.query.filter(
-    (extract(Entry.pub_date, 'year') == 2011) &
-    (extract(Entry.pub_date, 'month') == 1)
+    (extract(Entry.pub_date, "year") == 2011) & (extract(Entry.pub_date, "month") == 1)
 ).all()
 ```
 
@@ -535,8 +561,8 @@ In Django if you sort something you do that by calling `order_by()` and
 passing it some strings with the columns to order by:
 
 ```python
-forwards = MyModel.objects.order_by('pub_date')
-backwards = MyModel.objects.order_by('-pub_date')
+forwards = MyModel.objects.order_by("pub_date")
+backwards = MyModel.objects.order_by("-pub_date")
 ```
 
 While it appears that the same is possible in SQLAlchemy you have to be

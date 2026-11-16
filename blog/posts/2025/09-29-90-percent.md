@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'engineering']
 summary: "AI is writing 90% of the code I was in charge of"
+facets:
+  mood: {reflective: 0.59, hopeful: 0.24, matter_of_fact: 0.16}
+  scale: {craft: 0.81, self: 0.19}
+  time: {present: 0.78, past: 0.19}
+  ai: {agents: 1}
+  imagery: {building: 0.51, none: 0.25}
+  stance: {builder: 0.84, witness: 0.11}
+  actor: {individual: 0.67, machine: 0.3}
+  ending: {resolved: 0.93}
+  tension: 0.11
+  certainty: 0.77
+  valence: 0.74
+  energy: 0.35
+  wander: 0.23
+  personal: 0.64
+  humor: 0.17
+  technical: 0.69
 ---
 
 # 90%

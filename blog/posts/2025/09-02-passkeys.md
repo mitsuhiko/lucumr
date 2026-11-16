@@ -1,6 +1,23 @@
 ---
 tags: ['security', 'thoughts']
 summary: "Some thoughts in support of simple solutions."
+facets:
+  mood: {worried: 0.76, conflicted: 0.15}
+  scale: {industry: 0.63, self: 0.17, society: 0.17}
+  time: {present: 0.87, future: 0.13}
+  ai: {not_ai: 1}
+  imagery: {none: 0.38, building: 0.35, road: 0.21}
+  stance: {observer: 0.84, critic: 0.16}
+  actor: {company: 0.96}
+  ending: {open: 0.98}
+  tension: 0.65
+  certainty: 0.39
+  valence: 0.25
+  energy: 0.43
+  wander: 0.42
+  personal: 0.5
+  humor: 0.12
+  technical: 0.58
 ---
 
 # Passkeys and Modern Authentication

@@ -2,6 +2,23 @@
 tags: ['web', 'javascript', 'engineering', 'games']
 summary: "Battlefield 3's Battlelog system is an interesting web application that
 many of us missed.  Here is why it's amazing and worth a look at."
+facets:
+  mood: {hopeful: 0.77, matter_of_fact: 0.12, reflective: 0.1}
+  scale: {craft: 0.95}
+  time: {present: 0.89, future: 0.11}
+  ai: {not_ai: 1}
+  imagery: {none: 0.49, fire: 0.26, building: 0.1}
+  stance: {advocate: 0.58, teacher: 0.35}
+  actor: {company: 0.86, idea: 0.11}
+  ending: {call: 0.52, practical: 0.24, resolved: 0.14, open: 0.1}
+  tension: 0.14
+  certainty: 0.64
+  valence: 0.75
+  energy: 0.48
+  wander: 0.38
+  personal: 0.34
+  humor: 0.23
+  technical: 0.77
 ---
 
 # Battlelog: Modern Web Applications are Here

@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'culture']
 summary: "Thoughts on reconciling incompatible needs."
+facets:
+  mood: {reflective: 0.89}
+  scale: {society: 1}
+  time: {present: 0.52, future: 0.43}
+  ai: {society: 0.96}
+  imagery: {building: 0.45, stone: 0.27, growth: 0.25}
+  stance: {observer: 0.83, advocate: 0.17}
+  actor: {idea: 0.38, state: 0.3, group: 0.27}
+  ending: {call: 0.62, open: 0.37}
+  tension: 0.96
+  certainty: 0.61
+  valence: 0.45
+  energy: 0.3
+  wander: 0.4
+  personal: 0.44
+  humor: 0.0
+  technical: 0.25
 ---
 
 # AI and Irontown

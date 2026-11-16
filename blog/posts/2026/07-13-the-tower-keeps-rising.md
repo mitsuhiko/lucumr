@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'engineering', 'community']
 summary: "Vibecoding and the possible collapse of a shared language."
+facets:
+  mood: {worried: 0.79, reflective: 0.21}
+  scale: {craft: 0.99}
+  time: {present: 0.85}
+  ai: {agents: 0.93}
+  imagery: {building: 1}
+  stance: {critic: 0.66, observer: 0.18, advocate: 0.14}
+  actor: {machine: 0.53, group: 0.28, idea: 0.15}
+  ending: {open: 0.56, resolved: 0.44}
+  tension: 0.6
+  certainty: 0.8
+  valence: 0.24
+  energy: 0.32
+  wander: 0.38
+  personal: 0.43
+  humor: 0.2
+  technical: 0.46
 ---
 
 # The Tower Keeps Rising

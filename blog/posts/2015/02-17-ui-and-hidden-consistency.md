@@ -2,6 +2,23 @@
 tags: ['vcs', 'thoughts', 'design']
 summary: "Some thoughts on why git's complex user interface works so well in
 practice."
+facets:
+  mood: {reflective: 0.93}
+  scale: {craft: 0.74, self: 0.26}
+  time: {past: 0.99}
+  ai: {not_ai: 1}
+  imagery: {none: 0.72, body: 0.11}
+  stance: {advocate: 0.88, witness: 0.1}
+  actor: {individual: 0.63, idea: 0.35}
+  ending: {resolved: 1}
+  tension: 0.27
+  certainty: 0.94
+  valence: 0.74
+  energy: 0.34
+  wander: 0.36
+  personal: 0.71
+  humor: 0.25
+  technical: 0.74
 ---
 
 # Why I Don't Hate Git: Hidden Consistency

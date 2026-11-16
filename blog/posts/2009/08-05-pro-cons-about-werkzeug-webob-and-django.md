@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'django', 'web', 'thoughts', 'api']
 summary: "Why Werkzeug and WebOb exist when Django is already around."
+facets:
+  mood: {reflective: 0.87, matter_of_fact: 0.11}
+  scale: {craft: 0.87, community: 0.13}
+  time: {present: 0.79, future: 0.19}
+  ai: {not_ai: 1}
+  imagery: {none: 0.84, road: 0.1}
+  stance: {critic: 0.5, observer: 0.48}
+  actor: {group: 0.8, individual: 0.17}
+  ending: {open: 0.51, practical: 0.28, resolved: 0.21}
+  tension: 0.34
+  certainty: 0.68
+  valence: 0.49
+  energy: 0.37
+  wander: 0.25
+  personal: 0.45
+  humor: 0.13
+  technical: 0.8
 ---
 
 # Pro/Cons about Werkzeug, WebOb and Django

@@ -1,6 +1,23 @@
 ---
 tags: ['c', 'tutorial']
 summary: "Using the C preprocessor to achive basic generic collection types."
+facets:
+  mood: {matter_of_fact: 0.92}
+  scale: {craft: 0.99}
+  time: {present: 0.64, past: 0.36}
+  ai: {not_ai: 1}
+  imagery: {none: 0.66, road: 0.21}
+  stance: {teacher: 0.58, builder: 0.42}
+  actor: {individual: 0.92}
+  ending: {resolved: 0.62, practical: 0.37}
+  tension: 0.04
+  certainty: 0.79
+  valence: 0.62
+  energy: 0.32
+  wander: 0.12
+  personal: 0.44
+  humor: 0.24
+  technical: 0.96
 ---
 
 # Collections in C

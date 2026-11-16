@@ -1,6 +1,23 @@
 ---
 tags: ['databases', 'engineering', 'ai']
 summary: Five months of durable execution with just Postgres.
+facets:
+  mood: {reflective: 0.71, hopeful: 0.17, matter_of_fact: 0.12}
+  scale: {craft: 0.99}
+  time: {past: 0.89, present: 0.11}
+  ai: {agents: 0.87}
+  imagery: {none: 0.72, body: 0.14}
+  stance: {builder: 0.95}
+  actor: {individual: 0.56, machine: 0.18, group: 0.12}
+  ending: {call: 0.97}
+  tension: 0.09
+  certainty: 0.72
+  valence: 0.74
+  energy: 0.27
+  wander: 0.27
+  personal: 0.51
+  humor: 0.17
+  technical: 0.75
 ---
 
 # Absurd In Production

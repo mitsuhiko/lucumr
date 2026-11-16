@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'engineering']
 summary: "My Agent abstractions keep breaking somewhere I don't expect."
+facets:
+  mood: {reflective: 0.83, matter_of_fact: 0.16}
+  scale: {craft: 0.97}
+  time: {past: 0.67, present: 0.33}
+  ai: {agents: 1}
+  imagery: {none: 0.62, building: 0.26, road: 0.1}
+  stance: {builder: 0.35, teacher: 0.3, witness: 0.19, observer: 0.13}
+  actor: {individual: 0.74, machine: 0.12, idea: 0.1}
+  ending: {practical: 0.92}
+  tension: 0.14
+  certainty: 0.63
+  valence: 0.44
+  energy: 0.34
+  wander: 0.33
+  personal: 0.52
+  humor: 0.25
+  technical: 0.7
 ---
 
 # Agent Design Is Still Hard

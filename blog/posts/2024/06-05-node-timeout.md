@@ -1,6 +1,23 @@
 ---
 tags: ['javascript', 'engineering']
 summary: "How node's timeout objects are potential sources of memory leaks."
+facets:
+  mood: {worried: 0.52, matter_of_fact: 0.36, reflective: 0.12}
+  scale: {craft: 0.99}
+  time: {present: 0.9}
+  ai: {not_ai: 1}
+  imagery: {none: 0.45, body: 0.28, water: 0.27}
+  stance: {teacher: 0.86}
+  actor: {idea: 0.6, machine: 0.28}
+  ending: {open: 0.88, practical: 0.1}
+  tension: 0.03
+  certainty: 0.69
+  valence: 0.31
+  energy: 0.41
+  wander: 0.43
+  personal: 0.45
+  humor: 0.16
+  technical: 0.97
 ---
 
 # Your Node is Leaking Memory? setTimeout Could be the Reason

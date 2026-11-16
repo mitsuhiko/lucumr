@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'politics', 'opensource']
 summary: "Control is safety. Openness is danger."
+facets:
+  mood: {angry: 0.94}
+  scale: {society: 0.48, industry: 0.39, community: 0.13}
+  time: {present: 0.92}
+  ai: {society: 0.73, community: 0.19}
+  imagery: {building: 0.46, road: 0.17, body: 0.15, light: 0.1}
+  stance: {advocate: 0.98}
+  actor: {company: 0.93}
+  ending: {resolved: 0.66, call: 0.33}
+  tension: 0.95
+  certainty: 0.95
+  valence: 0.41
+  energy: 0.6
+  wander: 0.41
+  personal: 0.28
+  humor: 0.09
+  technical: 0.36
 ---
 
 # Gaslighting Openness

@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'thoughts', 'unicode']
 summary: "My current thoughts on the state of Python 3 and where it's heading."
+facets:
+  mood: {conflicted: 0.41, angry: 0.38, worried: 0.2}
+  scale: {craft: 0.68, self: 0.25}
+  time: {present: 0.7, future: 0.18, past: 0.12}
+  ai: {not_ai: 1}
+  imagery: {road: 0.24, body: 0.19, air: 0.13, none: 0.13, growth: 0.12}
+  stance: {critic: 0.85, advocate: 0.12}
+  actor: {group: 0.81, individual: 0.14}
+  ending: {call: 0.8, open: 0.2}
+  tension: 0.67
+  certainty: 0.82
+  valence: 0.28
+  energy: 0.68
+  wander: 0.51
+  personal: 0.75
+  humor: 0.42
+  technical: 0.76
 ---
 
 # Thoughts on Python 3

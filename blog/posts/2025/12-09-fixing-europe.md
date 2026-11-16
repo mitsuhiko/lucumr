@@ -1,6 +1,23 @@
 ---
 tags: ['politics', 'thoughts']
 summary: "Addressing the American billionaires' opinion on Europe in my feed"
+facets:
+  mood: {worried: 0.56, reflective: 0.36}
+  scale: {society: 1}
+  time: {present: 0.6, future: 0.39}
+  ai: {not_ai: 1}
+  imagery: {road: 0.45, none: 0.21, building: 0.14, body: 0.11}
+  stance: {advocate: 0.71, critic: 0.28}
+  actor: {state: 0.79, group: 0.1}
+  ending: {open: 0.93}
+  tension: 0.78
+  certainty: 0.85
+  valence: 0.32
+  energy: 0.48
+  wander: 0.33
+  personal: 0.27
+  humor: 0.14
+  technical: 0.26
 ---
 
 # Let's Destroy The European Union!

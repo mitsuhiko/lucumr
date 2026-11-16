@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'life', 'politics']
 summary: "Balancing empathy, group member with integrity and morals: a personal journey."
+facets:
+  mood: {conflicted: 0.98}
+  scale: {self: 0.51, society: 0.49}
+  time: {present: 0.7, past: 0.29}
+  ai: {not_ai: 1}
+  imagery: {crowd: 0.87}
+  stance: {observer: 0.84, witness: 0.12}
+  actor: {state: 0.45, individual: 0.44, group: 0.1}
+  ending: {open: 0.69, resolved: 0.23}
+  tension: 0.92
+  certainty: 0.14
+  valence: 0.32
+  energy: 0.47
+  wander: 0.55
+  personal: 0.78
+  humor: 0.09
+  technical: 0.05
 ---
 
 # What if My Tribe Is Wrong?

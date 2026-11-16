@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'thoughts', 'engineering', 'community', 'python']
 summary: "Thoughts on purity in software engineering."
+facets:
+  mood: {reflective: 0.94}
+  scale: {community: 0.89, craft: 0.1}
+  time: {present: 0.42, past: 0.41, future: 0.17}
+  ai: {not_ai: 1}
+  imagery: {road: 0.36, growth: 0.34, water: 0.11}
+  stance: {observer: 0.37, critic: 0.35, advocate: 0.27}
+  actor: {group: 0.85, idea: 0.15}
+  ending: {resolved: 0.64, open: 0.34}
+  tension: 0.89
+  certainty: 0.68
+  valence: 0.64
+  energy: 0.39
+  wander: 0.44
+  personal: 0.53
+  humor: 0.11
+  technical: 0.48
 ---
 
 # Seeking Purity

@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'thoughts', 'life']
 summary: "An open source project that defined my life."
+facets:
+  mood: {reflective: 0.88, conflicted: 0.12}
+  scale: {self: 0.66, community: 0.22, craft: 0.12}
+  time: {past: 0.98}
+  ai: {not_ai: 1}
+  imagery: {building: 0.54, none: 0.37}
+  stance: {witness: 0.68, observer: 0.3}
+  actor: {individual: 0.98}
+  ending: {resolved: 0.66, call: 0.3}
+  tension: 0.23
+  certainty: 0.85
+  valence: 0.71
+  energy: 0.24
+  wander: 0.49
+  personal: 0.74
+  humor: 0.01
+  technical: 0.43
 ---
 
 # Python

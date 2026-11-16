@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'thoughts', 'c']
 summary: "What I would imagine an better Python would look like."
+facets:
+  mood: {angry: 0.98}
+  scale: {craft: 0.99}
+  time: {past: 0.73, future: 0.22}
+  ai: {not_ai: 1}
+  imagery: {road: 0.79, none: 0.15}
+  stance: {critic: 0.93}
+  actor: {idea: 0.79, individual: 0.18}
+  ending: {call: 0.52, resolved: 0.45}
+  tension: 0.37
+  certainty: 0.94
+  valence: 0.26
+  energy: 0.63
+  wander: 0.46
+  personal: 0.46
+  humor: 0.41
+  technical: 0.98
 ---
 
 # The Python I Would Like To See
@@ -126,9 +143,8 @@ More features?  Yes, because old style classes could do this (Python
 ```pycon
 >>> original = 42
 >>> class FooProxy:
-...  def __getattr__(self, x):
-...   return getattr(original, x)
-...
+...     def __getattr__(self, x):
+...         return getattr(original, x)
 >>> proxy = FooProxy()
 >>> proxy
 42
@@ -146,11 +162,9 @@ lightweight oldstyle classes were:
 ```pycon
 >>> import sys
 >>> class OldStyleClass:
-...  pass
-...
+...     pass
 >>> class NewStyleClass(object):
-...  pass
-...
+...     pass
 >>> sys.getsizeof(OldStyleClass)
 104
 >>> sys.getsizeof(NewStyleClass)

@@ -1,6 +1,23 @@
 ---
 tags: ['pi', 'ai', 'opensource', 'engineering', 'thoughts']
 summary: "Learnings from post-AI Open Source and how we're approaching this so far."
+facets:
+  mood: {angry: 0.74, worried: 0.15, reflective: 0.11}
+  scale: {community: 0.87, craft: 0.12}
+  time: {present: 0.97}
+  ai: {community: 0.55, agents: 0.38}
+  imagery: {building: 0.86}
+  stance: {critic: 0.64, advocate: 0.28}
+  actor: {machine: 0.79, group: 0.1}
+  ending: {call: 0.57, resolved: 0.39}
+  tension: 0.59
+  certainty: 0.87
+  valence: 0.28
+  energy: 0.57
+  wander: 0.31
+  personal: 0.55
+  humor: 0.37
+  technical: 0.62
 ---
 
 # Building Pi With Pi

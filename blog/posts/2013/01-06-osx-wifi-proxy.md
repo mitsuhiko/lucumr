@@ -2,6 +2,23 @@
 tags: ['networking', 'os', 'security', 'tutorial']
 summary: "How to use OS X as a transparent man in the middle proxy for iOS and
 Android development."
+facets:
+  mood: {matter_of_fact: 1}
+  scale: {craft: 0.99}
+  time: {present: 0.69, past: 0.18, future: 0.13}
+  ai: {not_ai: 1}
+  imagery: {none: 0.83, road: 0.11}
+  stance: {teacher: 0.98}
+  actor: {individual: 0.75, idea: 0.22}
+  ending: {practical: 0.96}
+  tension: 0.01
+  certainty: 0.7
+  valence: 0.52
+  energy: 0.26
+  wander: 0.07
+  personal: 0.33
+  humor: 0.06
+  technical: 0.86
 ---
 
 # OSX as Transparent Wifi MITM Proxy

@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'opensource', 'packaging', 'javascript']
 summary: "Some more thoughts about dependencies."
+facets:
+  mood: {worried: 0.4, reflective: 0.27, angry: 0.25}
+  scale: {community: 0.79, craft: 0.19}
+  time: {present: 0.8, future: 0.14}
+  ai: {not_ai: 1}
+  imagery: {none: 0.27, body: 0.2, stone: 0.17, building: 0.17}
+  stance: {critic: 0.53, advocate: 0.46}
+  actor: {individual: 0.49, idea: 0.25, company: 0.16}
+  ending: {resolved: 0.44, open: 0.42, call: 0.12}
+  tension: 0.52
+  certainty: 0.86
+  valence: 0.29
+  energy: 0.49
+  wander: 0.45
+  personal: 0.41
+  humor: 0.28
+  technical: 0.48
 ---
 
 # Dependency Risk and Funding

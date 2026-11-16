@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'tutorial', 'engineering', 'unicode']
 summary: "Some updated tips for porting software to Python 3."
+facets:
+  mood: {hopeful: 0.53, matter_of_fact: 0.39}
+  scale: {craft: 0.98}
+  time: {past: 0.73, present: 0.24}
+  ai: {not_ai: 1}
+  imagery: {none: 0.62, road: 0.2, body: 0.12}
+  stance: {teacher: 0.91}
+  actor: {individual: 0.9}
+  ending: {practical: 0.49, resolved: 0.31, call: 0.17}
+  tension: 0.04
+  certainty: 0.9
+  valence: 0.73
+  energy: 0.46
+  wander: 0.21
+  personal: 0.49
+  humor: 0.31
+  technical: 0.91
 ---
 
 # Porting to Python 3 Redux
@@ -135,6 +152,7 @@ examples of what such a compatibility module could look like:
 
 ```python
 import sys
+
 PY2 = sys.version_info[0] == 2
 if not PY2:
     text_type = str
@@ -165,16 +183,18 @@ Good:
 
 ```python
 if PY2:
+
     def __str__(self):
-        return self.__unicode__().encode('utf-8')
+        return self.__unicode__().encode("utf-8")
 ```
 
 Less ideal:
 
 ```python
 if not PY3:
+
     def __str__(self):
-        return self.__unicode__().encode('utf-8')
+        return self.__unicode__().encode("utf-8")
 ```
 
 ## String Handling
@@ -204,7 +224,7 @@ most cases the return value on 2.x however was ASCII only things like
 this work really well in 2.x and 3.x:
 
 ```pycon
->>> u'<p>Current time: %s' % datetime.datetime.utcnow().strftime('%H:%M')
+>>> "<p>Current time: %s" % datetime.datetime.utcnow().strftime("%H:%M")
 u'<p>Current time: 23:52'
 ```
 
@@ -225,7 +245,7 @@ when paired with the `bytearray` object which has the same interface
 on 2.x and 3.x:
 
 ```pycon
->>> bytearray(b' foo ').strip()
+>>> bytearray(b" foo ").strip()
 bytearray(b'foo')
 ```
 
@@ -249,9 +269,10 @@ implementing classes with `__unicode__` or `__str__` methods:
 
 ```python
 if PY2:
+
     def implements_to_string(cls):
         cls.__unicode__ = cls.__str__
-        cls.__str__ = lambda x: x.__unicode__().encode('utf-8')
+        cls.__str__ = lambda x: x.__unicode__().encode("utf-8")
         return cls
 else:
     implements_to_string = lambda x: x
@@ -271,6 +292,7 @@ Here is an example for the usage:
 class User(object):
     def __init__(self, username):
         self.username = username
+
     def __str__(self):
         return self.username
 ```
@@ -303,11 +325,13 @@ def with_metaclass(meta, *bases):
     class metaclass(meta):
         __call__ = type.__call__
         __init__ = type.__init__
+
         def __new__(cls, name, this_bases, d):
             if this_bases is None:
                 return type.__new__(cls, name, (), d)
             return meta(name, bases, d)
-    return metaclass('temporary_class', None, {})
+
+    return metaclass("temporary_class", None, {})
 ```
 
 And here is how you use it:
@@ -316,8 +340,10 @@ And here is how you use it:
 class BaseForm(object):
     pass
 
+
 class FormType(type):
     pass
+
 
 class Form(with_metaclass(FormType, BaseForm)):
     pass
@@ -375,6 +401,7 @@ useful again:
 
 ```python
 if PY2:
+
     def implements_dict_iteration(cls):
         cls.iterkeys = cls.keys
         cls.itervalues = cls.values
@@ -403,8 +430,7 @@ class MyDict(object):
         for key, value in iteritems(self):
             yield value
 
-    def items(self):
-        ...
+    def items(self): ...
 ```
 
 ## General Iterator Changes
@@ -419,6 +445,7 @@ If you plan on defining iterators a class decorator again becomes helpful:
 
 ```python
 if PY2:
+
     def implements_iterator(cls):
         cls.next = cls.__next__
         del cls.__next__
@@ -435,8 +462,10 @@ For implementing this class just name the iteration step method
 class UppercasingIterator(object):
     def __init__(self, iterable):
         self._iter = iter(iterable)
+
     def __iter__(self):
         return self
+
     def __next__(self):
         return next(self._iter).upper()
 ```
@@ -460,7 +489,7 @@ changed string API:
 
 ```pycon
 >>> import codecs
->>> codecs.encode(b'Hey!', 'base64_codec')
+>>> codecs.encode(b"Hey!", "base64_codec")
 'SGV5IQ==\n'
 ```
 
@@ -501,8 +530,9 @@ situations where you will have to move code into an exec block:
 
 ```python
 if PY2:
-    exec('def reraise(tp, value, tb):\n raise tp, value, tb')
+    exec("def reraise(tp, value, tb):\n raise tp, value, tb")
 else:
+
     def reraise(tp, value, tb):
         raise value.with_traceback(tb)
 ```
@@ -516,7 +546,7 @@ Alternatively you can bootstrap an `exec_` function through `exec`
 itself.
 
 ```python
-exec_ = lambda s, *a: eval(compile(s, '<string>', 'exec'), *a)
+exec_ = lambda s, *a: eval(compile(s, "<string>", "exec"), *a)
 ```
 
 - If you have a C module written on top of the Python C API: shoot

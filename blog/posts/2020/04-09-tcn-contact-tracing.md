@@ -1,6 +1,23 @@
 ---
 tags: ['covid19', 'security']
 summary: "A short introduction to TCN based contact tracing"
+facets:
+  mood: {reflective: 0.5, matter_of_fact: 0.48}
+  scale: {society: 0.54, community: 0.3, craft: 0.13}
+  time: {present: 0.63, future: 0.36}
+  ai: {not_ai: 1}
+  imagery: {none: 0.9}
+  stance: {advocate: 0.75, teacher: 0.22}
+  actor: {idea: 0.48, group: 0.31, state: 0.11}
+  ending: {practical: 0.94}
+  tension: 0.18
+  certainty: 0.7
+  valence: 0.7
+  energy: 0.32
+  wander: 0.31
+  personal: 0.32
+  humor: 0.08
+  technical: 0.72
 ---
 
 # Temporary Contact Number based Contact Tracing

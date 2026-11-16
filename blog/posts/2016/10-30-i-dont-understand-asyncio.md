@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'async', 'thoughts']
 summary: "A little confession that I have no idea how asyncio works in Python 3."
+facets:
+  mood: {angry: 0.69, worried: 0.15}
+  scale: {craft: 0.98}
+  time: {present: 0.87, past: 0.11}
+  ai: {not_ai: 1}
+  imagery: {none: 0.74, body: 0.12}
+  stance: {critic: 0.66, observer: 0.23}
+  actor: {idea: 0.49, machine: 0.29, individual: 0.16}
+  ending: {open: 0.93}
+  tension: 0.16
+  certainty: 0.24
+  valence: 0.17
+  energy: 0.54
+  wander: 0.44
+  personal: 0.56
+  humor: 0.23
+  technical: 0.94
 ---
 
 # I don't understand Python's Asyncio
@@ -154,11 +171,10 @@ overloaded once more.  This lead to surprising behavior like this:
 
 ```pycon
 >>> def foo(n):
-...  if n in (0, 1):
-...   return [1]
-...  for item in range(n):
-...   yield item * 2
-...
+...     if n in (0, 1):
+...         return [1]
+...     for item in range(n):
+...         yield item * 2
 >>> list(foo(0))
 []
 >>> list(foo(1))

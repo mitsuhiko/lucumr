@@ -1,6 +1,23 @@
 ---
 tags: ['politics', 'thoughts']
 summary: Thoughts on immigration.
+facets:
+  mood: {reflective: 0.89}
+  scale: {society: 1}
+  time: {present: 0.99}
+  ai: {not_ai: 1}
+  imagery: {none: 0.64, road: 0.24}
+  stance: {observer: 1}
+  actor: {state: 0.76, group: 0.17}
+  ending: {open: 0.96}
+  tension: 0.61
+  certainty: 0.54
+  valence: 0.26
+  energy: 0.25
+  wander: 0.44
+  personal: 0.28
+  humor: 0.05
+  technical: 0.03
 ---
 
 # What's a Foreigner?

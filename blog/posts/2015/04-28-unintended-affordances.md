@@ -2,6 +2,23 @@
 tags: ['security', 'thoughts', 'web']
 summary: "Some thoughts about the different effects of security and why sometimes
 less security and less enforcing has unintended positive aspects."
+facets:
+  mood: {worried: 0.75, angry: 0.2}
+  scale: {society: 0.67, craft: 0.26}
+  time: {present: 0.63, future: 0.36}
+  ai: {not_ai: 1}
+  imagery: {road: 0.44, building: 0.21, fire: 0.18, none: 0.11}
+  stance: {critic: 0.84, advocate: 0.16}
+  actor: {idea: 0.87}
+  ending: {call: 0.57, open: 0.3, resolved: 0.13}
+  tension: 0.79
+  certainty: 0.89
+  valence: 0.23
+  energy: 0.56
+  wander: 0.44
+  personal: 0.38
+  humor: 0.34
+  technical: 0.62
 ---
 
 # Unintended Affordances *(or why I believe encrypting everything is a bad idea)*

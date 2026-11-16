@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'thoughts', 'engineering', 'opensource']
 summary: "Bringing the great successes of financial engineering to Rust."
+facets:
+  mood: {playful: 0.81, angry: 0.12}
+  scale: {community: 0.77, craft: 0.18}
+  time: {present: 0.86, past: 0.13}
+  ai: {not_ai: 1}
+  imagery: {none: 0.66}
+  stance: {witness: 0.43, critic: 0.28, builder: 0.17}
+  actor: {group: 0.61, individual: 0.19, idea: 0.14}
+  ending: {resolved: 0.48, open: 0.44}
+  tension: 0.59
+  certainty: 0.93
+  valence: 0.19
+  energy: 0.57
+  wander: 0.4
+  personal: 0.57
+  humor: 0.89
+  technical: 0.47
 ---
 
 # On Tech Debt: My Rust Library is now a CDO

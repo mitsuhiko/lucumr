@@ -2,6 +2,23 @@
 tags: ['python', 'web', 'thoughts', 'flask']
 summary: "My conclusions of an April's fools day joke I made this year that later
 lead to the development of the Flask micro framework."
+facets:
+  mood: {reflective: 0.58, playful: 0.4}
+  scale: {craft: 0.52, community: 0.39}
+  time: {past: 1}
+  ai: {not_ai: 1}
+  imagery: {none: 0.55, body: 0.29}
+  stance: {builder: 0.46, witness: 0.39, critic: 0.11}
+  actor: {individual: 0.98}
+  ending: {practical: 0.67, resolved: 0.29}
+  tension: 0.2
+  certainty: 0.81
+  valence: 0.61
+  energy: 0.37
+  wander: 0.3
+  personal: 0.68
+  humor: 0.57
+  technical: 0.61
 ---
 
 # April 1st Post Mortem

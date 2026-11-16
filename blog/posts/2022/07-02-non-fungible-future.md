@@ -1,6 +1,23 @@
 ---
 tags: ['business', 'thoughts']
 summary: "What a powerful NFT driven future could look like."
+facets:
+  mood: {worried: 0.5, playful: 0.24, matter_of_fact: 0.16}
+  scale: {society: 0.83, industry: 0.17}
+  time: {future: 0.96}
+  ai: {not_ai: 1}
+  imagery: {none: 0.5, building: 0.2, light: 0.12, growth: 0.11}
+  stance: {critic: 0.81, observer: 0.13}
+  actor: {idea: 0.88}
+  ending: {resolved: 0.82, open: 0.17}
+  tension: 0.28
+  certainty: 0.93
+  valence: 0.12
+  energy: 0.43
+  wander: 0.69
+  personal: 0.24
+  humor: 0.56
+  technical: 0.41
 ---
 
 # A Non Fungible Future

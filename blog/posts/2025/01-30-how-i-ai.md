@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'tooling']
 summary: "Due to popular request: my use of LLM explained."
+facets:
+  mood: {reflective: 0.38, hopeful: 0.34, matter_of_fact: 0.26}
+  scale: {self: 0.81, craft: 0.19}
+  time: {present: 1}
+  ai: {models: 0.38, agents: 0.26, writing: 0.22, local: 0.12}
+  imagery: {crowd: 0.67, body: 0.2, none: 0.1}
+  stance: {advocate: 0.6, teacher: 0.31}
+  actor: {individual: 0.89}
+  ending: {resolved: 0.92}
+  tension: 0.39
+  certainty: 0.69
+  valence: 0.74
+  energy: 0.38
+  wander: 0.35
+  personal: 0.72
+  humor: 0.45
+  technical: 0.74
 ---
 
 # How I Use AI: Meet My Promptly Hired Model Intern

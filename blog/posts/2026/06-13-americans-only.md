@@ -1,6 +1,23 @@
 ---
 tags: ['politics', 'ai', 'thoughts']
 summary: "AI nationalism, safety and European weakness."
+facets:
+  mood: {worried: 0.85, angry: 0.14}
+  scale: {society: 1}
+  time: {future: 0.84, present: 0.16}
+  ai: {society: 1}
+  imagery: {road: 0.65, building: 0.16}
+  stance: {advocate: 0.94}
+  actor: {state: 1}
+  ending: {call: 0.65, resolved: 0.33}
+  tension: 0.88
+  certainty: 0.94
+  valence: 0.27
+  energy: 0.67
+  wander: 0.4
+  personal: 0.35
+  humor: 0.17
+  technical: 0.27
 ---
 
 # Dangerous Technology For Americans Only

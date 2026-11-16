@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "People pick languages differently with LLMs."
+facets:
+  mood: {reflective: 0.49, hopeful: 0.44}
+  scale: {craft: 0.85, community: 0.12}
+  time: {present: 0.89, future: 0.11}
+  ai: {agents: 0.97}
+  imagery: {none: 0.74}
+  stance: {observer: 0.96}
+  actor: {machine: 0.87, idea: 0.1}
+  ending: {open: 0.82, resolved: 0.18}
+  tension: 0.26
+  certainty: 0.47
+  valence: 0.73
+  energy: 0.38
+  wander: 0.49
+  personal: 0.32
+  humor: 0.16
+  technical: 0.51
 ---
 
 # Fast and Hard Code

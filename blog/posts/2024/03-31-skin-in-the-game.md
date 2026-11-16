@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'opensource', 'security', 'community']
 summary: "Some thoughts about the meaning of pseudonyms and anonymous contributions in Open Source."
+facets:
+  mood: {worried: 0.7, reflective: 0.22}
+  scale: {community: 0.93}
+  time: {past: 0.75, present: 0.25}
+  ai: {not_ai: 0.99}
+  imagery: {body: 0.57, none: 0.21}
+  stance: {observer: 0.97}
+  actor: {idea: 0.4, group: 0.29, individual: 0.23}
+  ending: {open: 1}
+  tension: 0.47
+  certainty: 0.17
+  valence: 0.25
+  energy: 0.44
+  wander: 0.62
+  personal: 0.73
+  humor: 0.11
+  technical: 0.29
 ---
 
 # Skin in the Game

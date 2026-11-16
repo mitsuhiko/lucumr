@@ -2,6 +2,23 @@
 tags: ['python', 'unicode', 'tutorial']
 summary: "Various notes on how to port libraries and applications over to Python 3
 based on my experiences with the Jinja2 port."
+facets:
+  mood: {matter_of_fact: 0.9}
+  scale: {craft: 1}
+  time: {past: 0.6, present: 0.31}
+  ai: {not_ai: 1}
+  imagery: {none: 0.75, road: 0.22}
+  stance: {teacher: 0.98}
+  actor: {individual: 0.7, idea: 0.24}
+  ending: {call: 0.94}
+  tension: 0.05
+  certainty: 0.64
+  valence: 0.65
+  energy: 0.35
+  wander: 0.24
+  personal: 0.49
+  humor: 0.15
+  technical: 0.88
 ---
 
 # Porting to Python 3 — A Guide
@@ -47,14 +64,14 @@ but at least I found a way to trick python to operate on bytes: if you
 have code like this:
 
 ```python
-magic = 'M23\x01'
+magic = "M23\x01"
 ```
 
 And you want to ensure it does not end up being a `str` in 3.x, add a
 dummy encode:
 
 ```python
-magic = u'M23\x01'.encode('iso-8859-1')
+magic = "M23\x01".encode("iso-8859-1")
 ```
 
 The only downside is that the encode happens at runtime, so it will slow
@@ -87,12 +104,11 @@ classes I deal with in Jinja 2 for example:
 
 ```python
 class MyObject(object):
-
     def __init__(self):
-        self.value = u'some value'
+        self.value = "some value"
 
     def __str__(self):
-        return unicode(self).encode('utf-8')
+        return unicode(self).encode("utf-8")
 
     def __unicode__(self):
         return self.value
@@ -102,12 +118,11 @@ The big problem here is that 2to3 will convert it to this:
 
 ```python
 class MyObject(object):
-
     def __init__(self):
-        self.value = 'some value'
+        self.value = "some value"
 
     def __str__(self):
-        return str(self).encode('utf-8')
+        return str(self).encode("utf-8")
 
     def __unicode__(self):
         return self.value
@@ -129,12 +144,13 @@ that, looks like this:
 from lib2to3 import fixer_base
 from lib2to3.fixer_util import Name
 
+
 class FixRenameUnicode(fixer_base.BaseFix):
     PATTERN = r"funcdef< 'def' name='__unicode__' parameters< '(' NAME ')' > any+ >"
 
     def transform(self, node, results):
-        name = results['name']
-        name.replace(Name('__str__', prefix=name.prefix))
+        name = results["name"]
+        name.replace(Name("__str__", prefix=name.prefix))
 ```
 
 After conversion with this fixer in place, the class from above will
@@ -142,12 +158,11 @@ then look like this:
 
 ```python
 class MyObject(object):
-
     def __init__(self):
-        self.value = 'some value'
+        self.value = "some value"
 
     def __str__(self):
-        return str(self).encode('utf-8')
+        return str(self).encode("utf-8")
 
     def __str__(self):
         return self.value
@@ -177,24 +192,21 @@ from setuptools import setup
 # package.
 extra = {}
 if sys.version_info >= (3, 0):
-    extra.update(
-        use_2to3=True,
-        use_2to3_fixers=['custom_fixers']
-    )
+    extra.update(use_2to3=True, use_2to3_fixers=["custom_fixers"])
 
 setup(
-    name='Your Library',
-    version='1.0',
+    name="Your Library",
+    version="1.0",
     classifiers=[
         # make sure to use :: Python *and* :: Python :: 3 so
         # that pypi can list the package on the python 3 page
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3'
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
     ],
-    packages=['yourlibrary'],
+    packages=["yourlibrary"],
     # make sure to add custom_fixers to the MANIFEST.in
     include_package_data=True,
-    **extra
+    **extra,
 )
 ```
 
@@ -243,8 +255,8 @@ def read_file_contents(filename):
 You will have to change it to something like this now:
 
 ```python
-def read_file_contents(filename, charset='utf-8', errors='strict'):
-    with open(filename, 'rb') as f:
+def read_file_contents(filename, charset="utf-8", errors="strict"):
+    with open(filename, "rb") as f:
         return f.read().decode(charset, errors)
 ```
 

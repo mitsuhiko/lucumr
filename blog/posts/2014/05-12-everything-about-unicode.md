@@ -2,6 +2,23 @@
 tags: ['unicode', 'python', 'os', 'thoughts']
 summary: "A list of things about unicode on Linux and Python 3 you really did not
 want to know."
+facets:
+  mood: {angry: 1}
+  scale: {craft: 0.97}
+  time: {present: 0.86}
+  ai: {not_ai: 1}
+  imagery: {fire: 0.51, body: 0.32, none: 0.12}
+  stance: {critic: 0.92}
+  actor: {idea: 0.64, individual: 0.32}
+  ending: {open: 0.61, resolved: 0.38}
+  tension: 0.82
+  certainty: 0.96
+  valence: 0.13
+  energy: 0.77
+  wander: 0.48
+  personal: 0.63
+  humor: 0.53
+  technical: 0.9
 ---
 
 # Everything you did not want to know about Unicode in Python 3
@@ -47,11 +64,11 @@ import shutil
 
 for filename in sys.argv[1:]:
     f = sys.stdin
-    if filename != '-':
+    if filename != "-":
         try:
-            f = open(filename, 'rb')
+            f = open(filename, "rb")
         except IOError as err:
-            print >> sys.stderr, 'cat.py: %s: %s' % (filename, err)
+            print >> sys.stderr, "cat.py: %s: %s" % (filename, err)
             continue
     with f:
         shutil.copyfileobj(f, sys.stdout)
@@ -216,23 +233,26 @@ compatible `cat` for Python 3:
 import sys
 import shutil
 
+
 def _is_binary_reader(stream, default=False):
     try:
         return isinstance(stream.read(0), bytes)
     except Exception:
         return default
 
+
 def _is_binary_writer(stream, default=False):
     try:
-        stream.write(b'')
+        stream.write(b"")
     except Exception:
         try:
-            stream.write('')
+            stream.write("")
             return False
         except Exception:
             pass
         return default
     return True
+
 
 def get_binary_stdin():
     # sys.stdin might or might not be binary in some extra cases.  By
@@ -243,40 +263,39 @@ def get_binary_stdin():
     is_binary = _is_binary_reader(sys.stdin, False)
     if is_binary:
         return sys.stdin
-    buf = getattr(sys.stdin, 'buffer', None)
+    buf = getattr(sys.stdin, "buffer", None)
     if buf is not None and _is_binary_reader(buf, True):
         return buf
-    raise RuntimeError('Did not manage to get binary stdin')
+    raise RuntimeError("Did not manage to get binary stdin")
+
 
 def get_binary_stdout():
     if _is_binary_writer(sys.stdout, False):
         return sys.stdout
-    buf = getattr(sys.stdout, 'buffer', None)
+    buf = getattr(sys.stdout, "buffer", None)
     if buf is not None and _is_binary_writer(buf, True):
         return buf
-    raise RuntimeError('Did not manage to get binary stdout')
+    raise RuntimeError("Did not manage to get binary stdout")
+
 
 def filename_to_ui(value):
     # The bytes branch is unecessary for *this* script but otherwise
     # necessary as python 3 still supports addressing files by bytes
     # through separate APIs.
     if isinstance(value, bytes):
-        value = value.decode(sys.getfilesystemencoding(), 'replace')
+        value = value.decode(sys.getfilesystemencoding(), "replace")
     else:
-        value = value.encode('utf-8', 'surrogateescape') \
-            .decode('utf-8', 'replace')
+        value = value.encode("utf-8", "surrogateescape").decode("utf-8", "replace")
     return value
+
 
 binary_stdout = get_binary_stdout()
 for filename in sys.argv[1:]:
-    if filename != '-':
+    if filename != "-":
         try:
-            f = open(filename, 'rb')
+            f = open(filename, "rb")
         except IOError as err:
-            print('cat.py: %s: %s' % (
-                filename_to_ui(filename),
-                err
-            ), file=sys.stderr)
+            print("cat.py: %s: %s" % (filename_to_ui(filename), err), file=sys.stderr)
             continue
     else:
         f = get_binary_stdin()

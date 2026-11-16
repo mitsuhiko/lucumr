@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'web', 'opensource']
 summary: "Some thoughts on self hosted Open Source software."
+facets:
+  mood: {reflective: 0.94}
+  scale: {craft: 0.65, community: 0.33}
+  time: {future: 0.86}
+  ai: {not_ai: 1}
+  imagery: {building: 0.49, fire: 0.22, none: 0.22}
+  stance: {advocate: 0.65, observer: 0.28}
+  actor: {idea: 0.71, group: 0.14}
+  ending: {open: 0.92}
+  tension: 0.3
+  certainty: 0.34
+  valence: 0.66
+  energy: 0.31
+  wander: 0.52
+  personal: 0.4
+  humor: 0.15
+  technical: 0.54
 ---
 
 # What is Self Hosted? What is a Stack?

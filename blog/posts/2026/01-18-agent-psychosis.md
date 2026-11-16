@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'community', 'engineering', 'opensource']
 summary: "What's going on with the AI builder community right now?"
+facets:
+  mood: {worried: 0.71, conflicted: 0.26}
+  scale: {community: 0.82, craft: 0.15}
+  time: {present: 0.94}
+  ai: {agents: 0.76, community: 0.22}
+  imagery: {body: 0.94}
+  stance: {critic: 0.78, observer: 0.2}
+  actor: {group: 0.46, machine: 0.29, idea: 0.2}
+  ending: {open: 0.96}
+  tension: 0.76
+  certainty: 0.37
+  valence: 0.25
+  energy: 0.66
+  wander: 0.53
+  personal: 0.62
+  humor: 0.46
+  technical: 0.49
 ---
 
 # Agent Psychosis: Are We Going Insane?

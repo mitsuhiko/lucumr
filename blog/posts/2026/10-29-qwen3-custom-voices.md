@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'tutorial']
 summary: "Cloning, designing and blending voices with Qwen3-TTS."
+facets:
+  mood: {matter_of_fact: 0.6, playful: 0.35}
+  scale: {craft: 0.96}
+  time: {present: 0.7, past: 0.3}
+  ai: {models: 0.98}
+  imagery: {none: 0.53, building: 0.23}
+  stance: {teacher: 0.64, builder: 0.36}
+  actor: {individual: 0.79}
+  ending: {call: 0.82}
+  tension: 0.01
+  certainty: 0.69
+  valence: 0.72
+  energy: 0.31
+  wander: 0.38
+  personal: 0.49
+  humor: 0.32
+  technical: 0.83
 ---
 
 # Custom Voices With Qwen3-TTS
@@ -71,10 +88,11 @@ from qwen_tts import Qwen3TTSModel
 kw = dict(device_map="mps", dtype=torch.bfloat16, attn_implementation="sdpa")
 design = Qwen3TTSModel.from_pretrained("Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign", **kw)
 wavs, sr = design.generate_voice_design(
-    text=open("voices/transcript.txt").read(), language="English",
+    text=open("voices/transcript.txt").read(),
+    language="English",
     instruct="A man in his forties with a warm, natural, medium-low voice, speaking "
-             "clearly and calmly at an easy conversational pace, like someone reading "
-             "aloud to a friend.",
+    "clearly and calmly at an easy conversational pace, like someone reading "
+    "aloud to a friend.",
 )
 ```
 
@@ -103,14 +121,19 @@ voices:
 ```python
 base = Qwen3TTSModel.from_pretrained("Qwen/Qwen3-TTS-12Hz-1.7B-Base", **kw)
 
+
 def fingerprint(path):
     prompt = base.create_voice_clone_prompt(ref_audio=path, x_vector_only_mode=True)
     return prompt[0].ref_spk_embedding
 
+
 def blend(a, b, t):
     a, b = a.float(), b.float()
     mixed = (1 - t) * a + t * b
-    return (mixed / mixed.norm() * ((1 - t) * a.norm() + t * b.norm())).to(torch.bfloat16)
+    return (mixed / mixed.norm() * ((1 - t) * a.norm() + t * b.norm())).to(
+        torch.bfloat16
+    )
+
 
 armin, designed = fingerprint("voices/armin.flac"), fingerprint("voices/designed.flac")
 ```
@@ -133,7 +156,9 @@ that you can then use as reference:
 import soundfile as sf
 
 mixed = blend(armin, designed, 0.5)
-audio, rate = say(open("voices/transcript.txt").read(), mixed)  # say() is shown further down
+audio, rate = say(
+    open("voices/transcript.txt").read(), mixed
+)  # say() is shown further down
 sf.write("voices/final.flac", audio, rate)
 final = fingerprint("voices/final.flac")
 ```
@@ -176,22 +201,35 @@ Base, then hand it to CustomVoice instead of one of its speakers:
 ```python
 cv = Qwen3TTSModel.from_pretrained("Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice", **kw)
 
+
 def say(text, xvec, instruct=None, language="English"):
     ids = cv._tokenize_texts([cv._build_assistant_text(text)])
-    told = [cv._tokenize_texts([cv._build_instruct_text(instruct)])[0]
-            if instruct else None]
-    voice = {"ref_code": [None], "ref_spk_embedding": [xvec],
-             "x_vector_only_mode": [True], "icl_mode": [False]}
+    told = [
+        cv._tokenize_texts([cv._build_instruct_text(instruct)])[0] if instruct else None
+    ]
+    voice = {
+        "ref_code": [None],
+        "ref_spk_embedding": [xvec],
+        "x_vector_only_mode": [True],
+        "icl_mode": [False],
+    }
     codes, _ = cv.model.generate(
-        input_ids=ids, instruct_ids=told, voice_clone_prompt=voice,
-        languages=[language], non_streaming_mode=True,
+        input_ids=ids,
+        instruct_ids=told,
+        voice_clone_prompt=voice,
+        languages=[language],
+        non_streaming_mode=True,
         **cv._merge_generate_kwargs(temperature=0.7, subtalker_temperature=0.7),
     )
     wavs, rate = cv.model.speech_tokenizer.decode([{"audio_codes": codes[0]}])
     return wavs[0], rate
 
-wav, rate = say("I really thought this would work.", armin,
-                "Speak in a sad, sorrowful tone, voice low and heavy, on the verge of tears.")
+
+wav, rate = say(
+    "I really thought this would work.",
+    armin,
+    "Speak in a sad, sorrowful tone, voice low and heavy, on the verge of tears.",
+)
 ```
 
 Pick a speaker for the slot, a model and an instruction:
@@ -220,6 +258,7 @@ men = torch.stack([fingerprint(f"design/m{i}.wav") for i in range(14)]).float()
 middle = (women.mean(0) + men.mean(0)) / 2
 axis = women.mean(0) - men.mean(0)
 axis = axis / axis.norm()
+
 
 def move(xvec, t):
     """Put the voice at position t along the gender axis, keep the rest."""

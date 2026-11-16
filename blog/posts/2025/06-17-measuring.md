@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'engineering', 'tooling', 'api']
 summary: "Using programming agents to measure measuring developer productivity."
+facets:
+  mood: {reflective: 0.59, angry: 0.28}
+  scale: {craft: 1}
+  time: {future: 0.62, present: 0.33}
+  ai: {agents: 1}
+  imagery: {none: 0.63, body: 0.18, building: 0.13}
+  stance: {advocate: 0.96}
+  actor: {individual: 0.51, machine: 0.24, group: 0.13, idea: 0.12}
+  ending: {resolved: 0.94}
+  tension: 0.28
+  certainty: 0.87
+  valence: 0.67
+  energy: 0.48
+  wander: 0.43
+  personal: 0.49
+  humor: 0.32
+  technical: 0.51
 ---
 
 # We Can Just Measure Things

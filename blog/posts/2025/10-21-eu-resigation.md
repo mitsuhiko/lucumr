@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'politics', 'life', 'business']
 summary: "The difference between business in Europe and the US."
+facets:
+  mood: {angry: 0.7, worried: 0.19}
+  scale: {industry: 0.8, society: 0.19}
+  time: {present: 0.74, future: 0.26}
+  ai: {not_ai: 1}
+  imagery: {water: 0.34, road: 0.21, none: 0.19, body: 0.12}
+  stance: {advocate: 0.9}
+  actor: {state: 0.35, individual: 0.34, group: 0.25}
+  ending: {resolved: 0.77, open: 0.12}
+  tension: 0.67
+  certainty: 0.97
+  valence: 0.62
+  energy: 0.53
+  wander: 0.34
+  personal: 0.42
+  humor: 0.2
+  technical: 0.21
 ---
 
 # Regulation Isn't the European Trap — Resignation Is

@@ -2,6 +2,23 @@
 tags: ['vcs', 'thoughts']
 summary: "Comparsion of mercurial's and git's branching systems and why one of
 them works better for me than the other."
+facets:
+  mood: {conflicted: 0.68, angry: 0.24}
+  scale: {craft: 0.94}
+  time: {present: 0.86}
+  ai: {not_ai: 1}
+  imagery: {none: 0.61, growth: 0.11, crowd: 0.11}
+  stance: {critic: 0.67, advocate: 0.18, observer: 0.11}
+  actor: {individual: 0.79, idea: 0.15}
+  ending: {open: 0.8, resolved: 0.19}
+  tension: 0.6
+  certainty: 0.74
+  valence: 0.39
+  energy: 0.57
+  wander: 0.59
+  personal: 0.57
+  humor: 0.34
+  technical: 0.75
 ---
 
 # Git and Mercurial Branching

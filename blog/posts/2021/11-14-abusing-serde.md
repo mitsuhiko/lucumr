@@ -2,6 +2,23 @@
 tags: ['rust', 'jinja']
 summary: "Some things you can do with serde that were not in the mind of the
 creator."
+facets:
+  mood: {matter_of_fact: 0.72, reflective: 0.16, playful: 0.12}
+  scale: {craft: 1}
+  time: {present: 0.92}
+  ai: {not_ai: 1}
+  imagery: {none: 0.71, road: 0.17}
+  stance: {builder: 0.84, teacher: 0.16}
+  actor: {individual: 0.53, idea: 0.44}
+  ending: {open: 0.81}
+  tension: 0.05
+  certainty: 0.77
+  valence: 0.59
+  energy: 0.34
+  wander: 0.3
+  personal: 0.42
+  humor: 0.22
+  technical: 0.99
 ---
 
 # Rust Adventures: Abusing Serde

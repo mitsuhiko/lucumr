@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'opensource', 'vcs', 'community']
 summary: "Codeberg drew a democratic, but suboptimal line."
+facets:
+  mood: {reflective: 0.63, conflicted: 0.27}
+  scale: {community: 1}
+  time: {future: 0.87, present: 0.13}
+  ai: {community: 1}
+  imagery: {road: 0.87, none: 0.1}
+  stance: {critic: 0.63, advocate: 0.31}
+  actor: {group: 0.89, company: 0.11}
+  ending: {open: 0.63, resolved: 0.35}
+  tension: 0.9
+  certainty: 0.71
+  valence: 0.42
+  energy: 0.41
+  wander: 0.4
+  personal: 0.44
+  humor: 0.04
+  technical: 0.31
 ---
 
 # Codeberg Divides

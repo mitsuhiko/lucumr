@@ -1,6 +1,23 @@
 ---
 tags: ['life', 'thoughts']
 summary: "Things I learned and believe, condensed into some sort of guide."
+facets:
+  mood: {reflective: 0.9, hopeful: 0.1}
+  scale: {self: 1}
+  time: {past: 0.99}
+  ai: {not_ai: 0.97}
+  imagery: {road: 0.48, water: 0.38}
+  stance: {advocate: 0.72, witness: 0.23}
+  actor: {individual: 1}
+  ending: {resolved: 0.55, call: 0.43}
+  tension: 0.21
+  certainty: 0.74
+  valence: 0.79
+  energy: 0.23
+  wander: 0.34
+  personal: 0.82
+  humor: 0.1
+  technical: 0.19
 ---
 
 # Reflecting on Life

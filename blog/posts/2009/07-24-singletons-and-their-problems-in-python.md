@@ -2,6 +2,23 @@
 tags: ['python', 'thoughts']
 summary: "An exploration of singletons in Python, where they appear and why
 they can become a problem."
+facets:
+  mood: {angry: 0.27, playful: 0.26, reflective: 0.23, worried: 0.19}
+  scale: {craft: 0.99}
+  time: {present: 0.78, future: 0.22}
+  ai: {not_ai: 1}
+  imagery: {body: 0.67, road: 0.13, none: 0.1}
+  stance: {critic: 0.86}
+  actor: {idea: 0.86, individual: 0.12}
+  ending: {open: 0.95}
+  tension: 0.19
+  certainty: 0.62
+  valence: 0.24
+  energy: 0.58
+  wander: 0.47
+  personal: 0.49
+  humor: 0.58
+  technical: 0.83
 ---
 
 # Singletons and their Problems in Python
@@ -89,6 +106,7 @@ Have a look:
 
 ```python
 inited = False
+
 
 def init(files=None):
     global inited

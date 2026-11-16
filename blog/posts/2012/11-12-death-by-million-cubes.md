@@ -2,6 +2,23 @@
 tags: ['games', 'thoughts', 'engineering']
 summary: "Thoughts on Peter Molyneux' Curiosity game and why it's my biggest
 disappointment of the year."
+facets:
+  mood: {angry: 0.92}
+  scale: {craft: 0.81, industry: 0.13}
+  time: {past: 0.59, present: 0.38}
+  ai: {not_ai: 1}
+  imagery: {none: 0.36, body: 0.26, building: 0.16}
+  stance: {critic: 0.98}
+  actor: {company: 0.48, idea: 0.27, group: 0.15}
+  ending: {open: 0.88}
+  tension: 0.19
+  certainty: 0.85
+  valence: 0.21
+  energy: 0.52
+  wander: 0.24
+  personal: 0.43
+  humor: 0.26
+  technical: 0.73
 ---
 
 # Death by Million Cubes

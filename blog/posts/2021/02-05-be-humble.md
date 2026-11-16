@@ -2,6 +2,23 @@
 tags: ['thoughts', 'life']
 summary: "Something on the topic of money and privilege that come with working in
 software."
+facets:
+  mood: {angry: 0.99}
+  scale: {industry: 0.89}
+  time: {present: 0.68, past: 0.29}
+  ai: {not_ai: 1}
+  imagery: {none: 0.83}
+  stance: {critic: 0.83, advocate: 0.17}
+  actor: {group: 0.74, state: 0.14}
+  ending: {call: 0.99}
+  tension: 0.76
+  certainty: 0.97
+  valence: 0.32
+  energy: 0.62
+  wander: 0.39
+  personal: 0.43
+  humor: 0.22
+  technical: 0.16
 ---
 
 # Be Humble

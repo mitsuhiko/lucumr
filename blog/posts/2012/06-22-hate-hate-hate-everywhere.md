@@ -2,6 +2,23 @@
 tags: ['python', 'packaging', 'tooling']
 summary: "A sad example of how easy it is to dismiss certain design principles
 because it does not seem relevant at the time."
+facets:
+  mood: {reflective: 0.53, angry: 0.35}
+  scale: {craft: 0.98}
+  time: {past: 0.99}
+  ai: {not_ai: 1}
+  imagery: {none: 0.31, building: 0.3, body: 0.12, fire: 0.1}
+  stance: {advocate: 0.38, teacher: 0.28, observer: 0.16, witness: 0.12}
+  actor: {idea: 0.49, individual: 0.23, group: 0.19}
+  ending: {resolved: 0.53, practical: 0.25, open: 0.22}
+  tension: 0.61
+  certainty: 0.72
+  valence: 0.31
+  energy: 0.57
+  wander: 0.44
+  personal: 0.54
+  humor: 0.38
+  technical: 0.81
 ---
 
 # Python Packaging: Hate, hate, hate everywhere

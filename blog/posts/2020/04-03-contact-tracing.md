@@ -1,6 +1,23 @@
 ---
 tags: ['covid19', 'thoughts', 'security']
 summary: "Why contract tracing will be our future and why it's a good idea."
+facets:
+  mood: {hopeful: 0.44, reflective: 0.35}
+  scale: {society: 0.96}
+  time: {future: 0.8, present: 0.2}
+  ai: {not_ai: 1}
+  imagery: {body: 0.32, water: 0.2, none: 0.19, fire: 0.16}
+  stance: {advocate: 0.99}
+  actor: {state: 0.53, idea: 0.37}
+  ending: {call: 0.76, resolved: 0.21}
+  tension: 0.55
+  certainty: 0.78
+  valence: 0.64
+  energy: 0.48
+  wander: 0.33
+  personal: 0.45
+  humor: 0.17
+  technical: 0.56
 ---
 
 # App Assisted Contact Tracing

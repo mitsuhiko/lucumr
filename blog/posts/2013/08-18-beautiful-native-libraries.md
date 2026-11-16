@@ -2,6 +2,23 @@
 tags: ['c', 'api', 'engineering', 'tutorial']
 summary: "A guide on writing beautiful native libraries in C or C++ that compile
 to native code."
+facets:
+  mood: {matter_of_fact: 0.81, reflective: 0.1}
+  scale: {craft: 1}
+  time: {present: 0.67, future: 0.31}
+  ai: {not_ai: 1}
+  imagery: {none: 0.48, building: 0.35}
+  stance: {teacher: 0.98}
+  actor: {individual: 0.63, idea: 0.36}
+  ending: {practical: 0.75, call: 0.23}
+  tension: 0.04
+  certainty: 0.86
+  valence: 0.66
+  energy: 0.48
+  wander: 0.21
+  personal: 0.47
+  humor: 0.41
+  technical: 0.95
 ---
 
 # Beautiful Native Libraries
@@ -670,12 +687,14 @@ import subprocess
 from cffi import FFI
 
 here = os.path.abspath(os.path.dirname(__file__))
-header = os.path.join(here, 'include', 'yourlibrary.h')
+header = os.path.join(here, "include", "yourlibrary.h")
 
-ffi.cdef(subprocess.Popen([
-    'cc', '-E', '-DYL_API=', '-DYL_NOINCLUDE',
-    header], stdout=subprocess.PIPE).communicate()[0])
-lib = ffi.dlopen(os.path.join(here, 'build', 'libyourlibrary.dylib'))
+ffi.cdef(
+    subprocess.Popen(
+        ["cc", "-E", "-DYL_API=", "-DYL_NOINCLUDE", header], stdout=subprocess.PIPE
+    ).communicate()[0]
+)
+lib = ffi.dlopen(os.path.join(here, "build", "libyourlibrary.dylib"))
 ```
 
 Place it in a file called `testhelpers.py` next to your tests.
@@ -715,13 +734,16 @@ To do that, just create a `conftest.py` file with the following content:
 import pytest
 from testhelpers import lib, ffi
 
-@pytest.fixture(scope='function')
+
+@pytest.fixture(scope="function")
 def context(request):
     ctx = lib.yl_context_new()
     lib.yl_context_set_api_key(ctx, "my api key")
     lib.yl_context_set_debug_mode(ctx, 1)
+
     def cleanup():
         lib.yl_context_free(ctx)
+
     request.addfinalizer(cleanup)
     return ctx
 ```
@@ -731,6 +753,7 @@ To use this now, all you need to do is to add a parameter called
 
 ```python
 from testhelpers import ffi, lib
+
 
 def test_basic_functionality(context):
     task = lib.yl_task_new(context)

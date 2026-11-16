@@ -1,6 +1,23 @@
 ---
 tags: ['opensource', 'ai', 'thoughts', 'python']
 summary: "Slopforks: what happens when a library gets rewritten with AI?"
+facets:
+  mood: {reflective: 0.81, hopeful: 0.16}
+  scale: {community: 0.91}
+  time: {future: 0.93}
+  ai: {community: 0.66, society: 0.18, agents: 0.13}
+  imagery: {water: 1}
+  stance: {advocate: 0.66, observer: 0.32}
+  actor: {machine: 0.61, idea: 0.26, individual: 0.11}
+  ending: {open: 0.85, resolved: 0.15}
+  tension: 0.73
+  certainty: 0.43
+  valence: 0.67
+  energy: 0.45
+  wander: 0.55
+  personal: 0.51
+  humor: 0.18
+  technical: 0.46
 ---
 
 # AI And The Ship of Theseus

@@ -1,6 +1,23 @@
 ---
 tags: ['hardware', 'life']
 summary: "How my work from home situation looks like at the moment."
+facets:
+  mood: {matter_of_fact: 0.88, reflective: 0.12}
+  scale: {self: 0.74, craft: 0.26}
+  time: {present: 0.98}
+  ai: {not_ai: 1}
+  imagery: {none: 0.91}
+  stance: {builder: 0.46, witness: 0.37}
+  actor: {individual: 1}
+  ending: {practical: 0.9}
+  tension: 0.03
+  certainty: 0.68
+  valence: 0.55
+  energy: 0.18
+  wander: 0.34
+  personal: 0.69
+  humor: 0.22
+  technical: 0.65
 ---
 
 # My Standard Desktop

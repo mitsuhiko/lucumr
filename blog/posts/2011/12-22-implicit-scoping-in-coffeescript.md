@@ -2,6 +2,23 @@
 tags: ['javascript', 'thoughts', 'engineering']
 summary: "A longer explanation of why I think that the CoffeeScript scoping is
 problematic and should be changed."
+facets:
+  mood: {angry: 0.91}
+  scale: {craft: 0.99}
+  time: {present: 0.61, past: 0.27, future: 0.12}
+  ai: {not_ai: 1}
+  imagery: {none: 0.93}
+  stance: {critic: 0.97}
+  actor: {idea: 0.69, individual: 0.3}
+  ending: {resolved: 0.84, call: 0.1}
+  tension: 0.57
+  certainty: 0.99
+  valence: 0.24
+  energy: 0.61
+  wander: 0.29
+  personal: 0.5
+  humor: 0.15
+  technical: 0.81
 ---
 
 # The Problem with Implicit Scoping in CoffeeScript
@@ -39,11 +56,13 @@ keyword to express the intent of reassigning from an outer scope:
 
 ```python3
 def make_counter():
-    counter = 0                 # new variable here
+    counter = 0  # new variable here
+
     def inc():
         nonlocal counter
-        counter = counter + 1   # reassign higher level variable
+        counter = counter + 1  # reassign higher level variable
         return counter
+
     return inc
 ```
 

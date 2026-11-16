@@ -2,6 +2,23 @@
 tags: ['business', 'thoughts', 'politics', 'opensource']
 summary: "Some thoughts about various payment systems on the internet and how
 viable they are for open source project support."
+facets:
+  mood: {angry: 0.96}
+  scale: {self: 0.75, society: 0.25}
+  time: {present: 0.56, future: 0.42}
+  ai: {not_ai: 1}
+  imagery: {none: 0.28, road: 0.27, crowd: 0.17, body: 0.16}
+  stance: {critic: 0.87, witness: 0.11}
+  actor: {individual: 0.39, company: 0.31}
+  ending: {call: 0.53, resolved: 0.33, practical: 0.14}
+  tension: 0.69
+  certainty: 0.94
+  valence: 0.33
+  energy: 0.59
+  wander: 0.47
+  personal: 0.76
+  humor: 0.26
+  technical: 0.34
 ---
 
 # The Future of Payments and Open Source Support

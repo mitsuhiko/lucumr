@@ -1,6 +1,23 @@
 ---
 tags: ['vcs', 'thoughts', 'opensource']
 summary: "Old article about why I love bitbucket."
+facets:
+  mood: {hopeful: 0.57, reflective: 0.33}
+  scale: {community: 0.66, craft: 0.33}
+  time: {present: 0.76, past: 0.22}
+  ai: {not_ai: 1}
+  imagery: {none: 0.42, body: 0.26, water: 0.11}
+  stance: {advocate: 0.9}
+  actor: {company: 0.47, individual: 0.39}
+  ending: {practical: 0.88}
+  tension: 0.34
+  certainty: 0.84
+  valence: 0.75
+  energy: 0.43
+  wander: 0.45
+  personal: 0.58
+  humor: 0.33
+  technical: 0.61
 ---
 
 # Bitbucket is no Bit bucket

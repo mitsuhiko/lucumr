@@ -1,6 +1,23 @@
 ---
 tags: ['sentry', 'announcement', 'thoughts', 'life']
 summary: "Endings and new beginnings."
+facets:
+  mood: {hopeful: 0.48, reflective: 0.47}
+  scale: {self: 0.97}
+  time: {past: 0.97}
+  ai: {not_ai: 1}
+  imagery: {road: 0.8, fire: 0.1}
+  stance: {witness: 0.99}
+  actor: {individual: 0.95}
+  ending: {open: 0.75, call: 0.23}
+  tension: 0.07
+  certainty: 0.65
+  valence: 0.77
+  energy: 0.34
+  wander: 0.34
+  personal: 0.82
+  humor: 0.11
+  technical: 0.42
 ---
 
 # I'm Leaving Sentry

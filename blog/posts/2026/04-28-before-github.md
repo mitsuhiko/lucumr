@@ -1,6 +1,23 @@
 ---
 tags: ['vcs', 'thoughts', 'opensource', 'history', 'community']
 summary: "Open Source before GitHub was reputation-driven and full of friction"
+facets:
+  mood: {reflective: 0.71, worried: 0.17, conflicted: 0.12}
+  scale: {community: 0.97}
+  time: {past: 0.94}
+  ai: {not_ai: 0.67, agents: 0.24}
+  imagery: {building: 0.6, none: 0.13}
+  stance: {advocate: 0.33, witness: 0.28, observer: 0.25, critic: 0.14}
+  actor: {company: 0.96}
+  ending: {resolved: 0.62, open: 0.2, call: 0.16}
+  tension: 0.5
+  certainty: 0.78
+  valence: 0.3
+  energy: 0.44
+  wander: 0.41
+  personal: 0.66
+  humor: 0.17
+  technical: 0.4
 ---
 
 # Before GitHub

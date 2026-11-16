@@ -1,6 +1,23 @@
 ---
 tags: ['culture', 'security', 'thoughts']
 summary: "A book review from a really terrible science fiction book by Dan Brown."
+facets:
+  mood: {angry: 1}
+  scale: {craft: 0.58, self: 0.2, industry: 0.16}
+  time: {present: 0.67, past: 0.33}
+  ai: {not_ai: 1}
+  imagery: {body: 0.6, building: 0.17, none: 0.15}
+  stance: {critic: 1}
+  actor: {individual: 0.36, state: 0.32, idea: 0.25}
+  ending: {resolved: 1}
+  tension: 0.4
+  certainty: 0.98
+  valence: 0.18
+  energy: 0.79
+  wander: 0.23
+  personal: 0.42
+  humor: 0.35
+  technical: 0.67
 ---
 
 # Digital Fortress — Stranger Than Fiction

@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'tooling']
 summary: Some of my attempts to make agents work better that just didn't work.
+facets:
+  mood: {reflective: 0.89}
+  scale: {craft: 0.76, self: 0.24}
+  time: {past: 0.81, present: 0.19}
+  ai: {agents: 1}
+  imagery: {body: 0.44, none: 0.33}
+  stance: {witness: 0.72, observer: 0.13, critic: 0.12}
+  actor: {individual: 0.96}
+  ending: {open: 0.58, resolved: 0.41}
+  tension: 0.12
+  certainty: 0.57
+  valence: 0.37
+  energy: 0.34
+  wander: 0.33
+  personal: 0.7
+  humor: 0.23
+  technical: 0.75
 ---
 
 # Agentic Coding Things That Didn't Work

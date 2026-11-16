@@ -2,6 +2,23 @@
 tags: ['rust', 'thoughts', 'api', 'engineering']
 summary: "My thoughts about error handling in APIs after writing a Redis library
 in Rust."
+facets:
+  mood: {hopeful: 0.89}
+  scale: {craft: 1}
+  time: {future: 0.92}
+  ai: {not_ai: 1}
+  imagery: {none: 0.71, road: 0.22}
+  stance: {teacher: 0.58, advocate: 0.22, observer: 0.17}
+  actor: {group: 0.5, idea: 0.46}
+  ending: {practical: 0.53, resolved: 0.34}
+  tension: 0.06
+  certainty: 0.7
+  valence: 0.74
+  energy: 0.4
+  wander: 0.33
+  personal: 0.39
+  humor: 0.07
+  technical: 0.77
 ---
 
 # On Error Handling in Rust

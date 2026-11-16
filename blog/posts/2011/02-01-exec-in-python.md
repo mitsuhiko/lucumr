@@ -2,6 +2,23 @@
 tags: ['python', 'tutorial']
 summary: "How `exec` and `eval` work in Python and a number of reasons why you
 don't want to use them."
+facets:
+  mood: {matter_of_fact: 0.69, angry: 0.15, worried: 0.11}
+  scale: {craft: 0.95}
+  time: {present: 0.84, past: 0.14}
+  ai: {not_ai: 1}
+  imagery: {road: 0.86, none: 0.12}
+  stance: {teacher: 0.73, critic: 0.21}
+  actor: {idea: 0.7, group: 0.13}
+  ending: {call: 0.54, resolved: 0.34, open: 0.1}
+  tension: 0.4
+  certainty: 0.91
+  valence: 0.46
+  energy: 0.49
+  wander: 0.33
+  personal: 0.33
+  humor: 0.41
+  technical: 0.97
 ---
 
 # Be careful with exec and eval in Python
@@ -168,7 +185,7 @@ Execute the following thing in the Python interpreter:
 
 ```pycon
 >>> a = 42
->>> locals()['a'] = 23
+>>> locals()["a"] = 23
 >>> a
 23
 ```
@@ -186,10 +203,9 @@ Now what happens if we do this at function level?
 
 ```pycon
 >>> def foo():
-...  a = 42
-...  locals()['a'] = 23
-...  return a
-...
+...     a = 42
+...     locals()["a"] = 23
+...     return a
 >>> foo()
 42
 ```
@@ -291,7 +307,7 @@ Why is that important?  Because that is how pickle works [^3]:
 ```pycon
 >>> pickle.loads(pickle.dumps(quoteattr))
 <function quoteattr at 0x1005349b0>
->>> quoteattr.__module__ = 'fake'
+>>> quoteattr.__module__ = "fake"
 >>> pickle.loads(pickle.dumps(quoteattr))
 Traceback (most recent call last):
   ..
@@ -334,9 +350,9 @@ Deleted
 Looks good.  Let's try that with exec:
 
 ```pycon
->>> execfile('test.py', {})
->>> execfile('test.py', {})
->>> execfile('test.py', {})
+>>> execfile("test.py", {})
+>>> execfile("test.py", {})
+>>> execfile("test.py", {})
 >>> import gc
 >>> gc.collect()
 27

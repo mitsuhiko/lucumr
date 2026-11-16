@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "Some findings of using Skills and the loadout pattern with MCP."
+facets:
+  mood: {reflective: 0.86, matter_of_fact: 0.1}
+  scale: {craft: 0.93}
+  time: {present: 0.59, past: 0.38}
+  ai: {agents: 0.96}
+  imagery: {none: 0.51, road: 0.46}
+  stance: {critic: 0.48, advocate: 0.36}
+  actor: {individual: 0.52, company: 0.39}
+  ending: {resolved: 0.53, open: 0.3, practical: 0.17}
+  tension: 0.41
+  certainty: 0.66
+  valence: 0.46
+  energy: 0.29
+  wander: 0.34
+  personal: 0.57
+  humor: 0.16
+  technical: 0.74
 ---
 
 # Skills vs Dynamic MCP Loadouts

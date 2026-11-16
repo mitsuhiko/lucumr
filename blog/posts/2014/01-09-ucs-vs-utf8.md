@@ -3,6 +3,23 @@ tags: ['unicode', 'rust']
 summary: "Some comparisons about different ways to deal with Unicode in
 programming languages, especially about how UCS encodings work
 in comparison to UTF-8."
+facets:
+  mood: {reflective: 0.75, matter_of_fact: 0.21}
+  scale: {craft: 1}
+  time: {present: 0.6, past: 0.22, future: 0.18}
+  ai: {not_ai: 1}
+  imagery: {none: 0.82}
+  stance: {advocate: 0.9}
+  actor: {group: 0.52, idea: 0.45}
+  ending: {resolved: 0.71, practical: 0.2}
+  tension: 0.4
+  certainty: 0.73
+  valence: 0.68
+  energy: 0.31
+  wander: 0.4
+  personal: 0.45
+  humor: 0.14
+  technical: 0.77
 ---
 
 # UCS vs UTF-8 as Internal String Encoding

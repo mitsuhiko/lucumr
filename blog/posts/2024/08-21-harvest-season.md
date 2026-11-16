@@ -1,6 +1,23 @@
 ---
 tags: ['packaging', 'python', 'tooling', 'thoughts']
 summary: "My thoughts on Rye and uv."
+facets:
+  mood: {hopeful: 0.98}
+  scale: {craft: 0.49, community: 0.49}
+  time: {future: 0.97}
+  ai: {not_ai: 0.94}
+  imagery: {growth: 0.97}
+  stance: {advocate: 1}
+  actor: {company: 0.68, group: 0.26}
+  ending: {resolved: 0.38, open: 0.31, practical: 0.22}
+  tension: 0.29
+  certainty: 0.86
+  valence: 0.75
+  energy: 0.47
+  wander: 0.47
+  personal: 0.53
+  humor: 0.12
+  technical: 0.5
 ---
 
 # Rye and uv: August is Harvest Season for Python Packaging

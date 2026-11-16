@@ -2,6 +2,23 @@
 tags: ['community', 'thoughts', 'opensource']
 summary: "Some personal thoughts and observations about the topic of diversity in
 technology and in particular Open Source."
+facets:
+  mood: {reflective: 0.63, angry: 0.26}
+  scale: {community: 1}
+  time: {present: 0.72, future: 0.27}
+  ai: {not_ai: 0.98}
+  imagery: {crowd: 0.61, none: 0.16, air: 0.14}
+  stance: {advocate: 0.99}
+  actor: {group: 0.92}
+  ending: {resolved: 0.93}
+  tension: 0.63
+  certainty: 0.9
+  valence: 0.36
+  energy: 0.47
+  wander: 0.46
+  personal: 0.3
+  humor: 0.24
+  technical: 0.31
 ---
 
 # Diversity in Technology and Open Source

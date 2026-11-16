@@ -2,6 +2,23 @@
 tags: ['opensource', 'sentry', 'thoughts', 'business']
 summary: "My thoughts on monetizing open source SaaS businesses from my experience
 at Sentry."
+facets:
+  mood: {reflective: 0.96}
+  scale: {community: 0.53, industry: 0.37}
+  time: {present: 0.55, past: 0.32, future: 0.13}
+  ai: {not_ai: 1}
+  imagery: {none: 0.81, growth: 0.11}
+  stance: {advocate: 0.76}
+  actor: {company: 0.68, individual: 0.31}
+  ending: {call: 0.89, open: 0.11}
+  tension: 0.56
+  certainty: 0.54
+  valence: 0.6
+  energy: 0.27
+  wander: 0.4
+  personal: 0.65
+  humor: 0.02
+  technical: 0.35
 ---
 
 # Open Source, SaaS and Monetization

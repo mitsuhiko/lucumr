@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'packaging', 'tutorial', 'tooling']
 summary: "A quick overview into wheel based Python deployments."
+facets:
+  mood: {matter_of_fact: 0.9}
+  scale: {craft: 0.97}
+  time: {present: 0.79, past: 0.2}
+  ai: {not_ai: 1}
+  imagery: {road: 0.59, none: 0.28}
+  stance: {teacher: 0.97}
+  actor: {group: 0.92}
+  ending: {practical: 0.56, resolved: 0.41}
+  tension: 0.42
+  certainty: 0.68
+  valence: 0.59
+  energy: 0.33
+  wander: 0.28
+  personal: 0.4
+  humor: 0.21
+  technical: 0.8
 ---
 
 # Python on Wheels
@@ -123,9 +140,11 @@ import os
 from setuptools import setup
 from setuptools.dist import Distribution
 
+
 class BinaryDistribution(Distribution):
     def is_pure(self):
         return False
+
 
 setup(
     ...,

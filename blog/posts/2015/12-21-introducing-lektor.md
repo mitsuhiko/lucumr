@@ -2,6 +2,23 @@
 tags: ['announcement', 'python', 'web']
 summary: "The background story to why I built yet another static website generator
 in Python."
+facets:
+  mood: {hopeful: 0.53, reflective: 0.4}
+  scale: {craft: 0.8, self: 0.19}
+  time: {past: 0.52, present: 0.47}
+  ai: {not_ai: 1}
+  imagery: {none: 0.44, stone: 0.23, body: 0.15, building: 0.13}
+  stance: {builder: 0.93}
+  actor: {individual: 1}
+  ending: {practical: 0.46, call: 0.31, resolved: 0.12, open: 0.11}
+  tension: 0.09
+  certainty: 0.79
+  valence: 0.74
+  energy: 0.39
+  wander: 0.47
+  personal: 0.64
+  humor: 0.22
+  technical: 0.74
 ---
 
 # Introducing Lektor — A Static File Content Management System For Python

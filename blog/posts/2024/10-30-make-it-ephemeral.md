@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'design']
 summary: "Make software that is capable to forget and decay information."
+facets:
+  mood: {reflective: 0.6, hopeful: 0.18, angry: 0.15}
+  scale: {craft: 0.88}
+  time: {future: 0.94}
+  ai: {not_ai: 1}
+  imagery: {body: 0.28, growth: 0.26, none: 0.21, air: 0.11, building: 0.11}
+  stance: {advocate: 1}
+  actor: {idea: 0.75, individual: 0.18}
+  ending: {practical: 0.58, call: 0.3, resolved: 0.1}
+  tension: 0.34
+  certainty: 0.85
+  valence: 0.59
+  energy: 0.44
+  wander: 0.45
+  personal: 0.5
+  humor: 0.17
+  technical: 0.45
 ---
 
 # Make It Ephemeral: Software Should Decay and Lose Data

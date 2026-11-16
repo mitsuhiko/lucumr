@@ -10,8 +10,9 @@ from fnmatch import fnmatch
 from math import log, ceil
 from pathlib import Path
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, is_undefined
 
+from generator import art
 from generator.pagination import Pagination
 from generator.config import CONFIG
 from generator.markup import (
@@ -72,6 +73,8 @@ class BlogPost:
         # Apply frontmatter
         self.tags = frontmatter.get("tags", [])
         self.summary = frontmatter.get("summary")
+        # hidden classifications the artwork draws from (see generator.art)
+        self.facets = frontmatter.get("facets") or {}
 
         # Parse content for title if not in frontmatter
         lines = content.split("\n")
@@ -252,6 +255,7 @@ class Builder:
             get_recent_blog_entries=self._get_recent_posts,
             get_tags=self._get_tags,
             today=self._get_today,
+            art_marker=self._art_marker,
         )
         self.jinja_env.filters["dateonlyformat"] = self._date_only_format
 
@@ -329,6 +333,20 @@ class Builder:
             tags = tags[:limit]
         tags.sort(key=lambda x: x["name"].lower())
         return tags
+
+    def _art_marker(self, ctx=None, tag=None):
+        """The artwork's record of the page being rendered (see generator.art)."""
+        if isinstance(ctx, BlogPost):
+            record = art.post_record(ctx)
+        elif not is_undefined(tag) and tag:
+            record = {
+                "kind": "tag",
+                "slug": self._link_to("tag", tag=tag["name"]),
+                "tags": [tag["name"]],
+            }
+        else:
+            record = {"kind": "index"}
+        return art.marker(record)
 
     def _get_today(self):
         """Get today's date."""
@@ -979,6 +997,7 @@ class Builder:
             print("Talks page up to date")
 
         self.copy_static_files()
+        art.write_data(self.posts, self.output_folder / CONFIG["static_folder"] / "art")
         self.write_pygments_css()
         self.generate_social_previews()
 

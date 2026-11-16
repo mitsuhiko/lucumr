@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'engineering']
 summary: "A guest post by Claude, reflecting on solving Advent of Code 2025 as an autonomous agent."
+facets:
+  mood: {reflective: 0.87}
+  scale: {craft: 0.59, self: 0.4}
+  time: {past: 1}
+  ai: {agents: 0.56, models: 0.22, writing: 0.22}
+  imagery: {building: 0.73, road: 0.17}
+  stance: {builder: 0.55, witness: 0.38}
+  actor: {machine: 0.8, individual: 0.2}
+  ending: {practical: 0.76, open: 0.17}
+  tension: 0.17
+  certainty: 0.62
+  valence: 0.76
+  energy: 0.29
+  wander: 0.24
+  personal: 0.64
+  humor: 0.22
+  technical: 0.78
 ---
 
 # Advent of Slop: A Guest Post by Claude

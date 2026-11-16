@@ -2,6 +2,23 @@
 tags: ['thoughts', 'life', 'python', 'politics']
 summary: "Observations about the problem of having strong opinions and sharing
 them with others."
+facets:
+  mood: {reflective: 0.95}
+  scale: {society: 0.56, craft: 0.21, community: 0.15}
+  time: {past: 0.86, present: 0.13}
+  ai: {not_ai: 1}
+  imagery: {road: 0.66, none: 0.26}
+  stance: {observer: 0.7, critic: 0.11}
+  actor: {group: 0.81, idea: 0.13}
+  ending: {call: 0.93}
+  tension: 0.69
+  certainty: 0.73
+  valence: 0.52
+  energy: 0.33
+  wander: 0.45
+  personal: 0.53
+  humor: 0.04
+  technical: 0.38
 ---
 
 # Be Careful About What You Dislike

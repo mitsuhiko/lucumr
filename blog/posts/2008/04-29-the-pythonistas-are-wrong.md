@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'thoughts']
 summary: "Why the Python logo is not supposde to be a snake."
+facets:
+  mood: {playful: 0.91}
+  scale: {community: 0.88, craft: 0.12}
+  time: {present: 0.9}
+  ai: {not_ai: 1}
+  imagery: {body: 0.61, stone: 0.21, crowd: 0.12}
+  stance: {critic: 0.96}
+  actor: {individual: 0.58, group: 0.28, idea: 0.14}
+  ending: {resolved: 0.66, open: 0.3}
+  tension: 0.84
+  certainty: 0.96
+  valence: 0.69
+  energy: 0.74
+  wander: 0.55
+  personal: 0.35
+  humor: 0.92
+  technical: 0.24
 ---
 
 # The Pythonistas are Wrong

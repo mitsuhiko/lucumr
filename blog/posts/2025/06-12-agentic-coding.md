@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'engineering', 'tooling', 'go']
 summary: "Current recommendations of agentic coding."
+facets:
+  mood: {matter_of_fact: 0.53, reflective: 0.26, hopeful: 0.21}
+  scale: {craft: 0.98}
+  time: {present: 0.93}
+  ai: {agents: 1}
+  imagery: {none: 0.38, fire: 0.23, body: 0.21}
+  stance: {teacher: 0.9}
+  actor: {machine: 0.62, individual: 0.22, idea: 0.11}
+  ending: {call: 0.9}
+  tension: 0.03
+  certainty: 0.77
+  valence: 0.74
+  energy: 0.39
+  wander: 0.3
+  personal: 0.55
+  humor: 0.34
+  technical: 0.75
 ---
 
 # Agentic Coding Recommendations

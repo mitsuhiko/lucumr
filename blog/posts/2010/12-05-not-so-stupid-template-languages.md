@@ -2,6 +2,23 @@
 tags: ['jinja', 'python', 'django', 'web', 'engineering']
 summary: "Why Jinja2's template engine design makes it harder for your to shoot
 yourself into the foot compared to Django's limited templating system."
+facets:
+  mood: {angry: 0.83, matter_of_fact: 0.15}
+  scale: {craft: 1}
+  time: {present: 0.97}
+  ai: {not_ai: 1}
+  imagery: {body: 0.81, none: 0.13}
+  stance: {advocate: 0.65, critic: 0.35}
+  actor: {individual: 0.49, idea: 0.49}
+  ending: {resolved: 0.99}
+  tension: 0.85
+  certainty: 0.91
+  valence: 0.61
+  energy: 0.56
+  wander: 0.38
+  personal: 0.41
+  humor: 0.31
+  technical: 0.75
 ---
 
 # Not So Stupid Template Languages

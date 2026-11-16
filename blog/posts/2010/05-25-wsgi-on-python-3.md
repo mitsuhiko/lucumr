@@ -1,6 +1,23 @@
 ---
 tags: ['wsgi', 'python', 'web', 'unicode', 'api']
 summary: "A short summary about the current state of WSGI on Python 3."
+facets:
+  mood: {worried: 0.77}
+  scale: {craft: 0.95}
+  time: {present: 0.64, future: 0.34}
+  ai: {not_ai: 1}
+  imagery: {none: 0.54, crowd: 0.25, light: 0.1}
+  stance: {critic: 0.46, advocate: 0.38, teacher: 0.1}
+  actor: {individual: 0.63, group: 0.22, idea: 0.14}
+  ending: {call: 0.93}
+  tension: 0.44
+  certainty: 0.48
+  valence: 0.3
+  energy: 0.51
+  wander: 0.37
+  personal: 0.51
+  humor: 0.1
+  technical: 0.86
 ---
 
 # WSGI on Python 3
@@ -33,30 +50,30 @@ unicode strings now and the bytestrings got replaced by things that are
 more like arrays than strings.  Take this Python 2 example:
 
 ```pycon
->>> 'foo' + u'bar'
+>>> "foo" + "bar"
 u'foobar'
->>> 'foo %s' % 42
+>>> "foo %s" % 42
 'foo 42'
 >>> print 'foo'
 foo
->>> list('foo')
+>>> list("foo")
 ['f', 'o', 'o']
 ```
 
 Now compare that to the very same example on Python 3, just with syntaxadjusted to the new rules:
 
 ```pycon
->>> b'foo' + 'bar'
+>>> b"foo" + "bar"
 Traceback (most recent call last):
   File "", line 1, in
 TypeError: can't concat bytes to str
->>> b'foo %s' % 42
+>>> b"foo %s" % 42
 Traceback (most recent call last):
   File "", line 1, in
 TypeError: unsupported operand type(s) for %: 'bytes' and 'int'
->>> print(b'foo')
+>>> print(b"foo")
 b'foo'
->>> list(b'foo')
+>>> list(b"foo")
 [102, 111, 111]
 ```
 
@@ -119,24 +136,27 @@ from the WSGI environment on Python 2:
 
 ```python
 def get_host(environ):
-    if 'HTTP_HOST' in environ:
-        return environ['HTTP_HOST']
-    result = environ['SERVER_NAME']
-    if (environ['wsgi.url_scheme'], environ['SERVER_PORT']) not \
-       in (('https', '443'), ('http', '80')):
-        result += ':' + environ['SERVER_PORT']
+    if "HTTP_HOST" in environ:
+        return environ["HTTP_HOST"]
+    result = environ["SERVER_NAME"]
+    if (environ["wsgi.url_scheme"], environ["SERVER_PORT"]) not in (
+        ("https", "443"),
+        ("http", "80"),
+    ):
+        result += ":" + environ["SERVER_PORT"]
     return result
 
+
 def get_current_url(environ):
-    rv = '%s://%s/%s%s' % (
-        environ['wsgi.url_scheme'],
+    rv = "%s://%s/%s%s" % (
+        environ["wsgi.url_scheme"],
         get_host(environ),
-        urllib.quote(environ.get('SCRIPT_NAME', '').strip('/')),
-        urllib.quote('/' + environ.get('PATH_INFO', '').lstrip('/'))
+        urllib.quote(environ.get("SCRIPT_NAME", "").strip("/")),
+        urllib.quote("/" + environ.get("PATH_INFO", "").lstrip("/")),
     )
-    qs = environ.get('QUERY_STRING')
+    qs = environ.get("QUERY_STRING")
     if qs:
-        rv += '?' + qs
+        rv += "?" + qs
     return rv
 ```
 
@@ -153,12 +173,14 @@ straightforward port:
 
 ```python
 def get_host(environ):
-    if 'HTTP_HOST' in environ:
-        return environ['HTTP_HOST']
-    result = environ['SERVER_NAME']
-    if (environ['wsgi.url_scheme'], environ['SERVER_PORT']) not \
-       in ((b'https', b'443'), (b'http', b'80')):
-        result += b':' + environ['SERVER_PORT']
+    if "HTTP_HOST" in environ:
+        return environ["HTTP_HOST"]
+    result = environ["SERVER_NAME"]
+    if (environ["wsgi.url_scheme"], environ["SERVER_PORT"]) not in (
+        (b"https", b"443"),
+        (b"http", b"80"),
+    ):
+        result += b":" + environ["SERVER_PORT"]
     return result
 ```
 

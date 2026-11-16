@@ -2,6 +2,23 @@
 tags: ['python', 'thoughts', 'engineering', 'web']
 summary: "My experiences with the Python standard library and why I'm not the
 biggest fan of it or at least the way it works currenctly."
+facets:
+  mood: {angry: 0.89}
+  scale: {craft: 0.96}
+  time: {past: 0.44, present: 0.39, future: 0.17}
+  ai: {not_ai: 1}
+  imagery: {body: 0.7, none: 0.23}
+  stance: {critic: 0.75, advocate: 0.25}
+  actor: {individual: 0.54, group: 0.25, idea: 0.19}
+  ending: {resolved: 0.4, open: 0.3, call: 0.15, practical: 0.15}
+  tension: 0.51
+  certainty: 0.77
+  valence: 0.39
+  energy: 0.64
+  wander: 0.54
+  personal: 0.57
+  humor: 0.42
+  technical: 0.75
 ---
 
 # "STD" stands for Sleazy, Tattered and Dead

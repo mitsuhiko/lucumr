@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'life']
 summary: "A thought on human progress."
+facets:
+  mood: {hopeful: 0.94}
+  scale: {society: 0.99}
+  time: {future: 0.91}
+  ai: {not_ai: 0.98}
+  imagery: {stone: 0.56, water: 0.28, road: 0.14}
+  stance: {advocate: 0.98}
+  actor: {idea: 0.45, group: 0.33, state: 0.18}
+  ending: {resolved: 0.9, open: 0.1}
+  tension: 0.77
+  certainty: 0.91
+  valence: 0.74
+  energy: 0.48
+  wander: 0.36
+  personal: 0.38
+  humor: 0.05
+  technical: 0.24
 ---
 
 # Progress

@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'business', 'opensource']
 summary: "Thoughts on funding maintainers through the pledge, WordPress'"
+facets:
+  mood: {reflective: 0.76, conflicted: 0.24}
+  scale: {community: 0.93}
+  time: {present: 0.74, past: 0.16, future: 0.1}
+  ai: {not_ai: 1}
+  imagery: {light: 0.34, body: 0.29, growth: 0.19}
+  stance: {observer: 0.57, advocate: 0.36}
+  actor: {company: 0.63, individual: 0.26}
+  ending: {open: 0.93}
+  tension: 0.74
+  certainty: 0.5
+  valence: 0.39
+  energy: 0.39
+  wander: 0.53
+  personal: 0.63
+  humor: 0.09
+  technical: 0.27
 ---
 
 # The Inevitability of Mixing Open Source and Money

@@ -2,6 +2,23 @@
 tags: ['rust', 'thoughts', 'api']
 summary: "A look at stack unwinding, primarily in the context of Rust, why it
 exists and a discussion about if it's a good idea."
+facets:
+  mood: {reflective: 0.55, matter_of_fact: 0.32}
+  scale: {craft: 0.98}
+  time: {present: 0.7, future: 0.29}
+  ai: {not_ai: 1}
+  imagery: {road: 0.48, none: 0.32}
+  stance: {advocate: 0.75, critic: 0.12}
+  actor: {idea: 0.69, group: 0.17, individual: 0.11}
+  ending: {resolved: 0.48, open: 0.37, practical: 0.15}
+  tension: 0.55
+  certainty: 0.76
+  valence: 0.5
+  energy: 0.42
+  wander: 0.36
+  personal: 0.35
+  humor: 0.31
+  technical: 0.79
 ---
 
 # Don't Panic! The Hitchhiker's Guide to Unwinding

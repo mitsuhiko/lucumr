@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'packaging', 'thoughts', 'engineering']
 summary: "Some of the issues of why Python packaging is unnecessarily hard."
+facets:
+  mood: {angry: 0.42, reflective: 0.29, matter_of_fact: 0.19}
+  scale: {craft: 0.98}
+  time: {present: 0.82}
+  ai: {not_ai: 1}
+  imagery: {road: 0.32, none: 0.23, building: 0.13, stone: 0.12, water: 0.1}
+  stance: {advocate: 0.66, critic: 0.34}
+  actor: {group: 0.78, idea: 0.21}
+  ending: {resolved: 0.43, open: 0.43, practical: 0.13}
+  tension: 0.54
+  certainty: 0.82
+  valence: 0.28
+  energy: 0.45
+  wander: 0.28
+  personal: 0.27
+  humor: 0.27
+  technical: 0.79
 ---
 
 # Constraints are Good: Python's Metadata Dilemma

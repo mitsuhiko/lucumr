@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'async', 'thoughts', 'api']
 summary: A follow-up to how I wish async would work.
+facets:
+  mood: {reflective: 0.79, hopeful: 0.17}
+  scale: {craft: 1}
+  time: {future: 0.98}
+  ai: {not_ai: 1}
+  imagery: {none: 0.48, road: 0.27, building: 0.17}
+  stance: {advocate: 1}
+  actor: {idea: 0.61, individual: 0.29}
+  ending: {open: 0.73, call: 0.26}
+  tension: 0.48
+  certainty: 0.57
+  valence: 0.71
+  energy: 0.38
+  wander: 0.33
+  personal: 0.39
+  humor: 0.09
+  technical: 0.79
 ---
 
 # From Async/Await to Virtual Threads
@@ -153,10 +170,12 @@ Behind the scenes, something like this would happen:
 ```python
 from functools import partial
 
+
 def download_all(urls):
     results = {}
 
     with ThreadGroup():
+
         def _thread(url):
             results[url] = fetch_url(url)
 
@@ -201,8 +220,10 @@ groups explicit:
 ```python
 from functools import partial
 
+
 def download_and_store(results, url):
     results[url] = fetch_url(url)
+
 
 def download_all(urls):
     results = {}
@@ -238,10 +259,12 @@ thread group, directly limiting how many spawns can happen simultaniously.
 ```python
 from functools import partial
 
+
 def download_and_store(results_mutex, url):
     result = fetch_url(url)
     with results_mutex.lock() as results:
         results.store(url, result)
+
 
 def download_all(urls):
     results = Mutex(MyResultStore())
@@ -262,6 +285,7 @@ around. One way to get a future is to hold on to the return value of the
 ```python
 def download_and_store(results, url):
     results[url] = fetch_url(url)
+
 
 def download_all(urls):
     futures = []

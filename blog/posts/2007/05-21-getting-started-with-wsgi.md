@@ -1,6 +1,23 @@
 ---
 tags: ['wsgi', 'python', 'web', 'tutorial']
 summary: "A friendly introduction into getting started with WSGI on Python."
+facets:
+  mood: {matter_of_fact: 0.84, playful: 0.13}
+  scale: {craft: 1}
+  time: {present: 0.95}
+  ai: {not_ai: 1}
+  imagery: {none: 0.7, road: 0.11}
+  stance: {teacher: 1}
+  actor: {individual: 0.58, idea: 0.38}
+  ending: {resolved: 0.49, practical: 0.48}
+  tension: 0.02
+  certainty: 0.85
+  valence: 0.72
+  energy: 0.38
+  wander: 0.22
+  personal: 0.38
+  humor: 0.34
+  technical: 0.82
 ---
 
 # Getting Started with WSGI
@@ -52,17 +69,21 @@ says `Hello World!` where World can be specified via url parameter.
 ```python
 from cgi import parse_qs, escape
 
+
 def hello_world(environ, start_response):
-    parameters = parse_qs(environ.get('QUERY_STRING', ''))
-    if 'subject' in parameters:
-        subject = escape(parameters['subject'][0])
+    parameters = parse_qs(environ.get("QUERY_STRING", ""))
+    if "subject" in parameters:
+        subject = escape(parameters["subject"][0])
     else:
-        subject = 'World'
-    start_response('200 OK', [('Content-Type', 'text/html')])
-    return ['''Hello %(subject)s
+        subject = "World"
+    start_response("200 OK", [("Content-Type", "text/html")])
+    return [
+        """Hello %(subject)s
     Hello %(subject)s!
 
-''' % {'subject': subject}]
+"""
+        % {"subject": subject}
+    ]
 ```
 
 As you can see the `start_response` function takes two arguments. A
@@ -82,9 +103,10 @@ the `wsgiref` WSGI standalone server bundled with python2.5 and higher.
 Just add this to your file:
 
 ```python
-if __name__ == '__main__':
+if __name__ == "__main__":
     from wsgiref.simple_server import make_server
-    srv = make_server('localhost', 8080, hello_world)
+
+    srv = make_server("localhost", 8080, hello_world)
     srv.serve_forever()
 ```
 
@@ -114,43 +136,49 @@ current request against that:
 import re
 from cgi import escape
 
+
 def index(environ, start_response):
     """This function will be mounted on "/" and display a link
     to the hello world page."""
-    start_response('200 OK', [('Content-Type', 'text/html')])
-    return ['''Hello World Application
+    start_response("200 OK", [("Content-Type", "text/html")])
+    return [
+        """Hello World Application
                This is the Hello World application:
 
 `continue <hello/>`_
 
-''']
+"""
+    ]
+
 
 def hello(environ, start_response):
     """Like the example above, but it uses the name specified in the
-URL."""
+    URL."""
     # get the name from the url if it was specified there.
-    args = environ['myapp.url_args']
+    args = environ["myapp.url_args"]
     if args:
         subject = escape(args[0])
     else:
-        subject = 'World'
-    start_response('200 OK', [('Content-Type', 'text/html')])
-    return ['''Hello %(subject)s
+        subject = "World"
+    start_response("200 OK", [("Content-Type", "text/html")])
+    return [
+        """Hello %(subject)s
             Hello %(subject)s!
 
-''' % {'subject': subject}]
+"""
+        % {"subject": subject}
+    ]
+
 
 def not_found(environ, start_response):
     """Called if no URL matches."""
-    start_response('404 NOT FOUND', [('Content-Type', 'text/plain')])
-    return ['Not Found']
+    start_response("404 NOT FOUND", [("Content-Type", "text/plain")])
+    return ["Not Found"]
+
 
 # map urls to functions
-urls = [
-    (r'^$', index),
-    (r'hello/?$', hello),
-    (r'hello/(.+)$', hello)
-]
+urls = [(r"^$", index), (r"hello/?$", hello), (r"hello/(.+)$", hello)]
+
 
 def application(environ, start_response):
     """
@@ -161,11 +189,11 @@ def application(environ, start_response):
 
     If nothing matches call the `not_found` function.
     """
-    path = environ.get('PATH_INFO', '').lstrip('/')
+    path = environ.get("PATH_INFO", "").lstrip("/")
     for regex, callback in urls:
         match = re.search(regex, path)
         if match is not None:
-            environ['myapp.url_args'] = match.groups()
+            environ["myapp.url_args"] = match.groups()
             return callback(environ, start_response)
     return not_found(environ, start_response)
 ```
@@ -187,6 +215,7 @@ renders them in the browser:
 from sys import exc_info
 from traceback import format_tb
 
+
 class ExceptionMiddleware(object):
     """The middleware we use."""
 
@@ -206,22 +235,23 @@ class ExceptionMiddleware(object):
         # and prepare a traceback we can render
         except:
             e_type, e_value, tb = exc_info()
-            traceback = ['Traceback (most recent call last):']
+            traceback = ["Traceback (most recent call last):"]
             traceback += format_tb(tb)
-            traceback.append('%s: %s' % (e_type.__name__, e_value))
+            traceback.append("%s: %s" % (e_type.__name__, e_value))
             # we might have not a stated response by now. try
             # to start one with the status code 500 or ignore an
             # raised exception if the application already started one.
             try:
-                start_response('500 INTERNAL SERVER ERROR', [
-                               ('Content-Type', 'text/plain')])
+                start_response(
+                    "500 INTERNAL SERVER ERROR", [("Content-Type", "text/plain")]
+                )
             except:
                 pass
-            yield '\n'.join(traceback)
+            yield "\n".join(traceback)
 
         # wsgi applications might have a close function. If it exists
         # it *must* be called.
-        if hasattr(appiter, 'close'):
+        if hasattr(appiter, "close"):
             appiter.close()
 ```
 
@@ -250,6 +280,7 @@ you have to do is to defined a `myapplication.fcgi` with this code in:
 #!/usr/bin/python
 from flup.server.fcgi import WSGIServer
 from myapplication import application
+
 WSGIServer(application).run()
 ```
 

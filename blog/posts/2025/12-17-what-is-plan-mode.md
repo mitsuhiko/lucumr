@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'design']
 summary: "What I learned about plan mode as a non-plan mode user who plans."
+facets:
+  mood: {reflective: 0.89, matter_of_fact: 0.11}
+  scale: {craft: 0.9, self: 0.1}
+  time: {present: 0.64, past: 0.36}
+  ai: {agents: 0.99}
+  imagery: {none: 0.67, road: 0.18}
+  stance: {teacher: 0.84, observer: 0.14}
+  actor: {individual: 0.68, machine: 0.17, idea: 0.14}
+  ending: {resolved: 0.8, open: 0.1, practical: 0.1}
+  tension: 0.17
+  certainty: 0.58
+  valence: 0.53
+  energy: 0.26
+  wander: 0.37
+  personal: 0.57
+  humor: 0.21
+  technical: 0.74
 ---
 
 # What Actually Is Claude Code's Plan Mode?

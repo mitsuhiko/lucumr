@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts']
 summary: "From fear to optimism: why I am convinced AI is worth embracing."
+facets:
+  mood: {hopeful: 1}
+  scale: {society: 0.76, self: 0.22}
+  time: {future: 0.77, present: 0.23}
+  ai: {society: 0.64, agents: 0.36}
+  imagery: {water: 0.4, fire: 0.15, road: 0.13, none: 0.1}
+  stance: {advocate: 0.99}
+  actor: {machine: 0.65, idea: 0.3}
+  ending: {call: 0.98}
+  tension: 0.49
+  certainty: 0.95
+  valence: 0.8
+  energy: 0.47
+  wander: 0.53
+  personal: 0.69
+  humor: 0.21
+  technical: 0.38
 ---
 
 # AI Changes Everything

@@ -1,6 +1,23 @@
 ---
 tags: ['business', 'politics', 'thoughts']
 summary: "Equity combines legal fairness, ownership, and upside in one everyday concept."
+facets:
+  mood: {reflective: 0.82, hopeful: 0.12}
+  scale: {society: 0.9, industry: 0.1}
+  time: {present: 0.54, future: 0.29, past: 0.17}
+  ai: {not_ai: 1}
+  imagery: {none: 0.47, road: 0.25, growth: 0.15, building: 0.11}
+  stance: {advocate: 0.97}
+  actor: {idea: 0.74, state: 0.22}
+  ending: {call: 0.87, resolved: 0.11}
+  tension: 0.42
+  certainty: 0.81
+  valence: 0.69
+  energy: 0.39
+  wander: 0.28
+  personal: 0.45
+  humor: 0.06
+  technical: 0.35
 ---
 
 # Equity for Europeans

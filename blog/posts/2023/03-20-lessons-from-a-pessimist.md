@@ -1,6 +1,23 @@
 ---
 tags: ['life', 'thoughts']
 summary: "On the topic of life lessons from a born pessimist."
+facets:
+  mood: {reflective: 0.77, hopeful: 0.11, matter_of_fact: 0.1}
+  scale: {self: 0.65, society: 0.34}
+  time: {future: 0.53, present: 0.31, past: 0.16}
+  ai: {society: 0.59, not_ai: 0.4}
+  imagery: {none: 0.71, road: 0.15}
+  stance: {advocate: 0.83, teacher: 0.14}
+  actor: {individual: 0.43, idea: 0.41}
+  ending: {call: 0.91}
+  tension: 0.45
+  certainty: 0.9
+  valence: 0.65
+  energy: 0.3
+  wander: 0.41
+  personal: 0.68
+  humor: 0.09
+  technical: 0.22
 ---
 
 # Lessons from a Pessimist: Make Your Pessimism Productive

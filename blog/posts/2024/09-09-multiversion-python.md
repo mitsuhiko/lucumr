@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'packaging']
 summary: "A braindump on how to make multi version in Python work."
+facets:
+  mood: {reflective: 0.63, matter_of_fact: 0.36}
+  scale: {craft: 1}
+  time: {future: 0.96}
+  ai: {not_ai: 1}
+  imagery: {none: 0.81, building: 0.1}
+  stance: {teacher: 0.89}
+  actor: {individual: 0.7, idea: 0.26}
+  ending: {open: 0.99}
+  tension: 0.04
+  certainty: 0.33
+  valence: 0.49
+  energy: 0.28
+  wander: 0.29
+  personal: 0.31
+  humor: 0.11
+  technical: 0.91
 ---
 
 # Multiversion Python Thoughts
@@ -92,6 +109,7 @@ is this very common pattern:
 ```python
 import sys
 
+
 def import_module(name):
     __import__(name)
     return sys.modules[name]
@@ -154,7 +172,7 @@ what an import statement roughly maps to:
 from foo import bar
 
 # under the hood
-_rv = __import__('foo', globals(), locals(), ['bar'])
+_rv = __import__("foo", globals(), locals(), ["bar"])
 bar = _rv.bar
 ```
 

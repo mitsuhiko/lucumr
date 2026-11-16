@@ -2,6 +2,23 @@
 tags: ['life', 'python', 'opensource']
 summary: "Recapitulation of my accomplishments and interesting events related to
 computing and Open Source of 2010."
+facets:
+  mood: {reflective: 0.59, hopeful: 0.22, matter_of_fact: 0.17}
+  scale: {self: 0.81, community: 0.12}
+  time: {past: 1}
+  ai: {not_ai: 1}
+  imagery: {none: 0.64, body: 0.11, road: 0.1}
+  stance: {witness: 0.99}
+  actor: {individual: 1}
+  ending: {resolved: 0.67, open: 0.27}
+  tension: 0.0
+  certainty: 0.75
+  valence: 0.79
+  energy: 0.38
+  wander: 0.25
+  personal: 0.74
+  humor: 0.27
+  technical: 0.4
 ---
 
 # A Recap

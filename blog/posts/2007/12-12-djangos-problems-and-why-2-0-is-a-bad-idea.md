@@ -2,6 +2,23 @@
 tags: ['django', 'web', 'thoughts', 'python']
 summary: "An old post of back in the days when Django was considering releasing
 a 2.0 version before 1.0."
+facets:
+  mood: {worried: 0.54, angry: 0.38}
+  scale: {craft: 0.91}
+  time: {present: 0.9, future: 0.1}
+  ai: {not_ai: 1}
+  imagery: {none: 0.79}
+  stance: {critic: 1}
+  actor: {group: 0.76, individual: 0.11, idea: 0.11}
+  ending: {resolved: 0.82, open: 0.18}
+  tension: 0.38
+  certainty: 0.86
+  valence: 0.2
+  energy: 0.57
+  wander: 0.56
+  personal: 0.51
+  humor: 0.17
+  technical: 0.57
 ---
 
 # Django's Problems and Why 2.0 is a Bad Idea

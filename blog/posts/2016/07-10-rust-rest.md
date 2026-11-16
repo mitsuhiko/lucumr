@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'web', 'api', 'engineering']
 summary: "Lessons learned from implementing a restful HTTP client for Rust."
+facets:
+  mood: {matter_of_fact: 0.51, reflective: 0.28, hopeful: 0.2}
+  scale: {craft: 0.99}
+  time: {past: 0.99}
+  ai: {not_ai: 1}
+  imagery: {none: 0.51, body: 0.23, fire: 0.12}
+  stance: {builder: 0.91}
+  actor: {individual: 0.99}
+  ending: {practical: 0.88, call: 0.12}
+  tension: 0.03
+  certainty: 0.83
+  valence: 0.73
+  energy: 0.36
+  wander: 0.25
+  personal: 0.49
+  humor: 0.25
+  technical: 0.9
 ---
 
 # Rust and Rest

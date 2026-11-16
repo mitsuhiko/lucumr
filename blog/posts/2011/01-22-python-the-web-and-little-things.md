@@ -3,6 +3,23 @@ day-order: 1
 tags: ['python', 'thoughts', 'web', 'wsgi']
 summary: "A bunch of things currently on my mind regarding web development with
 Python and future directions."
+facets:
+  mood: {reflective: 0.5, hopeful: 0.3, conflicted: 0.17}
+  scale: {community: 0.64, craft: 0.34}
+  time: {future: 0.62, present: 0.37}
+  ai: {not_ai: 1}
+  imagery: {none: 0.5, light: 0.2, road: 0.15}
+  stance: {advocate: 0.62, observer: 0.28}
+  actor: {group: 0.92}
+  ending: {call: 0.99}
+  tension: 0.34
+  certainty: 0.62
+  valence: 0.61
+  energy: 0.41
+  wander: 0.44
+  personal: 0.5
+  humor: 0.18
+  technical: 0.56
 ---
 
 # Python, the Web and Little Things on my Mind

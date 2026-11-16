@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'security']
 summary: "Now that Twitter is dying, what can replace it?"
+facets:
+  mood: {worried: 0.38, angry: 0.28, reflective: 0.28}
+  scale: {community: 0.51, industry: 0.23, craft: 0.15}
+  time: {present: 0.39, future: 0.35, past: 0.26}
+  ai: {not_ai: 1}
+  imagery: {building: 0.37, none: 0.25, water: 0.13}
+  stance: {critic: 0.98}
+  actor: {idea: 0.45, group: 0.34, individual: 0.11}
+  ending: {open: 0.63, practical: 0.19, resolved: 0.17}
+  tension: 0.72
+  certainty: 0.92
+  valence: 0.22
+  energy: 0.51
+  wander: 0.42
+  personal: 0.49
+  humor: 0.19
+  technical: 0.5
 ---
 
 # Scaling Mastodon is Impossible

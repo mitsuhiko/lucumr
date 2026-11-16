@@ -2,6 +2,23 @@
 tags: ['business', 'security']
 summary: "Some interesting notes about how the MST feature of Samsung Pay (and
 credit card transactions in general)."
+facets:
+  mood: {matter_of_fact: 0.53, reflective: 0.43}
+  scale: {industry: 0.99}
+  time: {future: 0.5, present: 0.44}
+  ai: {not_ai: 1}
+  imagery: {none: 0.41, fire: 0.22, body: 0.16}
+  stance: {teacher: 0.71, observer: 0.29}
+  actor: {company: 0.51, state: 0.41}
+  ending: {call: 0.7, open: 0.3}
+  tension: 0.34
+  certainty: 0.51
+  valence: 0.48
+  energy: 0.42
+  wander: 0.38
+  personal: 0.31
+  humor: 0.27
+  technical: 0.6
 ---
 
 # Samsung Pay's MST Transactions and Merchant's Ability to Detect "Cloned" Magstripe Tracks

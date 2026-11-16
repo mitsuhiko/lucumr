@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'life', 'engineering', 'tooling']
 summary: "A personal recap of 2025 and a year of a new style of engineering."
+facets:
+  mood: {reflective: 0.89, conflicted: 0.11}
+  scale: {self: 0.58, craft: 0.42}
+  time: {past: 0.88}
+  ai: {agents: 1}
+  imagery: {body: 0.24, building: 0.21, none: 0.16, road: 0.14, air: 0.11}
+  stance: {observer: 0.52, witness: 0.46}
+  actor: {individual: 0.49, machine: 0.34, idea: 0.15}
+  ending: {open: 0.84, call: 0.14}
+  tension: 0.55
+  certainty: 0.32
+  valence: 0.58
+  energy: 0.45
+  wander: 0.47
+  personal: 0.76
+  humor: 0.35
+  technical: 0.51
 ---
 
 # A Year Of Vibes

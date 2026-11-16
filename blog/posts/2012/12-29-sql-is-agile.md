@@ -2,6 +2,23 @@
 tags: ['thoughts', 'databases']
 summary: "Thoughts about why relational databases are not a bad choice when
 starting a new project."
+facets:
+  mood: {reflective: 0.73, angry: 0.16, conflicted: 0.1}
+  scale: {craft: 0.94}
+  time: {past: 0.97}
+  ai: {not_ai: 1}
+  imagery: {none: 0.46, body: 0.19, fire: 0.14, building: 0.11}
+  stance: {advocate: 0.84, critic: 0.12}
+  actor: {individual: 0.83}
+  ending: {resolved: 0.9}
+  tension: 0.69
+  certainty: 0.81
+  valence: 0.49
+  energy: 0.47
+  wander: 0.46
+  personal: 0.62
+  humor: 0.24
+  technical: 0.6
 ---
 
 # SQL is Agile

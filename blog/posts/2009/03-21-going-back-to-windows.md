@@ -1,6 +1,23 @@
 ---
 tags: ['os', 'tooling']
 summary: "Why I am running Windows on my desktop computer now instead of ubuntu."
+facets:
+  mood: {reflective: 0.53, matter_of_fact: 0.31}
+  scale: {craft: 0.91}
+  time: {present: 0.81, past: 0.19}
+  ai: {not_ai: 1}
+  imagery: {none: 0.62, road: 0.16, crowd: 0.11}
+  stance: {teacher: 0.51, witness: 0.37}
+  actor: {individual: 1}
+  ending: {resolved: 0.7, practical: 0.17, open: 0.11}
+  tension: 0.3
+  certainty: 0.76
+  valence: 0.7
+  energy: 0.38
+  wander: 0.24
+  personal: 0.64
+  humor: 0.34
+  technical: 0.75
 ---
 
 # Going back to Windows

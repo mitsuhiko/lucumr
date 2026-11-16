@@ -2,6 +2,23 @@
 tags: ['business', 'thoughts']
 summary: "My thoughts on Bitcoin and some other cryptocurrencies and why many of
 us are probably better off just ignoring the whole thing."
+facets:
+  mood: {angry: 0.87}
+  scale: {society: 0.8, industry: 0.16}
+  time: {future: 0.58, present: 0.42}
+  ai: {not_ai: 1}
+  imagery: {building: 0.4, body: 0.24, fire: 0.15}
+  stance: {critic: 1}
+  actor: {idea: 0.51, group: 0.29, individual: 0.16}
+  ending: {practical: 0.84}
+  tension: 0.67
+  certainty: 0.97
+  valence: 0.26
+  energy: 0.6
+  wander: 0.35
+  personal: 0.42
+  humor: 0.28
+  technical: 0.47
 ---
 
 # Bitcoin is Not a Good Consumer Product

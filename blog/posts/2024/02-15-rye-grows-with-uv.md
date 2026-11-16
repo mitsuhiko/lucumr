@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'packaging', 'announcement', 'tooling', 'opensource']
 summary: "Rye is faster now by sitting on top of uv and it moves over to Astral."
+facets:
+  mood: {hopeful: 0.74, reflective: 0.2}
+  scale: {craft: 0.88, community: 0.11}
+  time: {future: 0.94}
+  ai: {not_ai: 0.77, writing: 0.23}
+  imagery: {growth: 0.94}
+  stance: {witness: 0.47, builder: 0.34, advocate: 0.15}
+  actor: {company: 0.52, individual: 0.38}
+  ending: {practical: 0.57, open: 0.33}
+  tension: 0.05
+  certainty: 0.7
+  valence: 0.74
+  energy: 0.33
+  wander: 0.42
+  personal: 0.57
+  humor: 0.3
+  technical: 0.68
 ---
 
 # Rye Grows With UV

@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'web']
 summary: "Experiences with XML in Wordpress (or what they call XML)"
+facets:
+  mood: {angry: 1}
+  scale: {craft: 0.8, community: 0.18}
+  time: {present: 0.76, past: 0.24}
+  ai: {not_ai: 1}
+  imagery: {none: 0.71, body: 0.18}
+  stance: {critic: 0.98}
+  actor: {individual: 0.4, idea: 0.19, machine: 0.18, group: 0.17}
+  ending: {open: 0.72, resolved: 0.28}
+  tension: 0.76
+  certainty: 0.95
+  valence: 0.09
+  energy: 0.94
+  wander: 0.59
+  personal: 0.57
+  humor: 0.59
+  technical: 0.75
 ---
 
 # How not to do XML

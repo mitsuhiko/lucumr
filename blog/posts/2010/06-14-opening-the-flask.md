@@ -2,6 +2,23 @@
 tags: ['python', 'flask', 'web', 'tutorial', 'wsgi']
 summary: "First part of a series of articles about how Flaks works internally
 and how you can create micro frameworks with Werkzeug."
+facets:
+  mood: {matter_of_fact: 0.85}
+  scale: {craft: 1}
+  time: {future: 0.58, present: 0.33}
+  ai: {not_ai: 1}
+  imagery: {building: 0.38, none: 0.36, road: 0.1}
+  stance: {teacher: 0.7, builder: 0.28}
+  actor: {individual: 0.8, idea: 0.17}
+  ending: {practical: 0.7, call: 0.25}
+  tension: 0.18
+  certainty: 0.84
+  valence: 0.71
+  energy: 0.38
+  wander: 0.25
+  personal: 0.45
+  humor: 0.27
+  technical: 0.9
 ---
 
 # Opening The Flask
@@ -51,13 +68,16 @@ This is what should work at the end of the day:
 
 ```python
 from yourflask import YourFlask
+
 app = YourFlask()
 
-@app.route('/')
-def index(request):
-    return 'Hello World'
 
-if __name__ == '__main__':
+@app.route("/")
+def index(request):
+    return "Hello World"
+
+
+if __name__ == "__main__":
     app.run()
 ```
 
@@ -82,26 +102,27 @@ from werkzeug import Request, Response, run_simple
 from werkzeug.exceptions import HTTPException
 from werkzeug.routing import Map, Rule
 
-class YourFlask(object):
 
+class YourFlask(object):
     def __init__(self):
         self.url_map = Map()
         self.views = {}
 
     def route(self, string, **options):
         def decorator(f):
-            options['endpoint'] = f.__name__
+            options["endpoint"] = f.__name__
             self.views[f.__name__] = f
             self.url_map.add(Rule(string, **options))
             return f
+
         return decorator
 
     def run(self, **options):
-        return run_simple('localhost', 5000, self, **options)
+        return run_simple("localhost", 5000, self, **options)
 
     def make_response(self, rv):
         if isinstance(rv, basestring):
-            return Response(rv, mimetype='text/html')
+            return Response(rv, mimetype="text/html")
         return rv
 
     def __call__(self, environ, start_response):

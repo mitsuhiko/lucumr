@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'packaging', 'tooling', 'thoughts']
 summary: "A progress update on where my Rye Project is today."
+facets:
+  mood: {reflective: 0.37, conflicted: 0.36, hopeful: 0.26}
+  scale: {craft: 0.85, community: 0.11}
+  time: {present: 0.68, future: 0.26}
+  ai: {not_ai: 1}
+  imagery: {none: 0.61, crowd: 0.16}
+  stance: {advocate: 0.57, builder: 0.41}
+  actor: {individual: 1}
+  ending: {practical: 0.8, call: 0.19}
+  tension: 0.23
+  certainty: 0.46
+  valence: 0.69
+  energy: 0.29
+  wander: 0.34
+  personal: 0.62
+  humor: 0.14
+  technical: 0.6
 ---
 
 # Rye: A Vision Continued

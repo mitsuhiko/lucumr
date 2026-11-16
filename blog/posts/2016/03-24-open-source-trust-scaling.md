@@ -2,6 +2,23 @@
 tags: ['javascript', 'thoughts', 'packaging', 'security', 'opensource']
 summary: "Some thoughts about why npm style micro-packages are a huge liability for
 everybody and what we could do to make them work."
+facets:
+  mood: {worried: 1}
+  scale: {community: 0.64, craft: 0.35}
+  time: {present: 0.85, future: 0.15}
+  ai: {not_ai: 1}
+  imagery: {none: 0.54, fire: 0.21}
+  stance: {critic: 0.97}
+  actor: {idea: 0.49, individual: 0.26, group: 0.23}
+  ending: {call: 0.89}
+  tension: 0.34
+  certainty: 0.92
+  valence: 0.13
+  energy: 0.64
+  wander: 0.33
+  personal: 0.53
+  humor: 0.28
+  technical: 0.74
 ---
 
 # Micropackages and Open Source Trust Scaling

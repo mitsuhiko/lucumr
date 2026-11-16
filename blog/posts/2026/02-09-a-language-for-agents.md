@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'thoughts', 'engineering']
 summary: "What programming languages would agents want to program in?"
+facets:
+  mood: {reflective: 0.65, hopeful: 0.3}
+  scale: {craft: 1}
+  time: {future: 1}
+  ai: {agents: 0.99}
+  imagery: {none: 0.41, building: 0.28, body: 0.11}
+  stance: {advocate: 0.98}
+  actor: {machine: 0.64, idea: 0.29}
+  ending: {resolved: 0.55, open: 0.33}
+  tension: 0.17
+  certainty: 0.73
+  valence: 0.74
+  energy: 0.4
+  wander: 0.27
+  personal: 0.48
+  humor: 0.26
+  technical: 0.75
 ---
 
 # A Language For Agents

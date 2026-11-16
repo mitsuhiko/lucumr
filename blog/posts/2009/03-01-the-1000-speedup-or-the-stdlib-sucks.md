@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'web', 'engineering']
 summary: "How a small change on an import resulted in an 1000% speedup."
+facets:
+  mood: {angry: 0.99}
+  scale: {craft: 0.99}
+  time: {past: 0.62, present: 0.35}
+  ai: {not_ai: 1}
+  imagery: {none: 0.77, body: 0.16}
+  stance: {critic: 0.89}
+  actor: {individual: 0.92}
+  ending: {practical: 0.79, call: 0.2}
+  tension: 0.45
+  certainty: 0.98
+  valence: 0.41
+  energy: 0.78
+  wander: 0.39
+  personal: 0.53
+  humor: 0.58
+  technical: 0.79
 ---
 
 # The 1000% Speedup, or, the stdlib sucks

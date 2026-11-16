@@ -2,6 +2,23 @@
 tags: ['javascript', 'thoughts', 'web', 'engineering']
 summary: "An experience report of using JavaScript with angular for a few days and
 my thoughts on what's wrong with JavaScript libraries."
+facets:
+  mood: {angry: 0.99}
+  scale: {craft: 0.97}
+  time: {present: 0.8, past: 0.14}
+  ai: {not_ai: 1}
+  imagery: {building: 0.44, none: 0.18, road: 0.15, body: 0.1}
+  stance: {critic: 1}
+  actor: {individual: 0.64, group: 0.2, idea: 0.15}
+  ending: {open: 0.68, resolved: 0.31}
+  tension: 0.49
+  certainty: 0.93
+  valence: 0.29
+  energy: 0.73
+  wander: 0.5
+  personal: 0.54
+  humor: 0.46
+  technical: 0.87
 ---
 
 # Stop Being Cute and Clever

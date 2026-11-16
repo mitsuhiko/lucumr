@@ -3,6 +3,23 @@ tags: ['javascript', 'engineering']
 summary: 'Why automatic semicolon insertion in JavaScript was a bad idea and why
 you should be using explicit semicolons, even if you cannot disable that
 "feature".'
+facets:
+  mood: {matter_of_fact: 0.93}
+  scale: {craft: 1}
+  time: {present: 0.95}
+  ai: {not_ai: 1}
+  imagery: {none: 0.95}
+  stance: {advocate: 0.66, teacher: 0.34}
+  actor: {idea: 0.86, machine: 0.14}
+  ending: {practical: 0.44, call: 0.4, resolved: 0.16}
+  tension: 0.15
+  certainty: 0.92
+  valence: 0.47
+  energy: 0.4
+  wander: 0.3
+  personal: 0.27
+  humor: 0.27
+  technical: 0.88
 ---
 
 # Dealing with JavaScript's Automatic Semicolon Insertion

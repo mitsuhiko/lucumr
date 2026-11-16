@@ -48,9 +48,7 @@
     </script>
   </head>
   <body hx-boost="true" hx-ext="head-support" hx-select="div.body" hx-target="div.body" hx-swap="outerHTML">
-    <div class="header-image">
-      <canvas id="header-canvas"></canvas>
-    </div>
+    <div class="header-image"></div>
     <script>
       let $THEME = null;
 
@@ -71,6 +69,17 @@
     </script>
     <script src="/static/htmx-bundle.min.js"></script>
     <script src="/static/app.js"></script>
+    {#- header/footer artwork (see ART.md): core, build data, the variants,
+        then the boot.  ridgeline (the default) is strata's header over
+        sketchbook's footer; classic is the old metaballs, kept as a fallback.
+        The shelved proposals are in art-shelf/ at the top of the repository. #}
+    <script src="/static/art/core.js"></script>
+    <script src="/static/art/data.js"></script>
+    <script src="/static/art/classic.js"></script>
+    <script src="/static/art/strata.js"></script>
+    <script src="/static/art/sketchbook.js"></script>
+    <script src="/static/art/ridgeline.js"></script>
+    <script src="/static/art/site.js"></script>
     <div class=container>
       <div class=header>
         <a href="/about/">Armin Ronacher</a>'s Thoughts and Writings
@@ -86,6 +95,7 @@
         </ul>
       </div>
       <div class=body hx-history-elt>
+        {{ art_marker(ctx=ctx, tag=tag) }}
         {% block body %}{% endblock %}
       </div>
       <div class=footer>
@@ -123,9 +133,7 @@
         </p>
       </div>
     </div>
-    <div class="footer-image">
-      <canvas id="footer-canvas"></canvas>
-    </div>
+    <div class="footer-image"></div>
     <script>
       window.setTimeout(() => {
         document.documentElement.removeAttribute("data-initial-load");

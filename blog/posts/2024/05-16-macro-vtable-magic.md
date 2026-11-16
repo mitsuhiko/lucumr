@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'jinja', 'tutorial', 'types']
 summary: "How MiniJinja's dynamic reference counted objects work."
+facets:
+  mood: {matter_of_fact: 0.63, playful: 0.31}
+  scale: {craft: 1}
+  time: {past: 0.57, present: 0.43}
+  ai: {not_ai: 1}
+  imagery: {none: 0.76, building: 0.14}
+  stance: {teacher: 0.61, builder: 0.39}
+  actor: {individual: 0.68, idea: 0.32}
+  ending: {open: 0.56, practical: 0.24, resolved: 0.19}
+  tension: 0.06
+  certainty: 0.78
+  valence: 0.65
+  energy: 0.37
+  wander: 0.28
+  personal: 0.45
+  humor: 0.36
+  technical: 1.0
 ---
 
 # Using Rust Macros for Custom VTables

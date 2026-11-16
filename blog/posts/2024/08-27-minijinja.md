@@ -1,6 +1,23 @@
 ---
 tags: ['rust', 'jinja', 'engineering']
 summary: "Learnings from building MiniJinja, a template engine in Rust"
+facets:
+  mood: {matter_of_fact: 0.72, reflective: 0.26}
+  scale: {craft: 0.99}
+  time: {past: 0.74, present: 0.26}
+  ai: {not_ai: 0.96}
+  imagery: {none: 0.61, building: 0.34}
+  stance: {builder: 0.85, teacher: 0.15}
+  actor: {individual: 0.97}
+  ending: {call: 0.47, practical: 0.41, resolved: 0.12}
+  tension: 0.02
+  certainty: 0.78
+  valence: 0.71
+  energy: 0.3
+  wander: 0.31
+  personal: 0.48
+  humor: 0.24
+  technical: 0.98
 ---
 
 # MiniJinja: Learnings from Building a Template Engine in Rust

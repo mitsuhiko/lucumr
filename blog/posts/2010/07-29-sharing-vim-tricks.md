@@ -1,6 +1,23 @@
 ---
 tags: ['tooling', 'tutorial']
 summary: "Things I love about vim and that I think are worth sharing."
+facets:
+  mood: {playful: 0.74, matter_of_fact: 0.26}
+  scale: {craft: 0.99}
+  time: {present: 0.99}
+  ai: {not_ai: 1}
+  imagery: {none: 0.88}
+  stance: {teacher: 1}
+  actor: {individual: 0.73, idea: 0.19}
+  ending: {practical: 0.77, call: 0.23}
+  tension: 0.03
+  certainty: 0.82
+  valence: 0.73
+  energy: 0.48
+  wander: 0.28
+  personal: 0.41
+  humor: 0.38
+  technical: 0.75
 ---
 
 # Sharing Vim Tricks

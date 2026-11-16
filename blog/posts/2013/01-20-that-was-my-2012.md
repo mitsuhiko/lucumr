@@ -2,6 +2,23 @@
 tags: ['life', 'thoughts']
 summary: "Recollection of what happened to me in 2012 and what might happen in
 2013."
+facets:
+  mood: {hopeful: 0.72, reflective: 0.28}
+  scale: {self: 0.99}
+  time: {past: 1}
+  ai: {not_ai: 1}
+  imagery: {none: 0.76}
+  stance: {witness: 1}
+  actor: {individual: 0.54, company: 0.45}
+  ending: {resolved: 0.95}
+  tension: 0.01
+  certainty: 0.76
+  valence: 0.88
+  energy: 0.41
+  wander: 0.29
+  personal: 0.76
+  humor: 0.09
+  technical: 0.42
 ---
 
 # What was my 2012

@@ -1,6 +1,23 @@
 ---
 tags: ['python', 'tooling', 'tutorial']
 summary: "Short tutorial on how to use fabric to deploy Python web applications."
+facets:
+  mood: {hopeful: 0.82, matter_of_fact: 0.15}
+  scale: {craft: 1}
+  time: {present: 0.66, past: 0.33}
+  ai: {not_ai: 1}
+  imagery: {none: 0.79, building: 0.14}
+  stance: {advocate: 0.76, teacher: 0.13}
+  actor: {individual: 0.81, idea: 0.12}
+  ending: {open: 0.65, practical: 0.3}
+  tension: 0.05
+  certainty: 0.79
+  valence: 0.77
+  energy: 0.4
+  wander: 0.46
+  personal: 0.48
+  humor: 0.11
+  technical: 0.75
 ---
 
 # Deploying Python Web Applications
@@ -27,9 +44,8 @@ it to deploy anything you can control over ssh.
 Here an example fabfile (the file that controls the deployment)
 
 ```python
-set(
-    fab_hosts = ['srv1.example.com', 'srv2.example.com']
-)
+set(fab_hosts=["srv1.example.com", "srv2.example.com"])
+
 
 def deploy():
     """Deploy the latest version."""
@@ -37,9 +53,10 @@ def deploy():
     # tell the apache to reload the application.
     run("hg pull -u; touch application.wsgi")
 
+
 def bootstrap():
     """Asks for a list of servers and bootstrapps the application there."""
-    set(fab_hosts=[x.strip() for x in raw_input('Servers: ').split()])
+    set(fab_hosts=[x.strip() for x in raw_input("Servers: ").split()])
     run("hg clone http://repository.example.com/application")
     local("./generate-wsgi-file.py &gt; /tmp/application.wsgi")
     put("/tmp/application.wsgi", "application.wsgi")

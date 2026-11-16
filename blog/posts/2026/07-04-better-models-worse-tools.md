@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'pi', 'thoughts']
 summary: "About an aggravating tool-calling regression in newer Claude models."
+facets:
+  mood: {worried: 0.85, reflective: 0.11}
+  scale: {craft: 0.93}
+  time: {present: 0.69, past: 0.22}
+  ai: {models: 0.76, agents: 0.24}
+  imagery: {road: 0.47, none: 0.31, water: 0.18}
+  stance: {critic: 0.32, observer: 0.27, advocate: 0.15, teacher: 0.14, witness: 0.11}
+  actor: {machine: 0.51, company: 0.43}
+  ending: {call: 0.68, practical: 0.21, open: 0.11}
+  tension: 0.27
+  certainty: 0.53
+  valence: 0.26
+  energy: 0.4
+  wander: 0.33
+  personal: 0.47
+  humor: 0.14
+  technical: 0.89
 ---
 
 # Better Models: Worse Tools

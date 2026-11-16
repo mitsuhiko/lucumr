@@ -1,6 +1,23 @@
 ---
 tags: ['ai', 'types', 'thoughts', 'engineering', 'javascript']
 summary: "A curious thing about types and agents"
+facets:
+  mood: {reflective: 0.89}
+  scale: {craft: 1}
+  time: {present: 0.95}
+  ai: {agents: 0.94}
+  imagery: {none: 0.81}
+  stance: {advocate: 0.6, critic: 0.2, observer: 0.19}
+  actor: {machine: 0.82}
+  ending: {open: 0.88, resolved: 0.12}
+  tension: 0.42
+  certainty: 0.45
+  valence: 0.47
+  energy: 0.36
+  wander: 0.43
+  personal: 0.49
+  humor: 0.17
+  technical: 0.63
 ---
 
 # In Support Of Shitty Types

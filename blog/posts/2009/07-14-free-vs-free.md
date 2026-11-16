@@ -1,6 +1,23 @@
 ---
 tags: ['opensource', 'thoughts']
 summary: "Why the BSD licenses work for me."
+facets:
+  mood: {reflective: 0.83}
+  scale: {community: 0.92}
+  time: {present: 0.79, past: 0.16}
+  ai: {not_ai: 0.99}
+  imagery: {crowd: 0.39, fire: 0.37, none: 0.16}
+  stance: {advocate: 0.5, critic: 0.47}
+  actor: {individual: 0.67, idea: 0.26}
+  ending: {call: 1}
+  tension: 0.69
+  certainty: 0.68
+  valence: 0.72
+  energy: 0.39
+  wander: 0.46
+  personal: 0.62
+  humor: 0.28
+  technical: 0.33
 ---
 
 # free VS free

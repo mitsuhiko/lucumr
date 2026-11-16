@@ -2,6 +2,23 @@
 tags: ['rust', 'thoughts', 'engineering', 'python']
 summary: "An updated report on my experience with Rust and where I think it might
 be going."
+facets:
+  mood: {hopeful: 0.99}
+  scale: {craft: 0.92}
+  time: {present: 0.88, future: 0.11}
+  ai: {not_ai: 1}
+  imagery: {building: 0.53, road: 0.18, none: 0.1}
+  stance: {advocate: 0.93}
+  actor: {individual: 0.77, idea: 0.16}
+  ending: {practical: 0.66, call: 0.22, open: 0.11}
+  tension: 0.26
+  certainty: 0.7
+  valence: 0.88
+  energy: 0.47
+  wander: 0.4
+  personal: 0.68
+  humor: 0.34
+  technical: 0.75
 ---
 
 # A Fresh Look at Rust

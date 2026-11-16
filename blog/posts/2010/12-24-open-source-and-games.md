@@ -2,6 +2,23 @@
 tags: ['opensource', 'thoughts', 'games']
 summary: "Are games without assets open source?  Why are there so few commercial
 games releasing with open source models, images and more?"
+facets:
+  mood: {reflective: 0.91}
+  scale: {community: 0.95}
+  time: {present: 0.57, future: 0.26, past: 0.17}
+  ai: {not_ai: 1}
+  imagery: {none: 0.83}
+  stance: {observer: 0.56, advocate: 0.39}
+  actor: {company: 0.76, group: 0.22}
+  ending: {resolved: 0.4, open: 0.27, call: 0.23, practical: 0.1}
+  tension: 0.45
+  certainty: 0.57
+  valence: 0.59
+  energy: 0.34
+  wander: 0.49
+  personal: 0.51
+  humor: 0.16
+  technical: 0.45
 ---
 
 # Open Source and Games

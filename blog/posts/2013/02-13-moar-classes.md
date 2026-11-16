@@ -2,6 +2,23 @@
 tags: ['python', 'thoughts', 'api', 'engineering']
 summary: "Furthermore I am of the oppinion that Python developers should write
 more classes."
+facets:
+  mood: {angry: 0.99}
+  scale: {craft: 0.95}
+  time: {future: 0.69, present: 0.3}
+  ai: {not_ai: 1}
+  imagery: {body: 0.42, none: 0.25, building: 0.23}
+  stance: {advocate: 0.96}
+  actor: {group: 0.64, idea: 0.26, individual: 0.1}
+  ending: {call: 0.92}
+  tension: 0.81
+  certainty: 0.98
+  valence: 0.54
+  energy: 0.63
+  wander: 0.48
+  personal: 0.44
+  humor: 0.39
+  technical: 0.9
 ---
 
 # Start Writing More Classes
@@ -45,7 +62,7 @@ the same thing behind the scenes?
 Have a look at this example:
 
 ```pycon
->>> f = io.open('/tmp/test.txt', 'r')
+>>> f = io.open("/tmp/test.txt", "r")
 >>> f
 <_io.TextIOWrapper name='/tmp/test.txt' encoding='utf-8'>
 >>> f.buffer
@@ -300,8 +317,7 @@ def load(self, environment, name, globals=None):
         globals = {}
     source, filename, uptodate = self.get_source(environment, name)
     code = environment.compile(source, name, filename)
-    return environment.template_class.from_code(environment, code,
-                                                globals, uptodate)
+    return environment.template_class.from_code(environment, code, globals, uptodate)
 ```
 
 Notice how the loader points back to the environment class to figure out

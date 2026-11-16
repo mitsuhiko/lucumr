@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'politics']
 summary: "Some very personal thoughts about the future of Austria."
+facets:
+  mood: {angry: 0.71, worried: 0.28}
+  scale: {society: 1}
+  time: {present: 0.97}
+  ai: {not_ai: 1}
+  imagery: {body: 0.54, crowd: 0.14, road: 0.13, none: 0.1}
+  stance: {critic: 0.94}
+  actor: {state: 0.97}
+  ending: {open: 0.79, resolved: 0.19}
+  tension: 0.68
+  certainty: 0.93
+  valence: 0.23
+  energy: 0.54
+  wander: 0.52
+  personal: 0.36
+  humor: 0.28
+  technical: 0.16
 ---
 
 # Austria: A Fearful Country In Need Of A Vision

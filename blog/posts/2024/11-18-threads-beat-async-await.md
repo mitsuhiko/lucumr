@@ -1,6 +1,23 @@
 ---
 tags: ['async', 'thoughts', 'engineering', 'javascript', 'python']
 summary: "Musings about async await again and why I think virtual threads"
+facets:
+  mood: {reflective: 0.45, angry: 0.41}
+  scale: {craft: 1}
+  time: {past: 0.44, future: 0.41, present: 0.15}
+  ai: {not_ai: 1}
+  imagery: {crowd: 0.56, none: 0.23}
+  stance: {advocate: 0.78, critic: 0.22}
+  actor: {idea: 0.73, individual: 0.19}
+  ending: {practical: 0.44, resolved: 0.28, open: 0.14, call: 0.14}
+  tension: 0.8
+  certainty: 0.94
+  valence: 0.61
+  energy: 0.51
+  wander: 0.52
+  personal: 0.44
+  humor: 0.43
+  technical: 0.81
 ---
 
 # Playground Wisdom: Threads Beat Async/Await
@@ -44,10 +61,12 @@ def move_mouse():
         mouse.x += 5
         sleep(10)
 
+
 def move_cat():
     while cat.x < 200:
         cat.x += 10
         sleep(10)
+
 
 move_mouse()
 move_cat()
@@ -293,7 +312,7 @@ following code blocking, and what is?
 ```python
 def decode_object(idx):
     header = indexes[idx]
-    object_buf = buffer[header.start:header.start + header.size]
+    object_buf = buffer[header.start : header.start + header.size]
     return brotli.decompress(object_buf)
 ```
 

@@ -1,6 +1,23 @@
 ---
 tags: ['thoughts', 'opensource', 'business']
 summary: "My thoughts on license choices for balancing business interests and"
+facets:
+  mood: {reflective: 0.73, matter_of_fact: 0.25}
+  scale: {industry: 0.73, community: 0.26}
+  time: {present: 0.45, future: 0.45, past: 0.1}
+  ai: {not_ai: 1}
+  imagery: {fire: 0.46, building: 0.18, body: 0.13, growth: 0.1}
+  stance: {advocate: 1}
+  actor: {company: 0.96}
+  ending: {resolved: 0.87}
+  tension: 0.56
+  certainty: 0.87
+  valence: 0.62
+  energy: 0.41
+  wander: 0.36
+  personal: 0.42
+  humor: 0.2
+  technical: 0.4
 ---
 
 # FSL: A Better Business/Open Source Balance Than AGPL

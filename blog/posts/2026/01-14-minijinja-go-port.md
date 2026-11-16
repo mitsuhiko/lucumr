@@ -1,6 +1,23 @@
 ---
 tags: ['go', 'ai', 'jinja', 'engineering', 'rust']
 summary: "Agents can now port code bases much better than before."
+facets:
+  mood: {reflective: 0.89}
+  scale: {craft: 0.85, self: 0.14}
+  time: {past: 1}
+  ai: {agents: 1}
+  imagery: {none: 0.39, road: 0.25, air: 0.16, body: 0.1}
+  stance: {builder: 0.55, witness: 0.4}
+  actor: {machine: 0.66, individual: 0.34}
+  ending: {practical: 0.73, resolved: 0.2}
+  tension: 0.24
+  certainty: 0.8
+  valence: 0.72
+  energy: 0.25
+  wander: 0.23
+  personal: 0.57
+  humor: 0.24
+  technical: 0.62
 ---
 
 # Porting MiniJinja to Go With an Agent

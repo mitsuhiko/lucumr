@@ -2,6 +2,23 @@
 tags: ['python', 'jinja', 'web']
 summary: "A comparison of three of the most popular template engines for Python
 and why they are different."
+facets:
+  mood: {matter_of_fact: 0.46, reflective: 0.41, playful: 0.11}
+  scale: {craft: 0.99}
+  time: {present: 0.7, past: 0.3}
+  ai: {not_ai: 1}
+  imagery: {none: 0.58, body: 0.16}
+  stance: {advocate: 0.51, observer: 0.35}
+  actor: {individual: 0.97}
+  ending: {practical: 0.47, resolved: 0.42, open: 0.1}
+  tension: 0.12
+  certainty: 0.85
+  valence: 0.72
+  energy: 0.45
+  wander: 0.45
+  personal: 0.52
+  humor: 0.29
+  technical: 0.7
 ---
 
 # Python Template Engine Comparison

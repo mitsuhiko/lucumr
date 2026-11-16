@@ -1,6 +1,23 @@
 ---
 tags: ['life', 'python', 'web', 'opensource']
 summary: "Things that will change for me in 2010."
+facets:
+  mood: {reflective: 0.46, conflicted: 0.33, matter_of_fact: 0.12}
+  scale: {self: 0.71, community: 0.16, craft: 0.13}
+  time: {future: 0.83, present: 0.15}
+  ai: {not_ai: 1}
+  imagery: {none: 0.67, crowd: 0.19}
+  stance: {witness: 0.82}
+  actor: {individual: 0.98}
+  ending: {resolved: 0.49, practical: 0.29, call: 0.17}
+  tension: 0.39
+  certainty: 0.34
+  valence: 0.37
+  energy: 0.4
+  wander: 0.36
+  personal: 0.73
+  humor: 0.22
+  technical: 0.58
 ---
 
 # Status Update 2010

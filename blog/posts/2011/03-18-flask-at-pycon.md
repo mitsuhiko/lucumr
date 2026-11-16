@@ -2,6 +2,23 @@
 tags: ['flask', 'python', 'conferences', 'web', 'opensource']
 summary: "A summary of the Flask talk at PyCon 2011 and what happened during the
 sprints."
+facets:
+  mood: {hopeful: 0.52, matter_of_fact: 0.41}
+  scale: {community: 0.81, craft: 0.17}
+  time: {past: 0.76, future: 0.2}
+  ai: {not_ai: 1}
+  imagery: {none: 0.89}
+  stance: {witness: 0.9}
+  actor: {group: 0.8, individual: 0.19}
+  ending: {call: 0.62, practical: 0.29}
+  tension: 0.01
+  certainty: 0.59
+  valence: 0.75
+  energy: 0.34
+  wander: 0.47
+  personal: 0.48
+  humor: 0.05
+  technical: 0.53
 ---
 
 # Flask at PyCon 2011

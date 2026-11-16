@@ -2,6 +2,23 @@
 tags: ['javascript', 'thoughts', 'web']
 summary: "Some random notes about why I think that removing the option to disable
 JavaScript in Firefox is one of the best things."
+facets:
+  mood: {hopeful: 0.72, matter_of_fact: 0.15, reflective: 0.1}
+  scale: {craft: 0.91}
+  time: {present: 0.79, future: 0.19}
+  ai: {not_ai: 1}
+  imagery: {none: 0.79}
+  stance: {advocate: 0.99}
+  actor: {company: 0.93}
+  ending: {resolved: 0.91}
+  tension: 0.63
+  certainty: 0.97
+  valence: 0.77
+  energy: 0.47
+  wander: 0.42
+  personal: 0.39
+  humor: 0.17
+  technical: 0.52
 ---
 
 # Say "Yes" to JavaScript
