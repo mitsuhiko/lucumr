@@ -240,6 +240,13 @@ must not look alike.
   width from 320px to an ultrawide monitor.  Header and footer belong together.
 - **Motion.** Paint in once (two or three seconds at most).  A new post
   (`info.initial === false`) is a transition from the old picture, not a cut.
+  In strata's header the old colour first soaks into the paper (0.9 s: it
+  stays where it is and pales, in patches where the paper drinks first, thin
+  pigment before dense, the last of it in the tooth), leaving the old pencil
+  drawing; then the new picture paints in as on a first visit, the pencil
+  sweeping over the old lines and the washes blooming after it (2.6 s).  A
+  post that comes while the colour is still soaking in waits for it.  The
+  footers still paint the new picture over the old.
   With `env.still` (also set for `prefers-reduced-motion`) the first frame is
   the finished picture and nothing moves after it.
 - **Ambient motion.** After that, a little life may stay, if it is ambient:
@@ -355,16 +362,18 @@ moving once they are painted:
   paper; at night they dim and veil the light, see above).  The wind blows
   the way the post looks (facet `time`: back is left, ahead right), as fast as
   the post
-  is agitated (`post.energy`, 11–28 px a second, faster when angry); worry,
+  is agitated (`post.energy`, 7–18 px a second, faster when angry); worry,
   anger, conflict and bleakness deepen the shadows, hope brightens the light
   between them, a reflective post (and the `fog` sky of `covid19`) has more
   mist, a matter-of-fact one less.  The settled picture is rendered once into
   a texture; a second, small shader draws only the air over it, 12 frames a
-  second.  The air fades in over three seconds after the first paint-in and
-  goes on through transitions (the wind changes with the post, the clouds do
-  not jump).  The drift is two layers of noise each, each starting over once
-  a period while it is not shown, so it can run forever without growing
-  numbers.  (`air()` and `AMBIENT` in strata.js.)  Only the landscape has air:
+  second.  The air fades in over three seconds after the first paint-in.  On
+  a new post it fades out with the old colour and in again with the new, and
+  what it is like (shadows, sun, the valleys the mist lies in) changes while
+  none is shown, so no wisp slides up or down; the drift goes on throughout
+  and only the wind turns gradually (the clouds do not jump).  The drift is
+  two layers of noise each, each starting over once a period while it is not
+  shown, so it can run forever without growing numbers.  (`air()` and `AMBIENT` in strata.js.)  Only the landscape has air:
   strata's own footer, the section underground, stands still.
 - **Footer: the washes flow.**  The watercolour under the drawings is still
   wet: a slow wave runs through it, the colour rising and sinking by some

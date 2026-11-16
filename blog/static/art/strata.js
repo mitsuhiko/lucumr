@@ -78,7 +78,11 @@
   const clamp = U.clamp, lerp = U.lerp, smooth = U.smoothstep, mix = U.mix, css = U.css;
   const noise1 = U.noise1, noise2 = U.noise2;
   const HEADER_H = 150, FOOTER_H = 450;
-  const DURATION = 2.6;
+  const DURATION = 2.6;     // painting in: the pencil, then the washes
+  // A new post in the header: first the old colour soaks into the paper
+  // (LIFT seconds), leaving the old pencil on bare paper, then the new
+  // picture paints in.
+  const LIFT = 0.9;
   const AIR_FPS = 12;       // frames per second of the air once the picture is painted
   const TAU = Math.PI * 2;
   const WHITE = [1, 1, 1];
@@ -544,7 +548,7 @@
     const dir = C.lean > 0.12 ? 1 : C.lean < -0.12 ? -1 : (irand(seed, 3, 7) < 0.5 ? -1 : 1);
     const gloom = clamp(0.9 * m.worried + 0.7 * m.angry + 0.5 * m.conflicted + 1.5 * Math.max(0, 0.4 - C.valence), 0, 1);
     const light = clamp(0.95 * m.hopeful + 0.5 * m.playful + 1.5 * Math.max(0, C.valence - 0.72), 0, 1);
-    const wind = lerp(11, 28, post.energy) * (1 + 0.3 * m.angry);
+    const wind = lerp(7, 18, post.energy) * (1 + 0.3 * m.angry);
     const heights = ridges.slice(1).concat(ridges.slice(0, 1)).map(function(r) { return r.yMist; }).slice(0, 4);
     while (heights.length < 4) heights.push(-1000);
     return {
@@ -3204,12 +3208,26 @@
     }
   `; };
   const fragmentSource = function(night) { return common(night) + (night ? U.LIGHT_GLSL : '') + `
-    uniform float u_footer, u_t, u_loose, u_age, u_fox, u_edge, u_chalk${night ? ', u_cached' : ''};
+    uniform float u_footer, u_t, u_lift, u_loose, u_age, u_fox, u_edge, u_chalk${night ? ', u_cached' : ''};
     uniform vec3 u_yellow, u_foxing;
     uniform sampler2D u_washA, u_pencilA, u_washB, u_pencilB;
 
+    // The old picture's colour soaking into the paper (u_lift 0..1): it
+    // stays where it is and pales, in patches where the paper drinks first,
+    // thin pigment before dense, the last of it in the tooth; while it soaks
+    // it spreads a little (see main()).  (soak: how soon the paper takes it
+    // here, set in main())
+    float soak;
+    vec4 lifted(vec2 uv) {
+      vec4 c = texture2D(u_washA, uv);
+      if (u_lift <= 0.) return c;
+      if (u_lift >= 1.) return vec4(0.);
+      float hold = .6 * soak + .4 * min(c.a * 1.6, 1.);
+      float gone = u_lift * 1.4 - .3;
+      return c * smoothstep(gone - .02, gone + .3, hold) * (1. - smoothstep(.45, 1., u_lift));
+    }
     vec4 wash(vec2 uv, float m) {
-      return mix(texture2D(u_washA, uv), texture2D(u_washB, uv), m);
+      return mix(lifted(uv), texture2D(u_washB, uv), m);
     }
 
     void main() {
@@ -3222,6 +3240,8 @@
 
       float tooth = .55 * vnoise(sp * 1.9) + .45 * vnoise(sp * .71 + 31.);
       float blot = fbm(sp / 46.);
+      soak = clamp((.5 * fbm(sp / 70.) + .3 * fbm(sp / 19. + 3.) + .2 * tooth - .5) * 1.8 + .5, 0., 1.);
+      float soaking = u_lift > 0. && u_lift < 1. ? u_lift : 0.;
 
       // painting in: the pencil first, left to right, then the washes bloom
       float mp = smoothstep(0., .12, u_t * 2.5 - uv.x - .3 * vnoise(sp / 60.));
@@ -3248,7 +3268,7 @@
       vec2 wuv = uv + warp * px * vec2(1., -1.);
       vec4 c0 = wash(wuv, mw);
       vec4 near = vec4(0.), far = vec4(0.);
-      float reach = 2.5 + 4.5 * u_loose;
+      float reach = 2.5 + 4.5 * u_loose + 3. * soaking;
       for (int i = 0; i < 6; i++) {
         float a = 1.0472 * float(i) + .3;
         vec2 d = vec2(cos(a), sin(a));
@@ -3257,8 +3277,9 @@
       }
       near /= 6.;
       far /= 6.;
-      vec4 c = mix(c0, far, .2 + .4 * u_loose);
-      float rim = max(c0.a - near.a, 0.) * 1.6 + max(c0.a - far.a, 0.) * .7;
+      vec4 c = mix(c0, far, .2 + .4 * u_loose + .3 * soaking);
+      // (soaking in, the paint leaves no rims)
+      float rim = (max(c0.a - near.a, 0.) * 1.6 + max(c0.a - far.a, 0.) * .7) * (1. - soaking);
       ${night ? `
       // light: what the layer holds is added to the navy (its rim glows, as
       // pigment would collect there); where it only covers, a silhouette
@@ -3308,6 +3329,8 @@
   function Stage(surface, env) {
     const stage = {
       surface: surface, t: 1, start: null, dirty: true, seen: false, painted: false, gl: null, ctx: null, layers: null,
+      lead: false,        // a new post: the old colour soaks in first
+      lift: 1,            // how far it has (1: gone, or there was none)
       fresh: false,       // what is on the canvas is up to date (when nothing moves)
       airSince: null,     // when the air began to move (it fades in once)
       due: 0              // when the air wants its next frame
@@ -3347,7 +3370,7 @@
       try {
         const set = { main: U.gl.program(gl, VERTEX, fragmentSource(night)), night: night };
         U.gl.quad(gl, set.main, 'a_position');
-        set.uniforms = locations(set.main, AIR.concat(['footer', 't', 'loose', 'age', 'fox', 'edge', 'yellow', 'foxing', 'chalk', 'cached', 'washA', 'pencilA', 'washB', 'pencilB']));
+        set.uniforms = locations(set.main, AIR.concat(['footer', 't', 'lift', 'loose', 'age', 'fox', 'edge', 'yellow', 'foxing', 'chalk', 'cached', 'washA', 'pencilA', 'washB', 'pencilB']));
         sets[key] = set;
       } catch (error) {
         const other = sets[night ? 'day' : 'night'];
@@ -3411,8 +3434,18 @@
     // other weather) changes the wind and does not make the clouds jump.
     const PERIODS = [90, 90, 140, 140], SHIFTS = [0, 0.5, 0, 0.5];
     const drift = { at: null, phase: [0, 0, 0, 0], off: [0, 0, 0, 0] };
+    //
+    // On a new post the weather fades out with the old colour and in again
+    // with the new (weather()): what it is like (clouds, sun, the valleys the
+    // mist lies in) changes while none is shown, so nothing slides up or
+    // down; only the wind turns gradually, so the clouds keep moving.
+    function weather() {
+      if (!stage.lead || stage.t >= 1) return 1;
+      return Math.max(1 - smooth(0, 0.7, stage.lift), smooth(0.45, 1, stage.t));
+    }
     function airNow(now) {
       const a = stage.scene.air, b = (stage.before || stage.scene).air, e = smooth(0, 1, stage.t);
+      const shown = stage.lead && stage.lift < 1 ? b : a;
       const k = function(key) { return lerp(b[key], a[key], e); };
       const dt = drift.at === null ? 0 : clamp(now - drift.at, 0, 1);
       drift.at = now;
@@ -3423,8 +3456,7 @@
         drift.phase[i] = phase;
       }
       return {
-        shadow: k('shadow'), sun: k('sun'), mist: k('mist'),
-        heights: a.heights.map(function(h, i) { return lerp(b.heights[i], h, e); }),
+        shadow: shown.shadow, sun: shown.sun, mist: shown.mist, heights: shown.heights,
         mix: [Math.abs(2 * drift.phase[0] - 1), Math.abs(2 * drift.phase[2] - 1)]
       };
     }
@@ -3490,7 +3522,9 @@
         stage.layers = layers;
       }
       // the hand and the paper of the picture before, to move on from
-      if (stage.scene !== scene) stage.before = stage.scene ? stage.scene : scene;
+      // (unless the picture before was never shown: then the one before it stays)
+      if (stage.scene !== scene && !stage.keep) stage.before = stage.scene ? stage.scene : scene;
+      stage.keep = false;
       stage.scene = scene;
       stage.painted = true;
       stage.dirty = false;
@@ -3525,7 +3559,7 @@
         ctx.fillRect(0, 0, W, H);
         return;
       }
-      const strength = stage.airy() && stage.airSince !== null ? smooth(0, 3, now - stage.airSince) : 0;
+      const strength = stage.airy() && stage.airSince !== null ? smooth(0, 3, now - stage.airSince) * weather() : 0;
       const air = airNow(now);
       if (strength > 0 && stage.t >= 1 && ensureCache()) {
         // settled: the picture once into the cache, then only the air over it
@@ -3566,6 +3600,7 @@
       gl.uniform1f(uniforms.cached, cached ? 1 : 0);
       gl.uniform1f(uniforms.chalk, programs().night ? 1 : 0);
       gl.uniform1f(uniforms.t, stage.t);
+      gl.uniform1f(uniforms.lift, stage.lift);
       const before = stage.before || scene, ease = smooth(0, 1, stage.t);
       gl.uniform1f(uniforms.loose, lerp(before.hand.loose, scene.hand.loose, ease));
       gl.uniform1f(uniforms.age, lerp(before.age, scene.age, ease));
@@ -3612,8 +3647,18 @@
         setPost: function(post, info) {
           scene = buildScene(post);
           stages.forEach(function(stage) {
-            if (!info.initial) stage.turn();
             stage.dirty = true;
+            // (another post while the old colour is still soaking in: it goes on
+            // soaking in, and this one is painted in after it instead)
+            if (stage.lead && stage.lift < 1 && !env.still) {
+              stage.painted = false;
+              stage.keep = true;
+              return;
+            }
+            if (!info.initial) stage.turn();
+            // only the header soaks in (the footers still paint over)
+            stage.lead = !!stage.held && stage.surface.kind === 'header' && !env.still;
+            stage.lift = stage.lead ? 0 : 1;
             stage.painted = false;
             stage.t = env.still ? 1 : 0;
             stage.start = null;
@@ -3632,7 +3677,11 @@
             if (stage.dirty) return;
             // by the clock, so a slow first frame does not stretch the painting-in
             if (stage.t < 1 && stage.start === null) stage.start = now;
-            if (stage.t < 1) stage.t = env.still ? 1 : clamp((now - stage.start) / DURATION, 0.001, 1);
+            if (stage.t < 1) {
+              const since = now - stage.start;
+              stage.lift = stage.lead ? clamp(since / LIFT, 0, 1) : 1;
+              stage.t = env.still ? 1 : clamp((since - (stage.lead ? LIFT : 0)) / DURATION, 0.001, 1);
+            }
             if (stage.t < 1) {
               stage.draw(now);
               more = true;
