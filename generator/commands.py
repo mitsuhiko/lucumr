@@ -226,18 +226,19 @@ def main_serve():
     background_builder = BackgroundBuilder(on_build_complete=notify_reload)
     output_dir = background_builder.builder.output_folder
 
+    # Bind first: after a restart the pages reconnect (and reload) as soon
+    # as the port answers, which should not have to wait for a build
+    # (HTTPServer already allows reusing the address)
+    server = ThreadingHTTPServer(
+        (HOST, PORT),
+        lambda *args: LiveReloadHandler(*args, directory=str(output_dir)),
+    )
+
     # Start background builder and file watcher
     background_builder.start()
 
     try:
         print(f"Serving on http://{HOST}:{PORT}/ with live reload")
-        # Use ThreadingHTTPServer for concurrent request handling
-        server = ThreadingHTTPServer(
-            (HOST, PORT),
-            lambda *args: LiveReloadHandler(*args, directory=str(output_dir)),
-        )
-        # Allow reuse of address to avoid "Address already in use" errors
-        server.allow_reuse_address = True
         server.serve_forever()
     except KeyboardInterrupt:
         background_builder.stop()
