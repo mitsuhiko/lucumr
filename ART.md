@@ -25,6 +25,16 @@ README on how to bring one back.  The general style is pencil and watercolour.
 | `art-shelf/` | Shelved proposals (wash, atlas, trace), the old placeholder, and the retired debug tools (`tools/`: the switcher panel and the lab): not built, not loaded; see its README. |
 | `_build/static/art/data.js` | Generated: tag data for every page. |
 | `scripts/art-shot` | Screenshots a page with headless Chrome. |
+| `generator/social_art.js` | Draws strata's header for the social preview cards in Node, with a Skia canvas (`@napi-rs/canvas`, see `package.json`) instead of a browser; `generator/social_preview.py` sets the card around it. |
+
+The social preview cards (og:image) are light: the header over the title.
+Outside a browser there is no WebGL, so strata develops a still picture by day
+with `develop()`, the day's fragment shader on the CPU (also used by a browser
+without WebGL).  It has to stay in step with `fragmentSource(false)`: compare a
+card's band with `scripts/art-shot` of the same post (they differ by about one
+level in 255).  The night has no CPU medium.  `make serve` does not make the
+cards; `make build` does, again for every post whenever core.js, strata.js or
+the stylesheet change (some 80 s on eight cores).
 
 A page carries its record in `<span id="art-post" hidden data-…>` inside
 `div.body`, because `div.body` is what htmx swaps: the canvases stay, and the

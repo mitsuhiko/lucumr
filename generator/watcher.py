@@ -11,7 +11,7 @@ class BackgroundBuilder:
     """Simple file watcher that triggers builder.build() for any change."""
 
     def __init__(self, project_folder=None, debounce_delay=0.5, on_build_complete=None):
-        self.builder = Builder(project_folder)
+        self.builder = Builder(project_folder, social_previews=False)
         self.debounce_delay = debounce_delay
         self.observer = Observer()
         self.last_change_time = 0

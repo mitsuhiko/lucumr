@@ -235,7 +235,7 @@ class ContentCache:
 class Builder:
     """Simplified blog builder without unnecessary abstractions."""
 
-    def __init__(self, project_folder=None):
+    def __init__(self, project_folder=None, social_previews=True):
         if project_folder is None:
             project_folder = os.getcwd()
         project_folder = Path(project_folder).resolve()
@@ -246,6 +246,9 @@ class Builder:
         self.tags = defaultdict(list)
         self.content_cache = ContentCache(project_folder)
         self.social_gen = SocialPreviewGenerator(project_folder)
+        # (the dev server leaves them out: they take a while whenever the
+        # artwork's code changes, and only a deploy needs them)
+        self.social_previews = social_previews
         self.on_page_rebuilt = None  # Callback for when individual pages are rebuilt
         template_path = Path(__file__).parent / "templates"
         self.jinja_env = Environment(
@@ -907,18 +910,9 @@ class Builder:
     def generate_social_previews(self):
         """Generate social media preview images for all blog posts."""
         print("Generating social preview images...")
-        generated_count = 0
-        skipped_count = 0
-
-        for post in self.posts:
-            if not post.title or not post.pub_date:
-                continue
-            generated = self.social_gen.generate_for_post(post)
-            if generated:
-                generated_count += 1
-                print(f"Generated social preview for: {post.title}")
-            else:
-                skipped_count += 1
+        posts = [post for post in self.posts if post.title and post.pub_date]
+        data_js = self.output_folder / CONFIG["static_folder"] / "art" / "data.js"
+        generated_count, skipped_count = self.social_gen.generate(posts, data_js)
 
         if generated_count > 0:
             print(f"Generated {generated_count} social preview images")
@@ -1010,7 +1004,8 @@ class Builder:
         self.copy_static_files()
         art.write_data(self.posts, self.output_folder / CONFIG["static_folder"] / "art")
         self.write_pygments_css()
-        self.generate_social_previews()
+        if self.social_previews:
+            self.generate_social_previews()
 
 
 def pad_date_slug(slug):

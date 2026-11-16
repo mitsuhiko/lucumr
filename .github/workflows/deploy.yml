@@ -39,12 +39,27 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
+      # the social preview cards draw the header artwork in Node (generator/social_art.js)
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      # (saved after every run, so the social preview cards and their cache,
+      # which are slow to make, carry over to the next one)
       - name: Cache blog build
         uses: actions/cache@v4
         with:
-          path: blog/_build
-          key: blog-build-${{ hashFiles('blog/static/**', 'templates/**') }}
+          path: |
+            blog/_build
+            blog/.generator_cache
+          key: blog-build-${{ hashFiles('blog/static/**', 'templates/**') }}-${{ github.run_id }}
           restore-keys: |
+            blog-build-${{ hashFiles('blog/static/**', 'templates/**') }}-
             blog-build-
 
       - name: Build blog

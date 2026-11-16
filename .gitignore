@@ -5,3 +5,4 @@ _trash
 .temp
 .generator_cache
 __pycache__
+node_modules

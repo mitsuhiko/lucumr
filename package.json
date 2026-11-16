@@ -1,0 +1,8 @@
+{
+  "name": "lucumr",
+  "private": true,
+  "description": "Renders the header artwork of the social preview cards (generator/social_art.js)",
+  "dependencies": {
+    "@napi-rs/canvas": "^1.1.1"
+  }
+}

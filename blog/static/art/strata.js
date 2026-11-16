@@ -3329,6 +3329,148 @@
     night: { yellow: [0.94, 0.96, 0.97], foxing: [1.2, 1.16, 1.08] }
   };
 
+  // ---- the medium without a GPU: the day's finished picture ----------------
+  //
+  // fragmentSource(false) for a picture that is painted in, with nothing
+  // soaking in and no air (u_t = 1, u_lift = 1, u_amb.x = 0), pixel by pixel
+  // on the CPU.  It is drawn for a still picture where there is no WebGL: a
+  // browser without it, and the social preview cards, which are rendered
+  // outside a browser (generator/social_art.js).  Keep it in step with the
+  // shader.  (The night has no CPU medium: it is drawn plainly.)
+  function fract(x) { return x - Math.floor(x); }
+  function ghash(x, y) {
+    let a = fract(x * 0.1031), b = fract(y * 0.1031), c = a;
+    const d = a * (b + 33.33) + b * (c + 33.33) + c * (a + 33.33);
+    a += d; b += d; c += d;
+    return fract((a + b) * c);
+  }
+  function gnoise(x, y) {
+    const ix = Math.floor(x), iy = Math.floor(y);
+    let fx = x - ix, fy = y - iy;
+    fx = fx * fx * (3 - 2 * fx);
+    fy = fy * fy * (3 - 2 * fy);
+    const a = ghash(ix, iy), b = ghash(ix + 1, iy), c = ghash(ix, iy + 1), d = ghash(ix + 1, iy + 1);
+    return (a + (b - a) * fx) + ((c + (d - c) * fx) - (a + (b - a) * fx)) * fy;
+  }
+  function gfbm(x, y) {
+    return 0.5 * gnoise(x, y) + 0.3 * gnoise(x * 2.03 + 7.1, y * 2.03 + 7.1) + 0.2 * gnoise(x * 4.1 + 3.3, y * 4.1 + 3.3);
+  }
+  // A layer as the shader sees it: premultiplied, filtered linearly, clamped
+  // to its edge.  (u, v) are texture coordinates with v from the top.
+  function sampler(canvas) {
+    const w = canvas.width, h = canvas.height;
+    const src = canvas.getContext('2d').getImageData(0, 0, w, h).data;
+    const px = new Float32Array(w * h * 4);
+    for (let i = 0; i < px.length; i += 4) {
+      const a = src[i + 3] / 255;
+      px[i] = src[i] / 255 * a;
+      px[i + 1] = src[i + 1] / 255 * a;
+      px[i + 2] = src[i + 2] / 255 * a;
+      px[i + 3] = a;
+    }
+    return function(u, v, out) {
+      const x = u * w - 0.5, y = v * h - 0.5;
+      const x0 = Math.floor(x), y0 = Math.floor(y), fx = x - x0, fy = y - y0;
+      const xa = clamp(x0, 0, w - 1), xb = clamp(x0 + 1, 0, w - 1);
+      const ya = clamp(y0, 0, h - 1) * w, yb = clamp(y0 + 1, 0, h - 1) * w;
+      const i00 = (ya + xa) * 4, i01 = (ya + xb) * 4, i10 = (yb + xa) * 4, i11 = (yb + xb) * 4;
+      for (let k = 0; k < 4; k++) {
+        const top = px[i00 + k] + (px[i01 + k] - px[i00 + k]) * fx;
+        const bottom = px[i10 + k] + (px[i11 + k] - px[i10 + k]) * fx;
+        out[k] = top + (bottom - top) * fy;
+      }
+    };
+  }
+  // Develops the two layers onto ctx (W x H device pixels) as the day's shader would.
+  function develop(ctx, layers, scene, paper, footer) {
+    const W = ctx.canvas.width, H = ctx.canvas.height;
+    const wash = sampler(layers.wash), pencil = sampler(layers.pencil);
+    const scale = H / (footer ? FOOTER_H : HEADER_H);
+    const pu = scale / W, pv = scale / H;
+    const loose = scene.hand.loose, age = scene.age, edgeK = scene.C.edge;
+    const fox = (scene.seed >>> 0) % 977, yellow = AGED.day.yellow, foxing = AGED.day.foxing;
+    const reach = 2.5 + 4.5 * loose, spread = 0.2 + 0.4 * loose;
+    const warpA = 1.5 + 4.5 * loose, warpB = 0.5 + 0.9 * loose, toothK = 0.55 + 0.3 * loose;
+    const fadeLo = lerp(0.5, 0.76, edgeK), fadeHi = lerp(1, 0.95, edgeK), fadeR = lerp(0.3, 0.06, edgeK);
+    const dirs = [];
+    for (let i = 0; i < 6; i++) {
+      const a = 1.0472 * i + 0.3;
+      dirs.push([Math.cos(a), Math.sin(a)]);
+    }
+    const out = ctx.createImageData(W, H), data = out.data;
+    const c0 = [0, 0, 0, 0], s = [0, 0, 0, 0], near = [0, 0, 0, 0], far = [0, 0, 0, 0], p = [0, 0, 0, 0];
+    const col = [0, 0, 0];
+    for (let y = 0; y < H; y++) {
+      const v = (y + 0.5) / H, spy = (y + 0.5) / scale + 57, y01 = v;
+      const edge = footer ? smooth(0, 0.5, y01) : 1 - smooth(0.3, 1, y01);
+      for (let x = 0; x < W; x++) {
+        const u = (x + 0.5) / W, spx = (x + 0.5 - 0.5 * W) / scale + 311;
+        const tooth = 0.55 * gnoise(spx * 1.9, spy * 1.9) + 0.45 * gnoise(spx * 0.71 + 31, spy * 0.71 + 31);
+        const blot = gfbm(spx / 46, spy / 46);
+
+        // the paper, a little yellowed and foxed when it is old
+        const yk = age * edge * (0.55 + 0.6 * blot);
+        const fpx = spx + fox, fpy = spy + fox * 0.37;
+        const fcx = Math.floor(fpx / 64), fcy = Math.floor(fpy / 64);
+        const fh = ghash(fcx + 3.7, fcy + 3.7);
+        let fk = 0;
+        if (fh <= 0.4) {
+          const fox_x = (fcx + 0.15 + 0.7 * ghash(fcx + 11.3, fcy + 11.3)) * 64;
+          const fox_y = (fcy + 0.15 + 0.7 * ghash(fcx + 27.9, fcy + 27.9)) * 64;
+          const fd = Math.hypot(fpx - fox_x, fpy - fox_y) / (1 + 3.2 * ghash(fcx + 41.1, fcy + 41.1));
+          fk = (1 - smooth(0.3, 1.4, fd + 0.7 * (gnoise(fpx * 0.8, fpy * 0.8) - 0.5))) * age * edge * 0.55;
+        }
+        for (let k = 0; k < 3; k++) {
+          const pk = paper[k] * lerp(1, yellow[k], yk);
+          col[k] = lerp(pk, pk * foxing[k], fk);
+        }
+
+        // the wash: its edge wanders, bleeds, and collects pigment at the rim
+        // (texture v runs from the top: the shader's y is flipped)
+        const wx = (gfbm(spx / 27, spy / 27) - 0.5) * warpA + (gnoise(spx / 4, spy / 4) - 0.5) * warpB;
+        const wy = (gfbm(spx / 27 + 41, spy / 27 + 17) - 0.5) * warpA + (gnoise(spx / 4 + 9, spy / 4 + 9) - 0.5) * warpB;
+        const wu = u + wx * pu, wv = v + wy * pv;
+        wash(wu, wv, c0);
+        near[0] = near[1] = near[2] = near[3] = far[0] = far[1] = far[2] = far[3] = 0;
+        for (let i = 0; i < 6; i++) {
+          const dx = dirs[i][0], dy = dirs[i][1];
+          wash(wu + dx * 1.5 * pu, wv - dy * 1.5 * pv, s);
+          near[3] += s[3];
+          wash(wu + dy * reach * pu, wv + dx * reach * pv, s);
+          for (let k = 0; k < 4; k++) far[k] += s[k];
+        }
+        const nearA = near[3] / 6;
+        const ca = lerp(c0[3], far[3] / 6, spread);
+        const rim = Math.max(c0[3] - nearA, 0) * 1.6 + Math.max(c0[3] - far[3] / 6, 0) * 0.7;
+        let dens = ca * (1 + rim / (c0[3] + 0.1));
+        dens *= 0.78 + 0.44 * blot;
+        dens *= 1 + toothK * (tooth - 0.5);
+        dens = clamp(dens, 0, 1.3);
+        const inv = 1 / Math.max(ca, 0.001);
+        for (let k = 0; k < 3; k++) {
+          const pig = lerp(c0[k], far[k] / 6, spread) * inv;
+          col[k] *= Math.pow(Math.max(pig, 0.02), dens);
+        }
+
+        // the pencil: graphite on the same tooth
+        pencil(u, v, p);
+        const grain = gnoise(spx * 2.6 + 11, spy * 2.6 + 11);
+        const pa = clamp(p[3] * (0.5 + 0.95 * smooth(0.22, 0.78, 0.6 * grain + 0.4 * tooth)), 0, 1);
+        const pinv = 1 / Math.max(p[3], 0.001);
+        for (let k = 0; k < 3; k++) col[k] *= 1 - pa * (1 - p[k] * pinv);
+
+        // towards the page there is only paper
+        const fade = footer
+          ? smooth(0, 0.13, y01 + (blot - 0.5) * 0.05)
+          : 1 - smooth(fadeLo, fadeHi, y01 + (blot - 0.5) * fadeR);
+        const o = (y * W + x) * 4;
+        for (let k = 0; k < 3; k++) data[o + k] = Math.round(clamp(lerp(paper[k], col[k], fade), 0, 1) * 255);
+        data[o + 3] = 255;
+      }
+    }
+    ctx.putImageData(out, 0, 0);
+  }
+
   function Stage(surface, env) {
     const stage = {
       surface: surface, t: 1, start: null, dirty: true, seen: false, painted: false, gl: null, ctx: null, layers: null,
@@ -3543,6 +3685,11 @@
       if (!gl) {
         const ctx = stage.ctx, W = canvas.width, H = canvas.height;
         if (!ctx || !stage.layers) return;
+        // a still picture by day: the medium, on the CPU
+        if (env.still && !env.dark && stage.t >= 1) {
+          develop(ctx, stage.layers, scene, paper, surface.kind === 'footer');
+          return;
+        }
         ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.globalAlpha = 1;
         ctx.fillStyle = css(paper);
