@@ -103,11 +103,18 @@ navy keeps its hue), `blend(colors, weights)`, `lightness(c)` (0..1; use it,
 not a weighted sum of RGB), `chroma(c)`, `saturate(c, k)` (chroma scaled, the
 lightness kept), `relight(c, L, k)` (the same hue at lightness L),
 `tone(like, L, C)` (the hue of `like` at L and C: the blog's blues at any
-depth), `gouache(c, lo, hi, keep)` (a colour meant for white paper as it goes
-on the navy one: lifted to between lo and hi, hue kept, chroma times keep),
-`lch(L, C, h)`, `lab(c)` and `rgb(lab)`.  Colours outside sRGB give up chroma,
-not hue or lightness.  Pigments (the tags' colours, the sun, a jinja red) are
-given once, for white paper; on the navy they go through `gouache`.
+depth), `lch(L, C, h)`, `lab(c)` and `rgb(lab)`.  Colours outside sRGB give up
+chroma, not hue or lightness.
+
+Pigments (the tags' colours, the sun, a jinja red) are given once, for white
+paper.  On the navy page they are not repainted in other colours: one rule
+turns each into light (see "The dark theme" below).  `glow(c, ground)` is the
+light of a pigment; `shine(ground, light, amount, cover)` what that much of it
+looks like on the ground; `LIGHT_GLSL` the same `shine()` for a shader;
+`shineLayer(canvas, ground)` the same for a whole 2D canvas painted with
+light; `tinge(a, b, t)` turns one light towards another without going through
+grey.  `gouache(c, lo, hi, keep)` is for lines only (a coloured pencil on the
+navy: lifted to between lo and hi, hue kept, chroma times keep).
 
 `post` (from `LucumrArt.describe`):
 
@@ -210,10 +217,11 @@ must not look alike.
 - **Paper.** The band touches the outer edge of the page and dissolves into
   `palette().paper` towards the content: no hard edge at the bottom of the
   header or the top of the footer.
-- **Two themes.** Light is white paper.  Dark is navy (`#1b3156`), where
-  transparent watercolour does not work: it needs its own medium (chalk,
-  gouache, white pencil on blue paper).  A switch is not a paint-in: the
-  finished picture is redrawn in the other theme in one frame (see below).
+- **Two themes.** Light is white paper and watercolour.  Dark is the navy
+  page (`#1b3156`), where pigment does not work at all: there the same
+  picture is drawn with light (see "The dark theme" below).  Neither theme
+  may change the other's picture.  A switch is not a paint-in: the finished
+  picture is redrawn in the other theme in one frame (see above).
 - **Sizes.** Header 185px (124px below 800px wide), footer 450px (300px).  Any
   width from 320px to an ultrawide monitor.  Header and footer belong together.
 - **Motion.** Paint in once (two or three seconds at most).  A new post
@@ -231,6 +239,97 @@ must not look alike.
 - **One file.** A variant is its one file: plain script, no modules, no build
   step, no dependencies, no network.
 
+## The dark theme: light instead of pigment
+
+Watercolour works by taking light away from white paper: where pigment lies,
+less comes back.  The navy page has no light to take away, and it is a strong
+colour itself: whatever is mixed onto it (thinned pigment, gouache, chalk
+catching on the paper's tooth) ends up between its own colour and the navy's,
+so an orange goes grey, pink and purple both go mauve, and everything painted
+is lighter than the paper under a sky that has no light in it.  So the dark
+theme does not paint.  It is the same drawing at night:
+
+- **The navy is the dark**, and stays exactly the page's colour wherever
+  nothing is lit.  The pencil is chalk (`palette().chalk`, `graphite`); it
+  carries the drawing, as it did before.
+- **What is a wash by day is light at night.**  Where pigment would lie, light
+  is added; where washes overlap, it gets brighter; where pigment would
+  collect at a rim, the rim glows.  The layers are painted as they are by day
+  (the same shapes from the same random numbers), only their colours go
+  through `glow` and the medium is `shine` instead of a multiplication.
+- **One rule for every pigment: `glow(c, ground)`.**  The hue is kept.  Light
+  is purer than pigment (chroma times 1.33, but held under 0.15: no neon) and
+  as bright as its hue is by nature (L 0.66 for a deep blue … 0.8 for a
+  yellow), always below the page's text.  Two kinds of pigment would drown in
+  the navy and are handled there: a blue near the navy's own hue (within some
+  40°) is turned a little further away from it, lighter and purer, so `python`
+  and `types` stay two blues; a grey or black (`thoughts`, `unicode`, `flask`)
+  has no hue, and grey light on navy is a haze, so it takes the navy's hue:
+  moonlight.
+- **One rule for light on the ground: `shine(ground, light, amount, cover)`.**
+  Lightness adds up as light does (the cubes of OKLab's L add), so a little
+  light hardly shows, a glow ends in the navy itself, and no fade passes
+  through a grey haze.  The colour is not mixed towards the light's: the
+  navy's own chroma leaves as the light comes, and the light's hue is there
+  before its brightness is (an ember: dark, but already orange; at
+  `SHINE.ember` of the full lightness it has all its chroma).  A light from
+  the other side of the colour circle bows out round the grey on the warm
+  side (navy, plum, ember, orange: how a sky goes dark).  `cover` is how much
+  of the place something stands in: where there is more cover than light, it
+  is a silhouette, at most 15% darker than the page, never a hole.  Nothing
+  the washes do is lighter than L 0.85 (the text is 0.92).
+- **A layer of light** is premultiplied like any canvas: the colour is the
+  light, the alpha the cover.  `css(dim(c, k), a)` is `k` of a light over `a`
+  of the place; black with an alpha is a silhouette; `destination-out` opens
+  the navy again (the mist, a cloud in front of the afterglow).  A shader
+  calls `shine()` from `LIGHT_GLSL` per pixel (strata).  A 2D variant paints
+  its lights with `screen` into a layer and calls `shineLayer(canvas, paper)`
+  once: a shared offscreen WebGL canvas turns the layer into an ordinary one
+  that, drawn over the page, gives `shine()` for every pixel (sketchbook; the
+  flow then moves that layer as before).  Without WebGL the layer stays as it
+  was painted: plain colour, a little duller.
+
+What that makes of the two bands:
+
+- **The landscape (strata's header) is the same land at blue hour.**  The
+  sky's light lies along the horizon behind the furthest range, in the
+  register's colour (warmed towards a low sun by hope and closeness, through
+  rose, not through grey), brightest where the light stands: the sun of a
+  `glow` or `burst` sky, else the side the post looks to (`lightAt`).  Overhead
+  the navy is the sky, with a few stars, the more the lighter the post's
+  heart; none under storm or fog.  Clouds are what hides the light.  Every
+  range catches the light along its crest, in its tag's colour, and falls
+  into shadow below (`crestLight`); further from where the light stands there
+  is less of it.  Snow, the paper left white by day, is the brightest thing
+  at night.  The details (trees, fields, a lake, bunting, signs) are small
+  lights, painted with the alphas they have by day.
+- **The air at night:** the shadows of clouds dim the light they pass over
+  (never add grey); the mist veils the light behind it and has a little of
+  its own, the navy with the night's blue on it, only where the picture
+  stands (the cached picture's alpha says where).
+- **The section (strata's footer):** underground the light is in the rock:
+  every bed glows along its top and goes dark towards the bed below.
+- **The notebook (sketchbook's footer and header):** every wash is a glow
+  under the chalk drawing, laid on in glazes as the wash is, the smallest in
+  its middle; a wash with an edge has a rim that glows; the wider a wash is
+  spread, the fainter (the big washes at the edge of the page are a low
+  afterglow, the small ones under the doodles are the accents).  A tinted
+  shape (a house, a row of figures) is a lit one.  The grain of the paper is
+  in the light only.
+
+strata keeps the two media apart as two pairs of shader programs, one for each
+theme, made when the theme is first drawn (`fragmentSource(night)`,
+`ambientSource(night)`): the day's source has no line of the night's in it, so
+work on the dark theme cannot move a pixel of the light one.  (It could, before:
+one more branch in a shared shader changed how the compiler rounded, by one
+step in a handful of pixels.)  The first switch to a theme compiles its
+programs once, some 20–40 ms.
+
+To check that the light theme is unchanged, shoot the same pages with the old
+files and the new ones and compare them pixel by pixel; an old post differs by
+a pixel or two from one minute to the next on its own (its paper ages with the
+clock), so compare two shots of the same files first.
+
 ## The blog's look: ridgeline
 
 `ridgeline` is `strata`'s header over `sketchbook`'s footer.  What keeps
@@ -239,8 +338,9 @@ moving once they are painted:
 - **Header: weather over the land.**  The shadows of clouds pass over the
   ridges, and wisps of mist drift along the valleys between the ranges (both
   only deepen, cool or lift the pigment that is there: the paper stays
-  paper; on the navy paper the mist is pale).  The wind blows the way the
-  post looks (facet `time`: back is left, ahead right), as fast as the post
+  paper; at night they dim and veil the light, see above).  The wind blows
+  the way the post looks (facet `time`: back is left, ahead right), as fast as
+  the post
   is agitated (`post.energy`, 11–28 px a second, faster when angry); worry,
   anger, conflict and bleakness deepen the shadows, hope brightens the light
   between them, a reflective post (and the `fog` sky of `covid19`) has more
@@ -286,4 +386,6 @@ static files within a second.
   `?art=ridgeline` goes back); `?still` shows the finished picture without any
   motion.
 - `scripts/art-shot OUT.png '/2026/1/14/minijinja-go-port/?art=strata&still'`
-  screenshots a page.  It prints what the page wrote to the console.
+  screenshots a page.  It prints what the page wrote to the console.  The page
+  follows the system's theme unless `THEME` says otherwise:
+  `THEME=dark scripts/art-shot /tmp/dark.png '/?still'` (or `THEME=light`).

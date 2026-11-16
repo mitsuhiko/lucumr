@@ -10,7 +10,10 @@
 #
 # The dev server (make serve) must be running on port 5001.  Console output of
 # the page (errors included) is printed.  Pages follow the system's light/dark
-# setting.
+# setting unless THEME says otherwise:
+#
+#   THEME=dark scripts/art-shot /tmp/dark.png '/?still'
+#   THEME=light scripts/art-shot /tmp/light.png '/?still'
 #
 #   scripts/art-shot /tmp/post.png '/2026/1/14/minijinja-go-port/?still' 1400x3000
 #   scripts/art-shot /tmp/strata.png '/?art=strata&still'
@@ -25,11 +28,18 @@ case "$target" in
   *) echo "art-shot: PATH must start with /" >&2; exit 2 ;;
 esac
 chrome=${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}
+# Blink's preferredColorScheme: 0 is dark, 1 is light
+case "${THEME:-}" in
+  dark) scheme=--blink-settings=preferredColorScheme=0 ;;
+  light) scheme=--blink-settings=preferredColorScheme=1 ;;
+  "") scheme= ;;
+  *) echo "art-shot: THEME must be dark or light" >&2; exit 2 ;;
+esac
 profile=$(mktemp -d)
 trap 'rm -rf "$profile"' EXIT
 "$chrome" --headless=new --user-data-dir="$profile" --no-first-run --hide-scrollbars \
   --disable-background-networking --ignore-gpu-blocklist --enable-logging=stderr \
-  --window-size="$(echo "$size" | tr x ,)" --virtual-time-budget="$wait" \
+  --window-size="$(echo "$size" | tr x ,)" --virtual-time-budget="$wait" $scheme \
   --screenshot="$out" "$url" >"$profile/log" 2>&1 &
 pid=$!
 # Chrome sometimes does not exit: give it 45 seconds

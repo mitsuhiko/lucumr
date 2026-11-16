@@ -169,12 +169,156 @@ window.LucumrArt = (function() {
     const v = lab(like);
     return lch(L, C, Math.atan2(v[2], v[1]));
   }
-  // A colour meant for white paper as it goes on the navy one, as gouache or
-  // chalk: lighter (to between lo and hi: the lighter it was, the lighter
-  // still), its hue kept, its chroma scaled by keep (0.75: a quarter given up).
+  // A colour meant for white paper as a line on the navy one, as a coloured
+  // pencil or chalk: lighter (to between lo and hi: the lighter it was, the
+  // lighter still), its hue kept, its chroma scaled by keep (0.75: a quarter
+  // given up).  (Lines only: what is a wash on white is light on the navy,
+  // see glow() below.)
   function gouache(c, lo, hi, keep) {
     return relight(c, lerp(lo, hi, smoothstep(0.5, 0.85, lightness(c))), keep === undefined ? 0.75 : keep);
   }
+  // Light.  On the dark page nothing is painted with pigment: the navy is
+  // the dark, and what is drawn on it is light coming out of it.  Watercolour
+  // on white takes light away where the pigment lies (it multiplies); here
+  // light is added where the pigment would lie, so overlaps brighten and the
+  // rim of a wash, where pigment would collect, glows.
+  //
+  // glow(c, ground): the pigment c (given for white paper) as the colour of
+  // its light on the dark ground.  The hue is the pigment's.  Light is purer
+  // than pigment (the chroma goes up by a third, but never to neon: it is
+  // held under 0.15), and it is as bright as its hue is by nature (a light
+  // pigment, a yellow, is a bright light; a deep blue a dimmer one), always
+  // below the page's text.  Two kinds of pigment would drown in the ground:
+  // - one with the ground's own hue differs from it only by being lighter.
+  //   Such a light (near: within some 40 degrees of the ground's hue) is
+  //   turned a little further away from it, on the side it already is, and
+  //   made lighter and purer, so a cobalt and an ultramarine stay two blues;
+  // - a grey or a black has no hue, and grey light on navy is a haze.  It
+  //   takes the ground's hue, a little purer than the ground: moonlight on
+  //   blue paper.
+  function glow(c, ground) {
+    const v = lab(c), g = lab(ground);
+    const C = Math.hypot(v[1], v[2]), hg = Math.atan2(g[2], g[1]);
+    const hued = smoothstep(0.012, 0.05, C);
+    let d = Math.atan2(v[2], v[1]) - hg;
+    d = Math.atan2(Math.sin(d), Math.cos(d));
+    const near = hued * Math.exp(-d * d / 0.5);
+    const h = hg + hued * (d + (d < 0 ? -1 : 1) * 0.26 * near);
+    const L = lerp(0.66, 0.8, smoothstep(0.3, 0.85, v[0])) + 0.04 * near;
+    const pure = C * lerp(1, 1.33, hued) + 0.03 * near;
+    return lch(L, lerp(0.085, 0.15 * Math.tanh(pure / 0.15), hued), h);
+  }
+  // tinge(a, b, t): the light a turned towards the light b.  Two lights are
+  // not mixed like two pigments: between a blue and an orange lies a grey,
+  // and a grey light is a haze.  The hue goes round the colour circle the
+  // short way (blue, violet, rose, orange: a sky warming), lightness and
+  // chroma go straight.
+  function tinge(a, b, t) {
+    const A = lab(a), B = lab(b);
+    const ca = Math.hypot(A[1], A[2]), cb = Math.hypot(B[1], B[2]);
+    const ha = Math.atan2(A[2], A[1]);
+    let d = Math.atan2(B[2], B[1]) - ha;
+    d = Math.atan2(Math.sin(d), Math.cos(d));
+    return lch(lerp(A[0], B[0], t), lerp(ca, cb, t), ha + d * t);
+  }
+  // shine(ground, light, amount, cover): what one sees where that much
+  // (0..1) of a light falls on the ground; cover (0..1, default: the amount)
+  // is how much of the place something stands in: where there is more of
+  // that than of light, it is a silhouette, a shade darker than the ground.
+  // Light adds up as light does (luminance: the cube of OKLab's lightness),
+  // so a little of it hardly shows (a glow ends in the navy itself, not in a
+  // grey haze) and it gathers where there is much.  The colour is not mixed
+  // towards the light's (between a navy and an orange lies a dirty grey): the
+  // ground's own colour leaves as the light comes, and the light's hue is
+  // there before its brightness is (an ember: dark, but already orange: at
+  // SHINE.ember of the full lightness it has all its chroma); on the way a
+  // light from the other side of the colour circle bows out round the grey,
+  // by the warm side when it can (navy, plum, ember, orange: how a sky goes
+  // dark).  Colours outside sRGB give up chroma.  LIGHT_GLSL below is the
+  // same for a shader, shineLayer() for a whole canvas.
+  //   full   the lightness of a light at which nothing of the ground is left
+  //   shade  how much darker than the ground a silhouette is, at most
+  //   top    the lightest anything gets (the page's text is lighter)
+  //   bow    how far the path bows out round the grey, in the light's chroma
+  //   ember  the share of `full` at which a light has all its chroma
+  const SHINE = { full: 0.76, shade: 0.15, top: 0.85, bow: 0.2, ember: 0.9 };
+  function shine(ground, light, amount, cover) {
+    const k = clamp(amount, 0, 1), g = lab(ground);
+    const v = lab(light.map(function(x) { return x * k; }));
+    const s = clamp(v[0] / SHINE.full, 0, 1), t = Math.pow(s, 1.5);
+    const shade = clamp((cover === undefined ? k : cover) - s, 0, 1);
+    const L = Math.min(SHINE.top, Math.cbrt(Math.pow(g[0] * (1 - SHINE.shade * shade), 3) + Math.pow(v[0], 3)));
+    const keep = (1 - t) * (1 - t), cg = Math.hypot(g[1], g[2]) || 1e-6, cv = Math.hypot(v[1], v[2]);
+    let dh = Math.atan2(v[2], v[1]) - Math.atan2(g[2], g[1]);
+    dh = Math.atan2(Math.sin(dh), Math.cos(dh));
+    // which side to pass the grey on: the light's own, the warm one if it is nearly opposite
+    const side = dh >= 0 ? 1 : lerp(1, -1, smoothstep(0.3, 0.8, Math.PI + dh));
+    const far = (1 - Math.cos(dh)) / 2;
+    // the light's own chroma, as it would be at full strength: an ember has most of it already
+    const pure = Math.min(0.3, cv / Math.max(s, 0.05));
+    const bow = SHINE.bow * pure * side * far * far * 6.75 * t * keep;
+    const w = pure * Math.pow(smoothstep(0, SHINE.ember, s), 0.9) / Math.max(cv, 1e-6);
+    const a = g[1] * keep + v[1] * w - g[2] / cg * bow, b = g[2] * keep + v[2] * w + g[1] / cg * bow;
+    return lch(L, Math.hypot(a, b), Math.atan2(b, a));
+  }
+  // The same in GLSL: vec3 shine(vec3 ground, vec4 light) with the ground in
+  // sRGB and the light premultiplied (rgb: its colour times how much of it,
+  // a: how much of the place is covered, by light or by something black).
+  const LIGHT_GLSL = `
+    vec3 lightLinear(vec3 c) { return mix(c / 12.92, pow((c + .055) / 1.055, vec3(2.4)), step(.04045, c)); }
+    vec3 lightGamma(vec3 c) {
+      c = clamp(c, 0., 1.);
+      return mix(c * 12.92, 1.055 * pow(c, vec3(1. / 2.4)) - .055, step(.0031308, c));
+    }
+    vec3 oklab(vec3 c) {
+      vec3 r = lightLinear(clamp(c, 0., 1.));
+      vec3 lms = pow(max(vec3(
+        dot(r, vec3(.4122214708, .5363325363, .0514459929)),
+        dot(r, vec3(.2119034982, .6806995451, .1073969566)),
+        dot(r, vec3(.0883024619, .2817188376, .6299787005))), 0.), vec3(1. / 3.));
+      return vec3(
+        dot(lms, vec3(.2104542553, .7936177850, -.0040720468)),
+        dot(lms, vec3(1.9779984951, -2.4285922050, .4505937099)),
+        dot(lms, vec3(.0259040371, .7827717662, -.8086757660)));
+    }
+    vec3 oklabLinear(vec3 v) {
+      vec3 lms = vec3(
+        v.x + .3963377774 * v.y + .2158037573 * v.z,
+        v.x - .1055613458 * v.y - .0638541728 * v.z,
+        v.x - .0894841775 * v.y - 1.2914855480 * v.z);
+      lms = lms * lms * lms;
+      return vec3(
+        dot(lms, vec3(4.0767416621, -3.3077115913, .2309699292)),
+        dot(lms, vec3(-1.2684380046, 2.6097574011, -.3413193965)),
+        dot(lms, vec3(-.0041960863, -.7034186147, 1.7076147010)));
+    }
+    float lightFits(vec3 c) { return step(-.0005, min(c.r, min(c.g, c.b))) * step(max(c.r, max(c.g, c.b)), 1.0005); }
+    vec3 shine(vec3 ground, vec4 light) {
+      vec3 g = oklab(ground), v = oklab(light.rgb);
+      float s = clamp(v.x / ${SHINE.full.toFixed(3)}, 0., 1.), t = s * sqrt(s);
+      float shade = clamp(light.a - s, 0., 1.);
+      float gl = g.x * (1. - ${SHINE.shade.toFixed(3)} * shade);
+      float L = min(${SHINE.top.toFixed(3)}, pow(gl * gl * gl + v.x * v.x * v.x, 1. / 3.));
+      float keep = (1. - t) * (1. - t), cg = max(length(g.yz), 1e-6), cv = length(v.yz);
+      vec2 ug = g.yz / cg, uv = v.yz / max(cv, 1e-6);
+      float dh = atan(ug.x * uv.y - ug.y * uv.x, dot(ug, uv));
+      float side = dh >= 0. ? 1. : mix(1., -1., smoothstep(.3, .8, 3.14159265 + dh));
+      float far = .5 - .5 * cos(dh);
+      float pure = min(.3, cv / max(s, .05));
+      float bow = ${SHINE.bow.toFixed(3)} * pure * side * far * far * 6.75 * t * keep;
+      vec2 ab = g.yz * keep + uv * pure * pow(smoothstep(0., ${SHINE.ember.toFixed(3)}, s), .9) + vec2(-ug.y, ug.x) * bow;
+      vec3 c = oklabLinear(vec3(L, ab));
+      if (lightFits(c) < .5) {
+        float lo = 0., hi = 1.;
+        for (int i = 0; i < 7; i++) {
+          float m = .5 * (lo + hi);
+          if (lightFits(oklabLinear(vec3(L, ab * m))) > .5) lo = m; else hi = m;
+        }
+        c = oklabLinear(vec3(L, ab * lo));
+      }
+      return lightGamma(c);
+    }
+  `;
   // the mean of colours in OKLab, by weight
   function blend(colors, weights) {
     const sum = [0, 0, 0];
@@ -235,12 +379,106 @@ window.LucumrArt = (function() {
     }
   };
 
+  // shineLayer(canvas, ground): develops a 2D canvas that was painted with
+  // light (as a shader's layer is: premultiplied, the colour the light, the
+  // alpha how much of the place is taken; paint it with `lighter` and
+  // overlaps add up) into what shows on the ground, in place.  Afterwards the
+  // canvas is an ordinary layer: drawn over the ground it gives shine() for
+  // every pixel, and nothing where nothing was.  One shared WebGL canvas off
+  // screen does it, in strips where the layer is wider than it may be.
+  // Returns false, and leaves the layer as it was (the lights as plain
+  // colour), without WebGL.
+  const DEVELOP = `
+    #ifdef GL_FRAGMENT_PRECISION_HIGH
+    precision highp float;
+    #else
+    precision mediump float;
+    #endif
+    uniform sampler2D u_layer;
+    uniform vec2 u_size;
+    uniform vec3 u_ground;
+    ${LIGHT_GLSL}
+    void main() {
+      vec4 light = texture2D(u_layer, gl_FragCoord.xy / u_size);
+      if (light.a < .002) { gl_FragColor = vec4(0.); return; }
+      vec3 d = shine(u_ground, light) - u_ground;
+      // the least alpha that can carry this colour over the ground, and some more
+      vec3 room = mix(u_ground, 1. - u_ground, step(0., d));
+      vec3 need = abs(d) / max(room, vec3(.001));
+      float a = clamp(1.25 * max(need.r, max(need.g, need.b)) + .004, 0., 1.);
+      gl_FragColor = vec4((u_ground + d / a) * a, a);
+    }
+  `;
+  let developer = null;
+  function shineLayer(canvas, ground) {
+    const w = canvas.width, h = canvas.height;
+    if (!w || !h) return true;
+    try {
+      if (!developer) {
+        const stage = document.createElement('canvas');
+        const gl = stage.getContext('webgl', { alpha: true, antialias: false, depth: false, stencil: false });
+        if (!gl) return false;
+        const program = glutil.program(gl, 'attribute vec2 a_position; void main() { gl_Position = vec4(a_position, 0., 1.); }', DEVELOP);
+        gl.useProgram(program);
+        glutil.quad(gl, program, 'a_position');
+        developer = {
+          stage: stage, gl: gl, texture: gl.createTexture(), strip: null,
+          max: Math.min(gl.getParameter(gl.MAX_TEXTURE_SIZE) || 2048, 4096),
+          size: gl.getUniformLocation(program, 'u_size'), ground: gl.getUniformLocation(program, 'u_ground')
+        };
+        gl.uniform1i(gl.getUniformLocation(program, 'u_layer'), 0);
+        stage.addEventListener('webglcontextlost', function() { developer = null; });
+      }
+      const dev = developer, gl = dev.gl, ctx = canvas.getContext('2d');
+      if (h > dev.max) return false;
+      const tw = Math.min(w, dev.max);
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.globalAlpha = 1;
+      for (let x = 0; x < w; x += tw) {
+        const cw = Math.min(tw, w - x);
+        let source = canvas;
+        if (cw !== w) {
+          if (!dev.strip) dev.strip = document.createElement('canvas');
+          source = dev.strip;
+          source.width = cw;
+          source.height = h;
+          const sg = source.getContext('2d');
+          sg.globalCompositeOperation = 'copy';
+          sg.drawImage(canvas, -x, 0);
+        }
+        if (dev.stage.width !== cw) dev.stage.width = cw;
+        if (dev.stage.height !== h) dev.stage.height = h;
+        gl.viewport(0, 0, cw, h);
+        gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+        glutil.texture(gl, source, dev.texture);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+        gl.uniform2f(dev.size, cw, h);
+        gl.uniform3f(dev.ground, ground[0], ground[1], ground[2]);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        if (gl.isContextLost()) throw new Error('context lost');
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.clearRect(x, 0, cw, h);
+        ctx.drawImage(dev.stage, x, 0);
+      }
+      ctx.restore();
+      if (dev.strip) dev.strip.width = dev.strip.height = 0;
+      return true;
+    } catch (error) {
+      console.warn('art: no light for the layer', error);
+      developer = null;
+      return false;
+    }
+  }
+
   const util = {
     hash: hash, rng: rng, clamp: clamp, lerp: lerp, smoothstep: smoothstep,
     noise1: noise1, noise2: noise2, fbm2: fbm2,
     hex: hex, css: css, mix: mix, hsl: hsl, toHex: toHex, gl: glutil,
     lab: lab, rgb: rgb, lch: lch, lightness: lightness, chroma: chroma, relight: relight,
-    saturate: saturate, tone: tone, blend: blend, gouache: gouache
+    saturate: saturate, tone: tone, blend: blend, gouache: gouache,
+    glow: glow, tinge: tinge, shine: shine, shineLayer: shineLayer, LIGHT_GLSL: LIGHT_GLSL
   };
 
   // The page's colours, as [r, g, b], read from style-2025.css (its custom

@@ -1,8 +1,9 @@
 // Proposal 4: Sketchbook margins.
 //
 // Pencil doodles, as an engineer leaves them in the margins of a notebook,
-// over a loose watercolour wash.  On the dark theme the pencil is white and
-// the wash is chalk rubbed onto blue paper.
+// over a loose watercolour wash.  On the dark theme the pencil is white
+// chalk and the washes are light: every wash a glow of its pigment's colour
+// on the navy page (paintWash, and ART.md, "Two themes").
 //
 // - Every tag has a doodle: `def(tag, aspect, draw)` further down, one small
 //   function over the stroke helpers of `Pen`.  Subject tags are a drawing,
@@ -3248,38 +3249,30 @@
     g.closePath();
   }
 
-  function paintWash(g, scene, dark, dpr) {
+  // On white the washes are pigment: they multiply.  On the navy (`paper` is
+  // given) they are light: every wash is a glow in its pigment's colour,
+  // painted with `screen` so that glows add up where they overlap (ever less,
+  // the brighter it is already), and the finished layer is developed into
+  // what shows on the navy (U.shineLayer).
+  function paintWash(g, scene, dark, dpr, paper) {
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
     g.clearRect(0, 0, scene.W, scene.H);
     g.lineJoin = 'round';
-    const chalks = {};
     scene.washes.forEach(function(w0) {
       let w = w0;
       const rand = U.rng(w.seed);
-      // light: transparent pigment that multiplies; dark: chalk, lighter than the paper
       let rgb = w.rgb;
       if (dark) {
-        rgb = U.gouache(rgb, 0.64, 0.8, 0.9);
+        rgb = U.glow(rgb, paper);
         if (scene.house) w = Object.assign({}, w, { a: w.a * 0.7 });     // blue on blue: keep it down
       } else if (U.lightness(rgb) < 0.34) {
         rgb = U.mix(rgb, [1, 1, 1], 0.15);
       }
       // black and the near blacks are used thin
       if (w.k === 'blob' && !dark) w = Object.assign({}, w, { a: w.a * lerp(0.55, 1, clamp(U.lightness(w.rgb) / 0.46, 0, 1)) });
-      g.globalCompositeOperation = dark ? 'source-over' : 'multiply';
-      if (dark) {
-        // chalk only catches the tooth of the paper, and every patch is
-        // rubbed on in its own direction
-        const key = U.toHex(rgb);
-        const pattern = chalks[key] || (chalks[key] = g.createPattern(grainTile('chalk:' + key, rgb, 0.3, 0.74, 0.5), 'repeat'));
-        pattern.setTransform(new DOMMatrix().translate(rand() * 160, rand() * 160).rotate(-24 + rand.range(-38, 38))
-          .scale(rand.range(1.9, 2.7) / dpr, 0.8 / dpr));
-        g.fillStyle = pattern;
-        g.strokeStyle = pattern;
-      } else {
-        g.fillStyle = U.css(rgb);
-        g.strokeStyle = U.css(U.mix(rgb, [0, 0, 0], 0.15));
-      }
+      g.globalCompositeOperation = dark ? 'screen' : 'multiply';
+      g.fillStyle = U.css(rgb);
+      g.strokeStyle = dark ? U.css(rgb) : U.css(U.mix(rgb, [0, 0, 0], 0.15));
       if (w.k === 'blob') {
         const n = 72, ca = Math.cos(w.rot), sa = Math.sin(w.rot);
         const base = radial(rand, n, 0.2, 2, 7, 1);
@@ -3298,12 +3291,27 @@
           return R;
         };
         const body = shape(base, 1);
-        if (dark) {       // chalk rubbed on with the side of the stick: soft all round
-          for (let i = 0; i < 9; i++) {
-            g.globalAlpha = 0.062 * w.a;
+        if (dark) {
+          // a glow, laid on in glazes as the wash is: the smallest ones in
+          // its middle, so it is brightest within and gone at its edge; the
+          // wider the wash is spread, the fainter its light
+          const power = w.a / (1 + w.rx * w.ry / 20000), glazes = 16;
+          for (let i = 0; i < glazes; i++) {
+            g.globalAlpha = Math.min(1, 0.9 / glazes * power);
             g.beginPath();
-            trace(g, shape(vary(0.1 + 0.015 * i, 2, 9), 0.72 + 0.045 * i));
+            trace(g, shape(vary(0.1 + 0.2 * i / glazes, 2, 9), 0.25 + 0.8 * i / glazes));
             g.fill();
+          }
+          if (!w.soft) {
+            // where the water would have stopped and pigment collected, the rim glows
+            g.beginPath();
+            trace(g, body);
+            g.globalAlpha = 0.2 * power;
+            g.lineWidth = 0.9;
+            g.stroke();
+            g.globalAlpha = 0.06 * power;
+            g.lineWidth = 3.2;
+            g.stroke();
           }
         } else if (w.soft) {    // wet in wet: no edge anywhere
           for (let i = 0; i < 11; i++) {
@@ -3393,7 +3401,7 @@
           }
         }
       } else if (w.k === 'poly') {
-        const alpha = (dark ? 0.2 : 0.075) * w.a;
+        const alpha = (dark ? 0.12 : 0.075) * w.a;
         for (let i = 0; i < 4; i++) {
           g.globalAlpha = alpha;
           g.beginPath();
@@ -3409,7 +3417,7 @@
         }
       } else if (w.k === 'ring') {
         for (let i = 0; i < 5; i++) {
-          g.globalAlpha = (dark ? 0.24 : 0.08) * w.a;
+          g.globalAlpha = (dark ? 0.1 : 0.08) * w.a;
           g.lineWidth = w.r * rand.range(0.05, 0.16);
           g.beginPath();
           const ring = ngon(w.x + rand.gauss() * 0.6, w.y + rand.gauss() * 0.6, w.r * (1 + rand.gauss() * 0.012), 20, rand() * TAU);
@@ -3426,9 +3434,9 @@
         g.fill();
       }
     });
-    if (!dark) {      // granulation: the pigment settles into the paper's tooth
+    {      // granulation: the pigment settles into the paper's tooth (and the glow has a grain)
       g.globalCompositeOperation = 'destination-out';
-      g.globalAlpha = 0.2;
+      g.globalAlpha = dark ? 0.14 : 0.2;
       const pattern = g.createPattern(grainTile('gran', [0, 0, 0], 0.45, 1, 0.6), 'repeat');
       pattern.setTransform(new DOMMatrix([1 / dpr, 0, 0, 1 / dpr, 0, 0]));
       g.fillStyle = pattern;
@@ -3436,6 +3444,7 @@
     }
     g.globalCompositeOperation = 'source-over';
     g.globalAlpha = 1;
+    if (dark) U.shineLayer(g.canvas, paper);
   }
   function jitter(pts, rand, amount) {
     const ox = rand.gauss() * amount, oy = rand.gauss() * amount;
@@ -3610,7 +3619,7 @@
         layer.scene = buildScene(surface, post, colors);
         layer.done = new Int32Array(layer.scene.strokes.length);
         layer.flow = null;
-        paintWash(layer.wash.getContext('2d'), layer.scene, dark, surface.dpr);
+        paintWash(layer.wash.getContext('2d'), layer.scene, dark, surface.dpr, colors.paper);
         const pg = layer.pencil.getContext('2d');
         pg.setTransform(1, 0, 0, 1, 0, 0);
         pg.clearRect(0, 0, w, h);

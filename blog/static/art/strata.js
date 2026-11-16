@@ -61,8 +61,16 @@
 // 450 (footer) high.  Everything is placed per cell of the world x axis, so a
 // wider band shows more of the same picture.  A fragment shader then turns the
 // layers into the medium (wet edges, pigment collecting at the rim,
-// granulation, the tooth of the paper; chalk and gouache on the navy of the
-// dark theme) and paints the picture in: the pencil first, then the washes.
+// granulation, the tooth of the paper) and paints the picture in: the pencil
+// first, then the washes.
+//
+// The dark theme is the same land at night, and its medium is light instead
+// of pigment (see ART.md, "Two themes"): the navy page is the dark, the
+// pencil is chalk, and what the wash layer holds is added to the navy as
+// light (U.glow for every pigment, U.shine in the shader).  The sky's light
+// lies along the horizon (nightSky), each range catches it along its crest
+// and falls into shadow below, a shade darker than the page (crestLight),
+// the beds of the section glow along their tops, and the mist is pale.
 (function() {
   'use strict';
 
@@ -776,21 +784,20 @@
     for (let k = Math.floor(P.X0 / cw) - pad; k <= Math.floor(P.X1 / cw) + pad; k++) cb(k);
   }
 
-  // The pigment as it goes on this paper: on navy it is gouache, lighter and
-  // chalky.  Made light in OKLab, it keeps its hue (mixed with white, as it
-  // was, a red went pink and an orange went beige), and loses some chroma the
-  // further it is lifted.
+  // The pigment as it goes on this paper: on white as it is, on the navy as
+  // light of its hue (U.glow).
   function pigment(P, tag) {
     let c = tag.house ? mix(P.pal[tag.house[0]], P.pal[tag.house[1]], tag.house[2]) : tag.rgb;
     // a bleak post is painted with greyed pigments: the cool grey of the same lightness
     const grey = Math.max(0, 0.6 - P.scene.C.valence) * 0.85;
     if (grey > 0) c = mix(c, U.tone(P.pal.shade, U.lightness(c), 0.012), grey);
-    if (!P.dark) return c;
-    const l = U.lightness(c), want = 0.7;
-    return l >= want ? c : U.relight(c, want, 1 - 0.55 * (want - l) / (1 - l));
+    return P.dark ? U.glow(c, P.pal.paper) : c;
   }
-  // A colour given for white paper as it goes on the navy one.
-  function gouache(P, c) { return P.dark ? U.gouache(c, 0.78, 0.93) : c; }
+  // The same for a colour that is not a tag's (given for white paper).
+  function onPaper(P, c) { return P.dark ? U.glow(c, P.pal.paper) : c; }
+  // On the navy the wash layer holds light: a colour is how much light there
+  // is (dim() leaves k of it), the alpha how much of the place is taken.
+  function dim(c, k) { return [c[0] * k, c[1] * k, c[2] * k]; }
   function tinted(P, color, amount) { return mix(P.graphite, color, amount === undefined ? 0.3 : amount); }
 
   // A long pencil line y = fn(X): pressure comes and goes, parts are gone over twice.
@@ -943,28 +950,33 @@
     const sc = P.scene, w = P.wash, kind = sc.skyKind, seed = sc.seed;
     // the register's pigment, well thinned with the grey of the air
     const thin = function(c) {
-      c = P.dark ? mix(c, P.pal.paper, 0.2) : mix(c, kind === 'storm' ? U.tone(P.pal.shade, 0.4, 0.035) : U.tone(P.pal.sky, 0.72, 0.04), kind === 'storm' ? 0.6 : 0.4);
-      return mix(c, P.dark ? [0.8, 0.66, 0.5] : [0.92, 0.72, 0.48], 0.5 * P.warmth);
+      if (P.dark) return U.tinge(c, onPaper(P, [0.92, 0.72, 0.48]), 0.5 * P.warmth);
+      c = mix(c, kind === 'storm' ? U.tone(P.pal.shade, 0.4, 0.035) : U.tone(P.pal.sky, 0.72, 0.04), kind === 'storm' ? 0.6 : 0.4);
+      return mix(c, [0.92, 0.72, 0.48], 0.5 * P.warmth);
     };
-    const base = sc.sky ? thin(pigment(P, sc.sky)) : P.air;
+    const base = sc.sky ? thin(pigment(P, sc.sky)) : P.dark ? thin(P.air) : P.air;
     const second = sc.registers[1] ? thin(pigment(P, sc.registers[1])) : null;
     const strength = { clear: 0.11, overcast: 0.19, glow: 0.2, storm: 0.3, ruled: 0.13, birds: 0.15, blooms: 0.1, faded: 0.16, burst: 0.14, guides: 0.11, bunting: 0.14, fog: 0.2 }[kind] || 0.14;
     // valence: a bleak post has a heavy sky, a joyful one hardly any
-    const a = strength * (P.dark ? 0.55 : 1) * lerp(1.8, 0.5, sc.C.valence);
+    const a = strength * lerp(1.8, 0.5, sc.C.valence);
     const flat = kind === 'ruled' || kind === 'guides';
 
-    // a graded wash from the top edge
-    const g = w.createLinearGradient(0, 0, 0, 84);
-    g.addColorStop(0, css(base, a));
-    g.addColorStop(0.45, css(base, a * 0.6));
-    g.addColorStop(1, css(base, 0));
-    w.fillStyle = g;
-    w.fillRect(P.X0, -2, P.X1 - P.X0, 88);
-    if (second) {
-      cells(P, 170, function(k) {
-        const r = cellRng(seed + 41, k);
-        softBlob(w, (k + r()) * 170, 6 + 30 * r(), 70 + 60 * r(), 12 + 14 * r(), second, a * 0.9);
-      }, 1);
+    if (P.dark) {
+      nightSky(P, base, second, strength);
+    } else {
+      // a graded wash from the top edge
+      const g = w.createLinearGradient(0, 0, 0, 84);
+      g.addColorStop(0, css(base, a));
+      g.addColorStop(0.45, css(base, a * 0.6));
+      g.addColorStop(1, css(base, 0));
+      w.fillStyle = g;
+      w.fillRect(P.X0, -2, P.X1 - P.X0, 88);
+      if (second) {
+        cells(P, 170, function(k) {
+          const r = cellRng(seed + 41, k);
+          softBlob(w, (k + r()) * 170, 6 + 30 * r(), 70 + 60 * r(), 12 + 14 * r(), second, a * 0.9);
+        }, 1);
+      }
     }
     // clouds: paper left open, a little pigment pooled underneath
     if (!flat) {
@@ -981,7 +993,8 @@
     }
 
     if (kind === 'storm') {
-      const dark = P.dark ? mix(base, P.pal.paper, 0.3) : mix(base, P.pal.shade, 0.55);
+      // (at night a cloud is what hides the light: it covers, and shines very little)
+      const dark = P.dark ? dim(base, 0.12) : mix(base, P.pal.shade, 0.55);
       cells(P, 120, function(k) {
         const r = cellRng(seed + 45, k);
         softBlob(w, (k + r()) * 120, 2 + 16 * r(), 60 + 70 * r(), 10 + 16 * r(), dark, 0.2 + 0.25 * r());
@@ -1004,7 +1017,7 @@
       cells(P, 3600, function(k) {
         const r = cellRng(seed + 51, k);
         const x = k * 3600 + (r() - 0.5) * 560, y = kind === 'glow' ? 34 + 8 * r() : 22 + 8 * r(), rad = kind === 'glow' ? 9 : 7;
-        softBlob(w, x, y, 70, 32, sun, P.dark ? 0.22 : 0.3);
+        softBlob(w, x, y, 70, 32, sun, 0.3);
         if (kind === 'glow') {
           // the sun is the paper
           w.globalCompositeOperation = 'destination-out';
@@ -1013,7 +1026,7 @@
           if (P.dark) softBlob(w, x, y, rad, rad, mix(sun, WHITE, 0.5), 0.8);
           drawPoly(P, circle(x, y, rad, 0.2, TAU - 0.5, 14), { weight: 0.3, seed: seed + k, curve: true, color: tinted(P, sun, 0.5) });
         } else {
-          w.fillStyle = css(sun, P.dark ? 0.85 : 0.75);
+          w.fillStyle = css(sun, 0.75);
           w.beginPath();
           w.arc(x, y, rad, 0, TAU);
           w.fill();
@@ -1030,7 +1043,7 @@
       cells(P, 96, function(k) {
         const r = cellRng(seed + 53, k);
         const x = (k + r()) * 96, y = 8 + 34 * r(), rad = 14 + 20 * r();
-        softBlob(w, x, y, rad * 1.3, rad, base, P.dark ? 0.2 : 0.26);
+        softBlob(w, x, y, rad * 1.3, rad, base, 0.26);
         w.globalCompositeOperation = 'destination-out';
         softBlob(w, x + 2, y + 1, rad * 0.7, rad * 0.55, WHITE, 0.5);    // the backrun: pigment pushed to the rim
         w.globalCompositeOperation = 'source-over';
@@ -1066,11 +1079,61 @@
         const n = Math.floor((xb - xa) / 8);
         for (let i = 1; i < n; i++) {
           const p = at(i / n), c = pigment(P, sc.registers[i % sc.registers.length]);
-          w.fillStyle = css(i % 3 === 1 ? mix(c, WHITE, 0.3) : c, P.dark ? 0.85 : 0.7);
+          w.fillStyle = css(i % 3 === 1 ? mix(c, WHITE, 0.3) : c, 0.7);
           w.beginPath();
           w.moveTo(p[0] - 1.8, p[1] + 0.3);
           w.lineTo(p[0] + 1.8, p[1] + 0.3);
           w.lineTo(p[0] + 0.3 * (r() - 0.5), p[1] + 5);
+          w.fill();
+        }
+      }, 1);
+    }
+  }
+
+  // Where the light stands at night: the sun of a `glow` or `burst` sky, else
+  // the side the post looks to (where paintMood has its low sun).  One every
+  // LIGHTS world pixels, the one in the middle near the middle.
+  const LIGHTS = 3600;
+  function lightAt(P, k) {
+    const sc = P.scene, C = sc.C;
+    if (sc.skyKind === 'glow' || sc.skyKind === 'burst') return k * LIGHTS + (cellRng(sc.seed + 51, k)() - 0.5) * 560;
+    const side = C.lean !== 0 ? (C.lean > 0 ? 1 : -1) : (irand(sc.seed, 1, 5) < 0.5 ? -1 : 1);
+    return k * LIGHTS + side * (150 + 190 * cellRng(sc.seed + 205, k)());
+  }
+
+  // The sky at night.  Its light lies along the horizon, behind the furthest
+  // range, brightest where the light stands (the day has gone down there, or
+  // the moon is about to come up), and is gone overhead: there the navy is
+  // the sky, with a few stars, the more the lighter the post's heart.
+  function nightSky(P, base, second, strength) {
+    const sc = P.scene, w = P.wash, seed = sc.seed, C = sc.C, m = C.mood;
+    const far = sc.ridges[sc.ridges.length - 1], yh = far.yTop + far.A * 0.7;
+    const gloom = clamp(0.9 * m.worried + 0.7 * m.angry + 0.5 * m.conflicted + 1.5 * Math.max(0, 0.4 - C.valence), 0, 1);
+    const a = clamp((0.2 + 1.2 * strength) * lerp(0.7, 1.2, C.valence), 0, 0.7);
+    const g = w.createLinearGradient(0, yh - 60, 0, yh + 44);
+    [[0, 0], [0.25, 0.07], [0.42, 0.3], [0.56, 0.75], [0.66, 1], [0.8, 0.6], [1, 0]].forEach(function(s) {
+      g.addColorStop(s[0], css(base, a * s[1]));
+    });
+    w.fillStyle = g;
+    w.fillRect(P.X0, yh - 60, P.X1 - P.X0, 104);
+    cells(P, LIGHTS, function(k) { softBlob(w, lightAt(P, k), yh + 4, 330, 30, base, a * 0.8); }, 1);
+    if (second) {
+      cells(P, 170, function(k) {
+        const r = cellRng(seed + 41, k);
+        softBlob(w, (k + r()) * 170, yh - 22 + 24 * r(), 70 + 60 * r(), 8 + 9 * r(), second, a * 0.7);
+      }, 1);
+    }
+    const clear = clamp(1.15 - 1.3 * gloom - (sc.skyKind === 'fog' || sc.skyKind === 'storm' ? 0.6 : sc.skyKind === 'overcast' ? 0.25 : 0), 0, 1);
+    if (clear > 0.05) {
+      const star = mix(P.pal.chalk, base, 0.25);
+      cells(P, 40, function(k) {
+        const r = cellRng(seed + 67, k);
+        const n = r() < 0.75 * clear ? 1 + (r() < 0.3 * clear ? 1 : 0) : 0;
+        for (let i = 0; i < n; i++) {
+          const x = (k + r()) * 40, y = 3 + (yh - 12) * Math.pow(r(), 1.3), mag = Math.pow(r(), 2.2);
+          w.fillStyle = css(star, clamp(0.3 + 0.6 * mag, 0, 1) * (0.5 + 0.5 * clear));
+          w.beginPath();
+          w.arc(x, y, 0.45 + 0.5 * mag, 0, TAU);
           w.fill();
         }
       }, 1);
@@ -1091,9 +1154,10 @@
     // (bleak: heavier washes; bright: lighter)
     const quiet = (R.echo ? 0.72 : R.form ? 0.74 + 0.26 * R.form : 1) * (1 + (0.55 - P.scene.C.valence) * 0.4);
     if (P.dark) {
-      const color = mix(pig, P.pal.paper, 0.5 * t);
+      // the range's light (less of it further back), and how solid it stands
+      const color = dim(pig, lerp(1, 0.6, t) / Math.sqrt(quiet));
       return {
-        color: color, alpha: lerp(0.86, 0.36, t) * quiet, shade: mix(color, P.pal.paper, 0.5),
+        color: color, alpha: clamp(lerp(0.92, 0.5, t) * quiet, 0, 1), shade: dim(color, 0.45),
         line: mix(P.graphite, pig, 0.3), weight: lerp(0.95, 0.35, t) * quiet
       };
     }
@@ -1168,6 +1232,7 @@
       tmp.fill(sil);
       tmp.restore();
     }
+    if (P.dark) crestLight(env, sil);
     const detail = DETAILS[R.family];
     if (detail && detail.wash) detail.wash(env);
     snow(env);
@@ -1234,6 +1299,33 @@
     }
   }
 
+  // At night a range is lit along its crest, from the sky behind it; below,
+  // its body falls into shadow: the light is taken away in steps that follow
+  // the crest (what is left of the layer's alpha is the silhouette).
+  function crestLight(env, sil) {
+    const P = env.P, R = env.R, tmp = env.tmp, n = 18;
+    const reach = (R.family === 'cloud' ? 30 : 22) * R.sc + 0.12 * R.A;
+    tmp.save();
+    tmp.globalCompositeOperation = 'source-atop';
+    tmp.fillStyle = '#000';
+    for (let i = 0; i < n; i++) {
+      tmp.save();
+      tmp.translate(0, 1.5 + reach * Math.pow((i + 0.3) / n, 1.4));
+      tmp.globalAlpha = 0.135;
+      tmp.fill(sil);
+      tmp.restore();
+    }
+    // and less of it the further the range runs from where the light is
+    const x0 = P.X0 - 90, x1 = P.X1 + 90, g = tmp.createLinearGradient(x0, 0, x1, 0), stops = Math.ceil((x1 - x0) / 150);
+    for (let i = 0; i <= stops; i++) {
+      const X = lerp(x0, x1, i / stops), d = (X - lightAt(P, Math.round(X / LIGHTS))) / 800;
+      g.addColorStop(i / stops, 'rgba(0,0,0,' + (0.42 * (1 - Math.exp(-d * d))).toFixed(3) + ')');
+    }
+    tmp.fillStyle = g;
+    tmp.fillRect(x0, -20, x1 - x0, P.H + 60);
+    tmp.restore();
+  }
+
   // Snow in the winter months: the paper left unpainted on the heights.
   function snow(env) {
     const P = env.P, R = env.R, tmp = env.tmp;
@@ -1263,8 +1355,9 @@
     close();
     tmp.save();
     if (P.dark) {
+      // (what is the paper left white by day is the brightest thing at night)
       tmp.globalCompositeOperation = 'source-atop';
-      tmp.fillStyle = css([0.93, 0.96, 1], 0.8);
+      tmp.fillStyle = css(P.pal.chalk, 0.55);
     } else {
       tmp.globalCompositeOperation = 'destination-out';
       tmp.fillStyle = 'rgba(0,0,0,0.88)';
@@ -1629,7 +1722,7 @@
         const x = (k + r()) * 7 * R.sc, y = env.yOf(x) + 0.5, h = (3.5 + 4 * r()) * R.sc;
         B.seg(x, y, x + 0.3, y - h, 1);
         B.poly([[x - h * 0.3, y - h * 0.45], [x, y - h * 1.05], [x + h * 0.32, y - h * 0.4]], r.int(3));
-        w.fillStyle = css(green, P.dark ? 0.7 : 0.45);
+        w.fillStyle = css(green, 0.45);
         w.beginPath();
         w.ellipse(x + 0.5, y - h * 0.7, h * 0.32, h * 0.42, 0, 0, TAU);
         w.fill();
@@ -1658,7 +1751,7 @@
           const y = env.yOf(x) + (7 + i * 3.6) * R.sc, l = (9 + 12 * r()) * R.sc;
           B.seg(x + indent, y, x + indent + l, y + 0.3 * (r() - 0.5), r.int(3));
         }
-        if (R.tag.name === 'python' && r() < 0.5) softBlob(P.wash, x + 12 * R.sc, env.yOf(x) + 13 * R.sc, 17 * R.sc, 8 * R.sc, gouache(P, [0.93, 0.74, 0.2]), 0.4);
+        if (R.tag.name === 'python' && r() < 0.5) softBlob(P.wash, x + 12 * R.sc, env.yOf(x) + 13 * R.sc, 17 * R.sc, 8 * R.sc, onPaper(P, [0.93, 0.74, 0.2]), 0.4);
       });
       B.flush(P, env.look.line, env.look.weight * 0.5, 0.85);
     },
@@ -1712,7 +1805,7 @@
     // worry, anger, bleakness: a bank of dark cloud hanging from the top edge
     const gloom = clamp(0.9 * m.worried + 0.7 * m.angry + 0.5 * m.conflicted + 1.5 * Math.max(0, 0.4 - C.valence), 0, 1);
     if (gloom > 0.08) {
-      const dark = P.dark ? mix(P.pal.paper, P.pal.shade, 0.7) : mix(P.air, U.tone(P.pal.shade, 0.345, 0.036), 0.72);
+      const dark = P.dark ? [0, 0, 0] : mix(P.air, U.tone(P.pal.shade, 0.345, 0.036), 0.72);
       cells(P, 96, function(k) {
         const r = cellRng(seed + 201, k);
         const x = (k + r()) * 96;
@@ -1740,15 +1833,15 @@
     const light = clamp(0.95 * m.hopeful + 0.5 * m.playful + 1.5 * Math.max(0, C.valence - 0.72), 0, 1);
     if (light > 0.15 && sc.skyKind !== 'glow' && sc.skyKind !== 'burst') {
       const r = cellRng(seed + 205, 0);
-      const x = side * (150 + 190 * r()), y = lerp(50, 30, light), warm = gouache(P, [0.96, 0.72, 0.36]);
-      softBlob(w, x, y, 150 + 80 * light, 34 + 16 * light, warm, (P.dark ? 0.3 : 0.38) * light);
-      softBlob(w, x, y, 46, 22, gouache(P, [0.97, 0.6, 0.4]), 0.3 * light);
+      const x = side * (150 + 190 * r()), y = lerp(50, 30, light), warm = onPaper(P, [0.96, 0.72, 0.36]);
+      softBlob(w, x, y, 150 + 80 * light, 34 + 16 * light, warm, 0.38 * light);
+      softBlob(w, x, y, 46, 22, onPaper(P, [0.97, 0.6, 0.4]), 0.3 * light);
       if (light > 0.4) {
         // the sun is the paper
         w.globalCompositeOperation = 'destination-out';
         softBlob(w, x, y, 11, 11, WHITE, 1);
         w.globalCompositeOperation = 'source-over';
-        if (P.dark) softBlob(w, x, y, 7, 7, [1, 0.95, 0.8], 0.85);
+        if (P.dark) softBlob(w, x, y, 7, 7, mix(warm, WHITE, 0.5), 0.85);
         drawPoly(P, circle(x, y, 7, 0.3, TAU - 0.4, 14), { weight: 0.3, seed: seed + 9, curve: true, color: tinted(P, warm, 0.5) });
       }
     }
@@ -1838,13 +1931,13 @@
         const r = cellRng(sc.seed + 221, k);
         if (r() > 0.2 + 0.7 * end.call) return;
         const x = (k + r()) * 58, y0 = front.yBase - 2 + 10 * r(), len = (18 + 30 * r()) * (0.6 + 0.6 * end.call), wd = 1.1 + 1.3 * r();
-        w.globalAlpha = P.dark ? 0.75 : 0.55;
+        w.globalAlpha = 0.55;
         w.lineWidth = wd;
         w.beginPath();
         w.moveTo(x, y0);
         w.lineTo(x + 0.8 * (r() - 0.5), y0 + len);
         w.stroke();
-        w.globalAlpha = P.dark ? 0.9 : 0.75;
+        w.globalAlpha = 0.75;
         w.beginPath();
         w.ellipse(x, y0 + len, wd * 0.9, wd * 1.3, 0, 0, TAU);
         w.fill();
@@ -2009,7 +2102,7 @@
   function tree(P, B, x, y, h, color) {
     B.seg(x, y, x + 0.3, y - h, 1);
     B.poly([[x - h * 0.3, y - h * 0.45], [x, y - h * 1.05], [x + h * 0.32, y - h * 0.4]], 2);
-    P.wash.fillStyle = css(color, P.dark ? 0.7 : 0.5);
+    P.wash.fillStyle = css(color, 0.5);
     P.wash.beginPath();
     P.wash.ellipse(x + 0.5, y - h * 0.7, h * 0.34, h * 0.44, 0, 0, TAU);
     P.wash.fill();
@@ -2017,7 +2110,7 @@
   function tower(P, x, y, seed) {
     // a tower still going up: floors, and scaffolding above the last one
     const o = { weight: 0.9, seed: seed, wobble: 0.2, width: 0.9 }, h = 27, wd = 4;
-    P.wash.fillStyle = css(gouache(P, [0.45, 0.42, 0.44]), P.dark ? 0.55 : 0.35);
+    P.wash.fillStyle = css(onPaper(P, [0.45, 0.42, 0.44]), 0.35);
     P.wash.fillRect(x - wd, y - h, wd * 2, h + 1);
     drawPoly(P, [[x - wd, y + 1], [x - wd, y - h], [x + wd, y - h], [x + wd, y + 1]], Object.assign({ retrace: true }, o));
     for (let i = 1; i < 6; i++) drawPoly(P, [[x - wd, y - i * 4.5], [x + wd, y - i * 4.5]], Object.assign({}, o, { weight: 0.5 }));
@@ -2029,14 +2122,14 @@
   const MOTIFS = {
     water: function(P, M) {         // a lake at the foot of the range
       const front = P.scene.ridges[0], w = P.wash, B = new Batch(), y0 = front.yBase + 3;
-      const blue = gouache(P, [0.3, 0.54, 0.74]);
+      const blue = onPaper(P, [0.3, 0.54, 0.74]);
       cells(P, 46, function(k) {
         const r = cellRng(M.seed, k);
         const x = (k + r()) * 46;
         w.globalCompositeOperation = 'destination-out';
         softBlob(w, x, y0 + 9, 60, 9, WHITE, 0.55);
         w.globalCompositeOperation = 'source-over';
-        softBlob(w, x, y0 + 7 + 4 * r(), 44 + 30 * r(), 5 + 3 * r(), blue, P.dark ? 0.45 : 0.4);
+        softBlob(w, x, y0 + 7 + 4 * r(), 44 + 30 * r(), 5 + 3 * r(), blue, 0.4);
         for (let i = 0; i < 3; i++) {
           const a = (k + r()) * 46, b = y0 + 2 + 15 * r() * r(), l = 5 + 16 * r();
           B.seg(a, b, a + l, b + 0.4 * (r() - 0.5), r.int(3));
@@ -2046,20 +2139,20 @@
     },
     fire: function(P, M) {          // smoke from the summit
       const p = onCrest(P.scene, highest(P.scene, M.x, 90)), w = P.wash, r = cellRng(M.seed, 1), side = P.scene.shear < 0 ? -1 : 1;
-      const grey = gouache(P, [0.4, 0.38, 0.4]), pts = [];
+      const grey = onPaper(P, [0.4, 0.38, 0.4]), pts = [];
       for (let i = 0; i < 10; i++) {
         const x = p[0] + side * i * i * 0.55 + 2.5 * Math.sin(i * 1.3 + r() * 6), y = p[1] - 2 - i * 4.6;
         pts.push([x, y]);
         softBlob(w, x, y, 3 + i * 1.9, 2.5 + i * 1.1, grey, 0.26);
       }
       drawPoly(P, pts, { weight: 0.45, seed: M.seed, curve: true });
-      softBlob(w, p[0], p[1] - 1, 7, 4, gouache(P, [0.9, 0.33, 0.1]), 0.8);
+      softBlob(w, p[0], p[1] - 1, 7, 4, onPaper(P, [0.9, 0.33, 0.1]), 0.8);
     },
     stone: function(P, M) {         // a cairn
       const p = onCrest(P.scene, highest(P.scene, M.x, 90));
       [[5, 0], [3.8, 3.2], [2.6, 5.8], [1.5, 7.9]].forEach(function(s, i) {
         drawPoly(P, circle(p[0] + (i % 2 ? 0.6 : -0.4), p[1] - 1.4 - s[1], s[0], 0, TAU, 9).map(function(q) { return [q[0], p[1] - 1.4 - s[1] + (q[1] - (p[1] - 1.4 - s[1])) * 0.42]; }),
-          { weight: 0.85, seed: M.seed + i, close: true, wobble: 0.3, fill: gouache(P, [0.55, 0.53, 0.5]), fillAlpha: 0.35 });
+          { weight: 0.85, seed: M.seed + i, close: true, wobble: 0.3, fill: onPaper(P, [0.55, 0.53, 0.5]), fillAlpha: 0.35 });
       });
     },
     air: function(P, M) {           // the wind, drawn
@@ -2071,7 +2164,7 @@
       }
     },
     growth: function(P, M) {        // a wood on the ridge
-      const B = new Batch(), green = gouache(P, [0.36, 0.54, 0.18]);
+      const B = new Batch(), green = onPaper(P, [0.36, 0.54, 0.18]);
       for (let i = -24; i <= 24; i++) {
         const r = cellRng(M.seed, i), x = M.x + i * 8 + 5 * r();
         if (r() > 1.15 - Math.abs(i) / 26 || r() < 0.2) continue;
@@ -2095,7 +2188,7 @@
     },
     light: function(P, M) {         // a star low over the range
       if (P.scene.skyKind === 'glow' || P.scene.skyKind === 'burst') return;
-      const x = M.x, y = 20, w = P.wash, B = new Batch(), r = cellRng(M.seed, 2), warm = gouache(P, [0.96, 0.74, 0.3]);
+      const x = M.x, y = 20, w = P.wash, B = new Batch(), r = cellRng(M.seed, 2), warm = onPaper(P, [0.96, 0.74, 0.3]);
       softBlob(w, x, y, 44, 22, warm, 0.4);
       for (let i = 0; i < 12; i++) {
         const an = i / 12 * TAU + 0.2 * r(), r0 = 4 + r(), r1 = r0 + (i % 3 === 0 ? 11 : 4) + 4 * r();
@@ -2104,11 +2197,11 @@
       B.flush(P, tinted(P, warm, 0.5), 0.6, 0.85);
     },
     body: function(P, M) {          // veins down the flank
-      const w = P.wash, red = gouache(P, [0.62, 0.1, 0.18]);
+      const w = P.wash, red = onPaper(P, [0.62, 0.1, 0.18]);
       w.save();
       w.strokeStyle = css(red);
       w.lineCap = 'round';
-      w.globalAlpha = P.dark ? 0.85 : 0.7;
+      w.globalAlpha = 0.7;
       for (let i = -1; i <= 1; i++) {
         const r = cellRng(M.seed, i), p = onCrest(P.scene, highest(P.scene, M.x + i * 95, 40));
         w.lineWidth = 1.1;
@@ -2133,7 +2226,7 @@
     const w = P.wash, name = sign.tag.name;
     const c = pigment(P, sign.tag), line = tinted(P, c, 0.5);
     const o = { weight: 0.95, color: line, seed: sign.seed, wobble: 0.2, width: 0.9 };
-    const dab = function(path, alpha) { w.fillStyle = css(c, alpha === undefined ? (P.dark ? 0.9 : 0.75) : alpha); w.fill(path); };
+    const dab = function(path, alpha) { w.fillStyle = css(c, alpha === undefined ? 0.75 : alpha); w.fill(path); };
     let lx = x + 7, ly = y - 3;
     if (name === 'jinja') {
       // a shrine gate
@@ -2142,19 +2235,19 @@
       p.rect(x + 2.8, y - 9.5, 1.4, 10.5);
       p.rect(x - 6.5, y - 11.6, 13, 1.8);
       p.rect(x - 5, y - 7.6, 10, 1.2);
-      dab(p, P.dark ? 0.95 : 0.85);
+      dab(p, 0.85);
       drawPoly(P, [[x - 7, y - 12.2], [x - 3, y - 11.6], [x + 3, y - 11.6], [x + 7, y - 12.2]], o);
       drawPoly(P, [[x - 3.6, y - 9.5], [x - 3.8, y + 1]], o);
       drawPoly(P, [[x + 3.6, y - 9.5], [x + 3.8, y + 1]], o);
       lx = x + 9;
     } else if (name === 'pi') {
       // a small circle, never quite closed
-      softBlob(w, x, y - 6, 9, 9, c, P.dark ? 0.5 : 0.4);
+      softBlob(w, x, y - 6, 9, 9, c, 0.4);
       drawPoly(P, circle(x, y - 6, 6, 0.5, TAU - 0.35, 16), Object.assign({}, o, { curve: true, retrace: true }));
       lx = x + 9;
     } else if (name === 'earendil') {
       // a star
-      softBlob(w, x, y - 7, 10, 10, c, P.dark ? 0.6 : 0.5);
+      softBlob(w, x, y - 7, 10, 10, c, 0.5);
       const pts = [];
       for (let i = 0; i < 8; i++) {
         const a = i / 8 * TAU - Math.PI / 2, rr = i % 2 ? 1.8 : (i % 4 ? 5 : 7.5);
@@ -2184,7 +2277,7 @@
       // a watchtower
       const p = new Path2D();
       p.rect(x - 2.2, y - 9, 4.4, 9.5);
-      dab(p, P.dark ? 0.8 : 0.6);
+      dab(p, 0.6);
       drawPoly(P, [[x - 2.4, y + 0.5], [x - 2.2, y - 9], [x - 3.6, y - 9.2], [x - 3.6, y - 12], [x + 3.6, y - 12], [x + 3.6, y - 9.2], [x + 2.2, y - 9], [x + 2.4, y + 0.5]], o);
       drawPoly(P, [[x - 0.6, y - 5.5], [x + 0.6, y - 5.5]], o);
     } else {
@@ -2618,17 +2711,30 @@
     F.strata.forEach(function(S) {
       const color = pigment(P, S.tag);
       S.beds.forEach(function(bed, i) {
-        let c = bed.hue > 0 ? mix(color, P.dark ? WHITE : [1, 0.9, 0.7], 0.1 * bed.hue) : mix(color, P.dark ? P.pal.paper : P.pal.header, -0.12 * bed.hue);
-        if (S.tag.name === 'python' && i % 4 === 2) c = mix(c, gouache(P, [0.93, 0.74, 0.2]), 0.7);
+        let c = P.dark ? dim(color, 1 + 0.2 * Math.min(0, bed.hue))
+          : bed.hue > 0 ? mix(color, [1, 0.9, 0.7], 0.1 * bed.hue) : mix(color, P.pal.header, -0.12 * bed.hue);
+        if (S.tag.name === 'python' && i % 4 === 2) c = mix(c, onPaper(P, [0.93, 0.74, 0.2]), 0.7);
         // `ai`: every other bed in the pigment of what the post is about
         if (S.form && i % 2 === 1) c = mix(c, pigment(P, S.form.tag), 0.35 + 0.6 * S.form.p);     // blue with a touch of yellow
         w.fillStyle = css(c);
-        w.globalAlpha = clamp((P.dark ? 0.5 : 0.28) * bed.tone * (1 + (0.55 - sc.C.valence) * 0.5), 0, 1);
+        w.globalAlpha = clamp((P.dark ? 0.6 : 0.28) * bed.tone * (1 + (0.55 - sc.C.valence) * 0.5), 0, 1);
         const sd = S.seed + i * 17, gap = 0.5 + 0.9 * hand.loose;
-        w.fill(band(
-          function(X) { return F.Y(X, bed.v0) + gap * (0.6 + noise1(X / 27, sd)); },
-          function(X) { return F.Y(X, bed.v1) - gap * (0.6 + noise1(X / 27, sd + 1)); }
-        ));
+        const top = function(X) { return F.Y(X, bed.v0) + gap * (0.6 + noise1(X / 27, sd)); };
+        const base = function(X) { return F.Y(X, bed.v1) - gap * (0.6 + noise1(X / 27, sd + 1)); };
+        w.fill(band(top, base));
+        if (P.dark) {
+          // underground the light is in the rock: every bed glows along its
+          // top and goes dark towards the bed below (as the ranges above do)
+          const reach = Math.min(bed.v1 - bed.v0, 60);
+          w.globalCompositeOperation = 'source-atop';
+          w.fillStyle = '#000';
+          w.globalAlpha = 0.3;
+          for (let n = 0; n < 5; n++) {
+            const d = reach * (0.06 + 0.78 * Math.pow(n / 4, 1.25));
+            w.fill(band(function(X) { return top(X) + d; }, base));
+          }
+          w.globalCompositeOperation = 'source-over';
+        }
       });
     });
     // places the brush missed
@@ -2684,7 +2790,7 @@
       ));
     });
     if (!F.drapes.length) {
-      w.fillStyle = css(P.dark ? mix(P.pal.paper, WHITE, 0.4) : mix(P.graphite, [0.5, 0.4, 0.25], 0.5));
+      w.fillStyle = css(P.dark ? dim(P.pal.chalk, 0.5) : mix(P.graphite, [0.5, 0.4, 0.25], 0.5));
       w.globalAlpha = 0.3;
       w.fill(band(function(X) { return F.surface(X) + 0.3; }, function(X) { return F.surface(X) + F.drapeDepth + 0.5; }));
     }
@@ -2784,7 +2890,7 @@
   // The motif again, where the section cuts through it.
   const BELOW = {
     water: function(P, M) {         // a tarn in the lowest hollow
-      const F = P.scene.ground, w = P.wash, blue = gouache(P, [0.3, 0.54, 0.74]);
+      const F = P.scene.ground, w = P.wash, blue = onPaper(P, [0.3, 0.54, 0.74]);
       let xl = M.x, low = -1;
       for (let d = -220; d <= 220; d += 3) if (F.surface(M.x + d) > low) { low = F.surface(M.x + d); xl = M.x + d; }
       const level = low - 8;
@@ -2807,7 +2913,7 @@
       B.flush(P, tinted(P, blue, 0.5), 0.5, 0.8);
     },
     fire: function(P, M, clip) {    // what feeds it: a body of melt rising from below
-      const w = P.wash, hot = gouache(P, [0.88, 0.32, 0.1]), left = [], right = [];
+      const w = P.wash, hot = onPaper(P, [0.88, 0.32, 0.1]), left = [], right = [];
       for (let y = 250; y <= P.H + 12; y += 8) {
         const t = smooth(250, 330, y), half = (4 + 44 * t * t) * (0.8 + 0.2 * noise1(y / 30, M.seed));
         const cx = M.x + 10 * noise1(y / 60, M.seed + 1);
@@ -2836,11 +2942,11 @@
       for (let i = 0; i < 6; i++) {
         const r = cellRng(M.seed, 10 + i), x = M.x + (r() - 0.5) * 260, rad = 2 + 4 * r(), y = F.surface(x) - rad * 0.55;
         drawPoly(P, circle(x, y, rad, 0, TAU, 9).map(function(q) { return [q[0], y + (q[1] - y) * 0.62]; }),
-          { weight: 0.85, seed: M.seed + i, close: true, wobble: 0.35, fill: gouache(P, [0.55, 0.53, 0.5]), fillAlpha: 0.4 });
+          { weight: 0.85, seed: M.seed + i, close: true, wobble: 0.35, fill: onPaper(P, [0.55, 0.53, 0.5]), fillAlpha: 0.4 });
       }
     },
     growth: function(P, M) {        // the wood, and its roots
-      const F = P.scene.ground, B = new Batch(), green = gouache(P, [0.36, 0.54, 0.18]);
+      const F = P.scene.ground, B = new Batch(), green = onPaper(P, [0.36, 0.54, 0.18]);
       P.pencil.save();
       P.pencil.strokeStyle = css(tinted(P, green, 0.3));
       P.pencil.lineCap = 'round';
@@ -2873,7 +2979,7 @@
       B.flush(P, P.graphite, 0.75, 0.9);
     },
     body: function(P, M, clip) {    // veins through the rock
-      const w = P.wash, red = gouache(P, [0.62, 0.1, 0.18]);
+      const w = P.wash, red = onPaper(P, [0.62, 0.1, 0.18]);
       w.save();
       w.clip(clip);
       w.strokeStyle = css(red);
@@ -2960,7 +3066,8 @@
     // warmth: hope and play, and how personal the post is
     const C = scene.C;
     P.warmth = clamp(0.6 * C.mood.hopeful + 0.4 * C.mood.playful + 0.9 * Math.max(0, C.personal - 0.45), 0, 1);
-    P.air = dark ? pal.paper : (sky ? mix(pal.sky, sky, 0.35) : pal.sky);
+    // (at night, without a register: the blue of the hour, as light)
+    P.air = dark ? U.glow(pal.sky, pal.paper) : (sky ? mix(pal.sky, sky, 0.35) : pal.sky);
     if (!dark) P.air = mix(P.air, [0.9, 0.76, 0.56], 0.45 * P.warmth);
     if (surface.kind === 'footer') paintFooter(P); else paintHeader(P);
     P.tmp.canvas.width = 0;
@@ -2970,19 +3077,24 @@
   // ---- the medium: a shader over the two layers ----------------------------
 
   const VERTEX = 'attribute vec2 a_position; void main() { gl_Position = vec4(a_position, 0.0, 1.0); }';
-  // What both programs share: noise, and the air (see air()) over a finished
-  // colour.  u_amb: strength (0: none), shadow, mist, sun; u_off: how far the
-  // two layers of cloud and of mist have drifted (world px); u_mix: how the
-  // layers are blended (each starts over while it is not shown, so the drift
-  // never has to jump); u_mistY: the valleys.
-  const COMMON = `
+  // The two themes are two media, so each has its own pair of programs (made
+  // when the theme is first drawn): `night` picks the lines that differ.  By
+  // day the wash is pigment, it multiplies the paper; at night it is light,
+  // added to the navy (U.LIGHT_GLSL: shine()).
+  //
+  // What both programs of a theme share: noise, and the air (see air()) over
+  // a finished colour.  u_amb: strength (0: none), shadow, mist, sun; u_off:
+  // how far the two layers of cloud and of mist have drifted (world px);
+  // u_mix: how the layers are blended (each starts over while it is not
+  // shown, so the drift never has to jump); u_mistY: the valleys.
+  const common = function(night) { return `
     #ifdef GL_FRAGMENT_PRECISION_HIGH
     precision highp float;
     #else
     precision mediump float;
     #endif
     uniform vec2 u_res;
-    uniform float u_scale, u_dark;
+    uniform float u_scale;
     uniform vec3 u_paper, u_mist;
     uniform vec4 u_amb, u_off, u_mistY;
     uniform vec2 u_mix;
@@ -3011,7 +3123,9 @@
       float d = (y - at) / 11.;
       return exp(-d * d);
     }
-    vec3 ambient(vec3 color, vec2 wp) {
+    // (open: how much of the picture stands here, 0 where the band has
+    // dissolved into the page; only the night's mist asks)
+    vec3 ambient(vec3 color, vec2 wp${night ? ', float open' : ''}) {
       if (u_amb.x <= 0.) return color;
       vec3 d = color - u_paper;
       // where there is paint (the paper, and the fade into the page, stay)
@@ -3020,27 +3134,40 @@
       float c = drifting(vec2(wp.x, wp.y * 1.7), u_off.x, u_off.y, u_mix.x, 190.);
       float shade = smoothstep(.5, .6, c) * u_amb.y - (1. - smoothstep(.38, .48, c)) * u_amb.w;
       // mist along the valleys: wisps that lift the pigment where they pass
-      // (on the navy paper they are pale)
+      // (at night they veil the light behind them, and have a little of their
+      // own: u_mist is then the navy with the night's light on it)
       float band = min(1., valley(wp.y, u_mistY.x) + valley(wp.y, u_mistY.y) + valley(wp.y, u_mistY.z) + valley(wp.y, u_mistY.w));
       float m = band * smoothstep(.46, .66, drifting(vec2(wp.x, wp.y * 6.), u_off.z, u_off.w, u_mix.y, 150.)) * u_amb.z * u_amb.x;
       vec3 lit = u_paper + d * (1. + shade * u_amb.x);
+      ${night ? `
+      vec3 hazed = u_paper + (lit - u_paper) * (1. - .5 * m);
+      return clamp(mix(color, hazed, paint) + (u_mist - u_paper) * m * open * open * open, 0., 1.);
+      ` : `
       // in the cloud's shadow the light is cooler, a little darker even on pale paint
-      lit = mix(lit, lit * mix(vec3(.82, .86, .95), vec3(.86, .9, 1.), u_dark), paint * max(shade, 0.) * u_amb.x * (1. - u_dark));
-      vec3 hazed = mix(u_paper + (lit - u_paper) * (1. - m), mix(lit, mix(u_paper, u_mist, .45), m * .8), u_dark);
+      lit = mix(lit, lit * vec3(.82, .86, .95), paint * max(shade, 0.) * u_amb.x);
+      vec3 hazed = u_paper + (lit - u_paper) * (1. - m);
       return clamp(mix(color, hazed, paint), 0., 1.);
+      `}
     }
-  `;
+  `; };
   // The settled picture, cached in a texture: only the air is drawn over it.
-  const AMBIENT = COMMON + `
+  // (the cache's alpha says where the picture stands: see `open`)
+  const ambientSource = function(night) { return common(night) + `
     uniform sampler2D u_cache;
     void main() {
       vec2 frag = gl_FragCoord.xy;
       vec2 wp = vec2(frag.x - .5 * u_res.x, u_res.y - frag.y) / u_scale;
+      ${night ? `
+      vec4 settled = texture2D(u_cache, frag / u_res);
+      gl_FragColor = vec4(ambient(settled.rgb, wp, settled.a), 1.);
+      ` : `
       gl_FragColor = vec4(ambient(texture2D(u_cache, frag / u_res).rgb, wp), 1.);
+      `}
     }
-  `;
-  const FRAGMENT = COMMON + `
-    uniform float u_footer, u_t, u_loose, u_age, u_fox, u_edge;
+  `; };
+  const fragmentSource = function(night) { return common(night) + (night ? U.LIGHT_GLSL : '') + `
+    uniform float u_footer, u_t, u_loose, u_age, u_fox, u_edge, u_chalk${night ? ', u_cached' : ''};
+    uniform vec3 u_yellow, u_foxing;
     uniform sampler2D u_washA, u_pencilA, u_washB, u_pencilB;
 
     vec4 wash(vec2 uv, float m) {
@@ -3065,8 +3192,7 @@
       // the paper, a little yellowed and foxed when it is old
       vec3 paper = u_paper;
       float edge = u_footer > .5 ? smoothstep(0., .5, y01) : 1. - smoothstep(.3, 1., y01);
-      vec3 yellow = mix(vec3(1., .974, .895), vec3(.94, .96, .97), u_dark);
-      paper *= mix(vec3(1.), yellow, u_age * edge * (.55 + .6 * blot));
+      paper *= mix(vec3(1.), u_yellow, u_age * edge * (.55 + .6 * blot));
       // foxing: a few small brown spots
       vec2 fp = sp + vec2(u_fox, u_fox * .37);
       vec2 fc = floor(fp / 64.);
@@ -3074,7 +3200,7 @@
       vec2 fo = (fc + .15 + .7 * vec2(hash(fc + 11.3), hash(fc + 27.9))) * 64.;
       float fd = length(fp - fo) / (1. + 3.2 * hash(fc + 41.1));
       float fox = (1. - smoothstep(.3, 1.4, fd + .7 * (vnoise(fp * .8) - .5))) * step(fh, .4);
-      paper = mix(paper, paper * mix(vec3(.84, .72, .52), vec3(1.2, 1.16, 1.08), u_dark), fox * u_age * edge * .55);
+      paper = mix(paper, paper * u_foxing, fox * u_age * edge * .55);
       vec3 color = paper;
 
       // the wash: its edge wanders, bleeds, and collects pigment at the rim
@@ -3095,35 +3221,51 @@
       far /= 6.;
       vec4 c = mix(c0, far, .2 + .4 * u_loose);
       float rim = max(c0.a - near.a, 0.) * 1.6 + max(c0.a - far.a, 0.) * .7;
+      ${night ? `
+      // light: what the layer holds is added to the navy (its rim glows, as
+      // pigment would collect there); where it only covers, a silhouette
+      float gain = (1. + rim / (c0.a + .1)) * (.82 + .36 * blot) * (1. + .5 * mw * (1. - mw) * 4.);
+      gain *= 1. + .2 * (tooth - .5);
+      color = shine(color, vec4(min(c.rgb * gain, vec3(1.)), c.a));
+      ` : `
       float dens = c.a * (1. + rim / (c0.a + .1));
       dens *= .78 + .44 * blot;
       dens *= 1. + (.55 + .3 * u_loose) * (tooth - .5);
       dens *= 1. + .5 * mw * (1. - mw) * 4.;
       dens = clamp(dens, 0., 1.3);
       vec3 pig = c.rgb / max(c.a, .001);
-      if (u_dark > .5) {
-        // gouache and chalk: opaque, catching on the tooth of the paper
-        float cover = dens * smoothstep(.1, .6, tooth + dens * .9);
-        color = mix(color, pig, clamp(cover * 1.05, 0., 1.));
-      } else {
-        color *= pow(max(pig, vec3(.02)), vec3(dens));
-      }
+      color *= pow(max(pig, vec3(.02)), vec3(dens));
+      `}
 
       // the pencil: graphite on the same tooth
       vec4 p = mix(texture2D(u_pencilA, uv), texture2D(u_pencilB, uv), mp);
       float grain = vnoise(sp * 2.6 + 11.);
       float pa = clamp(p.a * (.5 + .95 * smoothstep(.22, .78, .6 * grain + .4 * tooth)), 0., 1.);
       vec3 pc = p.rgb / max(p.a, .001);
-      if (u_dark > .5) color = mix(color, pc, pa);
+      // (u_chalk: on the navy the pencil is chalk, it covers; graphite darkens)
+      if (u_chalk > .5) color = mix(color, pc, pa);
       else color *= 1. - pa * (1. - pc);
 
       // towards the page there is only paper
       float fade = u_footer > .5
         ? smoothstep(.0, .13, y01 + (blot - .5) * .05)
         : 1. - smoothstep(mix(.5, .76, u_edge), mix(1., .95, u_edge), y01 + (blot - .5) * mix(.3, .06, u_edge));
+      ${night ? `
+      // (light shows on the navy long after pigment on white has gone: at the
+      // very edge nothing is left of it, whatever the ragged fade says)
+      fade *= u_footer > .5 ? smoothstep(0., .025, y01) : 1. - smoothstep(.93, .995, y01);
+      // (into the cache the alpha says where the picture stands; the canvas has none)
+      gl_FragColor = vec4(ambient(mix(u_paper, color, fade), wp, fade), mix(1., fade, u_cached));
+      ` : `
       gl_FragColor = vec4(ambient(mix(u_paper, color, fade), wp), 1.);
+      `}
     }
-  `;
+  `; };
+
+  const AGED = {
+    day: { yellow: [1, 0.974, 0.895], foxing: [0.84, 0.72, 0.52] },
+    night: { yellow: [0.94, 0.96, 0.97], foxing: [1.2, 1.16, 1.08] }
+  };
 
   function Stage(surface, env) {
     const stage = {
@@ -3133,7 +3275,8 @@
       due: 0              // when the air wants its next frame
     };
     const canvas = surface.canvas;
-    let gl = null, uniforms = null, textures = null, airProgram = null, airUniforms = null, cache = null, mainProgram = null;
+    let gl = null, textures = null, cache = null;
+    let sets = {};      // the programs of each theme, once it has been drawn
 
     function blank() {
       const t = gl.createTexture();
@@ -3151,31 +3294,52 @@
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     }
-    const AIR = ['res', 'scale', 'dark', 'paper', 'mist', 'amb', 'off', 'mix', 'mistY'];
+    const AIR = ['res', 'scale', 'paper', 'mist', 'amb', 'off', 'mix', 'mistY'];
     function locations(program, names) {
       const out = {};
       names.forEach(function(name) { out[name] = gl.getUniformLocation(program, 'u_' + name); });
       return out;
     }
+    // The programs of the theme being drawn: { main, uniforms } and, once
+    // the air moves, { air, airUniforms }.  (Should a theme's not compile,
+    // the other theme's are used: the wrong medium, but a picture.)
+    function programs() {
+      const night = !!env.dark, key = night ? 'night' : 'day';
+      if (sets[key]) return sets[key];
+      try {
+        const set = { main: U.gl.program(gl, VERTEX, fragmentSource(night)), night: night };
+        U.gl.quad(gl, set.main, 'a_position');
+        set.uniforms = locations(set.main, AIR.concat(['footer', 't', 'loose', 'age', 'fox', 'edge', 'yellow', 'foxing', 'chalk', 'cached', 'washA', 'pencilA', 'washB', 'pencilB']));
+        sets[key] = set;
+      } catch (error) {
+        const other = sets[night ? 'day' : 'night'];
+        if (!other) throw error;
+        console.warn('strata: no shader for this theme', error);
+        sets[key] = other;
+      }
+      return sets[key];
+    }
+    // only the landscape has air; without the second program it stands still
+    function airOf(set) {
+      if (set.air === undefined) {
+        set.air = null;
+        try {
+          set.air = U.gl.program(gl, VERTEX, ambientSource(set.night));
+          U.gl.quad(gl, set.air, 'a_position');
+          set.airUniforms = locations(set.air, AIR.concat(['cache']));
+        } catch (error) {
+          console.warn('strata: no air', error);
+          set.air = null;
+        }
+      }
+      return set.air;
+    }
     function init() {
-      mainProgram = U.gl.program(gl, VERTEX, FRAGMENT);
-      gl.useProgram(mainProgram);
-      U.gl.quad(gl, mainProgram, 'a_position');
-      uniforms = locations(mainProgram, AIR.concat(['footer', 't', 'loose', 'age', 'fox', 'edge', 'washA', 'pencilA', 'washB', 'pencilB']));
+      sets = {};
+      programs();
       textures = { washA: blank(), pencilA: blank(), washB: blank(), pencilB: blank() };
       stage.maxSize = Math.min(gl.getParameter(gl.MAX_TEXTURE_SIZE) || 2048, 6144);
       cache = null;
-      airProgram = null;
-      // only the landscape has air; without the second program it stands still
-      if (surface.kind !== 'header') return;
-      try {
-        airProgram = U.gl.program(gl, VERTEX, AMBIENT);
-        U.gl.quad(gl, airProgram, 'a_position');
-        airUniforms = locations(airProgram, AIR.concat(['cache']));
-      } catch (error) {
-        console.warn('strata: no air', error);
-        airProgram = null;
-      }
     }
     // The finished picture in a texture of the canvas's size (false if there
     // cannot be one: then nothing moves).
@@ -3196,11 +3360,13 @@
       cache.w = w;
       cache.h = h;
       cache.valid = false;
-      if (!ok) airProgram = null;
+      if (!ok) stage.noCache = true;
       return ok;
     }
     // Whether this band moves once it is painted.
-    stage.airy = function() { return !!(gl && airProgram && !env.still && !stage.lost); };
+    stage.airy = function() {
+      return !!(gl && surface.kind === 'header' && !env.still && !stage.lost && !stage.noCache && airOf(programs()));
+    };
     // The drift: two layers each of cloud and mist, each starting over once
     // a period, half a period apart; a layer is not shown when it starts
     // over.  The layers move by the wind of the moment, so a new post (with
@@ -3226,8 +3392,8 @@
     }
     function setAir(u, strength, air) {
       const sign = env.dark ? -0.8 : 1;
-      const mist = env.palette().mist;
-      gl.uniform1f(u.dark, env.dark ? 1 : 0);
+      const pal = env.palette();
+      const mist = env.dark ? U.shine(pal.paper, U.glow(pal.sky, pal.paper), 0.36) : pal.mist;
       gl.uniform3f(u.mist, mist[0], mist[1], mist[2]);
       gl.uniform4f(u.amb, strength, air.shadow * sign, air.mist, air.sun * sign);
       gl.uniform4f(u.off, drift.off[0], drift.off[1], drift.off[2], drift.off[3]);
@@ -3307,7 +3473,10 @@
         ctx.fillStyle = css(paper);
         ctx.fillRect(0, 0, W, H);
         ctx.globalAlpha = stage.t;
+        // (the night's layer is light: added, not laid over)
+        if (env.dark) ctx.globalCompositeOperation = 'screen';
         ctx.drawImage(stage.layers.wash, 0, 0, W, H);
+        ctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(stage.layers.pencil, 0, 0, W, H);
         ctx.globalAlpha = 1;
         const footer = surface.kind === 'footer';
@@ -3324,11 +3493,12 @@
         // settled: the picture once into the cache, then only the air over it
         if (!cache.valid) {
           gl.bindFramebuffer(gl.FRAMEBUFFER, cache.fbo);
-          drawPicture(0, air);
+          drawPicture(0, air, true);
           gl.bindFramebuffer(gl.FRAMEBUFFER, null);
           cache.valid = true;
         }
-        gl.useProgram(airProgram);
+        const set = programs(), airUniforms = set.airUniforms;
+        gl.useProgram(airOf(set));
         gl.viewport(0, 0, canvas.width, canvas.height);
         gl.uniform2f(airUniforms.res, canvas.width, canvas.height);
         gl.uniform1f(airUniforms.scale, canvas.height / worldH);
@@ -3344,23 +3514,29 @@
       drawPicture(strength, air);
     };
     // The whole picture, painting in or not, with the air at `strength`.
-    function drawPicture(strength, air) {
+    function drawPicture(strength, air, cached) {
       const scene = stage.scene;
       const worldH = surface.kind === 'footer' ? FOOTER_H : HEADER_H;
       const paper = env.palette().paper;
-      gl.useProgram(mainProgram);
+      const uniforms = programs().uniforms;
+      gl.useProgram(programs().main);
       setAir(uniforms, strength, air);
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform2f(uniforms.res, canvas.width, canvas.height);
       gl.uniform1f(uniforms.scale, canvas.height / worldH);
       gl.uniform1f(uniforms.footer, surface.kind === 'footer' ? 1 : 0);
-      gl.uniform1f(uniforms.dark, env.dark ? 1 : 0);
+      gl.uniform1f(uniforms.cached, cached ? 1 : 0);
+      gl.uniform1f(uniforms.chalk, programs().night ? 1 : 0);
       gl.uniform1f(uniforms.t, stage.t);
       const before = stage.before || scene, ease = smooth(0, 1, stage.t);
       gl.uniform1f(uniforms.loose, lerp(before.hand.loose, scene.hand.loose, ease));
       gl.uniform1f(uniforms.age, lerp(before.age, scene.age, ease));
       gl.uniform1f(uniforms.edge, lerp(before.C.edge, scene.C.edge, ease));
       gl.uniform1f(uniforms.fox, (scene.seed >>> 0) % 977);
+      // what age does to the paper: it yellows and gets brown spots; the navy dims, its spots are pale
+      const old = programs().night ? AGED.night : AGED.day;
+      gl.uniform3f(uniforms.yellow, old.yellow[0], old.yellow[1], old.yellow[2]);
+      gl.uniform3f(uniforms.foxing, old.foxing[0], old.foxing[1], old.foxing[2]);
       gl.uniform3f(uniforms.paper, paper[0], paper[1], paper[2]);
       ['washA', 'pencilA', 'washB', 'pencilB'].forEach(function(name, i) {
         gl.activeTexture(gl.TEXTURE0 + i);
