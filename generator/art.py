@@ -311,28 +311,6 @@ PAGES = {
             "technical": 0.55,
         },
     },
-    # travel: where I will be, a journey ahead
-    "travel": {
-        "kind": "page",
-        "tags": ["conferences", "life"],
-        "facets": {
-            "mood": {"hopeful": 0.8, "playful": 0.2},
-            "scale": {"self": 0.6, "community": 0.4},
-            "time": {"future": 0.9, "present": 0.1},
-            "ai": {"not_ai": 1},
-            "imagery": {"road": 0.85, "none": 0.15},
-            "stance": {"observer": 0.6, "advocate": 0.4},
-            "ending": {"call": 0.7, "open": 0.3},
-            "tension": 0.05,
-            "certainty": 0.7,
-            "valence": 0.8,
-            "energy": 0.6,
-            "wander": 0.65,
-            "personal": 0.7,
-            "humor": 0.25,
-            "technical": 0.1,
-        },
-    },
 }
 
 

@@ -48,7 +48,7 @@ Pages that are not posts get a record too, so they are not all drawn alike:
   `facets:` like a post's.  `scripts/art-classify.js` classifies pages as well
   as posts.
 - Pages rendered from templates (the front page and `/page/N/`, the archive
-  with every year and month, the tag cloud, talks, travel) take theirs from
+  with every year and month, the tag cloud, talks) take theirs from
   `PAGES` in `generator/art.py`, picked by the `art_page` the builder passes
   to the template.  Their facets are written by hand, in the frontmatter's
   format.  Their seed comes from the URL, so `/2015/` and `/2016/` differ.

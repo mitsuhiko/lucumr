@@ -4,7 +4,7 @@ import shutil
 import json
 import hashlib
 import yaml
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 from collections import defaultdict
 from fnmatch import fnmatch
 from math import log, ceil
@@ -371,23 +371,6 @@ class Builder:
                 if fnmatch(part, pattern):
                     return True
         return False
-
-    def load_travel_data(self):
-        """Load travel data from events YAML file, filtering for travel type."""
-        events_file = self.project_folder / "events.yaml"
-        travel_data = []
-        if events_file.exists():
-            try:
-                with open(events_file, "r") as f:
-                    raw_data = yaml.safe_load(f)
-                    for item in raw_data:
-                        # Only include events with type "travel"
-                        if item.get("type") == "travel":
-                            travel_data.append(item.copy())
-            except Exception as e:
-                print(f"Error loading travel data: {e}")
-
-        return travel_data
 
     def load_talks_data(self):
         """Load talks data from talks YAML file."""
@@ -767,85 +750,6 @@ class Builder:
 </rss>"""
         return rss_xml
 
-    def build_travel_page(self, travel_data):
-        """Build travel page from YAML data."""
-        # Filter out past travel dates for HTML display
-        today = datetime.now().date()
-        future_travel = [
-            travel for travel in travel_data if travel["end_date"] >= today
-        ]
-
-        # Sort travel data by start date
-        sorted_travel = sorted(future_travel, key=lambda x: x["start_date"])
-
-        # Create travel page context
-        context = {
-            "travel_data": sorted_travel,
-            "title": "Travel Schedule",
-            "art_page": "travel",
-        }
-
-        # Render travel page
-        html = self.jinja_env.get_template("travel.html").render(context)
-
-        # Write travel page
-        output_path = self.output_folder / "travel" / "index.html"
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(html, encoding="utf-8")
-        print(f"Built travel/index.html")
-
-    def build_travel_calendar(self, travel_data):
-        """Build iCal calendar file from travel data."""
-        # Filter travel data - keep events for 30 days after they end
-        today = datetime.now().date()
-        cutoff_date = today - timedelta(days=30)
-        calendar_travel = [
-            travel for travel in travel_data if travel["end_date"] >= cutoff_date
-        ]
-
-        # Generate iCal content
-        ical_lines = [
-            "BEGIN:VCALENDAR",
-            "VERSION:2.0",
-            "PRODID:-//Armin Ronacher//Travel Schedule//EN",
-            "CALSCALE:GREGORIAN",
-            "METHOD:PUBLISH",
-        ]
-
-        for travel in calendar_travel:
-            # Format dates for iCal (YYYYMMDD)
-            start_date = travel["start_date"].strftime("%Y%m%d")
-            # Convert to datetime for timedelta addition, then back to date
-            end_date_dt = datetime.combine(
-                travel["end_date"], datetime.min.time()
-            ) + timedelta(days=1)
-            end_date = end_date_dt.strftime("%Y%m%d")  # iCal end dates are exclusive
-
-            # Create unique ID
-            uid = f"travel-{travel['start_date'].strftime('%Y%m%d')}-{hash(travel['location'])}@lucumr.pocoo.org"
-
-            event_lines = [
-                "BEGIN:VEVENT",
-                f"UID:{uid}",
-                f"DTSTART;VALUE=DATE:{start_date}",
-                f"DTEND;VALUE=DATE:{end_date}",
-                f"SUMMARY:Armin in {travel['location']}: {travel['title']}",
-                f"LOCATION:{travel['location']}",
-                f"DESCRIPTION:{travel.get('description', '')}",
-                "STATUS:CONFIRMED",
-                "TRANSP:TRANSPARENT",
-                "END:VEVENT",
-            ]
-            ical_lines.extend(event_lines)
-
-        ical_lines.append("END:VCALENDAR")
-
-        # Write calendar file
-        calendar_content = "\r\n".join(ical_lines)
-        output_path = self.output_folder / "travel.ics"
-        output_path.write_text(calendar_content, encoding="utf-8")
-        print(f"Built travel.ics")
-
     def build_talks_page(self, talks_data):
         """Build talks page from YAML data."""
         # Group talks by year (descending order)
@@ -942,7 +846,6 @@ class Builder:
     def build(self):
         """Build the site."""
         self.scan_content()
-        travel_data = self.load_travel_data()
         talks_data = self.load_talks_data()
 
         content_changed = False
@@ -969,23 +872,6 @@ class Builder:
 
             print("Building feeds...")
             self.build_feeds()
-
-        # Build travel page and calendar with dependency tracking
-        travel_output = self.output_folder / "travel" / "index.html"
-        travel_dependencies = [
-            self.project_folder / "events.yaml",
-            Path(__file__).parent / "templates" / "travel.html",
-            Path(__file__).parent / "templates" / "layout.html",
-        ]
-
-        if self._needs_rebuild(travel_output, *travel_dependencies):
-            print("Building travel page...")
-            self.build_travel_page(travel_data)
-        else:
-            print("Travel page up to date")
-
-        print("Building travel calendar...")
-        self.build_travel_calendar(travel_data)
 
         # Build talks page with dependency tracking
         talks_output = self.output_folder / "talks" / "index.html"

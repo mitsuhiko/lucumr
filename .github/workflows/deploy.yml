@@ -53,9 +53,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: blog/_build
-          key: blog-build-${{ hashFiles('blog/static/**', 'templates/**') }}
+          key: blog-build-v2-${{ hashFiles('blog/static/**', 'templates/**') }}
           restore-keys: |
-            blog-build-
+            blog-build-v2-
 
       # The social preview cards are slow to make (they draw the header
       # artwork), so they have a cache of their own: the newest one is always
