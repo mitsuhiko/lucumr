@@ -19,17 +19,16 @@
   --date-warning-text-color: light-dark(#a07f10, #ee761a);
   color-scheme: light dark;
 
-  &:not([data-initial-load="true"]) {
-    transition-duration: 300ms;
-    transition-property: background-color, color, border-color, box-shadow;
-  }
-
-  @media screen and (prefers-reduced-motion: reduce), (update: slow) {
-    transition-duration: none;
-  }
-
   &[data-theme="dark"]  { color-scheme: dark; }
   &[data-theme="light"] { color-scheme: light; }
+}
+
+/* switching the theme crossfades the page, artwork included (selectTheme in
+   layout.html); there is no colour transition of its own, which would fade the
+   page under artwork that has already changed */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
 }
 
 /* header image */

@@ -48,9 +48,11 @@ LucumrArt.register('strata', {
 });
 ```
 
-All methods are optional.  After `setPost`, `resize` and `setTheme` (and after
-`env.invalidate()`) `frame` is called on the next animation frame.  What it
-returns decides when it is called again:
+All methods are optional.  After `setPost` and `resize` (and after
+`env.invalidate()`) `frame` is called on the next animation frame; after
+`setTheme` it is called at once, in the same task (see Switching themes
+below), so it must draw the whole picture in the new theme right then.  What
+it returns decides when it is called again:
 
 - `true`: on the next animation frame (painting in, a transition);
 - a number: in that many seconds, on the animation frame after (ambient motion
@@ -111,6 +113,25 @@ remembered by a browser) gets `ridgeline` (`FALLBACK` in core.js), then
   paragraph (words), `c` code (lines), `l` list (items), `q` quote (words),
   `i` image, `t` table (rows), `x` raw HTML (lines).  `stats`: `words`, `code`,
   `headings`, `blocks`, `links`.  Empty for tag and index pages.
+
+## Switching themes
+
+The bands used to flicker when the theme changed: the page faded its colours
+over 300 ms with a CSS transition while the canvases switched at once (on the
+next animation frame), so for a moment a navy band sat on a still white page,
+edges and all.  Now:
+
+- The core redraws the bands synchronously when the theme really changes
+  (`themeChanged` in core.js: from the `data-theme` observer, a microtask, or
+  the `prefers-color-scheme` listener, before the frame's paint).  Switching
+  between `auto` and the theme the system already has redraws nothing.
+- A switch in the footer (`selectTheme(theme, true)` in layout.html) runs in a
+  view transition: the browser crossfades a snapshot of the old page into the
+  new one over 300 ms, and since the bands are already redrawn when the new
+  snapshot is taken, page and artwork fade as one picture.
+- There is no CSS colour transition any more.  Without view transitions (older
+  browsers), with reduced motion, or when the system theme changes, page and
+  bands flip together in one frame.
 
 ## Facets
 
@@ -174,7 +195,8 @@ must not look alike.
   header or the top of the footer.
 - **Two themes.** Light is white paper.  Dark is navy (`#1b3156`), where
   transparent watercolour does not work: it needs its own medium (chalk,
-  gouache, white pencil on blue paper).
+  gouache, white pencil on blue paper).  A switch is not a paint-in: the
+  finished picture is redrawn in the other theme in one frame (see below).
 - **Sizes.** Header 185px (124px below 800px wide), footer 450px (300px).  Any
   width from 320px to an ultrawide monitor.  Header and footer belong together.
 - **Motion.** Paint in once (two or three seconds at most).  A new post

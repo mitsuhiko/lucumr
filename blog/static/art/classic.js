@@ -200,6 +200,8 @@
       let lastFrame = -1;
 
       return {
+        // the next frame draws at once, not when the throttle allows
+        setTheme: function() { lastFrame = -1; },
         frame: function(now) {
           if (start === null) start = now;
           if (!env.still && now - lastFrame < FRAME_INTERVAL) return FRAME_INTERVAL - (now - lastFrame);

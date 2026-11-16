@@ -52,19 +52,31 @@
     <script>
       let $THEME = null;
 
-      function selectTheme(theme) {
+      // A switch the reader makes crossfades the whole page as one picture
+      // (a view transition), so the artwork, which is redrawn for the new
+      // theme at once (see art/core.js), changes together with the page
+      // instead of popping over a background that is still fading.  Without
+      // view transitions (or with reduced motion) everything flips in one
+      // frame.
+      function selectTheme(theme, animate) {
         const node = document.documentElement;
         if (theme === "system") {
           localStorage.removeItem("theme");
         } else {
           localStorage.setItem("theme", theme);
         }
-        node.setAttribute("data-theme", theme);
         $THEME = theme;
+        if (node.getAttribute("data-theme") === theme) return;
+        const apply = () => node.setAttribute("data-theme", theme);
+        if (animate && document.startViewTransition &&
+            !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          document.startViewTransition(apply);
+        } else {
+          apply();
+        }
       }
 
       selectTheme(localStorage.getItem("theme") || "system");
-      document.documentElement.setAttribute("data-initial-load", "true");
 
     </script>
     <script src="/static/htmx-bundle.min.js"></script>
@@ -126,7 +138,7 @@
             document.querySelectorAll('input[name="theme"]').forEach(input => {
               input.checked = input.value === $THEME;
               input.addEventListener('change', () => {
-                selectTheme(input.value);
+                selectTheme(input.value, true);
               });
             });
           </script>
@@ -134,10 +146,5 @@
       </div>
     </div>
     <div class="footer-image"></div>
-    <script>
-      window.setTimeout(() => {
-        document.documentElement.removeAttribute("data-initial-load");
-      }, 0);
-    </script>
   </body>
 </html>

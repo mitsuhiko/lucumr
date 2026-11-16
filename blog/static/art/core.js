@@ -331,6 +331,11 @@ window.LucumrArt = (function() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
+  // The bands are redrawn at once, not on the next animation frame: the
+  // observer runs as a microtask after data-theme is set, the media query
+  // listener before the frame's style and paint, so the bands change in the
+  // same frame as the page.  Inside a view transition (see selectTheme in
+  // layout.html) that puts the new bands into the new snapshot.
   function themeChanged() {
     mounts.forEach(function(m) { m.themeChanged(); });
   }
@@ -427,6 +432,7 @@ window.LucumrArt = (function() {
     let timer = 0;
     let last = 0;
     let parked = false;
+    let shownDark = null;   // the theme the bands were last told about
     let post = describe(options.post);
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -547,6 +553,7 @@ window.LucumrArt = (function() {
         teardown();
         if (!definition) { m.variant = null; return; }
         m.variant = definition.name;
+        shownDark = dark();
         // A canvas keeps the first kind of context it gave out, so every
         // variant starts from fresh ones.
         surfaces.forEach(function(s) {
@@ -579,7 +586,19 @@ window.LucumrArt = (function() {
         post = next;
         call('setPost', post, { initial: false });
       },
-      themeChanged: function() { call('setTheme', dark()); },
+      // Only a real change repaints (system and light are the same on a
+      // light system), and it draws right away (see themeChanged above).
+      themeChanged: function() {
+        const now = dark();
+        if (now === shownDark) return;
+        shownDark = now;
+        call('setTheme', now);
+        if (!instance) return;
+        if (raf) cancelAnimationFrame(raf);
+        if (timer) clearTimeout(timer);
+        raf = timer = 0;
+        tick(performance.now());
+      },
       wake: function() { if (parked) invalidate(); },
       destroy: function() {
         teardown();
