@@ -1,9 +1,29 @@
+- title: The Software Atelier
+  venue: AI Engineer Code Summit, San Francisco
+  date: 2026-11-12
+  links:
+    slides: https://mitsuhiko.github.io/talks/the-software-atelier/
+- title: Agentic Insanity
+  venue: DevFest Vienna
+  date: 2026-11-07
+  links:
+    slides: https://mitsuhiko.github.io/talks/agentic-insanity/
+- title: Pi Durable
+  venue: Balderton, London
+  date: 2026-10-14
+  links:
+    slides: https://mitsuhiko.github.io/talks/pi-durable/
 - title: Reflections on building cloud and local hybrid machine entities
   venue: Local First Conf, Berlin (with Colin Hanna)
   date: 2026-07-13
   links:
     slides: https://speakerdeck.com/mitsuhiko/reflections-on-building-cloud-and-local-hybrid-machine-entities
     pdf: local-first-conf-2026.pdf
+- title: A Year of Building AI Agents
+  venue: Code Crafts, Vienna
+  date: 2026-05-21
+  links:
+    slides: https://mitsuhiko.github.io/talks/a-year-of-building-agents/
 - title: The Friction Is Your Judgment
   venue: AI Engineer, London, UK & Online
   date: 2026-04-10
@@ -17,6 +37,11 @@
     recording: https://www.youtube.com/watch?v=8RHYyRUxVrA
     slides: https://mitsuhiko.github.io/talks/leaning-in-to-find-out/
     pdf: leaning-in-to-find-out.pdf
+- title: I Was Observing When My Agent Built Its Own Harness
+  venue: Agents Anonymous, Vienna
+  date: 2026-01-27
+  links:
+    slides: https://mitsuhiko.github.io/talks/i-was-questioning-life/
 - title: The Machine and Me
   venue: CASE Conference, Berlin
   date: 2026-01-14
