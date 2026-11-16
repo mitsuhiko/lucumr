@@ -49,21 +49,41 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
-      # (saved after every run, so the social preview cards and their cache,
-      # which are slow to make, carry over to the next one)
       - name: Cache blog build
         uses: actions/cache@v4
         with:
-          path: |
-            blog/_build
-            blog/.generator_cache
-          key: blog-build-${{ hashFiles('blog/static/**', 'templates/**') }}-${{ github.run_id }}
+          path: blog/_build
+          key: blog-build-${{ hashFiles('blog/static/**', 'templates/**') }}
           restore-keys: |
-            blog-build-${{ hashFiles('blog/static/**', 'templates/**') }}-
             blog-build-
+
+      # The social preview cards are slow to make (they draw the header
+      # artwork), so they have a cache of their own: the newest one is always
+      # restored, and the build only makes the cards whose post, artwork code
+      # or stylesheet changed (generator/social_preview.py checks each card
+      # against social_preview_cache.json).  It is saved under the hash of that
+      # file, so a run that made no card saves nothing.
+      - name: Restore social preview cards
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            blog/_build/social
+            blog/.generator_cache/social_preview_cache.json
+          key: social-previews-${{ github.run_id }}
+          restore-keys: |
+            social-previews-
 
       - name: Build blog
         run: make build
+
+      - name: Save social preview cards
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            blog/_build/social
+            blog/.generator_cache/social_preview_cache.json
+          key: social-previews-${{ hashFiles('blog/.generator_cache/social_preview_cache.json') }}
 
       - name: Copy 404 page for GitHub Pages
         run: cp blog/_build/404/index.html blog/_build/404.html
