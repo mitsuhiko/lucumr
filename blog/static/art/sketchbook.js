@@ -2736,7 +2736,9 @@
     // the day the page was written, as one dates a notebook
     date: function(p) {
       const d = p.ex.post.date;
-      const w = p.text(d.getUTCDate() + '.' + (d.getUTCMonth() + 1) + '.' + d.getUTCFullYear(), 0, 0, 0.42, { align: 'c', w: 0.75 });
+      const pad = (n) => String(n).padStart(2, '0');
+      const iso = d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate());
+      const w = p.text(iso, 0, 0, 0.42, { align: 'c', w: 0.75 });
       p.line(-w / 2 - 0.1, 0.2, w / 2 + 0.15, 0.17, L);
     },
     thoughts: function(p, r) {
