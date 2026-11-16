@@ -257,6 +257,11 @@ must not look alike.
   sweeping over the old lines and the washes blooming after it (2.6 s).  A
   post that comes while the colour is still soaking in waits for it.  The
   footers still paint the new picture over the old.
+  A post that comes while a picture is still painting in does not finish
+  it: what is on the paper at that moment becomes the old picture
+  (`flattenSource` in strata.js), and its colour soaks in while the new
+  picture already paints in over it, without waiting (in either band;
+  sketchbook's footer crossfades from a copy of its canvas as it was).
   With `env.still` (also set for `prefers-reduced-motion`) the first frame is
   the finished picture and nothing moves after it.
 - **Ambient motion.** After that, a little life may stay, if it is ambient:

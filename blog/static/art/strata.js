@@ -83,6 +83,9 @@
   // (LIFT seconds), leaving the old pencil on bare paper, then the new
   // picture paints in.
   const LIFT = 0.9;
+  // A post that comes while the picture is still painting in: that picture
+  // stops where it is (see flattenSource) and its colour soaks in while the
+  // new one already paints in over it, without waiting.
   // Frames per second of the air once the picture is painted: as few as keep
   // the clouds from stepping (at most AIR_STEP CSS px a frame), from rates
   // that divide the display's 60 or 120 Hz evenly.
@@ -3210,10 +3213,27 @@
       `}
     }
   `; };
-  const fragmentSource = function(night) { return common(night) + (night ? U.LIGHT_GLSL : '') + `
-    uniform float u_footer, u_t, u_lift, u_loose, u_age, u_fox, u_edge, u_chalk${night ? ', u_cached' : ''};
-    uniform vec3 u_yellow, u_foxing;
+  // How the two pictures meet, shared by the medium and by flattenSource:
+  // the old one (A) soaking into the paper, the new one (B) painting in.
+  const reveal = `
+    uniform float u_t, u_lift;
     uniform sampler2D u_washA, u_pencilA, u_washB, u_pencilB;
+
+    // the paper's tooth (sp: the sheet's world pixels)
+    float toothAt(vec2 sp) {
+      return .55 * vnoise(sp * 1.9) + .45 * vnoise(sp * .71 + 31.);
+    }
+    // how soon the paper takes the colour here
+    float soakAt(vec2 sp, float tooth) {
+      return clamp((.5 * fbm(sp / 70.) + .3 * fbm(sp / 19. + 3.) + .2 * tooth - .5) * 1.8 + .5, 0., 1.);
+    }
+    // painting in: the pencil first, left to right, then the washes bloom
+    float pencilShown(vec2 uv, vec2 sp) {
+      return smoothstep(0., .12, u_t * 2.5 - uv.x - .3 * vnoise(sp / 60.));
+    }
+    float washShown(vec2 uv, vec2 sp) {
+      return smoothstep(0., .3, (u_t - .2) * 2.2 - .5 * uv.x - .8 * fbm(sp / 110. + 5.));
+    }
 
     // The old picture's colour soaking into the paper (u_lift 0..1): it
     // stays where it is and pales, in patches where the paper drinks first,
@@ -3229,6 +3249,32 @@
       float gone = u_lift * 1.4 - .3;
       return c * smoothstep(gone - .02, gone + .3, hold) * (1. - smoothstep(.45, 1., u_lift));
     }
+  `;
+  // A post that comes while the picture is still painting in: what is on
+  // the paper at that moment (each layer as far as it got, over what is left
+  // of the one before) becomes the old picture, so that it stops where it is
+  // and soaks away from there instead of jumping to the finished picture.
+  // One pass per layer (u_which: 0 the wash, 1 the pencil), into textures of
+  // the canvas's size.
+  const flattenSource = common(false) + reveal + `
+    uniform float u_which;
+    void main() {
+      vec2 frag = gl_FragCoord.xy;
+      vec2 uv = frag / u_res;
+      vec2 wp = vec2(frag.x - .5 * u_res.x, u_res.y - frag.y) / u_scale;
+      vec2 sp = wp + vec2(311., 57.);
+      if (u_which > .5) {
+        gl_FragColor = mix(texture2D(u_pencilA, uv), texture2D(u_pencilB, uv), pencilShown(uv, sp));
+        return;
+      }
+      soak = soakAt(sp, toothAt(sp));
+      gl_FragColor = mix(lifted(uv), texture2D(u_washB, uv), washShown(uv, sp));
+    }
+  `;
+  const fragmentSource = function(night) { return common(night) + (night ? U.LIGHT_GLSL : '') + reveal + `
+    uniform float u_footer, u_loose, u_age, u_fox, u_edge, u_chalk${night ? ', u_cached' : ''};
+    uniform vec3 u_yellow, u_foxing;
+
     vec4 wash(vec2 uv, float m) {
       return mix(lifted(uv), texture2D(u_washB, uv), m);
     }
@@ -3241,14 +3287,14 @@
       vec2 sp = wp + vec2(311., 57.);     // the same sheet for every post
       float y01 = wp.y * u_scale / u_res.y;
 
-      float tooth = .55 * vnoise(sp * 1.9) + .45 * vnoise(sp * .71 + 31.);
+      float tooth = toothAt(sp);
       float blot = fbm(sp / 46.);
-      soak = clamp((.5 * fbm(sp / 70.) + .3 * fbm(sp / 19. + 3.) + .2 * tooth - .5) * 1.8 + .5, 0., 1.);
+      soak = soakAt(sp, tooth);
       float soaking = u_lift > 0. && u_lift < 1. ? u_lift : 0.;
 
       // painting in: the pencil first, left to right, then the washes bloom
-      float mp = smoothstep(0., .12, u_t * 2.5 - uv.x - .3 * vnoise(sp / 60.));
-      float mw = smoothstep(0., .3, (u_t - .2) * 2.2 - .5 * uv.x - .8 * fbm(sp / 110. + 5.));
+      float mp = pencilShown(uv, sp);
+      float mw = washShown(uv, sp);
 
       // the paper, a little yellowed and foxed when it is old
       vec3 paper = u_paper;
@@ -3476,6 +3522,7 @@
       surface: surface, t: 1, start: null, dirty: true, seen: false, painted: false, gl: null, ctx: null, layers: null,
       lead: false,        // a new post: the old colour soaks in first
       lift: 1,            // how far it has (1: gone, or there was none)
+      overlap: false,     // the old picture was unfinished: the new one paints in while it soaks in
       fresh: false,       // what is on the canvas is up to date (when nothing moves)
       airSince: null,     // when the air began to move (it fades in once)
       due: 0              // when the air wants its next frame
@@ -3546,6 +3593,69 @@
       textures = { washA: blank(), pencilA: blank(), washB: blank(), pencilB: blank() };
       stage.maxSize = Math.min(gl.getParameter(gl.MAX_TEXTURE_SIZE) || 2048, 6144);
       cache = null;
+      flat = null;
+    }
+    // What is on the paper while the picture paints in, into new A textures
+    // (see flattenSource); false if that cannot be done.
+    let flat = null;
+    function flatten() {
+      const w = canvas.width, h = canvas.height;
+      if (flat === false || w < 2 || h < 2) return false;
+      try {
+        if (!flat) {
+          const program = U.gl.program(gl, VERTEX, flattenSource);
+          U.gl.quad(gl, program, 'a_position');
+          flat = { program: program, uniforms: locations(program, ['res', 'scale', 't', 'lift', 'which', 'washA', 'pencilA', 'washB', 'pencilB']), fbo: gl.createFramebuffer() };
+        }
+      } catch (error) {
+        console.warn('strata: cannot keep a half painted picture', error);
+        flat = false;
+        return false;
+      }
+      const worldH = surface.kind === 'footer' ? FOOTER_H : HEADER_H;
+      const made = [0, 1].map(function() {
+        const t = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, t);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        return t;
+      });
+      const u = flat.uniforms;
+      gl.useProgram(flat.program);
+      gl.viewport(0, 0, w, h);
+      gl.uniform2f(u.res, w, h);
+      gl.uniform1f(u.scale, h / worldH);
+      gl.uniform1f(u.t, stage.t);
+      gl.uniform1f(u.lift, stage.lift);
+      ['washA', 'pencilA', 'washB', 'pencilB'].forEach(function(name, i) {
+        gl.activeTexture(gl.TEXTURE0 + i);
+        gl.bindTexture(gl.TEXTURE_2D, textures[name]);
+        gl.uniform1i(u[name], i);
+      });
+      gl.bindFramebuffer(gl.FRAMEBUFFER, flat.fbo);
+      let ok = true;
+      made.forEach(function(texture, which) {
+        if (!ok) return;
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+        if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) { ok = false; return; }
+        gl.uniform1f(u.which, which);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      });
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, null, 0);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      if (!ok) {
+        made.forEach(function(texture) { gl.deleteTexture(texture); });
+        flat = false;
+        return false;
+      }
+      gl.deleteTexture(textures.washA);
+      gl.deleteTexture(textures.pencilA);
+      textures.washA = made[0];
+      textures.pencilA = made[1];
+      return true;
     }
     // The finished picture in a texture of the canvas's size (false if there
     // cannot be one: then nothing moves).
@@ -3638,10 +3748,25 @@
     stage.gl = gl;
 
     // The picture that is up becomes the one painted over.
+    // (Should it still be painting in, it is turned as far as it got: see
+    // flattenSource.  Its hand and paper are carried over as they were then.)
     stage.turn = function() {
+      stage.overlap = false;
       if (!gl || !stage.painted) return;
-      let x = textures.washA; textures.washA = textures.washB; textures.washB = x;
-      x = textures.pencilA; textures.pencilA = textures.pencilB; textures.pencilB = x;
+      if (stage.t < 1 && !stage.lost && flatten()) {
+        stage.overlap = true;
+        const scene = stage.scene, before = stage.before || scene, ease = smooth(0, 1, stage.t);
+        stage.carried = {
+          hand: { loose: lerp(before.hand.loose, scene.hand.loose, ease) },
+          age: lerp(before.age, scene.age, ease),
+          C: { edge: lerp(before.C.edge, scene.C.edge, ease) },
+          air: scene.air
+        };
+      } else {
+        let x = textures.washA; textures.washA = textures.washB; textures.washB = x;
+        x = textures.pencilA; textures.pencilA = textures.pencilB; textures.pencilB = x;
+        stage.carried = null;
+      }
       stage.held = true;
     };
     // Once it is painted over, the old picture is let go.
@@ -3668,7 +3793,10 @@
       }
       // the hand and the paper of the picture before, to move on from
       // (unless the picture before was never shown: then the one before it stays)
-      if (stage.scene !== scene && !stage.keep) stage.before = stage.scene ? stage.scene : scene;
+      // (or, for a picture turned while it painted in, how it was then)
+      if (stage.carried) stage.before = stage.carried;
+      else if (stage.scene !== scene && !stage.keep) stage.before = stage.scene ? stage.scene : scene;
+      stage.carried = null;
       stage.keep = false;
       stage.scene = scene;
       stage.painted = true;
@@ -3806,16 +3934,19 @@
           scene = buildScene(post);
           stages.forEach(function(stage) {
             stage.dirty = true;
-            // (another post while the old colour is still soaking in: it goes on
-            // soaking in, and this one is painted in after it instead)
-            if (stage.lead && stage.lift < 1 && !env.still) {
+            // (another post while the old colour is still soaking in, before
+            // the new picture showed: it goes on soaking in, and this one is
+            // painted in after it instead)
+            if (stage.lead && !stage.overlap && stage.lift < 1 && !env.still) {
               stage.painted = false;
               stage.keep = true;
               return;
             }
-            if (!info.initial) stage.turn();
-            // only the header soaks in (the footers still paint over)
-            stage.lead = !!stage.held && stage.surface.kind === 'header' && !env.still;
+            stage.turn();
+            // A finished picture soaks in first, only in the header (the
+            // footers still paint over); an unfinished one stops and soaks in
+            // while the new one paints in, in either band.
+            stage.lead = !!stage.held && (stage.overlap || stage.surface.kind === 'header') && !env.still;
             stage.lift = stage.lead ? 0 : 1;
             stage.painted = false;
             stage.t = env.still ? 1 : 0;
@@ -3838,7 +3969,8 @@
             if (stage.t < 1) {
               const since = now - stage.start;
               stage.lift = stage.lead ? clamp(since / LIFT, 0, 1) : 1;
-              stage.t = env.still ? 1 : clamp((since - (stage.lead ? LIFT : 0)) / DURATION, 0.001, 1);
+              const wait = stage.lead && !stage.overlap ? LIFT : 0;
+              stage.t = env.still ? 1 : clamp((since - wait) / DURATION, 0.001, 1);
             }
             if (stage.t < 1) {
               stage.draw(now);
