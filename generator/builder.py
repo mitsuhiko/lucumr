@@ -75,6 +75,8 @@ class BlogPost:
         self.summary = frontmatter.get("summary")
         # hidden classifications the artwork draws from (see generator.art)
         self.facets = frontmatter.get("facets") or {}
+        # what the artwork draws from besides that (pages: the tags it uses)
+        self.art = frontmatter.get("art") or {}
 
         # Parse content for title if not in frontmatter
         lines = content.split("\n")
@@ -334,10 +336,12 @@ class Builder:
         tags.sort(key=lambda x: x["name"].lower())
         return tags
 
-    def _art_marker(self, ctx=None, tag=None):
+    def _art_marker(self, ctx=None, tag=None, page=None):
         """The artwork's record of the page being rendered (see generator.art)."""
         if isinstance(ctx, BlogPost):
             record = art.post_record(ctx)
+        elif not is_undefined(page) and page in art.PAGES:
+            record = art.page_record(page)
         elif not is_undefined(tag) and tag:
             record = {
                 "kind": "tag",
@@ -522,7 +526,9 @@ class Builder:
 
             context = {"pagination": pagination, "show_pagination": total_pages > 1}
 
-            html = self.jinja_env.get_template("blog/index.html").render(context)
+            html = self.jinja_env.get_template("blog/index.html").render(
+                dict(context, art_page="index")
+            )
 
             if page_num == 1:
                 output_path = self.output_folder / "index.html"
@@ -573,7 +579,7 @@ class Builder:
         output_path = self.output_folder / "archive" / "index.html"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         html = self.jinja_env.get_template("blog/archive.html").render(
-            {"archive": years_data}
+            {"archive": years_data, "art_page": "archive"}
         )
         output_path.write_text(html, encoding="utf-8")
 
@@ -582,7 +588,7 @@ class Builder:
             output_path = self.output_folder / str(year_data["year"]) / "index.html"
             output_path.parent.mkdir(parents=True, exist_ok=True)
             html = self.jinja_env.get_template("blog/year_archive.html").render(
-                {"entry": year_data}
+                {"entry": year_data, "art_page": "archive"}
             )
             output_path.write_text(html, encoding="utf-8")
 
@@ -596,7 +602,7 @@ class Builder:
                 )
                 output_path.parent.mkdir(parents=True, exist_ok=True)
                 html = self.jinja_env.get_template("blog/month_archive.html").render(
-                    {"entry": month_data}
+                    {"entry": month_data, "art_page": "archive"}
                 )
                 output_path.write_text(html, encoding="utf-8")
 
@@ -604,7 +610,7 @@ class Builder:
         """Build tag pages and tag cloud."""
         output_path = self.output_folder / "tags" / "index.html"
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        html = self.jinja_env.get_template("tagcloud.html").render()
+        html = self.jinja_env.get_template("tagcloud.html").render(art_page="tags")
         output_path.write_text(html, encoding="utf-8")
 
         # Individual tag pages
@@ -770,7 +776,11 @@ class Builder:
         sorted_travel = sorted(future_travel, key=lambda x: x["start_date"])
 
         # Create travel page context
-        context = {"travel_data": sorted_travel, "title": "Travel Schedule"}
+        context = {
+            "travel_data": sorted_travel,
+            "title": "Travel Schedule",
+            "art_page": "travel",
+        }
 
         # Render travel page
         html = self.jinja_env.get_template("travel.html").render(context)
@@ -853,6 +863,7 @@ class Builder:
         context = {
             "talks_by_year": [(year, talks_by_year[year]) for year in sorted_years],
             "title": "Talks",
+            "art_page": "talks",
         }
 
         # Render talks page

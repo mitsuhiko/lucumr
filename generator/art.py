@@ -86,9 +86,14 @@ FACETS = json.loads(
 
 def post_facets(post):
     """A post's facets as the artwork gets them: scores stretched to 0..1."""
+    return stretch_facets(getattr(post, "facets", None) or {})
+
+
+def stretch_facets(raw):
+    """Facets as written in a frontmatter (or in ``PAGES``), for the browser."""
     facets = {}
     for name, question in FACETS["questions"].items():
-        value = (getattr(post, "facets", None) or {}).get(name)
+        value = raw.get(name)
         if question["type"] == "choice" and isinstance(value, dict):
             facets[name] = {
                 label: p for label, p in value.items() if label in question["criteria"]
@@ -201,10 +206,143 @@ def post_record(post):
         "slug": post.slug,
         "title": post.title,
         "date": post.pub_date.strftime("%Y-%m-%d") if post.pub_date else "",
-        "tags": list(post.tags or []),
+        # a page has no tags of its own: ``art: {tags: [...]}`` in its
+        # frontmatter gives it some for the artwork alone
+        "tags": list((getattr(post, "art", None) or {}).get("tags") or post.tags or []),
         "shape": encode_shape(post_shape(post.content)),
         "links": len(_LINK_RE.findall(post.content)),
         "facets": post_facets(post),
+    }
+
+
+# The pages the generator renders from templates (no markdown, so no
+# frontmatter): what the artwork draws for them, as a post's frontmatter would
+# have it.  ``tags`` as ``tags:``, ``facets`` as ``facets:`` (the raw answers:
+# choices as label probabilities, scores in 0..1 before stretching).  The seed
+# comes from the URL, so every page of a kind (/page/2/, /2015/) differs.
+# Markdown pages (about, projects, ...) carry the same in their frontmatter,
+# under ``art: {tags: [...]}`` and ``facets:``.
+PAGES = {
+    # the blog's front page and its later pages: what the blog is mostly about
+    "index": {
+        "kind": "index",
+        "tags": ["thoughts", "python", "rust", "ai", "opensource"],
+        "facets": {
+            "mood": {"reflective": 0.5, "hopeful": 0.3, "matter_of_fact": 0.2},
+            "scale": {"craft": 0.5, "community": 0.3, "industry": 0.2},
+            "time": {"present": 0.6, "future": 0.25, "past": 0.15},
+            "ai": {"not_ai": 0.6, "agents": 0.4},
+            "imagery": {"none": 1},
+            "stance": {"builder": 0.5, "observer": 0.3, "teacher": 0.2},
+            "ending": {"open": 0.6, "resolved": 0.4},
+            "tension": 0.35,
+            "certainty": 0.7,
+            "valence": 0.6,
+            "energy": 0.45,
+            "wander": 0.4,
+            "personal": 0.5,
+            "humor": 0.2,
+            "technical": 0.6,
+        },
+    },
+    # the archive and every year and month: looking back
+    "archive": {
+        "kind": "index",
+        "tags": ["history", "python", "web", "opensource"],
+        "facets": {
+            "mood": {"reflective": 0.8, "matter_of_fact": 0.2},
+            "scale": {"craft": 0.4, "community": 0.4, "self": 0.2},
+            "time": {"past": 0.9, "present": 0.1},
+            "ai": {"not_ai": 1},
+            "imagery": {"none": 1},
+            "stance": {"witness": 0.6, "observer": 0.4},
+            "ending": {"resolved": 1},
+            "tension": 0.1,
+            "certainty": 0.8,
+            "valence": 0.55,
+            "energy": 0.25,
+            "wander": 0.35,
+            "personal": 0.4,
+            "humor": 0.1,
+            "technical": 0.5,
+        },
+    },
+    # the tag cloud: many small things gathered
+    "tags": {
+        "kind": "index",
+        "tags": ["community", "opensource", "thoughts"],
+        "facets": {
+            "mood": {"playful": 0.5, "matter_of_fact": 0.5},
+            "scale": {"community": 0.7, "craft": 0.3},
+            "time": {"present": 1},
+            "ai": {"not_ai": 1},
+            "imagery": {"crowd": 0.8, "none": 0.2},
+            "stance": {"observer": 1},
+            "ending": {"open": 1},
+            "tension": 0.05,
+            "certainty": 0.6,
+            "valence": 0.65,
+            "energy": 0.55,
+            "wander": 0.6,
+            "personal": 0.2,
+            "humor": 0.4,
+            "technical": 0.3,
+        },
+    },
+    # talks: on stage, teaching
+    "talks": {
+        "kind": "page",
+        "tags": ["conferences", "python", "rust", "opensource"],
+        "facets": {
+            "mood": {"hopeful": 0.5, "playful": 0.3, "matter_of_fact": 0.2},
+            "scale": {"community": 0.8, "craft": 0.2},
+            "time": {"past": 0.7, "present": 0.3},
+            "ai": {"not_ai": 0.8, "agents": 0.2},
+            "imagery": {"light": 0.7, "none": 0.3},
+            "stance": {"teacher": 0.7, "advocate": 0.3},
+            "ending": {"call": 0.6, "resolved": 0.4},
+            "tension": 0.1,
+            "certainty": 0.85,
+            "valence": 0.75,
+            "energy": 0.65,
+            "wander": 0.3,
+            "personal": 0.4,
+            "humor": 0.35,
+            "technical": 0.55,
+        },
+    },
+    # travel: where I will be, a journey ahead
+    "travel": {
+        "kind": "page",
+        "tags": ["conferences", "life"],
+        "facets": {
+            "mood": {"hopeful": 0.8, "playful": 0.2},
+            "scale": {"self": 0.6, "community": 0.4},
+            "time": {"future": 0.9, "present": 0.1},
+            "ai": {"not_ai": 1},
+            "imagery": {"road": 0.85, "none": 0.15},
+            "stance": {"observer": 0.6, "advocate": 0.4},
+            "ending": {"call": 0.7, "open": 0.3},
+            "tension": 0.05,
+            "certainty": 0.7,
+            "valence": 0.8,
+            "energy": 0.6,
+            "wander": 0.65,
+            "personal": 0.7,
+            "humor": 0.25,
+            "technical": 0.1,
+        },
+    },
+}
+
+
+def page_record(name):
+    """What the artwork knows about a page rendered from a template."""
+    page = PAGES[name]
+    return {
+        "kind": page.get("kind", "page"),
+        "tags": list(page.get("tags") or []),
+        "facets": stretch_facets(page.get("facets") or {}),
     }
 
 

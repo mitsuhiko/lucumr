@@ -1,3 +1,25 @@
+---
+art:
+  tags: [life, opensource, earendil, sentry, flask]
+facets:
+  mood: {matter_of_fact: 0.91}
+  scale: {self: 0.89}
+  time: {present: 0.95}
+  ai: {not_ai: 1}
+  imagery: {none: 0.55, building: 0.27, growth: 0.11}
+  stance: {builder: 0.54, witness: 0.4}
+  actor: {individual: 0.96}
+  ending: {practical: 0.92}
+  tension: 0.0
+  certainty: 0.88
+  valence: 0.69
+  energy: 0.23
+  wander: 0.31
+  personal: 0.72
+  humor: 0.28
+  technical: 0.3
+---
+
 # About Me
 
 <div style="float: right; margin-left: 20px; margin-bottom: 20px;">

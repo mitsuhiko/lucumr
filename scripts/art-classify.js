@@ -10,8 +10,11 @@
 const ALL = false;
 const spec = JSON.parse(await tools.read({ path: "generator/art_facets.json" }));
 const model = await models.getModelOfType("classifier", spec.model[0], spec.model[1]);
+// the pages (about, projects, ...) too: they need a frontmatter first, for
+// scripts/art-facets to write into (an `art: {tags: [...]}` block, say)
+const SOURCES = "blog/posts/*/*.md blog/*.md";
 const listing = await tools.bash({
-  command: ALL ? "ls blog/posts/*/*.md" : "grep -L '^facets:' blog/posts/*/*.md || true",
+  command: ALL ? `ls ${SOURCES}` : `grep -L '^facets:' ${SOURCES} || true`,
 });
 const files = listing.output.trim().split("\n").filter(Boolean);
 const wanted = Object.keys(spec.questions).length;

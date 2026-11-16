@@ -30,6 +30,20 @@ A page carries its record in `<span id="art-post" hidden data-…>` inside
 `div.body`, because `div.body` is what htmx swaps: the canvases stay, and the
 variant is told about the new post.
 
+Pages that are not posts get a record too, so they are not all drawn alike:
+
+- Markdown pages (`blog/about.md`, `projects.md`, `ai-transparency.md`,
+  `404.md`) have a frontmatter with `art: {tags: [...]}` (tags for the
+  artwork only: they do not show on the page or in the tag lists) and
+  `facets:` like a post's.  `scripts/art-classify.js` classifies pages as well
+  as posts.
+- Pages rendered from templates (the front page and `/page/N/`, the archive
+  with every year and month, the tag cloud, talks, travel) take theirs from
+  `PAGES` in `generator/art.py`, picked by the `art_page` the builder passes
+  to the template.  Their facets are written by hand, in the frontmatter's
+  format.  Their seed comes from the URL, so `/2015/` and `/2016/` differ.
+- A tag page draws its tag.  Anything else has no tags: the blog's blues.
+
 ## The variant contract
 
 ```js

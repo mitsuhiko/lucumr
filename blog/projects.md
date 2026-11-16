@@ -1,3 +1,25 @@
+---
+art:
+  tags: [opensource, python, rust, jinja, games]
+facets:
+  mood: {matter_of_fact: 0.92}
+  scale: {community: 0.47, self: 0.32, craft: 0.2}
+  time: {past: 0.99}
+  ai: {not_ai: 1}
+  imagery: {none: 0.5, water: 0.19, growth: 0.14}
+  stance: {builder: 0.83, witness: 0.16}
+  actor: {individual: 0.98}
+  ending: {resolved: 0.64, practical: 0.25, open: 0.1}
+  tension: 0.0
+  certainty: 0.82
+  valence: 0.65
+  energy: 0.17
+  wander: 0.23
+  personal: 0.56
+  humor: 0.19
+  technical: 0.48
+---
+
 # Projects
 
 Over the last couple of years I created and contributed to a number of
