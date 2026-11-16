@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'engineering']
+tags: ['ai', 'thoughts', 'engineering', 'society']
 summary: "AI speeds up writing code, but accountability and review capacity still impose hard limits."
 facets:
   mood: {worried: 0.52, reflective: 0.35, conflicted: 0.13}

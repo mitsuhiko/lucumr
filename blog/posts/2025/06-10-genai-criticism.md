@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'society']
 summary: "A response to Glyph's opting out of AI."
 facets:
   mood: {hopeful: 0.97}

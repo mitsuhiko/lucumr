@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'society']
 summary: "Why I like the word clanker and why machines are not people."
 facets:
   mood: {reflective: 0.54, angry: 0.23, worried: 0.14}

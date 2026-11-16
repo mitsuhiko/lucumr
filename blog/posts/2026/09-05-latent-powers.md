@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'society']
 summary: "Are we all discovering the same things at once?"
 facets:
   mood: {reflective: 1}

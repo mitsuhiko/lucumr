@@ -103,6 +103,7 @@
     python: ['rolling', 'python', 'fields'],
     rust: ['jagged', 'bands', ''],
     ai: ['cloud', 'wavy', ''],
+    society: ['rolling', 'made', 'houses'],
     engineering: ['mesa', 'grid', 'construction'],
     opensource: ['rolling', 'sprigs', 'trees'],
     web: ['rolling', 'boxes', 'lanes'],
@@ -1778,6 +1779,30 @@
       }, 1);
       B.flush(P, env.look.line, env.look.weight * 0.7, 0.75);
     },
+    houses: function(env) {
+      // villages along the crest, a spire now and then; the open land between
+      const P = env.P, R = env.R, B = new Batch(), w = P.wash;
+      const roofs = pigment(P, R.tag);
+      cells(P, 11 * R.sc, function(k) {
+        const r = cellRng(R.seed + 39, k);
+        if (noise1(k * 0.06, R.seed + 38) < 0.05 || r() < 0.2) return;
+        const hw = (4.2 + 2.6 * r()) * R.sc, x = (k + r() * 0.3) * 11 * R.sc;
+        const y = Math.max(env.yOf(x), env.yOf(x + hw)) + 1, h = (3.6 + 3.6 * r()) * R.sc, roof = hw * 0.5;
+        B.poly([[x, y], [x, y - h], [x + hw / 2, y - h - roof], [x + hw, y - h], [x + hw, y]], r.int(3));
+        if (r() < 0.12) {
+          // the church
+          B.seg(x + hw / 2, y - h - roof, x + hw / 2, y - h - roof - 7 * R.sc, 1);
+          B.seg(x + hw / 2 - 1.4, y - h - roof - 5 * R.sc, x + hw / 2 + 1.4, y - h - roof - 5 * R.sc, 1);
+        }
+        w.fillStyle = css(roofs, 0.45);
+        w.beginPath();
+        w.moveTo(x, y - h);
+        w.lineTo(x + hw / 2, y - h - roof);
+        w.lineTo(x + hw, y - h);
+        w.fill();
+      });
+      B.flush(P, env.look.line, env.look.weight * 0.7, 0.8);
+    },
     construction: function(env) {
       // the draughtsman's lines: the cap carried past its corners, drops to a datum, a centre mark
       const P = env.P, R = env.R, B = new Batch();
@@ -2550,6 +2575,19 @@
         for (let n = 0; n < 3; n++) {
           const an = t + n * Math.PI / 3;
           k.B.seg(a - Math.cos(an) * r, b - Math.sin(an) * r, a + Math.cos(an) * r, b + Math.sin(an) * r, k.b(i, j));
+        }
+      }, true);
+    },
+    made: function(k) {          // made ground: rubble, brick and what people left
+      k.grid(16, 12, function(x, y, i, j) {
+        const a = x + (k.rnd(i, j, 2) - 0.5) * 6, b = y + 3 + (k.rnd(i, j, 3) - 0.5) * 4, t = k.rnd(i, j, 1);
+        if (t < 0.4) {
+          const s = 1.8 + 1.4 * k.rnd(i, j, 4);
+          k.B.poly([[a, b], [a + s * 1.6, b], [a + s * 1.6, b + s], [a, b + s]], k.b(i, j), true);
+        } else if (t < 0.75) {
+          k.B.seg(a, b, a + 4 + 3 * k.rnd(i, j, 5), b + (k.rnd(i, j, 6) - 0.5) * 1.5, k.b(i, j));
+        } else {
+          k.B.dot(a, b);
         }
       }, true);
     },

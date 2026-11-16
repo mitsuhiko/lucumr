@@ -1,5 +1,5 @@
 ---
-tags: ['covid19', 'thoughts', 'security']
+tags: ['covid19', 'thoughts', 'security', 'society']
 summary: "Why contract tracing will be our future and why it's a good idea."
 facets:
   mood: {hopeful: 0.44, reflective: 0.35}

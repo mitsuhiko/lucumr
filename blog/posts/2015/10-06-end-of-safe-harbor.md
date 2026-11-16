@@ -1,5 +1,5 @@
 ---
-tags: ['security', 'politics', 'thoughts']
+tags: ['security', 'politics', 'thoughts', 'society']
 summary: "Some in detail analysis about what the end of safe harbor means for
 small companies, especially in Europe."
 facets:

@@ -42,6 +42,7 @@ TAGS = {
     "python": ("subject", "cobalt blue", "#306998", 0.6, 0.4, "soft, curved, indented; blue with a touch of yellow"),
     "rust": ("subject", "burnt sienna", "#a8431a", 0.25, 0.55, "iron oxide: angular, granulating, strict"),
     "ai": ("subject", "manganese violet", "#7d5ba6", 0.7, 0.7, "diffuse, cloud-like, layered, emergent"),
+    "society": ("subject", "viridian", "#2e8a78", 0.6, 0.55, "people at a distance: a town, a crowd, the threads between them; the wide view"),
     "engineering": ("subject", "indigo", "#2f3e6b", 0.2, 0.4, "blueprint: construction lines, grids, structure"),
     "opensource": ("subject", "sap green", "#5d8a2f", 0.65, 0.5, "growth, branching, a commons"),
     "web": ("subject", "cerulean blue", "#3d8fc4", 0.55, 0.5, "sky, boxes inside boxes, links"),

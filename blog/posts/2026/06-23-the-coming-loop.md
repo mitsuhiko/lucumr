@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'engineering', 'thoughts']
+tags: ['ai', 'engineering', 'thoughts', 'society']
 summary: "Loops, harnesses, and why even loop skeptics may end up with them."
 facets:
   mood: {worried: 0.82, conflicted: 0.17}

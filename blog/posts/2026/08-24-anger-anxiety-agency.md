@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'life']
+tags: ['ai', 'thoughts', 'life', 'society']
 summary: "Who is the AI villain we should be angry at?"
 facets:
   mood: {reflective: 0.5, conflicted: 0.43}

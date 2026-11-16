@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'society']
 summary: "Why are so many interactions online terrible now?"
 facets:
   mood: {worried: 0.86, angry: 0.14}

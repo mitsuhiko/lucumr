@@ -1,5 +1,5 @@
 ---
-tags: ['opensource', 'ai', 'thoughts', 'python']
+tags: ['opensource', 'ai', 'thoughts', 'python', 'society']
 summary: "Slopforks: what happens when a library gets rewritten with AI?"
 facets:
   mood: {reflective: 0.81, hopeful: 0.16}

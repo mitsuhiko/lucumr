@@ -1,5 +1,5 @@
 ---
-tags: ['covid19', 'security']
+tags: ['covid19', 'security', 'society']
 summary: "A short introduction to TCN based contact tracing"
 facets:
   mood: {reflective: 0.5, matter_of_fact: 0.48}

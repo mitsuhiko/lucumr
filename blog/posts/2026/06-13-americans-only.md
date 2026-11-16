@@ -1,5 +1,5 @@
 ---
-tags: ['politics', 'ai', 'thoughts']
+tags: ['politics', 'ai', 'thoughts', 'society']
 summary: "AI nationalism, safety and European weakness."
 facets:
   mood: {worried: 0.85, angry: 0.14}

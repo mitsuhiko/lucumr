@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'politics', 'opensource']
+tags: ['ai', 'thoughts', 'politics', 'opensource', 'society']
 summary: "Control is safety. Openness is danger."
 facets:
   mood: {angry: 0.94}

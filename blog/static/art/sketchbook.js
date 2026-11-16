@@ -1252,6 +1252,45 @@
   def('ai:society', 1.45, function(p, r) { peopleNet(p, r, true); });
   def('ai:community', 1.4, function(p, r) { peopleNet(p, r, false); });
 
+  // society: a street of houses with people in it, seen from across the road
+  def('society', 1.5, function(p, r) {
+    const ground = 0.42, a = 1.4, tall = 1 + r.int(3);
+    let x = -a + r.range(0, 0.1), i = 0;
+    while (x < a - 0.25) {
+      const w = r.range(0.26, 0.42), h = i === tall ? r.range(1.05, 1.25) : r.range(0.4, 0.8), top = ground - h;
+      const roof = r.chance(0.6) ? Math.min(0.28, w * 0.7) : 0;
+      const pts = roof ? [[x, ground], [x, top + roof], [x + w / 2, top], [x + w, top + roof], [x + w, ground]]
+        : [[x, ground], [x, top], [x + w, top], [x + w, ground]];
+      p.path(pts, { join: true });
+      for (let y = top + roof + 0.1; y < ground - 0.18; y += 0.2) {
+        for (let k = 0; k < 2; k++) if (r.chance(0.75)) p.rect(x + w * (0.2 + k * 0.38), y, w * 0.18, 0.08, r.chance(0.2) ? K : L);
+      }
+      if (r.chance(0.45)) p.tint(pts, { a: 0.5 });
+      x += w + r.range(-0.02, 0.08);
+      i++;
+    }
+    p.line(-a - 0.15, ground, a + 0.15, ground, {});
+    const n = 4 + r.int(3) + p.d * 3;
+    for (let k = 0; k < n; k++) person(p, r.range(-a, a), ground + r.range(0.36, 0.48), r.range(0.05, 0.065), r.chance(0.3) ? K : L);
+    p.tint(rectPts(-a, ground + 0.12, a * 2, 0.4), { a: 0.25 });
+  });
+  // society: the statistician's figures, one in so many marked
+  def('society', 1.45, function(p, r) {
+    const cols = 9 + p.d * 2, rows = 3, a = 1.3, dx = 2 * a / (cols - 1), s = Math.min(0.07, dx * 0.28);
+    const of = 3 + r.int(4), marked = Math.round(cols * rows / of);
+    for (let j = 0; j < rows; j++) {
+      let last = -1;
+      for (let i = 0; i < cols; i++) {
+        const on = j * cols + i < marked;
+        person(p, -a + i * dx, -0.42 + j * 0.48, s, on ? K : L);
+        if (on) last = i;
+      }
+      if (last >= 0) p.tint(rectPts(-a - dx * 0.4, -0.62 + j * 0.48, (last + 0.8) * dx, 0.3), { a: 0.45 });
+    }
+    p.text('1 IN ' + of, -a - 0.05, -0.74, 0.13, L);
+    p.line(-a - 0.15, 0.74, a + 0.15, 0.73, opt(C, { wob: 0.3 }));
+  });
+
   // writing: a paragraph in two hands, one written and one set
   def('ai:writing', 1.4, function(p, r) {
     const rows = 5 + p.d, lh = 1.5 / rows, a = 1.2, h = Math.min(0.1, lh * 0.34);

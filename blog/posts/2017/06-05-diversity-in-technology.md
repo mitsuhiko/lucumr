@@ -1,5 +1,5 @@
 ---
-tags: ['community', 'thoughts', 'opensource']
+tags: ['community', 'thoughts', 'opensource', 'society']
 summary: "Some personal thoughts and observations about the topic of diversity in
 technology and in particular Open Source."
 facets:

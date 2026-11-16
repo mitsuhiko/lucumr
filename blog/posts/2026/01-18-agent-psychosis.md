@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'community', 'engineering', 'opensource']
+tags: ['ai', 'thoughts', 'community', 'engineering', 'opensource', 'society']
 summary: "What's going on with the AI builder community right now?"
 facets:
   mood: {worried: 0.71, conflicted: 0.26}

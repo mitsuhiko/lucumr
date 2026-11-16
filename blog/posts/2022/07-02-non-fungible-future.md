@@ -1,5 +1,5 @@
 ---
-tags: ['business', 'thoughts']
+tags: ['business', 'thoughts', 'society']
 summary: "What a powerful NFT driven future could look like."
 facets:
   mood: {worried: 0.5, playful: 0.24, matter_of_fact: 0.16}

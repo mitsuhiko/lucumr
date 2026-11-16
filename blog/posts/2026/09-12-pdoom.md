@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'politics']
+tags: ['ai', 'thoughts', 'politics', 'society']
 summary: "Are we all going to die?"
 facets:
   mood: {angry: 0.93}

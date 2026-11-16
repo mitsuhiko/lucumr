@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'society']
 summary: "What is AI generated text anyways?"
 facets:
   mood: {reflective: 0.84, conflicted: 0.1}

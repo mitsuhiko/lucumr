@@ -1,5 +1,5 @@
 ---
-tags: ['security', 'thoughts', 'web']
+tags: ['security', 'thoughts', 'web', 'society']
 summary: "Some thoughts about the different effects of security and why sometimes
 less security and less enforcing has unintended positive aspects."
 facets:

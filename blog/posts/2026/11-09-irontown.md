@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'culture']
+tags: ['ai', 'thoughts', 'culture', 'society']
 summary: "Thoughts on reconciling incompatible needs."
 facets:
   mood: {reflective: 0.89}

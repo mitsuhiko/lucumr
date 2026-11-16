@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'life', 'engineering', 'tooling']
+tags: ['ai', 'thoughts', 'life', 'engineering', 'tooling', 'society']
 summary: "A personal recap of 2025 and a year of a new style of engineering."
 facets:
   mood: {reflective: 0.89, conflicted: 0.11}

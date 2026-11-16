@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'society']
 summary: "Why I'm a worried, but not too worried about AIs."
 facets:
   mood: {worried: 1}

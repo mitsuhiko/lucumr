@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts']
+tags: ['ai', 'thoughts', 'society']
 summary: "From fear to optimism: why I am convinced AI is worth embracing."
 facets:
   mood: {hopeful: 1}

@@ -1,5 +1,5 @@
 ---
-tags: ['ai', 'thoughts', 'life']
+tags: ['ai', 'thoughts', 'life', 'society']
 summary: "On friction, patience, and planting trees."
 facets:
   mood: {reflective: 0.63, worried: 0.36}

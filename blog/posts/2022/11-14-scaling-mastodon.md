@@ -1,5 +1,5 @@
 ---
-tags: ['thoughts', 'security']
+tags: ['thoughts', 'security', 'society']
 summary: "Now that Twitter is dying, what can replace it?"
 facets:
   mood: {worried: 0.38, angry: 0.28, reflective: 0.28}
