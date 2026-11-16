@@ -6,7 +6,10 @@
     <title>{% block title %}Home{% endblock %} | Armin Ronacher's Thoughts and Writings</title>
     <link href="/feed.atom" rel="alternate" title="Armin Ronacher's Thoughts and Writings" type="application/atom+xml">
     <link href="/feed.xml" rel="alternate" title="Armin Ronacher's Thoughts and Writings" type="application/rss+xml">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {#- viewport-fit=cover: on iOS the page runs under Safari's toolbar, so the
+        footer artwork reaches the bottom of the screen instead of ending
+        above the toolbar over plain background #}
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <link rel="preload" href="/static/avatar-tiny.jpg" as="image" type="image/jpeg">
     {%- for link in links %}
     <link rel="{{ link.rel }}" href="{{ link.href }}"{%

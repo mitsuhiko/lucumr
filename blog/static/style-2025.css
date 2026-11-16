@@ -134,6 +134,9 @@ h1 em                       { color: black; font-size: 32px; display: block;
 
 /* layout elements */
 div.container               { width: 100%; max-width: 940px; margin: 38px auto; padding: 0 40px; flex: 1; box-sizing: border-box; }
+/* with viewport-fit=cover the text keeps clear of the notch in landscape */
+div.container               { padding-left: max(40px, env(safe-area-inset-left));
+                              padding-right: max(40px, env(safe-area-inset-right)); }
 div.header                  { float: left; }
 div.header a:before         { content: ""; background: url(/static/avatar-tiny.jpg) no-repeat;
                               background-size: 32px; width: 32px; height: 32px;
@@ -239,7 +242,7 @@ hr { border: none; border-bottom: 1px solid var(--border-color); height: 10px;
 /* mobile */
 @media only screen and (max-width: 800px) {
     div.body { padding: 0; margin: 0; }
-    div.container { padding: 12px; margin: 0; }
+    div.container { padding: 12px max(12px, env(safe-area-inset-right)) 12px max(12px, env(safe-area-inset-left)); margin: 0; }
     div.header { height: auto; margin: 0; }
     div.navigation { margin-bottom: 20px; }
     h1 { font-size: 42px; line-height: 44px; }
