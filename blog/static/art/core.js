@@ -838,10 +838,13 @@ window.LucumrArt = (function() {
       if (more === true || (typeof more === 'number' && more < 0.012)) {
         raf = requestAnimationFrame(tick);
       } else if (typeof more === 'number' && more > 0) {
+        // (the timer wakes half a frame early, so that the frame it asks for
+        // is the one due, not the one after: else the rate stumbles, five
+        // display frames apart and then six)
         timer = setTimeout(function() {
           timer = 0;
           if (!raf) raf = requestAnimationFrame(tick);
-        }, Math.min(more, 600) * 1000);
+        }, Math.max(0, Math.min(more, 600) * 1000 - 8));
       } else {
         last = 0;
       }

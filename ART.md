@@ -366,8 +366,10 @@ moving once they are painted:
   anger, conflict and bleakness deepen the shadows, hope brightens the light
   between them, a reflective post (and the `fog` sky of `covid19`) has more
   mist, a matter-of-fact one less.  The settled picture is rendered once into
-  a texture; a second, small shader draws only the air over it, 12 frames a
-  second.  The air fades in over three seconds after the first paint-in.  On
+  a texture; a second, small shader draws only the air over it, 12 to 30
+  frames a second: as few as keep a cloud from moving more than 0.8 CSS px
+  between two frames (12 for a calm post, 30 for an angry one; rates that
+  divide 60 and 120 Hz, `AIR_RATES`).  The air fades in over three seconds after the first paint-in.  On
   a new post it fades out with the old colour and in again with the new, and
   what it is like (shadows, sun, the valleys the mist lies in) changes while
   none is shown, so no wisp slides up or down; the drift goes on throughout
@@ -392,9 +394,9 @@ moving once they are painted:
   drawings never move.
 
 Measured with headless Chrome on a post page at 1400×900, DPR 2 (Apple M5
-Max, 25 s each): with the header in view, 12 frames a second, 0.6% of a core
-on the main thread and 3.6% of a core for all of Chrome's processes together
-(a still page: 0–2.6%); with only the footer in view, 1% on the main thread
+Max, 25 s each): with the header in view, 12 frames a second (a calm post),
+0.6% of a core on the main thread and 3.6% of a core for all of Chrome's
+processes together (a still page: 0–2.6%); with only the footer in view, 1% on the main thread
 and 4.6% in all.  `classic` (now throttled to 30 frames a second through the
 same mechanism, before at 60) takes 1.4% on the main thread and 8% in all.
 Keeping the footer's two layers costs memory: two canvases of the band's

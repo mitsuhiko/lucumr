@@ -83,7 +83,10 @@
   // (LIFT seconds), leaving the old pencil on bare paper, then the new
   // picture paints in.
   const LIFT = 0.9;
-  const AIR_FPS = 12;       // frames per second of the air once the picture is painted
+  // Frames per second of the air once the picture is painted: as few as keep
+  // the clouds from stepping (at most AIR_STEP CSS px a frame), from rates
+  // that divide the display's 60 or 120 Hz evenly.
+  const AIR_RATES = [12, 15, 20, 30], AIR_STEP = 0.8;
   const TAU = Math.PI * 2;
   const WHITE = [1, 1, 1];
 
@@ -3643,6 +3646,14 @@
       }, { threshold: 0 });
       stages.forEach(function(stage) { watcher.observe(stage.surface.el); });
 
+      // the air's frame rate for a band: the faster the wind, the more frames
+      function airRate(stage) {
+        const air = stage.scene.air;
+        const speed = Math.max(Math.abs(air.wind), Math.abs(air.drift)) * stage.surface.height / HEADER_H;
+        for (let i = 0; i < AIR_RATES.length; i++) if (speed / AIR_RATES[i] <= AIR_STEP) return AIR_RATES[i];
+        return AIR_RATES[AIR_RATES.length - 1];
+      }
+
       return {
         setPost: function(post, info) {
           scene = buildScene(post);
@@ -3667,7 +3678,7 @@
         resize: function() { stages.forEach(function(stage) { stage.dirty = true; }); },
         setTheme: function() { stages.forEach(function(stage) { stage.dirty = true; }); },
         // While a band paints in: every frame.  Then, where there is air, a
-        // frame every 1/AIR_FPS seconds; elsewhere none.
+        // frame at airRate(); elsewhere none.
         frame: function(now) {
           if (!scene) return false;
           let more = false;
@@ -3695,7 +3706,7 @@
             if (stage.airSince === null) stage.airSince = now;
             if (!stage.fresh || now >= stage.due - 0.005) {
               stage.draw(now);
-              stage.due = now + 1 / AIR_FPS;
+              stage.due = now + 1 / airRate(stage);
             }
             if (stage.held) stage.release();
             const wait = Math.max(0, stage.due - now);
