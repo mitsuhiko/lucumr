@@ -3726,7 +3726,10 @@
       gl.uniform4f(u.mistY, air.heights[0], air.heights[1], air.heights[2], air.heights[3]);
     }
     try {
-      gl = canvas.getContext('webgl', { alpha: false, antialias: false, depth: false, stencil: false });
+      // (alpha: an opaque canvas is black until the first picture is drawn,
+      // which flashed on load and on resizes; the picture itself is opaque,
+      // so until then the paper shows through instead)
+      gl = canvas.getContext('webgl', { alpha: true, antialias: false, depth: false, stencil: false });
       if (gl) init();
     } catch (error) {
       console.warn('strata: no shader, drawing plainly', error);

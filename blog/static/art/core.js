@@ -300,7 +300,10 @@ window.LucumrArt = (function() {
       float gl = g.x * (1. - ${SHINE.shade.toFixed(3)} * shade);
       float L = min(${SHINE.top.toFixed(3)}, pow(gl * gl * gl + v.x * v.x * v.x, 1. / 3.));
       float keep = (1. - t) * (1. - t), cg = max(length(g.yz), 1e-6), cv = length(v.yz);
-      vec2 ug = g.yz / cg, uv = v.yz / max(cv, 1e-6);
+      // (a light without colour, no light at all included, takes hue 0 as in
+      // shine() above: atan(0, 0) is undefined in GLSL, and on iOS it is NaN,
+      // which drew the paper black wherever nothing had painted in yet)
+      vec2 ug = g.yz / cg, uv = cv > 1e-6 ? v.yz / cv : vec2(1., 0.);
       float dh = atan(ug.x * uv.y - ug.y * uv.x, dot(ug, uv));
       float side = dh >= 0. ? 1. : mix(1., -1., smoothstep(.3, .8, 3.14159265 + dh));
       float far = .5 - .5 * cos(dh);
