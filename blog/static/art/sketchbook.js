@@ -2482,13 +2482,19 @@
     p.dash(side * 0.22 + lean, -0.4, side * 0.78, -0.28, opt(L, o, { dash: 3 }));
     p.line(-0.7, 0.92, 0.7, 0.92, C);
   });
+  // pi: the logo, four by four squares in its coral, blue and yellow
   def('pi', 1.0, function(p, r) {
-    const o = K, a0 = r.range(-1.2, -0.3);
-    p.ellipse(0, 0, 0.82, 0.82, 0, opt(B, o, { a0: a0, sweep: TAU * r.range(0.86, 0.93), twice: true }));
-    p.curve([[-0.42, -0.2], [-0.3, -0.3], [0.2, -0.26], [0.45, -0.34]], opt(B, o));
-    p.curve([[-0.15, -0.28], [-0.16, 0.1], [-0.28, 0.42]], o);
-    p.curve([[0.16, -0.27], [0.15, 0.2], [0.24, 0.4], [0.36, 0.36]], o);
-    p.tint(ngon(0, 0, 0.8, 16), { a: 0.45 });
+    const s = 0.4, g = function(pts) { return pts.map(function(q) { return [-0.8 + q[0] * s, -0.8 + q[1] * s]; }); };
+    const parts = [
+      { rgb: [0.894, 0.541, 0.478], pts: g([[0, 0], [3, 0], [3, 2], [2, 2], [2, 1], [0, 1]]) },
+      { rgb: [0.31, 0.557, 0.702], pts: g([[0, 1], [1, 1], [1, 2], [2, 2], [2, 3], [1, 3], [1, 4], [0, 4]]) },
+      { rgb: [0.918, 0.714, 0.365], pts: g([[3, 2], [4, 2], [4, 4], [3, 4]]) }
+    ];
+    parts.forEach(function(part, i) {
+      p.tint(part.pts, { a: 0.75, rgb: part.rgb });
+      p.hatch(part.pts, r.range(0.6, 1.0) + i * 0.4, { sp: 3, c: part.rgb });
+      p.path(part.pts, { closed: true, w: B.w, c: part.rgb });
+    });
   });
   def('earendil', 1.0, function(p, r) {
     const o = K, a0 = r.range(-0.15, 0.15), pts = [];
