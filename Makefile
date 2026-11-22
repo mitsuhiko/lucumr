@@ -18,7 +18,7 @@ node_modules: package.json package-lock.json
 	@touch node_modules
 
 format:
-	uv run ruff format
+	uv tool run ruff format
 
 lint:
-	uv run ruff check
+	uv tool run ruff check
