@@ -62,6 +62,11 @@ Some of the more meaningful commercial projects and initiatives I worked on:
     born at Sentry to encourage companies to pledge to their Open Source
     dependencies.
 
+-   [Earendil](https://earendil.com/) — the company I co-founded with Colin.
+    We build [Pi](https://pi.dev/), an open source agent harness, and
+    [Lefos](https://lefos.com/), an agent designed to help people communicate
+    with more care.
+
 ## Open Source Libraries
 
 This is a selection of some of my more popular Open Source libraries and
